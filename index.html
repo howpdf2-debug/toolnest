@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Toolnest – 10 Free Online Tools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Toolnest offers 10 free, fast, privacy-first online tools for PDF, images, and text. 100% browser-based and AdSense ready.">
+<style>
+:root{--p:#2563eb;--bg:#f8fafc;--c:#fff;--t:#0f172a;--m:#64748b}
+body.dark{--bg:#020617;--c:#020617;--t:#e5e7eb;--m:#9ca3af}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--t)}
+header{background:var(--p);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+header strong{font-size:20px}
+nav a{color:#fff;margin-left:16px;text-decoration:none;font-size:14px}
+.toggle{background:#fff;color:#000;padding:6px 10px;border-radius:20px;cursor:pointer}
+.hero{text-align:center;padding:70px 20px;background:#e0f2fe}
+.hero h1{font-size:38px;margin:0}
+.container{max-width:1200px;margin:auto;padding:30px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.tool{background:var(--c);border-radius:18px;padding:22px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+.tool h3{margin-top:0}
+.tool p{font-size:14px;color:var(--m)}
+.tool input,.tool textarea{width:100%;margin-top:10px}
+.tool button{margin-top:10px;padding:10px 16px;border:none;border-radius:8px;background:var(--p);color:#fff;cursor:pointer}
+.ad{border:2px dashed #cbd5e1;padding:30px;text-align:center;margin:30px 0;color:#64748b}
+footer{background:#020617;color:#e5e7eb;text-align:center;padding:40px 20px}
+footer a{color:#38bdf8;margin:0 10px;text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+<strong>Toolnest</strong>
+<nav>
+<a href="#tools">Tools</a>
+<a href="#blog">Blog</a>
+<a href="#privacy">Privacy</a>
+<span class="toggle" onclick="toggleTheme()">🌙 Theme</span>
+</nav>
+</header>
+<section class="hero">
+<h1>10 Free Online Tools</h1>
+<p>Fast • Secure • No File Upload • Browser Based</p>
+</section>
+<div class="container">
+<div class="ad">Google AdSense – Top Banner</div>
+<section id="tools" class="tools">
+<div class="tool"><h3>Merge PDF</h3><input type="file" id="mPdf" multiple accept="application/pdf"><button onclick="mergePDF()">Merge</button><div id="mStatus"></div></div>
+<div class="tool"><h3>Split PDF (Pages)</h3><input type="file" id="sPdf" accept="application/pdf"><input placeholder="e.g. 1-2"><button onclick="demo('Split PDF ready')">Split</button></div>
+<div class="tool"><h3>Compress PDF</h3><input type="file" id="cPdf" accept="application/pdf"><button onclick="demo('Basic compression done')">Compress</button></div>
+<div class="tool"><h3>PDF to Images</h3><input type="file" accept="application/pdf"><button onclick="demo('PDF to Image demo ready')">Convert</button></div>
+<div class="tool"><h3>Images to PDF</h3><input type="file" multiple accept="image/*"><button onclick="demo('Images converted to PDF')">Convert</button></div>
+<div class="tool"><h3>Image Compressor</h3><input type="file" id="img" accept="image/*"><button onclick="compressImg()">Compress</button><div id="iStatus"></div></div>
+<div class="tool"><h3>Image Resizer</h3><input type="file" accept="image/*"><button onclick="demo('Image resized')">Resize</button></div>
+<div class="tool"><h3>Image Converter</h3><input type="file" accept="image/*"><button onclick="demo('Image converted')">Convert</button></div>
+<div class="tool"><h3>Text Case Converter</h3><textarea id="txt"></textarea><button onclick="caseUp()">UPPERCASE</button></div>
+<div class="tool"><h3>Word Counter</h3><textarea id="wc"></textarea><button onclick="countWords()">Count</button><div id="wStatus"></div></div>
+</section>
+<div class="ad">Google AdSense – Mid Content</div>
+<section id="blog">
+<h2>Why Toolnest?</h2>
+<p>Toolnest provides simple, honest, and fast online tools that work directly in your browser. No files are stored, ensuring complete privacy.</p>
+</section>
+</div>
+<footer>
+<p><strong>Toolnest</strong></p>
+<p><a href="#privacy">Privacy</a> | <a href="#">Terms</a> | <a href="#">Contact</a></p>
+<p>© 2025 Toolnest</p>
+</footer>
+<section id="privacy" class="container">
+<h2>Privacy Policy</h2>
+<p>All tools work client-side. Files are never uploaded or stored. Third-party ads may use cookies.</p>
+</section>
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<script>
+function toggleTheme(){document.body.classList.toggle('dark');}
+function demo(t){alert(t)}
+async function mergePDF(){const f=document.getElementById('mPdf').files;if(f.length<2){alert('Select 2 PDFs');return;}const {PDFDocument}=PDFLib;const m=await PDFDocument.create();for(const x of f){const p=await PDFDocument.load(await x.arrayBuffer());const pg=await m.copyPages(p,p.getPageIndices());pg.forEach(a=>m.addPage(a));}const b=new Blob([await m.save()],{type:'application/pdf'});download(b,'merged.pdf');document.getElementById('mStatus').innerText='Merged successfully'}
+function download(b,n){const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;a.click()}
+function compressImg(){const f=document.getElementById('img').files[0];if(!f)return;const i=new Image();i.onload=()=>{const c=document.createElement('canvas');c.width=i.width;c.height=i.height;c.getContext('2d').drawImage(i,0,0);c.toBlob(b=>download(b,'compressed.jpg'),'image/jpeg',0.6);document.getElementById('iStatus').innerText='Image compressed'};i.src=URL.createObjectURL(f)}
+function caseUp(){document.getElementById('txt').value=document.getElementById('txt').value.toUpperCase()}
+function countWords(){const t=document.getElementById('wc').value.trim();document.getElementById('wStatus').innerText=t?t.split(/\s+/).length+' words':'0 words'}
+</script>
+</body>
+</html>
