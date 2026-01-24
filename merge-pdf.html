@@ -4,15 +4,14 @@
 <meta charset="UTF-8">
 <title>Merge PDF – ToolNest</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Merge PDF files online for free. Files stay on your device.">
-
 <style>
-body{font-family:Arial;background:#f8fafc;margin:0}
-header{background:#2563eb;color:#fff;padding:18px;text-align:center}
-.container{max-width:800px;margin:auto;padding:30px}
-.box{background:#fff;padding:25px;border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,.1)}
-button{padding:10px 18px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:12px}
-#adStatus{margin-top:15px;color:green;font-weight:600}
+body{font-family:Arial;background:#f8fafc;margin:0;padding:0;}
+header{background:#2563eb;color:#fff;padding:20px;text-align:center;}
+.container{max-width:800px;margin:auto;padding:30px;}
+.box{background:#fff;padding:25px;border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,.1);}
+button{padding:10px 18px;border:none;border-radius:8px;cursor:pointer;color:#fff;background:#2563eb;}
+button:hover{background:#1d4ed8;}
+#adStatus{margin-top:15px;color:green;font-weight:600;}
 </style>
 </head>
 <body>
@@ -22,27 +21,26 @@ button{padding:10px 18px;background:#2563eb;color:#fff;border:none;border-radius
 </header>
 
 <div class="container">
+  <div class="box">
+    <input type="file" id="pdfFiles" multiple accept="application/pdf"><br><br>
+    <button onclick="mergePDF()">Merge PDF</button>
+    <p id="adStatus"></p>
 
-<div class="box">
-  <input type="file" id="pdfFiles" multiple accept="application/pdf"><br><br>
-  <button onclick="mergePDF()">Merge PDF</button>
-  <p id="adStatus"></p>
+    <!-- Back to Home -->
+    <div style="margin-top:20px;">
+      <a href="index.html"><button style="background:#64748b;">⬅ Back to Home</button></a>
+    </div>
 
-  <!-- Back to Home -->
-  <div style="margin-top:20px;">
-    <a href="index.html">
-      <button style="background:#64748b;">⬅ Back to Home</button>
-    </a>
+    <!-- Ad Placeholder -->
+    <div class="ad">Google AdSense Here</div>
   </div>
 </div>
 
-
-<!-- pdf-lib local reference -->
 <script src="pdf-lib.min.js"></script>
 <script>
 async function mergePDF(){
   const files=document.getElementById('pdfFiles').files;
-  if(files.length<2){alert("Select at least 2 PDF files");return;}
+  if(files.length<2){alert("Select at least 2 PDFs"); return;}
   const mergedPDF=await PDFLib.PDFDocument.create();
   for(let f of files){
     const pdf=await PDFLib.PDFDocument.load(await f.arrayBuffer());
@@ -60,4 +58,3 @@ async function mergePDF(){
 
 </body>
 </html>
-
