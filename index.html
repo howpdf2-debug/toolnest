@@ -7,67 +7,76 @@
 <meta name="description" content="ToolNest offers free online PDF, Image, and Text tools. Merge PDFs, compress images, convert text cases, and count words easily. 100% browser-based and privacy-first.">
 <meta name="keywords" content="free online tools, PDF merge, image compressor, text converter, word counter, browser tools, privacy-first tools">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
-:root{--primary:#2563eb;--bg:#f8fafc;--text:#0f172a;--card:#fff;--muted:#64748b}
-body.dark{--bg:#020617;--text:#e5e7eb;--card:#111827;--muted:#9ca3af}
-body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);transition:0.3s}
-header{background:var(--primary);color:#fff;padding:25px;text-align:center;transition:0.3s}
-header h1{margin:0;font-size:32px;}
-header p{margin:5px 0 0 0;}
-.toggle{margin-top:10px;display:inline-block;padding:6px 12px;border-radius:20px;background:#fff;color:#000;cursor:pointer;}
-.container{max-width:1200px;margin:auto;padding:30px;}
-.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;margin-top:30px;}
-.tool{background:var(--card);padding:25px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.08);text-align:center;transition:0.3s;}
-.tool:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,.12);}
-.tool h3{margin-top:0;color:var(--primary);}
+:root{--primary:#2563eb;--bg:#f8fafc;--text:#0f172a;--card:#fff;--muted:#64748b;}
+body.dark{--bg:#020617;--text:#e5e7eb;--card:#111827;--muted:#9ca3af;}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);transition:0.3s;}
+header{background:var(--primary);color:#fff;padding:30px;text-align:center;transition:0.3s;}
+header h1{margin:0;font-size:36px;}
+header p{margin:8px 0 0 0;font-size:16px;}
+.toggle{margin-top:15px;display:inline-block;padding:8px 16px;border-radius:20px;background:#fff;color:#000;cursor:pointer;font-weight:bold;}
+.container{max-width:1200px;margin:auto;padding:40px 20px;}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;margin-top:35px;}
+.tool{background:var(--card);padding:25px;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,.08);text-align:center;transition:all 0.3s ease;}
+.tool:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 15px 30px rgba(0,0,0,.15);}
+.tool h3{margin-top:15px;color:var(--primary);}
 .tool p{font-size:14px;color:var(--muted);margin:12px 0;}
-button{padding:10px 16px;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:0.2s;}
-button:hover{background:#1d4ed8;}
-.ad{border:2px dashed #cbd5e1;padding:20px;text-align:center;margin:20px 0;}
-footer{background:#020617;color:#e5e7eb;text-align:center;padding:30px;margin-top:40px;}
+button{padding:12px 18px;background:linear-gradient(45deg,#2563eb,#1d4ed8);color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:bold;transition:0.3s;}
+button:hover{transform:scale(1.05);}
+.ad{border:2px dashed #cbd5e1;padding:20px;text-align:center;margin:20px 0;border-radius:12px;color:#64748b;font-style:italic;}
+footer{background:#020617;color:#e5e7eb;text-align:center;padding:35px;margin-top:40px;}
 footer a{color:#38bdf8;margin:0 10px;text-decoration:none;}
+@media(max-width:600px){header h1{font-size:28px;}header p{font-size:14px;}}
 </style>
 </head>
 <body>
 
 <header>
 <h1>ToolNest</h1>
-<p>Free Online PDF, Image & Text Tools</p>
+<p>Fast • Free • Privacy-First Online Tools</p>
 <span class="toggle" onclick="toggleTheme()">🌙 Toggle Dark Mode</span>
 </header>
 
 <div class="container">
 
-<!-- AdSense Top Banner -->
+<!-- Top Banner Ad -->
 <div class="ad">Google AdSense – Top Banner</div>
 
 <div class="tools">
+
 <div class="tool">
+<i class="fas fa-file-pdf fa-3x"></i>
 <h3>Merge PDF</h3>
-<p>Combine multiple PDF files into one. Files never leave your device.</p>
+<p>Combine multiple PDF files into one. Fast & secure, files never leave your browser.</p>
 <a href="merge-pdf.html"><button>Open Tool</button></a>
 </div>
 
 <div class="tool">
+<i class="fas fa-image fa-3x"></i>
 <h3>Image Compressor</h3>
-<p>Compress JPG / PNG images online. Fast and privacy-first.</p>
+<p>Reduce image size without losing quality. Works with JPG/PNG files instantly.</p>
 <a href="image-compressor.html"><button>Open Tool</button></a>
 </div>
 
 <div class="tool">
+<i class="fas fa-font fa-3x"></i>
 <h3>Text Case Converter</h3>
 <p>Convert text to UPPERCASE, lowercase or Capitalized text instantly.</p>
 <a href="text-case.html"><button>Open Tool</button></a>
 </div>
 
 <div class="tool">
+<i class="fas fa-keyboard fa-3x"></i>
 <h3>Word Counter</h3>
-<p>Count words in your text quickly and easily.</p>
+<p>Count words in your text quickly and easily. Perfect for writers and bloggers.</p>
 <a href="word-counter.html"><button>Open Tool</button></a>
 </div>
+
 </div>
 
-<!-- AdSense Mid Content -->
+<!-- Mid Content Ad -->
 <div class="ad">Google AdSense – Mid Content</div>
 
 <!-- Footer Ad -->
@@ -82,6 +91,5 @@ footer a{color:#38bdf8;margin:0 10px;text-decoration:none;}
 <script>
 function toggleTheme(){document.body.classList.toggle('dark');}
 </script>
-
 </body>
 </html>
