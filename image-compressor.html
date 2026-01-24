@@ -4,14 +4,24 @@
 <meta charset="UTF-8">
 <title>Image Compressor – ToolNest</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Compress JPG / PNG images online for free. Fast and privacy-first image compression. Browser-based tool.">
+<meta name="keywords" content="image compressor online, compress jpg, compress png, browser image tool">
+
 <style>
-body{font-family:Arial;background:#f8fafc;margin:0;padding:0;}
-header{background:#2563eb;color:#fff;padding:20px;text-align:center;}
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;padding:0;}
+body.dark{background:#020617;color:#e5e7eb;}
+header{background:#2563eb;color:#fff;padding:25px;text-align:center;}
+header h1{margin:0;font-size:28px;}
 .container{max-width:800px;margin:auto;padding:30px;}
-.box{background:#fff;padding:25px;border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,.1);}
-button{padding:10px 18px;border:none;border-radius:8px;cursor:pointer;color:#fff;background:#2563eb;}
+.box{background:#fff;padding:25px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.08);}
+input{width:100%;padding:10px;margin-top:10px;border-radius:8px;border:1px solid #ccc;}
+button{padding:10px 16px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:12px;}
 button:hover{background:#1d4ed8;}
-#adStatus{margin-top:15px;color:green;font-weight:600;}
+#adStatus{margin-top:12px;font-weight:600;color:green;}
+.ad{border:2px dashed #cbd5e1;padding:20px;text-align:center;margin:20px 0;}
+.backHome{margin-top:20px;}
+.backHome button{background:#64748b;}
+.backHome button:hover{background:#4b5563;}
 </style>
 </head>
 <body>
@@ -22,15 +32,19 @@ button:hover{background:#1d4ed8;}
 
 <div class="container">
   <div class="box">
-    <input type="file" id="imageFile" accept="image/*"><br><br>
+    <div class="ad">Google AdSense – Top</div>
+
+    <input type="file" id="imageFile" accept="image/*"><br>
     <button onclick="compressImage()">Compress Image</button>
+
+    <div class="ad">Google AdSense – Mid</div>
     <p id="adStatus"></p>
 
-    <div style="margin-top:20px;">
-      <a href="index.html"><button style="background:#64748b;">⬅ Back to Home</button></a>
+    <div class="backHome">
+      <a href="index.html"><button>⬅ Back to Home</button></a>
     </div>
 
-    <div class="ad">Google AdSense Here</div>
+    <div class="ad">Google AdSense – Footer</div>
   </div>
 </div>
 
@@ -54,6 +68,5 @@ function compressImage(){
   img.src=URL.createObjectURL(file);
 }
 </script>
-
 </body>
 </html>
