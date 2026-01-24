@@ -4,22 +4,24 @@
 <meta charset="UTF-8">
 <title>Text Case Converter – ToolNest</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Convert text to UPPERCASE, lowercase, or capitalized text online. Free, fast and privacy-first tool.">
-<meta name="keywords" content="text case converter, uppercase, lowercase, capitalize text, browser text tool">
+<meta name="description" content="Convert text to UPPERCASE, lowercase, or Capitalized online. Free, browser-based tool.">
+<meta name="keywords" content="text converter, uppercase, lowercase, capitalize, online text tool">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;padding:0;}
+body{font-family:Arial,sans-serif;background:#f8fafc;margin:0;padding:0;color:#0f172a;transition:0.3s;}
 body.dark{background:#020617;color:#e5e7eb;}
 header{background:#2563eb;color:#fff;padding:25px;text-align:center;}
 header h1{margin:0;font-size:28px;}
 .container{max-width:800px;margin:auto;padding:30px;}
 .box{background:#fff;padding:25px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.08);}
 textarea{width:100%;padding:10px;border-radius:8px;margin-top:12px;border:1px solid #ccc;font-size:14px;}
-button{padding:10px 16px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:12px;}
+button{padding:10px 16px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:12px;font-weight:bold;transition:0.3s;}
 button:hover{background:#1d4ed8;}
 #adStatus{margin-top:12px;font-weight:600;color:green;}
-.ad{border:2px dashed #cbd5e1;padding:20px;text-align:center;margin:20px 0;}
-.backHome{margin-top:20px;}
+.ad{border:2px dashed #cbd5e1;padding:15px;text-align:center;margin:20px 0;border-radius:12px;color:#64748b;font-style:italic;}
+.backHome{margin-top:20px;text-align:center;}
 .backHome button{background:#64748b;}
 .backHome button:hover{background:#4b5563;}
 </style>
@@ -32,8 +34,11 @@ button:hover{background:#1d4ed8;}
 
 <div class="container">
   <div class="box">
+
     <div class="ad">Google AdSense – Top</div>
 
+    <i class="fas fa-font fa-3x"></i>
+    <p>Convert text to UPPERCASE, lowercase or Capitalized instantly.</p>
     <textarea id="textInput" rows="6" placeholder="Type or paste your text here..."></textarea><br>
     <button onclick="toUpperCase()">UPPERCASE</button>
     <button onclick="toLowerCase()">lowercase</button>
@@ -47,6 +52,7 @@ button:hover{background:#1d4ed8;}
     </div>
 
     <div class="ad">Google AdSense – Footer</div>
+
   </div>
 </div>
 
@@ -55,5 +61,6 @@ function toUpperCase(){ const t=document.getElementById('textInput'); t.value=t.
 function toLowerCase(){ const t=document.getElementById('textInput'); t.value=t.value.toLowerCase(); document.getElementById('adStatus').innerText="✅ Converted to lowercase"; }
 function capitalize(){ const t=document.getElementById('textInput'); t.value=t.value.replace(/\b\w/g,c=>c.toUpperCase()); document.getElementById('adStatus').innerText="✅ Text Capitalized"; }
 </script>
+
 </body>
 </html>
