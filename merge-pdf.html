@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Merge PDF – ToolNest</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Merge PDF files online for free. Files stay on your device.">
+
+<style>
+body{font-family:Arial;background:#f8fafc;margin:0}
+header{background:#2563eb;color:#fff;padding:18px;text-align:center}
+.container{max-width:800px;margin:auto;padding:30px}
+.box{background:#fff;padding:25px;border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,.1)}
+button{padding:10px 18px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:12px}
+#adStatus{margin-top:15px;color:green;font-weight:600}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Merge PDF Online</h1>
+</header>
+
+<div class="container">
+
+<div class="box">
+<input type="file" id="pdfFiles" multiple accept="application/pdf"><br><br>
+<button onclick="mergePDF()">Merge PDF</button>
+<p id="adStatus"></p>
+</div>
+
+</div>
+
+<!-- pdf-lib local reference -->
+<script src="pdf-lib.min.js"></script>
+<script>
+async function mergePDF(){
+  const files=document.getElementById('pdfFiles').files;
+  if(files.length<2){alert("Select at least 2 PDF files");return;}
+  const mergedPDF=await PDFLib.PDFDocument.create();
+  for(let f of files){
+    const pdf=await PDFLib.PDFDocument.load(await f.arrayBuffer());
+    const pages=await mergedPDF.copyPages(pdf,pdf.getPageIndices());
+    pages.forEach(p=>mergedPDF.addPage(p));
+  }
+  const blob=new Blob([await mergedPDF.save()],{type:'application/pdf'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='merged.pdf';
+  a.click();
+  document.getElementById('adStatus').innerText="✅ PDF merged successfully!";
+}
+</script>
+
+</body>
+</html>
 
