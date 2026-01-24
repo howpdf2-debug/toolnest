@@ -5,28 +5,84 @@
 <title>Toolnest – Free Online PDF, Image & Text Tools</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Toolnest provides free, fast and privacy-first online tools like Merge PDF, Image Compressor, Text Case Converter and Word Counter. 100% browser-based.">
+<meta name="description" content="Toolnest is a free privacy-first online tools website offering PDF, image and text utilities that work directly in your browser.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{--p:#2563eb;--bg:#f8fafc;--c:#ffffff;--t:#0f172a;--m:#64748b}
-body.dark{--bg:#020617;--c:#020617;--t:#e5e7eb;--m:#9ca3af}
-body{margin:0;font-family:Arial,Inter,sans-serif;background:var(--bg);color:var(--t)}
-header{background:var(--p);color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center}
-header strong{font-size:20px}
-nav a{color:#fff;margin-left:14px;text-decoration:none;font-size:14px}
-.toggle{background:#fff;color:#000;padding:5px 10px;border-radius:20px;cursor:pointer}
-.hero{text-align:center;padding:60px 20px;background:#e0f2fe}
-.hero h1{font-size:36px;margin-bottom:10px}
-.container{max-width:1100px;margin:auto;padding:30px}
-.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.tool{background:var(--c);border-radius:16px;padding:22px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+:root{
+--p:#2563eb;--bg:#f8fafc;--card:#ffffff;
+--text:#0f172a;--muted:#64748b
+}
+body.dark{
+--bg:#020617;--card:#020617;
+--text:#e5e7eb;--muted:#9ca3af
+}
+body{
+margin:0;font-family:'Inter',sans-serif;
+background:var(--bg);color:var(--text);line-height:1.6
+}
+header{
+background:#0f172a;color:#fff;
+padding:18px 24px;
+display:flex;justify-content:space-between;align-items:center
+}
+header strong{font-size:22px}
+nav a{color:#cbd5f5;margin-left:16px;text-decoration:none;font-size:14px}
+.toggle{
+background:#fff;color:#000;
+padding:6px 12px;border-radius:20px;
+cursor:pointer;font-size:13px
+}
+.hero{
+padding:90px 20px;text-align:center;
+background:linear-gradient(135deg,#2563eb,#1e40af);
+color:#fff
+}
+.hero h1{font-size:42px;margin-bottom:14px}
+.hero p{font-size:18px;max-width:700px;margin:auto}
+.container{max-width:1150px;margin:auto;padding:50px 20px}
+.section-title{
+text-align:center;margin-bottom:40px
+}
+.section-title h2{font-size:30px;margin-bottom:10px}
+.section-title p{color:var(--muted)}
+.tools{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px
+}
+.tool{
+background:var(--card);
+padding:24px;border-radius:18px;
+box-shadow:0 12px 30px rgba(0,0,0,.08)
+}
 .tool h3{margin-top:0}
-.tool p{font-size:14px;color:var(--m)}
-.tool input,.tool textarea{width:100%;margin-top:10px}
-.tool button{margin-top:12px;padding:10px 16px;border:none;border-radius:8px;background:var(--p);color:#fff;cursor:pointer}
-.ad{border:2px dashed #cbd5e1;padding:25px;text-align:center;margin:30px 0;color:#64748b}
-footer{background:#020617;color:#e5e7eb;text-align:center;padding:40px 20px}
-footer a{color:#38bdf8;margin:0 10px;text-decoration:none}
+.tool p{font-size:14px;color:var(--muted)}
+.tool input,.tool textarea{
+width:100%;margin-top:10px;padding:8px
+}
+.tool button{
+margin-top:12px;padding:10px 18px;
+border:none;border-radius:10px;
+background:var(--p);color:#fff;
+font-weight:600;cursor:pointer
+}
+.ad{
+margin:60px 0;padding:30px;
+border:2px dashed #cbd5e1;
+text-align:center;color:#64748b
+}
+.info{
+max-width:900px;margin:auto;
+font-size:15px;color:var(--muted)
+}
+footer{
+background:#020617;color:#e5e7eb;
+text-align:center;padding:50px 20px;margin-top:60px
+}
+footer a{color:#38bdf8;text-decoration:none;margin:0 10px}
 </style>
 </head>
 
@@ -36,68 +92,91 @@ footer a{color:#38bdf8;margin:0 10px;text-decoration:none}
 <strong>Toolnest</strong>
 <nav>
 <a href="#tools">Tools</a>
+<a href="#about">About</a>
 <a href="#privacy">Privacy</a>
 <a href="#contact">Contact</a>
-<span class="toggle" onclick="toggleTheme()">🌙 Theme</span>
+<span class="toggle" onclick="toggleTheme()">🌙</span>
 </nav>
 </header>
 
 <section class="hero">
-<h1>Free Online Tools</h1>
-<p>Fast • Secure • Privacy-First • 100% Browser Based</p>
+<h1>Free Online Tools That Respect Your Privacy</h1>
+<p>
+Toolnest provides simple, fast and secure PDF, image and text tools
+that work directly in your browser. No uploads. No tracking.
+</p>
 </section>
 
 <div class="container">
 
-<div class="ad">Google AdSense – Top Banner</div>
+<section id="about" class="section-title">
+<h2>Why Toolnest?</h2>
+<p>Lightweight tools built for speed, privacy and honesty.</p>
+</section>
 
-<section id="tools" class="tools">
+<div class="info">
+<p>
+Most online tools websites upload your files to their servers.
+Toolnest works differently. All tools run directly in your browser,
+so your files never leave your device.
+</p>
+</div>
 
-<!-- Merge PDF -->
+<div class="ad">Google AdSense – Responsive Unit</div>
+
+<section id="tools">
+<div class="section-title">
+<h2>Available Tools</h2>
+<p>These tools are fully functional and free to use.</p>
+</div>
+
+<div class="tools">
+
 <div class="tool">
 <h3>Merge PDF</h3>
-<p>Combine multiple PDF files into one. Files never leave your device.</p>
+<p>Combine multiple PDF files into one securely.</p>
 <input type="file" id="mPdf" multiple accept="application/pdf">
 <button onclick="mergePDF()">Merge PDF</button>
 <div id="mStatus"></div>
 </div>
 
-<!-- Image Compressor -->
 <div class="tool">
 <h3>Image Compressor</h3>
-<p>Compress JPG images to reduce size without big quality loss.</p>
+<p>Reduce JPG image size without major quality loss.</p>
 <input type="file" id="img" accept="image/*">
 <button onclick="compressImg()">Compress Image</button>
 <div id="iStatus"></div>
 </div>
 
-<!-- Text Case Converter -->
 <div class="tool">
 <h3>Text Case Converter</h3>
-<p>Convert text to UPPERCASE instantly.</p>
+<p>Convert text to uppercase instantly.</p>
 <textarea id="txt" rows="4"></textarea>
 <button onclick="caseUp()">Convert</button>
 </div>
 
-<!-- Word Counter -->
 <div class="tool">
 <h3>Word Counter</h3>
-<p>Count words in your text quickly.</p>
+<p>Count words accurately in your text.</p>
 <textarea id="wc" rows="4"></textarea>
 <button onclick="countWords()">Count Words</button>
 <div id="wStatus"></div>
 </div>
 
+</div>
 </section>
 
-<div class="ad">Google AdSense – Mid Content</div>
+<div class="ad">Google AdSense – In-Content</div>
 
-<section id="privacy">
+<section id="privacy" class="info">
 <h2>Privacy Policy</h2>
-<p>All tools on Toolnest work completely in your browser. Files are never uploaded or stored on any server.</p>
+<p>
+Toolnest does not upload or store any user files.
+All processing happens locally in your browser.
+</p>
 </section>
 
-<section id="contact">
+<section id="contact" class="info">
 <h2>Contact</h2>
 <p>Email: support@bhaihelp.in</p>
 </section>
@@ -106,7 +185,10 @@ footer a{color:#38bdf8;margin:0 10px;text-decoration:none}
 
 <footer>
 <p><strong>Toolnest</strong></p>
-<p><a href="#privacy">Privacy</a> | <a href="#contact">Contact</a></p>
+<p>
+<a href="#privacy">Privacy</a> |
+<a href="#contact">Contact</a>
+</p>
 <p>© 2025 Toolnest</p>
 </footer>
 
@@ -116,7 +198,7 @@ function toggleTheme(){document.body.classList.toggle('dark');}
 
 async function mergePDF(){
 const f=document.getElementById('mPdf').files;
-if(f.length<2){alert('Select at least 2 PDF files');return;}
+if(f.length<2){alert('Select at least 2 PDFs');return;}
 const {PDFDocument}=PDFLib;
 const merged=await PDFDocument.create();
 for(const file of f){
@@ -124,41 +206,33 @@ const pdf=await PDFDocument.load(await file.arrayBuffer());
 const pages=await merged.copyPages(pdf,pdf.getPageIndices());
 pages.forEach(p=>merged.addPage(p));
 }
-const blob=new Blob([await merged.save()],{type:'application/pdf'});
-download(blob,'merged.pdf');
+download(new Blob([await merged.save()],{type:'application/pdf'}),'merged.pdf');
 document.getElementById('mStatus').innerText='PDF merged successfully';
 }
 
 function compressImg(){
 const f=document.getElementById('img').files[0];
 if(!f)return;
-const img=new Image();
-img.onload=()=>{
+const i=new Image();
+i.onload=()=>{
 const c=document.createElement('canvas');
-c.width=img.width;c.height=img.height;
-c.getContext('2d').drawImage(img,0,0);
+c.width=i.width;c.height=i.height;
+c.getContext('2d').drawImage(i,0,0);
 c.toBlob(b=>download(b,'compressed.jpg'),'image/jpeg',0.6);
 document.getElementById('iStatus').innerText='Image compressed';
 };
-img.src=URL.createObjectURL(f);
+i.src=URL.createObjectURL(f);
 }
 
-function caseUp(){
-const t=document.getElementById('txt');
-t.value=t.value.toUpperCase();
-}
-
+function caseUp(){txt.value=txt.value.toUpperCase();}
 function countWords(){
-const t=document.getElementById('wc').value.trim();
-document.getElementById('wStatus').innerText=
-t ? t.split(/\s+/).length+' words' : '0 words';
+const t=wc.value.trim();
+wStatus.innerText=t?t.split(/\s+/).length+' words':'0 words';
 }
-
-function download(blob,name){
+function download(b,n){
 const a=document.createElement('a');
-a.href=URL.createObjectURL(blob);
-a.download=name;
-a.click();
+a.href=URL.createObjectURL(b);
+a.download=n;a.click();
 }
 </script>
 
