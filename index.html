@@ -5,84 +5,27 @@
 <title>Toolnest – Free Online PDF, Image & Text Tools</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Toolnest is a free privacy-first online tools website offering PDF, image and text utilities that work directly in your browser.">
+<meta name="description" content="Toolnest offers free, privacy-first online tools for PDF, images and text. All tools work directly in your browser.">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
---p:#2563eb;--bg:#f8fafc;--card:#ffffff;
---text:#0f172a;--muted:#64748b
-}
-body.dark{
---bg:#020617;--card:#020617;
---text:#e5e7eb;--muted:#9ca3af
-}
-body{
-margin:0;font-family:'Inter',sans-serif;
-background:var(--bg);color:var(--text);line-height:1.6
-}
-header{
-background:#0f172a;color:#fff;
-padding:18px 24px;
-display:flex;justify-content:space-between;align-items:center
-}
-header strong{font-size:22px}
+:root{--p:#2563eb;--bg:#f8fafc;--card:#fff;--t:#0f172a;--m:#64748b}
+body.dark{--bg:#020617;--card:#020617;--t:#e5e7eb;--m:#9ca3af}
+body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--t)}
+header{background:#0f172a;color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
 nav a{color:#cbd5f5;margin-left:16px;text-decoration:none;font-size:14px}
-.toggle{
-background:#fff;color:#000;
-padding:6px 12px;border-radius:20px;
-cursor:pointer;font-size:13px
-}
-.hero{
-padding:90px 20px;text-align:center;
-background:linear-gradient(135deg,#2563eb,#1e40af);
-color:#fff
-}
-.hero h1{font-size:42px;margin-bottom:14px}
-.hero p{font-size:18px;max-width:700px;margin:auto}
-.container{max-width:1150px;margin:auto;padding:50px 20px}
-.section-title{
-text-align:center;margin-bottom:40px
-}
-.section-title h2{font-size:30px;margin-bottom:10px}
-.section-title p{color:var(--muted)}
-.tools{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px
-}
-.tool{
-background:var(--card);
-padding:24px;border-radius:18px;
-box-shadow:0 12px 30px rgba(0,0,0,.08)
-}
+.toggle{background:#fff;color:#000;padding:6px 12px;border-radius:20px;cursor:pointer}
+.hero{padding:80px 20px;text-align:center;background:linear-gradient(135deg,#2563eb,#1e40af);color:#fff}
+.container{max-width:1200px;margin:auto;padding:50px 20px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
+.tool{background:var(--card);padding:22px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.08)}
 .tool h3{margin-top:0}
-.tool p{font-size:14px;color:var(--muted)}
-.tool input,.tool textarea{
-width:100%;margin-top:10px;padding:8px
-}
-.tool button{
-margin-top:12px;padding:10px 18px;
-border:none;border-radius:10px;
-background:var(--p);color:#fff;
-font-weight:600;cursor:pointer
-}
-.ad{
-margin:60px 0;padding:30px;
-border:2px dashed #cbd5e1;
-text-align:center;color:#64748b
-}
-.info{
-max-width:900px;margin:auto;
-font-size:15px;color:var(--muted)
-}
-footer{
-background:#020617;color:#e5e7eb;
-text-align:center;padding:50px 20px;margin-top:60px
-}
-footer a{color:#38bdf8;text-decoration:none;margin:0 10px}
+.tool p{font-size:14px;color:var(--m)}
+.tool input,.tool textarea{width:100%;margin-top:10px;padding:8px}
+.tool button{margin-top:10px;padding:10px 16px;border:none;border-radius:10px;background:var(--p);color:#fff;font-weight:600;cursor:pointer}
+.ad{margin:50px 0;padding:25px;border:2px dashed #cbd5e1;text-align:center;color:#64748b}
+footer{background:#020617;color:#e5e7eb;text-align:center;padding:40px 20px}
 </style>
 </head>
 
@@ -92,7 +35,6 @@ footer a{color:#38bdf8;text-decoration:none;margin:0 10px}
 <strong>Toolnest</strong>
 <nav>
 <a href="#tools">Tools</a>
-<a href="#about">About</a>
 <a href="#privacy">Privacy</a>
 <a href="#contact">Contact</a>
 <span class="toggle" onclick="toggleTheme()">🌙</span>
@@ -100,83 +42,66 @@ footer a{color:#38bdf8;text-decoration:none;margin:0 10px}
 </header>
 
 <section class="hero">
-<h1>Free Online Tools That Respect Your Privacy</h1>
-<p>
-Toolnest provides simple, fast and secure PDF, image and text tools
-that work directly in your browser. No uploads. No tracking.
-</p>
+<h1>Free Online Tools</h1>
+<p>PDF, Image & Text tools • Privacy-first • No uploads</p>
 </section>
 
 <div class="container">
 
-<section id="about" class="section-title">
-<h2>Why Toolnest?</h2>
-<p>Lightweight tools built for speed, privacy and honesty.</p>
-</section>
+<div class="ad">Google AdSense – Responsive Ad</div>
 
-<div class="info">
-<p>
-Most online tools websites upload your files to their servers.
-Toolnest works differently. All tools run directly in your browser,
-so your files never leave your device.
-</p>
-</div>
+<section id="tools" class="tools">
 
-<div class="ad">Google AdSense – Responsive Unit</div>
-
-<section id="tools">
-<div class="section-title">
-<h2>Available Tools</h2>
-<p>These tools are fully functional and free to use.</p>
-</div>
-
-<div class="tools">
-
+<!-- PDF -->
 <div class="tool">
 <h3>Merge PDF</h3>
-<p>Combine multiple PDF files into one securely.</p>
+<p>Combine multiple PDF files securely.</p>
 <input type="file" id="mPdf" multiple accept="application/pdf">
 <button onclick="mergePDF()">Merge PDF</button>
 <div id="mStatus"></div>
 </div>
 
+<!-- IMAGE -->
 <div class="tool">
 <h3>Image Compressor</h3>
-<p>Reduce JPG image size without major quality loss.</p>
+<p>Reduce JPG image size.</p>
 <input type="file" id="img" accept="image/*">
-<button onclick="compressImg()">Compress Image</button>
+<button onclick="compressImg()">Compress</button>
+<button onclick="resizeImage()">Resize</button>
+<button onclick="jpgToPng()">JPG → PNG</button>
 <div id="iStatus"></div>
 </div>
 
+<!-- TEXT -->
 <div class="tool">
-<h3>Text Case Converter</h3>
-<p>Convert text to uppercase instantly.</p>
+<h3>Text Tools</h3>
+<p>Uppercase, lowercase, clean text.</p>
 <textarea id="txt" rows="4"></textarea>
-<button onclick="caseUp()">Convert</button>
+<button onclick="toUpper()">UPPER</button>
+<button onclick="toLower()">lower</button>
+<button onclick="removeSpaces()">Remove Spaces</button>
+<button onclick="reverseText()">Reverse</button>
 </div>
 
+<!-- COUNT -->
 <div class="tool">
-<h3>Word Counter</h3>
-<p>Count words accurately in your text.</p>
+<h3>Word & Character Counter</h3>
 <textarea id="wc" rows="4"></textarea>
-<button onclick="countWords()">Count Words</button>
+<button onclick="countWords()">Words</button>
+<button onclick="countChars()">Characters</button>
 <div id="wStatus"></div>
 </div>
 
-</div>
 </section>
 
-<div class="ad">Google AdSense – In-Content</div>
+<div class="ad">Google AdSense – In Content</div>
 
-<section id="privacy" class="info">
+<section id="privacy">
 <h2>Privacy Policy</h2>
-<p>
-Toolnest does not upload or store any user files.
-All processing happens locally in your browser.
-</p>
+<p>All tools work locally in your browser. Files are never uploaded.</p>
 </section>
 
-<section id="contact" class="info">
+<section id="contact">
 <h2>Contact</h2>
 <p>Email: support@bhaihelp.in</p>
 </section>
@@ -184,11 +109,6 @@ All processing happens locally in your browser.
 </div>
 
 <footer>
-<p><strong>Toolnest</strong></p>
-<p>
-<a href="#privacy">Privacy</a> |
-<a href="#contact">Contact</a>
-</p>
 <p>© 2025 Toolnest</p>
 </footer>
 
@@ -196,91 +116,77 @@ All processing happens locally in your browser.
 <script>
 function toggleTheme(){document.body.classList.toggle('dark');}
 
+// PDF
 async function mergePDF(){
-const f=document.getElementById('mPdf').files;
-if(f.length<2){alert('Select at least 2 PDFs');return;}
-const {PDFDocument}=PDFLib;
-const merged=await PDFDocument.create();
+const f=mPdf.files;if(f.length<2){alert("Select 2 PDFs");return;}
+const {PDFDocument}=PDFLib;const m=await PDFDocument.create();
 for(const file of f){
-const pdf=await PDFDocument.load(await file.arrayBuffer());
-const pages=await merged.copyPages(pdf,pdf.getPageIndices());
-pages.forEach(p=>merged.addPage(p));
+const p=await PDFDocument.load(await file.arrayBuffer());
+const pages=await m.copyPages(p,p.getPageIndices());
+pages.forEach(pg=>m.addPage(pg));
 }
-download(new Blob([await merged.save()],{type:'application/pdf'}),'merged.pdf');
-document.getElementById('mStatus').innerText='PDF merged successfully';
+download(new Blob([await m.save()],{type:'application/pdf'}),'merged.pdf');
+mStatus.innerText="Merged successfully";
 }
 
+// IMAGE
 function compressImg(){
-const f=document.getElementById('img').files[0];
-if(!f)return;
+const f=img.files[0];if(!f)return;
 const i=new Image();
 i.onload=()=>{
 const c=document.createElement('canvas');
 c.width=i.width;c.height=i.height;
 c.getContext('2d').drawImage(i,0,0);
 c.toBlob(b=>download(b,'compressed.jpg'),'image/jpeg',0.6);
-document.getElementById('iStatus').innerText='Image compressed';
+iStatus.innerText="Compressed";
 };
 i.src=URL.createObjectURL(f);
 }
 
-function caseUp(){txt.value=txt.value.toUpperCase();}
-function countWords(){
-const t=wc.value.trim();
-wStatus.innerText=t?t.split(/\s+/).length+' words':'0 words';
-}
-function download(b,n){
-const a=document.createElement('a');
-a.href=URL.createObjectURL(b);
-a.download=n;a.click();
-}
-</script>
-<script>
-function toLower(){
-txt.value = txt.value.toLowerCase();
-}
-
-function removeSpaces(){
-txt.value = txt.value.replace(/\s+/g,' ').trim();
-}
-
-function charCount(){
-const t = wc.value;
-wStatus.innerText = t.length + " characters";
-}
-
-function reverseText(){
-txt.value = txt.value.split('').reverse().join('');
-}
-
 function resizeImage(){
-const file = document.getElementById('img').files[0];
-if(!file) return;
-const img = new Image();
-img.onload = ()=>{
-const canvas = document.createElement('canvas');
-canvas.width = img.width/2;
-canvas.height = img.height/2;
-canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
-canvas.toBlob(b=>download(b,'resized.jpg'),'image/jpeg',0.8);
+const f=img.files[0];if(!f)return;
+const i=new Image();
+i.onload=()=>{
+const c=document.createElement('canvas');
+c.width=i.width/2;c.height=i.height/2;
+c.getContext('2d').drawImage(i,0,0,c.width,c.height);
+c.toBlob(b=>download(b,'resized.jpg'),'image/jpeg',0.8);
 };
-img.src = URL.createObjectURL(file);
+i.src=URL.createObjectURL(f);
 }
 
 function jpgToPng(){
-const file = document.getElementById('img').files[0];
-if(!file) return;
-const img = new Image();
-img.onload = ()=>{
+const f=img.files[0];if(!f)return;
+const i=new Image();
+i.onload=()=>{
 const c=document.createElement('canvas');
-c.width=img.width; c.height=img.height;
-c.getContext('2d').drawImage(img,0,0);
+c.width=i.width;c.height=i.height;
+c.getContext('2d').drawImage(i,0,0);
 c.toBlob(b=>download(b,'converted.png'),'image/png');
 };
-img.src = URL.createObjectURL(file);
+i.src=URL.createObjectURL(f);
+}
+
+// TEXT
+function toUpper(){txt.value=txt.value.toUpperCase();}
+function toLower(){txt.value=txt.value.toLowerCase();}
+function removeSpaces(){txt.value=txt.value.replace(/\s+/g,' ').trim();}
+function reverseText(){txt.value=txt.value.split('').reverse().join('');}
+
+// COUNT
+function countWords(){
+const t=wc.value.trim();
+wStatus.innerText=t?t.split(/\s+/).length+" words":"0 words";
+}
+function countChars(){
+wStatus.innerText=wc.value.length+" characters";
+}
+
+function download(b,n){
+const a=document.createElement('a');
+a.href=URL.createObjectURL(b);a.download=n;a.click();
 }
 </script>
 
 </body>
 </html>
-
