@@ -2,21 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <title>Toolnest – Free Online PDF, Image & Text Tools</title>
-<meta name="description" content="Toolnest provides free online tools like Merge PDF, Image Compressor, Text Case Converter and Word Counter. Fast, secure and privacy-first.">
 
-<title>ToolNest – Free Online PDF, Image & Text Tools | Merge, Compress, Convert</title>
+<title>ToolNest – Free Online PDF, Image & Text Tools</title>
+<meta name="description" content="ToolNest offers free online tools to merge PDFs, compress images, convert text cases and count words. Fast, secure and privacy-first.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="ToolNest offers free online PDF, Image, and Text tools. Merge PDFs, compress images, convert text cases, and count words easily. 100% browser-based and privacy-first.">
-<meta name="keywords" content="free online tools, PDF merge, image compressor, text converter, word counter, browser tools, privacy-first tools">
-<meta property="og:title" content="ToolNest – Free Online PDF, Image & Text Tools">
-<meta property="og:description" content="Merge PDFs, compress images, convert text cases, and count words online with ToolNest. Free & secure browser-based tools.">
+
+<meta property="og:title" content="ToolNest – Free Online Tools">
+<meta property="og:description" content="Merge PDFs, compress images, convert text and count words online. Free & browser-based tools.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://yourdomain.com/">
-<meta property="og:image" content="https://yourdomain.com/logo.png">
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="style.css">
-<link.topbar{
+<meta property="og:url" content="https://toolnest.bhaihelp.in/">
+
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,Inter,sans-serif;
+  background:#f8fafc;
+  color:#0f172a;
+}
+
+/* TOP NAV */
+.topbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -34,17 +42,79 @@
   text-decoration:none;
   font-size:14px;
 }
-.topbar nav a:hover{
-  text-decoration:underline;
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+  color:#fff;
+  padding:80px 20px;
+  text-align:center;
 }
- rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+.hero h1{
+  font-size:42px;
+  margin-bottom:12px;
+}
+.hero p{
+  font-size:18px;
+  max-width:700px;
+  margin:0 auto;
+}
+
+/* ADS */
+.ad-box{
+  margin:30px auto;
+  padding:20px;
+  max-width:1100px;
+  border:2px dashed #cbd5e1;
+  text-align:center;
+  color:#64748b;
+}
+
+/* TOOLS */
+.container{max-width:1100px;margin:auto;padding:30px}
+.tools{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+.tool{
+  background:#fff;
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  text-align:center;
+}
+.tool i{color:#2563eb;margin-bottom:12px}
+.tool button{
+  margin-top:10px;
+  padding:10px 16px;
+  border:none;
+  border-radius:8px;
+  background:#2563eb;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+  background:#020617;
+  color:#e5e7eb;
+  text-align:center;
+  padding:30px;
+  margin-top:40px;
+}
+
+@media(max-width:768px){
+  .hero h1{font-size:30px}
+  .hero p{font-size:16px}
+}
+</style>
 </head>
+
 <body>
-  <body>
 
 <header class="topbar">
-  <div class="logo">Toolnest</div>
+  <div class="logo">ToolNest</div>
   <nav>
     <a href="index.html">Home</a>
     <a href="merge-pdf.html">Merge PDF</a>
@@ -54,39 +124,50 @@
   </nav>
 </header>
 
-<header>
-<h1>ToolNest</h1>
-<p>Fast • Free • Privacy-First Online Tools</p>
-<span class="toggle" onclick="toggleTheme()">🌙 Toggle Dark Mode</span>
-</header>
+<section class="hero">
+  <h1>Free Online Tools</h1>
+  <p>Merge PDFs, compress images, convert text cases and count words – all directly in your browser.</p>
+</section>
+
+<div class="ad-box">Advertisement</div>
 
 <div class="container">
-<div class="ad">Google AdSense – Top Banner</div>
-  <div class="ad-box">Advertisement</div>
+  <div class="tools">
+    <div class="tool">
+      <i class="fas fa-file-pdf fa-3x"></i>
+      <h3>Merge PDF</h3>
+      <p>Combine multiple PDF files securely.</p>
+      <a href="merge-pdf.html"><button>Open Tool</button></a>
+    </div>
 
-<div class="tools">
-<div class="tool"><i class="fas fa-file-pdf fa-3x"></i><h3>Merge PDF</h3><p>Combine multiple PDF files securely.</p><a href="merge-pdf.html"><button>Open Tool</button></a></div>
-<div class="tool"><i class="fas fa-image fa-3x"></i><h3>Image Compressor</h3><p>Compress JPG/PNG images instantly.</p><a href="image-compressor.html"><button>Open Tool</button></a></div>
-<div class="tool"><i class="fas fa-font fa-3x"></i><h3>Text Case Converter</h3><p>Convert text to UPPER/LOWER/Capital.</p><a href="text-case.html"><button>Open Tool</button></a></div>
-<div class="tool"><i class="fas fa-keyboard fa-3x"></i><h3>Word Counter</h3><p>Count words in your text easily.</p><a href="word-counter.html"><button>Open Tool</button></a></div>
-</div>
-  <div class="ad-box">Advertisement</div>
+    <div class="tool">
+      <i class="fas fa-image fa-3x"></i>
+      <h3>Image Compressor</h3>
+      <p>Compress images without quality loss.</p>
+      <a href="image-compressor.html"><button>Open Tool</button></a>
+    </div>
 
-<div class="ad">Google AdSense – Mid Content</div>
+    <div class="tool">
+      <i class="fas fa-font fa-3x"></i>
+      <h3>Text Case</h3>
+      <p>Convert text to UPPERCASE instantly.</p>
+      <a href="text-case.html"><button>Open Tool</button></a>
+    </div>
 
+    <div class="tool">
+      <i class="fas fa-keyboard fa-3x"></i>
+      <h3>Word Counter</h3>
+      <p>Count words and characters easily.</p>
+      <a href="word-counter.html"><button>Open Tool</button></a>
+    </div>
+  </div>
 </div>
 
 <div class="ad-box">Advertisement</div>
-<div class="ad">Google AdSense – Footer</div>
+
 <footer>
-<p>© 2025 ToolNest | <a href="https://github.com/YOUR-USERNAME/toolnest">GitHub Repo</a></p>
+  © 2025 ToolNest – All Rights Reserved
 </footer>
 
-<script>
-function toggleTheme(){document.body.classList.toggle('dark');}
-</script>
 </body>
 </html>
-
-
-
