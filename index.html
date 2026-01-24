@@ -235,6 +235,52 @@ a.href=URL.createObjectURL(b);
 a.download=n;a.click();
 }
 </script>
+<script>
+function toLower(){
+txt.value = txt.value.toLowerCase();
+}
+
+function removeSpaces(){
+txt.value = txt.value.replace(/\s+/g,' ').trim();
+}
+
+function charCount(){
+const t = wc.value;
+wStatus.innerText = t.length + " characters";
+}
+
+function reverseText(){
+txt.value = txt.value.split('').reverse().join('');
+}
+
+function resizeImage(){
+const file = document.getElementById('img').files[0];
+if(!file) return;
+const img = new Image();
+img.onload = ()=>{
+const canvas = document.createElement('canvas');
+canvas.width = img.width/2;
+canvas.height = img.height/2;
+canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+canvas.toBlob(b=>download(b,'resized.jpg'),'image/jpeg',0.8);
+};
+img.src = URL.createObjectURL(file);
+}
+
+function jpgToPng(){
+const file = document.getElementById('img').files[0];
+if(!file) return;
+const img = new Image();
+img.onload = ()=>{
+const c=document.createElement('canvas');
+c.width=img.width; c.height=img.height;
+c.getContext('2d').drawImage(img,0,0);
+c.toBlob(b=>download(b,'converted.png'),'image/png');
+};
+img.src = URL.createObjectURL(file);
+}
+</script>
 
 </body>
 </html>
+
