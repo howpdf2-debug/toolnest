@@ -2,203 +2,60 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ToolNest – Free Online PDF & Image Tools</title>
+<title>Toolnest – Free Online Tools</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="ToolNest offers free, fast, privacy-first online tools like Merge PDF, Image Compressor, PDF to Image, Text Tools. 100% browser based.">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="Free online PDF, Image and Text tools. Fast, secure and browser based.">
 
 <style>
-body{margin:0;font-family:Inter,Arial;background:#f8fafc;color:#0f172a}
+body{margin:0;font-family:Arial;background:#f8fafc}
 header{background:#2563eb;color:#fff;padding:18px}
-header h1{margin:0;font-size:22px}
-.hero{text-align:center;padding:50px 20px;background:#e0f2fe}
 .container{max-width:1100px;margin:auto;padding:30px}
 .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-
-.tool{
-background:#fff;border-radius:16px;padding:22px;
-box-shadow:0 12px 30px rgba(0,0,0,.08)
-}
-.tool h3{margin-top:0}
-.tool p{font-size:14px;color:#64748b}
-.tool input,.tool textarea{
-width:100%;margin-top:10px;padding:8px
-}
-.tool button{
-margin-top:12px;padding:10px 16px;
-border:none;border-radius:8px;
-background:#2563eb;color:#fff;cursor:pointer
-}
-
-.ad{
-margin:30px 0;
-padding:25px;
-border:2px dashed #cbd5e1;
-text-align:center;color:#64748b
-}
-
-footer{
-background:#020617;color:#e5e7eb;
-padding:30px;text-align:center
-}
-footer a{color:#38bdf8;text-decoration:none;margin:0 10px}
+.tool{background:#fff;padding:22px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+.tool h3{margin:0}
+.tool p{font-size:14px;color:#555}
+button{margin-top:12px;padding:10px 16px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>ToolNest – Free Online Tools</h1>
+<h1>Toolnest</h1>
+<p>Free Online Tools</p>
 </header>
-
-<section class="hero">
-<h2>Fast • Secure • Privacy-First Tools</h2>
-<p>No uploads. No tracking. Everything runs in your browser.</p>
-</section>
 
 <div class="container">
 
-<div class="ad">Google AdSense – Top Banner</div>
+<div class="tools">
 
-<section class="tools">
-
-<!-- Merge PDF -->
 <div class="tool">
 <h3>Merge PDF</h3>
-<p>Combine multiple PDFs into one file.</p>
-<input type="file" id="pdfMerge" multiple accept="application/pdf">
-<button onclick="mergePDF()">Merge PDF</button>
-<p id="mergeStatus"></p>
+<p>Combine multiple PDF files into one.</p>
+<a href="merge-pdf.html"><button>Open Tool</button></a>
 </div>
 
-<!-- PDF to Image -->
-<div class="tool">
-<h3>PDF to Image</h3>
-<p>Convert first page of PDF to image.</p>
-<input type="file" id="pdfImg" accept="application/pdf">
-<button onclick="pdfToImg()">Convert</button>
-<p id="pdfImgStatus"></p>
-</div>
-
-<!-- Image Compressor -->
 <div class="tool">
 <h3>Image Compressor</h3>
-<p>Reduce image size online.</p>
-<input type="file" id="imgComp" accept="image/*">
-<button onclick="compressImg()">Compress</button>
+<p>Compress images online.</p>
+<a href="image-compressor.html"><button>Open Tool</button></a>
 </div>
 
-<!-- Image Resizer -->
-<div class="tool">
-<h3>Image Resizer</h3>
-<p>Resize image dimensions.</p>
-<input type="file" id="imgResize" accept="image/*">
-<input type="number" id="w" placeholder="Width">
-<input type="number" id="h" placeholder="Height">
-<button onclick="resizeImg()">Resize</button>
-</div>
-
-<!-- Text Case -->
 <div class="tool">
 <h3>Text Case Converter</h3>
-<textarea id="caseText" rows="4"></textarea>
-<button onclick="upper()">UPPERCASE</button>
-<button onclick="lower()">lowercase</button>
+<p>Convert text to UPPERCASE.</p>
+<a href="text-case.html"><button>Open Tool</button></a>
 </div>
 
-<!-- Word Counter -->
 <div class="tool">
 <h3>Word Counter</h3>
-<textarea id="wordText" rows="4"></textarea>
-<button onclick="countWords()">Count</button>
-<p id="wordResult"></p>
+<p>Count words in your text.</p>
+<a href="word-counter.html"><button>Open Tool</button></a>
 </div>
-
-</section>
-
-<div class="ad">Google AdSense – Mid Content</div>
-
-<section>
-<h2>Privacy Policy</h2>
-<p>All tools run inside your browser. We never upload or store your files.</p>
-</section>
 
 </div>
 
-<footer>
-<p><strong>ToolNest</strong></p>
-<p>
-<a href="#">Privacy</a> |
-<a href="#">Contact</a>
-</p>
-<p>© 2025 ToolNest</p>
-</footer>
-
-<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
-<script>
-async function mergePDF(){
-const files=document.getElementById('pdfMerge').files;
-if(files.length<2){alert('Select at least 2 PDFs');return;}
-const merged=await PDFLib.PDFDocument.create();
-for(let f of files){
-const pdf=await PDFLib.PDFDocument.load(await f.arrayBuffer());
-const pages=await merged.copyPages(pdf,pdf.getPageIndices());
-pages.forEach(p=>merged.addPage(p));
-}
-download(await merged.save(),'merged.pdf','application/pdf');
-document.getElementById('mergeStatus').innerText="Merged successfully";
-}
-
-function pdfToImg(){
-alert("PDF to Image demo tool working – full multi-page coming next step");
-}
-
-function compressImg(){
-const f=document.getElementById('imgComp').files[0];
-if(!f)return;
-const img=new Image();
-img.onload=()=>{
-const c=document.createElement('canvas');
-c.width=img.width;c.height=img.height;
-c.getContext('2d').drawImage(img,0,0);
-c.toBlob(b=>download(b,'compressed.jpg','image/jpeg'),'image/jpeg',0.6);
-}
-img.src=URL.createObjectURL(f);
-}
-
-function resizeImg(){
-const f=document.getElementById('imgResize').files[0];
-if(!f)return;
-const w=document.getElementById('w').value;
-const h=document.getElementById('h').value;
-const img=new Image();
-img.onload=()=>{
-const c=document.createElement('canvas');
-c.width=w;c.height=h;
-c.getContext('2d').drawImage(img,0,0,w,h);
-c.toBlob(b=>download(b,'resized.jpg','image/jpeg'),'image/jpeg');
-}
-img.src=URL.createObjectURL(f);
-}
-
-function upper(){const t=document.getElementById('caseText');t.value=t.value.toUpperCase()}
-function lower(){const t=document.getElementById('caseText');t.value=t.value.toLowerCase()}
-
-function countWords(){
-const t=document.getElementById('wordText').value.trim();
-document.getElementById('wordResult').innerText=
-t ? t.split(/\s+/).length+" words" : "0 words";
-}
-
-function download(data,name,type){
-const a=document.createElement('a');
-a.href=URL.createObjectURL(new Blob([data],{type:type}));
-a.download=name;a.click();
-}
-</script>
+</div>
 
 </body>
 </html>
