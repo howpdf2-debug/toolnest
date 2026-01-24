@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Word Counter – ToolNest</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Count words in your text online for free.">
+
+<style>
+body{font-family:Arial;background:#f8fafc;margin:0}
+header{background:#2563eb;color:#fff;padding:18px;text-align:center}
+.container{max-width:800px;margin:auto;padding:30px}
+.box{background:#fff;padding:25px;border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,.1)}
+textarea{width:100%;padding:10px;border-radius:8px;margin-top:12px;border:1px solid #ccc;font-size:14px}
+button{padding:10px 18px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:12px}
+#adStatus{margin-top:15px;color:green;font-weight:600}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Word Counter</h1>
+</header>
+
+<div class="container">
+
+<div class="box">
+<textarea id="textInput" rows="6" placeholder="Type or paste your text here..."></textarea><br>
+<button onclick="countWords()">Count Words</button>
+<p id="adStatus">Word Count: 0</p>
+</div>
+
+</div>
+
+<script>
+function countWords(){
+  const txt=document.getElementById('textInput').value.trim();
+  const words=txt? txt.split(/\s+/).length : 0;
+  document.getElementById('adStatus').innerText="Word Count: "+words;
+}
+</script>
+
+</body>
+</html>
