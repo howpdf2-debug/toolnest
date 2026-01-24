@@ -1,99 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
-<meta name="google-site-verification" content="abc123XYZ456">
-<title>Toolnest – 10 Free Online Tools</title>
+<title>Toolnest – Free Online PDF, Image & Text Tools</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Toolnest offers 10 free, fast, privacy-first online tools for PDF, images, and text. 100% browser-based and AdSense ready.">
+<meta name="description" content="Toolnest provides free, fast and privacy-first online tools like Merge PDF, Image Compressor, Text Case Converter and Word Counter. 100% browser-based.">
+
 <style>
-:root{--p:#2563eb;--bg:#f8fafc;--c:#fff;--t:#0f172a;--m:#64748b}
+:root{--p:#2563eb;--bg:#f8fafc;--c:#ffffff;--t:#0f172a;--m:#64748b}
 body.dark{--bg:#020617;--c:#020617;--t:#e5e7eb;--m:#9ca3af}
-body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--t)}
-header{background:var(--p);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+body{margin:0;font-family:Arial,Inter,sans-serif;background:var(--bg);color:var(--t)}
+header{background:var(--p);color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center}
 header strong{font-size:20px}
-nav a{color:#fff;margin-left:16px;text-decoration:none;font-size:14px}
-.toggle{background:#fff;color:#000;padding:6px 10px;border-radius:20px;cursor:pointer}
-.hero{text-align:center;padding:70px 20px;background:#e0f2fe}
-.hero h1{font-size:38px;margin:0}
-.container{max-width:1200px;margin:auto;padding:30px}
+nav a{color:#fff;margin-left:14px;text-decoration:none;font-size:14px}
+.toggle{background:#fff;color:#000;padding:5px 10px;border-radius:20px;cursor:pointer}
+.hero{text-align:center;padding:60px 20px;background:#e0f2fe}
+.hero h1{font-size:36px;margin-bottom:10px}
+.container{max-width:1100px;margin:auto;padding:30px}
 .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.tool{background:var(--c);border-radius:18px;padding:22px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+.tool{background:var(--c);border-radius:16px;padding:22px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
 .tool h3{margin-top:0}
 .tool p{font-size:14px;color:var(--m)}
 .tool input,.tool textarea{width:100%;margin-top:10px}
-.tool button{margin-top:10px;padding:10px 16px;border:none;border-radius:8px;background:var(--p);color:#fff;cursor:pointer}
-.ad{border:2px dashed #cbd5e1;padding:30px;text-align:center;margin:30px 0;color:#64748b}
+.tool button{margin-top:12px;padding:10px 16px;border:none;border-radius:8px;background:var(--p);color:#fff;cursor:pointer}
+.ad{border:2px dashed #cbd5e1;padding:25px;text-align:center;margin:30px 0;color:#64748b}
 footer{background:#020617;color:#e5e7eb;text-align:center;padding:40px 20px}
 footer a{color:#38bdf8;margin:0 10px;text-decoration:none}
 </style>
 </head>
+
 <body>
+
 <header>
 <strong>Toolnest</strong>
 <nav>
 <a href="#tools">Tools</a>
-<a href="#blog">Blog</a>
 <a href="#privacy">Privacy</a>
+<a href="#contact">Contact</a>
 <span class="toggle" onclick="toggleTheme()">🌙 Theme</span>
 </nav>
 </header>
+
 <section class="hero">
-<h1>10 Free Online Tools</h1>
-<p>Fast • Secure • No File Upload • Browser Based</p>
+<h1>Free Online Tools</h1>
+<p>Fast • Secure • Privacy-First • 100% Browser Based</p>
 </section>
+
 <div class="container">
+
 <div class="ad">Google AdSense – Top Banner</div>
+
 <section id="tools" class="tools">
-<div class="tool"><h3>Merge PDF</h3><input type="file" id="mPdf" multiple accept="application/pdf"><button onclick="mergePDF()">Merge</button><div id="mStatus"></div></div>
-<div class="tool"><h3>Split PDF (Pages)</h3><input type="file" id="sPdf" accept="application/pdf"><input placeholder="e.g. 1-2"><button onclick="demo('Split PDF ready')">Split</button></div>
-<div class="tool"><h3>Compress PDF</h3><input type="file" id="cPdf" accept="application/pdf"><button onclick="demo('Basic compression done')">Compress</button></div>
-<div class="tool"><h3>PDF to Images</h3><input type="file" accept="application/pdf"><button onclick="demo('PDF to Image demo ready')">Convert</button></div>
-<div class="tool"><h3>Images to PDF</h3><input type="file" multiple accept="image/*"><button onclick="demo('Images converted to PDF')">Convert</button></div>
-<div class="tool"><h3>Image Compressor</h3><input type="file" id="img" accept="image/*"><button onclick="compressImg()">Compress</button><div id="iStatus"></div></div>
-<div class="tool"><h3>Image Resizer</h3><input type="file" accept="image/*"><button onclick="demo('Image resized')">Resize</button></div>
-<div class="tool"><h3>Image Converter</h3><input type="file" accept="image/*"><button onclick="demo('Image converted')">Convert</button></div>
-<div class="tool"><h3>Text Case Converter</h3><textarea id="txt"></textarea><button onclick="caseUp()">UPPERCASE</button></div>
-<div class="tool"><h3>Word Counter</h3><textarea id="wc"></textarea><button onclick="countWords()">Count</button><div id="wStatus"></div></div>
-</section>
-<div class="ad">Google AdSense – Mid Content</div>
-<section id="blog">
-<h2>Why Toolnest?</h2>
-<p>Toolnest is a privacy‑focused online tools platform designed to help users work with PDF files, images, and text quickly and securely. All tools on Toolnest run directly in your browser, which means your files are never uploaded to any server. This makes Toolnest ideal for students, professionals, bloggers, and small businesses who value speed and data privacy.</p>
-<p>Unlike many online tools websites, Toolnest avoids fake processing indicators and misleading claims. Each tool clearly explains what it does and how it works. Our goal is to provide honest, lightweight utilities that save time without compromising user trust. Toolnest is continuously improved to add more real tools while keeping the interface clean and easy to use.</p>
-</section>
-<section id="terms" class="container">
-<h2>Terms & Conditions</h2>
-<p>By using Toolnest, you agree to use the website and its tools responsibly. All tools are provided free of charge for general informational and productivity purposes. Toolnest does not guarantee that the tools will be suitable for every specific use case. You are solely responsible for how you use the generated files or results.</p>
-<p>Toolnest is not liable for any data loss, damages, or issues arising from the use of this website. We reserve the right to update or discontinue any tool or feature at any time without prior notice.</p>
-</section>
-<section id="contact" class="container">
-<h2>Contact Us</h2>
-<p>If you have questions, feedback, or business inquiries related to Toolnest, feel free to contact us. We value user feedback and aim to improve the platform continuously.</p>
-<p>Email: support@toolnest.site</p>
-</section>
+
+<!-- Merge PDF -->
+<div class="tool">
+<h3>Merge PDF</h3>
+<p>Combine multiple PDF files into one. Files never leave your device.</p>
+<input type="file" id="mPdf" multiple accept="application/pdf">
+<button onclick="mergePDF()">Merge PDF</button>
+<div id="mStatus"></div>
 </div>
+
+<!-- Image Compressor -->
+<div class="tool">
+<h3>Image Compressor</h3>
+<p>Compress JPG images to reduce size without big quality loss.</p>
+<input type="file" id="img" accept="image/*">
+<button onclick="compressImg()">Compress Image</button>
+<div id="iStatus"></div>
+</div>
+
+<!-- Text Case Converter -->
+<div class="tool">
+<h3>Text Case Converter</h3>
+<p>Convert text to UPPERCASE instantly.</p>
+<textarea id="txt" rows="4"></textarea>
+<button onclick="caseUp()">Convert</button>
+</div>
+
+<!-- Word Counter -->
+<div class="tool">
+<h3>Word Counter</h3>
+<p>Count words in your text quickly.</p>
+<textarea id="wc" rows="4"></textarea>
+<button onclick="countWords()">Count Words</button>
+<div id="wStatus"></div>
+</div>
+
+</section>
+
+<div class="ad">Google AdSense – Mid Content</div>
+
+<section id="privacy">
+<h2>Privacy Policy</h2>
+<p>All tools on Toolnest work completely in your browser. Files are never uploaded or stored on any server.</p>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p>Email: support@bhaihelp.in</p>
+</section>
+
+</div>
+
 <footer>
 <p><strong>Toolnest</strong></p>
-<p><a href="#privacy">Privacy</a> | <a href="#terms">Terms</a> | <a href="#contact">Contact</a></p>
+<p><a href="#privacy">Privacy</a> | <a href="#contact">Contact</a></p>
 <p>© 2025 Toolnest</p>
 </footer>
-<section id="privacy" class="container">
-<h2>Privacy Policy</h2>
-<p>All tools work client-side. Files are never uploaded or stored. Third-party ads may use cookies.</p>
-</section>
+
 <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 <script>
 function toggleTheme(){document.body.classList.toggle('dark');}
-function demo(t){alert(t)}
-async function mergePDF(){const f=document.getElementById('mPdf').files;if(f.length<2){alert('Select 2 PDFs');return;}const {PDFDocument}=PDFLib;const m=await PDFDocument.create();for(const x of f){const p=await PDFDocument.load(await x.arrayBuffer());const pg=await m.copyPages(p,p.getPageIndices());pg.forEach(a=>m.addPage(a));}const b=new Blob([await m.save()],{type:'application/pdf'});download(b,'merged.pdf');document.getElementById('mStatus').innerText='Merged successfully'}
-function download(b,n){const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;a.click()}
-function compressImg(){const f=document.getElementById('img').files[0];if(!f)return;const i=new Image();i.onload=()=>{const c=document.createElement('canvas');c.width=i.width;c.height=i.height;c.getContext('2d').drawImage(i,0,0);c.toBlob(b=>download(b,'compressed.jpg'),'image/jpeg',0.6);document.getElementById('iStatus').innerText='Image compressed'};i.src=URL.createObjectURL(f)}
-function caseUp(){document.getElementById('txt').value=document.getElementById('txt').value.toUpperCase()}
-function countWords(){const t=document.getElementById('wc').value.trim();document.getElementById('wStatus').innerText=t?t.split(/\s+/).length+' words':'0 words'}
+
+async function mergePDF(){
+const f=document.getElementById('mPdf').files;
+if(f.length<2){alert('Select at least 2 PDF files');return;}
+const {PDFDocument}=PDFLib;
+const merged=await PDFDocument.create();
+for(const file of f){
+const pdf=await PDFDocument.load(await file.arrayBuffer());
+const pages=await merged.copyPages(pdf,pdf.getPageIndices());
+pages.forEach(p=>merged.addPage(p));
+}
+const blob=new Blob([await merged.save()],{type:'application/pdf'});
+download(blob,'merged.pdf');
+document.getElementById('mStatus').innerText='PDF merged successfully';
+}
+
+function compressImg(){
+const f=document.getElementById('img').files[0];
+if(!f)return;
+const img=new Image();
+img.onload=()=>{
+const c=document.createElement('canvas');
+c.width=img.width;c.height=img.height;
+c.getContext('2d').drawImage(img,0,0);
+c.toBlob(b=>download(b,'compressed.jpg'),'image/jpeg',0.6);
+document.getElementById('iStatus').innerText='Image compressed';
+};
+img.src=URL.createObjectURL(f);
+}
+
+function caseUp(){
+const t=document.getElementById('txt');
+t.value=t.value.toUpperCase();
+}
+
+function countWords(){
+const t=document.getElementById('wc').value.trim();
+document.getElementById('wStatus').innerText=
+t ? t.split(/\s+/).length+' words' : '0 words';
+}
+
+function download(blob,name){
+const a=document.createElement('a');
+a.href=URL.createObjectURL(blob);
+a.download=name;
+a.click();
+}
 </script>
+
 </body>
 </html>
-
