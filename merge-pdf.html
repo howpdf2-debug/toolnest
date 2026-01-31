@@ -5,115 +5,131 @@
 <title>Merge PDF Online Free – ToolNest</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Merge multiple PDF files into a single PDF online for free. Fast, secure, and privacy-first PDF merger by ToolNest.">
-<meta name="keywords" content="merge PDF, combine PDF online, free PDF merger, ToolNest">
+<meta name="description" content="Merge multiple PDF files into one online for free. Fast, secure and privacy-first PDF merger by ToolNest.">
 
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 
 <style>
+/* ================= BASE ================= */
 body{
   margin:0;
   font-family:Arial,Inter,sans-serif;
   background:#f8fafc;
   color:#0f172a;
+  transition:.3s;
 }
+a{text-decoration:none}
 
-/* HEADER */
+/* ============== DARK MODE ============== */
+body.dark{
+  background:#020617;
+  color:#e5e7eb;
+}
+body.dark .tool-box{background:#020617}
+body.dark header{background:#020617}
+body.dark .card{background:#020617}
+body.dark .ad{border-color:#334155;color:#94a3b8}
+
+/* ============== HEADER ================= */
 header{
   background:#2563eb;
-  color:#fff;
-  padding:16px 22px;
+  padding:14px 22px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
 }
-header h1{
-  font-size:20px;
-  margin:0;
-}
-header a{
+.logo img{height:32px}
+header nav a{
   color:#fff;
-  text-decoration:none;
+  margin-left:14px;
   font-size:14px;
 }
+.toggle{
+  cursor:pointer;
+  font-size:14px;
+  color:#fff;
+}
 
-/* CONTAINER */
-.container{
+/* ============== TOOL CARD ============== */
+.card{
   max-width:900px;
   margin:40px auto;
-  padding:30px;
+  padding:35px;
   background:#fff;
   border-radius:18px;
   box-shadow:0 10px 25px rgba(0,0,0,.08);
   text-align:center;
 }
+.card i{color:#2563eb;margin-bottom:15px}
 
-.container i{
-  color:#2563eb;
-  margin-bottom:15px;
-}
-
-input[type=file]{
-  margin:20px 0;
-}
-
+/* INPUT + BUTTON */
+input[type=file]{margin:20px 0}
 button{
-  padding:12px 20px;
-  background:#2563eb;
-  color:#fff;
+  padding:12px 22px;
   border:none;
   border-radius:10px;
+  background:#2563eb;
+  color:#fff;
   cursor:pointer;
   font-size:15px;
 }
-
-button:hover{
-  opacity:.9;
-}
-
-#status{
-  margin-top:15px;
-  font-weight:600;
-}
+button:hover{opacity:.9}
+#status{margin-top:15px;font-weight:600}
 
 /* ADS */
 .ad{
   margin:30px auto;
+  max-width:1100px;
   padding:18px;
   border:2px dashed #cbd5e1;
+  text-align:center;
   color:#64748b;
 }
 
 /* FOOTER */
 footer{
+  background:#020617;
+  color:#cbd5e1;
   text-align:center;
-  margin-top:40px;
-  color:#64748b;
-  font-size:14px;
+  padding:30px;
+  margin-top:50px;
 }
+footer a{color:#93c5fd;font-size:14px}
 </style>
 </head>
 
 <body>
 
+<!-- ===== HEADER SAME AS MAIN SITE ===== -->
 <header>
-  <h1>Merge PDF</h1>
-  <a href="index.html">⬅ Back to Home</a>
+  <div class="logo">
+    <a href="index.html">
+      <img src="logo-header.png" alt="ToolNest Logo">
+    </a>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="merge-pdf.html">Merge PDF</a>
+    <span class="toggle" onclick="toggleTheme()">🌙 Dark</span>
+  </nav>
 </header>
 
 <div class="ad">Google AdSense – Top Banner</div>
 
-<div class="container">
+<!-- ===== TOOL UI ===== -->
+<div class="card">
   <i class="fas fa-file-pdf fa-3x"></i>
+
+  <h1>Merge PDF Online</h1>
   <p>
-    Combine multiple PDF files into one single PDF.
-    All processing happens directly in your browser — your files never leave your device.
+    Combine multiple PDF files into a single PDF.
+    All processing happens directly in your browser — your files stay private.
   </p>
 
   <input type="file" id="pdfFiles" multiple accept="application/pdf">
-
   <br>
   <button onclick="mergePDF()">Merge PDF</button>
 
@@ -122,32 +138,39 @@ footer{
 
 <div class="ad">Google AdSense – Footer Banner</div>
 
+<!-- ===== FOOTER SAME AS MAIN SITE ===== -->
 <footer>
-  © 2025 ToolNest – Free Online PDF Tools
+  <p><strong>ToolNest</strong> – Free Online Tools</p>
+  <p>
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="contact.html">Contact</a>
+  </p>
+  <p>© 2025 ToolNest. All Rights Reserved.</p>
 </footer>
 
 <script>
-async function mergePDF(){
-  const input = document.getElementById('pdfFiles');
-  const files = input.files;
+/* DARK MODE */
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+}
 
+/* MERGE PDF */
+async function mergePDF(){
+  const files = document.getElementById('pdfFiles').files;
   if(files.length < 2){
-    alert("Please select at least 2 PDF files.");
+    alert("Select at least 2 PDF files");
     return;
   }
 
   try{
     const mergedPDF = await PDFLib.PDFDocument.create();
-
     for(const file of files){
-      const pdfBytes = await file.arrayBuffer();
-      const pdf = await PDFLib.PDFDocument.load(pdfBytes);
+      const pdf = await PDFLib.PDFDocument.load(await file.arrayBuffer());
       const pages = await mergedPDF.copyPages(pdf, pdf.getPageIndices());
-      pages.forEach(page => mergedPDF.addPage(page));
+      pages.forEach(p => mergedPDF.addPage(p));
     }
 
-    const mergedBytes = await mergedPDF.save();
-    const blob = new Blob([mergedBytes], { type: 'application/pdf' });
+    const blob = new Blob([await mergedPDF.save()], {type:'application/pdf'});
     const url = URL.createObjectURL(blob);
 
     const a = document.createElement('a');
@@ -156,10 +179,9 @@ async function mergePDF(){
     a.click();
 
     URL.revokeObjectURL(url);
-
     document.getElementById('status').innerText = "✅ PDF merged successfully!";
-  }catch(err){
-    document.getElementById('status').innerText = "❌ Failed to merge PDFs. Please try again.";
+  }catch{
+    document.getElementById('status').innerText = "❌ Error while merging PDFs.";
   }
 }
 </script>
