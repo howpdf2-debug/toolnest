@@ -4,56 +4,65 @@
 <meta charset="UTF-8">
 
 <title>ToolNest – Free Online PDF, Image & Text Tools</title>
-<meta name="description" content="ToolNest offers free online tools like Merge PDF, Image Compressor, PDF to JPG, JPG to PDF, QR Code Generator, Password Generator, Text Case Converter and Word Counter. Fast, secure and privacy-first.">
+
+<meta name="description" content="ToolNest offers free online tools like Merge PDF, Image Compressor, PDF to JPG, JPG to PDF, QR Code Generator and Password Generator. Fast, secure and privacy-first tools.">
+<meta name="keywords" content="merge pdf, jpg to pdf, pdf to jpg, image compressor, online tools, free pdf tools">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Open Graph -->
 <meta property="og:title" content="ToolNest – Free Online Tools">
-<meta property="og:description" content="Merge PDFs, compress images, convert text and count words online. Free & browser-based tools.">
+<meta property="og:description" content="Free online PDF, image & text tools. No upload required.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://toolnest.bhaihelp.in/">
 
 <link rel="icon" href="favicon.png" type="image/png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-
+<!-- Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ToolNest",
+  "url": "https://toolnest.bhaihelp.in/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://toolnest.bhaihelp.in/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 </head>
 
 <body>
 
-<header class="topbar">
-  <a href="index.html">
-    <img src="logo-header.png" alt="ToolNest Logo">
-  </a>
-  <nav>
-    <a href="merge-pdf.html">Merge PDF</a>
-    <a href="image-compressor.html">Image Compressor</a>
-    <a href="pdf-to-jpg.html">PDF to JPG</a>
-    <a href="jpg-to-pdf.html">JPG to PDF</a>
-    <a href="qr-code-generator.html">QR Generator</a>
-  </nav>
-</header>
+<!-- COMMON HEADER -->
+<div id="header"></div>
 
+<!-- HERO -->
 <section class="hero">
   <img src="logo-main.png" alt="ToolNest Online Tools">
   <h1>Free Online PDF, Image & Text Tools</h1>
-  <p>All-in-one toolbox to work with PDFs, images, text and security tools directly in your browser.</p>
+  <p>
+    All-in-one toolbox to merge PDFs, convert images,
+    compress files and generate secure utilities –
+    directly in your browser.
+  </p>
   <a href="#tools" class="cta">Explore Tools</a>
 </section>
 
+<!-- AD SLOT -->
 <div class="ad-box">Advertisement</div>
 
+<!-- TOOLS -->
 <div class="container" id="tools">
   <div class="tools">
 
-    <!-- Tool Cards -->
-    <!-- (same tools you already had, unchanged functionality) -->
-
-    <!-- Merge PDF -->
     <div class="tool">
       <i class="fas fa-file-pdf fa-3x"></i>
       <h3>Merge PDF</h3>
-      <p>Combine multiple PDF files securely.</p>
+      <p>Combine multiple PDF files into one.</p>
       <a href="merge-pdf.html"><button>Open Tool</button></a>
     </div>
 
@@ -74,40 +83,50 @@
     <div class="tool">
       <i class="fas fa-file-pdf fa-3x"></i>
       <h3>JPG to PDF</h3>
-      <p>Convert images into a single PDF.</p>
+      <p>Create a single PDF from images.</p>
       <a href="jpg-to-pdf.html"><button>Open Tool</button></a>
     </div>
 
     <div class="tool">
       <i class="fas fa-qrcode fa-3x"></i>
       <h3>QR Code Generator</h3>
-      <p>Create QR codes for links & text.</p>
+      <p>Generate QR codes for text & links.</p>
       <a href="qr-code-generator.html"><button>Open Tool</button></a>
     </div>
 
     <div class="tool">
       <i class="fas fa-key fa-3x"></i>
       <h3>Password Generator</h3>
-      <p>Generate secure random passwords.</p>
+      <p>Create strong and secure passwords.</p>
       <a href="password-generator.html"><button>Open Tool</button></a>
     </div>
 
   </div>
 </div>
 
+<!-- SEO CONTENT -->
+<section class="container" style="line-height:1.9">
+<h2>Why ToolNest?</h2>
+<p>
+ToolNest provides fast, free and privacy-first online tools.
+All tools work inside your browser – no file upload, no tracking,
+no data storage.
+</p>
+<p>
+Whether you need to merge PDFs, convert images or generate secure
+passwords, ToolNest gives you professional utilities with a clean
+and simple interface.
+</p>
+</section>
+
+<!-- AD SLOT -->
 <div class="ad-box">Advertisement</div>
 
-<footer>
-  <p><strong>ToolNest</strong> – Free Online Tools</p>
-  <p>
-    <a href="index.html">Home</a> |
-    <a href="privacy.html">Privacy Policy</a> |
-    <a href="contact.html">Contact</a>
-  </p>
-  <p>© 2025 ToolNest. All Rights Reserved.</p>
-</footer>
+<!-- COMMON FOOTER -->
+<div id="footer"></div>
+
+<!-- JS INCLUDE -->
+<script src="includes/include.js"></script>
 
 </body>
 </html>
-
-
