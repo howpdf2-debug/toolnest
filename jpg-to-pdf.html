@@ -3,63 +3,128 @@
 <head>
 <meta charset="UTF-8">
 <title>JPG to PDF Converter – ToolNest</title>
-<meta name="description" content="Convert JPG or PNG images to a single PDF file online. Free, fast and privacy-first.">
+
+<meta name="description" content="Convert JPG or PNG images to a single PDF online. Free, fast, secure and privacy-first JPG to PDF converter.">
+<meta name="keywords" content="jpg to pdf, image to pdf, convert images to pdf, free pdf tools">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 <link rel="icon" type="image/png" href="favicon.png">
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 
 <style>
-body{font-family:Arial;background:#f8fafc;margin:0}
-header{background:#2563eb;color:#fff;padding:15px}
-.container{max-width:900px;margin:auto;padding:30px}
-.tool{background:#fff;padding:25px;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
-button{padding:10px 16px;background:#2563eb;color:#fff;border:none;border-radius:8px}
+body{
+  margin:0;
+  font-family:Arial,Inter,sans-serif;
+  background:#f8fafc;
+  color:#0f172a;
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 22px;
+  background:#2563eb;
+}
+.header img{height:32px}
+.header a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* CONTAINER */
+.container{
+  max-width:900px;
+  margin:40px auto;
+  padding:20px;
+}
+.tool{
+  background:#fff;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  text-align:center;
+}
+.tool h1{margin-bottom:10px}
+.tool p{color:#475569}
+
+input{margin:20px 0}
+button{
+  padding:12px 20px;
+  background:#2563eb;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:15px;
+}
+button:hover{opacity:.9}
+
+#status{
+  margin-top:15px;
+  font-weight:600;
+  color:#16a34a;
+}
+
+/* AD */
+.ad-box{
+  margin:30px auto;
+  padding:20px;
+  max-width:900px;
+  border:2px dashed #cbd5e1;
+  text-align:center;
+  color:#64748b;
+}
 </style>
 </head>
 
 <body>
 
-<header>
-<a href="index.html" style="color:white;text-decoration:none">⬅ Back to Home</a>
-</header>
-
-<div class="container">
-<div class="tool">
-<h1>JPG to PDF Converter</h1>
-<p>Select multiple JPG/PNG images and convert them into a single PDF.</p>
-
-<input type="file" id="images" multiple accept="image/jpeg,image/png">
-<br><br>
-<button onclick="convert()">Convert to PDF</button>
-
-<p id="status"></p>
-</div>
- <div class="logo">
+<!-- HEADER -->
+<div class="header">
   <a href="index.html">
-    <img src="logo-header.png" alt="ToolNest Logo" style="height:32px;">
+    <img src="logo-header.png" alt="ToolNest Logo">
   </a>
+  <a href="index.html">⬅ Back to Home</a>
 </div>
 
+<!-- AD -->
+<div class="ad-box">Google AdSense – Top Banner</div>
+
+<!-- TOOL -->
+<div class="container">
+  <div class="tool">
+    <h1>JPG to PDF Converter</h1>
+    <p>Select multiple JPG or PNG images and convert them into a single PDF file.</p>
+
+    <input type="file" id="images" multiple accept="image/jpeg,image/png">
+    <br>
+    <button onclick="convert()">Convert to PDF</button>
+
+    <p id="status"></p>
+  </div>
 </div>
+
+<!-- AD -->
+<div class="ad-box">Google AdSense – Footer</div>
 
 <script>
 async function convert(){
  const files=document.getElementById('images').files;
- if(!files.length){alert("Select images");return;}
+ if(!files.length){
+   alert("Please select at least one image");
+   return;
+ }
 
- const { PDFDocument } = PDFLib;
- const pdf = await PDFDocument.create();
+ const pdf = await PDFLib.PDFDocument.create();
 
  for(const file of files){
-  const imgBytes = await file.arrayBuffer();
-  let img;
-
-  if(file.type==='image/png'){
-   img = await pdf.embedPng(imgBytes);
-  }else{
-   img = await pdf.embedJpg(imgBytes);
-  }
+  const bytes = await file.arrayBuffer();
+  const img = file.type==='image/png'
+    ? await pdf.embedPng(bytes)
+    : await pdf.embedJpg(bytes);
 
   const page = pdf.addPage([img.width, img.height]);
   page.drawImage(img,{x:0,y:0,width:img.width,height:img.height});
@@ -69,10 +134,10 @@ async function convert(){
  const blob = new Blob([pdfBytes],{type:'application/pdf'});
  const a = document.createElement('a');
  a.href = URL.createObjectURL(blob);
- a.download = 'images.pdf';
+ a.download = 'toolnest-images.pdf';
  a.click();
 
- document.getElementById('status').innerText='PDF created successfully';
+ document.getElementById('status').innerText="✅ PDF generated successfully!";
 }
 </script>
 
