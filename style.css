@@ -1,66 +1,64 @@
-/* ======================
-   TOOLNEST COMMON CSS
-   ====================== */
+/* ===== ToolNest Common CSS ===== */
 
-/* THEME VARIABLES */
-:root{
-  --bg:#f8fafc;
-  --card:#ffffff;
-  --text:#0f172a;
-  --primary:#2563eb;
-  --muted:#64748b;
-  --border:#cbd5e1;
+*{
+  box-sizing:border-box;
 }
 
-body.dark{
-  --bg:#020617;
-  --card:#0f172a;
-  --text:#e5e7eb;
-  --primary:#38bdf8;
-  --muted:#94a3b8;
-  --border:#334155;
-}
-
-/* BASE */
 body{
   margin:0;
   font-family:Arial,Inter,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  transition:0.3s;
+  background:#f8fafc;
+  color:#0f172a;
 }
 
-a{color:inherit;text-decoration:none}
-
-/* HEADER */
+/* TOPBAR */
 .topbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:14px 22px;
-  background:var(--primary);
+  background:#2563eb;
 }
-.topbar img{height:30px}
+.topbar img{
+  height:34px;
+}
 .topbar nav a{
   color:#fff;
   margin-left:14px;
+  text-decoration:none;
   font-size:14px;
-}
-.toggle{
-  cursor:pointer;
-  color:#fff;
-  font-size:14px;
+  font-weight:500;
 }
 
-/* HERO (HOME ONLY) */
+/* HERO */
 .hero{
-  background:linear-gradient(135deg,var(--primary),#1e40af);
+  background:linear-gradient(135deg,#2563eb,#1e40af);
   color:#fff;
+  padding:70px 20px;
   text-align:center;
-  padding:80px 20px;
 }
-.hero h1{font-size:40px;margin-bottom:10px}
-.hero p{max-width:720px;margin:auto;font-size:18px}
+.hero img{
+  max-width:200px;
+  margin-bottom:20px;
+}
+.hero h1{
+  font-size:40px;
+  margin-bottom:12px;
+}
+.hero p{
+  font-size:18px;
+  max-width:720px;
+  margin:0 auto 25px;
+}
+.hero .cta{
+  display:inline-block;
+  background:#fff;
+  color:#2563eb;
+  padding:12px 22px;
+  border-radius:10px;
+  font-weight:600;
+  text-decoration:none;
+}
 
 /* CONTAINER */
 .container{
@@ -69,60 +67,36 @@ a{color:inherit;text-decoration:none}
   padding:30px;
 }
 
-/* TOOL GRID */
+/* TOOLS GRID */
 .tools{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:20px;
+  gap:22px;
 }
-
 .tool{
-  background:var(--card);
+  background:#fff;
   border-radius:16px;
-  padding:24px;
+  padding:26px;
   box-shadow:0 10px 25px rgba(0,0,0,.08);
   text-align:center;
 }
 .tool i{
-  color:var(--primary);
+  color:#2563eb;
   margin-bottom:12px;
 }
+.tool h3{
+  margin:10px 0;
+}
+.tool p{
+  font-size:14px;
+  color:#475569;
+}
 .tool button{
-  margin-top:10px;
+  margin-top:12px;
   padding:10px 16px;
   border:none;
   border-radius:8px;
-  background:var(--primary);
-  color:#fff;
-  cursor:pointer;
-}
-
-/* TOOL PAGE CARD */
-.card{
-  background:var(--card);
-  padding:30px;
-  border-radius:16px;
-  box-shadow:0 10px 25px rgba(0,0,0,.1);
-  text-align:center;
-}
-
-/* INPUTS */
-input,textarea,select{
-  width:100%;
-  padding:10px;
-  margin:10px 0;
-  border-radius:8px;
-  border:1px solid var(--border);
-  background:transparent;
-  color:var(--text);
-}
-
-/* BUTTONS */
-button{
-  padding:12px 18px;
-  background:var(--primary);
-  border:none;
-  border-radius:8px;
+  background:#2563eb;
   color:#fff;
   cursor:pointer;
 }
@@ -131,9 +105,10 @@ button{
 .ad-box{
   margin:30px auto;
   padding:20px;
-  border:2px dashed var(--border);
+  max-width:1100px;
+  border:2px dashed #cbd5e1;
   text-align:center;
-  color:var(--muted);
+  color:#64748b;
 }
 
 /* FOOTER */
@@ -144,8 +119,12 @@ footer{
   padding:30px;
   margin-top:40px;
 }
+footer a{
+  color:#93c5fd;
+  text-decoration:none;
+}
 
-/* RESPONSIVE */
+/* MOBILE */
 @media(max-width:768px){
   .hero h1{font-size:30px}
   .hero p{font-size:16px}
