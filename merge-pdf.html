@@ -2,43 +2,167 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Merge PDF – ToolNest</title>
+<title>Merge PDF Online Free – ToolNest</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Merge multiple PDF files online for free. Fast, secure, and privacy-first.">
-<meta name="keywords" content="merge PDF, combine PDFs, free PDF tool, online PDF">
-<link rel="icon" href="favicon.ico">
-<link rel="stylesheet" href="style.css">
-<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<meta name="description" content="Merge multiple PDF files into a single PDF online for free. Fast, secure, and privacy-first PDF merger by ToolNest.">
+<meta name="keywords" content="merge PDF, combine PDF online, free PDF merger, ToolNest">
+
+<link rel="icon" href="favicon.png" type="image/png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,Inter,sans-serif;
+  background:#f8fafc;
+  color:#0f172a;
+}
+
+/* HEADER */
+header{
+  background:#2563eb;
+  color:#fff;
+  padding:16px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+header h1{
+  font-size:20px;
+  margin:0;
+}
+header a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* CONTAINER */
+.container{
+  max-width:900px;
+  margin:40px auto;
+  padding:30px;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+.container i{
+  color:#2563eb;
+  margin-bottom:15px;
+}
+
+input[type=file]{
+  margin:20px 0;
+}
+
+button{
+  padding:12px 20px;
+  background:#2563eb;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+#status{
+  margin-top:15px;
+  font-weight:600;
+}
+
+/* ADS */
+.ad{
+  margin:30px auto;
+  padding:18px;
+  border:2px dashed #cbd5e1;
+  color:#64748b;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  margin-top:40px;
+  color:#64748b;
+  font-size:14px;
+}
+</style>
 </head>
+
 <body>
-<header><h1>Merge PDF</h1><span class="toggle" onclick="toggleTheme()">🌙 Toggle Dark Mode</span></header>
+
+<header>
+  <h1>Merge PDF</h1>
+  <a href="index.html">⬅ Back to Home</a>
+</header>
+
+<div class="ad">Google AdSense – Top Banner</div>
+
 <div class="container">
-<div class="ad">Google AdSense – Top</div>
-<i class="fas fa-file-pdf fa-3x"></i>
-<p>Combine multiple PDF files into one. Files never leave your browser.</p>
-<input type="file" id="pdfFiles" multiple accept="application/pdf">
-<button onclick="mergePDF()">Merge PDF</button>
-<p id="status"></p>
-<div class="backHome"><a href="index.html"><button>⬅ Back to Home</button></a></div>
-<div class="ad">Google AdSense – Footer</div>
+  <i class="fas fa-file-pdf fa-3x"></i>
+  <p>
+    Combine multiple PDF files into one single PDF.
+    All processing happens directly in your browser — your files never leave your device.
+  </p>
+
+  <input type="file" id="pdfFiles" multiple accept="application/pdf">
+
+  <br>
+  <button onclick="mergePDF()">Merge PDF</button>
+
+  <p id="status"></p>
 </div>
+
+<div class="ad">Google AdSense – Footer Banner</div>
+
+<footer>
+  © 2025 ToolNest – Free Online PDF Tools
+</footer>
 
 <script>
 async function mergePDF(){
-const files=document.getElementById('pdfFiles').files;
-if(files.length<2){alert("Select at least 2 PDFs");return;}
-const mergedPDF=await PDFLib.PDFDocument.create();
-for(let f of files){
-const pdf=await PDFLib.PDFDocument.load(await f.arrayBuffer());
-const pages=await mergedPDF.copyPages(pdf,pdf.getPageIndices());
-pages.forEach(p=>mergedPDF.addPage(p));
+  const input = document.getElementById('pdfFiles');
+  const files = input.files;
+
+  if(files.length < 2){
+    alert("Please select at least 2 PDF files.");
+    return;
+  }
+
+  try{
+    const mergedPDF = await PDFLib.PDFDocument.create();
+
+    for(const file of files){
+      const pdfBytes = await file.arrayBuffer();
+      const pdf = await PDFLib.PDFDocument.load(pdfBytes);
+      const pages = await mergedPDF.copyPages(pdf, pdf.getPageIndices());
+      pages.forEach(page => mergedPDF.addPage(page));
+    }
+
+    const mergedBytes = await mergedPDF.save();
+    const blob = new Blob([mergedBytes], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'merged.pdf';
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+    document.getElementById('status').innerText = "✅ PDF merged successfully!";
+  }catch(err){
+    document.getElementById('status').innerText = "❌ Failed to merge PDFs. Please try again.";
+  }
 }
-const blob=new Blob([await mergedPDF.save()],{type:'application/pdf'});
-const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='merged.pdf';a.click();
-document.getElementById('status').innerText="✅ PDF merged successfully!";
-}
-function toggleTheme(){document.body.classList.toggle('dark');}
 </script>
+
 </body>
 </html>
