@@ -2,53 +2,79 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <title>Image Compressor – ToolNest</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Compress JPG or PNG images online for free. Fast, privacy-first and browser-based image compression tool.">
 
+<!-- ✅ SINGLE FAVICON (correct way) -->
+<link rel="icon" type="image/png" href="favicon.png">
+
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="icon" type="image/png" href="favicon.png">
-
 </head>
+
 <body>
-<header><h1>Image Compressor</h1><span class="toggle" onclick="toggleTheme()">🌙 Toggle Dark Mode</span></header>
-<div class="container">
-<div class="ad">Google AdSense – Top</div>
-<i class="fas fa-image fa-3x"></i>
-<p>Compress JPG/PNG images quickly without losing quality.</p>
-<input type="file" id="imageFile" accept="image/*">
-<button onclick="compressImage()">Compress Image</button>
-<p id="status"></p>
-<div class="backHome"><a href="index.html"><button>⬅ Back to Home</button></a></div>
-<div class="ad">Google AdSense – Footer</div>
- <div class="logo">
+
+<!-- ✅ HEADER WITH LOGO -->
+<header class="topbar">
   <a href="index.html">
     <img src="logo-header.png" alt="ToolNest Logo" style="height:32px;">
   </a>
+  <span class="toggle" onclick="toggleTheme()">🌙 Toggle Dark Mode</span>
+</header>
+
+<div class="container">
+
+  <h1>Image Compressor</h1>
+
+  <div class="ad">Google AdSense – Top</div>
+
+  <i class="fas fa-image fa-3x"></i>
+  <p>Compress JPG/PNG images quickly without losing quality.</p>
+
+  <input type="file" id="imageFile" accept="image/*">
+  <button onclick="compressImage()">Compress Image</button>
+
+  <p id="status"></p>
+
+  <div class="backHome">
+    <a href="index.html"><button>⬅ Back to Home</button></a>
+  </div>
+
+  <div class="ad">Google AdSense – Footer</div>
+
 </div>
- 
-</div>
+
 <script>
 function compressImage(){
-const file=document.getElementById('imageFile').files[0];
-if(!file){alert("Select an image");return;}
-const img=new Image();
-img.onload=function(){
-const canvas=document.createElement('canvas');
-canvas.width=img.width;canvas.height=img.height;
-canvas.getContext('2d').drawImage(img,0,0);
-canvas.toBlob(function(blob){
-const a=document.createElement('a');
-a.href=URL.createObjectURL(blob);
-a.download='compressed.jpg';
-a.click();
-document.getElementById('status').innerText="✅ Image compressed successfully!";
-},'image/jpeg',0.6);
+  const file=document.getElementById('imageFile').files[0];
+  if(!file){alert("Select an image");return;}
+
+  const img=new Image();
+  img.onload=function(){
+    const canvas=document.createElement('canvas');
+    canvas.width=img.width;
+    canvas.height=img.height;
+
+    canvas.getContext('2d').drawImage(img,0,0);
+
+    canvas.toBlob(function(blob){
+      const a=document.createElement('a');
+      a.href=URL.createObjectURL(blob);
+      a.download='compressed.jpg';
+      a.click();
+      document.getElementById('status').innerText="✅ Image compressed successfully!";
+    },'image/jpeg',0.6);
+  }
+  img.src=URL.createObjectURL(file);
 }
-img.src=URL.createObjectURL(file);
+
+function toggleTheme(){
+  document.body.classList.toggle('dark');
 }
-function toggleTheme(){document.body.classList.toggle('dark');}
 </script>
+
 </body>
 </html>
