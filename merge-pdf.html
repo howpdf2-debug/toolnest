@@ -3,61 +3,108 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Merge PDF Online – ToolNest</title>
-<meta name="description" content="Merge multiple PDF files into one online. Fast, free and secure PDF merger by ToolNest.">
+<title>Merge PDF Online – Combine PDF Files Free | ToolNest</title>
+<meta name="description" content="Merge multiple PDF files into one document online for free. Fast, secure and browser-based PDF merger by ToolNest.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="icon" href="favicon.png">
 <link rel="stylesheet" href="style.css">
 
-<!-- Schema -->
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<!-- SEO Schema -->
 <script type="application/ld+json">
 {
- "@context": "https://schema.org",
- "@type": "SoftwareApplication",
- "name": "Merge PDF",
- "applicationCategory": "UtilitiesApplication",
- "operatingSystem": "All"
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Merge PDF",
+  "applicationCategory": "FileConverter",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
 }
 </script>
 </head>
 
 <body>
 
+<!-- COMMON HEADER -->
 <div id="header"></div>
 
 <!-- MINI HERO -->
 <section class="mini-hero">
-  <h1>Merge PDF Online</h1>
-  <p>Combine multiple PDF files into one document – free & secure.</p>
+  <h1>Merge PDF Files</h1>
+  <p>Combine multiple PDF documents into one file instantly.</p>
 </section>
 
-<!-- TOOL BOX -->
+<!-- TOOL -->
 <section class="container">
   <div class="tool-box">
 
-    <!-- 👇 YAHAN AAPKA EXISTING PDF MERGE CODE AAYEGA -->
-    <input type="file" multiple accept="application/pdf">
-    <button>Merge PDF</button>
+    <input type="file" id="pdfFiles" accept="application/pdf" multiple>
+
+    <button onclick="mergePDFs()">Merge PDFs</button>
+
+    <p id="status"></p>
 
   </div>
 </section>
 
-<!-- SEO TEXT -->
+<!-- AD SLOT -->
+<div class="ad-box">Advertisement</div>
+
+<!-- SEO CONTENT -->
 <section class="container seo-text">
   <h2>About Merge PDF Tool</h2>
   <p>
-    ToolNest Merge PDF helps you combine PDF files directly in your browser.
-    No upload, no tracking, complete privacy.
+    ToolNest Merge PDF allows you to combine multiple PDF files into one document
+    directly in your browser. No uploads, no server storage and full privacy
+    protection.
   </p>
 </section>
 
-<div class="ad-box">Advertisement</div>
-
+<!-- COMMON FOOTER -->
 <div id="footer"></div>
 
+<!-- COMMON JS -->
 <script src="includes/include.js"></script>
 <script src="darkmode.js"></script>
+
+<!-- TOOL JS -->
+<script>
+async function mergePDFs(){
+  const files = document.getElementById("pdfFiles").files;
+  if(files.length < 2){
+    alert("Please select at least two PDF files");
+    return;
+  }
+
+  document.getElementById("status").innerText = "Merging PDFs...";
+
+  const mergedPdf = await PDFLib.PDFDocument.create();
+
+  for(const file of files){
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await PDFLib.PDFDocument.load(arrayBuffer);
+    const pages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+    pages.forEach(page => mergedPdf.addPage(page));
+  }
+
+  const pdfBytes = await mergedPdf.save();
+  const blob = new Blob([pdfBytes], { type: "application/pdf" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "toolnest-merged.pdf";
+  a.click();
+
+  document.getElementById("status").innerText = "PDF merged successfully!";
+}
+</script>
 
 </body>
 </html>
