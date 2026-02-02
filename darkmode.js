@@ -1,26 +1,21 @@
 // ToolNest Global Dark Mode System
-
 (function () {
-  const toggleId = "darkToggle";
+  const toggleBtn = document.getElementById("darkToggle");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  function applyTheme(theme) {
-    if (theme === "dark") {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
+  // Apply saved or system theme on load
+  const savedTheme = localStorage.getItem("toolnest-theme");
+  if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+    document.body.classList.add("dark");
+    if (toggleBtn) toggleBtn.textContent = "☀️";
   }
 
-  // Load saved theme
-  const savedTheme = localStorage.getItem("toolnest-theme") || "light";
-  applyTheme(savedTheme);
-
-  // Toggle function
-  window.toggleDarkMode = function () {
-    const isDark = document.body.classList.toggle("dark");
-    const theme = isDark ? "dark" : "light";
-    localStorage.setItem("toolnest-theme", theme);
-  };
-
+  // Toggle theme on button click
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const isDark = document.body.classList.toggle("dark");
+      localStorage.setItem("toolnest-theme", isDark ? "dark" : "light");
+      toggleBtn.textContent = isDark ? "☀️" : "🌙";
+    });
+  }
 })();
-
