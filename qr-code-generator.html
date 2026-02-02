@@ -2,59 +2,110 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>QR Code Generator – Free Online Tool | ToolNest</title>
-<meta name="description" content="Generate QR codes online for URLs, text, WiFi and more. Free, fast and privacy-first QR Code Generator by ToolNest.">
+
+<title>QR Code Generator – Create QR Codes Free | ToolNest</title>
+<meta name="description" content="Generate QR codes online for free. Create QR codes for links, text and more instantly with ToolNest QR Generator.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="style.css">
 
-<style>
-body{margin:0;font-family:Arial,Inter,sans-serif;background:#f8fafc;color:#0f172a}
-.topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:#2563eb}
-.topbar a,.logo{color:#fff;text-decoration:none;font-weight:600}
-.container{max-width:900px;margin:auto;padding:40px}
-.tool-box{background:#fff;padding:30px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.08);text-align:center}
-input{width:100%;padding:12px;border-radius:8px;border:1px solid #cbd5e1;margin-top:10px}
-button{margin-top:15px;padding:12px 18px;border:none;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer}
-#qr{margin-top:20px}
-.ad-box{margin:30px auto;padding:20px;border:2px dashed #cbd5e1;text-align:center;color:#64748b}
-</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<!-- SEO Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "QR Code Generator",
+  "applicationCategory": "Utility",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
 </head>
 
 <body>
 
-<header class="topbar">
-  <a href="index.html">⬅ Home</a>
-  <div class="logo">ToolNest</div>
-</header>
+<!-- COMMON HEADER -->
+<div id="header"></div>
 
-<div class="ad-box">Advertisement</div>
+<!-- MINI HERO -->
+<section class="mini-hero">
+  <h1>QR Code Generator</h1>
+  <p>Create QR codes for links, text and more instantly.</p>
+</section>
 
-<div class="container">
+<!-- TOOL -->
+<section class="container">
   <div class="tool-box">
-    <h1>QR Code Generator</h1>
-    <p>Create QR codes for URLs, text and more instantly.</p>
 
-    <input type="text" id="qrText" placeholder="Enter URL or text">
-    <button onclick="generateQR()">Generate QR Code</button>
+    <input type="text" id="qrText" placeholder="Enter text or URL">
 
-    <div id="qr"></div>
+    <button onclick="generateQR()">Generate QR</button>
+
+    <div id="qrResult"></div>
+
+    <button id="downloadBtn" style="display:none" onclick="downloadQR()">
+      Download QR
+    </button>
+
   </div>
-</div>
+</section>
 
+<!-- AD SLOT -->
 <div class="ad-box">Advertisement</div>
 
-<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+<!-- SEO CONTENT -->
+<section class="container seo-text">
+  <h2>About QR Code Generator</h2>
+  <p>
+    ToolNest QR Code Generator lets you create QR codes for URLs, messages and
+    other text instantly. The tool works fully in your browser, ensuring privacy
+    and fast performance.
+  </p>
+</section>
+
+<!-- COMMON FOOTER -->
+<div id="footer"></div>
+
+<!-- COMMON JS -->
+<script src="includes/include.js"></script>
+<script src="darkmode.js"></script>
+
+<!-- TOOL JS -->
 <script>
+let qr;
+
 function generateQR(){
-  const text=document.getElementById('qrText').value.trim();
-  if(!text){alert('Enter text or URL');return;}
-  document.getElementById('qr').innerHTML='';
-  new QRCode(document.getElementById('qr'),{
-    text:text,
-    width:200,
-    height:200
+  const text = document.getElementById("qrText").value.trim();
+  if(!text){
+    alert("Please enter text or URL");
+    return;
+  }
+
+  document.getElementById("qrResult").innerHTML = "";
+  qr = new QRCode(document.getElementById("qrResult"), {
+    text: text,
+    width: 200,
+    height: 200
   });
+
+  document.getElementById("downloadBtn").style.display = "inline-block";
+}
+
+function downloadQR(){
+  const img = document.querySelector("#qrResult img");
+  if(!img) return;
+
+  const a = document.createElement("a");
+  a.href = img.src;
+  a.download = "toolnest-qr.png";
+  a.click();
 }
 </script>
 
