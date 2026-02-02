@@ -1,23 +1,6 @@
 /* =========================
-   ROOT + RESET
+   GLOBAL RESET
 ========================= */
-:root{
-  --primary:#2563eb;
-  --primary-dark:#1e40af;
-  --bg:#f8fafc;
-  --card:#ffffff;
-  --text:#0f172a;
-  --muted:#64748b;
-  --border:#cbd5e1;
-}
-
-body.dark{
-  --bg:#020617;
-  --card:#0f172a;
-  --text:#e5e7eb;
-  --muted:#94a3b8;
-}
-
 *{
   margin:0;
   padding:0;
@@ -25,83 +8,127 @@ body.dark{
 }
 
 body{
-  font-family:Inter,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+  font-family: Inter, Arial, sans-serif;
+  background:#f8fafc;
+  color:#0f172a;
   line-height:1.6;
+  transition:background .3s,color .3s;
 }
 
 /* =========================
-   HEADER
+   DARK MODE
+========================= */
+body.dark{
+  background:#020617;
+  color:#e5e7eb;
+}
+
+/* =========================
+   TOPBAR / HEADER
 ========================= */
 .topbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:14px 22px;
-  background:var(--primary);
+  background:#2563eb;
 }
+
+body.dark .topbar{
+  background:#020617;
+  border-bottom:1px solid #1e293b;
+}
+
+.topbar .logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:700;
+}
+
 .topbar img{
-  height:34px;
+  height:32px;
 }
+
 .topbar nav a{
   color:#fff;
   margin-left:14px;
   text-decoration:none;
   font-size:14px;
+  font-weight:500;
 }
+
 .topbar nav a:hover{
   text-decoration:underline;
 }
 
+#darkToggle{
+  background:rgba(255,255,255,.15);
+  border:none;
+  color:#fff;
+  padding:6px 10px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
 /* =========================
-   HERO
+   HERO (INDEX)
 ========================= */
 .hero{
-  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  background:linear-gradient(135deg,#2563eb,#1e40af);
   color:#fff;
-  padding:80px 20px;
+  padding:70px 20px;
   text-align:center;
 }
+
+body.dark .hero{
+  background:linear-gradient(135deg,#020617,#020617);
+}
+
 .hero img{
   max-width:200px;
   margin-bottom:20px;
 }
+
 .hero h1{
   font-size:40px;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
+
 .hero p{
   max-width:720px;
-  margin:auto;
+  margin:0 auto 25px;
   font-size:18px;
 }
-.cta{
+
+.hero .cta{
   display:inline-block;
-  margin-top:20px;
   background:#fff;
-  color:var(--primary);
+  color:#2563eb;
   padding:12px 24px;
   border-radius:10px;
-  font-weight:600;
   text-decoration:none;
+  font-weight:600;
 }
 
 /* =========================
-   MINI HERO (TOOLS)
+   ADSENSE BOX
 ========================= */
-.mini-hero{
-  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
-  color:#fff;
+.ad-box{
+  margin:30px auto;
+  padding:20px;
+  max-width:1100px;
+  border:2px dashed #cbd5e1;
   text-align:center;
-  padding:45px 20px;
+  color:#64748b;
+  font-size:14px;
 }
-.mini-hero h1{
-  font-size:32px;
-}
-.mini-hero p{
-  font-size:16px;
-  margin-top:6px;
+
+body.dark .ad-box{
+  border-color:#1e293b;
+  color:#94a3b8;
 }
 
 /* =========================
@@ -110,86 +137,126 @@ body{
 .container{
   max-width:1100px;
   margin:auto;
-  padding:30px;
+  padding:30px 20px;
 }
 
 /* =========================
-   TOOL GRID
+   TOOL GRID (INDEX)
 ========================= */
 .tools{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:22px;
 }
+
 .tool{
-  background:var(--card);
+  background:#fff;
   border-radius:16px;
   padding:26px;
-  box-shadow:0 10px 25px rgba(0,0,0,.08);
   text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:transform .2s;
 }
+
+.tool:hover{
+  transform:translateY(-4px);
+}
+
+body.dark .tool{
+  background:#020617;
+  border:1px solid #1e293b;
+}
+
 .tool i{
-  color:var(--primary);
+  color:#2563eb;
   margin-bottom:12px;
 }
+
+.tool h3{
+  margin:10px 0;
+}
+
+.tool p{
+  font-size:14px;
+  color:#475569;
+}
+
+body.dark .tool p{
+  color:#94a3b8;
+}
+
 .tool button{
   margin-top:12px;
   padding:10px 16px;
   border:none;
   border-radius:8px;
-  background:var(--primary);
+  background:#2563eb;
   color:#fff;
   cursor:pointer;
+  font-weight:600;
 }
 
 /* =========================
-   TOOL BOX (INSIDE PAGES)
+   TOOL PAGES BOX
 ========================= */
 .tool-box{
-  background:var(--card);
-  padding:28px;
+  background:#fff;
+  padding:30px;
   border-radius:18px;
   box-shadow:0 10px 25px rgba(0,0,0,.08);
   text-align:center;
 }
-.tool-box input,
-.tool-box button{
-  margin-top:14px;
-  width:100%;
-}
-.tool-box input[type="file"]{
-  padding:10px;
-}
-.tool-box button{
-  background:var(--primary);
-  color:#fff;
-  padding:12px;
-  border:none;
-  border-radius:10px;
+
+body.dark .tool-box{
+  background:#020617;
+  border:1px solid #1e293b;
 }
 
 /* =========================
-   ADS
+   BACK TO HOME
 ========================= */
-.ad-box{
-  margin:35px auto;
-  padding:20px;
+.tool-nav{
   max-width:1100px;
-  border:2px dashed var(--border);
-  text-align:center;
-  color:var(--muted);
+  margin:15px auto;
+  padding:0 20px;
+}
+
+.back-home{
+  text-decoration:none;
+  color:#2563eb;
+  font-weight:600;
+}
+
+body.dark .back-home{
+  color:#93c5fd;
 }
 
 /* =========================
-   SEO TEXT
+   INPUTS & BUTTONS
 ========================= */
-.seo-text{
-  font-size:15px;
-  color:var(--muted);
+input,textarea,select{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #cbd5e1;
 }
-.seo-text h2{
-  color:var(--text);
-  margin-bottom:10px;
+
+body.dark input,
+body.dark textarea{
+  background:#020617;
+  color:#e5e7eb;
+  border-color:#1e293b;
+}
+
+button{
+  padding:12px 18px;
+  border:none;
+  border-radius:8px;
+  background:#2563eb;
+  color:#fff;
+  cursor:pointer;
+  font-weight:600;
 }
 
 /* =========================
@@ -200,16 +267,20 @@ footer{
   color:#e5e7eb;
   text-align:center;
   padding:30px;
+  margin-top:40px;
 }
+
 footer a{
   color:#93c5fd;
   text-decoration:none;
+  margin:0 6px;
 }
 
 /* =========================
-   MOBILE
+   RESPONSIVE
 ========================= */
 @media(max-width:768px){
   .hero h1{font-size:30px}
-  .mini-hero h1{font-size:26px}
+  .hero p{font-size:16px}
+  .topbar nav{display:none;}
 }
