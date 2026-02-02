@@ -1,23 +1,45 @@
-/* ===== ToolNest Common CSS ===== */
+/* =========================
+   ROOT + RESET
+========================= */
+:root{
+  --primary:#2563eb;
+  --primary-dark:#1e40af;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --border:#cbd5e1;
+}
+
+body.dark{
+  --bg:#020617;
+  --card:#0f172a;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+}
 
 *{
+  margin:0;
+  padding:0;
   box-sizing:border-box;
 }
 
 body{
-  margin:0;
-  font-family:Arial,Inter,sans-serif;
-  background:#f8fafc;
-  color:#0f172a;
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
 }
 
-/* TOPBAR */
+/* =========================
+   HEADER
+========================= */
 .topbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:14px 22px;
-  background:#2563eb;
+  background:var(--primary);
 }
 .topbar img{
   height:34px;
@@ -27,14 +49,18 @@ body{
   margin-left:14px;
   text-decoration:none;
   font-size:14px;
-  font-weight:500;
+}
+.topbar nav a:hover{
+  text-decoration:underline;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 .hero{
-  background:linear-gradient(135deg,#2563eb,#1e40af);
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
   color:#fff;
-  padding:70px 20px;
+  padding:80px 20px;
   text-align:center;
 }
 .hero img{
@@ -46,86 +72,144 @@ body{
   margin-bottom:12px;
 }
 .hero p{
-  font-size:18px;
   max-width:720px;
-  margin:0 auto 25px;
+  margin:auto;
+  font-size:18px;
 }
-.hero .cta{
+.cta{
   display:inline-block;
+  margin-top:20px;
   background:#fff;
-  color:#2563eb;
-  padding:12px 22px;
+  color:var(--primary);
+  padding:12px 24px;
   border-radius:10px;
   font-weight:600;
   text-decoration:none;
 }
 
-/* CONTAINER */
+/* =========================
+   MINI HERO (TOOLS)
+========================= */
+.mini-hero{
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  text-align:center;
+  padding:45px 20px;
+}
+.mini-hero h1{
+  font-size:32px;
+}
+.mini-hero p{
+  font-size:16px;
+  margin-top:6px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
 .container{
   max-width:1100px;
   margin:auto;
   padding:30px;
 }
 
-/* TOOLS GRID */
+/* =========================
+   TOOL GRID
+========================= */
 .tools{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:22px;
 }
 .tool{
-  background:#fff;
+  background:var(--card);
   border-radius:16px;
   padding:26px;
   box-shadow:0 10px 25px rgba(0,0,0,.08);
   text-align:center;
 }
 .tool i{
-  color:#2563eb;
+  color:var(--primary);
   margin-bottom:12px;
-}
-.tool h3{
-  margin:10px 0;
-}
-.tool p{
-  font-size:14px;
-  color:#475569;
 }
 .tool button{
   margin-top:12px;
   padding:10px 16px;
   border:none;
   border-radius:8px;
-  background:#2563eb;
+  background:var(--primary);
   color:#fff;
   cursor:pointer;
 }
 
-/* ADS */
-.ad-box{
-  margin:30px auto;
-  padding:20px;
-  max-width:1100px;
-  border:2px dashed #cbd5e1;
+/* =========================
+   TOOL BOX (INSIDE PAGES)
+========================= */
+.tool-box{
+  background:var(--card);
+  padding:28px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
   text-align:center;
-  color:#64748b;
+}
+.tool-box input,
+.tool-box button{
+  margin-top:14px;
+  width:100%;
+}
+.tool-box input[type="file"]{
+  padding:10px;
+}
+.tool-box button{
+  background:var(--primary);
+  color:#fff;
+  padding:12px;
+  border:none;
+  border-radius:10px;
 }
 
-/* FOOTER */
+/* =========================
+   ADS
+========================= */
+.ad-box{
+  margin:35px auto;
+  padding:20px;
+  max-width:1100px;
+  border:2px dashed var(--border);
+  text-align:center;
+  color:var(--muted);
+}
+
+/* =========================
+   SEO TEXT
+========================= */
+.seo-text{
+  font-size:15px;
+  color:var(--muted);
+}
+.seo-text h2{
+  color:var(--text);
+  margin-bottom:10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
 footer{
   background:#020617;
   color:#e5e7eb;
   text-align:center;
   padding:30px;
-  margin-top:40px;
 }
 footer a{
   color:#93c5fd;
   text-decoration:none;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 @media(max-width:768px){
   .hero h1{font-size:30px}
-  .hero p{font-size:16px}
+  .mini-hero h1{font-size:26px}
 }
