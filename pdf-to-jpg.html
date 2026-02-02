@@ -2,215 +2,118 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PDF to JPG Converter – ToolNest</title>
 
-<meta name="description" content="Convert PDF pages to JPG images online for free. Fast, secure, browser-based PDF to JPG tool by ToolNest.">
+<title>PDF to JPG Converter – Convert PDF Pages to Images | ToolNest</title>
+<meta name="description" content="Convert PDF pages to high quality JPG images online for free. Fast, secure and browser-based PDF to JPG tool by ToolNest.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="icon" href="favicon.png" type="image/png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="style.css">
 
-<!-- PDF.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
-<!-- ZIP -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-
-<!-- SEO SCHEMA -->
+<!-- SEO Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "PDF to JPG Converter",
-  "operatingSystem": "Web",
-  "applicationCategory": "UtilitiesApplication",
+  "applicationCategory": "FileConverter",
+  "operatingSystem": "All",
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "USD"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "ToolNest"
   }
 }
 </script>
-
-<style>
-:root{
-  --bg:#f8fafc;
-  --text:#0f172a;
-  --card:#ffffff;
-  --primary:#2563eb;
-}
-body.dark{
-  --bg:#020617;
-  --text:#e5e7eb;
-  --card:#0f172a;
-  --primary:#38bdf8;
-}
-
-body{
-  margin:0;
-  font-family:Arial,Inter,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-
-/* HEADER */
-header{
-  background:var(--primary);
-  padding:14px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-header img{height:32px}
-header a, header button{
-  color:#fff;
-  background:none;
-  border:none;
-  cursor:pointer;
-  font-size:14px;
-}
-
-/* CONTAINER */
-.container{
-  max-width:1000px;
-  margin:30px auto;
-  padding:20px;
-}
-
-/* TOOL */
-.tool{
-  background:var(--card);
-  padding:30px;
-  border-radius:16px;
-  box-shadow:0 10px 25px rgba(0,0,0,.08);
-  text-align:center;
-}
-button.main{
-  background:var(--primary);
-  color:#fff;
-  padding:12px 18px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  margin:8px;
-}
-
-/* OUTPUT */
-#output img{
-  max-width:100%;
-  margin:12px 0;
-  border-radius:10px;
-  box-shadow:0 6px 16px rgba(0,0,0,.15);
-}
-
-/* ADS */
-.ad{
-  margin:30px 0;
-  padding:20px;
-  border:2px dashed #cbd5e1;
-  text-align:center;
-  opacity:.7;
-}
-
-@media(max-width:600px){
-  button.main{width:100%}
-}
-</style>
 </head>
 
 <body>
 
-<header>
-  <a href="index.html">
-    <img src="logo-header.png" alt="ToolNest Logo">
-  </a>
-  <div>
-    <button onclick="toggleTheme()">🌙</button>
-    <a href="index.html">Home</a>
-  </div>
-</header>
+<!-- COMMON HEADER -->
+<div id="header"></div>
 
-<div class="container">
-
-<div class="ad">Advertisement</div>
-
-<div class="tool">
-  <i class="fas fa-file-image fa-3x" style="color:var(--primary)"></i>
+<!-- MINI HERO -->
+<section class="mini-hero">
   <h1>PDF to JPG Converter</h1>
-  <p>Convert each PDF page into high-quality JPG images.</p>
+  <p>Convert each page of your PDF into high-quality JPG images.</p>
+</section>
 
-  <input type="file" id="pdfFile" accept="application/pdf">
-  <br>
+<!-- TOOL -->
+<section class="container">
+  <div class="tool-box">
 
-  <button class="main" onclick="convertPDF()">Convert</button>
-  <button class="main" onclick="downloadZip()">Download ZIP</button>
+    <input type="file" id="pdfFile" accept="application/pdf">
 
-  <p id="status"></p>
-  <div id="output"></div>
-</div>
+    <button onclick="convertPDF()">Convert to JPG</button>
 
-<div class="ad">Advertisement</div>
+    <div id="output" class="image-output"></div>
 
-</div>
+  </div>
+</section>
 
+<!-- AD SLOT -->
+<div class="ad-box">Advertisement</div>
+
+<!-- SEO CONTENT -->
+<section class="container seo-text">
+  <h2>About PDF to JPG Tool</h2>
+  <p>
+    ToolNest PDF to JPG Converter allows you to convert PDF pages into image
+    files directly in your browser. No uploads, no tracking, and no data storage.
+    This tool is fast, free, and works on all devices.
+  </p>
+</section>
+
+<!-- COMMON FOOTER -->
+<div id="footer"></div>
+
+<!-- COMMON JS -->
+<script src="includes/include.js"></script>
+<script src="darkmode.js"></script>
+
+<!-- TOOL JS -->
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-let images=[];
-
-function toggleTheme(){
-  document.body.classList.toggle('dark');
-}
-
 function convertPDF(){
-  const file=document.getElementById('pdfFile').files[0];
-  if(!file){alert("Upload PDF");return;}
+  const file = document.getElementById('pdfFile').files[0];
+  if(!file){
+    alert("Please select a PDF file");
+    return;
+  }
 
-  images=[];
-  document.getElementById('output').innerHTML="";
-  document.getElementById('status').innerText="⏳ Converting...";
+  const reader = new FileReader();
+  reader.onload = function(){
+    const typedarray = new Uint8Array(this.result);
 
-  const reader=new FileReader();
-  reader.onload=function(){
-    const typedarray=new Uint8Array(this.result);
-    pdfjsLib.getDocument(typedarray).promise.then(pdf=>{
-      for(let i=1;i<=pdf.numPages;i++){
-        pdf.getPage(i).then(page=>{
-          const viewport=page.getViewport({scale:2});
-          const canvas=document.createElement("canvas");
-          canvas.width=viewport.width;
-          canvas.height=viewport.height;
-          page.render({canvasContext:canvas.getContext("2d"),viewport})
-          .promise.then(()=>{
-            const data=canvas.toDataURL("image/jpeg",0.95);
-            images.push(data);
-            const img=document.createElement("img");
-            img.src=data;
-            document.getElementById('output').appendChild(img);
+    pdfjsLib.getDocument(typedarray).promise.then(pdf => {
+      const output = document.getElementById("output");
+      output.innerHTML = "";
+
+      for(let pageNum = 1; pageNum <= pdf.numPages; pageNum++){
+        pdf.getPage(pageNum).then(page => {
+          const viewport = page.getViewport({ scale: 2 });
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+
+          page.render({ canvasContext: ctx, viewport: viewport })
+          .promise.then(() => {
+            const img = document.createElement("img");
+            img.src = canvas.toDataURL("image/jpeg", 0.95);
+            output.appendChild(img);
           });
         });
       }
-      document.getElementById('status').innerText="✅ Done";
     });
   };
-  reader.readAsArrayBuffer(file);
-}
 
-function downloadZip(){
-  if(!images.length){alert("Convert first");return;}
-  const zip=new JSZip();
-  images.forEach((img,i)=>{
-    zip.file(`page-${i+1}.jpg`, img.split(',')[1], {base64:true});
-  });
-  zip.generateAsync({type:"blob"}).then(content=>{
-    saveAs(content,"pdf-to-jpg.zip");
-  });
+  reader.readAsArrayBuffer(file);
 }
 </script>
 
