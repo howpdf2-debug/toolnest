@@ -1,11 +1,17 @@
+<!-- includes/include.js -->
+<script>
 async function loadHTML(id, file) {
-  const el = document.getElementById(id);
-  if (el) {
+  try {
     const res = await fetch(file);
-    el.innerHTML = await res.text();
+    if (!res.ok) throw new Error("Failed to load " + file);
+    document.getElementById(id).innerHTML = await res.text();
+  } catch (e) {
+    console.error(e);
   }
 }
 
-loadHTML("header", "includes/header.html");
-loadHTML("footer", "includes/footer.html");
-
+document.addEventListener("DOMContentLoaded", () => {
+  loadHTML("header", "includes/header.html");
+  loadHTML("footer", "includes/footer.html");
+});
+</script>
