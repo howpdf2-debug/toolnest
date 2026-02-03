@@ -4,45 +4,43 @@
 <meta charset="UTF-8">
 
 <title>Merge PDF Online – Combine PDF Files Free | ToolNest</title>
+
 <meta name="description" content="Merge multiple PDF files into one document online for free. Fast, secure and browser-based PDF merger by ToolNest.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="icon" href="favicon.png">
 <link rel="stylesheet" href="style.css">
 
+<!-- PDF LIB -->
 <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 
-<!-- SEO Schema -->
+<!-- SEO SCHEMA (FINAL) -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Merge PDF",
-  "applicationCategory": "FileConverter",
-  "operatingSystem": "All",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Merge PDF Tool",
+ "description": "Merge multiple PDF files into one document directly in your browser.",
+ "applicationCategory": "FileConverter",
+ "operatingSystem": "All",
+ "url": "https://toolnest.bhaihelp.in/merge-pdf.html",
+ "offers": {
+   "@type": "Offer",
+   "price": "0",
+   "priceCurrency": "USD"
+ }
 }
 </script>
 </head>
 
 <body>
 
-
 <!-- COMMON HEADER -->
 <div id="header"></div>
 
 <!-- MINI HERO -->
-  <section class="mini-hero">
-  <a href="index.html" class="back-home">⬅ Back to Home</a>
-  <h1>Merge PDF Files</h1>
-  <p>Combine multiple PDF documents into one file instantly.</p>
-</section>
-
 <section class="mini-hero">
+  <a href="index.html" class="back-home">⬅ Back to Home</a>
   <h1>Merge PDF Files</h1>
   <p>Combine multiple PDF documents into one file instantly.</p>
 </section>
@@ -80,29 +78,8 @@
 <script src="includes/include.js" defer></script>
 <script src="darkmode.js" defer></script>
 
-
 <!-- TOOL JS -->
 <script>
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "SoftwareApplication",
- "name": "Merge PDF Tool",
- "description": "Merge multiple PDF files into one document directly in your browser.",
- "applicationCategory": "FileConverter",
- "operatingSystem": "All",
- "url": "https://toolnest.bhaihelp.in/merge-pdf.html",
- "offers": {
-   "@type": "Offer",
-   "price": "0",
-   "priceCurrency": "USD"
- }
-}
-</script>
-
-
-
-  
 async function mergePDFs(){
   const files = document.getElementById("pdfFiles").files;
   if(files.length < 2){
