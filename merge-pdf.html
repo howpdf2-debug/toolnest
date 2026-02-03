@@ -30,14 +30,18 @@
 </head>
 
 <body>
-<div class="tool-nav">
-  <a href="index.html" class="back-home">⬅ Back to Home</a>
-</div>
+
 
 <!-- COMMON HEADER -->
 <div id="header"></div>
 
 <!-- MINI HERO -->
+  <section class="mini-hero">
+  <a href="index.html" class="back-home">⬅ Back to Home</a>
+  <h1>Merge PDF Files</h1>
+  <p>Combine multiple PDF documents into one file instantly.</p>
+</section>
+
 <section class="mini-hero">
   <h1>Merge PDF Files</h1>
   <p>Combine multiple PDF documents into one file instantly.</p>
@@ -73,11 +77,32 @@
 <div id="footer"></div>
 
 <!-- COMMON JS -->
-<script src="includes/include.js"></script>
-<script src="darkmode.js"></script>
+<script src="includes/include.js" defer></script>
+<script src="darkmode.js" defer></script>
+
 
 <!-- TOOL JS -->
 <script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Merge PDF Tool",
+ "description": "Merge multiple PDF files into one document directly in your browser.",
+ "applicationCategory": "FileConverter",
+ "operatingSystem": "All",
+ "url": "https://toolnest.bhaihelp.in/merge-pdf.html",
+ "offers": {
+   "@type": "Offer",
+   "price": "0",
+   "priceCurrency": "USD"
+ }
+}
+</script>
+
+
+
+  
 async function mergePDFs(){
   const files = document.getElementById("pdfFiles").files;
   if(files.length < 2){
