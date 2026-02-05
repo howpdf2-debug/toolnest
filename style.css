@@ -8,7 +8,7 @@
 }
 
 body{
-  font-family: Inter, Arial, sans-serif;
+  font-family:Inter, Arial, sans-serif;
   background:#f8fafc;
   color:#0f172a;
   line-height:1.6;
@@ -16,9 +16,9 @@ body{
 }
 
 /* =========================
-   DARK MODE
+   DARK MODE (FIXED)
 ========================= */
-html.dark body{
+body.dark{
   background:#020617;
   color:#e5e7eb;
 }
@@ -26,43 +26,74 @@ html.dark body{
 /* =========================
    HEADER
 ========================= */
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 22px;
+.site-header{
   background:#2563eb;
+  padding:14px 22px;
 }
 
-html.dark .topbar{
+body.dark .site-header{
   background:#020617;
   border-bottom:1px solid #1e293b;
 }
 
-.logo{
+.header-flex{
+  max-width:1100px;
+  margin:auto;
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  gap:8px;
+}
+
+.logo{
   color:#fff;
   font-weight:700;
+  font-size:20px;
   text-decoration:none;
 }
 
-.logo img{height:32px}
-
-.topbar nav a{
+/* NAV */
+.tools-btn{
+  background:rgba(255,255,255,.15);
+  border:none;
   color:#fff;
-  margin-left:14px;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.tools-menu{
+  display:none;
+  position:absolute;
+  background:#fff;
+  margin-top:10px;
+  padding:12px;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.tools-menu a{
+  display:block;
+  padding:6px 10px;
+  color:#0f172a;
   text-decoration:none;
   font-size:14px;
 }
 
+.tools-menu.show{display:block}
+
+body.dark .tools-menu{
+  background:#020617;
+}
+
+body.dark .tools-menu a{color:#e5e7eb}
+
+/* DARK BUTTON */
 #darkToggle{
   background:rgba(255,255,255,.15);
   border:none;
   color:#fff;
-  padding:6px 10px;
-  border-radius:6px;
+  padding:8px 10px;
+  border-radius:8px;
   cursor:pointer;
 }
 
@@ -76,23 +107,10 @@ html.dark .topbar{
   text-align:center;
 }
 
-html.dark .hero{
-  background:#020617;
-}
-
-.hero img{max-width:200px;margin-bottom:20px}
+body.dark .hero{background:#020617}
 
 .hero h1{font-size:40px;margin-bottom:10px}
-.hero p{max-width:720px;margin:0 auto 25px;font-size:18px}
-
-.cta{
-  background:#fff;
-  color:#2563eb;
-  padding:12px 24px;
-  border-radius:10px;
-  font-weight:600;
-  text-decoration:none;
-}
+.hero p{max-width:720px;margin:auto}
 
 /* =========================
    MINI HERO (TOOLS)
@@ -100,20 +118,19 @@ html.dark .hero{
 .mini-hero{
   padding:50px 20px;
   color:#fff;
-  text-align:center;
 }
 
 .hero-top{
+  max-width:1100px;
+  margin:auto;
   display:flex;
   justify-content:flex-end;
-  max-width:1100px;
-  margin:0 auto 10px;
 }
 
 .back-home{
   color:#fff;
-  text-decoration:none;
   font-weight:600;
+  text-decoration:none;
 }
 
 /* =========================
@@ -126,7 +143,7 @@ html.dark .hero{
 }
 
 /* =========================
-   TOOL GRID
+   TOOLS GRID
 ========================= */
 .tools{
   display:grid;
@@ -136,22 +153,22 @@ html.dark .hero{
 
 .tool{
   background:#fff;
-  border-radius:18px;
   padding:26px;
+  border-radius:18px;
   text-align:center;
   box-shadow:0 10px 25px rgba(0,0,0,.08);
   transition:.2s;
 }
 
-.tool:hover{transform:translateY(-4px)}
+.tool:hover{transform:translateY(-5px)}
 
-html.dark .tool{
+body.dark .tool{
   background:#020617;
   border:1px solid #1e293b;
 }
 
 /* =========================
-   TOOL BOX (INNER)
+   TOOL BOX
 ========================= */
 .tool-box{
   background:#fff;
@@ -161,7 +178,7 @@ html.dark .tool{
   text-align:center;
 }
 
-html.dark .tool-box{
+body.dark .tool-box{
   background:#020617;
   border:1px solid #1e293b;
 }
@@ -174,7 +191,7 @@ input{
   border:1px solid #cbd5e1;
 }
 
-html.dark input{
+body.dark input{
   background:#020617;
   color:#fff;
   border-color:#1e293b;
@@ -185,8 +202,8 @@ button{
   border:none;
   border-radius:10px;
   font-weight:600;
-  cursor:pointer;
   color:#fff;
+  cursor:pointer;
 }
 
 /* =========================
@@ -194,8 +211,8 @@ button{
 ========================= */
 .ad-box{
   margin:30px auto;
-  padding:20px;
   max-width:1100px;
+  padding:20px;
   border:2px dashed #cbd5e1;
   text-align:center;
   color:#64748b;
@@ -204,51 +221,37 @@ button{
 /* =========================
    FOOTER
 ========================= */
-footer{
+.site-footer{
   background:#020617;
   color:#e5e7eb;
+  padding:40px 20px;
   text-align:center;
-  padding:30px;
 }
 
-footer a{
+.site-footer a{
   color:#93c5fd;
-  margin:0 6px;
   text-decoration:none;
+  margin:0 6px;
 }
 
 /* =========================
    🎨 TOOL COLORS
 ========================= */
-
-/* MERGE PDF – RED */
 body.tool-merge .mini-hero,
 body.tool-merge button{background:#dc2626}
 
-/* IMAGE COMPRESS – GREEN */
 body.tool-image .mini-hero,
 body.tool-image button{background:#16a34a}
 
-/* PDF TO JPG – PURPLE */
 body.tool-pdfjpg .mini-hero,
 body.tool-pdfjpg button{background:#7c3aed}
 
-/* JPG TO PDF – ORANGE */
 body.tool-jpgpdf .mini-hero,
 body.tool-jpgpdf button{background:#ea580c}
-
-/* QR CODE – TEAL */
-body.tool-qr .mini-hero,
-body.tool-qr button{background:#0d9488}
-
-/* PASSWORD – PINK */
-body.tool-password .mini-hero,
-body.tool-password button{background:#db2777}
 
 /* =========================
    RESPONSIVE
 ========================= */
 @media(max-width:768px){
   .hero h1{font-size:30px}
-  .topbar nav{display:none}
 }
