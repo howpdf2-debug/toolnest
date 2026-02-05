@@ -22,6 +22,22 @@ body.dark{background:#020617;color:#e5e7eb}
 .logo img{height:32px}
 nav a{color:#fff;margin:0 8px;text-decoration:none;font-size:14px}
 #darkToggle{background:rgba(255,255,255,.2);border:none;color:#fff;padding:6px 10px;border-radius:6px;cursor:pointer}
+#darkToggle{
+  font-size:18px;
+  line-height:1;
+  background:rgba(255,255,255,.2);
+  border:none;
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+body.dark #darkToggle{
+  background:#1e293b;
+}
 
 /* HERO */
 .hero{
