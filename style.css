@@ -1,30 +1,81 @@
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box}
+/* =========================
+   GLOBAL RESET
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,body{
+  width:100%;
+  overflow-x:hidden;
+}
+
 body{
-  font-family:Inter,Arial,sans-serif;
+  font-family:Inter,system-ui,Arial,sans-serif;
   background:#f8fafc;
   color:#0f172a;
-  line-height:1.6;
+  line-height:1.65;
+  transition:background .3s,color .3s;
 }
-body.dark{background:#020617;color:#e5e7eb}
 
-/* HEADER */
-.topbar{background:#2563eb}
-.topbar-inner{
-  max-width:1100px;
-  margin:auto;
+/* =========================
+   DARK MODE
+========================= */
+body.dark{
+  background:#020617;
+  color:#e5e7eb;
+}
+
+/* =========================
+   HEADER / TOPBAR
+========================= */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 22px;
+  background:#2563eb;
+  position:sticky;
+  top:0;
+  z-index:999;
+}
+
+body.dark .topbar{
+  background:#020617;
+  border-bottom:1px solid #1e293b;
+}
+
+.topbar .logo{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  padding:14px 20px;
+  gap:8px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:700;
+  font-size:18px;
 }
-.logo{display:flex;gap:8px;align-items:center;color:#fff;text-decoration:none;font-weight:700}
-.logo img{height:32px}
-nav a{color:#fff;margin:0 8px;text-decoration:none;font-size:14px}
-#darkToggle{background:rgba(255,255,255,.2);border:none;color:#fff;padding:6px 10px;border-radius:6px;cursor:pointer}
+
+.topbar img{
+  height:34px;
+}
+
+.topbar nav a{
+  color:#fff;
+  margin-left:16px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+}
+
+.topbar nav a:hover{
+  text-decoration:underline;
+}
+
+/* 🌙 DARK TOGGLE */
 #darkToggle{
   font-size:18px;
-  line-height:1;
   background:rgba(255,255,255,.2);
   border:none;
   padding:8px 10px;
@@ -33,84 +84,279 @@ nav a{color:#fff;margin:0 8px;text-decoration:none;font-size:14px}
   display:flex;
   align-items:center;
   justify-content:center;
+  color:#fff;
 }
 
 body.dark #darkToggle{
   background:#1e293b;
 }
 
-/* HERO */
+/* =========================
+   HERO (INDEX)
+========================= */
 .hero{
   background:linear-gradient(135deg,#2563eb,#1e40af);
   color:#fff;
-  padding:70px 20px;
+  padding:80px 20px;
   text-align:center;
 }
-.hero h1{font-size:40px}
-.hero p{max-width:700px;margin:15px auto}
 
-/* MINI HERO (TOOLS) */
+body.dark .hero{
+  background:linear-gradient(135deg,#020617,#020617);
+}
+
+.hero img{
+  max-width:190px;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:40px;
+  margin-bottom:12px;
+}
+
+.hero p{
+  max-width:760px;
+  margin:0 auto 28px;
+  font-size:18px;
+  opacity:.95;
+}
+
+.hero .cta{
+  display:inline-block;
+  background:#fff;
+  color:#2563eb;
+  padding:14px 28px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+/* =========================
+   MINI HERO (TOOLS)
+========================= */
 .mini-hero{
   position:relative;
+  background:linear-gradient(135deg,#e0e7ff,#f8fafc);
+  padding:60px 20px;
   text-align:center;
 }
 
+body.dark .mini-hero{
+  background:#020617;
+}
+
+.mini-hero h1{
+  font-size:34px;
+  margin-bottom:8px;
+}
+
+.mini-hero p{
+  max-width:700px;
+  margin:auto;
+  font-size:16px;
+}
+
+/* BACK HOME (RIGHT) */
 .hero-top{
   position:absolute;
   right:20px;
   top:20px;
 }
 
-.tool-merge{background:#ef4444}
-.tool-compress{background:#22c55e}
-.tool-convert{background:#3b82f6}
-.tool-qr{background:#a855f7}
-.tool-password{background:#f59e0b}
-body.dark .mini-hero{background:#020617}
+.back-home{
+  text-decoration:none;
+  font-weight:600;
+  color:#2563eb;
+}
 
-/* CONTAINER */
-.container{max-width:1100px;margin:auto;padding:30px 20px}
+body.dark .back-home{
+  color:#93c5fd;
+}
 
-/* TOOLS GRID */
+/* =========================
+   ADSENSE BOX
+========================= */
+.ad-box{
+  margin:35px auto;
+  padding:22px;
+  max-width:1100px;
+  border:2px dashed #cbd5e1;
+  text-align:center;
+  color:#64748b;
+  font-size:14px;
+}
+
+body.dark .ad-box{
+  border-color:#1e293b;
+  color:#94a3b8;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+/* =========================
+   TOOLS GRID (INDEX)
+========================= */
 .tools{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:22px;
+  gap:26px;
 }
+
 .tool{
   background:#fff;
-  border-radius:16px;
-  padding:26px;
+  border-radius:18px;
+  padding:28px;
   text-align:center;
-  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  transition:transform .2s,box-shadow .2s;
 }
-body.dark .tool{background:#020617;border:1px solid #1e293b}
 
-/* TOOL BOX */
+.tool:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 40px rgba(0,0,0,.12);
+}
+
+body.dark .tool{
+  background:#020617;
+  border:1px solid #1e293b;
+}
+
+.tool i{
+  font-size:36px;
+  margin-bottom:14px;
+  padding:18px;
+  border-radius:14px;
+  color:#fff;
+}
+
+.tool h3{
+  margin:12px 0;
+}
+
+.tool p{
+  font-size:14px;
+  color:#475569;
+}
+
+body.dark .tool p{
+  color:#94a3b8;
+}
+
+.tool button{
+  margin-top:14px;
+  padding:12px 18px;
+  border:none;
+  border-radius:10px;
+  color:#fff;
+  cursor:pointer;
+  font-weight:700;
+}
+
+/* 🎨 TOOL COLORS */
+.tool-pdf i,.tool-pdf button{background:#ef4444}
+.tool-image i,.tool-image button{background:#22c55e}
+.tool-qr i,.tool-qr button{background:#a855f7}
+.tool-password i,.tool-password button{background:#f59e0b}
+.tool-text i,.tool-text button{background:#0ea5e9}
+
+/* =========================
+   TOOL PAGE BOX
+========================= */
 .tool-box{
   background:#fff;
-  padding:30px;
-  border-radius:18px;
+  padding:34px;
+  border-radius:20px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
   text-align:center;
 }
-body.dark .tool-box{background:#020617;border:1px solid #1e293b}
 
-/* FOOTER */
+body.dark .tool-box{
+  background:#020617;
+  border:1px solid #1e293b;
+}
+
+/* =========================
+   INPUTS & BUTTONS
+========================= */
+input,textarea,select{
+  width:100%;
+  padding:14px;
+  margin:12px 0;
+  border-radius:10px;
+  border:1px solid #cbd5e1;
+  font-size:15px;
+}
+
+body.dark input,
+body.dark textarea{
+  background:#020617;
+  color:#e5e7eb;
+  border-color:#1e293b;
+}
+
+button{
+  padding:14px 22px;
+  border:none;
+  border-radius:10px;
+  background:#2563eb;
+  color:#fff;
+  cursor:pointer;
+  font-weight:700;
+}
+
+/* =========================
+   SEO TEXT
+========================= */
+.seo-text{
+  font-size:15px;
+  color:#334155;
+}
+
+body.dark .seo-text{
+  color:#cbd5f5;
+}
+
+.seo-text h2{
+  margin-bottom:14px;
+}
+
+/* =========================
+   FOOTER (SEO STRONG)
+========================= */
 footer{
   background:#020617;
   color:#e5e7eb;
   text-align:center;
-  padding:40px 20px;
+  padding:45px 20px;
   margin-top:60px;
-  display:block;
 }
 
-/* ADS */
-.ad-box{
-  max-width:1100px;
-  margin:30px auto;
-  padding:20px;
-  border:2px dashed #cbd5e1;
-  text-align:center;
-  color:#64748b;
+footer p{
+  max-width:900px;
+  margin:10px auto;
+  font-size:14px;
+}
+
+footer a{
+  color:#93c5fd;
+  text-decoration:none;
+  margin:0 6px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:768px){
+  .hero h1{font-size:30px}
+  .mini-hero h1{font-size:26px}
+  .topbar nav{display:none;}
+  .hero-top{right:12px;top:12px;}
 }
