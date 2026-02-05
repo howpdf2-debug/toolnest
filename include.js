@@ -1,5 +1,7 @@
-<!-- includes/include.js -->
-<script>
+
+
+
+// includes/include.js
 async function loadHTML(id, file) {
   try {
     const res = await fetch(file);
@@ -14,4 +16,5 @@ document.addEventListener("DOMContentLoaded", () => {
   loadHTML("header", "includes/header.html");
   loadHTML("footer", "includes/footer.html");
 });
-</script>
+
+
