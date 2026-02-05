@@ -1,286 +1,89 @@
-/* =========================
-   GLOBAL RESET
-========================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family: Inter, Arial, sans-serif;
+  font-family:Inter,Arial,sans-serif;
   background:#f8fafc;
   color:#0f172a;
   line-height:1.6;
-  transition:background .3s,color .3s;
 }
+body.dark{background:#020617;color:#e5e7eb}
 
-/* =========================
-   DARK MODE
-========================= */
-body.dark{
-  background:#020617;
-  color:#e5e7eb;
-}
-
-/* =========================
-   TOPBAR / HEADER
-========================= */
-.topbar{
+/* HEADER */
+.topbar{background:#2563eb}
+.topbar-inner{
+  max-width:1100px;
+  margin:auto;
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  align-items:center;
-  padding:14px 22px;
-  background:#2563eb;
+  padding:14px 20px;
 }
+.logo{display:flex;gap:8px;align-items:center;color:#fff;text-decoration:none;font-weight:700}
+.logo img{height:32px}
+nav a{color:#fff;margin:0 8px;text-decoration:none;font-size:14px}
+#darkToggle{background:rgba(255,255,255,.2);border:none;color:#fff;padding:6px 10px;border-radius:6px;cursor:pointer}
 
-body.dark .topbar{
-  background:#020617;
-  border-bottom:1px solid #1e293b;
-}
-
-.topbar .logo{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  text-decoration:none;
-  color:#fff;
-  font-weight:700;
-}
-
-.topbar img{
-  height:32px;
-}
-
-.topbar nav a{
-  color:#fff;
-  margin-left:14px;
-  text-decoration:none;
-  font-size:14px;
-  font-weight:500;
-}
-
-.topbar nav a:hover{
-  text-decoration:underline;
-}
-
-#darkToggle{
-  background:rgba(255,255,255,.15);
-  border:none;
-  color:#fff;
-  padding:6px 10px;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-/* =========================
-   HERO (INDEX)
-========================= */
+/* HERO */
 .hero{
   background:linear-gradient(135deg,#2563eb,#1e40af);
   color:#fff;
   padding:70px 20px;
   text-align:center;
 }
+.hero h1{font-size:40px}
+.hero p{max-width:700px;margin:15px auto}
 
-body.dark .hero{
-  background:linear-gradient(135deg,#020617,#020617);
-}
-
-.hero img{
-  max-width:200px;
-  margin-bottom:20px;
-}
-
-.hero h1{
-  font-size:40px;
-  margin-bottom:10px;
-}
-
-.hero p{
-  max-width:720px;
-  margin:0 auto 25px;
-  font-size:18px;
-}
-
-.hero .cta{
-  display:inline-block;
-  background:#fff;
-  color:#2563eb;
-  padding:12px 24px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
-}
-
-/* =========================
-   ADSENSE BOX
-========================= */
-.ad-box{
-  margin:30px auto;
-  padding:20px;
-  max-width:1100px;
-  border:2px dashed #cbd5e1;
+/* MINI HERO (TOOLS) */
+.mini-hero{
+  padding:45px 20px;
+  color:#fff;
   text-align:center;
-  color:#64748b;
-  font-size:14px;
 }
+.tool-merge{background:#ef4444}
+.tool-compress{background:#22c55e}
+.tool-convert{background:#3b82f6}
+.tool-qr{background:#a855f7}
+.tool-password{background:#f59e0b}
+body.dark .mini-hero{background:#020617}
 
-body.dark .ad-box{
-  border-color:#1e293b;
-  color:#94a3b8;
-}
+/* CONTAINER */
+.container{max-width:1100px;margin:auto;padding:30px 20px}
 
-/* =========================
-   CONTAINER
-========================= */
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:30px 20px;
-}
-
-/* =========================
-   TOOL GRID (INDEX)
-========================= */
+/* TOOLS GRID */
 .tools{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:22px;
 }
-
 .tool{
   background:#fff;
   border-radius:16px;
   padding:26px;
   text-align:center;
   box-shadow:0 10px 25px rgba(0,0,0,.08);
-  transition:transform .2s;
 }
+body.dark .tool{background:#020617;border:1px solid #1e293b}
 
-.tool:hover{
-  transform:translateY(-4px);
-}
-
-body.dark .tool{
-  background:#020617;
-  border:1px solid #1e293b;
-}
-
-.tool i{
-  color:#2563eb;
-  margin-bottom:12px;
-}
-
-.tool h3{
-  margin:10px 0;
-}
-
-.tool p{
-  font-size:14px;
-  color:#475569;
-}
-
-body.dark .tool p{
-  color:#94a3b8;
-}
-
-.tool button{
-  margin-top:12px;
-  padding:10px 16px;
-  border:none;
-  border-radius:8px;
-  background:#2563eb;
-  color:#fff;
-  cursor:pointer;
-  font-weight:600;
-}
-
-/* =========================
-   TOOL PAGES BOX
-========================= */
+/* TOOL BOX */
 .tool-box{
   background:#fff;
   padding:30px;
   border-radius:18px;
-  box-shadow:0 10px 25px rgba(0,0,0,.08);
   text-align:center;
 }
+body.dark .tool-box{background:#020617;border:1px solid #1e293b}
 
-body.dark .tool-box{
-  background:#020617;
-  border:1px solid #1e293b;
-}
+/* FOOTER */
+footer{background:#020617;color:#e5e7eb;margin-top:40px}
+.footer-inner{max-width:1100px;margin:auto;padding:30px;text-align:center}
+footer a{color:#93c5fd;text-decoration:none}
 
-/* =========================
-   BACK TO HOME
-========================= */
-.tool-nav{
+/* ADS */
+.ad-box{
   max-width:1100px;
-  margin:15px auto;
-  padding:0 20px;
-}
-
-.back-home{
-  text-decoration:none;
-  color:#2563eb;
-  font-weight:600;
-}
-
-body.dark .back-home{
-  color:#93c5fd;
-}
-
-/* =========================
-   INPUTS & BUTTONS
-========================= */
-input,textarea,select{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border-radius:8px;
-  border:1px solid #cbd5e1;
-}
-
-body.dark input,
-body.dark textarea{
-  background:#020617;
-  color:#e5e7eb;
-  border-color:#1e293b;
-}
-
-button{
-  padding:12px 18px;
-  border:none;
-  border-radius:8px;
-  background:#2563eb;
-  color:#fff;
-  cursor:pointer;
-  font-weight:600;
-}
-
-/* =========================
-   FOOTER
-========================= */
-footer{
-  background:#020617;
-  color:#e5e7eb;
+  margin:30px auto;
+  padding:20px;
+  border:2px dashed #cbd5e1;
   text-align:center;
-  padding:30px;
-  margin-top:40px;
-}
-
-footer a{
-  color:#93c5fd;
-  text-decoration:none;
-  margin:0 6px;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media(max-width:768px){
-  .hero h1{font-size:30px}
-  .hero p{font-size:16px}
-  .topbar nav{display:none;}
+  color:#64748b;
 }
