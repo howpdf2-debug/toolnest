@@ -1,15 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("darkToggle");
+  const toggle = document.getElementById("darkToggle");
 
-  if (!btn) return;
+  if (!toggle) return;
 
-  // Load saved mode
-  if (localStorage.getItem("darkMode") === "on") {
-    document.body.classList.add("dark");
-    btn.innerHTML = "☀️";
+  // Load saved state
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+    toggle.innerText = "☀️";
   }
 
-  btn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
+  toggle.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
 
-    if (document.body.classList.contains)
+    if (document.documentElement.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+      toggle.innerText = "☀️";
+    } else {
+      localStorage.setItem("theme", "light");
+      toggle.innerText = "🌙";
+    }
+  });
+});
