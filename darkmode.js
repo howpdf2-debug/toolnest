@@ -12,4 +12,4 @@ document.addEventListener("DOMContentLoaded", () => {
   btn.addEventListener("click", () => {
     document.body.classList.toggle("dark");
 
-    if (document.body.classList.contains
+    if (document.body.classList.contains)
