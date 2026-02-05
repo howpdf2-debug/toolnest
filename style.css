@@ -1,123 +1,77 @@
-/* =========================
-   GLOBAL RESET
-========================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  font-family:Inter, Arial, sans-serif;
+  font-family:Inter,Arial,sans-serif;
   background:#f8fafc;
   color:#0f172a;
   line-height:1.6;
-  transition:background .3s,color .3s;
+  transition:.3s;
 }
 
-/* =========================
-   DARK MODE (FIXED)
-========================= */
-body.dark{
+/* DARK MODE */
+html.dark body{
   background:#020617;
   color:#e5e7eb;
 }
 
-/* =========================
-   HEADER
-========================= */
-.site-header{
-  background:#2563eb;
-  padding:14px 22px;
-}
-
-body.dark .site-header{
-  background:#020617;
-  border-bottom:1px solid #1e293b;
-}
-
-.header-flex{
-  max-width:1100px;
-  margin:auto;
+/* HEADER */
+.topbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  padding:14px 22px;
+  background:#2563eb;
+}
+
+html.dark .topbar{
+  background:#020617;
+  border-bottom:1px solid #1e293b;
 }
 
 .logo{
   color:#fff;
   font-weight:700;
-  font-size:20px;
   text-decoration:none;
+  font-size:20px;
 }
 
-/* NAV */
-.tools-btn{
-  background:rgba(255,255,255,.15);
-  border:none;
+.topbar nav{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.topbar nav a{
   color:#fff;
-  padding:8px 14px;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.tools-menu{
-  display:none;
-  position:absolute;
-  background:#fff;
-  margin-top:10px;
-  padding:12px;
-  border-radius:12px;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
-}
-
-.tools-menu a{
-  display:block;
-  padding:6px 10px;
-  color:#0f172a;
   text-decoration:none;
   font-size:14px;
 }
-
-.tools-menu.show{display:block}
-
-body.dark .tools-menu{
-  background:#020617;
-}
-
-body.dark .tools-menu a{color:#e5e7eb}
 
 /* DARK BUTTON */
 #darkToggle{
   background:rgba(255,255,255,.15);
   border:none;
-  color:#fff;
-  padding:8px 10px;
-  border-radius:8px;
+  padding:6px 10px;
+  border-radius:6px;
   cursor:pointer;
+  color:#fff;
+  font-size:16px;
 }
 
-/* =========================
-   HERO (INDEX)
-========================= */
+/* HERO */
 .hero{
-  background:linear-gradient(135deg,#2563eb,#1e40af);
-  color:#fff;
   padding:70px 20px;
   text-align:center;
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+  color:#fff;
 }
 
-body.dark .hero{background:#020617}
-
-.hero h1{font-size:40px;margin-bottom:10px}
-.hero p{max-width:720px;margin:auto}
-
-/* =========================
-   MINI HERO (TOOLS)
-========================= */
+/* MINI HERO */
 .mini-hero{
   padding:50px 20px;
   color:#fff;
+  text-align:center;
 }
 
 .hero-top{
@@ -129,47 +83,18 @@ body.dark .hero{background:#020617}
 
 .back-home{
   color:#fff;
-  font-weight:600;
   text-decoration:none;
+  font-weight:600;
 }
 
-/* =========================
-   CONTAINER
-========================= */
+/* CONTAINER */
 .container{
   max-width:1100px;
   margin:auto;
   padding:30px 20px;
 }
 
-/* =========================
-   TOOLS GRID
-========================= */
-.tools{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:22px;
-}
-
-.tool{
-  background:#fff;
-  padding:26px;
-  border-radius:18px;
-  text-align:center;
-  box-shadow:0 10px 25px rgba(0,0,0,.08);
-  transition:.2s;
-}
-
-.tool:hover{transform:translateY(-5px)}
-
-body.dark .tool{
-  background:#020617;
-  border:1px solid #1e293b;
-}
-
-/* =========================
-   TOOL BOX
-========================= */
+/* TOOL BOX */
 .tool-box{
   background:#fff;
   padding:30px;
@@ -178,80 +103,55 @@ body.dark .tool{
   text-align:center;
 }
 
-body.dark .tool-box{
+html.dark .tool-box{
   background:#020617;
   border:1px solid #1e293b;
 }
 
-input{
+input,button{
   width:100%;
   padding:12px;
   margin:12px 0;
   border-radius:8px;
-  border:1px solid #cbd5e1;
-}
-
-body.dark input{
-  background:#020617;
-  color:#fff;
-  border-color:#1e293b;
 }
 
 button{
-  padding:12px 20px;
   border:none;
-  border-radius:10px;
   font-weight:600;
-  color:#fff;
   cursor:pointer;
+  color:#fff;
 }
 
-/* =========================
-   ADS
-========================= */
+/* ADS */
 .ad-box{
   margin:30px auto;
   max-width:1100px;
   padding:20px;
   border:2px dashed #cbd5e1;
   text-align:center;
-  color:#64748b;
 }
 
-/* =========================
-   FOOTER
-========================= */
-.site-footer{
+/* FOOTER */
+footer{
   background:#020617;
   color:#e5e7eb;
   padding:40px 20px;
-  text-align:center;
 }
 
-.site-footer a{
+footer .links a{
   color:#93c5fd;
+  margin:0 8px;
   text-decoration:none;
-  margin:0 6px;
 }
 
-/* =========================
-   🎨 TOOL COLORS
-========================= */
+/* TOOL COLORS */
 body.tool-merge .mini-hero,
 body.tool-merge button{background:#dc2626}
 
 body.tool-image .mini-hero,
 body.tool-image button{background:#16a34a}
 
-body.tool-pdfjpg .mini-hero,
-body.tool-pdfjpg button{background:#7c3aed}
-
-body.tool-jpgpdf .mini-hero,
-body.tool-jpgpdf button{background:#ea580c}
-
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE */
 @media(max-width:768px){
-  .hero h1{font-size:30px}
+  .topbar nav{display:none}
 }
