@@ -33,18 +33,8 @@ nav a{color:#fff;margin:0 8px;text-decoration:none;font-size:14px}
 .hero h1{font-size:40px}
 .hero p{max-width:700px;margin:15px auto}
 
-/* MINI HERO (TOOLS) */
-.mini-hero{
-  padding:45px 20px;
-  color:#fff;
-  text-align:center;
-}
-.tool-merge{background:#ef4444}
-.tool-compress{background:#22c55e}
-.tool-convert{background:#3b82f6}
-.tool-qr{background:#a855f7}
-.tool-password{background:#f59e0b}
-body.dark .mini-hero{background:#020617}
+
+
 
 
 /* =========================
@@ -71,6 +61,21 @@ body.dark .mini-hero{
   margin:0 auto;
   font-size:16px;
 }
+
+/* MINI HERO (TOOLS) */
+.mini-hero{
+  padding:45px 20px;
+  color:#fff;
+  text-align:center;
+}
+.tool-merge{background:#ef4444}
+.tool-compress{background:#22c55e}
+.tool-convert{background:#3b82f6}
+.tool-qr{background:#a855f7}
+.tool-password{background:#f59e0b}
+body.dark .mini-hero{background:#020617}
+
+
 
 
 
