@@ -90,9 +90,14 @@ body.dark .tool{background:#020617;border:1px solid #1e293b}
 body.dark .tool-box{background:#020617;border:1px solid #1e293b}
 
 /* FOOTER */
-footer{background:#020617;color:#e5e7eb;margin-top:40px}
-.footer-inner{max-width:1100px;margin:auto;padding:30px;text-align:center}
-footer a{color:#93c5fd;text-decoration:none}
+footer{
+  background:#020617;
+  color:#e5e7eb;
+  text-align:center;
+  padding:40px 20px;
+  margin-top:60px;
+  display:block;
+}
 
 /* ADS */
 .ad-box{
