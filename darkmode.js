@@ -1,29 +1,15 @@
-// darkmode.js (FINAL – WORKS WITH JS INCLUDES)
-(function () {
-  function initDarkMode() {
-    const toggle = document.getElementById("darkToggle");
-    if (!toggle) return;
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("darkToggle");
 
-    const savedTheme = localStorage.getItem("theme");
+  if (!btn) return;
 
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark");
-      toggle.textContent = "☀️";
-    }
-
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-
-      const isDark = document.body.classList.contains("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-      toggle.textContent = isDark ? "☀️" : "🌙";
-    });
+  // Load saved mode
+  if (localStorage.getItem("darkMode") === "on") {
+    document.body.classList.add("dark");
+    btn.innerHTML = "☀️";
   }
 
-  // try immediately
-  document.addEventListener("DOMContentLoaded", initDarkMode);
+  btn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
 
-  // retry after header is injected
-  const observer = new MutationObserver(initDarkMode);
-  observer.observe(document.body, { childList: true, subtree: true });
-})();
+    if (document.body.classList.contains
