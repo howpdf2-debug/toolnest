@@ -51,10 +51,16 @@ body.dark #darkToggle{
 
 /* MINI HERO (TOOLS) */
 .mini-hero{
-  padding:45px 20px;
-  color:#fff;
+  position:relative;
   text-align:center;
 }
+
+.hero-top{
+  position:absolute;
+  right:20px;
+  top:20px;
+}
+
 .tool-merge{background:#ef4444}
 .tool-compress{background:#22c55e}
 .tool-convert{background:#3b82f6}
