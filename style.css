@@ -62,21 +62,6 @@ body.dark .mini-hero{
   font-size:16px;
 }
 
-/* MINI HERO (TOOLS) */
-.mini-hero{
-  padding:45px 20px;
-  color:#fff;
-  text-align:center;
-}
-.tool-merge{background:#ef4444}
-.tool-compress{background:#22c55e}
-.tool-convert{background:#3b82f6}
-.tool-qr{background:#a855f7}
-.tool-password{background:#f59e0b}
-body.dark .mini-hero{background:#020617}
-
-
-
 
 
 /* CONTAINER */
