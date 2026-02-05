@@ -9,6 +9,18 @@ body{
 body.dark{background:#020617;color:#e5e7eb}
 
 /* HEADER */
+.topbar{
+  background:#2563eb;
+}
+
+.topbar > *{
+  max-width:1100px;
+  margin:auto;
+}
+
+
+
+
 .topbar{background:#2563eb}
 .topbar-inner{
   max-width:1100px;
