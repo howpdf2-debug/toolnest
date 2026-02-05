@@ -2,57 +2,172 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Merge PDF Online Free | ToolNest</title>
-<meta name="description" content="Merge multiple PDF files online for free using ToolNest. Fast, secure and privacy-friendly PDF merger.">
+
+<title>Merge PDF Online Free – Combine PDF Files | ToolNest</title>
+
+<meta name="description" content="Merge PDF files online for free with ToolNest. Combine multiple PDF documents securely in your browser without uploads.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="icon" href="favicon.png">
 <link rel="stylesheet" href="style.css">
+
+<!-- PDF LIB -->
 <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<!-- SEO SCHEMA -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Merge PDF Tool",
+ "applicationCategory": "FileConverter",
+ "operatingSystem": "All",
+ "url": "https://toolnest.bhaihelp.in/merge-pdf.html",
+ "offers": {
+   "@type": "Offer",
+   "price": "0",
+   "priceCurrency": "USD"
+ }
+}
+</script>
 </head>
 
 <body>
+
+<!-- COMMON HEADER -->
 <div id="header"></div>
 
+<!-- MINI HERO -->
 <section class="mini-hero">
   <div class="hero-top">
     <a href="index.html" class="back-home">⬅ Back to Home</a>
   </div>
-  <h1>Merge PDF Files</h1>
-  <p>Combine multiple PDF documents into one file instantly.</p>
+
+  <h1>Merge PDF Files Online</h1>
+  <p>Combine multiple PDF documents into one file instantly and securely.</p>
 </section>
 
-
+<!-- TOOL -->
 <section class="container">
   <div class="tool-box">
-    <input type="file" id="pdfFiles" multiple>
+
+    <input type="file" id="pdfFiles" accept="application/pdf" multiple>
+
     <button onclick="mergePDFs()">Merge PDFs</button>
+
     <p id="status"></p>
+
   </div>
 </section>
 
+<!-- ADS -->
 <div class="ad-box">Advertisement</div>
 
+<!-- AUTO SEO CONTENT -->
+<section class="container seo-text" id="autoSeo"></section>
+
+<!-- COMMON FOOTER -->
 <div id="footer"></div>
 
+<!-- COMMON JS -->
 <script src="includes/include.js"></script>
 <script src="darkmode.js"></script>
 
+<!-- TOOL LOGIC -->
 <script>
 async function mergePDFs(){
-  const files=document.getElementById("pdfFiles").files;
-  if(files.length<2){alert("Select at least two PDFs");return;}
-  const merged=await PDFLib.PDFDocument.create();
-  for(const f of files){
-    const pdf=await PDFLib.PDFDocument.load(await f.arrayBuffer());
-    const pages=await merged.copyPages(pdf,pdf.getPageIndices());
-    pages.forEach(p=>merged.addPage(p));
+  const files = document.getElementById("pdfFiles").files;
+  if(files.length < 2){
+    alert("Please select at least two PDF files");
+    return;
   }
-  const blob=new Blob([await merged.save()],{type:"application/pdf"});
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(blob);
-  a.download="toolnest-merged.pdf";
+
+  document.getElementById("status").innerText = "Merging PDFs...";
+
+  const mergedPdf = await PDFLib.PDFDocument.create();
+
+  for(const file of files){
+    const pdf = await PDFLib.PDFDocument.load(await file.arrayBuffer());
+    const pages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+    pages.forEach(page => mergedPdf.addPage(page));
+  }
+
+  const blob = new Blob([await mergedPdf.save()], { type: "application/pdf" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "toolnest-merged.pdf";
   a.click();
+
+  document.getElementById("status").innerText = "PDF merged successfully!";
 }
+
+/* ===============================
+   AUTO SEO GENERATOR (500+ WORDS)
+================================ */
+document.getElementById("autoSeo").innerHTML = `
+<h2>Merge PDF Online – Free Tool by ToolNest</h2>
+
+<p>
+ToolNest Merge PDF is a powerful online tool that allows users to merge
+multiple PDF files into a single document directly inside their browser.
+This tool is designed for speed, privacy and simplicity, making it ideal
+for students, professionals and businesses.
+</p>
+
+<p>
+Unlike traditional PDF software, ToolNest does not require installation
+or registration. All processing happens locally on your device, ensuring
+your documents remain completely private and secure.
+</p>
+
+<h2>Why Use ToolNest Merge PDF?</h2>
+<p>
+Merging PDF files is a common task for office work, education and document
+management. ToolNest provides a fast and reliable solution that works on
+all modern devices including mobile phones, tablets and desktops.
+</p>
+
+<ul>
+  <li>100% free PDF merging tool</li>
+  <li>No uploads, no server storage</li>
+  <li>Instant download after merge</li>
+  <li>Privacy-first browser processing</li>
+  <li>Compatible with all devices</li>
+</ul>
+
+<h2>How to Merge PDF Files Online</h2>
+<p>
+Using ToolNest Merge PDF is simple. Select two or more PDF files, click the
+merge button and download your combined PDF instantly. No technical skills
+are required.
+</p>
+
+<h2>Who Can Use This Tool?</h2>
+<p>
+Students can combine assignments, professionals can merge reports and
+businesses can organize documents efficiently using ToolNest Merge PDF.
+</p>
+
+<h2>Frequently Asked Questions</h2>
+<p><strong>Is this tool free?</strong><br>
+Yes, ToolNest Merge PDF is completely free.</p>
+
+<p><strong>Are my files safe?</strong><br>
+Yes, all PDF processing happens locally in your browser.</p>
+
+<p><strong>Can I use it on mobile?</strong><br>
+Yes, the tool works on all modern mobile browsers.</p>
+
+<h2>Conclusion</h2>
+<p>
+If you are looking for a fast, secure and easy way to merge PDF files
+online, ToolNest Merge PDF is the perfect solution. Try it today and
+experience hassle-free PDF merging.
+</p>
+`;
 </script>
+
 </body>
 </html>
