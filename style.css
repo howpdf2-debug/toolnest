@@ -1,257 +1,178 @@
-/* =========================
-   GLOBAL RESET
-========================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+/* style.css */
+/* Mobile-first responsive design */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --primary: #007bff;
+    --card-bg: #f8f9fa;
 }
 
-body{
-  font-family:Inter, Arial, sans-serif;
-  background:#f8fafc;
-  color:#0f172a;
-  line-height:1.6;
-  transition:background .3s,color .3s;
+.dark {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --primary: #0d6efd;
+    --card-bg: #1e1e1e;
 }
 
-/* =========================
-   DARK MODE (FIXED)
-========================= */
-body.dark{
-  background:#020617;
-  color:#e5e7eb;
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
 }
 
-/* =========================
-   HEADER
-========================= */
-.site-header{
-  background:#2563eb;
-  padding:14px 22px;
+.topbar, footer {
+    background: var(--card-bg);
+    border-color: #444; /* dark mode border */
 }
 
-body.dark .site-header{
-  background:#020617;
-  border-bottom:1px solid #1e293b;
+.tool, .hero, .seo-text {
+    background: var(--card-bg);
 }
 
-.header-flex{
-  max-width:1100px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.dark-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
-.logo{
-  color:#fff;
-  font-weight:700;
-  font-size:20px;
-  text-decoration:none;
+/* Add more dark adjustments as needed, e.g. */
+.dark .tool h3, .dark a {
+    color: var(--text-color);
 }
 
-/* NAV */
-.tools-btn{
-  background:rgba(255,255,255,.15);
-  border:none;
-  color:#fff;
-  padding:8px 14px;
-  border-radius:8px;
-  cursor:pointer;
+html.dark {
+    --primary-color: #0d6efd;
+    --text-color: #ddd;
+    --bg-color: #1e1e1e;
+    --card-bg: #2c2c2c;
+    --border-color: #444;
 }
 
-.tools-menu{
-  display:none;
-  position:absolute;
-  background:#fff;
-  margin-top:10px;
-  padding:12px;
-  border-radius:12px;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
 }
 
-.tools-menu a{
-  display:block;
-  padding:6px 10px;
-  color:#0f172a;
-  text-decoration:none;
-  font-size:14px;
+header {
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem;
+    text-align: center;
 }
 
-.tools-menu.show{display:block}
-
-body.dark .tools-menu{
-  background:#020617;
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
-body.dark .tools-menu a{color:#e5e7eb}
-
-/* DARK BUTTON */
-#darkToggle{
-  background:rgba(255,255,255,.15);
-  border:none;
-  color:#fff;
-  padding:8px 10px;
-  border-radius:8px;
-  cursor:pointer;
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 
-/* =========================
-   HERO (INDEX)
-========================= */
-.hero{
-  background:linear-gradient(135deg,#2563eb,#1e40af);
-  color:#fff;
-  padding:70px 20px;
-  text-align:center;
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
 }
 
-body.dark .hero{background:#020617}
-
-.hero h1{font-size:40px;margin-bottom:10px}
-.hero p{max-width:720px;margin:auto}
-
-/* =========================
-   MINI HERO (TOOLS)
-========================= */
-.mini-hero{
-  padding:50px 20px;
-  color:#fff;
+.dark-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
 }
 
-.hero-top{
-  max-width:1100px;
-  margin:auto;
-  display:flex;
-  justify-content:flex-end;
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
-.back-home{
-  color:#fff;
-  font-weight:600;
-  text-decoration:none;
+.hero {
+    text-align: center;
+    padding: 2rem 0;
 }
 
-/* =========================
-   CONTAINER
-========================= */
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:30px 20px;
+.tools-section {
+    padding: 2rem 0;
 }
 
-/* =========================
-   TOOLS GRID
-========================= */
-.tools{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:22px;
+.tools-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
 }
 
-.tool{
-  background:#fff;
-  padding:26px;
-  border-radius:18px;
-  text-align:center;
-  box-shadow:0 10px 25px rgba(0,0,0,.08);
-  transition:.2s;
+.tool-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    border-radius: 5px;
 }
 
-.tool:hover{transform:translateY(-5px)}
-
-body.dark .tool{
-  background:#020617;
-  border:1px solid #1e293b;
+.tool-page {
+    text-align: center;
+    padding: 2rem 1rem;
 }
 
-/* =========================
-   TOOL BOX
-========================= */
-.tool-box{
-  background:#fff;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 10px 25px rgba(0,0,0,.08);
-  text-align:center;
+.tool-page input[type="file"] {
+    margin: 1rem 0;
 }
 
-body.dark .tool-box{
-  background:#020617;
-  border:1px solid #1e293b;
+.tool-page button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-input{
-  width:100%;
-  padding:12px;
-  margin:12px 0;
-  border-radius:8px;
-  border:1px solid #cbd5e1;
+.back-home {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
-body.dark input{
-  background:#020617;
-  color:#fff;
-  border-color:#1e293b;
+footer {
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
 }
 
-button{
-  padding:12px 20px;
-  border:none;
-  border-radius:10px;
-  font-weight:600;
-  color:#fff;
-  cursor:pointer;
+footer a {
+    color: var(--text-color);
+    margin: 0 0.5rem;
 }
 
-/* =========================
-   ADS
-========================= */
-.ad-box{
-  margin:30px auto;
-  max-width:1100px;
-  padding:20px;
-  border:2px dashed #cbd5e1;
-  text-align:center;
-  color:#64748b;
-}
-
-/* =========================
-   FOOTER
-========================= */
-.site-footer{
-  background:#020617;
-  color:#e5e7eb;
-  padding:40px 20px;
-  text-align:center;
-}
-
-.site-footer a{
-  color:#93c5fd;
-  text-decoration:none;
-  margin:0 6px;
-}
-
-/* =========================
-   🎨 TOOL COLORS
-========================= */
-body.tool-merge .mini-hero,
-body.tool-merge button{background:#dc2626}
-
-body.tool-image .mini-hero,
-body.tool-image button{background:#16a34a}
-
-body.tool-pdfjpg .mini-hero,
-body.tool-pdfjpg button{background:#7c3aed}
-
-body.tool-jpgpdf .mini-hero,
-body.tool-jpgpdf button{background:#ea580c}
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media(max-width:768px){
-  .hero h1{font-size:30px}
+/* Desktop media query */
+@media (min-width: 768px) {
+    .tools-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+    }
+    
+    nav ul {
+        gap: 2rem;
+    }
 }
