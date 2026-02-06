@@ -18,10 +18,8 @@ body{
 /* =========================
    DARK MODE (FIXED)
 ========================= */
-body.dark{
-  background:#020617;
-  color:#e5e7eb;
-}
+document.body.classList.toggle("dark");
+
 
 /* =========================
    HEADER
