@@ -1,23 +1,24 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.getElementById("darkToggle");
+document.addEventListener('DOMContentLoaded', () => {
+    const htmlElement = document.documentElement;
+    const toggleBtn = document.querySelector('.dark-toggle');
 
-  if (!toggle) return;
-
-  // Load saved state
-  if (localStorage.getItem("theme") === "dark") {
-    document.documentElement.classList.add("dark");
-    toggle.innerText = "☀️";
-  }
-
-  toggle.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
-
-    if (document.documentElement.classList.contains("dark")) {
-      localStorage.setItem("theme", "dark");
-      toggle.innerText = "☀️";
+    // Load saved preference
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        htmlElement.classList.add('dark');
+        toggleBtn.textContent = '☀️';
     } else {
-      localStorage.setItem("theme", "light");
-      toggle.innerText = "🌙";
+        toggleBtn.textContent = '🌙';
     }
-  });
+
+    // Toggle function
+    toggleBtn.addEventListener('click', () => {
+        htmlElement.classList.toggle('dark');
+        if (htmlElement.classList.contains('dark')) {
+            localStorage.setItem('darkMode', 'enabled');
+            toggleBtn.textContent = '☀️';
+        } else {
+            localStorage.setItem('darkMode', 'disabled');
+            toggleBtn.textContent = '🌙';
+        }
+    });
 });
