@@ -2,263 +2,142 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ToolNest – Free Online PDF, Image & Text Tools</title>
-<meta name="description" content="ToolNest offers free online PDF, Image & Text tools like Merge PDF, Image Compressor, PDF to JPG, JPG to PDF, QR Code Generator and Password Generator. All tools work in your browser with complete privacy.">
-<meta name="keywords" content="merge pdf, pdf to jpg, jpg to pdf, image compressor, online tools, free tools, pdf tools, image tools">
 
-<!-- Open Graph Meta Tags -->
-<meta property="og:title" content="ToolNest – Free Online PDF, Image & Text Tools">
-<meta property="og:description" content="Free browser-based PDF, image and text tools. Merge PDFs, compress images, convert files - all in your browser with complete privacy.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://toolnest.bhaihelp.in/">
-<meta property="og:image" content="https://toolnest.bhaihelp.in/logo-main.png">
+<meta name="description" content="ToolNest is a free all-in-one online tools platform to merge PDFs, convert PDF to JPG, JPG to PDF, compress images, generate QR codes and create strong passwords. Fast, secure and privacy-first.">
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ToolNest – Free Online Tools">
-<meta name="twitter:description" content="Free browser-based PDF, image and text tools with complete privacy.">
-<meta name="twitter:image" content="https://toolnest.bhaihelp.in/logo-main.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="logo-main.png">
-
-<!-- Stylesheets -->
+<link rel="icon" href="favicon.png" type="image/png">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 
-<!-- Structured Data / Schema -->
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- SEO Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "ToolNest",
   "url": "https://toolnest.bhaihelp.in/",
-  "description": "Free online PDF, image and text tools that work in your browser",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://toolnest.bhaihelp.in/?s={search_term_string}",
-    "query-input": "required name=search_term_string"
+  "description": "Free online tools for PDF, image, text and security utilities.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "ToolNest",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://toolnest.bhaihelp.in/logo-main.png"
+    }
   }
 }
 </script>
+
 </head>
+
 <body>
 
 <!-- COMMON HEADER -->
-<div id="header">
-  <!-- Fallback header if JS doesn't load -->
-  <header class="topbar">
-    <div class="container">
-      <a href="index.html" class="logo" aria-label="ToolNest Home">
-        <img src="logo-header.png" alt="ToolNest Logo" width="40" height="40">
-        <span>ToolNest</span>
-      </a>
-      <nav aria-label="Main navigation">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#tools">Tools</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-</div>
+<div id="header"></div>
 
 <!-- HERO SECTION -->
 <section class="hero">
-  <div class="container">
-    <img src="logo-main.png" alt="ToolNest - Free Online Tools" width="120" height="120">
-    <h1>Free Online PDF, Image & Text Tools</h1>
-    <p class="hero-subtitle">
-      Merge PDFs, convert images, compress files and generate secure
-      passwords – all tools run directly in your browser with complete privacy.
-    </p>
-    <a href="#tools" class="cta-button">Explore Tools <i class="fas fa-arrow-down"></i></a>
-  </div>
+  <img src="logo-main.png" alt="ToolNest Online Tools">
+  <h1>Free Online PDF, Image & Text Tools</h1>
+  <p>
+    ToolNest helps you work with PDFs, images and text files directly in your browser.
+    No installation, no uploads to servers – fast, secure and privacy-first tools.
+  </p>
+  <a href="#tools" class="cta">Explore All Tools</a>
 </section>
 
-<!-- AD PLACEMENT 1 -->
-<div class="container">
-  <div class="ad-box" role="complementary" aria-label="Advertisement">
-    <!-- Google AdSense code will go here -->
-    <span>Advertisement</span>
+<!-- AD SLOT -->
+<div class="ad-box">Advertisement</div>
+
+<!-- TOOLS GRID -->
+<div class="container" id="tools">
+  <div class="tools">
+
+    <div class="tool">
+      <i class="fas fa-file-pdf fa-3x"></i>
+      <h3>Merge PDF</h3>
+      <p>Combine multiple PDF files into one document instantly.</p>
+      <a href="merge-pdf.html"><button>Open Tool</button></a>
+    </div>
+
+    <div class="tool">
+      <i class="fas fa-image fa-3x"></i>
+      <h3>Image Compressor</h3>
+      <p>Reduce image size without noticeable quality loss.</p>
+      <a href="image-compressor.html"><button>Open Tool</button></a>
+    </div>
+
+    <div class="tool">
+      <i class="fas fa-file-image fa-3x"></i>
+      <h3>PDF to JPG</h3>
+      <p>Convert each page of a PDF into high-quality JPG images.</p>
+      <a href="pdf-to-jpg.html"><button>Open Tool</button></a>
+    </div>
+
+    <div class="tool">
+      <i class="fas fa-file-pdf fa-3x"></i>
+      <h3>JPG to PDF</h3>
+      <p>Create a single PDF file from multiple images.</p>
+      <a href="jpg-to-pdf.html"><button>Open Tool</button></a>
+    </div>
+
+    <div class="tool">
+      <i class="fas fa-qrcode fa-3x"></i>
+      <h3>QR Code Generator</h3>
+      <p>Generate QR codes for URLs, text and contact details.</p>
+      <a href="qr-code-generator.html"><button>Open Tool</button></a>
+    </div>
+
+    <div class="tool">
+      <i class="fas fa-key fa-3x"></i>
+      <h3>Password Generator</h3>
+      <p>Create strong and secure random passwords instantly.</p>
+      <a href="password-generator.html"><button>Open Tool</button></a>
+    </div>
+
   </div>
 </div>
 
-<!-- TOOLS GRID SECTION -->
-<section class="container" id="tools">
-  <h2 class="section-title">Popular Tools</h2>
-  <div class="tools-grid">
-    
-    <!-- Tool 1: Merge PDF -->
-    <article class="tool-card">
-      <div class="tool-icon">
-        <i class="fas fa-file-pdf"></i>
-      </div>
-      <h3>Merge PDF</h3>
-      <p>Combine multiple PDF files into a single document with ease.</p>
-      <a href="merge-pdf.html" class="tool-button">Open Tool <i class="fas fa-arrow-right"></i></a>
-    </article>
-
-    <!-- Tool 2: Image Compressor -->
-    <article class="tool-card">
-      <div class="tool-icon">
-        <i class="fas fa-compress"></i>
-      </div>
-      <h3>Image Compressor</h3>
-      <p>Reduce image file size without losing quality.</p>
-      <a href="image-compressor.html" class="tool-button">Open Tool <i class="fas fa-arrow-right"></i></a>
-    </article>
-
-    <!-- Tool 3: PDF to JPG -->
-    <article class="tool-card">
-      <div class="tool-icon">
-        <i class="fas fa-file-image"></i>
-      </div>
-      <h3>PDF to JPG</h3>
-      <p>Convert PDF pages into high-quality JPG images.</p>
-      <a href="pdf-to-jpg.html" class="tool-button">Open Tool <i class="fas fa-arrow-right"></i></a>
-    </article>
-
-    <!-- Tool 4: JPG to PDF -->
-    <article class="tool-card">
-      <div class="tool-icon">
-        <i class="fas fa-file-pdf"></i>
-      </div>
-      <h3>JPG to PDF</h3>
-      <p>Create professional PDFs from multiple images.</p>
-      <a href="jpg-to-pdf.html" class="tool-button">Open Tool <i class="fas fa-arrow-right"></i></a>
-    </article>
-
-    <!-- Tool 5: QR Code Generator -->
-    <article class="tool-card">
-      <div class="tool-icon">
-        <i class="fas fa-qrcode"></i>
-      </div>
-      <h3>QR Code Generator</h3>
-      <p>Generate custom QR codes for URLs, text, and more.</p>
-      <a href="qr-code-generator.html" class="tool-button">Open Tool <i class="fas fa-arrow-right"></i></a>
-    </article>
-
-    <!-- Tool 6: Password Generator -->
-    <article class="tool-card">
-      <div class="tool-icon">
-        <i class="fas fa-key"></i>
-      </div>
-      <h3>Password Generator</h3>
-      <p>Create strong, secure passwords with custom options.</p>
-      <a href="password-generator.html" class="tool-button">Open Tool <i class="fas fa-arrow-right"></i></a>
-    </article>
-
-  </div>
-</section>
+<!-- AD SLOT -->
+<div class="ad-box">Advertisement</div>
 
 <!-- SEO CONTENT SECTION -->
-<section class="container content-section">
-  <article class="seo-content">
-    <h2>Why Choose ToolNest for Your Online Tools?</h2>
-    
-    <p>
-      ToolNest is a comprehensive free online toolbox designed with privacy-first principles. 
-      All our tools operate entirely within your web browser, ensuring that your sensitive files 
-      and data never leave your device. This browser-based approach guarantees maximum security 
-      and privacy while delivering professional-grade results.
-    </p>
+<section class="container">
+  <h2>Why Choose ToolNest?</h2>
 
-    <h3>Privacy-Focused and Secure</h3>
-    <p>
-      Unlike cloud-based services that upload your files to remote servers, ToolNest processes 
-      everything locally on your device. Whether you're merging confidential PDF documents, 
-      compressing private photos, or generating secure passwords, your data remains completely 
-      private and secure throughout the entire process.
-    </p>
+  <p>
+    ToolNest is designed for students, professionals, freelancers and everyday users
+    who need quick and reliable online tools without installing software.
+  </p>
 
-    <h3>Fast and Efficient Tools</h3>
-    <p>
-      Our tools are optimized for speed and efficiency. Since all processing happens locally 
-      in your browser, you don't have to wait for uploads and downloads. This means faster 
-      results and no bandwidth limitations – perfect for handling large files or multiple 
-      conversions.
-    </p>
+  <p>
+    All tools run directly in your browser, ensuring privacy and speed.
+    Your files are never uploaded to any server.
+  </p>
 
-    <h3>Perfect for Everyone</h3>
-    <p>
-      Whether you're a student working on assignments, a freelancer managing client projects, 
-      an office professional handling documents, or simply someone who needs quick file 
-      conversions, ToolNest provides the perfect solution. Our intuitive interface makes 
-      complex tasks simple, saving you valuable time and effort.
-    </p>
-
-    <h3>Completely Free to Use</h3>
-    <p>
-      All tools on ToolNest are 100% free with no hidden costs, registration requirements, 
-      or usage limits. We believe essential digital tools should be accessible to everyone, 
-      which is why we've made our entire platform available at no charge.
-    </p>
-
-    <h3>Our Most Popular Tools</h3>
-    <p>
-      <strong>Merge PDF:</strong> Combine multiple PDF files into one organized document. 
-      Perfect for consolidating reports, invoices, or presentation materials.
-    </p>
-    <p>
-      <strong>Image Compressor:</strong> Reduce image file sizes by up to 80% while maintaining 
-      visual quality. Ideal for web optimization, email attachments, and storage management.
-    </p>
-    <p>
-      <strong>PDF to JPG Converter:</strong> Extract pages from PDF files as high-quality 
-      JPG images. Useful for sharing specific pages or creating image galleries from documents.
-    </p>
-    <p>
-      <strong>JPG to PDF Converter:</strong> Transform multiple images into professional 
-      PDF documents. Great for creating photo albums, portfolios, or scanned document archives.
-    </p>
-    <p>
-      <strong>QR Code Generator:</strong> Create custom QR codes for websites, contact 
-      information, Wi-Fi credentials, or any text. Perfect for marketing materials and 
-      business cards.
-    </p>
-    <p>
-      <strong>Password Generator:</strong> Generate cryptographically secure passwords 
-      with customizable length and character options. Essential for protecting your online 
-      accounts.
-    </p>
-
-    <h3>Cross-Platform Compatibility</h3>
-    <p>
-      ToolNest works seamlessly across all modern web browsers and operating systems. 
-      Whether you're using Windows, macOS, Linux, or mobile devices running iOS or Android, 
-      you'll have full access to all our tools with consistent performance and functionality.
-    </p>
-
-    <h3>No Installation Required</h3>
-    <p>
-      There's no software to download or install. Simply visit ToolNest in your web browser, 
-      select the tool you need, and start working immediately. This makes our platform perfect 
-      for quick tasks and one-time conversions without any commitment.
-    </p>
-
-  </article>
+  <h3>Popular Online Tools</h3>
+  <ul>
+    <li>Merge PDF files online</li>
+    <li>Convert PDF to JPG images</li>
+    <li>Create PDF from images</li>
+    <li>Compress images without quality loss</li>
+    <li>Generate QR codes</li>
+    <li>Create secure passwords</li>
+  </ul>
 </section>
 
-<!-- AD PLACEMENT 2 -->
-<div class="container">
-  <div class="ad-box" role="complementary" aria-label="Advertisement">
-    <!-- Google AdSense code will go here -->
-    <span>Advertisement</span>
-  </div>
-</div>
-
 <!-- COMMON FOOTER -->
-<div id="footer">
-  <!-- Footer will be loaded via include.js -->
-</div>
+<div id="footer"></div>
 
-<!-- JavaScript -->
-<script src="includes/include.js"></script>
+<!-- COMMON JS INCLUDES -->
+<script src="header-footer.js"></script>
+<script src="darkmode.js"></script>
 
 </body>
 </html>
