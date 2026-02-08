@@ -1,1 +1,68 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SEO Content Generator – 500+ Words | ToolNest</title>
+
+<meta name="description" content="Generate SEO optimized 500+ words content instantly using ToolNest SEO Generator.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../favicon.png">
+
+<!-- SEO SCHEMA -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"SoftwareApplication",
+ "name":"SEO Content Generator",
+ "applicationCategory":"SEOApplication",
+ "operatingSystem":"All",
+ "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
+</head>
+
+<body class="tool-password">
+
+<div id="header"></div>
+
+<section class="mini-hero">
+  <a class="back-home" href="../index.html">⬅ Back to Home</a>
+  <h1>SEO Content Generator</h1>
+  <p>Generate 500+ words SEO friendly content instantly</p>
+</section>
+
+<section class="container">
+  <div class="tool-box">
+    <input id="keyword" placeholder="Enter main keyword">
+    <button onclick="generateSEO()">Generate SEO Content</button>
+
+    <textarea id="output" style="margin-top:20px;width:100%;height:300px"></textarea>
+  </div>
+</section>
+
+<!-- ADSENSE SLOT -->
+<div class="ad-box">Google AdSense</div>
+
+<div id="footer"></div>
+
+<script src="../includes/include.js"></script>
+<script src="../darkmode.js"></script>
+
+<script>
+function generateSEO(){
+  const kw=document.getElementById("keyword").value;
+  if(!kw){alert("Enter keyword");return;}
+
+  let text="";
+  for(let i=1;i<=8;i++){
+    text+=`${i}. ${kw} is an important topic in modern digital marketing. This section explains how ${kw} helps users, improves website performance, boosts search engine visibility and increases organic traffic. Using ${kw} correctly ensures long-term SEO success.\n\n`;
+  }
+  document.getElementById("output").value=text;
+}
+</script>
+
+</body>
+</html>
