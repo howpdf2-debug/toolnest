@@ -1,24 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const htmlElement = document.documentElement;
-    const toggleBtn = document.querySelector('.dark-toggle');
+const html = document.documentElement;
 
-    // Load saved preference
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        htmlElement.classList.add('dark');
-        toggleBtn.textContent = '☀️';
-    } else {
-        toggleBtn.textContent = '🌙';
-    }
+const savedMode = localStorage.getItem("theme");
+if(savedMode === "dark"){
+  html.classList.add("dark");
+}
 
-    // Toggle function
-    toggleBtn.addEventListener('click', () => {
-        htmlElement.classList.toggle('dark');
-        if (htmlElement.classList.contains('dark')) {
-            localStorage.setItem('darkMode', 'enabled');
-            toggleBtn.textContent = '☀️';
-        } else {
-            localStorage.setItem('darkMode', 'disabled');
-            toggleBtn.textContent = '🌙';
-        }
-    });
+document.addEventListener("click", e => {
+  if(e.target.id === "darkToggle"){
+    html.classList.toggle("dark");
+    localStorage.setItem(
+      "theme",
+      html.classList.contains("dark") ? "dark" : "light"
+    );
+    e.target.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
+  }
 });
