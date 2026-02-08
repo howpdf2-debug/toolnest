@@ -1,18 +1,33 @@
-*{margin:0;padding:0;box-sizing:border-box}
+/* =====================================================
+   GLOBAL RESET & BASE
+===================================================== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
-  font-family:Inter,Arial,sans-serif;
+  font-family: Inter, Arial, sans-serif;
   background:#f8fafc;
   color:#0f172a;
   line-height:1.6;
+  transition:background .3s,color .3s;
 }
 
+a{text-decoration:none}
+
+/* =====================================================
+   DARK MODE
+===================================================== */
 html.dark body{
   background:#020617;
   color:#e5e7eb;
 }
 
-/* HEADER */
+/* =====================================================
+   HEADER
+===================================================== */
 .topbar{
   display:flex;
   justify-content:space-between;
@@ -21,19 +36,23 @@ html.dark body{
   background:#2563eb;
 }
 
+html.dark .topbar{
+  background:#020617;
+  border-bottom:1px solid #1e293b;
+}
+
 .logo{
   display:flex;
   align-items:center;
   gap:10px;
   color:#fff;
   font-weight:700;
-  text-decoration:none;
   font-size:20px;
 }
 
 .logo img{
-  height:34px;
   width:34px;
+  height:34px;
 }
 
 .nav-right{
@@ -44,109 +63,162 @@ html.dark body{
 
 .nav-right a{
   color:#fff;
-  text-decoration:none;
   font-weight:500;
 }
 
-
-html.dark .topbar{background:#020617}
-
-.logo{
-  color:#fff;
-  font-weight:800;
-  text-decoration:none;
-  font-size:20px;
-}
-
-.nav{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  position:relative;
-}
-
-.nav a, .tools-btn{
-  color:#fff;
-  background:none;
-  border:none;
-  cursor:pointer;
-  font-weight:600;
-  text-decoration:none;
-}
-
-.tools-dropdown{
-  display:none;
-  position:absolute;
-  top:40px;
-  background:#fff;
-  border-radius:10px;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
-}
-
-.tools-dropdown a{
-  display:block;
-  padding:10px 16px;
-  color:#0f172a;
-}
-
-.tools-dropdown.show{display:block}
-
 #darkToggle{
-  background:rgba(255,255,255,.2);
+  background:rgba(255,255,255,.15);
   border:none;
-  padding:6px 10px;
-  border-radius:8px;
   color:#fff;
+  padding:6px 10px;
+  border-radius:6px;
+  cursor:pointer;
 }
 
-/* HERO */
+/* =====================================================
+   HERO – HOMEPAGE
+===================================================== */
 .hero{
-  padding:80px 20px;
-  text-align:center;
   background:linear-gradient(135deg,#2563eb,#1e40af);
   color:#fff;
+  padding:80px 20px;
+  text-align:center;
 }
 
+html.dark .hero{
+  background:#020617;
+}
+
+.hero h1{
+  font-size:42px;
+  margin-bottom:12px;
+}
+
+.hero p{
+  max-width:720px;
+  margin:0 auto 25px;
+  font-size:18px;
+}
+
+.cta{
+  background:#fff;
+  color:#2563eb;
+  padding:14px 28px;
+  border-radius:12px;
+  font-weight:600;
+}
+
+/* =====================================================
+   MINI HERO – TOOLS
+===================================================== */
 .mini-hero{
   padding:50px 20px;
   color:#fff;
   text-align:center;
 }
 
-/* CONTAINER */
+.hero-top{
+  display:flex;
+  justify-content:flex-end;
+  max-width:1100px;
+  margin:0 auto 12px;
+}
+
+.back-home{
+  color:#fff;
+  font-weight:600;
+}
+
+/* =====================================================
+   CONTAINER
+===================================================== */
 .container{
   max-width:1100px;
   margin:auto;
-  padding:30px 20px;
+  padding:40px 20px;
 }
 
-/* TOOLS GRID */
+/* =====================================================
+   TOOLS GRID – HOMEPAGE
+===================================================== */
 .tools{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:20px;
+  gap:24px;
 }
 
 .tool{
   background:#fff;
-  padding:26px;
   border-radius:18px;
+  padding:28px;
   text-align:center;
-  font-weight:700;
-  text-decoration:none;
-  color:#0f172a;
   box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:.2s;
 }
 
-/* TOOL BOX */
+.tool:hover{
+  transform:translateY(-5px);
+}
+
+html.dark .tool{
+  background:#020617;
+  border:1px solid #1e293b;
+}
+
+/* =====================================================
+   TOOL INNER BOX
+===================================================== */
 .tool-box{
   background:#fff;
-  padding:30px;
+  padding:32px;
   border-radius:18px;
   box-shadow:0 10px 25px rgba(0,0,0,.08);
+  text-align:center;
 }
 
-/* FOOTER */
+html.dark .tool-box{
+  background:#020617;
+  border:1px solid #1e293b;
+}
+
+input,select{
+  width:100%;
+  padding:12px;
+  margin:12px 0;
+  border-radius:8px;
+  border:1px solid #cbd5e1;
+}
+
+html.dark input,html.dark select{
+  background:#020617;
+  color:#fff;
+  border-color:#1e293b;
+}
+
+button{
+  padding:12px 22px;
+  border:none;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+  color:#fff;
+}
+
+/* =====================================================
+   ADS
+===================================================== */
+.ad-box{
+  margin:30px auto;
+  padding:20px;
+  max-width:1100px;
+  border:2px dashed #cbd5e1;
+  text-align:center;
+  color:#64748b;
+}
+
+/* =====================================================
+   FOOTER (SEO FRIENDLY)
+===================================================== */
 footer{
   background:#020617;
   color:#e5e7eb;
@@ -154,10 +226,63 @@ footer{
   text-align:center;
 }
 
-footer a{color:#93c5fd;text-decoration:none}
+footer p{
+  max-width:800px;
+  margin:0 auto 12px;
+  font-size:14px;
+  color:#cbd5e1;
+}
 
-/* COLORS */
-body.tool-merge .mini-hero, body.tool-merge button{background:#dc2626}
-body.tool-image .mini-hero, body.tool-image button{background:#16a34a}
-body.tool-pdfjpg .mini-hero, body.tool-pdfjpg button{background:#7c3aed}
-body.tool-seo .mini-hero, body.tool-seo button{background:#2563eb}
+footer a{
+  color:#93c5fd;
+  margin:0 8px;
+  font-size:14px;
+}
+
+/* =====================================================
+   🎨 TOOL COLORS (IMPORTANT)
+===================================================== */
+
+/* MERGE PDF – RED */
+body.tool-merge .mini-hero,
+body.tool-merge button{
+  background:#dc2626;
+}
+
+/* IMAGE COMPRESS – GREEN */
+body.tool-image .mini-hero,
+body.tool-image button{
+  background:#16a34a;
+}
+
+/* PDF TO JPG – PURPLE */
+body.tool-pdfjpg .mini-hero,
+body.tool-pdfjpg button{
+  background:#7c3aed;
+}
+
+/* JPG TO PDF – ORANGE */
+body.tool-jpgpdf .mini-hero,
+body.tool-jpgpdf button{
+  background:#ea580c;
+}
+
+/* QR – TEAL */
+body.tool-qr .mini-hero,
+body.tool-qr button{
+  background:#0d9488;
+}
+
+/* PASSWORD – PINK */
+body.tool-password .mini-hero,
+body.tool-password button{
+  background:#db2777;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media(max-width:768px){
+  .hero h1{font-size:30px}
+  .nav-right a{display:none}
+}
