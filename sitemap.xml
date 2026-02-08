@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://toolnest.bhaihelp.in/</loc>
-  </url>
-  <url>
-    <loc>https://toolnest.bhaihelp.in/#tools</loc>
-  </url>
-  <url>
-    <loc>https://toolnest.bhaihelp.in/#blog</loc>
-  </url>
-  <url>
-    <loc>https://toolnest.bhaihelp.in/#privacy</loc>
-  </url>
-  <url>
-    <loc>https://toolnest.bhaihelp.in/#terms</loc>
-  </url>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+
+<url>
+  <loc>https://toolnest.bhaihelp.in/</loc>
+</url>
+
+<url>
+  <loc>https://toolnest.bhaihelp.in/tools/merge-pdf.html</loc>
+</url>
+
+<url>
+  <loc>https://toolnest.bhaihelp.in/tools/image-compress.html</loc>
+</url>
+
+<url>
+  <loc>https://toolnest.bhaihelp.in/tools/pdf-to-jpg.html</loc>
+</url>
+
+<url>
+  <loc>https://toolnest.bhaihelp.in/tools/seo-generator.html</loc>
+</url>
+
 </urlset>
