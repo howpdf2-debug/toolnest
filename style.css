@@ -21,6 +21,34 @@ html.dark body{
   background:#2563eb;
 }
 
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  font-size:20px;
+}
+
+.logo img{
+  height:34px;
+  width:34px;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.nav-right a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+}
+
+
 html.dark .topbar{background:#020617}
 
 .logo{
