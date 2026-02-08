@@ -1,178 +1,362 @@
-/* style.css */
-/* Mobile-first responsive design */
-:root {
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    --primary: #007bff;
-    --card-bg: #f8f9fa;
+/* =========================
+   GLOBAL RESET
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-.dark {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --primary: #0d6efd;
-    --card-bg: #1e1e1e;
+html,body{
+  width:100%;
+  overflow-x:hidden;
 }
 
-body {
-    background: var(--bg-color);
-    color: var(--text-color);
+body{
+  font-family:Inter,system-ui,Arial,sans-serif;
+  background:#f8fafc;
+  color:#0f172a;
+  line-height:1.65;
+  transition:background .3s,color .3s;
 }
 
-.topbar, footer {
-    background: var(--card-bg);
-    border-color: #444; /* dark mode border */
+/* =========================
+   DARK MODE
+========================= */
+body.dark{
+  background:#020617;
+  color:#e5e7eb;
 }
 
-.tool, .hero, .seo-text {
-    background: var(--card-bg);
+/* =========================
+   HEADER / TOPBAR
+========================= */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 22px;
+  background:#2563eb;
+  position:sticky;
+  top:0;
+  z-index:999;
 }
 
-.dark-toggle {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
+body.dark .topbar{
+  background:#020617;
+  border-bottom:1px solid #1e293b;
 }
 
-/* Add more dark adjustments as needed, e.g. */
-.dark .tool h3, .dark a {
-    color: var(--text-color);
+.topbar .logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:700;
+  font-size:18px;
 }
 
-html.dark {
-    --primary-color: #0d6efd;
-    --text-color: #ddd;
-    --bg-color: #1e1e1e;
-    --card-bg: #2c2c2c;
-    --border-color: #444;
+.topbar img{
+  height:34px;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    line-height: 1.6;
+.topbar nav a{
+  color:#fff;
+  margin-left:16px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
 }
 
-header {
-    background-color: var(--bg-color);
-    border-bottom: 1px solid var(--border-color);
-    padding: 1rem;
-    text-align: center;
+.topbar nav a:hover{
+  text-decoration:underline;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    text-decoration: none;
+/* 🌙 DARK TOGGLE */
+#darkToggle{
+  font-size:18px;
+  background:rgba(255,255,255,.2);
+  border:none;
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+body.dark #darkToggle{
+  background:#1e293b;
 }
 
-nav a {
-    color: var(--text-color);
-    text-decoration: none;
+/* =========================
+   HERO (INDEX)
+========================= */
+.hero{
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+  color:#fff;
+  padding:80px 20px;
+  text-align:center;
 }
 
-.dark-toggle {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
+body.dark .hero{
+  background:linear-gradient(135deg,#020617,#020617);
 }
 
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
+.hero img{
+  max-width:190px;
+  margin-bottom:20px;
 }
 
-.hero {
-    text-align: center;
-    padding: 2rem 0;
+.hero h1{
+  font-size:40px;
+  margin-bottom:12px;
 }
 
-.tools-section {
-    padding: 2rem 0;
+.hero p{
+  max-width:760px;
+  margin:0 auto 28px;
+  font-size:18px;
+  opacity:.95;
 }
 
-.tools-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+.hero .cta{
+  display:inline-block;
+  background:#fff;
+  color:#2563eb;
+  padding:14px 28px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:700;
 }
 
-.tool-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 1rem;
-    text-align: center;
-    text-decoration: none;
-    color: var(--text-color);
-    border-radius: 5px;
+/* =========================
+   MINI HERO (TOOLS)
+========================= */
+.mini-hero{
+  position:relative;
+  background:linear-gradient(135deg,#e0e7ff,#f8fafc);
+  padding:60px 20px;
+  text-align:center;
 }
 
-.tool-page {
-    text-align: center;
-    padding: 2rem 1rem;
+body.dark .mini-hero{
+  background:#020617;
 }
 
-.tool-page input[type="file"] {
-    margin: 1rem 0;
+.mini-hero h1{
+  font-size:34px;
+  margin-bottom:8px;
 }
 
-.tool-page button {
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 5px;
+.mini-hero p{
+  max-width:700px;
+  margin:auto;
+  font-size:16px;
 }
 
-.back-home {
-    display: inline-block;
-    margin-top: 2rem;
-    color: var(--primary-color);
-    text-decoration: none;
+/* BACK HOME (RIGHT) */
+.hero-top{
+  position:absolute;
+  right:20px;
+  top:20px;
 }
 
-footer {
-    background-color: var(--bg-color);
-    border-top: 1px solid var(--border-color);
-    padding: 1rem;
-    text-align: center;
-    font-size: 0.9rem;
+.back-home{
+  text-decoration:none;
+  font-weight:600;
+  color:#2563eb;
 }
 
-footer a {
-    color: var(--text-color);
-    margin: 0 0.5rem;
+body.dark .back-home{
+  color:#93c5fd;
 }
 
-/* Desktop media query */
-@media (min-width: 768px) {
-    .tools-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-    }
-    
-    nav ul {
-        gap: 2rem;
-    }
+/* =========================
+   ADSENSE BOX
+========================= */
+.ad-box{
+  margin:35px auto;
+  padding:22px;
+  max-width:1100px;
+  border:2px dashed #cbd5e1;
+  text-align:center;
+  color:#64748b;
+  font-size:14px;
+}
+
+body.dark .ad-box{
+  border-color:#1e293b;
+  color:#94a3b8;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+/* =========================
+   TOOLS GRID (INDEX)
+========================= */
+.tools{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:26px;
+}
+
+.tool{
+  background:#fff;
+  border-radius:18px;
+  padding:28px;
+  text-align:center;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  transition:transform .2s,box-shadow .2s;
+}
+
+.tool:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 40px rgba(0,0,0,.12);
+}
+
+body.dark .tool{
+  background:#020617;
+  border:1px solid #1e293b;
+}
+
+.tool i{
+  font-size:36px;
+  margin-bottom:14px;
+  padding:18px;
+  border-radius:14px;
+  color:#fff;
+}
+
+.tool h3{
+  margin:12px 0;
+}
+
+.tool p{
+  font-size:14px;
+  color:#475569;
+}
+
+body.dark .tool p{
+  color:#94a3b8;
+}
+
+.tool button{
+  margin-top:14px;
+  padding:12px 18px;
+  border:none;
+  border-radius:10px;
+  color:#fff;
+  cursor:pointer;
+  font-weight:700;
+}
+
+/* 🎨 TOOL COLORS */
+.tool-pdf i,.tool-pdf button{background:#ef4444}
+.tool-image i,.tool-image button{background:#22c55e}
+.tool-qr i,.tool-qr button{background:#a855f7}
+.tool-password i,.tool-password button{background:#f59e0b}
+.tool-text i,.tool-text button{background:#0ea5e9}
+
+/* =========================
+   TOOL PAGE BOX
+========================= */
+.tool-box{
+  background:#fff;
+  padding:34px;
+  border-radius:20px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+body.dark .tool-box{
+  background:#020617;
+  border:1px solid #1e293b;
+}
+
+/* =========================
+   INPUTS & BUTTONS
+========================= */
+input,textarea,select{
+  width:100%;
+  padding:14px;
+  margin:12px 0;
+  border-radius:10px;
+  border:1px solid #cbd5e1;
+  font-size:15px;
+}
+
+body.dark input,
+body.dark textarea{
+  background:#020617;
+  color:#e5e7eb;
+  border-color:#1e293b;
+}
+
+button{
+  padding:14px 22px;
+  border:none;
+  border-radius:10px;
+  background:#2563eb;
+  color:#fff;
+  cursor:pointer;
+  font-weight:700;
+}
+
+/* =========================
+   SEO TEXT
+========================= */
+.seo-text{
+  font-size:15px;
+  color:#334155;
+}
+
+body.dark .seo-text{
+  color:#cbd5f5;
+}
+
+.seo-text h2{
+  margin-bottom:14px;
+}
+
+/* =========================
+   FOOTER (SEO STRONG)
+========================= */
+footer{
+  background:#020617;
+  color:#e5e7eb;
+  text-align:center;
+  padding:45px 20px;
+  margin-top:60px;
+}
+
+footer p{
+  max-width:900px;
+  margin:10px auto;
+  font-size:14px;
+}
+
+footer a{
+  color:#93c5fd;
+  text-decoration:none;
+  margin:0 6px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:768px){
+  .hero h1{font-size:30px}
+  .mini-hero h1{font-size:26px}
+  .topbar nav{display:none;}
+  .hero-top{right:12px;top:12px;}
 }
