@@ -283,6 +283,12 @@ body.tool-seo button{
   background:#2563eb;
 }
 
+/* WORD COUNTER – INDIGO */
+body.tool-word .mini-hero,
+body.tool-word button{
+  background:#4f46e5;
+}
+
 
 /* =====================================================
    DROPDOWN
