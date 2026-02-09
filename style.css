@@ -279,6 +279,14 @@ body.tool-seo button{background:#2563eb}
 body.tool-word .mini-hero,
 body.tool-word button{background:#4f46e5}
 
+/* YOUTUBE DOWNLOADER – RED GRADIENT */
+body.tool-youtube .mini-hero,
+body.tool-youtube button{
+  background:linear-gradient(135deg,#ff0000,#b91c1c);
+}
+
+
+
 /* =====================================================
    DROPDOWN (JS BASED – SAFE)
 ===================================================== */
