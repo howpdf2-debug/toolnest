@@ -1,1 +1,13 @@
 
+<!-- robots.txt -->
+User-agent: *
+Allow: /
+Sitemap: https://toolnest.bhaihelp.in/sitemap.xml
+
+<!-- Add to style.css for better footer contrast -->
+footer a {
+  color: #60a5fa;  /* Changed from #93c5fd for better contrast */
+}
+
+<!-- Add to head for mobile optimization -->
+<meta name="theme-color" content="#2563eb">
