@@ -279,6 +279,12 @@ body.tool-seo button{background:#2563eb}
 body.tool-word .mini-hero,
 body.tool-word button{background:#4f46e5}
 
+body.tool-resume .mini-hero,
+body.tool-resume button{
+  background:#4338ca;
+}
+
+
 /* YOUTUBE DOWNLOADER – RED GRADIENT */
 body.tool-youtube .mini-hero,
 body.tool-youtube button{
