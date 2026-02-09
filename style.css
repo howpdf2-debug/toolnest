@@ -291,7 +291,7 @@ body.tool-youtube button{
   background:linear-gradient(135deg,#ff0000,#b91c1c);
 }
 
-/* INVOICE GENERATOR – TEAL */
+/* INVOICE PDF GENERATOR – TEAL */
 body.tool-invoice .mini-hero,
 body.tool-invoice button{
   background:#0f766e;
