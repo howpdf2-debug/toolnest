@@ -1,31 +1,23 @@
 <header class="topbar">
-
-  <!-- LOGO -->
-  <a href="/index.html" class="logo">
-    <img src="/favicon.png" alt="ToolNest Logo">
+  <a href="index.html" class="logo">
+    <img src="favicon.png" alt="ToolNest logo">
     <span>ToolNest</span>
   </a>
 
-  <!-- NAV -->
-  <nav class="nav-right">
+  <div class="nav-right">
+    <a href="index.html">Home</a>
 
-    <a href="/index.html">Home</a>
-
-    <!-- TOOLS DROPDOWN -->
     <div class="dropdown">
-      <button class="dropbtn">
-        Tools ▾
-      </button>
-
-      <div class="dropdown-content">
-        <a href="/tools/merge-pdf.html">📕 Merge PDF</a>
-        <a href="/tools/image-compress.html">🖼 Image Compressor</a>
-        <a href="/tools/pdf-to-jpg.html">📄 PDF to JPG</a>
-        <a href="/tools/seo-generator.html">🧠 SEO Generator</a>
+      <button class="dropbtn" onclick="toggleTools()">Tools ▾</button>
+      <div class="dropdown-content" id="toolsMenu">
+        <a href="tools/merge-pdf.html">Merge PDF</a>
+        <a href="tools/image-compress.html">Image Compressor</a>
+        <a href="tools/pdf-to-jpg.html">PDF to JPG</a>
+        <a href="tools/word-counter.html">Word Counter</a>
+        <a href="tools/seo-generator.html">SEO Generator</a>
       </div>
     </div>
 
     <button id="darkToggle">🌙</button>
-  </nav>
-
+  </div>
 </header>
