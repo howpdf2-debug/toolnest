@@ -277,6 +277,13 @@ body.tool-qr button{background:#0d9488}
 body.tool-password .mini-hero,
 body.tool-password button{background:#db2777}
 
+/* SEO GENERATOR – BLUE */
+body.tool-seo .mini-hero,
+body.tool-seo button{
+  background:#2563eb;
+}
+
+
 /* =====================================================
    DROPDOWN
 ===================================================== */
