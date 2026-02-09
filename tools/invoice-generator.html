@@ -4,13 +4,12 @@
 <meta charset="UTF-8">
 <title>AI Invoice Generator & PDF – ToolNest</title>
 
-<meta name="description" content="Create professional invoices with quantity, price, tax and download as PDF instantly. Free AI Invoice Generator by ToolNest.">
+<meta name="description" content="Create professional GST or non-GST invoices and download PDF instantly. Free Invoice Generator by ToolNest.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="icon" href="../favicon.png">
 <link rel="stylesheet" href="../style.css">
 
-<!-- PDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
@@ -23,7 +22,7 @@
     <a href="../index.html" class="back-home">⬅ Back to Home</a>
   </div>
   <h1>AI Invoice Generator</h1>
-  <p>Create professional invoices & download PDF instantly</p>
+  <p>GST & Non-GST Invoice with PDF Download</p>
 </section>
 
 <section class="container">
@@ -32,6 +31,7 @@
 <h3>Business Details</h3>
 <input id="bizName" placeholder="Business Name">
 <input id="bizEmail" placeholder="Business Email">
+<input id="gstNumber" placeholder="GST Number (Optional)">
 
 <h3>Client Details</h3>
 <input id="clientName" placeholder="Client Name">
@@ -43,7 +43,7 @@
 
 <h3>Invoice Items</h3>
 
-<table style="width:100%;margin-bottom:12px" id="itemsTable">
+<table id="itemsTable" style="width:100%">
 <tr>
 <th>Item</th>
 <th>Qty</th>
@@ -57,8 +57,8 @@
 
 <br><br>
 
-<label>Tax (%)</label>
-<input type="number" id="tax" value="0">
+<label>GST % (only if GST applicable)</label>
+<input type="number" id="gstPercent" value="0">
 
 <button onclick="generateInvoice()">Generate Invoice</button>
 <button onclick="downloadPDF()">Download PDF</button>
@@ -66,13 +66,14 @@
 </div>
 </section>
 
-<!-- INVOICE PREVIEW -->
+<!-- PREVIEW -->
 <section class="container">
 <div class="tool-box" id="invoicePreview" style="display:none">
 
 <h2>Invoice</h2>
 <p><strong id="pBiz"></strong></p>
 <p id="pBizEmail"></p>
+<p id="pGST" style="display:none"></p>
 
 <hr>
 
@@ -84,11 +85,11 @@
 
 <table style="width:100%;margin-top:20px;border-collapse:collapse">
 <thead>
-<tr>
-<th style="border-bottom:1px solid #ccc">Item</th>
-<th style="border-bottom:1px solid #ccc">Qty</th>
-<th style="border-bottom:1px solid #ccc">Price</th>
-<th style="border-bottom:1px solid #ccc">Total</th>
+<tr id="tableHead">
+<th>Item</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Total</th>
 </tr>
 </thead>
 <tbody id="previewItems"></tbody>
@@ -97,7 +98,7 @@
 <hr>
 
 <p>Subtotal: ₹ <span id="subTotal"></span></p>
-<p>Tax: ₹ <span id="taxAmount"></span></p>
+<p id="gstRow" style="display:none">GST: ₹ <span id="gstAmount"></span></p>
 <h3>Grand Total: ₹ <span id="grandTotal"></span></h3>
 
 </div>
@@ -120,20 +121,18 @@ function addItem(){
     <td class="lineTotal">0</td>
     <td><button onclick="this.parentElement.parentElement.remove();calc()">❌</button></td>
   `;
-  document.getElementById("itemsTable").appendChild(row);
+  itemsTable.appendChild(row);
 }
-
 addItem();
 
 function calc(){
   let subtotal=0;
-  document.querySelectorAll("#itemsTable tr").forEach((row,i)=>{
-    if(i===0) return;
-    const qty=row.children[1].children[0].value;
-    const price=row.children[2].children[0].value;
-    const total=qty*price;
-    row.querySelector(".lineTotal").innerText=total.toFixed(2);
-    subtotal+=total;
+  [...itemsTable.rows].slice(1).forEach(r=>{
+    const q=r.cells[1].children[0].value;
+    const p=r.cells[2].children[0].value;
+    const t=q*p;
+    r.querySelector(".lineTotal").innerText=t.toFixed(2);
+    subtotal+=t;
   });
   return subtotal;
 }
@@ -148,30 +147,47 @@ function generateInvoice(){
   pInvNo.innerText=invoiceNo.value;
   pInvDate.innerText=invoiceDate.value;
 
+  // GST logic
+  if(gstNumber.value.trim()!==""){
+    pGST.style.display="block";
+    pGST.innerText="GST No: "+gstNumber.value;
+    gstRow.style.display="block";
+  }else{
+    pGST.style.display="none";
+    gstRow.style.display="none";
+  }
+
   previewItems.innerHTML="";
   let subtotal=calc();
 
-  document.querySelectorAll("#itemsTable tr").forEach((row,i)=>{
-    if(i===0) return;
+  [...itemsTable.rows].slice(1).forEach(r=>{
     previewItems.innerHTML+=`
       <tr>
-        <td>${row.children[0].children[0].value}</td>
-        <td>${row.children[1].children[0].value}</td>
-        <td>${row.children[2].children[0].value}</td>
-        <td>${row.querySelector(".lineTotal").innerText}</td>
+        <td>${r.cells[0].children[0].value}</td>
+        <td>${r.cells[1].children[0].value}</td>
+        <td>${r.cells[2].children[0].value}</td>
+        <td>${r.querySelector(".lineTotal").innerText}</td>
       </tr>`;
   });
 
-  const taxPercent=tax.value||0;
-  const taxVal=subtotal*taxPercent/100;
+  const gstP=Number(gstPercent.value)||0;
+  const gstVal=gstNumber.value?subtotal*gstP/100:0;
 
   subTotal.innerText=subtotal.toFixed(2);
-  taxAmount.innerText=taxVal.toFixed(2);
-  grandTotal.innerText=(subtotal+taxVal).toFixed(2);
+  gstAmount.innerText=gstVal.toFixed(2);
+  grandTotal.innerText=(subtotal+gstVal).toFixed(2);
 }
 
 function downloadPDF(){
-  html2pdf().from(invoicePreview).save("toolnest-invoice.pdf");
+  invoicePreview.style.display="block";
+  setTimeout(()=>{
+    html2pdf().set({
+      margin:10,
+      filename:'toolnest-invoice.pdf',
+      html2canvas:{scale:2},
+      jsPDF:{unit:'mm',format:'a4'}
+    }).from(invoicePreview).save();
+  },300);
 }
 </script>
 
