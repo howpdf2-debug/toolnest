@@ -178,18 +178,47 @@ function generateInvoice(){
   grandTotal.innerText=(subtotal+gstVal).toFixed(2);
 }
 
+
 function downloadPDF(){
-  invoicePreview.style.display="block";
-  setTimeout(()=>{
-    html2pdf().set({
-      margin:10,
-      filename:'toolnest-invoice.pdf',
-      html2canvas:{scale:2},
-      jsPDF:{unit:'mm',format:'a4'}
-    }).from(invoicePreview).save();
-  },300);
+
+  const source = document.getElementById("invoicePreview");
+
+  // safety: ensure visible
+  source.style.display = "block";
+
+  // CLONE for PDF (important fix)
+  const clone = source.cloneNode(true);
+  clone.style.position = "fixed";
+  clone.style.left = "-9999px";
+  clone.style.top = "0";
+  clone.style.display = "block";
+  document.body.appendChild(clone);
+
+  requestAnimationFrame(() => {
+    html2pdf()
+      .set({
+        margin: 10,
+        filename: 'toolnest-invoice.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true
+        },
+        jsPDF: {
+          unit: 'mm',
+          format: 'a4',
+          orientation: 'portrait'
+        }
+      })
+      .from(clone)
+      .save()
+      .then(() => {
+        document.body.removeChild(clone);
+      });
+  });
 }
 </script>
+
 
 </body>
 </html>
