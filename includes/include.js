@@ -8,7 +8,16 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => document.getElementById("footer").innerHTML = data);
 });
 
+
+
 function toggleTools(){
   document.getElementById("toolsMenu").classList.toggle("show");
 }
+
+document.addEventListener("click", function(e){
+  const dropdown = document.querySelector(".dropdown");
+  if(dropdown && !dropdown.contains(e.target)){
+    document.getElementById("toolsMenu")?.classList.remove("show");
+  }
+});
 
