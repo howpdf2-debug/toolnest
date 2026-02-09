@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AI Invoice Generator – Create Professional Invoices | ToolNest</title>
+<title>AI Invoice Generator & PDF Creator – ToolNest</title>
 
-<meta name="description" content="Create professional AI-powered invoices instantly. Smart calculations, tax, totals and download invoice free with ToolNest.">
+<meta name="description" content="Create professional invoices with AI and download as PDF instantly. Free online invoice generator by ToolNest.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="icon" href="../favicon.png">
 <link rel="stylesheet" href="../style.css">
 
-<!-- SEO SCHEMA -->
+<!-- PDF Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<!-- SEO Schema -->
 <script type="application/ld+json">
 {
  "@context":"https://schema.org",
@@ -32,51 +35,66 @@
     <a href="../index.html" class="back-home">⬅ Back to Home</a>
   </div>
   <h1>AI Invoice Generator</h1>
-  <p>Create smart, professional invoices instantly</p>
+  <p>Create professional invoices & export PDF instantly</p>
 </section>
 
 <section class="container">
-
 <div class="tool-box">
 
-<h3>Business Details</h3>
-<input id="business" placeholder="Business / Company Name">
-<input id="email" placeholder="Email">
+  <h3>Business Details</h3>
+  <input id="bizName" placeholder="Business Name">
+  <input id="bizEmail" placeholder="Business Email">
 
-<h3>Client Details</h3>
-<input id="client" placeholder="Client Name">
+  <h3>Client Details</h3>
+  <input id="clientName" placeholder="Client Name">
+  <input id="clientEmail" placeholder="Client Email">
 
-<h3>Invoice Details</h3>
-<input id="item" placeholder="Service / Product">
-<input id="price" type="number" placeholder="Price">
-<input id="qty" type="number" placeholder="Quantity">
-<input id="tax" type="number" placeholder="Tax (%)">
+  <h3>Invoice Info</h3>
+  <input id="invoiceNo" placeholder="Invoice Number">
+  <input type="date" id="invoiceDate">
 
-<button onclick="generateInvoice()">Generate Invoice</button>
-<button onclick="downloadInvoice()">Download Invoice (.txt)</button>
+  <h3>Item</h3>
+  <input id="itemName" placeholder="Service / Product">
+  <input type="number" id="itemPrice" placeholder="Amount">
+
+  <button onclick="generateInvoice()">Generate Invoice</button>
+  <button onclick="downloadPDF()">Download PDF</button>
 
 </div>
 </section>
 
-<div class="ad-box">
-  <!-- AdSense Invoice Tool -->
-</div>
-
+<!-- Invoice Preview -->
 <section class="container">
-<h2>Invoice Preview</h2>
+<div class="tool-box" id="invoicePreview" style="display:none">
 
-<div class="tool-box" id="invoicePreview">
-  <p style="color:#64748b">Invoice preview will appear here…</p>
+  <h2>Invoice</h2>
+  <p><strong id="pBiz"></strong></p>
+  <p id="pBizEmail"></p>
+  <hr>
+
+  <p><strong>Billed To:</strong> <span id="pClient"></span></p>
+  <p id="pClientEmail"></p>
+
+  <p>Invoice #: <span id="pInvNo"></span></p>
+  <p>Date: <span id="pInvDate"></span></p>
+
+  <hr>
+
+  <p><strong>Item:</strong> <span id="pItem"></span></p>
+  <p><strong>Total:</strong> ₹ <span id="pPrice"></span></p>
+
 </div>
 </section>
 
-<section class="container">
+<div class="ad-box">Advertisement</div>
+
+<section class="container seo-text">
 <h2>About AI Invoice Generator</h2>
 <p>
-ToolNest AI Invoice Generator helps freelancers, small businesses and
-professionals create clean, professional invoices instantly. This tool
-automatically calculates totals, tax and formats invoices in a business-ready
-layout without any signup.
+ToolNest AI Invoice Generator helps freelancers, startups and businesses
+create clean, professional invoices online. Generate invoices instantly
+and export them as PDF without registration. Perfect for GST billing,
+service invoices and business documentation.
 </p>
 </section>
 
@@ -87,54 +105,22 @@ layout without any signup.
 
 <script>
 function generateInvoice(){
-  const business = document.getElementById("business").value;
-  const email = document.getElementById("email").value;
-  const client = document.getElementById("client").value;
-  const item = document.getElementById("item").value;
-  const price = Number(document.getElementById("price").value);
-  const qty = Number(document.getElementById("qty").value);
-  const tax = Number(document.getElementById("tax").value || 0);
+  document.getElementById("invoicePreview").style.display="block";
 
-  if(!business || !client || !item){
-    alert("Fill required fields");
-    return;
-  }
-
-  const subtotal = price * qty;
-  const taxAmount = subtotal * tax / 100;
-  const total = subtotal + taxAmount;
-
-  const invoiceHTML = `
-    <h2>${business}</h2>
-    <p>${email}</p>
-    <hr>
-
-    <p><strong>Billed To:</strong> ${client}</p>
-
-    <table style="width:100%;margin-top:12px">
-      <tr><td>${item}</td><td>${qty} × ${price}</td></tr>
-    </table>
-
-    <hr>
-    <p>Subtotal: ${subtotal.toFixed(2)}</p>
-    <p>Tax (${tax}%): ${taxAmount.toFixed(2)}</p>
-    <h3>Total: ${total.toFixed(2)}</h3>
-  `;
-
-  document.getElementById("invoicePreview").innerHTML = invoiceHTML;
+  pBiz.innerText=bizName.value;
+  pBizEmail.innerText=bizEmail.value;
+  pClient.innerText=clientName.value;
+  pClientEmail.innerText=clientEmail.value;
+  pInvNo.innerText=invoiceNo.value;
+  pInvDate.innerText=invoiceDate.value;
+  pItem.innerText=itemName.value;
+  pPrice.innerText=itemPrice.value;
 }
 
-function downloadInvoice(){
-  const text = document.getElementById("invoicePreview").innerText;
-  if(!text){
-    alert("Generate invoice first");
-    return;
-  }
-  const blob = new Blob([text], {type:"text/plain"});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "toolnest-invoice.txt";
-  a.click();
+function downloadPDF(){
+  html2pdf()
+    .from(document.getElementById("invoicePreview"))
+    .save("toolnest-invoice.pdf");
 }
 </script>
 
