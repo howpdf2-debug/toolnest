@@ -1,5 +1,32 @@
 /* =====================================================
-   GLOBAL RESET & BASE
+   🎨 GLOBAL COLOR SYSTEM
+===================================================== */
+:root{
+  --bg-main:#f8fafc;
+  --bg-card:#ffffff;
+
+  --text-main:#0f172a;
+  --text-muted:#475569;
+
+  --blue:#2563eb;
+  --blue-dark:#1e40af;
+
+  --border:#e2e8f0;
+}
+
+/* DARK MODE */
+html.dark{
+  --bg-main:#020617;
+  --bg-card:#020617;
+
+  --text-main:#e5e7eb;
+  --text-muted:#94a3b8;
+
+  --border:#1e293b;
+}
+
+/* =====================================================
+   RESET & BASE
 ===================================================== */
 *{
   margin:0;
@@ -8,22 +35,14 @@
 }
 
 body{
-  font-family: Inter, Arial, sans-serif;
-  background:#f8fafc;
-  color:#0f172a;
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg-main);
+  color:var(--text-main);
   line-height:1.6;
-  transition:background .3s,color .3s;
+  transition:.3s;
 }
 
 a{text-decoration:none}
-
-/* =====================================================
-   DARK MODE
-===================================================== */
-html.dark body{
-  background:#020617;
-  color:#e5e7eb;
-}
 
 /* =====================================================
    HEADER
@@ -33,12 +52,12 @@ html.dark body{
   justify-content:space-between;
   align-items:center;
   padding:14px 22px;
-  background:#2563eb;
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
 }
 
 html.dark .topbar{
   background:#020617;
-  border-bottom:1px solid #1e293b;
+  border-bottom:1px solid var(--border);
 }
 
 .logo{
@@ -67,7 +86,7 @@ html.dark .topbar{
 }
 
 #darkToggle{
-  background:rgba(255,255,255,.15);
+  background:rgba(255,255,255,.18);
   border:none;
   color:#fff;
   padding:6px 10px;
@@ -76,10 +95,10 @@ html.dark .topbar{
 }
 
 /* =====================================================
-   HERO – HOMEPAGE
+   HERO
 ===================================================== */
 .hero{
-  background:linear-gradient(135deg,#2563eb,#1e40af);
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
   color:#fff;
   padding:80px 20px;
   text-align:center;
@@ -100,16 +119,8 @@ html.dark .hero{
   font-size:18px;
 }
 
-.cta{
-  background:#fff;
-  color:#2563eb;
-  padding:14px 28px;
-  border-radius:12px;
-  font-weight:600;
-}
-
 /* =====================================================
-   MINI HERO – TOOLS
+   MINI HERO (TOOLS)
 ===================================================== */
 .mini-hero{
   padding:50px 20px;
@@ -125,6 +136,9 @@ html.dark .hero{
 }
 
 .back-home{
+  background:rgba(255,255,255,.18);
+  padding:6px 14px;
+  border-radius:20px;
   color:#fff;
   font-weight:600;
 }
@@ -139,7 +153,7 @@ html.dark .hero{
 }
 
 /* =====================================================
-   TOOLS GRID – HOMEPAGE
+   TOOLS GRID (HOME)
 ===================================================== */
 .tools{
   display:grid;
@@ -148,37 +162,29 @@ html.dark .hero{
 }
 
 .tool{
-  background:#fff;
+  background:var(--bg-card);
   border-radius:18px;
   padding:28px;
   text-align:center;
   box-shadow:0 10px 25px rgba(0,0,0,.08);
-  transition:.2s;
+  transition:.25s;
+  border:1px solid var(--border);
 }
 
 .tool:hover{
-  transform:translateY(-5px);
-}
-
-html.dark .tool{
-  background:#020617;
-  border:1px solid #1e293b;
+  transform:translateY(-6px);
 }
 
 /* =====================================================
-   TOOL INNER BOX
+   TOOL BOX (INNER PAGE)
 ===================================================== */
 .tool-box{
-  background:#fff;
+  background:var(--bg-card);
   padding:32px;
   border-radius:18px;
   box-shadow:0 10px 25px rgba(0,0,0,.08);
+  border:1px solid var(--border);
   text-align:center;
-}
-
-html.dark .tool-box{
-  background:#020617;
-  border:1px solid #1e293b;
 }
 
 input,select{
@@ -186,15 +192,19 @@ input,select{
   padding:12px;
   margin:12px 0;
   border-radius:8px;
-  border:1px solid #cbd5e1;
+  border:1px solid var(--border);
+  background:#fff;
 }
 
-html.dark input,html.dark select{
+html.dark input,
+html.dark select{
   background:#020617;
   color:#fff;
-  border-color:#1e293b;
 }
 
+/* =====================================================
+   BUTTONS
+===================================================== */
 button{
   padding:12px 22px;
   border:none;
@@ -211,13 +221,13 @@ button{
   margin:30px auto;
   padding:20px;
   max-width:1100px;
-  border:2px dashed #cbd5e1;
+  border:2px dashed var(--border);
   text-align:center;
-  color:#64748b;
+  color:var(--text-muted);
 }
 
 /* =====================================================
-   FOOTER (SEO FRIENDLY)
+   FOOTER
 ===================================================== */
 footer{
   background:#020617;
@@ -240,58 +250,37 @@ footer a{
 }
 
 /* =====================================================
-   🎨 TOOL COLORS (IMPORTANT)
+   🎨 TOOL COLORS (LIGHT + DARK BOTH PERFECT)
 ===================================================== */
 
-/* MERGE PDF – RED */
+/* MERGE PDF */
 body.tool-merge .mini-hero,
-body.tool-merge button{
-  background:#dc2626;
-}
+body.tool-merge button{background:#dc2626}
 
-/* IMAGE COMPRESS – GREEN */
+/* IMAGE COMPRESS */
 body.tool-image .mini-hero,
-body.tool-image button{
-  background:#16a34a;
-}
+body.tool-image button{background:#16a34a}
 
-/* PDF TO JPG – PURPLE */
+/* PDF TO JPG */
 body.tool-pdfjpg .mini-hero,
-body.tool-pdfjpg button{
-  background:#7c3aed;
-}
+body.tool-pdfjpg button{background:#7c3aed}
 
-/* JPG TO PDF – ORANGE */
+/* JPG TO PDF */
 body.tool-jpgpdf .mini-hero,
-body.tool-jpgpdf button{
-  background:#ea580c;
-}
+body.tool-jpgpdf button{background:#ea580c}
 
-/* QR – TEAL */
+/* QR */
 body.tool-qr .mini-hero,
-body.tool-qr button{
-  background:#0d9488;
-}
+body.tool-qr button{background:#0d9488}
 
-/* PASSWORD – PINK */
+/* PASSWORD */
 body.tool-password .mini-hero,
-body.tool-password button{
-  background:#db2777;
-}
+body.tool-password button{background:#db2777}
 
 /* =====================================================
-   RESPONSIVE
+   DROPDOWN
 ===================================================== */
-@media(max-width:768px){
-  .hero h1{font-size:30px}
-  .nav-right a{display:none}
-}
-
-
-/* ===== DROPDOWN MENU ===== */
-.dropdown{
-  position:relative;
-}
+.dropdown{position:relative}
 
 .dropbtn{
   background:linear-gradient(135deg,#6366f1,#2563eb);
@@ -300,7 +289,6 @@ body.tool-password button{
   padding:8px 14px;
   border-radius:8px;
   font-weight:600;
-  cursor:pointer;
 }
 
 .dropdown-content{
@@ -308,7 +296,7 @@ body.tool-password button{
   position:absolute;
   right:0;
   top:45px;
-  background:#fff;
+  background:var(--bg-card);
   min-width:200px;
   border-radius:12px;
   box-shadow:0 12px 30px rgba(0,0,0,.15);
@@ -319,8 +307,7 @@ body.tool-password button{
 .dropdown-content a{
   display:block;
   padding:12px 16px;
-  text-decoration:none;
-  color:#0f172a;
+  color:var(--text-main);
   font-weight:500;
 }
 
@@ -328,15 +315,12 @@ body.tool-password button{
   background:#e0e7ff;
 }
 
-.dropdown:hover .dropdown-content{
-  display:block;
-}
+.dropdown:hover .dropdown-content{display:block}
 
-html.dark .dropdown-content{
-  background:#020617;
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media(max-width:768px){
+  .hero h1{font-size:30px}
+  .nav-right a{display:none}
 }
-
-html.dark .dropdown-content a{
-  color:#e5e7eb;
-}
-
