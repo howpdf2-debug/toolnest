@@ -1,1 +1,111 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Merge PDF Online Free | ToolNest</title>
+
+<meta name="description" content="Merge multiple PDF files into one PDF online for free. Fast, secure and browser-based PDF merger by ToolNest.">
+<meta name="keywords" content="merge pdf, pdf merger online, combine pdf free, toolnest pdf">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="/style.css">
+
+<!-- PDF LIB -->
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<!-- SEO Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Merge PDF Tool",
+  "operatingSystem": "All",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0"
+  }
+}
+</script>
+</head>
+
+<body class="tool-merge">
+
+<!-- HEADER -->
+<div id="header"></div>
+
+<!-- HERO -->
+<section class="mini-hero">
+  <div class="hero-top">
+    <a href="/index.html" class="back-home">⬅ Back to Home</a>
+  </div>
+  <h1>Merge PDF Files</h1>
+  <p>Combine multiple PDF documents into a single PDF instantly.</p>
+</section>
+
+<!-- TOOL -->
+<section class="container">
+  <div class="tool-box">
+    <input type="file" id="pdfFiles" multiple accept="application/pdf">
+    <button onclick="mergePDFs()">Merge PDFs</button>
+    <p id="status"></p>
+  </div>
+</section>
+
+<!-- ADSENSE PLACE (APPROVED SAFE POSITION) -->
+<div class="ad-box">
+  <!-- Google AdSense -->
+  <!--
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="XXXXXXXXXX"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  -->
+  Advertisement
+</div>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="/includes/include.js"></script>
+<script src="/darkmode.js"></script>
+
+<script>
+async function mergePDFs() {
+  const files = document.getElementById("pdfFiles").files;
+  const status = document.getElementById("status");
+
+  if (files.length < 2) {
+    alert("Please select at least 2 PDF files.");
+    return;
+  }
+
+  status.textContent = "Merging PDFs, please wait...";
+
+  const mergedPdf = await PDFLib.PDFDocument.create();
+
+  for (const file of files) {
+    const bytes = await file.arrayBuffer();
+    const pdf = await PDFLib.PDFDocument.load(bytes);
+    const pages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+    pages.forEach(page => mergedPdf.addPage(page));
+  }
+
+  const blob = new Blob([await mergedPdf.save()], { type: "application/pdf" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "toolnest-merged.pdf";
+  link.click();
+
+  status.textContent = "PDF merged successfully ✅";
+}
+</script>
+
+</body>
+</html>
