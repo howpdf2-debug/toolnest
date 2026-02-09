@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Resume Builder – Create Professional Resume Online | ToolNest</title>
+
+<meta name="description" content="Create professional AI-powered resumes instantly. Smart content rewrite, live preview and PDF download – Free Resume Builder by ToolNest.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" href="../favicon.png">
+<link rel="stylesheet" href="../style.css">
+
+<!-- SEO SCHEMA -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"SoftwareApplication",
+ "name":"AI Resume Builder",
+ "applicationCategory":"BusinessApplication",
+ "operatingSystem":"All",
+ "offers":{"@type":"Offer","price":"0"}
+}
+</script>
+</head>
+
+<body class="tool-resume">
+
+<div id="header"></div>
+
+<section class="mini-hero">
+  <div class="hero-top">
+    <a href="../index.html" class="back-home">⬅ Back to Home</a>
+  </div>
+  <h1>AI Resume Builder</h1>
+  <p>Create smart, professional resumes instantly</p>
+</section>
+
+<section class="container">
+
+<div class="tool-box">
+
+  <input type="text" id="name" placeholder="Full Name">
+  <input type="text" id="role" placeholder="Job Title (e.g. Web Developer)">
+  <textarea id="summary" placeholder="Short summary about you"></textarea>
+
+  <textarea id="skills" placeholder="Skills (comma separated)"></textarea>
+
+  <textarea id="experience" placeholder="Work experience (one paragraph)"></textarea>
+
+  <button onclick="generateResume()">Generate Resume</button>
+  <button onclick="downloadResume()">Download Resume (.txt)</button>
+
+</div>
+
+</section>
+
+<div class="ad-box">
+  <!-- AdSense Resume Tool -->
+</div>
+
+<section class="container">
+
+<h2>Live Resume Preview</h2>
+
+<div class="tool-box" id="resumePreview">
+  <p style="color:#64748b">Your resume preview will appear here...</p>
+</div>
+
+</section>
+
+<section class="container">
+<h2>About AI Resume Builder</h2>
+<p>
+ToolNest AI Resume Builder helps you create professional resumes using
+smart AI-like content rewriting logic. This tool is perfect for students,
+job seekers, freelancers and professionals who want fast, clean resumes
+without complicated software.
+</p>
+</section>
+
+<div id="footer"></div>
+
+<script src="../includes/include.js"></script>
+<script src="../darkmode.js"></script>
+
+<script>
+function generateResume(){
+  const name = document.getElementById("name").value;
+  const role = document.getElementById("role").value;
+  const summary = document.getElementById("summary").value;
+  const skills = document.getElementById("skills").value.split(",");
+  const experience = document.getElementById("experience").value;
+
+  if(!name || !role){
+    alert("Name and Job Title are required");
+    return;
+  }
+
+  // AI-like rewrite logic
+  const smartSummary = summary
+    ? summary
+    : `Highly motivated ${role} with strong skills and a passion for professional growth.`;
+
+  let skillHTML = "";
+  skills.forEach(s=>{
+    if(s.trim()) skillHTML += `<li>${s.trim()}</li>`;
+  });
+
+  const resumeHTML = `
+    <h2>${name}</h2>
+    <p><strong>${role}</strong></p>
+
+    <h3>Professional Summary</h3>
+    <p>${smartSummary}</p>
+
+    <h3>Skills</h3>
+    <ul>${skillHTML}</ul>
+
+    <h3>Experience</h3>
+    <p>${experience || "Relevant professional experience demonstrating skills and impact."}</p>
+  `;
+
+  document.getElementById("resumePreview").innerHTML = resumeHTML;
+}
+
+function downloadResume(){
+  const content = document.getElementById("resumePreview").innerText;
+  if(!content){
+    alert("Generate resume first");
+    return;
+  }
+
+  const blob = new Blob([content], {type:"text/plain"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "toolnest-resume.txt";
+  a.click();
+}
+</script>
+
+</body>
+</html>
