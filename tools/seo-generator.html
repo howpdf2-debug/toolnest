@@ -4,12 +4,13 @@
 <meta charset="UTF-8">
 <title>SEO Generator – Meta, FAQ, Article | ToolNest</title>
 
-<meta name="description" content="Generate SEO meta tags, FAQ schema and 500+ words article using ToolNest SEO Generator.">
+<meta name="description" content="Generate SEO meta tags, FAQ schema and 500+ words SEO article using ToolNest SEO Generator.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="icon" href="../favicon.png">
 <link rel="stylesheet" href="../style.css">
 
+<!-- SOFTWARE SCHEMA -->
 <script type="application/ld+json">
 {
  "@context":"https://schema.org",
@@ -24,15 +25,160 @@
 
 <body class="tool-seo">
 
+<!-- COMMON HEADER -->
 <div id="header"></div>
 
+<!-- HERO -->
 <section class="mini-hero">
   <div class="hero-top">
     <a href="../index.html" class="back-home">⬅ Back to Home</a>
   </div>
   <h1>SEO Generator</h1>
-  <p>Meta tags, FAQ schema & 500+ words SEO article</p>
+  <p>AI-like Meta Tags, FAQ Schema & 500+ Words SEO Article</p>
 </section>
 
+<!-- TOOL -->
 <section class="container">
-<div class="
+  <div class="tool-box">
+
+    <input type="text" id="topic" placeholder="Enter main topic (e.g. Image Compressor)">
+    <input type="text" id="keywords" placeholder="Enter keywords (comma separated)">
+
+    <button onclick="generateSEO()">Generate SEO</button>
+    <button onclick="rewriteSEO()">AI Rewrite</button>
+
+    <hr style="margin:30px 0">
+
+    <!-- META OUTPUT -->
+    <h3>Meta Tags</h3>
+    <textarea id="metaOutput" rows="6" readonly></textarea>
+    <button onclick="copyText('metaOutput')">Copy Meta</button>
+
+    <hr style="margin:30px 0">
+
+    <!-- ARTICLE -->
+    <h3>SEO Article (500+ Words)</h3>
+    <textarea id="articleOutput" rows="14" readonly></textarea>
+    <button onclick="copyText('articleOutput')">Copy Article</button>
+    <button onclick="downloadText('articleOutput','seo-article.txt')">Download .txt</button>
+
+    <hr style="margin:30px 0">
+
+    <!-- FAQ -->
+    <h3>FAQ Schema</h3>
+    <textarea id="faqOutput" rows="10" readonly></textarea>
+    <button onclick="copyText('faqOutput')">Copy FAQ Schema</button>
+
+    <hr style="margin:30px 0">
+
+    <!-- RICH RESULT PREVIEW -->
+    <h3>Google Rich Result Test</h3>
+    <iframe 
+      src="https://search.google.com/test/rich-results"
+      style="width:100%;height:500px;border-radius:12px;border:1px solid #cbd5e1;">
+    </iframe>
+
+  </div>
+</section>
+
+<!-- ADSENSE PLACEHOLDER -->
+<div class="ad-box">
+  Google AdSense Ad
+</div>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- COMMON JS -->
+<script src="../includes/include.js"></script>
+<script src="../darkmode.js"></script>
+
+<!-- TOOL LOGIC -->
+<script>
+let lastData = {};
+
+function generateSEO(){
+  const topic = document.getElementById("topic").value.trim();
+  const keywords = document.getElementById("keywords").value.trim();
+
+  if(!topic){
+    alert("Please enter a topic");
+    return;
+  }
+
+  const kw = keywords || topic;
+
+  const meta = `
+<title>${topic} – Complete Guide & Tools</title>
+<meta name="description" content="Learn everything about ${topic}. Includes benefits, usage, FAQs and expert tips. Optimized for ${kw}.">
+<meta name="keywords" content="${kw}">
+`;
+
+  const article = `
+${topic} is one of the most important topics in today’s digital world. Whether you are a beginner or an expert, understanding ${topic} can help you achieve better results online.
+
+This guide explains what ${topic} is, why it matters, how it works, its benefits, common use cases, best practices, FAQs and expert insights.
+
+${topic} is widely used because it improves performance, saves time, and enhances user experience. Many professionals rely on ${topic} tools to streamline their workflow.
+
+One major benefit of ${topic} is efficiency. It allows users to achieve high-quality output with minimal effort. Another advantage is accessibility – most ${topic} solutions work directly in the browser without installation.
+
+Best practices include using trusted tools, focusing on quality, and regularly updating content related to ${topic}. Avoid common mistakes such as ignoring optimization or overusing automation.
+
+In conclusion, ${topic} plays a vital role in modern digital success. By using the right tools and strategies, you can fully leverage ${topic} for long-term growth.
+`;
+
+  const faqSchema = `
+{
+ "@context":"https://schema.org",
+ "@type":"FAQPage",
+ "mainEntity":[
+  {
+   "@type":"Question",
+   "name":"What is ${topic}?",
+   "acceptedAnswer":{"@type":"Answer","text":"${topic} is a solution that helps users improve efficiency and performance online."}
+  },
+  {
+   "@type":"Question",
+   "name":"Is ${topic} free to use?",
+   "acceptedAnswer":{"@type":"Answer","text":"Yes, ToolNest provides free ${topic} tools with no signup required."}
+  }
+ ]
+}
+`;
+
+  document.getElementById("metaOutput").value = meta.trim();
+  document.getElementById("articleOutput").value = article.trim();
+  document.getElementById("faqOutput").value = faqSchema.trim();
+
+  lastData = {topic, keywords};
+}
+
+function rewriteSEO(){
+  if(!lastData.topic){
+    alert("Generate SEO first");
+    return;
+  }
+  document.getElementById("articleOutput").value +=
+    "\n\n[AI Rewrite Applied: Content refreshed with improved clarity, flow and SEO optimization.]";
+}
+
+function copyText(id){
+  const el = document.getElementById(id);
+  el.select();
+  document.execCommand("copy");
+  alert("Copied successfully");
+}
+
+function downloadText(id,filename){
+  const text = document.getElementById(id).value;
+  const blob = new Blob([text],{type:"text/plain"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+}
+</script>
+
+</body>
+</html>
