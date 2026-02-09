@@ -1,1 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PDF to JPG Converter Online Free | ToolNest</title>
+
+<meta name="description" content="Convert PDF pages to JPG images online for free using ToolNest. Fast, secure and privacy-friendly PDF to image converter.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.png">
+<link rel="stylesheet" href="../style.css">
+
+<!-- PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+<!-- SEO Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PDF to JPG Converter",
+  "applicationCategory": "FileConverter",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+
+<body>
+
+<!-- HEADER AUTO LOAD -->
+<div id="header"></div>
+
+<!-- TOOL HERO -->
+<section class="mini-hero pdfjpg-tool">
+  <div class="hero-top">
+    <a href="../index.html" class="back-home">⬅ Back to Home</a>
+  </div>
+
+  <h1>PDF to JPG Converter</h1>
+  <p>Convert PDF pages into high-quality JPG images instantly.</p>
+</section>
+
+<!-- TOOL BOX -->
+<section class="container">
+  <div class="tool-box colorful purple">
+
+    <input type="file" id="pdfInput" accept="application/pdf">
+
+    <button onclick="convertPDF()">Convert to JPG</button>
+
+    <p id="status"></p>
+
+    <div id="output" class="image-output"></div>
+
+  </div>
+</section>
+
+<!-- ADSENSE -->
+<div class="ad-box">
+  <!-- Replace with real AdSense values later -->
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+    data-ad-slot="1234567890"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+</div>
+
+<!-- FOOTER AUTO LOAD -->
+<div id="footer"></div>
+
+<!-- GLOBAL SCRIPTS -->
+<script src="../includes/include.js"></script>
+<script src="../darkmode.js"></script>
+
+<!-- TOOL SCRIPT -->
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
+
+async function convertPDF() {
+  const fileInput = document.getElementById("pdfInput");
+  const status = document.getElementById("status");
+  const output = document.getElementById("output");
+
+  if (!fileInput.files.length) {
+    alert("Please select a PDF file");
+    return;
+  }
+
+  output.innerHTML = "";
+  status.innerText = "Converting PDF pages...";
+
+  const file = fileInput.files[0];
+  const reader = new FileReader();
+
+  reader.onload = async function () {
+    const typedArray = new Uint8Array(this.result);
+    const pdf = await pdfjsLib.getDocument(typedArray).promise;
+
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const viewport = page.getViewport({ scale: 2 });
+
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+
+      await page.render({ canvasContext: ctx, viewport }).promise;
+
+      const imgURL = canvas.toDataURL("image/jpeg", 0.95);
+
+      const imgBox = document.createElement("div");
+      imgBox.className = "image-box";
+
+      imgBox.innerHTML = `
+        <img src="${imgURL}" alt="PDF page ${i}">
+        <a href="${imgURL}" download="toolnest-page-${i}.jpg">Download JPG</a>
+      `;
+
+      output.appendChild(imgBox);
+    }
+
+    status.innerText = "PDF converted successfully!";
+  };
+
+  reader.readAsArrayBuffer(file);
+}
+</script>
+
+</body>
+</html>
 
