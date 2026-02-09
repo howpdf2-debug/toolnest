@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Image Compressor Online Free | ToolNest</title>
+
+<meta name="description" content="Compress images online for free with ToolNest. Reduce JPG, PNG, WEBP image size without losing quality. Fast, secure & privacy-friendly image compressor.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.png">
+<link rel="stylesheet" href="../style.css">
+
+<!-- SEO Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Image Compressor",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+
+<body>
+
+<!-- HEADER AUTO LOAD -->
+<div id="header"></div>
+
+<!-- TOOL HERO -->
+<section class="mini-hero image-tool">
+  <div class="hero-top">
+    <a href="../index.html" class="back-home">⬅ Back to Home</a>
+  </div>
+
+  <h1>Image Compressor</h1>
+  <p>Compress JPG, PNG & WEBP images online without quality loss.</p>
+</section>
+
+<!-- TOOL BOX -->
+<section class="container">
+  <div class="tool-box colorful green">
+
+    <input type="file" id="imageInput" accept="image/*">
+
+    <label>Compression Level</label>
+    <input type="range" id="quality" min="10" max="90" value="70">
+    <span id="qualityValue">70%</span>
+
+    <button onclick="compressImage()">Compress Image</button>
+
+    <p id="status"></p>
+    <a id="downloadLink" style="display:none;" class="download-btn">Download Image</a>
+
+  </div>
+</section>
+
+<!-- ADSENSE PLACE -->
+<div class="ad-box">
+  <!-- Google AdSense -->
+  <!-- Replace data-ad-client & data-ad-slot with your real values -->
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+    data-ad-slot="1234567890"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+</div>
+
+<!-- FOOTER AUTO LOAD -->
+<div id="footer"></div>
+
+<!-- GLOBAL SCRIPTS -->
+<script src="../includes/include.js"></script>
+<script src="../darkmode.js"></script>
+
+<!-- IMAGE COMPRESS SCRIPT -->
+<script>
+const qualityRange = document.getElementById("quality");
+const qualityValue = document.getElementById("qualityValue");
+
+qualityRange.oninput = () => {
+  qualityValue.innerText = qualityRange.value + "%";
+};
+
+function compressImage() {
+  const input = document.getElementById("imageInput");
+  const status = document.getElementById("status");
+  const download = document.getElementById("downloadLink");
+
+  if (!input.files.length) {
+    alert("Please select an image");
+    return;
+  }
+
+  const file = input.files[0];
+  const img = new Image();
+  const reader = new FileReader();
+
+  reader.onload = e => {
+    img.src = e.target.result;
+  };
+
+  img.onload = () => {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0);
+
+    canvas.toBlob(blob => {
+      const url = URL.createObjectURL(blob);
+      download.href = url;
+      download.download = "toolnest-compressed.jpg";
+      download.style.display = "inline-block";
+      status.innerText = "Image compressed successfully!";
+    }, "image/jpeg", qualityRange.value / 100);
+  };
+
+  reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
 
