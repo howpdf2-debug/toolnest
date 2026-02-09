@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Invoice Generator – Create Professional Invoices | ToolNest</title>
+
+<meta name="description" content="Create professional AI-powered invoices instantly. Smart calculations, tax, totals and download invoice free with ToolNest.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" href="../favicon.png">
+<link rel="stylesheet" href="../style.css">
+
+<!-- SEO SCHEMA -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"SoftwareApplication",
+ "name":"AI Invoice Generator",
+ "applicationCategory":"BusinessApplication",
+ "operatingSystem":"All",
+ "offers":{"@type":"Offer","price":"0"}
+}
+</script>
+</head>
+
+<body class="tool-invoice">
+
+<div id="header"></div>
+
+<section class="mini-hero">
+  <div class="hero-top">
+    <a href="../index.html" class="back-home">⬅ Back to Home</a>
+  </div>
+  <h1>AI Invoice Generator</h1>
+  <p>Create smart, professional invoices instantly</p>
+</section>
+
+<section class="container">
+
+<div class="tool-box">
+
+<h3>Business Details</h3>
+<input id="business" placeholder="Business / Company Name">
+<input id="email" placeholder="Email">
+
+<h3>Client Details</h3>
+<input id="client" placeholder="Client Name">
+
+<h3>Invoice Details</h3>
+<input id="item" placeholder="Service / Product">
+<input id="price" type="number" placeholder="Price">
+<input id="qty" type="number" placeholder="Quantity">
+<input id="tax" type="number" placeholder="Tax (%)">
+
+<button onclick="generateInvoice()">Generate Invoice</button>
+<button onclick="downloadInvoice()">Download Invoice (.txt)</button>
+
+</div>
+</section>
+
+<div class="ad-box">
+  <!-- AdSense Invoice Tool -->
+</div>
+
+<section class="container">
+<h2>Invoice Preview</h2>
+
+<div class="tool-box" id="invoicePreview">
+  <p style="color:#64748b">Invoice preview will appear here…</p>
+</div>
+</section>
+
+<section class="container">
+<h2>About AI Invoice Generator</h2>
+<p>
+ToolNest AI Invoice Generator helps freelancers, small businesses and
+professionals create clean, professional invoices instantly. This tool
+automatically calculates totals, tax and formats invoices in a business-ready
+layout without any signup.
+</p>
+</section>
+
+<div id="footer"></div>
+
+<script src="../includes/include.js"></script>
+<script src="../darkmode.js"></script>
+
+<script>
+function generateInvoice(){
+  const business = document.getElementById("business").value;
+  const email = document.getElementById("email").value;
+  const client = document.getElementById("client").value;
+  const item = document.getElementById("item").value;
+  const price = Number(document.getElementById("price").value);
+  const qty = Number(document.getElementById("qty").value);
+  const tax = Number(document.getElementById("tax").value || 0);
+
+  if(!business || !client || !item){
+    alert("Fill required fields");
+    return;
+  }
+
+  const subtotal = price * qty;
+  const taxAmount = subtotal * tax / 100;
+  const total = subtotal + taxAmount;
+
+  const invoiceHTML = `
+    <h2>${business}</h2>
+    <p>${email}</p>
+    <hr>
+
+    <p><strong>Billed To:</strong> ${client}</p>
+
+    <table style="width:100%;margin-top:12px">
+      <tr><td>${item}</td><td>${qty} × ${price}</td></tr>
+    </table>
+
+    <hr>
+    <p>Subtotal: ${subtotal.toFixed(2)}</p>
+    <p>Tax (${tax}%): ${taxAmount.toFixed(2)}</p>
+    <h3>Total: ${total.toFixed(2)}</h3>
+  `;
+
+  document.getElementById("invoicePreview").innerHTML = invoiceHTML;
+}
+
+function downloadInvoice(){
+  const text = document.getElementById("invoicePreview").innerText;
+  if(!text){
+    alert("Generate invoice first");
+    return;
+  }
+  const blob = new Blob([text], {type:"text/plain"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "toolnest-invoice.txt";
+  a.click();
+}
+</script>
+
+</body>
+</html>
