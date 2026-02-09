@@ -122,11 +122,14 @@ html.dark .hero{
 /* =====================================================
    MINI HERO (TOOLS)
 ===================================================== */
+
 .mini-hero{
   padding:50px 20px;
   color:#fff;
   text-align:center;
+  background:#475569; /* fallback color */
 }
+
 
 .hero-top{
   display:flex;
