@@ -2,13 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AI SEO Content Generator | ToolNest</title>
+<title>SEO Generator – Meta Tags, FAQ Schema & Content | ToolNest</title>
 
-<meta name="description" content="Generate AI-like SEO content, meta tags and schema markup using ToolNest SEO Generator.">
+<meta name="description" content="Generate SEO meta tags, FAQ schema and rewrite content using ToolNest smart SEO Generator.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="../style.css">
 <link rel="icon" href="../favicon.png">
+<link rel="stylesheet" href="../style.css">
+
+<!-- SEO SCHEMA FOR TOOL PAGE -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"SoftwareApplication",
+ "name":"ToolNest SEO Generator",
+ "applicationCategory":"SEOApplication",
+ "operatingSystem":"All",
+ "offers":{"@type":"Offer","price":"0"}
+}
+</script>
 </head>
 
 <body class="tool-seo">
@@ -19,125 +31,44 @@
   <div class="hero-top">
     <a href="../index.html" class="back-home">⬅ Back to Home</a>
   </div>
-  <h1>AI-Like SEO Generator</h1>
-  <p>Generate SEO content, meta tags & schema instantly</p>
+  <h1>SEO Generator</h1>
+  <p>Auto meta tags, FAQ schema & smart content rewrite.</p>
 </section>
 
 <section class="container">
-  <div class="tool-box">
+<div class="tool-box">
 
-    <input id="title" placeholder="Page Title">
-    <input id="keywords" placeholder="Keywords (comma separated)">
-    <textarea id="desc" rows="3" placeholder="Short description"></textarea>
+  <!-- INPUT -->
+  <input type="text" id="title" placeholder="Page Title">
+  <textarea id="description" rows="4" placeholder="Page Description"></textarea>
+  <input type="text" id="keywords" placeholder="Keywords (comma separated)">
 
-    <button onclick="generateSEO()">Generate SEO</button>
+  <button onclick="generateSEO()">Generate SEO</button>
 
-    <h3>SEO Content</h3>
-    <textarea id="content" rows="18"></textarea>
+  <!-- OUTPUT -->
+  <textarea id="output" rows="10" placeholder="Generated Meta Tags..." readonly></textarea>
 
-    <h3>Meta Tags</h3>
-    <textarea id="meta" rows="6"></textarea>
+  <!-- AI REWRITE -->
+  <button onclick="rewriteContent()">🔄 AI Rewrite Content</button>
 
-    <button onclick="copyAll()">Copy Everything</button>
+  <!-- FAQ -->
+  <h3 style="margin-top:25px">FAQ Generator</h3>
+  <textarea id="faqInput" rows="5" placeholder="Enter FAQs (Q? A.) one per line"></textarea>
+  <button onclick="generateFAQ()">Generate FAQ Schema</button>
 
-  </div>
+  <textarea id="faqOutput" rows="10" placeholder="FAQ Schema JSON-LD" readonly></textarea>
+
+</div>
 </section>
 
-<div class="ad-box">Google AdSense (Responsive)</div>
+<div class="ad-box">Advertisement</div>
 
 <div id="footer"></div>
 
 <script src="../includes/include.js"></script>
 <script src="../darkmode.js"></script>
 
-<script>
-function generateSEO(){
-  const title = document.getElementById("title").value.trim();
-  const keywords = document.getElementById("keywords").value.trim();
-  const desc = document.getElementById("desc").value.trim();
-
-  if(!title || !keywords || !desc){
-    alert("Fill all fields");
-    return;
-  }
-
-  const kw = keywords.split(",").map(k=>k.trim());
-  const main = kw[0];
-
-  let article = `
-${title}
-
-${desc}
-
-${main} is an essential online solution for users looking for fast, secure and reliable tools. ToolNest provides a powerful platform where users can easily access ${kw.join(", ")} without installing any software.
-
-### Why Choose ${main}?
-Using ${main} helps save time and increases productivity. Our tool is optimized for performance and simplicity, ensuring a smooth experience across all devices.
-
-### Key Benefits
-- 100% free online tool  
-- No registration required  
-- Privacy-friendly processing  
-- Mobile & desktop compatible  
-- Instant results  
-
-### How It Works
-ToolNest uses modern browser-based technology to process tasks efficiently. Simply enter your data, follow the steps, and get immediate output.
-
-### Who Should Use This Tool?
-Students, professionals, businesses and content creators can all benefit from ${main}. It simplifies workflows and eliminates unnecessary complexity.
-
-### SEO & Performance Optimized
-Our platform is built with SEO best practices, fast loading speed and schema markup, making it ideal for Google indexing and ranking.
-
-### Supported Keywords
-This page is optimized for: ${kw.join(", ")}.
-
-### Conclusion
-If you are searching for a reliable and efficient way to use ${main}, ToolNest is your best choice. Try it today and experience modern online tools built for performance.
-`;
-
-  document.getElementById("content").value = article;
-
-  document.getElementById("meta").value = `
-<title>${title}</title>
-<meta name="description" content="${desc}">
-<meta name="keywords" content="${kw.join(", ")}">
-`;
-
-  injectSchema(title, desc, kw);
-}
-
-function copyAll(){
-  const text = document.getElementById("content").value + "\n\n" + document.getElementById("meta").value;
-  navigator.clipboard.writeText(text);
-  alert("SEO content & meta copied!");
-}
-
-function injectSchema(title, desc, kw){
-  const old = document.getElementById("schema");
-  if(old) old.remove();
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": title,
-    "description": desc,
-    "keywords": kw.join(", "),
-    "publisher": {
-      "@type": "Organization",
-      "name": "ToolNest",
-      "url": location.origin
-    }
-  };
-
-  const s = document.createElement("script");
-  s.id = "schema";
-  s.type = "application/ld+json";
-  s.textContent = JSON.stringify(schema);
-  document.head.appendChild(s);
-}
-</script>
+<script src="seo-generator.js"></script>
 
 </body>
 </html>
