@@ -2,78 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AI Invoice Generator & PDF – ToolNest</title>
-
-<meta name="description" content="Create professional GST or non-GST invoices and download PDF instantly. Free Invoice Generator by ToolNest.">
+<title>AI Invoice Generator – ToolNest</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="icon" href="../favicon.png">
 <link rel="stylesheet" href="../style.css">
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
-
 </head>
 
 <body class="tool-invoice">
 
 <div id="header"></div>
 
-<section class="mini-hero">
-  <div class="hero-top">
-    <a href="../index.html" class="back-home">⬅ Back to Home</a>
-  </div>
-  <h1>AI Invoice Generator</h1>
-  <p>GST & Non-GST Invoice with PDF Download</p>
-</section>
-
 <section class="container">
-
 <div class="tool-box">
 
 <h2>Invoice Details</h2>
 
-<input id="companyName" placeholder="Your Company Name">
-<input id="clientName" placeholder="Client Name">
-<input id="gstNumber" placeholder="GST Number (Optional)">
-<input id="discount" type="number" placeholder="Discount % (Optional)">
-<input id="tax" type="number" placeholder="Tax % (Optional)">
-
-<hr>
-
-<h3>Add Item</h3>
-
-<input id="itemName" placeholder="Item Name">
-<input id="qty" type="number" placeholder="Quantity">
-<input id="price" type="number" placeholder="Price Per Unit">
-
-<button onclick="addItem()">Add Item</button>
-
-<br><br>
-
-<table border="1" width="100%" style="border-collapse:collapse;text-align:center;">
-<thead>
-<tr>
-<th>Item</th>
-<th>Qty</th>
-<th>Price</th>
-<th>Total</th>
-</tr>
-</thead>
-<tbody id="itemsTable"></tbody>
-</table>
-
-<br>
-
-<button onclick="downloadInvoice()">Download Invoice PDF</button>
-
-</div>
-
 <h3>Business Details</h3>
 <input id="bizName" placeholder="Business Name">
 <input id="bizEmail" placeholder="Business Email">
-<input id="gstNumber" placeholder="GST Number (Optional)">
+<input id="bizGST" placeholder="GST Number (Optional)">
 
 <h3>Client Details</h3>
 <input id="clientName" placeholder="Client Name">
@@ -85,7 +33,7 @@
 
 <h3>Invoice Items</h3>
 
-<table id="itemsTable" style="width:100%">
+<table id="itemsTable" style="width:100%;border-collapse:collapse">
 <tr>
 <th>Item</th>
 <th>Qty</th>
@@ -99,8 +47,13 @@
 
 <br><br>
 
-<label>GST % (only if GST applicable)</label>
+<label>Discount % (Optional)</label>
+<input type="number" id="discountPercent" value="0">
+
+<label>GST % (Optional)</label>
 <input type="number" id="gstPercent" value="0">
+
+<br><br>
 
 <button onclick="generateInvoice()">Generate Invoice</button>
 <button onclick="downloadPDF()">Download PDF</button>
@@ -110,9 +63,10 @@
 
 <!-- PREVIEW -->
 <section class="container">
-<div class="tool-box" id="invoicePreview" style="display:none">
+<div class="tool-box" id="invoicePreview" style="display:none;background:white;color:black">
 
-<h2>Invoice</h2>
+<h2>INVOICE</h2>
+
 <p><strong id="pBiz"></strong></p>
 <p id="pBizEmail"></p>
 <p id="pGST" style="display:none"></p>
@@ -125,9 +79,9 @@
 <p>Invoice #: <span id="pInvNo"></span></p>
 <p>Date: <span id="pInvDate"></span></p>
 
-<table style="width:100%;margin-top:20px;border-collapse:collapse">
+<table style="width:100%;margin-top:20px;border-collapse:collapse" border="1">
 <thead>
-<tr id="tableHead">
+<tr>
 <th>Item</th>
 <th>Qty</th>
 <th>Price</th>
@@ -140,13 +94,12 @@
 <hr>
 
 <p>Subtotal: ₹ <span id="subTotal"></span></p>
+<p id="discountRow" style="display:none">Discount: ₹ <span id="discountAmount"></span></p>
 <p id="gstRow" style="display:none">GST: ₹ <span id="gstAmount"></span></p>
 <h3>Grand Total: ₹ <span id="grandTotal"></span></h3>
 
 </div>
 </section>
-
-<div class="ad-box">Advertisement</div>
 
 <div id="footer"></div>
 
@@ -154,6 +107,7 @@
 <script src="../darkmode.js"></script>
 
 <script>
+
 function addItem(){
   const row=document.createElement("tr");
   row.innerHTML=`
@@ -163,24 +117,27 @@ function addItem(){
     <td class="lineTotal">0</td>
     <td><button onclick="this.parentElement.parentElement.remove();calc()">❌</button></td>
   `;
-  itemsTable.appendChild(row);
+  document.getElementById("itemsTable").appendChild(row);
 }
 addItem();
 
 function calc(){
   let subtotal=0;
-  [...itemsTable.rows].slice(1).forEach(r=>{
-    const q=r.cells[1].children[0].value;
-    const p=r.cells[2].children[0].value;
+  const rows=document.getElementById("itemsTable").rows;
+
+  for(let i=1;i<rows.length;i++){
+    const q=rows[i].cells[1].children[0].value || 0;
+    const p=rows[i].cells[2].children[0].value || 0;
     const t=q*p;
-    r.querySelector(".lineTotal").innerText=t.toFixed(2);
+    rows[i].querySelector(".lineTotal").innerText=t.toFixed(2);
     subtotal+=t;
-  });
+  }
   return subtotal;
 }
 
 function generateInvoice(){
-  invoicePreview.style.display="block";
+
+  document.getElementById("invoicePreview").style.display="block";
 
   pBiz.innerText=bizName.value;
   pBizEmail.innerText=bizEmail.value;
@@ -189,192 +146,72 @@ function generateInvoice(){
   pInvNo.innerText=invoiceNo.value;
   pInvDate.innerText=invoiceDate.value;
 
-  // GST logic
-  if(gstNumber.value.trim()!==""){
+  if(bizGST.value.trim()!==""){
     pGST.style.display="block";
-    pGST.innerText="GST No: "+gstNumber.value;
-    gstRow.style.display="block";
+    pGST.innerText="GST No: "+bizGST.value;
   }else{
     pGST.style.display="none";
-    gstRow.style.display="none";
   }
 
   previewItems.innerHTML="";
   let subtotal=calc();
 
-  [...itemsTable.rows].slice(1).forEach(r=>{
+  const rows=document.getElementById("itemsTable").rows;
+
+  for(let i=1;i<rows.length;i++){
     previewItems.innerHTML+=`
       <tr>
-        <td>${r.cells[0].children[0].value}</td>
-        <td>${r.cells[1].children[0].value}</td>
-        <td>${r.cells[2].children[0].value}</td>
-        <td>${r.querySelector(".lineTotal").innerText}</td>
+        <td>${rows[i].cells[0].children[0].value}</td>
+        <td>${rows[i].cells[1].children[0].value}</td>
+        <td>${rows[i].cells[2].children[0].value}</td>
+        <td>${rows[i].querySelector(".lineTotal").innerText}</td>
       </tr>`;
-  });
+  }
 
+  const discountP=Number(discountPercent.value)||0;
   const gstP=Number(gstPercent.value)||0;
-  const gstVal=gstNumber.value?subtotal*gstP/100:0;
+
+  const discountVal=subtotal*discountP/100;
+  const afterDiscount=subtotal-discountVal;
+  const gstVal=afterDiscount*gstP/100;
+  const grand=afterDiscount+gstVal;
 
   subTotal.innerText=subtotal.toFixed(2);
-  gstAmount.innerText=gstVal.toFixed(2);
-  grandTotal.innerText=(subtotal+gstVal).toFixed(2);
-}
 
+  if(discountP>0){
+    discountRow.style.display="block";
+    discountAmount.innerText=discountVal.toFixed(2);
+  }else{
+    discountRow.style.display="none";
+  }
+
+  if(gstP>0){
+    gstRow.style.display="block";
+    gstAmount.innerText=gstVal.toFixed(2);
+  }else{
+    gstRow.style.display="none";
+  }
+
+  grandTotal.innerText=grand.toFixed(2);
+}
 
 function downloadPDF(){
 
-  const source = document.getElementById("invoicePreview");
+  const element=document.getElementById("invoicePreview");
 
-  // safety: ensure visible
-  source.style.display = "block";
-
-  // CLONE for PDF (important fix)
-  const clone = source.cloneNode(true);
-  clone.style.position = "fixed";
-  clone.style.left = "-9999px";
-  clone.style.top = "0";
-  clone.style.display = "block";
-  document.body.appendChild(clone);
-
-  requestAnimationFrame(() => {
-    html2pdf()
-      .set({
-        margin: 10,
-        filename: 'toolnest-invoice.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true
-        },
-        jsPDF: {
-          unit: 'mm',
-          format: 'a4',
-          orientation: 'portrait'
-        }
-      })
-      .from(clone)
-      .save()
-      .then(() => {
-        document.body.removeChild(clone);
-      });
-  });
+  html2pdf()
+  .set({
+    margin:10,
+    filename:'toolnest-invoice.pdf',
+    image:{type:'jpeg',quality:0.98},
+    html2canvas:{scale:2},
+    jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
+  })
+  .from(element)
+  .save();
 }
+
 </script>
-
-<script>
-const { jsPDF } = window.jspdf;
-
-let items = [];
-
-function addItem(){
-  const name = document.getElementById("itemName").value;
-  const qty = parseFloat(document.getElementById("qty").value);
-  const price = parseFloat(document.getElementById("price").value);
-
-  if(!name || !qty || !price){
-    alert("Fill item details properly");
-    return;
-  }
-
-  items.push({
-    name,
-    qty,
-    price,
-    total: qty * price
-  });
-
-  document.getElementById("itemName").value="";
-  document.getElementById("qty").value="";
-  document.getElementById("price").value="";
-
-  renderItems();
-}
-
-function renderItems(){
-  const table = document.getElementById("itemsTable");
-  table.innerHTML="";
-
-  items.forEach((item)=>{
-    table.innerHTML+=`
-      <tr>
-        <td>${item.name}</td>
-        <td>${item.qty}</td>
-        <td>${item.price}</td>
-        <td>${item.total.toFixed(2)}</td>
-      </tr>
-    `;
-  });
-}
-
-function downloadInvoice(){
-
-  if(items.length === 0){
-    alert("Add at least one item");
-    return;
-  }
-
-  const doc = new jsPDF();
-
-  const company = document.getElementById("companyName").value;
-  const client = document.getElementById("clientName").value;
-  const gst = document.getElementById("gstNumber").value;
-  const discount = parseFloat(document.getElementById("discount").value) || 0;
-  const tax = parseFloat(document.getElementById("tax").value) || 0;
-
-  let subtotal = items.reduce((sum,i)=>sum+i.total,0);
-
-  let discountAmount = subtotal * (discount/100);
-  let afterDiscount = subtotal - discountAmount;
-
-  let taxAmount = afterDiscount * (tax/100);
-
-  let grandTotal = afterDiscount + taxAmount;
-
-  doc.setFontSize(18);
-  doc.text("INVOICE", 14, 20);
-
-  doc.setFontSize(12);
-  doc.text(`Company: ${company}`, 14, 30);
-  doc.text(`Client: ${client}`, 14, 38);
-
-  if(gst){
-    doc.text(`GST: ${gst}`, 14, 46);
-  }
-
-  doc.autoTable({
-    startY: 55,
-    head: [["Item","Qty","Price","Total"]],
-    body: items.map(i=>[
-      i.name,
-      i.qty,
-      i.price,
-      i.total.toFixed(2)
-    ])
-  });
-
-  let finalY = doc.lastAutoTable.finalY + 10;
-
-  doc.text(`Subtotal: ${subtotal.toFixed(2)}`, 14, finalY);
-
-  if(discount>0){
-    finalY += 8;
-    doc.text(`Discount (${discount}%): -${discountAmount.toFixed(2)}`, 14, finalY);
-  }
-
-  if(tax>0){
-    finalY += 8;
-    doc.text(`Tax (${tax}%): +${taxAmount.toFixed(2)}`, 14, finalY);
-  }
-
-  finalY += 10;
-  doc.setFontSize(14);
-  doc.text(`Grand Total: ${grandTotal.toFixed(2)}`, 14, finalY);
-
-  doc.save("toolnest-invoice.pdf");
-}
-</script>
-<script src="../includes/include.js"></script>
-<script src="../darkmode.js"></script>
 
 </body>
 </html>
