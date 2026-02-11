@@ -2,50 +2,147 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Pro Invoice Generator – ToolNest</title>
+<title>Free Invoice Generator with GST & PDF Download | ToolNest</title>
+<meta name="description" content="Create professional GST or Non-GST invoices online. Download PDF, Print, Email & Save history. Free Invoice Generator by ToolNest.">
+<meta name="keywords" content="invoice generator, gst invoice, invoice pdf download, free invoice maker, online invoice tool">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link rel="icon" href="../favicon.png">
 <link rel="stylesheet" href="../style.css">
+
+<!-- Schema SEO -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"SoftwareApplication",
+ "name":"ToolNest Invoice Generator",
+ "applicationCategory":"BusinessApplication",
+ "operatingSystem":"All",
+ "offers":{"@type":"Offer","price":"0"}
+}
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
+
+/* LIGHT MODE */
+body{
+background:#f4f6fb;
+color:#111;
+font-family:Arial;
+}
+
+/* DARK MODE SUPPORT */
+body.dark{
+background:#0f172a;
+color:#e2e8f0;
+}
+
+.tool-box{
+background:#ffffff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+margin-bottom:30px;
+}
+
+body.dark .tool-box{
+background:#1e293b;
+}
+
+input, select{
+width:100%;
+padding:8px;
+margin:6px 0;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+body.dark input{
+background:#334155;
+color:white;
+border:1px solid #475569;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+margin:5px 5px 5px 0;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:6px;
+text-align:center;
+}
+
+body.dark th, body.dark td{
+border:1px solid #475569;
+}
+
+.mini-hero{
+padding:20px;
+background:#2563eb;
+color:white;
+position:relative;
+}
+
+.mini-hero h1{
+margin:0;
+}
+
+.back-home{
+position:absolute;
+right:20px;
+top:20px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
 #invoicePreview{
 background:white;
 color:black;
 padding:20px;
 }
-#invoicePreview img{
-max-width:120px;
-margin-bottom:10px;
-}
-table{
-width:100%;
-border-collapse:collapse;
-}
-table,th,td{
-border:1px solid #ccc;
-padding:6px;
-text-align:center;
-}
-button{
-margin:5px 0;
-}
-</style>
 
+body.dark #invoicePreview{
+background:white;
+color:black;
+}
+
+</style>
 </head>
-<body>
+
+<body class="tool-invoice">
 
 <div id="header"></div>
 
 <section class="mini-hero">
-<a href="../index.html">⬅ Back to Home</a>
 <h1>Professional Invoice Generator</h1>
+<a href="../index.html" class="back-home">⬅ Back to Home</a>
 </section>
 
 <section class="container">
+
 <div class="tool-box">
 
-<h3>Company Details</h3>
+<h3>Business Details</h3>
 <input id="bizName" placeholder="Business Name">
 <input id="bizEmail" placeholder="Business Email">
 <input id="bizGST" placeholder="GST Number (Optional)">
@@ -57,8 +154,7 @@ margin:5px 0;
 <input id="clientEmail" placeholder="Client Email">
 
 <h3>Invoice Info</h3>
-<label>Invoice Number (Leave blank for auto)</label>
-<input id="invoiceNo" placeholder="Invoice Number">
+<input id="invoiceNo" placeholder="Invoice Number (Leave blank for Auto)">
 <input type="date" id="invoiceDate">
 
 <h3>Items</h3>
@@ -74,76 +170,41 @@ margin:5px 0;
 
 <button onclick="addItem()">+ Add Item</button>
 
-<br><br>
-
 <label>Discount %</label>
 <input type="number" id="discountPercent" value="0">
 
 <label>GST %</label>
 <input type="number" id="gstPercent" value="0">
 
-<br><br>
+<br>
 
 <button onclick="generateInvoice()">Generate Invoice</button>
 <button onclick="downloadPDF()">Download PDF</button>
-<button onclick="printInvoice()">Print</button>
-<button onclick="emailInvoice()">Email Invoice</button>
-
-<h3>Saved Invoice History</h3>
-<select id="historyList" onchange="loadInvoice(this.value)">
-<option value="">Select Saved Invoice</option>
-</select>
+<button onclick="window.print()">Print</button>
+<button onclick="emailInvoice()">Email</button>
 
 </div>
 </section>
 
 <section class="container">
-<div id="invoicePreview" style="display:none">
-<img id="previewLogo">
-<h2>INVOICE</h2>
-
-<p><strong id="pBiz"></strong></p>
-<p id="pBizEmail"></p>
-<p id="pGST" style="display:none"></p>
-
-<hr>
-
-<p><strong>Billed To:</strong> <span id="pClient"></span></p>
-<p id="pClientEmail"></p>
-<p>Invoice #: <span id="pInvNo"></span></p>
-<p>Date: <span id="pInvDate"></span></p>
-
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Qty</th>
-<th>Price</th>
-<th>Total</th>
-</tr>
-</thead>
-<tbody id="previewItems"></tbody>
-</table>
-
-<hr>
-
-<p>Subtotal: ₹ <span id="subTotal"></span></p>
-<p id="discountRow" style="display:none">Discount: ₹ <span id="discountAmount"></span></p>
-<p id="gstRow" style="display:none">GST: ₹ <span id="gstAmount"></span></p>
-<h3>Grand Total: ₹ <span id="grandTotal"></span></h3>
-
-</div>
+<div id="invoicePreview" style="display:none"></div>
 </section>
+
+<div class="ad-box">Advertisement Space</div>
+
+<div id="footer"></div>
+
+<script src="../includes/include.js"></script>
+<script src="../darkmode.js"></script>
 
 <script>
 
 let logoBase64="";
 
-document.getElementById("logoUpload").addEventListener("change",function(e){
+logoUpload.addEventListener("change",function(e){
 const reader=new FileReader();
 reader.onload=function(){
 logoBase64=reader.result;
-document.getElementById("previewLogo").src=logoBase64;
 };
 reader.readAsDataURL(e.target.files[0]);
 });
@@ -175,97 +236,56 @@ return subtotal;
 
 function generateInvoice(){
 
-document.getElementById("invoicePreview").style.display="block";
-
 let invNo=invoiceNo.value.trim();
 if(!invNo){
 invNo="INV-"+Date.now();
-invoiceNo.value=invNo;
 }
 
-pBiz.innerText=bizName.value;
-pBizEmail.innerText=bizEmail.value;
-pClient.innerText=clientName.value;
-pClientEmail.innerText=clientEmail.value;
-pInvNo.innerText=invNo;
-pInvDate.innerText=invoiceDate.value;
-
-if(bizGST.value.trim()){
-pGST.style.display="block";
-pGST.innerText="GST No: "+bizGST.value;
-}else{
-pGST.style.display="none";
-}
-
-previewItems.innerHTML="";
 let subtotal=calc();
-
-for(let i=1;i<itemsTable.rows.length;i++){
-previewItems.innerHTML+=`
-<tr>
-<td>${itemsTable.rows[i].cells[0].children[0].value}</td>
-<td>${itemsTable.rows[i].cells[1].children[0].value}</td>
-<td>${itemsTable.rows[i].cells[2].children[0].value}</td>
-<td>${itemsTable.rows[i].querySelector(".lineTotal").innerText}</td>
-</tr>`;
-}
-
 let discount=subtotal*(discountPercent.value||0)/100;
 let afterDiscount=subtotal-discount;
 let gst=afterDiscount*(gstPercent.value||0)/100;
 let grand=afterDiscount+gst;
 
-subTotal.innerText=subtotal.toFixed(2);
+invoicePreview.innerHTML=`
+${logoBase64 ? `<img src="${logoBase64}" width="120">` : ""}
+<h2>INVOICE</h2>
+<p><strong>${bizName.value}</strong></p>
+<p>${bizEmail.value}</p>
+${bizGST.value ? `<p>GST: ${bizGST.value}</p>`:""}
+<hr>
+<p><strong>Billed To:</strong> ${clientName.value}</p>
+<p>${clientEmail.value}</p>
+<p>Invoice #: ${invNo}</p>
+<p>Date: ${invoiceDate.value}</p>
+<table>
+<tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>
+${[...itemsTable.rows].slice(1).map(r=>`
+<tr>
+<td>${r.cells[0].children[0].value}</td>
+<td>${r.cells[1].children[0].value}</td>
+<td>${r.cells[2].children[0].value}</td>
+<td>${r.querySelector(".lineTotal").innerText}</td>
+</tr>`).join("")}
+</table>
+<hr>
+<p>Subtotal: ₹ ${subtotal.toFixed(2)}</p>
+${discount>0?`<p>Discount: ₹ ${discount.toFixed(2)}</p>`:""}
+${gst>0?`<p>GST: ₹ ${gst.toFixed(2)}</p>`:""}
+<h3>Grand Total: ₹ ${grand.toFixed(2)}</h3>
+`;
 
-discountRow.style.display=discount>0?"block":"none";
-discountAmount.innerText=discount.toFixed(2);
-
-gstRow.style.display=gst>0?"block":"none";
-gstAmount.innerText=gst.toFixed(2);
-
-grandTotal.innerText=grand.toFixed(2);
-
-saveInvoice(invNo);
+invoicePreview.style.display="block";
 }
 
 function downloadPDF(){
 html2pdf().from(invoicePreview).save("invoice.pdf");
 }
 
-function printInvoice(){
-let w=window.open("");
-w.document.write(invoicePreview.innerHTML);
-w.print();
-w.close();
-}
-
 function emailInvoice(){
-let subject="Invoice "+pInvNo.innerText;
-let body="Dear "+pClient.innerText+",%0D%0APlease find your invoice attached.";
-window.location.href=`mailto:${pClientEmail.innerText}?subject=${subject}&body=${body}`;
-}
-
-function saveInvoice(id){
-let history=JSON.parse(localStorage.getItem("invoices")||"{}");
-history[id]=invoicePreview.innerHTML;
-localStorage.setItem("invoices",JSON.stringify(history));
-loadHistory();
-}
-
-function loadHistory(){
-let history=JSON.parse(localStorage.getItem("invoices")||"{}");
-historyList.innerHTML='<option value="">Select Saved Invoice</option>';
-for(let key in history){
-historyList.innerHTML+=`<option value="${key}">${key}</option>`;
-}
-}
-loadHistory();
-
-function loadInvoice(id){
-if(!id) return;
-let history=JSON.parse(localStorage.getItem("invoices")||"{}");
-invoicePreview.innerHTML=history[id];
-invoicePreview.style.display="block";
+let subject="Invoice";
+let body="Please find your invoice details.";
+window.location.href=`mailto:${clientEmail.value}?subject=${subject}&body=${body}`;
 }
 
 </script>
