@@ -341,3 +341,104 @@ body.tool-invoice button{
   .hero h1{font-size:30px}
   .nav-right a{display:none}
 }
+
+/* =====================================================
+   🧾 INVOICE GENERATOR PROFESSIONAL UI
+===================================================== */
+
+.tool-invoice .invoice-form{
+  background:var(--bg-card);
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  border:1px solid var(--border);
+  margin-bottom:40px;
+}
+
+.tool-invoice .invoice-form h3{
+  margin-top:25px;
+  margin-bottom:10px;
+  font-size:18px;
+  color:var(--text-main);
+}
+
+.tool-invoice table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+  background:var(--bg-card);
+}
+
+.tool-invoice table th,
+.tool-invoice table td{
+  border:1px solid var(--border);
+  padding:10px;
+  text-align:center;
+}
+
+.tool-invoice table th{
+  background:rgba(0,0,0,.05);
+}
+
+html.dark .tool-invoice table th{
+  background:#0f172a;
+}
+
+.tool-invoice button{
+  margin-top:10px;
+  margin-right:8px;
+  transition:0.3s;
+}
+
+.tool-invoice button:hover{
+  transform:translateY(-2px);
+  opacity:0.9;
+}
+
+/* Invoice Preview Box */
+.invoice-box{
+  background:#ffffff;
+  padding:30px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+html.dark .invoice-box{
+  background:#0f172a;
+  color:#e5e7eb;
+}
+
+/* Back to home button fix */
+.hero-top{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.back-home{
+  background:rgba(255,255,255,.2);
+  padding:6px 16px;
+  border-radius:30px;
+  font-size:14px;
+}
+
+/* Ad Space Professional */
+.ad-space{
+  margin:30px auto;
+  padding:25px;
+  max-width:1100px;
+  border:2px dashed var(--border);
+  text-align:center;
+  color:var(--text-muted);
+  border-radius:12px;
+  background:var(--bg-card);
+}
+
+/* Fix input visibility in dark mode */
+html.dark input,
+html.dark textarea,
+html.dark select{
+  background:#020617;
+  color:#fff;
+  border:1px solid #334155;
+}
