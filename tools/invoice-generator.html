@@ -29,7 +29,46 @@
 </section>
 
 <section class="container">
+
 <div class="tool-box">
+
+<h2>Invoice Details</h2>
+
+<input id="companyName" placeholder="Your Company Name">
+<input id="clientName" placeholder="Client Name">
+<input id="gstNumber" placeholder="GST Number (Optional)">
+<input id="discount" type="number" placeholder="Discount % (Optional)">
+<input id="tax" type="number" placeholder="Tax % (Optional)">
+
+<hr>
+
+<h3>Add Item</h3>
+
+<input id="itemName" placeholder="Item Name">
+<input id="qty" type="number" placeholder="Quantity">
+<input id="price" type="number" placeholder="Price Per Unit">
+
+<button onclick="addItem()">Add Item</button>
+
+<br><br>
+
+<table border="1" width="100%" style="border-collapse:collapse;text-align:center;">
+<thead>
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody id="itemsTable"></tbody>
+</table>
+
+<br>
+
+<button onclick="downloadInvoice()">Download Invoice PDF</button>
+
+</div>
 
 <h3>Business Details</h3>
 <input id="bizName" placeholder="Business Name">
@@ -222,6 +261,120 @@ function downloadPDF(){
 }
 </script>
 
+<script>
+const { jsPDF } = window.jspdf;
+
+let items = [];
+
+function addItem(){
+  const name = document.getElementById("itemName").value;
+  const qty = parseFloat(document.getElementById("qty").value);
+  const price = parseFloat(document.getElementById("price").value);
+
+  if(!name || !qty || !price){
+    alert("Fill item details properly");
+    return;
+  }
+
+  items.push({
+    name,
+    qty,
+    price,
+    total: qty * price
+  });
+
+  document.getElementById("itemName").value="";
+  document.getElementById("qty").value="";
+  document.getElementById("price").value="";
+
+  renderItems();
+}
+
+function renderItems(){
+  const table = document.getElementById("itemsTable");
+  table.innerHTML="";
+
+  items.forEach((item)=>{
+    table.innerHTML+=`
+      <tr>
+        <td>${item.name}</td>
+        <td>${item.qty}</td>
+        <td>${item.price}</td>
+        <td>${item.total.toFixed(2)}</td>
+      </tr>
+    `;
+  });
+}
+
+function downloadInvoice(){
+
+  if(items.length === 0){
+    alert("Add at least one item");
+    return;
+  }
+
+  const doc = new jsPDF();
+
+  const company = document.getElementById("companyName").value;
+  const client = document.getElementById("clientName").value;
+  const gst = document.getElementById("gstNumber").value;
+  const discount = parseFloat(document.getElementById("discount").value) || 0;
+  const tax = parseFloat(document.getElementById("tax").value) || 0;
+
+  let subtotal = items.reduce((sum,i)=>sum+i.total,0);
+
+  let discountAmount = subtotal * (discount/100);
+  let afterDiscount = subtotal - discountAmount;
+
+  let taxAmount = afterDiscount * (tax/100);
+
+  let grandTotal = afterDiscount + taxAmount;
+
+  doc.setFontSize(18);
+  doc.text("INVOICE", 14, 20);
+
+  doc.setFontSize(12);
+  doc.text(`Company: ${company}`, 14, 30);
+  doc.text(`Client: ${client}`, 14, 38);
+
+  if(gst){
+    doc.text(`GST: ${gst}`, 14, 46);
+  }
+
+  doc.autoTable({
+    startY: 55,
+    head: [["Item","Qty","Price","Total"]],
+    body: items.map(i=>[
+      i.name,
+      i.qty,
+      i.price,
+      i.total.toFixed(2)
+    ])
+  });
+
+  let finalY = doc.lastAutoTable.finalY + 10;
+
+  doc.text(`Subtotal: ${subtotal.toFixed(2)}`, 14, finalY);
+
+  if(discount>0){
+    finalY += 8;
+    doc.text(`Discount (${discount}%): -${discountAmount.toFixed(2)}`, 14, finalY);
+  }
+
+  if(tax>0){
+    finalY += 8;
+    doc.text(`Tax (${tax}%): +${taxAmount.toFixed(2)}`, 14, finalY);
+  }
+
+  finalY += 10;
+  doc.setFontSize(14);
+  doc.text(`Grand Total: ${grandTotal.toFixed(2)}`, 14, finalY);
+
+  doc.save("toolnest-invoice.pdf");
+}
+</script>
+<script src="../includes/include.js"></script>
+<script src="../darkmode.js"></script>
 
 </body>
 </html>
