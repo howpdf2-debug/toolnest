@@ -2,114 +2,73 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<title>Free GST Invoice Generator Online | Professional Invoice Maker – ToolNest</title>
-
-<meta name="description" content="Create professional GST & Non-GST invoices online with logo upload, auto invoice number, invoice history, edit system, payment status and instant PDF download. Free Invoice Generator by ToolNest.">
-
-<meta name="keywords" content="invoice generator, gst invoice generator india, free invoice maker, invoice pdf download, professional invoice tool">
-
+<title>Invoice Generator with PDF Download | ToolNest</title>
+<meta name="description" content="Create professional invoices online with logo, GST, discount and PDF download. Free Invoice Generator by ToolNest.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="index, follow">
 
 <link rel="icon" href="../favicon.png">
 <link rel="stylesheet" href="../style.css">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 
-<!-- FAQ Schema -->
 <script type="application/ld+json">
 {
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [{
-   "@type": "Question",
-   "name": "Is this invoice generator free?",
-   "acceptedAnswer": { "@type": "Answer", "text": "Yes, ToolNest invoice generator is completely free." }
- },{
-   "@type": "Question",
-   "name": "Can I generate GST invoices?",
-   "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can generate GST and Non-GST invoices easily." }
- }]
+ "@context":"https://schema.org",
+ "@type":"WebApplication",
+ "name":"ToolNest Invoice Generator",
+ "applicationCategory":"FinanceApplication",
+ "operatingSystem":"All",
+ "offers":{"@type":"Offer","price":"0"}
 }
 </script>
-
 </head>
 
 <body class="tool-invoice">
 
 <div id="header"></div>
 
-
-
 <section class="mini-hero">
-<div class="hero-top">
-<a href="../index.html" class="back-home">⬅ Back to Home</a>
-</div>
-<h1>Professional Invoice Generator</h1>
-<p>Auto Invoice Number • Logo Upload • Edit System • PDF Download</p>
+  <div class="hero-top">
+    <a href="../index.html" class="back-home">⬅ Back to Home</a>
+  </div>
+  <h1>Professional Invoice Generator</h1>
+  <p>Create & download professional invoice PDF</p>
 </section>
 
-<section class="container">
-<div class="tool-box">
+<div class="container">
 
-<h2>Business Details</h2>
+<!-- Ad Space -->
+<div class="ad-space">Ad Space (728x90)</div>
 
-<input id="bizName" placeholder="Business Name">
-<input id="bizEmail" placeholder="Business Email">
-<input id="gstNumber" placeholder="GST Number (Optional)">
+<div class="invoice-form">
 
-<label><b>Upload Company Logo</b></label>
-<input type="file" id="logoUpload" accept="image/*">
-<small>Upload PNG/JPG logo for professional invoice</small>
-<div id="logoPreview" style="margin-top:10px;"></div>
-<button onclick="removeLogo()">Remove Logo</button>
+<h3>Company Details</h3>
+<input type="text" id="companyName" placeholder="Company Name">
+<textarea id="companyAddress" placeholder="Company Address"></textarea>
+<input type="file" id="logoUpload">
 
-<hr>
+<h3>Invoice Details</h3>
 
-<h2>Invoice Number</h2>
-
-<label>
-<input type="radio" name="invoiceType" checked onchange="toggleInvoiceType()"> Auto Generate
-</label>
-
-<label>
-<input type="radio" name="invoiceType" onchange="toggleInvoiceType()"> Manual
-</label>
-
-<input id="invoiceNo" readonly>
-<button onclick="generateInvoiceNo()">Regenerate</button>
-
-<input type="date" id="invoiceDate">
-
-<hr>
-
-<h2>Client Details</h2>
-
-<input id="clientName" placeholder="Client Name">
-<input id="clientEmail" placeholder="Client Email">
-
-<hr>
-
-<h2>Currency</h2>
-<select id="currency">
-<option value="₹">₹ INR</option>
-<option value="$">$ USD</option>
-<option value="€">€ EUR</option>
+<select id="invoiceMode">
+  <option value="auto">Auto Invoice Number</option>
+  <option value="manual">Manual Invoice Number</option>
 </select>
 
-<hr>
+<input type="text" id="invoiceNumber" placeholder="Invoice Number (Manual)">
+<input type="date" id="invoiceDate">
 
-<h2>Invoice Items</h2>
+<h3>Client Details</h3>
+<input type="text" id="clientName" placeholder="Client Name">
+<textarea id="clientAddress" placeholder="Client Address"></textarea>
 
-<table id="itemsTable" style="width:100%;text-align:center">
+<h3>Items</h3>
+<table id="itemsTable">
 <tr>
-<th>Item</th>
+<th>Description</th>
 <th>Qty</th>
 <th>Price</th>
 <th>Total</th>
-<th></th>
 </tr>
 </table>
 
@@ -117,70 +76,37 @@
 
 <br><br>
 
-<label>Discount %</label>
-<input type="number" id="discountPercent" value="0">
-
-<label>GST %</label>
-<input type="number" id="gstPercent" value="0">
-
-<label>Status</label>
-<select id="paymentStatus">
-<option>Pending</option>
-<option>Paid</option>
-</select>
-
-<hr>
-
-<label>Notes</label>
-<textarea id="notes" placeholder="Additional notes"></textarea>
-
-<label>Terms & Conditions</label>
-<textarea id="terms" placeholder="Payment terms & conditions"></textarea>
+<input type="number" id="discount" placeholder="Discount (%) Optional">
+<input type="text" id="gst" placeholder="GST (%) Optional">
 
 <br><br>
 
-<button onclick="saveInvoice()">Save Invoice</button>
+<button onclick="generateInvoice()">Generate Invoice</button>
 <button onclick="downloadPDF()">Download PDF</button>
-<button onclick="clearForm()">Clear</button>
+<button onclick="printInvoice()">Print</button>
+<button onclick="saveInvoice()">Save</button>
 
 </div>
-</section>
 
+<hr>
 
+<!-- Invoice Preview -->
+<div id="invoicePreview"></div>
 
-<section class="container">
-<div class="tool-box">
-<h2>Invoice History Dashboard</h2>
-<table id="historyTable" style="width:100%;text-align:center"></table>
+<!-- SEO Content -->
+<div class="seo-content">
+<h2>Free Online Invoice Generator</h2>
+<p>
+ToolNest Invoice Generator helps freelancers, businesses and agencies create professional invoices instantly.
+You can add company logo, GST number, optional discount and generate clean PDF invoice.
+This tool works fully on browser without server.
+Perfect for India GST invoice and international billing.
+</p>
 </div>
-</section>
 
-<!-- SEO CONTENT -->
-<section class="container">
-<h2>Free Online Invoice Generator Tool</h2>
-<p>
-ToolNest Invoice Generator is a professional online tool designed for freelancers,
-small businesses, agencies and startups. This free invoice maker allows you to create
-GST and Non-GST invoices in seconds. You can upload your company logo, choose currency,
-add discount, tax, payment status, notes and terms. The tool automatically calculates
-subtotal, tax and grand total without any manual effort.
-</p>
-<p>
-Unlike traditional invoice software, this tool works directly in your browser.
-There is no signup required. You can save invoice history locally, edit previous invoices,
-update payment status and download a professional PDF instantly.
-This makes it ideal for Indian businesses needing GST invoices and international freelancers
-working with USD or EUR currency.
-</p>
-<p>
-The invoice system is optimized for clean PDF generation using stable PDF engine,
-ensuring no blank page issues. Whether you are generating a one-time invoice
-or managing multiple clients, this tool helps streamline your billing workflow.
-</p>
-</section>
+<div class="ad-space">Ad Space (Responsive)</div>
 
-<!-- BOTTOM AD -->
-<div class="ad-box">Bottom Advertisement Space (700x250)</div>
+</div>
 
 <div id="footer"></div>
 
@@ -188,118 +114,105 @@ or managing multiple clients, this tool helps streamline your billing workflow.
 <script src="../darkmode.js"></script>
 
 <script>
-const { jsPDF } = window.jspdf;
-let logoData=null;
+let logoData = "";
 
-window.onload=function(){
-generateInvoiceNo();
-loadHistory();
-};
-
-function generateInvoiceNo(){
-invoiceNo.value="INV-"+Date.now();
-}
-
-function toggleInvoiceType(){
-const auto=document.querySelectorAll("input[name='invoiceType']")[0].checked;
-invoiceNo.readOnly=auto;
-if(auto) generateInvoiceNo();
-}
-
-document.getElementById("logoUpload").addEventListener("change",function(e){
-const reader=new FileReader();
-reader.onload=function(){
-logoData=reader.result;
-logoPreview.innerHTML="<img src='"+logoData+"' width='120'>";
-};
-reader.readAsDataURL(e.target.files[0]);
+document.getElementById("logoUpload").addEventListener("change", function(e){
+  const reader = new FileReader();
+  reader.onload = function(){
+    logoData = reader.result;
+  }
+  reader.readAsDataURL(e.target.files[0]);
 });
-
-function removeLogo(){
-logoData=null;
-logoPreview.innerHTML="";
-}
 
 function addItem(){
-const row=itemsTable.insertRow();
-row.innerHTML=`
-<td><input></td>
-<td><input type="number" value="1"></td>
-<td><input type="number" value="0"></td>
-<td></td>
-<td><button onclick="this.parentElement.parentElement.remove()">❌</button></td>
-`;
+  const table = document.getElementById("itemsTable");
+  const row = table.insertRow();
+  row.innerHTML = `
+    <td><input type="text" class="desc"></td>
+    <td><input type="number" class="qty" value="1"></td>
+    <td><input type="number" class="price" value="0"></td>
+    <td class="itemTotal">0</td>
+  `;
 }
 
-function collectData(){
-let items=[],subtotal=0;
-[...itemsTable.rows].slice(1).forEach(r=>{
-const name=r.cells[0].children[0].value;
-const qty=Number(r.cells[1].children[0].value);
-const price=Number(r.cells[2].children[0].value);
-const total=qty*price;
-subtotal+=total;
-items.push({name,qty,price,total});
-});
-const discount=subtotal*(discountPercent.value/100);
-const after=subtotal-discount;
-const gst=gstNumber.value?after*(gstPercent.value/100):0;
-return{
-invoiceNo:invoiceNo.value,
-bizName:bizName.value,
-clientName:clientName.value,
-grand:after+gst,
-items
-};
+function generateInvoice(){
+
+  let invoiceNo = document.getElementById("invoiceNumber").value;
+
+  if(document.getElementById("invoiceMode").value==="auto"){
+    invoiceNo = "INV-" + Date.now();
+  }
+
+  const rows = document.querySelectorAll("#itemsTable tr");
+  let subtotal = 0;
+
+  rows.forEach((row,i)=>{
+    if(i===0) return;
+    const qty = row.querySelector(".qty").value;
+    const price = row.querySelector(".price").value;
+    const total = qty*price;
+    row.querySelector(".itemTotal").innerText = total;
+    subtotal += total;
+  });
+
+  const discount = document.getElementById("discount").value || 0;
+  const gst = document.getElementById("gst").value || 0;
+
+  let finalTotal = subtotal;
+  finalTotal -= subtotal*(discount/100);
+  finalTotal += finalTotal*(gst/100);
+
+  document.getElementById("invoicePreview").innerHTML = `
+    <div class="invoice-box">
+      ${logoData? `<img src="${logoData}" style="max-width:150px;">`:""}
+      <h2>${document.getElementById("companyName").value}</h2>
+      <p>${document.getElementById("companyAddress").value}</p>
+      <hr>
+      <h3>Invoice: ${invoiceNo}</h3>
+      <p>Date: ${document.getElementById("invoiceDate").value}</p>
+      <h4>Bill To:</h4>
+      <p>${document.getElementById("clientName").value}</p>
+      <p>${document.getElementById("clientAddress").value}</p>
+      <hr>
+      ${document.getElementById("itemsTable").outerHTML}
+      <h3>Subtotal: ₹${subtotal.toFixed(2)}</h3>
+      ${discount>0? `<p>Discount: ${discount}%</p>`:""}
+      ${gst>0? `<p>GST: ${gst}%</p>`:""}
+      <h2>Total: ₹${finalTotal.toFixed(2)}</h2>
+    </div>
+  `;
+}
+
+async function downloadPDF(){
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const invoice = document.getElementById("invoicePreview");
+
+  await html2canvas(invoice).then(canvas=>{
+    const imgData = canvas.toDataURL("image/png");
+    doc.addImage(imgData,"PNG",10,10,190,0);
+    doc.save("invoice.pdf");
+  });
+}
+
+function printInvoice(){
+  const printContent = document.getElementById("invoicePreview").innerHTML;
+  const win = window.open("");
+  win.document.write(printContent);
+  win.print();
 }
 
 function saveInvoice(){
-let history=JSON.parse(localStorage.getItem("invoiceHistory")||"[]");
-history.push(collectData());
-localStorage.setItem("invoiceHistory",JSON.stringify(history));
-loadHistory();
-alert("Invoice Saved");
+  localStorage.setItem("savedInvoice", document.getElementById("invoicePreview").innerHTML);
+  alert("Invoice Saved!");
 }
 
-function loadHistory(){
-let history=JSON.parse(localStorage.getItem("invoiceHistory")||"[]");
-historyTable.innerHTML="<tr><th>No</th><th>Client</th><th>Total</th><th>Edit</th></tr>";
-history.forEach((h,i)=>{
-historyTable.innerHTML+=`
-<tr>
-<td>${h.invoiceNo}</td>
-<td>${h.clientName}</td>
-<td>${h.grand}</td>
-<td><button onclick="editInvoice(${i})">Edit</button></td>
-</tr>`;
-});
-}
-
-function editInvoice(i){
-let history=JSON.parse(localStorage.getItem("invoiceHistory"));
-let inv=history[i];
-invoiceNo.value=inv.invoiceNo;
-clientName.value=inv.clientName;
-alert("Invoice loaded. Modify and Save.");
-}
-
-function downloadPDF(){
-const data=collectData();
-const doc=new jsPDF();
-doc.text("INVOICE",14,20);
-doc.autoTable({
-startY:30,
-head:[["Item","Qty","Price","Total"]],
-body:data.items.map(i=>[i.name,i.qty,i.price,i.total])
-});
-doc.text("Grand Total: "+data.grand,14,doc.lastAutoTable.finalY+10);
-doc.save("invoice-"+data.invoiceNo+".pdf");
-}
-
-function clearForm(){
-document.querySelectorAll("input,textarea").forEach(i=>i.value="");
-itemsTable.innerHTML="<tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th><th></th></tr>";
-generateInvoiceNo();
+window.onload = function(){
+  const saved = localStorage.getItem("savedInvoice");
+  if(saved){
+    document.getElementById("invoicePreview").innerHTML = saved;
+  }
 }
 </script>
 
