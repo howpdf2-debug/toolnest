@@ -1,8 +1,13 @@
-
 <!-- robots.txt -->
+
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Crawl-delay: 1
 Sitemap: https://toolnest.bhaihelp.in/sitemap.xml
+
 
 <!-- Add to style.css for better footer contrast -->
 footer a {
