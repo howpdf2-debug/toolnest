@@ -1,18 +1,52 @@
-<!-- robots.txt -->
+# robots.txt for ToolNest
+# Tells search engines which pages to crawl
 
+# Allow all bots by default
 User-agent: *
 Allow: /
+
+# Disallow sensitive directories
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
+Disallow: /backup/
+Disallow: /cache/
+Disallow: /node_modules/
+
+# Disallow sensitive files
+Disallow: /*.php$
+Disallow: /*.sql$
+Disallow: /*.zip$
+Disallow: /*.tar$
+Disallow: /*.env$
+Disallow: /.git/
+Disallow: /.htaccess
+
+# Crawl delay (1 second between requests)
 Crawl-delay: 1
+
+# Request rate (requests per second)
+Request-rate: 1/1s
+
+# Specify sitemap location - IMPORTANT FOR SEO
 Sitemap: https://toolnest.bhaihelp.in/sitemap.xml
 
+# Google specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
 
-<!-- Add to style.css for better footer contrast -->
-footer a {
-  color: #60a5fa;  /* Changed from #93c5fd for better contrast */
-}
+# Bing specific
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
 
-<!-- Add to head for mobile optimization -->
-<meta name="theme-color" content="#2563eb">
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
