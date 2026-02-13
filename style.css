@@ -11,6 +11,7 @@
   --blue-dark: #1e40af;
   --teal: #0f766e;
   --border: #e2e8f0;
+  --shadow: rgba(0, 0, 0, 0.08);
 }
 
 html.dark {
@@ -20,6 +21,7 @@ html.dark {
   --text-main: #e5e7eb;
   --text-muted: #94a3b8;
   --border: #1e293b;
+  --shadow: rgba(0, 0, 0, 0.3);
 }
 
 /* =====================================================
@@ -69,8 +71,10 @@ button:focus-visible {
   align-items: center;
   padding: 14px 22px;
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow);
   z-index: 100;
+  position: sticky;
+  top: 0;
 }
 
 html.dark .topbar {
@@ -132,113 +136,14 @@ html.dark .topbar {
 }
 
 /* =====================================================
-   NAVIGATION WITH DROPDOWN
+   DROPDOWN (HEADER)
 ===================================================== */
-.nav-container {
-  background: #1a1a1a;
-  padding: 0;
-  margin: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-html.dark .nav-container {
-  background: #0f172a;
-  border-bottom: 1px solid var(--border);
-}
-
-.nav {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.nav-item {
-  position: relative;
-  margin: 0;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 15px 20px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border-bottom: 3px solid transparent;
-}
-
-.nav-link:hover {
-  background: rgba(15, 118, 110, 0.1);
-  border-bottom-color: var(--teal);
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #0a1212;
-  border: 1px solid var(--teal);
-  border-top: none;
-  min-width: 250px;
-  display: none;
-  flex-direction: column;
-  z-index: 1000;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-html.dark .dropdown-menu {
-  background: #0f172a;
-  border-color: var(--teal);
-}
-
-.nav-item:hover .dropdown-menu {
-  display: flex;
-}
-
-.dropdown-link {
-  display: block;
-  padding: 12px 20px;
-  color: #fff;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border-left: 3px solid transparent;
-  font-weight: 500;
-}
-
-.dropdown-link:hover {
-  background: var(--teal);
-  border-left-color: #14b8a6;
-  padding-left: 25px;
-}
-
-.dropdown-link:focus-visible {
-  background: var(--teal);
-  outline: none;
-}
-
-.dropdown-arrow {
-  font-size: 12px;
-  transition: transform 0.3s ease;
-  display: inline-block;
-}
-
-.nav-item:hover .dropdown-arrow {
-  transform: rotate(180deg);
-}
-
-/* Dropdown toggle styles (header) */
 .dropdown {
   position: relative;
 }
 
 .dropbtn {
-  background: linear-gradient(135deg, #6366f1, #2563eb);
+  background: rgba(255, 255, 255, 0.15);
   color: #fff;
   border: none;
   padding: 8px 14px;
@@ -249,8 +154,7 @@ html.dark .dropdown-menu {
 }
 
 .dropbtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .dropdown-content {
@@ -259,15 +163,28 @@ html.dark .dropdown-menu {
   right: 0;
   top: 45px;
   background: var(--bg-card);
-  min-width: 200px;
+  min-width: 220px;
   border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 30px var(--shadow);
   overflow: hidden;
   z-index: 1000;
+  border: 1px solid var(--border);
 }
 
 .dropdown-content.show {
   display: block;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .dropdown-content a {
@@ -276,10 +193,12 @@ html.dark .dropdown-menu {
   color: var(--text-main);
   font-weight: 500;
   transition: background 0.3s ease;
+  border-left: 3px solid transparent;
 }
 
 .dropdown-content a:hover {
   background: rgba(37, 99, 235, 0.1);
+  border-left-color: var(--blue);
 }
 
 /* =====================================================
@@ -364,11 +283,11 @@ html.dark .mini-hero {
 }
 
 /* =====================================================
-   TOOLS GRID
+   IMPROVED TOOLS GRID
 ===================================================== */
 .tools {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 24px;
   margin-bottom: 30px;
 }
@@ -376,28 +295,59 @@ html.dark .mini-hero {
 .tool {
   background: var(--bg-card);
   border-radius: 18px;
-  padding: 28px;
+  padding: 32px 24px;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px var(--shadow);
   transition: all 0.3s ease;
   border: 1px solid var(--border);
   color: var(--text-main);
   font-weight: 600;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 120px;
+  gap: 12px;
+  min-height: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tool::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--teal));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.tool:hover::before {
+  transform: scaleX(1);
 }
 
 .tool:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px var(--shadow);
   border-color: var(--blue);
 }
 
 .tool:focus-visible {
   outline: 2px solid var(--blue);
   outline-offset: 2px;
+}
+
+.tool-icon {
+  font-size: 36px;
+  display: block;
+}
+
+.tool-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
 }
 
 /* =====================================================
@@ -407,11 +357,25 @@ html.dark .mini-hero {
   background: var(--bg-card);
   padding: 32px;
   border-radius: 18px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px var(--shadow);
   border: 1px solid var(--border);
-  text-align: center;
 }
 
+.tool-box h2 {
+  margin-bottom: 20px;
+  color: var(--text-main);
+}
+
+.tool-box h3 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  color: var(--text-main);
+  font-size: 20px;
+}
+
+/* =====================================================
+   FORM ELEMENTS
+===================================================== */
 input,
 select,
 textarea {
@@ -479,13 +443,14 @@ button:active {
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
 }
 
 .btn-primary {
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
 }
 
-.btn-primary:hover {
+.btn-primary:hover:not(:disabled) {
   box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
@@ -493,7 +458,7 @@ button:disabled {
   background: #64748b;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover:not(:disabled) {
   background: #475569;
   box-shadow: 0 8px 20px rgba(100, 116, 139, 0.2);
 }
@@ -515,6 +480,158 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* =====================================================
+   CONTENT SECTION
+===================================================== */
+.content-section {
+  margin-top: 40px;
+}
+
+.content-section h2 {
+  margin-bottom: 20px;
+  color: var(--text-main);
+}
+
+.content-section h3 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: var(--text-main);
+}
+
+.content-section p {
+  margin-bottom: 15px;
+  line-height: 1.7;
+  color: var(--text-main);
+}
+
+.content-section ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.content-section li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   BLOG SECTION (HOMEPAGE)
+===================================================== */
+.blog-section {
+  margin-top: 50px;
+  padding: 40px 20px;
+  background: var(--bg-card);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+.blog-section h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--text-main);
+  font-size: 32px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 35px;
+  font-size: 16px;
+}
+
+.blog-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.blog-preview-card {
+  background: var(--bg-main);
+  border-radius: 16px;
+  padding: 25px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.blog-preview-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px var(--shadow);
+  border-color: var(--blue);
+}
+
+.blog-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.blog-tag {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.blog-tag.tutorial {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--blue);
+}
+
+.blog-tag.tips {
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--teal);
+}
+
+.blog-tag.guide {
+  background: rgba(168, 85, 247, 0.1);
+  color: #a855f7;
+}
+
+.blog-date {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.blog-preview-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.blog-preview-card p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+.blog-read-more {
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.blog-read-more:hover {
+  color: var(--blue-dark);
+  text-decoration: underline;
+}
+
+.blog-cta {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.blog-cta .btn-primary {
+  padding: 14px 28px;
+  font-size: 16px;
+  display: inline-block;
 }
 
 /* =====================================================
@@ -558,122 +675,25 @@ footer a:focus-visible {
 }
 
 /* =====================================================
-   TOOL COLORS
-===================================================== */
-body.tool-merge .mini-hero,
-body.tool-merge .btn-primary {
-  background: #dc2626;
-}
-
-body.tool-image .mini-hero,
-body.tool-image .btn-primary {
-  background: #16a34a;
-}
-
-body.tool-pdfjpg .mini-hero,
-body.tool-pdfjpg .btn-primary {
-  background: #7c3aed;
-}
-
-body.tool-seo .mini-hero,
-body.tool-seo .btn-primary {
-  background: #2563eb;
-}
-
-body.tool-word .mini-hero,
-body.tool-word .btn-primary {
-  background: #4f46e5;
-}
-
-body.tool-resume .mini-hero,
-body.tool-resume .btn-primary {
-  background: #4338ca;
-}
-
-body.tool-youtube .mini-hero,
-body.tool-youtube .btn-primary {
-  background: linear-gradient(135deg, #ff0000, #b91c1c);
-}
-
-body.tool-invoice .mini-hero,
-body.tool-invoice .btn-primary {
-  background: #0f766e;
-}
-
-/* =====================================================
-   INVOICE PROFESSIONAL UI
-===================================================== */
-.invoice-form {
-  background: var(--bg-card);
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  border: 1px solid var(--border);
-  margin-bottom: 40px;
-}
-
-.invoice-form h3 {
-  margin-top: 25px;
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: var(--text-main);
-  font-weight: 600;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-  background: var(--bg-card);
-}
-
-table th,
-table td {
-  border: 1px solid var(--border);
-  padding: 10px;
-  text-align: center;
-  font-weight: 500;
-}
-
-table th {
-  background: rgba(0, 0, 0, 0.05);
-  color: var(--text-main);
-}
-
-html.dark table th {
-  background: #1e293b;
-}
-
-.invoice-box {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  margin-top: 30px;
-}
-
-html.dark .invoice-box {
-  background: #0f172a;
-  color: #e5e7eb;
-  border: 1px solid var(--border);
-}
-
-/* =====================================================
    RESPONSIVE DESIGN
 ===================================================== */
 @media (max-width: 768px) {
   .topbar {
-    flex-direction: column;
+    flex-direction: row;
     gap: 12px;
-    padding: 10px 12px;
+    padding: 12px 16px;
   }
 
   .logo {
     font-size: 18px;
   }
+  
+  .logo img {
+    width: 30px;
+    height: 30px;
+  }
 
-  .nav-right a {
+  .nav-right a:not(.dropbtn) {
     display: none;
   }
 
@@ -696,8 +716,15 @@ html.dark .invoice-box {
   }
 
   .tool {
-    padding: 20px;
-    min-height: 100px;
+    padding: 24px 16px;
+    min-height: 120px;
+  }
+  
+  .tool-icon {
+    font-size: 32px;
+  }
+  
+  .tool-name {
     font-size: 14px;
   }
 
@@ -709,28 +736,6 @@ html.dark .invoice-box {
     padding: 40px 16px;
   }
 
-  .dropdown-menu {
-    position: static;
-    display: none;
-    background: #0a1212;
-  }
-
-  .nav-item.active .dropdown-menu {
-    display: flex;
-  }
-
-  .nav {
-    flex-direction: column;
-  }
-
-  .nav-link {
-    width: 100%;
-  }
-
-  .dropdown-link {
-    padding: 10px 20px;
-  }
-
   button {
     padding: 10px 16px;
     font-size: 14px;
@@ -738,21 +743,6 @@ html.dark .invoice-box {
 }
 
 @media (max-width: 480px) {
-  .topbar {
-    flex-direction: column;
-    gap: 12px;
-    padding: 10px 12px;
-  }
-
-  .logo {
-    font-size: 16px;
-  }
-
-  .hero {
-    padding: 50px 16px;
-    min-height: 280px;
-  }
-
   .hero h1 {
     font-size: 24px;
   }
@@ -767,39 +757,12 @@ html.dark .invoice-box {
   }
 
   .tool {
-    padding: 16px;
-    min-height: 80px;
-    font-size: 13px;
-  }
-
-  .container {
-    padding: 24px 12px;
-  }
-
-  .mini-hero {
-    padding: 30px 12px;
-  }
-
-  .tool-box {
-    padding: 24px 16px;
-  }
-
-  input,
-  select,
-  textarea {
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 16px;
+    padding: 20px 16px;
+    min-height: 100px;
   }
 
   button {
-    padding: 10px 16px;
-    font-size: 14px;
     width: 100%;
-  }
-
-  footer {
-    padding: 30px 16px;
   }
 
   footer p {
@@ -812,25 +775,9 @@ html.dark .invoice-box {
   }
 }
 
-@media print {
-  .topbar,
-  .nav-container,
-  footer,
-  .ad-box,
-  .ad-space {
-    display: none;
-  }
-
-  .container {
-    max-width: 100%;
-  }
-
-  .invoice-box {
-    box-shadow: none;
-    border: 1px solid #ccc;
-  }
-}
-
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -846,5 +793,28 @@ html.dark .invoice-box {
 
   button {
     border: 2px solid currentColor;
+  }
+}
+
+/* =====================================================
+   PRINT STYLES
+===================================================== */
+@media print {
+  .topbar,
+  footer,
+  .ad-box,
+  .ad-space,
+  #darkToggle,
+  .back-home {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .container {
+    max-width: 100%;
   }
 }
