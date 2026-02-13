@@ -5,28 +5,20 @@
   --bg-main: #f8fafc;
   --bg-card: #ffffff;
   --bg-input: #ffffff;
-
   --text-main: #0f172a;
   --text-muted: #475569;
-
   --blue: #2563eb;
   --blue-dark: #1e40af;
   --teal: #0f766e;
-
   --border: #e2e8f0;
-  --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* DARK MODE */
 html.dark {
   --bg-main: #020617;
   --bg-card: #0f172a;
   --bg-input: #1e293b;
-
   --text-main: #e5e7eb;
   --text-muted: #94a3b8;
-
   --border: #1e293b;
 }
 
@@ -78,6 +70,7 @@ button:focus-visible {
   padding: 14px 22px;
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
 }
 
 html.dark .topbar {
@@ -139,7 +132,7 @@ html.dark .topbar {
 }
 
 /* =====================================================
-   NAVIGATION WITH DROPDOWN (NEW)
+   NAVIGATION WITH DROPDOWN
 ===================================================== */
 .nav-container {
   background: #1a1a1a;
@@ -185,7 +178,6 @@ html.dark .nav-container {
   border-bottom-color: var(--teal);
 }
 
-/* Dropdown Menu */
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -230,7 +222,6 @@ html.dark .dropdown-menu {
   outline: none;
 }
 
-/* Dropdown Arrow Animation */
 .dropdown-arrow {
   font-size: 12px;
   transition: transform 0.3s ease;
@@ -239,6 +230,56 @@ html.dark .dropdown-menu {
 
 .nav-item:hover .dropdown-arrow {
   transform: rotate(180deg);
+}
+
+/* Dropdown toggle styles (header) */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: linear-gradient(135deg, #6366f1, #2563eb);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dropbtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background: var(--bg-card);
+  min-width: 200px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 12px 16px;
+  color: var(--text-main);
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background: rgba(37, 99, 235, 0.1);
 }
 
 /* =====================================================
@@ -323,7 +364,7 @@ html.dark .mini-hero {
 }
 
 /* =====================================================
-   TOOLS GRID – HOME
+   TOOLS GRID
 ===================================================== */
 .tools {
   display: grid;
@@ -337,7 +378,7 @@ html.dark .mini-hero {
   border-radius: 18px;
   padding: 28px;
   text-align: center;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   border: 1px solid var(--border);
   color: var(--text-main);
@@ -350,25 +391,25 @@ html.dark .mini-hero {
 
 .tool:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
   border-color: var(--blue);
 }
 
-.tool:active {
-  transform: translateY(-3px);
+.tool:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
 }
 
 /* =====================================================
-   TOOL BOX – INNER PAGE
+   TOOL BOX
 ===================================================== */
 .tool-box {
   background: var(--bg-card);
   padding: 32px;
   border-radius: 18px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   border: 1px solid var(--border);
   text-align: center;
-  margin-bottom: 30px;
 }
 
 input,
@@ -398,7 +439,6 @@ input::placeholder {
   color: var(--text-muted);
 }
 
-/* Dark mode input fixes */
 html.dark input,
 html.dark textarea,
 html.dark select {
@@ -428,6 +468,10 @@ button {
   font-size: 16px;
 }
 
+button:hover {
+  transform: translateY(-2px);
+}
+
 button:active {
   transform: scale(0.98);
 }
@@ -439,11 +483,9 @@ button:disabled {
 
 .btn-primary {
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-  color: #fff;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
@@ -453,7 +495,6 @@ button:disabled {
 
 .btn-secondary:hover {
   background: #475569;
-  transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(100, 116, 139, 0.2);
 }
 
@@ -511,28 +552,17 @@ footer a:hover {
   text-decoration: underline;
 }
 
+footer a:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
+}
+
 /* =====================================================
-   🎨 TOOL COLOR SYSTEM (SCALABLE)
+   TOOL COLORS
 ===================================================== */
-
-/* Default */
-body[class^="tool-"] .mini-hero,
-body[class^="tool-"] .btn-primary {
-  background: #475569;
-}
-
-body[class^="tool-"] .btn-primary:hover {
-  box-shadow: 0 8px 20px rgba(71, 85, 105, 0.3);
-}
-
-/* Individual tools */
 body.tool-merge .mini-hero,
 body.tool-merge .btn-primary {
   background: #dc2626;
-}
-
-body.tool-merge .btn-primary:hover {
-  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
 }
 
 body.tool-image .mini-hero,
@@ -540,17 +570,9 @@ body.tool-image .btn-primary {
   background: #16a34a;
 }
 
-body.tool-image .btn-primary:hover {
-  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.3);
-}
-
 body.tool-pdfjpg .mini-hero,
 body.tool-pdfjpg .btn-primary {
   background: #7c3aed;
-}
-
-body.tool-pdfjpg .btn-primary:hover {
-  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
 }
 
 body.tool-seo .mini-hero,
@@ -558,17 +580,9 @@ body.tool-seo .btn-primary {
   background: #2563eb;
 }
 
-body.tool-seo .btn-primary:hover {
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
-}
-
 body.tool-word .mini-hero,
 body.tool-word .btn-primary {
   background: #4f46e5;
-}
-
-body.tool-word .btn-primary:hover {
-  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
 }
 
 body.tool-resume .mini-hero,
@@ -576,44 +590,29 @@ body.tool-resume .btn-primary {
   background: #4338ca;
 }
 
-body.tool-resume .btn-primary:hover {
-  box-shadow: 0 8px 20px rgba(67, 56, 202, 0.3);
-}
-
-/* YouTube Downloader – Red Gradient */
 body.tool-youtube .mini-hero,
 body.tool-youtube .btn-primary {
   background: linear-gradient(135deg, #ff0000, #b91c1c);
 }
 
-body.tool-youtube .btn-primary:hover {
-  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
-}
-
-/* Invoice PDF Generator – Teal */
 body.tool-invoice .mini-hero,
 body.tool-invoice .btn-primary {
   background: #0f766e;
 }
 
-body.tool-invoice .btn-primary:hover {
-  box-shadow: 0 8px 20px rgba(15, 118, 110, 0.3);
-}
-
 /* =====================================================
-   🧾 INVOICE GENERATOR PROFESSIONAL UI
+   INVOICE PROFESSIONAL UI
 ===================================================== */
-
-.tool-invoice .invoice-form {
+.invoice-form {
   background: var(--bg-card);
   padding: 30px;
   border-radius: 18px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   border: 1px solid var(--border);
   margin-bottom: 40px;
 }
 
-.tool-invoice .invoice-form h3 {
+.invoice-form h3 {
   margin-top: 25px;
   margin-bottom: 10px;
   font-size: 18px;
@@ -621,47 +620,36 @@ body.tool-invoice .btn-primary:hover {
   font-weight: 600;
 }
 
-.tool-invoice table {
+table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 15px;
   background: var(--bg-card);
 }
 
-.tool-invoice table th,
-.tool-invoice table td {
+table th,
+table td {
   border: 1px solid var(--border);
   padding: 10px;
   text-align: center;
   font-weight: 500;
 }
 
-.tool-invoice table th {
+table th {
   background: rgba(0, 0, 0, 0.05);
   color: var(--text-main);
 }
 
-html.dark .tool-invoice table th {
+html.dark table th {
   background: #1e293b;
 }
 
-.tool-invoice button {
-  margin-top: 10px;
-  margin-right: 8px;
-}
-
-.tool-invoice button:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
-}
-
-/* Invoice Preview Box */
 .invoice-box {
   background: #ffffff;
   padding: 30px;
   border-radius: 16px;
   border: 1px solid #e2e8f0;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   margin-top: 30px;
 }
 
@@ -674,11 +662,11 @@ html.dark .invoice-box {
 /* =====================================================
    RESPONSIVE DESIGN
 ===================================================== */
-
-/* Tablet */
 @media (max-width: 768px) {
   .topbar {
-    padding: 12px 16px;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px 12px;
   }
 
   .logo {
@@ -721,7 +709,6 @@ html.dark .invoice-box {
     padding: 40px 16px;
   }
 
-  /* Dropdown Mobile */
   .dropdown-menu {
     position: static;
     display: none;
@@ -750,7 +737,6 @@ html.dark .invoice-box {
   }
 }
 
-/* Mobile */
 @media (max-width: 480px) {
   .topbar {
     flex-direction: column;
@@ -803,7 +789,7 @@ html.dark .invoice-box {
   textarea {
     padding: 10px;
     margin: 10px 0;
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: 16px;
   }
 
   button {
@@ -826,9 +812,6 @@ html.dark .invoice-box {
   }
 }
 
-/* =====================================================
-   PRINT STYLES
-===================================================== */
 @media print {
   .topbar,
   .nav-container,
@@ -848,56 +831,6 @@ html.dark .invoice-box {
   }
 }
 
-/* =====================================================
-   UTILITIES
-===================================================== */
-
-/* Text utilities */
-.text-center {
-  text-align: center;
-}
-
-.text-muted {
-  color: var(--text-muted);
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-.font-semibold {
-  font-weight: 600;
-}
-
-/* Spacing utilities */
-.mt-1 { margin-top: 8px; }
-.mt-2 { margin-top: 16px; }
-.mt-3 { margin-top: 24px; }
-.mt-4 { margin-top: 32px; }
-
-.mb-1 { margin-bottom: 8px; }
-.mb-2 { margin-bottom: 16px; }
-.mb-3 { margin-bottom: 24px; }
-.mb-4 { margin-bottom: 32px; }
-
-.gap-1 { gap: 8px; }
-.gap-2 { gap: 16px; }
-.gap-3 { gap: 24px; }
-
-/* Visibility */
-.hidden {
-  display: none !important;
-}
-
-.visible {
-  display: block !important;
-}
-
-/* =====================================================
-   ACCESSIBILITY
-===================================================== */
-
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -906,7 +839,6 @@ html.dark .invoice-box {
   }
 }
 
-/* High contrast */
 @media (prefers-contrast: more) {
   body {
     --border: #1a1a1a;
