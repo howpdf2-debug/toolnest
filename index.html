@@ -1,273 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ========== CHARACTER SET & VIEWPORT (FIXED - ONLY ONE) ========== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ========== TITLE (60 chars with keywords) ========== -->
     <title>ToolNest - Free Online Tools: Invoice Generator, PDF Merger & More</title>
-    
-    <!-- ========== DESCRIPTION (160 chars with keywords) ========== -->
     <meta name="description" content="ToolNest: Free online tools including invoice generator with GST, PDF merger, image compressor, PDF to JPG converter, SEO generator, YouTube downloader & more. Fast, secure.">
-    
-    <!-- ========== KEYWORDS ========== -->
     <meta name="keywords" content="free online tools, invoice generator, GST invoice, PDF merger, image compressor, PDF to JPG, YouTube downloader, SEO generator, word counter, resume builder">
-    
-    <!-- ========== AUTHOR & COPYRIGHT ========== -->
-    <meta name="author" content="ToolNest">
-    <meta name="copyright" content="ToolNest 2024">
-    
-    <!-- ========== ROBOTS ========== -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    
-    <!-- ========== THEME COLOR ========== -->
     <meta name="theme-color" content="#0f766e">
-    
-    <!-- ========== CANONICAL URL ========== -->
     <link rel="canonical" href="https://toolnest.bhaihelp.in/">
-    
-    <!-- ========== FAVICON ========== -->
-    <link rel="icon" type="image/png" href="favicon.png" sizes="any">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="shortcut icon" href="./favicon.png">
+    <link rel="manifest" href="manifest.json">
     
-    <!-- ========== OPEN GRAPH TAGS ========== -->
+    <!-- Open Graph -->
     <meta property="og:title" content="ToolNest - Free Online Tools: Invoice Generator & PDF Tools">
-    <meta property="og:description" content="Free online tools for invoicing, PDF editing, image compression & more. No signup required. Fast & secure.">
+    <meta property="og:description" content="Free online tools for invoicing, PDF editing, image compression & more. No signup required.">
     <meta property="og:image" content="https://toolnest.bhaihelp.in/og-image.jpg">
     <meta property="og:url" content="https://toolnest.bhaihelp.in/">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="ToolNest">
     
-    <!-- ========== TWITTER CARD TAGS ========== -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ToolNest - Free Online Tools & Invoice Generator">
-    <meta name="twitter:description" content="Free invoice generator with GST, PDF merger, image compressor & more online tools.">
+    <meta name="twitter:description" content="Free invoice generator with GST, PDF merger, image compressor & more.">
     <meta name="twitter:image" content="https://toolnest.bhaihelp.in/og-image.jpg">
     
-    <!-- ========== PERFORMANCE: PRECONNECT & DNS PREFETCH ========== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="https://www.google-analytics.com">
-    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
-    
-    <!-- ========== STYLESHEET ========== -->
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
     
-    
-    
-    <!-- ========== SCHEMA MARKUP: ORGANIZATION ========== -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ToolNest",
-      "url": "https://toolnest.bhaihelp.in",
-      "description": "Free online tools platform offering invoice generator, PDF tools, image compressor, and more.",
-      "logo": "https://toolnest.bhaihelp.in/logo.png",
-      "image": "https://toolnest.bhaihelp.in/og-image.jpg",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "Customer Support",
-        "email": "support@toolnest.bhaihelp.in"
-      },
-      "sameAs": [
-        "https://facebook.com/toolnest",
-        "https://twitter.com/toolnest",
-        "https://linkedin.com/company/toolnest"
-      ]
-    }
-    </script>
-    
-    <!-- ========== SCHEMA MARKUP: WEBSITE ========== -->
+    <!-- Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "ToolNest",
       "url": "https://toolnest.bhaihelp.in",
-      "description": "Free online tools platform with invoice generator, PDF tools, and more",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://toolnest.bhaihelp.in/?q={search_term_string}",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://toolnest.bhaihelp.in/?q={search_term_string}"
+        },
         "query-input": "required name=search_term_string"
       }
     }
     </script>
     
-    <!-- ========== SCHEMA MARKUP: SOFTWARE APPLICATION ========== -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "ToolNest - Free Online Tools",
-      "url": "https://toolnest.bhaihelp.in",
-      "applicationCategory": "Productivity",
-      "description": "Collection of free online tools including invoice generator, PDF tools, image compressor and more.",
-      "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "1500"
-      }
-    }
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
     </script>
     
-    <!-- ========== GOOGLE ADSENSE (ASYNC) ========== -->
-    <script async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
-      crossorigin="anonymous">
-    </script>
-
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <!-- ========== HEADER (KEEP YOUR EXISTING HEADER STYLE) ========== -->
-    <div id="header"></div>
-    
-    <!-- ========== NAVIGATION WITH DROPDOWN ========== -->
-    <nav class="nav-container">
-      <ul class="nav">
-        <li class="nav-item">
-          <a href="#" class="nav-link">Tools <span class="dropdown-arrow">▼</span></a>
-          <div class="dropdown-menu">
-            <a href="/tools/merge-pdf.html" class="dropdown-link">📄 Merge PDF</a>
-            <a href="/tools/image-compress.html" class="dropdown-link">🖼️ Image Compressor</a>
-            <a href="/tools/pdf-to-jpg.html" class="dropdown-link">🔄 PDF to JPG</a>
-            <a href="/tools/youtube-downloader.html" class="dropdown-link">📺 YouTube Downloader</a>
-            <a href="/tools/seo-generator.html" class="dropdown-link">🔍 SEO Generator</a>
-            <a href="/tools/word-counter.html" class="dropdown-link">📝 Word Counter</a>
-            <a href="/tools/resume-builder.html" class="dropdown-link">💼 Resume Builder</a>
-            <a href="/tools/invoice-generator.html" class="dropdown-link">🧾 Invoice Generator</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">About</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">Contact</a>
-        </li>
-      </ul>
-    </nav>
+    <!-- ========== HEADER (INLINE - ALWAYS VISIBLE) ========== -->
+    <header class="topbar">
+        <a href="/index.html" class="logo">
+            <img src="/favicon.png" alt="ToolNest logo">
+            ToolNest
+        </a>
+        <div class="nav-right">
+            <a href="/index.html">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/blog.html">Blog</a>
+            
+            <!-- Tools Dropdown -->
+            <div class="dropdown">
+                <button class="dropbtn" id="toolsDropdownBtn" aria-haspopup="true" aria-expanded="false">
+                    Tools ▾
+                </button>
+                <div class="dropdown-content" id="toolsDropdown" role="menu">
+                    <a href="/tools/invoice-generator.html" role="menuitem">🧾 Invoice Generator</a>
+                    <a href="/tools/merge-pdf.html" role="menuitem">📄 Merge PDF</a>
+                    <a href="/tools/image-compress.html" role="menuitem">🖼️ Image Compressor</a>
+                    <a href="/tools/pdf-to-jpg.html" role="menuitem">🔄 PDF to JPG</a>
+                    <a href="/tools/youtube-downloader.html" role="menuitem">📺 YouTube Downloader</a>
+                    <a href="/tools/seo-generator.html" role="menuitem">🔍 SEO Generator</a>
+                    <a href="/tools/word-counter.html" role="menuitem">📝 Word Counter</a>
+                    <a href="/tools/resume-builder.html" role="menuitem">💼 Resume Builder</a>
+                </div>
+            </div>
+            
+            <!-- Dark Mode Toggle -->
+            <button id="darkToggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+    </header>
     
     <!-- ========== HERO SECTION ========== -->
     <section class="hero">
-      <h1>Free Online Tools</h1>
-      <p>Fast, secure and privacy-friendly tools by ToolNest.</p>
+        <h1>Free Online Tools for Everyone</h1>
+        <p>Fast, secure and privacy-friendly tools. No signup required. 100% free forever.</p>
     </section>
     
     <!-- ========== MAIN TOOLS SECTION ========== -->
-    <section class="container">
-      <h2>Popular Tools</h2>
-      
-      <!-- TOOLS GRID (CONSISTENT LINKS & NAMING) -->
-      <div class="tools">
-        <a class="tool" href="/tools/merge-pdf.html" title="Merge PDF files online">Merge PDF</a>
-        <a class="tool" href="/tools/image-compress.html" title="Compress images online">Image Compressor</a>
-        <a class="tool" href="/tools/pdf-to-jpg.html" title="Convert PDF to JPG">PDF to JPG</a>
-        <a class="tool" href="/tools/youtube-downloader.html" title="Download YouTube videos">YouTube Downloader</a>
-        <a class="tool" href="/tools/seo-generator.html" title="Generate SEO meta tags">SEO Generator</a>
-        <a class="tool" href="/tools/word-counter.html" title="Count words in text">Word Counter</a>
-        <a class="tool" href="/tools/resume-builder.html" title="Create resume online">Resume Builder</a>
-        <a class="tool" href="/tools/invoice-generator.html" title="Create professional invoices">Invoice Generator</a>
-      </div>
-      
-      <!-- ADSENSE PLACEMENT -->
-      <aside class="ad-box" role="complementary" aria-label="Advertisement">
-        <!-- Google AdSense -->
-        <!--
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-             data-ad-slot="XXXXXXXXXX"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        -->
-        Advertisement
-      </aside>
-      
+    <main class="container">
+        <h2>Most Popular Tools</h2>
+        
+        <div class="tools">
+            <a class="tool" href="/tools/invoice-generator.html">
+                <span class="tool-icon">🧾</span>
+                <span class="tool-name">Invoice Generator</span>
+            </a>
+            <a class="tool" href="/tools/merge-pdf.html">
+                <span class="tool-icon">📄</span>
+                <span class="tool-name">Merge PDF</span>
+            </a>
+            <a class="tool" href="/tools/image-compress.html">
+                <span class="tool-icon">🖼️</span>
+                <span class="tool-name">Image Compressor</span>
+            </a>
+            <a class="tool" href="/tools/pdf-to-jpg.html">
+                <span class="tool-icon">🔄</span>
+                <span class="tool-name">PDF to JPG</span>
+            </a>
+            <a class="tool" href="/tools/youtube-downloader.html">
+                <span class="tool-icon">📺</span>
+                <span class="tool-name">YouTube Downloader</span>
+            </a>
+            <a class="tool" href="/tools/seo-generator.html">
+                <span class="tool-icon">🔍</span>
+                <span class="tool-name">SEO Generator</span>
+            </a>
+            <a class="tool" href="/tools/word-counter.html">
+                <span class="tool-icon">📝</span>
+                <span class="tool-name">Word Counter</span>
+            </a>
+            <a class="tool" href="/tools/resume-builder.html">
+                <span class="tool-icon">💼</span>
+                <span class="tool-name">Resume Builder</span>
+            </a>
+        </div>
+        
+        <!-- AdSense Placement 1 -->
+        <aside class="ad-box" role="complementary" aria-label="Advertisement">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+    </main>
+    
+    <!-- ========== BLOG SECTION ========== -->
+    <section class="container blog-section">
+        <h2>📚 Latest from Our Blog</h2>
+        <p class="section-subtitle">Tips, tutorials, and updates to help you get the most out of our tools</p>
+        
+        <div class="blog-preview-grid">
+            <article class="blog-preview-card">
+                <div class="blog-preview-header">
+                    <span class="blog-tag tutorial">Tutorial</span>
+                    <span class="blog-date">Feb 10, 2026</span>
+                </div>
+                <h3>How to Create Professional GST Invoices Online</h3>
+                <p>Step-by-step guide to creating GST-compliant invoices using our free invoice generator. Perfect for freelancers and small businesses...</p>
+                <a href="/blog/gst-invoice-guide.html" class="blog-read-more">Read Full Article →</a>
+            </article>
+            
+            <article class="blog-preview-card">
+                <div class="blog-preview-header">
+                    <span class="blog-tag tips">Tips & Tricks</span>
+                    <span class="blog-date">Feb 8, 2026</span>
+                </div>
+                <h3>5 Ways to Compress Images Without Losing Quality</h3>
+                <p>Discover professional techniques to reduce image file sizes while maintaining visual quality. Essential for web optimization...</p>
+                <a href="/blog/image-compression-tips.html" class="blog-read-more">Read Full Article →</a>
+            </article>
+            
+            <article class="blog-preview-card">
+                <div class="blog-preview-header">
+                    <span class="blog-tag guide">Complete Guide</span>
+                    <span class="blog-date">Feb 5, 2026</span>
+                </div>
+                <h3>PDF Tools Every Student Should Know</h3>
+                <p>Essential PDF tools for students: merge notes, convert assignments, and more. Make your academic life easier with these free tools...</p>
+                <a href="/blog/student-pdf-tools.html" class="blog-read-more">Read Full Article →</a>
+            </article>
+        </div>
+        
+        <div class="blog-cta">
+            <a href="/blog.html" class="btn-primary">View All Articles →</a>
+        </div>
     </section>
     
     <!-- ========== CONTENT SECTION ========== -->
-    <section class="container">
-      <h2>Free Online Tools by ToolNest</h2>
-      
-      <p>
-        ToolNest is a free online tools platform designed to help users
-        perform daily digital tasks easily and securely. Our tools include
-        PDF merger, image compressor, PDF to JPG converter, invoice generator
-        with GST support, SEO generator, YouTube downloader and many more.
-      </p>
-      
-      <p>
-        All tools work directly in your browser with no signup required.
-        ToolNest focuses on speed, privacy and mobile-first usability.
-        Whether you are a student, blogger, developer or digital marketer,
-        ToolNest provides the right solution for you.
-      </p>
-      
-      <h3>Key Features</h3>
-      <ul>
-        <li>No registration or login required</li>
-        <li>100% free and secure</li>
-        <li>Works offline in your browser</li>
-        <li>Mobile-friendly interface</li>
-        <li>Privacy-focused (no data storage)</li>
-        <li>Fast processing speeds</li>
-      </ul>
+    <section class="container content-section">
+        <article>
+            <h2>Why Choose ToolNest?</h2>
+            
+            <p>
+                <strong>ToolNest</strong> is India's fastest-growing free online tools platform designed to help users
+                perform daily digital tasks easily and securely. Our comprehensive suite includes
+                a <strong>professional invoice generator with GST support</strong>, PDF merger, image compressor, 
+                PDF to JPG converter, SEO meta tag generator, YouTube video downloader, and many more productivity tools.
+            </p>
+            
+            <h3>🚀 Key Features</h3>
+            <ul>
+                <li>✅ <strong>100% Free Forever</strong> - No hidden charges or premium plans</li>
+                <li>✅ <strong>No Registration Required</strong> - Start using tools instantly</li>
+                <li>✅ <strong>Privacy-Focused</strong> - We don't store your data</li>
+                <li>✅ <strong>Works Offline</strong> - Most tools work in your browser</li>
+                <li>✅ <strong>Mobile-Friendly</strong> - Fully responsive design</li>
+                <li>✅ <strong>Fast Processing</strong> - Optimized for speed</li>
+            </ul>
+
+            <h3>🎯 Popular Use Cases</h3>
+            <p>
+                <strong>For Freelancers:</strong> Create professional GST invoices instantly with our Invoice Generator.<br>
+                <strong>For Students:</strong> Count words and characters for assignments with Word Counter.<br>
+                <strong>For Bloggers:</strong> Generate perfect SEO meta tags with our SEO Generator.<br>
+                <strong>For Designers:</strong> Compress images without quality loss with Image Compressor.
+            </p>
+        </article>
+        
+        <!-- AdSense Placement 2 -->
+        <aside class="ad-space" role="complementary" aria-label="Advertisement">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-format="fluid"
+                 data-ad-layout-key="-fb+5w+4e-db+86"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="9876543210"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
     </section>
     
     <!-- ========== FOOTER ========== -->
-    <div id="footer"></div>
+    <footer>
+        <p><strong>ToolNest</strong> – Free online tools for PDFs, images, and SEO.</p>
+        <p>
+            <a href="/index.html">Home</a> |
+            <a href="/blog.html">Blog</a> |
+            <a href="/about.html">About Us</a> |
+            <a href="/contact.html">Contact</a> |
+            <a href="/privacy-policy.html">Privacy Policy</a> |
+            <a href="/terms.html">Terms of Service</a>
+        </p>
+        <p>© 2026 ToolNest. All rights reserved.</p>
+    </footer>
     
-    <!-- ========== JAVASCRIPT (OPTIMIZED - DEFER) ========== -->
-    <script defer src="includes/include.js"></script>
-    <script defer src="darkmode.js"></script>
-    
-    <!-- ========== DROPDOWN FUNCTIONALITY ========== -->
+    <!-- ========== JAVASCRIPT ========== -->
     <script>
-        // Mobile dropdown toggle
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                // Only for mobile
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    this.classList.toggle('active');
-                }
+        // Dark Mode Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkToggle = document.getElementById('darkToggle');
+            
+            // Load saved preference
+            const savedMode = localStorage.getItem('darkMode');
+            if (savedMode === 'true') {
+                document.documentElement.classList.add('dark');
+                darkToggle.textContent = '☀️';
+            } else {
+                darkToggle.textContent = '🌙';
+            }
+            
+            // Toggle on click
+            darkToggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('darkMode', isDark);
+                darkToggle.textContent = isDark ? '☀️' : '🌙';
             });
         });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.nav-container')) {
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    item.classList.remove('active');
+        
+        // Tools Dropdown
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownBtn = document.getElementById('toolsDropdownBtn');
+            const dropdownContent = document.getElementById('toolsDropdown');
+            
+            if (dropdownBtn && dropdownContent) {
+                dropdownBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isExpanded = dropdownContent.classList.contains('show');
+                    dropdownContent.classList.toggle('show');
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                });
+                
+                // Close on link click
+                dropdownContent.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        dropdownContent.classList.remove('show');
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+                
+                // Close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.dropdown')) {
+                        dropdownContent.classList.remove('show');
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                
+                // Close on Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && dropdownContent.classList.contains('show')) {
+                        dropdownContent.classList.remove('show');
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownBtn.focus();
+                    }
                 });
             }
         });
-
-        // Prevent dropdown link clicks from closing on mobile
-        document.querySelectorAll('.dropdown-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Allow default behavior (navigation)
-                if (window.innerWidth <= 768) {
-                    const parent = this.closest('.nav-item');
-                    parent.classList.remove('active');
-                }
+        
+        // Service Worker Registration (PWA)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('✅ Service Worker registered'))
+                    .catch(err => console.log('❌ SW error:', err));
             });
-        });
+        }
     </script>
 
 </body>
 </html>
-
