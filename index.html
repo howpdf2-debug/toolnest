@@ -5,78 +5,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToolNest - Free Online Tools: Invoice Generator, PDF Merger & More</title>
     <meta name="description" content="ToolNest: Free online tools including invoice generator with GST, PDF merger, image compressor, PDF to JPG converter, SEO generator, YouTube downloader & more. Fast, secure.">
-    <meta name="keywords" content="free online tools, invoice generator, GST invoice, PDF merger, image compressor, PDF to JPG, YouTube downloader, SEO generator, word counter, resume builder">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="theme-color" content="#0f766e">
     <link rel="canonical" href="https://toolnest.bhaihelp.in/">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="ToolNest - Free Online Tools: Invoice Generator & PDF Tools">
-    <meta property="og:description" content="Free online tools for invoicing, PDF editing, image compression & more. No signup required.">
-    <meta property="og:image" content="https://toolnest.bhaihelp.in/og-image.jpg">
-    <meta property="og:url" content="https://toolnest.bhaihelp.in/">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ToolNest - Free Online Tools & Invoice Generator">
-    <meta name="twitter:description" content="Free invoice generator with GST, PDF merger, image compressor & more.">
-    <meta name="twitter:image" content="https://toolnest.bhaihelp.in/og-image.jpg">
-    
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Schema Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "ToolNest",
-      "url": "https://toolnest.bhaihelp.in",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://toolnest.bhaihelp.in/?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <style>
+        /* Mobile Navigation Fixes */
+        .mobile-menu-toggle {
+            display: none;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-right {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 60px);
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+                transition: right 0.3s ease;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            
+            .nav-right.active {
+                right: 0;
+            }
+            
+            .nav-right a {
+                color: var(--text-main);
+                padding: 12px 15px;
+                border-radius: 8px;
+                display: block;
+                border: 1px solid var(--border);
+                margin-bottom: 10px;
+            }
+            
+            .nav-right a:hover {
+                background: var(--blue);
+                color: white;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .dropdown {
+                width: 100%;
+            }
+            
+            .dropbtn {
+                width: 100%;
+                text-align: left;
+                background: rgba(37, 99, 235, 0.1);
+                color: var(--text-main);
+                padding: 12px 15px;
+                border: 1px solid var(--border);
+                margin-bottom: 10px;
+            }
+            
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                margin-top: 0;
+                box-shadow: none;
+                border-radius: 8px;
+                margin-bottom: 10px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .dropdown-content.show {
+                max-height: 500px;
+            }
+            
+            .dropdown-content a {
+                border: none;
+                border-left: 3px solid var(--blue);
+                margin-bottom: 0;
+            }
+            
+            #darkToggle {
+                width: 100%;
+                background: rgba(37, 99, 235, 0.1);
+                color: var(--text-main);
+                padding: 12px 15px;
+                border: 1px solid var(--border);
+            }
+            
+            /* Mobile overlay */
+            .mobile-overlay {
+                display: none;
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 998;
+            }
+            
+            .mobile-overlay.active {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- ========== HEADER (INLINE - ALWAYS VISIBLE) ========== -->
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Header -->
     <header class="topbar">
         <a href="/index.html" class="logo">
             <img src="/favicon.png" alt="ToolNest logo">
             ToolNest
         </a>
-        <div class="nav-right">
-            <a href="/index.html">Home</a>
-            <a href="/about.html">About</a>
-            <a href="/contact.html">Contact</a>
-            <a href="/blog.html">Blog</a>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+            ☰
+        </button>
+        
+        <!-- Navigation -->
+        <div class="nav-right" id="navRight">
+            <a href="/index.html">🏠 Home</a>
+            <a href="/about.html">ℹ️ About</a>
+            <a href="/contact.html">📧 Contact</a>
+            <a href="/blog.html">📚 Blog</a>
             
             <!-- Tools Dropdown -->
             <div class="dropdown">
                 <button class="dropbtn" id="toolsDropdownBtn" aria-haspopup="true" aria-expanded="false">
-                    Tools ▾
+                    🛠️ Tools ▾
                 </button>
                 <div class="dropdown-content" id="toolsDropdown" role="menu">
                     <a href="/tools/invoice-generator.html" role="menuitem">🧾 Invoice Generator</a>
@@ -95,13 +167,13 @@
         </div>
     </header>
     
-    <!-- ========== HERO SECTION ========== -->
+    <!-- Hero Section -->
     <section class="hero">
         <h1>Free Online Tools for Everyone</h1>
         <p>Fast, secure and privacy-friendly tools. No signup required. 100% free forever.</p>
     </section>
     
-    <!-- ========== MAIN TOOLS SECTION ========== -->
+    <!-- Main Tools Section -->
     <main class="container">
         <h2>Most Popular Tools</h2>
         
@@ -140,8 +212,8 @@
             </a>
         </div>
         
-        <!-- AdSense Placement 1 -->
-        <aside class="ad-box" role="complementary" aria-label="Advertisement">
+        <!-- AdSense Placement -->
+        <aside class="ad-box">
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
@@ -154,7 +226,7 @@
         </aside>
     </main>
     
-    <!-- ========== BLOG SECTION ========== -->
+    <!-- Blog Section -->
     <section class="container blog-section">
         <h2>📚 Latest from Our Blog</h2>
         <p class="section-subtitle">Tips, tutorials, and updates to help you get the most out of our tools</p>
@@ -166,7 +238,7 @@
                     <span class="blog-date">Feb 10, 2026</span>
                 </div>
                 <h3>How to Create Professional GST Invoices Online</h3>
-                <p>Step-by-step guide to creating GST-compliant invoices using our free invoice generator. Perfect for freelancers and small businesses...</p>
+                <p>Step-by-step guide to creating GST-compliant invoices using our free invoice generator...</p>
                 <a href="/blog/gst-invoice-guide.html" class="blog-read-more">Read Full Article →</a>
             </article>
             
@@ -176,7 +248,7 @@
                     <span class="blog-date">Feb 8, 2026</span>
                 </div>
                 <h3>5 Ways to Compress Images Without Losing Quality</h3>
-                <p>Discover professional techniques to reduce image file sizes while maintaining visual quality. Essential for web optimization...</p>
+                <p>Discover professional techniques to reduce image file sizes while maintaining visual quality...</p>
                 <a href="/blog/image-compression-tips.html" class="blog-read-more">Read Full Article →</a>
             </article>
             
@@ -186,7 +258,7 @@
                     <span class="blog-date">Feb 5, 2026</span>
                 </div>
                 <h3>PDF Tools Every Student Should Know</h3>
-                <p>Essential PDF tools for students: merge notes, convert assignments, and more. Make your academic life easier with these free tools...</p>
+                <p>Essential PDF tools for students: merge notes, convert assignments, and more...</p>
                 <a href="/blog/student-pdf-tools.html" class="blog-read-more">Read Full Article →</a>
             </article>
         </div>
@@ -196,7 +268,7 @@
         </div>
     </section>
     
-    <!-- ========== CONTENT SECTION ========== -->
+    <!-- Content Section -->
     <section class="container content-section">
         <article>
             <h2>Why Choose ToolNest?</h2>
@@ -220,28 +292,15 @@
 
             <h3>🎯 Popular Use Cases</h3>
             <p>
-                <strong>For Freelancers:</strong> Create professional GST invoices instantly with our Invoice Generator.<br>
-                <strong>For Students:</strong> Count words and characters for assignments with Word Counter.<br>
-                <strong>For Bloggers:</strong> Generate perfect SEO meta tags with our SEO Generator.<br>
-                <strong>For Designers:</strong> Compress images without quality loss with Image Compressor.
+                <strong>For Freelancers:</strong> Create professional GST invoices instantly.<br>
+                <strong>For Students:</strong> Count words and characters for assignments.<br>
+                <strong>For Bloggers:</strong> Generate perfect SEO meta tags.<br>
+                <strong>For Designers:</strong> Compress images without quality loss.
             </p>
         </article>
-        
-        <!-- AdSense Placement 2 -->
-        <aside class="ad-space" role="complementary" aria-label="Advertisement">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-format="fluid"
-                 data-ad-layout-key="-fb+5w+4e-db+86"
-                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                 data-ad-slot="9876543210"></ins>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </aside>
     </section>
     
-    <!-- ========== FOOTER ========== -->
+    <!-- Footer -->
     <footer>
         <p><strong>ToolNest</strong> – Free online tools for PDFs, images, and SEO.</p>
         <p>
@@ -255,78 +314,105 @@
         <p>© 2026 ToolNest. All rights reserved.</p>
     </footer>
     
-    <!-- ========== JAVASCRIPT ========== -->
+    <!-- JavaScript -->
     <script>
         // Dark Mode Toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const darkToggle = document.getElementById('darkToggle');
-            
-            // Load saved preference
-            const savedMode = localStorage.getItem('darkMode');
-            if (savedMode === 'true') {
-                document.documentElement.classList.add('dark');
-                darkToggle.textContent = '☀️';
-            } else {
-                darkToggle.textContent = '🌙';
-            }
-            
-            // Toggle on click
-            darkToggle.addEventListener('click', function() {
-                document.documentElement.classList.toggle('dark');
-                const isDark = document.documentElement.classList.contains('dark');
-                localStorage.setItem('darkMode', isDark);
-                darkToggle.textContent = isDark ? '☀️' : '🌙';
-            });
-        });
+        const darkToggle = document.getElementById('darkToggle');
+        const savedMode = localStorage.getItem('darkMode');
         
-        // Tools Dropdown
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdownBtn = document.getElementById('toolsDropdownBtn');
-            const dropdownContent = document.getElementById('toolsDropdown');
-            
-            if (dropdownBtn && dropdownContent) {
-                dropdownBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const isExpanded = dropdownContent.classList.contains('show');
-                    dropdownContent.classList.toggle('show');
-                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
-                });
-                
-                // Close on link click
-                dropdownContent.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        dropdownContent.classList.remove('show');
-                        dropdownBtn.setAttribute('aria-expanded', 'false');
-                    });
-                });
-                
-                // Close on outside click
-                document.addEventListener('click', function(e) {
-                    if (!e.target.closest('.dropdown')) {
-                        dropdownContent.classList.remove('show');
-                        dropdownBtn.setAttribute('aria-expanded', 'false');
-                    }
-                });
-                
-                // Close on Escape key
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && dropdownContent.classList.contains('show')) {
-                        dropdownContent.classList.remove('show');
-                        dropdownBtn.setAttribute('aria-expanded', 'false');
-                        dropdownBtn.focus();
-                    }
-                });
-            }
-        });
-        
-        // Service Worker Registration (PWA)
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(reg => console.log('✅ Service Worker registered'))
-                    .catch(err => console.log('❌ SW error:', err));
-            });
+        if (savedMode === 'true') {
+            document.documentElement.classList.add('dark');
+            darkToggle.textContent = '☀️';
         }
+        
+        darkToggle.addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('darkMode', isDark);
+            darkToggle.textContent = isDark ? '☀️' : '🌙';
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navRight = document.getElementById('navRight');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            navRight.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            
+            // Change icon
+            if (navRight.classList.contains('active')) {
+                mobileMenuToggle.textContent = '✕';
+            } else {
+                mobileMenuToggle.textContent = '☰';
+            }
+        });
+        
+        // Close menu when overlay clicked
+        mobileOverlay.addEventListener('click', function() {
+            navRight.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            mobileMenuToggle.textContent = '☰';
+        });
+        
+        // Tools Dropdown Toggle
+        const dropdownBtn = document.getElementById('toolsDropdownBtn');
+        const dropdownContent = document.getElementById('toolsDropdown');
+        
+        dropdownBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isExpanded = dropdownContent.classList.contains('show');
+            dropdownContent.classList.toggle('show');
+            dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+        });
+        
+        // Close dropdown on link click
+        dropdownContent.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                dropdownContent.classList.remove('show');
+                dropdownBtn.setAttribute('aria-expanded', 'false');
+                
+                // Close mobile menu too
+                if (window.innerWidth <= 768) {
+                    navRight.classList.remove('active');
+                    mobileOverlay.classList.remove('active');
+                    mobileMenuToggle.textContent = '☰';
+                }
+            });
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.dropdown')) {
+                dropdownContent.classList.remove('show');
+                dropdownBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+        
+        // Close dropdown on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (dropdownContent.classList.contains('show')) {
+                    dropdownContent.classList.remove('show');
+                    dropdownBtn.setAttribute('aria-expanded', 'false');
+                }
+                if (navRight.classList.contains('active')) {
+                    navRight.classList.remove('active');
+                    mobileOverlay.classList.remove('active');
+                    mobileMenuToggle.textContent = '☰';
+                }
+            }
+        });
+        
+        // Close mobile menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navRight.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                mobileMenuToggle.textContent = '☰';
+            }
+        });
     </script>
 
 </body>
