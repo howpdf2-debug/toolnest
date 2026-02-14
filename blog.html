@@ -3,511 +3,639 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - ToolNest | Tips, Tutorials & Updates</title>
-    <meta name="description" content="Read ToolNest blog for tips, tutorials, and updates about free online tools, PDF editing, image compression, GST invoicing, and more.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://toolnest.bhaihelp.in/blog.html">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Header -->
-    <header class="topbar">
-        <a href="/index.html" class="logo">
-            <img src="/favicon.png" alt="ToolNest logo">
-            ToolNest
-        </a>
-        <div class="nav-right">
-            <a href="/index.html">Home</a>
-            <a href="/about.html">About</a>
-            <a href="/contact.html">Contact</a>
-            <a href="/blog.html">Blog</a>
-            <div class="dropdown">
-                <button class="dropbtn" id="toolsDropdownBtn">Tools ▾</button>
-                <div class="dropdown-content" id="toolsDropdown">
-                    <a href="/tools/invoice-generator.html">🧾 Invoice Generator</a>
-                    <a href="/tools/merge-pdf.html">📄 Merge PDF</a>
-                    <a href="/tools/image-compress.html">🖼️ Image Compressor</a>
-                    <a href="/tools/pdf-to-jpg.html">🔄 PDF to JPG</a>
-                    <a href="/tools/youtube-downloader.html">📺 YouTube Downloader</a>
-                    <a href="/tools/seo-generator.html">🔍 SEO Generator</a>
-                </div>
-            </div>
-            <button id="darkToggle">🌙</button>
-        </div>
-    </header>
-    
-    <!-- Hero -->
-    <section class="mini-hero">
-        <div class="hero-top">
-            <a href="/index.html" class="back-home">← Back to Home</a>
-        </div>
-        <h1>📚 ToolNest Blog</h1>
-        <p>Tips, tutorials, and updates to help you master our free online tools</p>
-    </section>
-    
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Featured Post -->
-        <section class="featured-post">
-            <div class="featured-tag">⭐ Featured Article</div>
-            <h2>How to Create Professional GST Invoices Online</h2>
-            <p class="featured-meta">📅 February 10, 2026 • ⏱️ 8 min read • 🏷️ Tutorial</p>
-            <p class="featured-excerpt">
-                Complete step-by-step guide to creating GST-compliant invoices using free online tools. 
-                Learn about mandatory fields, tax calculations, and professional formatting. Perfect for 
-                freelancers and small businesses in India.
-            </p>
-            <a href="/blog/gst-invoice-guide.html" class="btn-primary">Read Full Article →</a>
-        </section>
-        
-        <!-- Filter Tags -->
-        <div class="blog-filters">
-            <h3>Filter by Topic:</h3>
-            <div class="filter-tags">
-                <button class="filter-tag active" data-filter="all">All Posts</button>
-                <button class="filter-tag" data-filter="tutorial">Tutorials</button>
-                <button class="filter-tag" data-filter="tips">Tips & Tricks</button>
-                <button class="filter-tag" data-filter="guide">Guides</button>
-                <button class="filter-tag" data-filter="update">Updates</button>
-                <button class="filter-tag" data-filter="seo">SEO</button>
-            </div>
-        </div>
-        
-        <!-- Blog Grid -->
-        <div class="blog-grid">
-            <!-- Blog Post 1 -->
-            <article class="blog-card" data-category="tutorial">
-                <div class="blog-image">
-                    <span class="blog-category tutorial">Tutorial</span>
-                </div>
-                <div class="blog-content">
-                    <h3>How to Create Professional GST Invoices Online</h3>
-                    <p class="blog-meta">📅 February 10, 2026 • ⏱️ 8 min read</p>
-                    <p>Complete step-by-step guide to creating GST-compliant invoices. Learn mandatory fields, calculations, and professional formatting for Indian businesses...</p>
-                    <a href="/blog/gst-invoice-guide.html" class="read-more">Read More →</a>
-                </div>
-            </article>
-            
-            <!-- Blog Post 2 -->
-            <article class="blog-card" data-category="tips">
-                <div class="blog-image" style="background: linear-gradient(135deg, #10b981, #059669);">
-                    <span class="blog-category tips">Tips & Tricks</span>
-                </div>
-                <div class="blog-content">
-                    <h3>5 Ways to Compress Images Without Losing Quality</h3>
-                    <p class="blog-meta">📅 February 8, 2026 • ⏱️ 5 min read</p>
-                    <p>Discover professional techniques to reduce image file sizes while maintaining visual quality. Essential for web optimization, faster loading, and better SEO...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </article>
-            
-            <!-- Blog Post 3 -->
-            <article class="blog-card" data-category="guide">
-                <div class="blog-image" style="background: linear-gradient(135deg, #a855f7, #7c3aed);">
-                    <span class="blog-category guide">Complete Guide</span>
-                </div>
-                <div class="blog-content">
-                    <h3>PDF Tools Every Student Should Know About</h3>
-                    <p class="blog-meta">📅 February 5, 2026 • ⏱️ 6 min read</p>
-                    <p>Essential PDF tools for students: merge lecture notes, split assignments, convert to images, and more. Make academic life easier with these free tools...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </article>
-            
-            <!-- Blog Post 4 -->
-            <article class="blog-card" data-category="seo">
-                <div class="blog-image" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
-                    <span class="blog-category seo">SEO Guide</span>
-                </div>
-                <div class="blog-content">
-                    <h3>Complete SEO Meta Tags Guide for Beginners</h3>
-                    <p class="blog-meta">📅 February 1, 2026 • ⏱️ 9 min read</p>
-                    <p>Everything about SEO meta tags: title, description, Open Graph, Twitter Cards, Schema markup. Improve your website's search rankings and social sharing...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </article>
-            
-            <!-- Blog Post 5 -->
-            <article class="blog-card" data-category="update">
-                <div class="blog-image" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
-                    <span class="blog-category update">Product Update</span>
-                </div>
-                <div class="blog-content">
-                    <h3>New Features: Dark Mode & Resume Builder</h3>
-                    <p class="blog-meta">📅 January 28, 2026 • ⏱️ 3 min read</p>
-                    <p>Exciting updates! We've added dark mode support and a brand new resume builder tool. Check out what's new and how to use these features...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </article>
-            
-            <!-- Blog Post 6 -->
-            <article class="blog-card" data-category="tutorial">
-                <div class="blog-image" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
-                    <span class="blog-category tutorial">Tutorial</span>
-                </div>
-                <div class="blog-content">
-                    <h3>How to Download YouTube Videos Legally</h3>
-                    <p class="blog-meta">📅 January 25, 2026 • ⏱️ 5 min read</p>
-                    <p>Learn the legal way to download YouTube videos for offline viewing. Understand copyright laws, fair use, and when downloading is permitted...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </article>
-            
-            <!-- Blog Post 7 -->
-            <article class="blog-card" data-category="tips">
-                <div class="blog-image" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
-                    <span class="blog-category tips">Tips</span>
-                </div>
-                <div class="blog-content">
-                    <h3>10 Productivity Hacks Using Free Online Tools</h3>
-                    <p class="blog-meta">📅 January 20, 2026 • ⏱️ 7 min read</p>
-                    <p>Boost your productivity with these clever tips using free online tools. From batch processing to automation shortcuts, work smarter not harder...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </article>
-            
-            <!-- Blog Post 8 -->
-            <article class="blog-card" data-category="guide">
-                <div class="blog-image" style="background: linear-gradient(135deg, #14b8a6, #0f766e);">
-                    <span class="blog-category guide">Business Guide</span>
-                </div>
-                <div class="blog-content">
-                    <h3>Freelancer's Guide to Professional Invoicing</h3>
-                    <p class="blog-meta">📅 January 15, 2026 • ⏱️ 10 min read</p>
-                    <p>Complete invoicing guide for freelancers: payment terms, late fees, international invoicing, and how to get paid faster. Includes free templates...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </article>
-            
-            <!-- Blog Post 9 -->
-            <article class="blog-card" data-category="tutorial">
-                <div class="blog-image" style="background: linear-gradient(135deg, #f97316, #ea580c);">
-                    <span class="blog-category tutorial">Tutorial</span>
-                </div>
-                <div class="blog-content">
-                    <h3>Merging PDFs: A Complete Step-by-Step Guide</h3>
-                    <p class="blog-meta">📅 January 10, 2026 • ⏱️ 4 min read</p>
-                    <p>Learn how to merge multiple PDF files into one document. Includes tips for organizing pages, maintaining quality, and batch processing...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-            </article>
-        </div>
-        
-        <!-- Pagination -->
-        <div class="pagination">
-            <button class="btn-secondary" disabled>← Previous</button>
-            <span class="page-info">Page 1 of 1</span>
-            <button class="btn-secondary" disabled>Next →</button>
-        </div>
-        
-        <!-- Newsletter Signup -->
-        <section class="newsletter-section">
-            <h2>📬 Subscribe to Our Newsletter</h2>
-            <p>Get the latest tips, tutorials, and updates delivered to your inbox every week</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit" class="btn-primary">Subscribe Free</button>
-            </form>
-            <p class="newsletter-note">✅ Free forever • 📧 Weekly updates • 🔒 No spam, unsubscribe anytime</p>
-        </section>
-    </main>
-    
-    <!-- Footer -->
-    <footer>
-        <p><strong>ToolNest</strong> – Free online tools for PDFs, images, and SEO.</p>
-        <p>
-            <a href="/index.html">Home</a> |
-            <a href="/blog.html">Blog</a> |
-            <a href="/about.html">About</a> |
-            <a href="/contact.html">Contact</a> |
-            <a href="/privacy-policy.html">Privacy</a>
-        </p>
-        <p>© 2026 ToolNest. All rights reserved.</p>
-    </footer>
-    
-    <!-- Scripts -->
-    <script>
-        // Dark Mode
-        const darkToggle = document.getElementById('darkToggle');
-        const savedMode = localStorage.getItem('darkMode');
-        if (savedMode === 'true') {
-            document.documentElement.classList.add('dark');
-            darkToggle.textContent = '☀️';
-        }
-        darkToggle.addEventListener('click', function() {
-            document.documentElement.classList.toggle('dark');
-            const isDark = document.documentElement.classList.contains('dark');
-            localStorage.setItem('darkMode', isDark);
-            darkToggle.textContent = isDark ? '☀️' : '🌙';
-        });
-        
-        // Dropdown
-        const dropdownBtn = document.getElementById('toolsDropdownBtn');
-        const dropdownContent = document.getElementById('toolsDropdown');
-        dropdownBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            dropdownContent.classList.toggle('show');
-        });
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.dropdown')) {
-                dropdownContent.classList.remove('show');
-            }
-        });
-        
-        // Blog Filters
-        const filterTags = document.querySelectorAll('.filter-tag');
-        const blogCards = document.querySelectorAll('.blog-card');
-        
-        filterTags.forEach(tag => {
-            tag.addEventListener('click', function() {
-                const filter = this.getAttribute('data-filter');
-                
-                // Update active state
-                filterTags.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Filter cards
-                blogCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-        
-        // Newsletter Form
-        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for subscribing! Check your email for confirmation.');
-            this.reset();
-        });
-    </script>
-    
+    <title>Blog Admin Panel - ToolNest</title>
+    <link rel="stylesheet" href="../style.css">
     <style>
-        /* Featured Post */
-        .featured-post {
-            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-            color: #fff;
-            padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 15px 40px var(--shadow);
-        }
-        
-        .featured-tag {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .featured-post h2 {
-            font-size: 32px;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-        
-        .featured-meta {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 15px;
-        }
-        
-        .featured-excerpt {
-            font-size: 16px;
-            line-height: 1.7;
-            margin-bottom: 25px;
-            opacity: 0.95;
-        }
-        
-        .featured-post .btn-primary {
-            background: #fff;
-            color: var(--blue);
-        }
-        
-        /* Blog Filters */
-        .blog-filters {
-            margin-bottom: 35px;
-        }
-        
-        .blog-filters h3 {
-            margin-bottom: 15px;
-            color: var(--text-main);
-        }
-        
-        .filter-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .filter-tag {
-            padding: 8px 16px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: var(--text-main);
-        }
-        
-        .filter-tag:hover, .filter-tag.active {
-            background: var(--blue);
-            color: #fff;
-            border-color: var(--blue);
-        }
-        
-        /* Blog Grid Styles */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .blog-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px var(--shadow);
-        }
-        
-        .blog-image {
-            height: 180px;
-            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .blog-category {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 6px 14px;
-            border-radius: 20px;
-            color: #fff;
-            font-weight: 600;
-            font-size: 13px;
-        }
-        
-        .blog-content {
+        .admin-header {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
             padding: 20px;
-        }
-        
-        .blog-content h3 {
-            margin-bottom: 10px;
-            color: var(--text-main);
-            font-size: 18px;
-            line-height: 1.4;
-        }
-        
-        .blog-meta {
-            color: var(--text-muted);
-            font-size: 13px;
-            margin-bottom: 12px;
-        }
-        
-        .blog-content p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        
-        .read-more {
-            color: var(--blue);
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
-        .read-more:hover {
-            text-decoration: underline;
-        }
-        
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin: 40px 0;
-        }
-        
-        .page-info {
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-        
-        /* Newsletter */
-        .newsletter-section {
-            background: var(--bg-card);
-            padding: 40px;
-            border-radius: 18px;
             text-align: center;
-            border: 1px solid var(--border);
-            margin-top: 40px;
         }
         
-        .newsletter-section h2 {
-            margin-bottom: 10px;
+        .admin-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
         }
         
-        .newsletter-section p {
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-        
-        .newsletter-form {
+        .admin-nav {
             display: flex;
-            max-width: 500px;
-            margin: 0 auto 15px;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .admin-nav button {
+            padding: 10px 20px;
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .admin-nav button.active {
+            background: var(--blue);
+            color: white;
+        }
+        
+        .admin-section {
+            display: none;
+        }
+        
+        .admin-section.active {
+            display: block;
+        }
+        
+        .form-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-input);
+            color: var(--text-main);
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
             gap: 10px;
         }
         
-        .newsletter-form input {
-            flex: 1;
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
             margin: 0;
         }
         
-        .newsletter-note {
-            font-size: 13px;
+        .posts-table {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        
+        .post-item {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .post-item:last-child {
+            border-bottom: none;
+        }
+        
+        .post-info h3 {
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
+        
+        .post-meta {
             color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        
+        .btn-edit {
+            background: #f59e0b;
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .btn-delete {
+            background: #ef4444;
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        .export-section {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        
+        .editor-toolbar {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .editor-btn {
+            padding: 5px 10px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
         }
         
         @media (max-width: 768px) {
-            .blog-grid {
+            .form-row {
                 grid-template-columns: 1fr;
             }
             
-            .newsletter-form {
+            .post-item {
                 flex-direction: column;
+                align-items: flex-start;
             }
             
-            .featured-post {
-                padding: 25px;
-            }
-            
-            .featured-post h2 {
-                font-size: 24px;
-            }
-            
-            .filter-tags {
-                justify-content: center;
+            .post-actions {
+                width: 100%;
+                justify-content: space-between;
             }
         }
     </style>
+</head>
+<body>
+    <!-- Admin Header -->
+    <div class="admin-header">
+        <h1>📝 Blog Admin Panel</h1>
+        <p>Manage your blog posts easily</p>
+    </div>
+    
+    <!-- Admin Container -->
+    <div class="admin-container">
+        <!-- Alert Messages -->
+        <div id="alertContainer"></div>
+        
+        <!-- Navigation -->
+        <div class="admin-nav">
+            <button class="active" onclick="showSection('dashboard')">📊 Dashboard</button>
+            <button onclick="showSection('new-post')">➕ New Post</button>
+            <button onclick="showSection('all-posts')">📋 All Posts</button>
+            <button onclick="showSection('export')">💾 Export/Import</button>
+            <button onclick="window.open('/', '_blank')" style="margin-left: auto;">🌐 View Site</button>
+        </div>
+        
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="admin-section active">
+            <h2>Dashboard Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalPosts">0</div>
+                    <div class="stat-label">Total Posts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="featuredPosts">0</div>
+                    <div class="stat-label">Featured Posts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="tutorialPosts">0</div>
+                    <div class="stat-label">Tutorials</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="lastUpdate">-</div>
+                    <div class="stat-label">Last Updated</div>
+                </div>
+            </div>
+            
+            <h3>Recent Posts</h3>
+            <div class="posts-table" id="recentPosts">
+                <!-- Recent posts will load here -->
+            </div>
+        </div>
+        
+        <!-- New Post Section -->
+        <div id="new-post" class="admin-section">
+            <h2>Create New Post</h2>
+            <div class="form-card">
+                <form id="postForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="postTitle">Post Title *</label>
+                            <input type="text" id="postTitle" required placeholder="e.g., How to Create GST Invoices">
+                        </div>
+                        <div class="form-group">
+                            <label for="postSlug">URL Slug * (auto-generated)</label>
+                            <input type="text" id="postSlug" required placeholder="how-to-create-gst-invoices">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="postExcerpt">Short Description (excerpt) *</label>
+                        <textarea id="postExcerpt" required placeholder="Write 2-3 lines describing your post..." rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="postCategory">Category *</label>
+                            <select id="postCategory" required>
+                                <option value="tutorial">Tutorial (Blue)</option>
+                                <option value="tips">Tips & Tricks (Green)</option>
+                                <option value="guide">Guide (Purple)</option>
+                                <option value="update">Update (Cyan)</option>
+                                <option value="seo">SEO (Orange)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="postReadTime">Read Time</label>
+                            <input type="text" id="postReadTime" value="5 min" placeholder="e.g., 5 min">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="postFeatured">
+                            <label for="postFeatured">Mark as Featured Post (shows at top)</label>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px;">
+                        <button type="submit" class="btn-primary">✅ Create Post</button>
+                        <button type="button" class="btn-secondary" onclick="resetForm()">🔄 Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- All Posts Section -->
+        <div id="all-posts" class="admin-section">
+            <h2>All Blog Posts (<span id="postsCount">0</span>)</h2>
+            <div class="posts-table" id="allPostsList">
+                <!-- All posts will load here -->
+            </div>
+        </div>
+        
+        <!-- Export/Import Section -->
+        <div id="export" class="admin-section">
+            <div class="export-section">
+                <h2>💾 Export & Import</h2>
+                <p style="margin-bottom: 20px; color: var(--text-muted);">
+                    Download blog-data.json file and upload it to your server at <code>/blog/blog-data.json</code>
+                </p>
+                
+                <button onclick="exportJSON()" class="btn-primary" style="margin-bottom: 20px;">
+                    ⬇️ Download blog-data.json
+                </button>
+                
+                <hr style="margin: 30px 0; border: 1px solid var(--border);">
+                
+                <h3>Import Existing Data</h3>
+                <p style="margin-bottom: 15px; color: var(--text-muted);">
+                    Upload existing blog-data.json file to import posts
+                </p>
+                <input type="file" id="importFile" accept=".json" style="margin-bottom: 15px;">
+                <button onclick="importJSON()" class="btn-secondary">
+                    ⬆️ Import Posts
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize
+        let posts = [];
+        let editingIndex = -1;
+        
+        // Category colors
+        const categoryColors = {
+            'tutorial': '#2563eb',
+            'tips': '#10b981',
+            'guide': '#a855f7',
+            'update': '#06b6d4',
+            'seo': '#f59e0b'
+        };
+        
+        // Load posts from localStorage
+        function loadPosts() {
+            const saved = localStorage.getItem('toolnest_blog_posts');
+            if (saved) {
+                try {
+                    posts = JSON.parse(saved);
+                } catch (e) {
+                    console.error('Error loading posts:', e);
+                    posts = [];
+                }
+            }
+            updateDashboard();
+            updateAllPosts();
+        }
+        
+        // Save posts to localStorage
+        function savePosts() {
+            localStorage.setItem('toolnest_blog_posts', JSON.stringify(posts));
+            updateDashboard();
+            updateAllPosts();
+        }
+        
+        // Show section
+        function showSection(sectionId) {
+            document.querySelectorAll('.admin-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.admin-nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        // Show alert
+        function showAlert(message, type = 'success') {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-error';
+            
+            alertContainer.innerHTML = `
+                <div class="alert ${alertClass}">
+                    ${message}
+                </div>
+            `;
+            
+            setTimeout(() => {
+                alertContainer.innerHTML = '';
+            }, 5000);
+        }
+        
+        // Auto-generate slug from title
+        document.getElementById('postTitle').addEventListener('input', function() {
+            const title = this.value;
+            const slug = title
+                .toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .trim();
+            document.getElementById('postSlug').value = slug;
+        });
+        
+        // Form submission
+        document.getElementById('postForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const category = document.getElementById('postCategory').value;
+            const newPost = {
+                id: editingIndex === -1 ? Date.now() : posts[editingIndex].id,
+                title: document.getElementById('postTitle').value,
+                slug: document.getElementById('postSlug').value,
+                excerpt: document.getElementById('postExcerpt').value,
+                date: new Date().toISOString().split('T')[0],
+                readTime: document.getElementById('postReadTime').value,
+                category: category,
+                categoryColor: categoryColors[category],
+                featured: document.getElementById('postFeatured').checked
+            };
+            
+            if (editingIndex === -1) {
+                posts.unshift(newPost);
+                showAlert('✅ Post created successfully!');
+            } else {
+                posts[editingIndex] = newPost;
+                showAlert('✅ Post updated successfully!');
+                editingIndex = -1;
+            }
+            
+            savePosts();
+            resetForm();
+            showSection('all-posts');
+        });
+        
+        // Reset form
+        function resetForm() {
+            document.getElementById('postForm').reset();
+            document.getElementById('postSlug').value = '';
+            editingIndex = -1;
+        }
+        
+        // Update dashboard
+        function updateDashboard() {
+            const total = posts.length;
+            const featured = posts.filter(p => p.featured).length;
+            const tutorials = posts.filter(p => p.category === 'tutorial').length;
+            const lastUpdate = posts.length > 0 ? new Date(posts[0].date).toLocaleDateString() : '-';
+            
+            document.getElementById('totalPosts').textContent = total;
+            document.getElementById('featuredPosts').textContent = featured;
+            document.getElementById('tutorialPosts').textContent = tutorials;
+            document.getElementById('lastUpdate').textContent = lastUpdate;
+            
+            // Recent posts
+            const recentContainer = document.getElementById('recentPosts');
+            recentContainer.innerHTML = '';
+            
+            posts.slice(0, 5).forEach((post, index) => {
+                recentContainer.innerHTML += `
+                    <div class="post-item">
+                        <div class="post-info">
+                            <h3>${post.title}</h3>
+                            <div class="post-meta">
+                                ${post.category} • ${post.date} • ${post.readTime}
+                                ${post.featured ? ' • ⭐ Featured' : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            if (posts.length === 0) {
+                recentContainer.innerHTML = '<div class="post-item"><p style="color: var(--text-muted);">No posts yet. Create your first post!</p></div>';
+            }
+        }
+        
+        // Update all posts list
+        function updateAllPosts() {
+            const container = document.getElementById('allPostsList');
+            document.getElementById('postsCount').textContent = posts.length;
+            container.innerHTML = '';
+            
+            posts.forEach((post, index) => {
+                container.innerHTML += `
+                    <div class="post-item">
+                        <div class="post-info">
+                            <h3>${post.title} ${post.featured ? '⭐' : ''}</h3>
+                            <div class="post-meta">
+                                ${post.category} • ${post.date} • ${post.readTime} • /blog/${post.slug}.html
+                            </div>
+                        </div>
+                        <div class="post-actions">
+                            <button class="btn-edit" onclick="editPost(${index})">✏️ Edit</button>
+                            <button class="btn-delete" onclick="deletePost(${index})">🗑️ Delete</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            if (posts.length === 0) {
+                container.innerHTML = '<div class="post-item"><p style="color: var(--text-muted);">No posts yet. Create your first post!</p></div>';
+            }
+        }
+        
+        // Edit post
+        function editPost(index) {
+            const post = posts[index];
+            editingIndex = index;
+            
+            document.getElementById('postTitle').value = post.title;
+            document.getElementById('postSlug').value = post.slug;
+            document.getElementById('postExcerpt').value = post.excerpt;
+            document.getElementById('postCategory').value = post.category;
+            document.getElementById('postReadTime').value = post.readTime;
+            document.getElementById('postFeatured').checked = post.featured;
+            
+            showSection('new-post');
+            document.querySelector('button[onclick="showSection(\'new-post\')"]').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Delete post
+        function deletePost(index) {
+            if (confirm('Are you sure you want to delete this post?')) {
+                posts.splice(index, 1);
+                savePosts();
+                showAlert('🗑️ Post deleted successfully!');
+            }
+        }
+        
+        // Export JSON
+        function exportJSON() {
+            const data = {
+                posts: posts,
+                exported: new Date().toISOString(),
+                totalPosts: posts.length
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `blog-data-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            
+            showAlert('✅ File downloaded! Upload to /blog/blog-data.json on your server.');
+        }
+        
+        // Import JSON
+        function importJSON() {
+            const fileInput = document.getElementById('importFile');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                showAlert('⚠️ Please select a file first.', 'error');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    
+                    if (data.posts && Array.isArray(data.posts)) {
+                        posts = data.posts;
+                        savePosts();
+                        showAlert(`✅ Imported ${posts.length} posts successfully!`);
+                        fileInput.value = '';
+                    } else {
+                        showAlert('⚠️ Invalid file format.', 'error');
+                    }
+                } catch (error) {
+                    showAlert('⚠️ Error reading file: ' + error.message, 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+        
+        // Initialize on page load
+        loadPosts();
+    </script>
 </body>
 </html>
