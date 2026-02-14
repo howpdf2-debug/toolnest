@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Admin Panel - ToolNest</title>
     <link rel="stylesheet" href="../style.css">
+<script>
+        const ADMIN_PASSWORD = "MySecurePassword@2026"; 👈 CHANGE THIS";
+        const pass = prompt("Enter Password:");
+        if (pass !== ADMIN_PASSWORD) {
+            window.location.href = '/';
+        }
+    </script>
+    
     <style>
         .admin-header {
             background: linear-gradient(135deg, #2563eb, #1e40af);
