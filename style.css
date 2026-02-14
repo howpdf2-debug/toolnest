@@ -818,3 +818,124 @@ footer a:focus-visible {
     max-width: 100%;
   }
 }
+
+/* =====================================================
+   MOBILE NAVIGATION ENHANCEMENTS
+===================================================== */
+.mobile-menu-toggle {
+  display: none;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .nav-right {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 280px;
+    height: calc(100vh - 60px);
+    background: var(--bg-card);
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
+  }
+  
+  .nav-right.active {
+    right: 0;
+  }
+  
+  .nav-right > a {
+    display: block !important;
+    color: var(--text-main) !important;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+  }
+  
+  .nav-right > a:hover {
+    background: var(--blue) !important;
+    color: white !important;
+  }
+  
+  .dropdown {
+    width: 100%;
+  }
+  
+  .dropbtn {
+    width: 100%;
+    text-align: left;
+    background: rgba(37, 99, 235, 0.1) !important;
+    color: var(--text-main) !important;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+  }
+  
+  .dropdown-content {
+    position: static !important;
+    width: 100%;
+    margin-top: 0;
+    box-shadow: none;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .dropdown-content.show {
+    display: flex !important;
+    max-height: 500px;
+  }
+  
+  .dropdown-content a {
+    border: none;
+    border-left: 3px solid var(--blue) !important;
+    margin-bottom: 0;
+  }
+  
+  #darkToggle {
+    width: 100%;
+    background: rgba(37, 99, 235, 0.1) !important;
+    color: var(--text-main) !important;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+  }
+}
