@@ -712,6 +712,25 @@
         
         // Initialize on page load
         loadPosts();
+     <!DOCTYPE html>
+<html>
+<head>
+    <title>Logging out...</title>
+    <script>
+        sessionStorage.clear();
+        localStorage.clear();
+        document.cookie.split(";").forEach(function(c) { 
+            document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+        });
+        setTimeout(function() {
+            window.location.href = '/';
+        }, 500);
+    </script>
+</head>
+<body>
+    <h1 style="text-align:center; margin-top:50px;">🚪 Logging out...</h1>
+</body>
+</html>   
     </script>
 </body>
 </html>
