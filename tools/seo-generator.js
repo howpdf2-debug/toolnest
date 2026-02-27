@@ -5,7 +5,13 @@ function generateSEO(){
   const keywords=document.getElementById("keywords").value;
 
   const meta=`
-<title>${title}</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="dbfc89456a05e36c" />
+    
 <meta name="description" content="${desc}">
 <meta name="keywords" content="${keywords}">
 <link rel="canonical" href="YOUR_URL_HERE">
