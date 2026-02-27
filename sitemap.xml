@@ -1,148 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
-  <!-- HOMEPAGE - HIGHEST PRIORITY -->
+  <!-- ============================================
+       HOMEPAGE - HIGHEST PRIORITY
+       ============================================ -->
   <url>
-    <loc>https://toolnest.bhaihelp.in/index.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <loc>https://toolnest.bhaihelp.in/</loc>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://toolnest.bhaihelp.in/</loc>
-    <lastmod>2026-02-13</lastmod>
+    <loc>https://toolnest.bhaihelp.in/index.html</loc>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   
-  <!-- ESSENTIAL PAGES -->
+  <!-- ============================================
+       MAIN PAGES
+       ============================================ -->
   <url>
     <loc>https://toolnest.bhaihelp.in/about.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://toolnest.bhaihelp.in/contact.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://toolnest.bhaihelp.in/blog.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   
-  <!-- LEGAL PAGES -->
+  <!-- ============================================
+       LEGAL PAGES
+       ============================================ -->
   <url>
     <loc>https://toolnest.bhaihelp.in/privacy-policy.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://toolnest.bhaihelp.in/terms.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://toolnest.bhaihelp.in/disclaimer.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
-  <!-- ALL TOOLS PAGES (UPDATED - NOW 8 TOOLS) -->
-  <!-- Tool 1: Merge PDF -->
-  <url>
-    <loc>https://toolnest.bhaihelp.in/tools/merge-pdf.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Tool 2: Image Compressor -->
-  <url>
-    <loc>https://toolnest.bhaihelp.in/tools/image-compress.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Tool 3: PDF to JPG -->
-  <url>
-    <loc>https://toolnest.bhaihelp.in/tools/pdf-to-jpg.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Tool 4: YouTube Downloader -->
-  <url>
-    <loc>https://toolnest.bhaihelp.in/tools/youtube-downloader.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Tool 5: SEO Generator -->
-  <url>
-    <loc>https://toolnest.bhaihelp.in/tools/seo-generator.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Tool 6: Word Counter (WAS MISSING) -->
-  <url>
-    <loc>https://toolnest.bhaihelp.in/tools/word-counter.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Tool 7: Resume Builder (WAS MISSING) -->
-  <url>
-    <loc>https://toolnest.bhaihelp.in/tools/resume-builder.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Tool 8: Invoice Generator (WAS MISSING) -->
+  <!-- ============================================
+       ALL TOOLS - HIGH PRIORITY
+       ============================================ -->
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/invoice-generator.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/merge-pdf.html</loc>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
-  <!-- BLOG ARTICLES -->
   <url>
-    <loc>https://toolnest.bhaihelp.in/blog/how-to-merge-pdf-files-online.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <loc>https://toolnest.bhaihelp.in/tools/image-compress.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/pdf-to-jpg.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/youtube-downloader.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/seo-generator.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/word-counter.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/resume-builder.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- ============================================
+       BLOG POSTS (Current 3)
+       Add more as you create new posts
+       ============================================ -->
+  <url>
+    <loc>https://toolnest.bhaihelp.in/blog/gst-invoice-guide.html</loc>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://toolnest.bhaihelp.in/blog/how-to-compress-images-online.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <loc>https://toolnest.bhaihelp.in/blog/image-compression-tips.html</loc>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://toolnest.bhaihelp.in/blog/best-seo-practices-2026.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <loc>https://toolnest.bhaihelp.in/blog/your-new-post.html</loc>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
