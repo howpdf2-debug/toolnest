@@ -1,50 +1,350 @@
-<!-- includes/header.html -->
-<!-- This file is loaded by include.js -->
-<!-- Google Search Console Verification - Applied to all pages -->
-<meta name="google-site-verification" content="dbfc89456a05e36c" />
-
 <!-- ToolNest Header Component -->
 <header class="topbar">
   <a href="/index.html" class="logo">
-    <img src="/favicon.png" alt="ToolNest logo">
+    <img src="/favicon.png" alt="ToolNest logo" width="32" height="32">
     ToolNest
   </a>
-  <div class="nav-right">
-    <a href="/index.html">Home</a>
+  
+  <!-- Mobile Menu Toggle Button -->
+  <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span class="hamburger"></span>
+    <span class="hamburger"></span>
+    <span class="hamburger"></span>
+  </button>
+  
+  <!-- Navigation -->
+  <nav class="nav-right" id="navRight">
+    <a href="/index.html" class="nav-link">🏠 Home</a>
+    <a href="/about.html" class="nav-link">ℹ️ About</a>
+    <a href="/contact.html" class="nav-link">📧 Contact</a>
+    <a href="/blog.html" class="nav-link">📚 Blog</a>
+    
+    <!-- Tools Dropdown -->
     <div class="dropdown">
-      <button class="dropbtn" id="toolsDropdownBtn">Tools ▾</button>
-      <div class="dropdown-content" id="toolsDropdown">
-        <a href="/tools/merge-pdf.html">📄 Merge PDF</a>
-        <a href="/tools/image-compress.html">🖼️ Image Compressor</a>
-        <a href="/tools/pdf-to-jpg.html">🔄 PDF to JPG</a>
-        <a href="/tools/youtube-downloader.html">📺 YouTube Downloader</a>
-        <a href="/tools/seo-generator.html">🔍 SEO Generator</a>
-        <a href="/tools/word-counter.html">📝 Word Counter</a>
-        <a href="/tools/resume-builder.html">💼 Resume Builder</a>
-        <a href="/tools/invoice-generator.html">🧾 Invoice Generator</a>
+      <button class="dropbtn" id="toolsDropdownBtn" aria-haspopup="true" aria-expanded="false">
+        🛠️ Tools <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-content" id="toolsDropdown" role="menu">
+        <a href="/tools/invoice-generator.html" role="menuitem">🧾 Invoice Generator</a>
+        <a href="/tools/merge-pdf.html" role="menuitem">📄 Merge PDF</a>
+        <a href="/tools/image-compress.html" role="menuitem">🖼️ Image Compressor</a>
+        <a href="/tools/pdf-to-jpg.html" role="menuitem">🔄 PDF to JPG</a>
+        <a href="/tools/youtube-downloader.html" role="menuitem">📺 YouTube Downloader</a>
+        <a href="/tools/seo-generator.html" role="menuitem">🔍 SEO Generator</a>
+        <a href="/tools/word-counter.html" role="menuitem">📝 Word Counter</a>
+        <a href="/tools/resume-builder.html" role="menuitem">💼 Resume Builder</a>
       </div>
     </div>
-    <button id="darkToggle">🌙</button>
-  </div>
+    
+    <!-- Dark Mode Toggle -->
+    <button class="dark-toggle-btn" id="darkToggle" aria-label="Toggle dark mode">🌙</button>
+  </nav>
 </header>
 
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- Mobile Menu Styles & Script -->
+<style>
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger {
+  width: 28px;
+  height: 3px;
+  background: var(--text-main);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  transform-origin: 1px;
+}
+
+.mobile-menu-toggle.active .hamburger:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.mobile-menu-toggle.active .hamburger:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.mobile-menu-toggle.active .hamburger:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* Mobile Overlay */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .nav-right {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg-card);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 20px 20px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    gap: 0;
+  }
+  
+  .nav-right.active {
+    right: 0;
+  }
+  
+  .nav-right .nav-link {
+    width: 100%;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 16px;
+  }
+  
+  .nav-right .dropdown {
+    width: 100%;
+    position: relative;
+  }
+  
+  .nav-right .dropbtn {
+    width: 100%;
+    text-align: left;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    border-radius: 0;
+    font-size: 16px;
+    justify-content: space-between;
+  }
+  
+  .nav-right .dropdown-content {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    background: var(--bg-main);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .nav-right .dropdown-content.show {
+    max-height: 500px;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .nav-right .dropdown-content a {
+    padding: 12px 20px 12px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .nav-right .dropdown-content a:last-child {
+    border-bottom: none;
+  }
+  
+  .nav-right .dark-toggle-btn {
+    width: 100%;
+    padding: 15px 20px;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .arrow {
+    transition: transform 0.3s ease;
+    display: inline-block;
+  }
+  
+  .dropdown-content.show ~ .dropbtn .arrow,
+  .dropbtn[aria-expanded="true"] .arrow {
+    transform: rotate(180deg);
+  }
+}
+
+/* Desktop - ensure normal behavior */
+@media (min-width: 769px) {
+  .mobile-overlay {
+    display: none !important;
+  }
+  
+  .nav-right {
+    position: static !important;
+    flex-direction: row !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+}
+</style>
+
 <script>
-// Dropdown toggle functionality for header
-document.addEventListener('DOMContentLoaded', function() {
-  const dropdownBtn = document.getElementById('toolsDropdownBtn');
-  const dropdownContent = document.getElementById('toolsDropdown');
-
-  if (dropdownBtn && dropdownContent) {
-    dropdownBtn.addEventListener('click', function(e) {
+(function() {
+  'use strict';
+  
+  // Wait for DOM to be ready
+  function initMobileMenu() {
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+    const navRight = document.getElementById('navRight');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const dropdownBtn = document.getElementById('toolsDropdownBtn');
+    const dropdownContent = document.getElementById('toolsDropdown');
+    
+    if (!mobileToggle || !navRight) {
+      console.warn('Mobile menu elements not found');
+      return;
+    }
+    
+    // Toggle mobile menu
+    mobileToggle.addEventListener('click', function(e) {
       e.stopPropagation();
-      dropdownContent.classList.toggle('show');
-    });
-
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.dropdown')) {
-        dropdownContent.classList.remove('show');
+      const isActive = navRight.classList.toggle('active');
+      mobileToggle.classList.toggle('active');
+      if (mobileOverlay) {
+        mobileOverlay.classList.toggle('active');
+      }
+      
+      // Update ARIA
+      this.setAttribute('aria-expanded', isActive);
+      
+      // Prevent body scroll when menu open
+      if (isActive) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
       }
     });
+    
+    // Close menu when clicking overlay
+    if (mobileOverlay) {
+      mobileOverlay.addEventListener('click', function() {
+        navRight.classList.remove('active');
+        mobileToggle.classList.remove('active');
+        this.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    }
+    
+    // Close menu when clicking nav links (mobile only)
+    const navLinks = navRight.querySelectorAll('.nav-link');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 768) {
+          navRight.classList.remove('active');
+          mobileToggle.classList.remove('active');
+          if (mobileOverlay) {
+            mobileOverlay.classList.remove('active');
+          }
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+    
+    // Dropdown functionality
+    if (dropdownBtn && dropdownContent) {
+      dropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isExpanded = dropdownContent.classList.toggle('show');
+        this.setAttribute('aria-expanded', isExpanded);
+      });
+      
+      // Close dropdown when clicking dropdown links
+      const dropdownLinks = dropdownContent.querySelectorAll('a');
+      dropdownLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          dropdownContent.classList.remove('show');
+          dropdownBtn.setAttribute('aria-expanded', 'false');
+          
+          // Also close mobile menu if open
+          if (window.innerWidth <= 768) {
+            navRight.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            if (mobileOverlay) {
+              mobileOverlay.classList.remove('active');
+            }
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+          }
+        });
+      });
+    }
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.dropdown')) {
+        if (dropdownContent) {
+          dropdownContent.classList.remove('show');
+        }
+        if (dropdownBtn) {
+          dropdownBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+    
+    // Close mobile menu on window resize
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        navRight.classList.remove('active');
+        mobileToggle.classList.remove('active');
+        if (mobileOverlay) {
+          mobileOverlay.classList.remove('active');
+        }
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        if (dropdownContent) {
+          dropdownContent.classList.remove('show');
+        }
+      }
+    });
+    
+    console.log('✅ Mobile menu initialized');
   }
-});
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  } else {
+    initMobileMenu();
+  }
+})();
 </script>
