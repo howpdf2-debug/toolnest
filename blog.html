@@ -146,11 +146,100 @@
         });
         
         // Load Blog Posts from JSON
-        async function loadBlogPosts() {
-            try {
-                const response = await fetch('/blog/blog-data.json');
-                const data = await response.json();
-                allPosts = data.posts;
+async function loadBlogPosts() {
+    try {
+        // Try to fetch blog data
+        const response = await fetch('/blog/blog-data.json');
+        
+        // Check if response is OK
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Validate data structure
+        if (!data || !data.posts || !Array.isArray(data.posts)) {
+            throw new Error('Invalid blog data format');
+        }
+        
+        allPosts = data.posts;
+        
+        // Hide loading indicator
+        document.getElementById('loadingIndicator').style.display = 'none';
+        
+        // Display featured post
+        displayFeaturedPost();
+        
+        // Display all posts
+        displayPosts(allPosts);
+        
+        console.log(`✅ Loaded ${allPosts.length} blog posts successfully`);
+        
+    } catch (error) {
+        console.error('Error loading blog posts:', error);
+        
+        // Hide loading indicator
+        document.getElementById('loadingIndicator').style.display = 'none';
+        
+        // Show detailed error message
+        const blogGrid = document.getElementById('blogGrid');
+        blogGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border);">
+                <h2 style="color: #ef4444; margin-bottom: 15px;">⚠️ Error Loading Blog Posts</h2>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">
+                    Unable to load blog posts. This could be due to:
+                </p>
+                <ul style="text-align: left; max-width: 500px; margin: 0 auto 20px; color: var(--text-muted);">
+                    <li>Missing <code>/blog/blog-data.json</code> file</li>
+                    <li>Invalid JSON format</li>
+                    <li>Network connectivity issue</li>
+                    <li>File permissions problem</li>
+                </ul>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">
+                    <strong>Error Details:</strong> ${error.message}
+                </p>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button onclick="window.location.reload()" class="btn-primary">🔄 Retry</button>
+                    <a href="/index.html" class="btn-secondary" style="display: inline-block; padding: 12px 24px; text-decoration: none;">🏠 Go Home</a>
+                    <a href="/contact.html" class="btn-secondary" style="display: inline-block; padding: 12px 24px; text-decoration: none;">📧 Report Issue</a>
+                </div>
+            </div>
+        `;
+        
+        // Load demo posts as fallback
+        loadDemoPosts();
+    }
+}
+
+// Fallback: Load demo posts if JSON fails
+function loadDemoPosts() {
+    console.log('⚠️ Loading demo posts as fallback...');
+    
+    allPosts = [
+        {
+            title: "Welcome to ToolNest Blog",
+            slug: "#",
+            excerpt: "We're setting up the blog. Check back soon for tutorials, tips, and guides on using our free online tools!",
+            date: "2026-02-27",
+            readTime: "1 min",
+            category: "update",
+            featured: true
+        },
+        {
+            title: "Free PDF Tools Coming Soon",
+            slug: "#",
+            excerpt: "Learn how to merge, compress, and convert PDFs with our free online tools. Tutorials coming soon!",
+            date: "2026-02-26",
+            readTime: "2 min",
+            category: "guide",
+            featured: false
+        }
+    ];
+    
+    displayFeaturedPost();
+    displayPosts(allPosts);
+}
                 
                 // Hide loading indicator
                 document.getElementById('loadingIndicator').style.display = 'none';
