@@ -7,7 +7,7 @@
   'use strict';
   
   // Your Facebook Pixel ID
-  const FACEBOOK_PIXEL_ID = '123456789012345'; // ← CHANGE THIS
+  const FACEBOOK_PIXEL_ID = '1254495433310462'; // ← CHANGE THIS
   
   // Check if already loaded
   if (window.fbq) {
