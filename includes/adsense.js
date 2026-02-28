@@ -7,7 +7,7 @@
   'use strict';
   
   // Your AdSense Publisher ID
-  const ADSENSE_PUBLISHER_ID = 'ca-pub-XXXXXXXXXXXXXXXX'; // ← CHANGE THIS
+  const ADSENSE_PUBLISHER_ID = 'ca-pub-9233973597909198'; // ← CHANGE THIS
   
   // Check if already loaded
   if (window.adsbygoogle) {
