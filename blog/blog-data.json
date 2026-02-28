@@ -1,1 +1,70 @@
 
+{
+  "posts": [
+    {
+      "title": "How to Create Professional GST Invoices Online - Complete Guide",
+      "slug": "gst-invoice-guide",
+      "excerpt": "Learn how to create professional GST-compliant invoices online for free. Step-by-step guide with invoice format, GST calculation, and free invoice generator tool.",
+      "date": "2026-02-10",
+      "readTime": "5 min",
+      "category": "tutorial",
+      "featured": true
+    },
+    {
+      "title": "5 Ways to Compress Images Without Losing Quality - Expert Tips",
+      "slug": "image-compression-tips",
+      "excerpt": "Discover 5 proven methods to reduce image file size by up to 80% while maintaining excellent visual quality. Perfect for websites, social media, and professional use.",
+      "date": "2026-02-08",
+      "readTime": "5 min",
+      "category": "tips",
+      "featured": false
+    },
+    {
+      "title": "Top 7 Free PDF Tools Every Student Should Know in 2026",
+      "slug": "pdf-tools-for-students",
+      "excerpt": "Discover essential free PDF tools for students. Merge, compress, convert PDFs and more. No software installation needed - all browser-based tools.",
+      "date": "2026-02-15",
+      "readTime": "6 min",
+      "category": "guide",
+      "featured": false
+    },
+    {
+      "title": "How to Download YouTube Videos for Offline Viewing - Legal Guide 2026",
+      "slug": "youtube-video-download-guide",
+      "excerpt": "Learn legal ways to download YouTube videos for offline viewing. Free tool, no software needed. Educational and personal use guide.",
+      "date": "2026-02-18",
+      "readTime": "5 min",
+      "category": "tutorial",
+      "featured": false
+    },
+    {
+      "title": "Complete SEO Meta Tags Guide 2026 - Boost Your Rankings",
+      "slug": "seo-meta-tags-guide",
+      "excerpt": "Learn how to create perfect SEO meta tags for better Google rankings. Complete guide with examples, free generator tool, and best practices for 2026.",
+      "date": "2026-02-20",
+      "readTime": "8 min",
+      "category": "seo",
+      "featured": false
+    }
+  ],
+  "lastUpdated": "2026-02-27T12:00:00.000Z"
+}
+```
+
+---
+
+## **STEP 2: VERIFY FOLDER STRUCTURE**
+
+**Required Structure:**
+```
+Repository/
+├── blog/
+│   ├── blog-data.json  ← MUST BE HERE
+│   ├── gst-invoice-guide.html
+│   ├── image-compression-tips.html
+│   ├── pdf-tools-for-students.html
+│   ├── youtube-video-download-guide.html
+│   └── seo-meta-tags-guide.html
+├── blog.html
+├── index.html
+└── ...
