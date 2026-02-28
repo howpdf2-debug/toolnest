@@ -113,6 +113,7 @@
     </footer>
     
     <!-- Scripts -->
+    <!-- Scripts -->
     <script>
         let allPosts = [];
         let currentPage = 1;
@@ -135,111 +136,32 @@
         // Dropdown
         const dropdownBtn = document.getElementById('toolsDropdownBtn');
         const dropdownContent = document.getElementById('toolsDropdown');
-        dropdownBtn.addEventListener('click', (e) => {
+        dropdownBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             dropdownContent.classList.toggle('show');
         });
-        document.addEventListener('click', (e) => {
+        document.addEventListener('click', function(e) {
             if (!e.target.closest('.dropdown')) {
                 dropdownContent.classList.remove('show');
             }
         });
         
         // Load Blog Posts from JSON
-async function loadBlogPosts() {
-    try {
-        // Try to fetch blog data
-        const response = await fetch('/blog/blog-data.json');
-        
-        // Check if response is OK
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
-        // Validate data structure
-        if (!data || !data.posts || !Array.isArray(data.posts)) {
-            throw new Error('Invalid blog data format');
-        }
-        
-        allPosts = data.posts;
-        
-        // Hide loading indicator
-        document.getElementById('loadingIndicator').style.display = 'none';
-        
-        // Display featured post
-        displayFeaturedPost();
-        
-        // Display all posts
-        displayPosts(allPosts);
-        
-        console.log(`✅ Loaded ${allPosts.length} blog posts successfully`);
-        
-    } catch (error) {
-        console.error('Error loading blog posts:', error);
-        
-        // Hide loading indicator
-        document.getElementById('loadingIndicator').style.display = 'none';
-        
-        // Show detailed error message
-        const blogGrid = document.getElementById('blogGrid');
-        blogGrid.innerHTML = `
-            <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border);">
-                <h2 style="color: #ef4444; margin-bottom: 15px;">⚠️ Error Loading Blog Posts</h2>
-                <p style="color: var(--text-muted); margin-bottom: 20px;">
-                    Unable to load blog posts. This could be due to:
-                </p>
-                <ul style="text-align: left; max-width: 500px; margin: 0 auto 20px; color: var(--text-muted);">
-                    <li>Missing <code>/blog/blog-data.json</code> file</li>
-                    <li>Invalid JSON format</li>
-                    <li>Network connectivity issue</li>
-                    <li>File permissions problem</li>
-                </ul>
-                <p style="color: var(--text-muted); margin-bottom: 20px;">
-                    <strong>Error Details:</strong> ${error.message}
-                </p>
-                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                    <button onclick="window.location.reload()" class="btn-primary">🔄 Retry</button>
-                    <a href="/index.html" class="btn-secondary" style="display: inline-block; padding: 12px 24px; text-decoration: none;">🏠 Go Home</a>
-                    <a href="/contact.html" class="btn-secondary" style="display: inline-block; padding: 12px 24px; text-decoration: none;">📧 Report Issue</a>
-                </div>
-            </div>
-        `;
-        
-        // Load demo posts as fallback
-        loadDemoPosts();
-    }
-}
-
-// Fallback: Load demo posts if JSON fails
-function loadDemoPosts() {
-    console.log('⚠️ Loading demo posts as fallback...');
-    
-    allPosts = [
-        {
-            title: "Welcome to ToolNest Blog",
-            slug: "#",
-            excerpt: "We're setting up the blog. Check back soon for tutorials, tips, and guides on using our free online tools!",
-            date: "2026-02-27",
-            readTime: "1 min",
-            category: "update",
-            featured: true
-        },
-        {
-            title: "Free PDF Tools Coming Soon",
-            slug: "#",
-            excerpt: "Learn how to merge, compress, and convert PDFs with our free online tools. Tutorials coming soon!",
-            date: "2026-02-26",
-            readTime: "2 min",
-            category: "guide",
-            featured: false
-        }
-    ];
-    
-    displayFeaturedPost();
-    displayPosts(allPosts);
-}
+        async function loadBlogPosts() {
+            try {
+                const response = await fetch('/blog/blog-data.json');
+                
+                if (!response.ok) {
+                    throw new Error('HTTP error! status: ' + response.status);
+                }
+                
+                const data = await response.json();
+                
+                if (!data || !data.posts || !Array.isArray(data.posts)) {
+                    throw new Error('Invalid blog data format');
+                }
+                
+                allPosts = data.posts;
                 
                 // Hide loading indicator
                 document.getElementById('loadingIndicator').style.display = 'none';
@@ -250,26 +172,28 @@ function loadDemoPosts() {
                 // Display all posts
                 displayPosts(allPosts);
                 
+                console.log('✅ Loaded ' + allPosts.length + ' blog posts successfully');
+                
             } catch (error) {
                 console.error('Error loading blog posts:', error);
-                document.getElementById('loadingIndicator').innerHTML = 
-                    '<p style="color: red;">Error loading posts. Please refresh the page.</p>';
+                
+                document.getElementById('loadingIndicator').style.display = 'none';
+                
+                const blogGrid = document.getElementById('blogGrid');
+                blogGrid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: var(--bg-card); border-radius: 16px;"><h2 style="color: #ef4444; margin-bottom: 15px;">⚠️ Error Loading Posts</h2><p style="color: var(--text-muted); margin-bottom: 20px;">Unable to load blog posts. Please refresh the page.</p><button onclick="window.location.reload()" class="btn-primary">🔄 Retry</button></div>';
             }
         }
         
         function displayFeaturedPost() {
-            const featuredPost = allPosts.find(post => post.featured);
+            const featuredPost = allPosts.find(function(post) {
+                return post.featured;
+            });
+            
             if (!featuredPost) return;
             
             const featuredSection = document.getElementById('featuredPost');
             featuredSection.style.display = 'block';
-            featuredSection.innerHTML = `
-                <div class="featured-tag">⭐ Featured Article</div>
-                <h2>${featuredPost.title}</h2>
-                <p class="featured-meta">📅 ${formatDate(featuredPost.date)} • ⏱️ ${featuredPost.readTime} read • 🏷️ ${capitalizeFirst(featuredPost.category)}</p>
-                <p class="featured-excerpt">${featuredPost.excerpt}</p>
-                <a href="/blog/${featuredPost.slug}.html" class="btn-primary">Read Full Article →</a>
-            `;
+            featuredSection.innerHTML = '<div class="featured-tag">⭐ Featured Article</div><h2>' + featuredPost.title + '</h2><p class="featured-meta">📅 ' + formatDate(featuredPost.date) + ' • ⏱️ ' + featuredPost.readTime + ' read • 🏷️ ' + capitalizeFirst(featuredPost.category) + '</p><p class="featured-excerpt">' + featuredPost.excerpt + '</p><a href="/blog/' + featuredPost.slug + '.html" class="btn-primary">Read Full Article →</a>';
         }
         
         function displayPosts(posts) {
@@ -280,7 +204,7 @@ function loadDemoPosts() {
             
             blogGrid.innerHTML = '';
             
-            postsToShow.forEach(post => {
+            postsToShow.forEach(function(post) {
                 const categoryColors = {
                     'tutorial': 'linear-gradient(135deg, #2563eb, #1e40af)',
                     'tips': 'linear-gradient(135deg, #10b981, #059669)',
@@ -289,19 +213,8 @@ function loadDemoPosts() {
                     'seo': 'linear-gradient(135deg, #f59e0b, #d97706)'
                 };
                 
-                const postCard = `
-                    <article class="blog-card" data-category="${post.category}">
-                        <div class="blog-image" style="background: ${categoryColors[post.category] || categoryColors.tutorial};">
-                            <span class="blog-category ${post.category}">${capitalizeFirst(post.category)}</span>
-                        </div>
-                        <div class="blog-content">
-                            <h3>${post.title}</h3>
-                            <p class="blog-meta">📅 ${formatDate(post.date)} • ⏱️ ${post.readTime} read</p>
-                            <p>${post.excerpt}</p>
-                            <a href="/blog/${post.slug}.html" class="read-more">Read More →</a>
-                        </div>
-                    </article>
-                `;
+                const postCard = '<article class="blog-card" data-category="' + post.category + '"><div class="blog-image" style="background: ' + (categoryColors[post.category] || categoryColors.tutorial) + ';"><span class="blog-category ' + post.category + '">' + capitalizeFirst(post.category) + '</span></div><div class="blog-content"><h3>' + post.title + '</h3><p class="blog-meta">📅 ' + formatDate(post.date) + ' • ⏱️ ' + post.readTime + ' read</p><p>' + post.excerpt + '</p><a href="/blog/' + post.slug + '.html" class="read-more">Read More →</a></div></article>';
+                
                 blogGrid.innerHTML += postCard;
             });
             
@@ -310,14 +223,14 @@ function loadDemoPosts() {
         
         function updatePagination(totalPosts) {
             const totalPages = Math.ceil(totalPosts / postsPerPage);
-            document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+            document.getElementById('pageInfo').textContent = 'Page ' + currentPage + ' of ' + totalPages;
             
             document.getElementById('prevBtn').disabled = currentPage === 1;
             document.getElementById('nextBtn').disabled = currentPage === totalPages;
         }
         
         // Pagination buttons
-        document.getElementById('prevBtn').addEventListener('click', () => {
+        document.getElementById('prevBtn').addEventListener('click', function() {
             if (currentPage > 1) {
                 currentPage--;
                 displayPosts(getFilteredPosts());
@@ -325,7 +238,7 @@ function loadDemoPosts() {
             }
         });
         
-        document.getElementById('nextBtn').addEventListener('click', () => {
+        document.getElementById('nextBtn').addEventListener('click', function() {
             const totalPages = Math.ceil(getFilteredPosts().length / postsPerPage);
             if (currentPage < totalPages) {
                 currentPage++;
@@ -338,16 +251,16 @@ function loadDemoPosts() {
         const filterTags = document.querySelectorAll('.filter-tag');
         let currentFilter = 'all';
         
-        filterTags.forEach(tag => {
+        filterTags.forEach(function(tag) {
             tag.addEventListener('click', function() {
                 currentFilter = this.getAttribute('data-filter');
-                currentPage = 1; // Reset to page 1
+                currentPage = 1;
                 
-                // Update active state
-                filterTags.forEach(t => t.classList.remove('active'));
+                filterTags.forEach(function(t) {
+                    t.classList.remove('active');
+                });
                 this.classList.add('active');
                 
-                // Filter and display posts
                 const filteredPosts = getFilteredPosts();
                 displayPosts(filteredPosts);
             });
@@ -357,7 +270,9 @@ function loadDemoPosts() {
             if (currentFilter === 'all') {
                 return allPosts;
             }
-            return allPosts.filter(post => post.category === currentFilter);
+            return allPosts.filter(function(post) {
+                return post.category === currentFilter;
+            });
         }
         
         // Helper functions
@@ -380,7 +295,6 @@ function loadDemoPosts() {
         
         // Load posts on page load
         document.addEventListener('DOMContentLoaded', loadBlogPosts);
-       
     </script>
     
     <style>
