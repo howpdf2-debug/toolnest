@@ -7,7 +7,7 @@
   'use strict';
   
   // Your Google Analytics Measurement ID
-  const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // ← CHANGE THIS
+  const GA_MEASUREMENT_ID = 'G-Y6W96XKXDR'; // ← CHANGE THIS
   
   // Check if already loaded
   if (window.gtag) {
