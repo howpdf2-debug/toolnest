@@ -49,22 +49,3 @@
   ],
   "lastUpdated": "2026-02-27T12:00:00.000Z"
 }
-```
-
----
-
-## **STEP 2: VERIFY FOLDER STRUCTURE**
-
-**Required Structure:**
-```
-Repository/
-├── blog/
-│   ├── blog-data.json  ← MUST BE HERE
-│   ├── gst-invoice-guide.html
-│   ├── image-compression-tips.html
-│   ├── pdf-tools-for-students.html
-│   ├── youtube-video-download-guide.html
-│   └── seo-meta-tags-guide.html
-├── blog.html
-├── index.html
-└── ...
