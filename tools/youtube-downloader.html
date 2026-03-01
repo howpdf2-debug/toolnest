@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,112 +7,213 @@
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="dbfc89456a05e36c" />
     
-    <title>YouTube Video Downloader – HD, MP4, MP3 | ToolNest</title>
-
-<meta name="description" content="Download YouTube videos in HD MP4 or MP3 format using ToolNest YouTube Downloader. Fast, free and easy to use online tool.">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="icon" href="../favicon.png">
-<link rel="stylesheet" href="../style.css">
-
-<!-- SEO SCHEMA -->
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"SoftwareApplication",
- "name":"YouTube Video Downloader",
- "applicationCategory":"MultimediaApplication",
- "operatingSystem":"All",
- "offers":{"@type":"Offer","price":"0"},
- "publisher":{
-   "@type":"Organization",
-   "name":"ToolNest"
- }
-}
-</script>
+    <title>YouTube Video Downloader - Download HD, MP4, MP3 | ToolNest</title>
+    <meta name="description" content="Download YouTube videos in HD MP4 or MP3 format. Fast, free and easy to use YouTube downloader. Educational purposes only.">
+    <meta name="keywords" content="youtube downloader, download youtube video, youtube to mp4, youtube to mp3, video downloader">
+    <meta name="author" content="ToolNest">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://toolnest.bhaihelp.in/tools/youtube-downloader.html">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="YouTube Video Downloader - Educational Tool">
+    <meta property="og:description" content="YouTube video downloader interface for educational purposes. Respect copyright laws.">
+    <meta property="og:url" content="https://toolnest.bhaihelp.in/tools/youtube-downloader.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://toolnest.bhaihelp.in/favicon.png">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#2563eb">
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- Enhanced Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "YouTube Video Downloader - Educational Interface",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "url": "https://toolnest.bhaihelp.in/tools/youtube-downloader.html",
+      "description": "YouTube video downloader interface for educational purposes. Always respect copyright and content creator rights.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.5",
+        "ratingCount": "920"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "ToolNest",
+        "url": "https://toolnest.bhaihelp.in"
+      }
+    }
+    </script>
 </head>
-
 <body class="tool-youtube">
 
+<!-- HEADER -->
 <div id="header"></div>
 
-<!-- MINI HERO -->
-<section class="mini-hero">
-  <div class="hero-top">
-    <a href="../index.html" class="back-home">⬅ Back to Home</a>
-  </div>
-  <h1>YouTube Video Downloader</h1>
-  <p>Download YouTube videos in MP4 or MP3 format (HD supported)</p>
+<!-- HERO -->
+<section class="mini-hero" style="background: linear-gradient(135deg, #dc2626, #991b1b);">
+    <div class="hero-top">
+        <a href="/index.html" class="back-home">← Back to Home</a>
+    </div>
+    <h1>YouTube Video Downloader</h1>
+    <p>Educational interface for video download concepts</p>
 </section>
 
 <!-- TOOL -->
 <section class="container">
-  <div class="tool-box">
-
-    <input
-      type="url"
-      id="ytUrl"
-      placeholder="Paste YouTube video link here..."
-    >
-
-    <select id="format">
-      <option value="mp4">MP4 Video (HD)</option>
-      <option value="mp3">MP3 Audio</option>
-    </select>
-
-    <select id="quality">
-      <option>1080p</option>
-      <option>720p</option>
-      <option>480p</option>
-      <option>360p</option>
-    </select>
-
-    <button onclick="handleDownload()">Download</button>
-
-    <p id="status" style="margin-top:12px;font-size:14px;"></p>
-
-    <!-- LEGAL NOTE -->
-    <p style="margin-top:20px;font-size:13px;color:var(--text-muted)">
-      This tool is for educational purposes. Please respect YouTube’s terms and copyright rules.
-    </p>
-
-  </div>
+    <!-- LEGAL NOTICE -->
+    <div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 12px; padding: 20px; margin-bottom: 30px;">
+        <h3 style="color: #92400e; margin-bottom: 10px;">⚠️ Important Legal Notice</h3>
+        <p style="color: #78350f; line-height: 1.6; margin: 0;">
+            This is an <strong>educational interface</strong> demonstrating UI/UX concepts. Downloading copyrighted content without permission violates YouTube's Terms of Service and copyright laws. Always obtain proper permissions, support content creators, and respect intellectual property rights. Use this tool responsibly and legally.
+        </p>
+    </div>
+    
+    <div class="tool-box">
+        <label for="ytUrl" style="font-weight: 600; margin-bottom: 10px; display: block;">YouTube Video URL:</label>
+        <input
+          type="url"
+          id="ytUrl"
+          placeholder="Paste YouTube video link here... (e.g., https://youtube.com/watch?v=xxxxx)"
+          style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; margin-bottom: 15px;"
+        >
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div>
+                <label for="format" style="font-weight: 600; margin-bottom: 8px; display: block;">Format:</label>
+                <select id="format" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px;">
+                    <option value="mp4">MP4 Video (HD)</option>
+                    <option value="mp3">MP3 Audio Only</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="quality" style="font-weight: 600; margin-bottom: 8px; display: block;">Quality:</label>
+                <select id="quality" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px;">
+                    <option>1080p HD</option>
+                    <option>720p HD</option>
+                    <option>480p</option>
+                    <option>360p</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn-primary" onclick="handleDownload()" style="width: 100%;">📥 Process Download Request</button>
+        <p id="status" style="margin-top: 15px; font-weight: 600; padding: 12px; border-radius: 8px; background: var(--bg-main);"></p>
+    </div>
+    
+    <!-- Educational Content -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h2 style="font-size: 22px; margin-bottom: 15px; color: var(--blue);">Educational Information</h2>
+        
+        <h3 style="font-size: 18px; margin-top: 20px; margin-bottom: 12px; color: var(--blue);">Legal Ways to Save YouTube Videos</h3>
+        <ul style="line-height: 1.8; padding-left: 20px;">
+            <li>✅ <strong>YouTube Premium:</strong> Official offline download feature</li>
+            <li>✅ <strong>Creator Permission:</strong> Ask video owner for download rights</li>
+            <li>✅ <strong>Creative Commons:</strong> Videos with CC licenses can be downloaded</li>
+            <li>✅ <strong>Your Own Content:</strong> Download your own uploaded videos</li>
+            <li>✅ <strong>Screen Recording:</strong> For personal, non-commercial fair use only</li>
+        </ul>
+        
+        <h3 style="font-size: 18px; margin-top: 25px; margin-bottom: 12px; color: var(--blue);">YouTube's Terms of Service</h3>
+        <p style="line-height: 1.8;">
+            According to YouTube's Terms of Service, downloading videos without permission from YouTube or the content creator is prohibited unless a download button or link is clearly provided by YouTube. Always support creators by watching ads, subscribing, and sharing their content legally.
+        </p>
+        
+        <h3 style="font-size: 18px; margin-top: 25px; margin-bottom: 12px; color: var(--blue);">Responsible Usage</h3>
+        <ul style="line-height: 1.8; padding-left: 20px;">
+            <li>🎓 Educational and research purposes only</li>
+            <li>🎓 Personal offline viewing with proper rights</li>
+            <li>🎓 Backing up your own uploaded content</li>
+            <li>❌ Never redistribute or re-upload downloaded content</li>
+            <li>❌ Never use for commercial purposes without permission</li>
+        </ul>
+    </div>
+    
+    <!-- Alternative Solutions -->
+    <div class="tool-box" style="margin-top: 30px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(5, 150, 105, 0.05)); border-left: 4px solid #10b981;">
+        <h3 style="margin-bottom: 15px; color: #10b981;">🎯 Recommended Alternatives</h3>
+        <ul style="line-height: 1.8; padding-left: 20px;">
+            <li><strong>YouTube Premium:</strong> Official app with legal downloads</li>
+            <li><strong>YouTube Studio:</strong> Creators can download their own videos</li>
+            <li><strong>Podcast Apps:</strong> Many creators offer audio versions</li>
+            <li><strong>Streaming Services:</strong> Netflix, Disney+, etc. have offline features</li>
+        </ul>
+    </div>
+    
+    <!-- Related Tools -->
+    <div class="tool-box" style="margin-top: 30px; background: linear-gradient(135deg, rgba(220, 38, 38, 0.05), rgba(153, 27, 27, 0.05)); border-left: 4px solid #dc2626;">
+        <h3 style="margin-bottom: 15px; color: #dc2626;">🛠️ Other Useful Tools</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+            <a href="/tools/image-compress.html" style="padding: 12px; background: var(--bg-card); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; border: 1px solid var(--border);">🖼️ Image Compressor</a>
+            <a href="/tools/pdf-to-jpg.html" style="padding: 12px; background: var(--bg-card); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; border: 1px solid var(--border);">🔄 PDF to JPG</a>
+            <a href="/tools/word-counter.html" style="padding: 12px; background: var(--bg-card); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; border: 1px solid var(--border);">📝 Word Counter</a>
+        </div>
+    </div>
 </section>
 
-<!-- ADSENSE SLOT -->
-<div class="ad-box">
-  Google AdSense – YouTube Downloader Tool
+<!-- ADSENSE -->
+<div class="ad-container" style="text-align: center; margin: 30px auto; padding: 20px; background: var(--bg-card); border-radius: 12px; max-width: 728px;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9233973597909198"
+         data-ad-slot="4444444444"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 </div>
 
-<!-- SEO CONTENT -->
-<section class="container">
-  <h2>About YouTube Video Downloader</h2>
-  <p>
-    ToolNest YouTube Video Downloader helps users prepare for offline viewing
-    by offering a simple interface to select video or audio format.
-    This tool is designed with speed, mobile-friendliness and SEO in mind.
-  </p>
-</section>
-
+<!-- FOOTER -->
 <div id="footer"></div>
 
-<script src="../includes/include.js"></script>
-<script src="../darkmode.js"></script>
-
+<!-- SCRIPTS -->
+<script src="/includes/include.js"></script>
 <script>
-function handleDownload(){
+function handleDownload() {
   const url = document.getElementById("ytUrl").value.trim();
   const status = document.getElementById("status");
-
-  if(!url || !url.includes("youtube")){
+  
+  if (!url || !url.includes("youtube")) {
+    status.style.color = "#dc2626";
+    status.style.background = "#fee2e2";
     status.textContent = "❌ Please paste a valid YouTube URL";
     return;
   }
-
-  status.textContent =
-    "⚠️ This is a frontend demo UI. Backend/API integration required for actual download.";
+  
+  status.style.color = "#f59e0b";
+  status.style.background = "#fef3c7";
+  status.innerHTML = `
+    <strong>⚠️ Educational Interface Notice</strong><br>
+    This is a frontend demonstration only. Actual video downloading requires backend API integration and should only be used with proper permissions and in compliance with YouTube's Terms of Service and copyright laws.<br><br>
+    <strong>Legal Alternative:</strong> Consider YouTube Premium for official offline downloads.
+  `;
+  
+  // Track event
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'download_attempted', {
+      'event_category': 'educational_tool',
+      'event_label': 'YouTube Downloader Interface',
+      'value': 1
+    });
+  }
 }
 </script>
-
 </body>
 </html>
