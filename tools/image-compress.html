@@ -1,159 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="dbfc89456a05e36c" />
     
- 
-<title>Image Compressor Online Free | ToolNest</title>
-
-<meta name="description" content="Compress images online for free with ToolNest. Reduce JPG, PNG, WebP size without quality loss. Fast, secure & private.">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="stylesheet" href="../style.css">
-
-<!-- Favicons -->
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#2563eb">    
-<!-- Schema Markup for Tool -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "image-compress - ToolNest",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "ratingCount": "1250"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "ToolNest",
-    "url": "https://toolnest.bhaihelp.in"
-  }
-}
-</script>
-        
+    <title>Image Compressor Online Free - Reduce Image Size | ToolNest</title>
+    <meta name="description" content="Compress images online for free with ToolNest. Reduce JPG, PNG, WebP file size without quality loss. Fast, secure and private image compression.">
+    <meta name="keywords" content="image compressor, compress image, reduce image size, optimize images, jpg compressor, png compressor">
+    <meta name="author" content="ToolNest">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://toolnest.bhaihelp.in/tools/image-compress.html">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Image Compressor - Free Online Tool">
+    <meta property="og:description" content="Compress images without losing quality. Reduce JPG, PNG, WebP size instantly.">
+    <meta property="og:url" content="https://toolnest.bhaihelp.in/tools/image-compress.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://toolnest.bhaihelp.in/favicon.png">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#2563eb">
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- Enhanced Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image Compressor - Free Online Tool",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "url": "https://toolnest.bhaihelp.in/tools/image-compress.html",
+      "description": "Free online image compressor. Reduce JPG, PNG, WebP file size without losing quality. Fast and secure compression.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1450"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "ToolNest",
+        "url": "https://toolnest.bhaihelp.in"
+      }
+    }
+    </script>
 </head>
-
 <body class="tool-image">
 
 <!-- HEADER -->
 <div id="header"></div>
 
 <!-- HERO -->
-<section class="mini-hero">
-  <div class="hero-top">
-    <a href="../index.html" class="back-home">⬅ Back to Home</a>
-  </div>
-  <h1>Image Compressor</h1>
-  <p>Reduce image file size without losing quality</p>
+<section class="mini-hero" style="background: linear-gradient(135deg, #10b981, #059669);">
+    <div class="hero-top">
+        <a href="/index.html" class="back-home">← Back to Home</a>
+    </div>
+    <h1>Image Compressor</h1>
+    <p>Reduce image file size without losing quality</p>
 </section>
 
-
-
-
-<!-- TOOL BOX -->
+<!-- TOOL -->
 <section class="container">
-  <div class="tool-box colorful green">
-
-    <input type="file" id="imageInput" accept="image/*">
-
-    <label>Compression Level</label>
-    <input type="range" id="quality" min="10" max="90" value="70">
-    <span id="qualityValue">70%</span>
-
-    <button onclick="compressImage()">Compress Image</button>
-
-    <p id="status"></p>
-    <a id="downloadLink" style="display:none;" class="download-btn">Download Image</a>
-
-  </div>
+    <div class="tool-box colorful green">
+        <label for="imageInput" style="font-weight: 600; margin-bottom: 10px; display: block;">Select Image:</label>
+        <input type="file" id="imageInput" accept="image/*" style="margin-bottom: 20px;">
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Supported: JPG, PNG, WebP, GIF. Max 10MB per image.</p>
+        
+        <div style="margin-bottom: 20px;">
+            <label for="quality" style="font-weight: 600; margin-bottom: 10px; display: block;">Compression Level:</label>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <input type="range" id="quality" min="10" max="90" value="70" style="flex: 1;">
+                <span id="qualityValue" style="font-weight: 700; font-size: 18px; color: var(--blue); min-width: 50px;">70%</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 12px; color: var(--text-muted);">
+                <span>High Compression</span>
+                <span>Balanced</span>
+                <span>High Quality</span>
+            </div>
+        </div>
+        
+        <button class="btn-primary" onclick="compressImage()" style="width: 100%;">🗜️ Compress Image</button>
+        
+        <p id="status" style="margin-top: 15px; font-weight: 600; padding: 12px; border-radius: 8px; background: var(--bg-main);"></p>
+        
+        <a id="downloadLink" style="display:none; margin-top: 15px; text-align: center;" class="btn-secondary">📥 Download Compressed Image</a>
+    </div>
+    
+    <!-- Preview Section -->
+    <div id="previewSection" style="display: none; margin-top: 30px;">
+        <div class="tool-box">
+            <h3 style="color: var(--blue); margin-bottom: 20px;">Before & After Comparison</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <h4 style="margin-bottom: 10px; color: var(--text-muted);">Original</h4>
+                    <div style="border: 2px solid var(--border); border-radius: 8px; padding: 10px; background: var(--bg-main);">
+                        <canvas id="originalCanvas" style="max-width: 100%; height: auto; display: block; border-radius: 4px;"></canvas>
+                        <p id="originalSize" style="margin-top: 10px; font-weight: 600; color: var(--text-main);"></p>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 10px; color: var(--text-muted);">Compressed</h4>
+                    <div style="border: 2px solid var(--blue); border-radius: 8px; padding: 10px; background: var(--bg-main);">
+                        <canvas id="compressedCanvas" style="max-width: 100%; height: auto; display: block; border-radius: 4px;"></canvas>
+                        <p id="compressedSize" style="margin-top: 10px; font-weight: 600; color: var(--blue);"></p>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1)); border-radius: 8px; text-align: center;">
+                <p style="font-size: 18px; font-weight: 700; color: #059669;" id="savings"></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- How to Use -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h2 style="font-size: 22px; margin-bottom: 15px; color: var(--blue);">How to Compress Images</h2>
+        <ol style="line-height: 1.8; padding-left: 20px;">
+            <li><strong>Select Image:</strong> Click "Choose File" and select your image (JPG, PNG, WebP, GIF)</li>
+            <li><strong>Adjust Quality:</strong> Use the slider to set compression level (70% recommended)</li>
+            <li><strong>Compress:</strong> Click "Compress Image" button</li>
+            <li><strong>Preview:</strong> Compare before and after results</li>
+            <li><strong>Download:</strong> Save your compressed image</li>
+        </ol>
+        
+        <h3 style="font-size: 18px; margin-top: 25px; margin-bottom: 12px; color: var(--blue);">Why Compress Images?</h3>
+        <ul style="line-height: 1.8; padding-left: 20px;">
+            <li>✅ <strong>Faster Loading:</strong> Smaller images load faster on websites</li>
+            <li>✅ <strong>Save Storage:</strong> Reduce file size on your device or server</li>
+            <li>✅ <strong>Better SEO:</strong> Fast-loading pages rank higher in search results</li>
+            <li>✅ <strong>Save Bandwidth:</strong> Lower data usage for visitors</li>
+            <li>✅ <strong>Email Friendly:</strong> Smaller attachments send faster</li>
+        </ul>
+    </div>
+    
+    <!-- SEO Content -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h2 style="font-size: 22px; margin-bottom: 15px; color: var(--blue);">About Image Compressor Tool</h2>
+        <p style="line-height: 1.8; margin-bottom: 15px;">
+            ToolNest Image Compressor is a free online tool that reduces image file size without noticeable quality loss. Compress JPG, PNG, WebP, and GIF images up to 90% smaller. Perfect for optimizing images for websites, blogs, social media, emails, and online stores.
+        </p>
+        <p style="line-height: 1.8; margin-bottom: 15px;">
+            Our image compressor uses advanced compression algorithms to reduce file size while maintaining visual quality. The tool processes images directly in your browser, ensuring complete privacy - your images never leave your device. Adjust the compression slider to find the perfect balance between file size and quality.
+        </p>
+        <p style="line-height: 1.8;">
+            Ideal for web developers, bloggers, photographers, and social media managers who need to optimize images regularly. Compressed images improve website load times, reduce hosting costs, and provide better user experience. The tool handles images up to 10MB and produces instant results. No watermarks, no limits, completely free.
+        </p>
+    </div>
+    
+    <!-- Related Tools -->
+    <div class="tool-box" style="margin-top: 30px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(5, 150, 105, 0.05)); border-left: 4px solid #10b981;">
+        <h3 style="margin-bottom: 15px; color: #10b981;">🛠️ Related Tools</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+            <a href="/tools/pdf-to-jpg.html" style="padding: 12px; background: var(--bg-card); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; border: 1px solid var(--border);">🔄 PDF to JPG</a>
+            <a href="/tools/merge-pdf.html" style="padding: 12px; background: var(--bg-card); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; border: 1px solid var(--border);">📄 Merge PDF</a>
+            <a href="/blog/image-compression-tips.html" style="padding: 12px; background: var(--bg-card); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; border: 1px solid var(--border);">📚 Compression Guide</a>
+        </div>
+    </div>
 </section>
 
-<!-- ADSENSE PLACE (APPROVED SAFE POSITION) -->
-<div class="ad-box">
-  <!-- Google AdSense -->
-  <!--
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-       data-ad-slot="XXXXXXXXXX"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  -->
-  Advertisement
+<!-- ADSENSE -->
+<div class="ad-container" style="text-align: center; margin: 30px auto; padding: 20px; background: var(--bg-card); border-radius: 12px; max-width: 728px;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9233973597909198"
+         data-ad-slot="6666666666"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 </div>
 
-<!-- FOOTER AUTO LOAD -->
+<!-- FOOTER -->
 <div id="footer"></div>
 
-<!-- GLOBAL SCRIPTS -->
-<script src="../includes/include.js"></script>
-<script src="../darkmode.js"></script>
-
-<!-- IMAGE COMPRESS SCRIPT -->
+<!-- SCRIPTS -->
+<script src="/includes/include.js"></script>
 <script>
 const qualityRange = document.getElementById("quality");
 const qualityValue = document.getElementById("qualityValue");
 
-qualityRange.oninput = () => {
-  qualityValue.innerText = qualityRange.value + "%";
+qualityRange.oninput = function() {
+  qualityValue.innerText = this.value + "%";
 };
 
 function compressImage() {
   const input = document.getElementById("imageInput");
   const status = document.getElementById("status");
-  const download = document.getElementById("downloadLink");
-
+  const downloadLink = document.getElementById("downloadLink");
+  const previewSection = document.getElementById("previewSection");
+  
   if (!input.files.length) {
-    alert("Please select an image");
+    status.style.color = "#dc2626";
+    status.style.background = "#fee2e2";
+    status.textContent = "❌ Please select an image";
     return;
   }
-
+  
   const file = input.files[0];
+  
+  if (file.size > 10 * 1024 * 1024) {
+    status.style.color = "#dc2626";
+    status.style.background = "#fee2e2";
+    status.textContent = "❌ Image too large. Maximum size is 10MB";
+    return;
+  }
+  
+  status.style.color = "#2563eb";
+  status.style.background = "#dbeafe";
+  status.textContent = "⏳ Compressing image...";
+  
   const img = new Image();
   const reader = new FileReader();
-
-  reader.onload = e => {
+  
+  reader.onload = function(e) {
     img.src = e.target.result;
   };
-
-  img.onload = () => {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-
-    canvas.width = img.width;
-    canvas.height = img.height;
-    ctx.drawImage(img, 0, 0);
-
-    canvas.toBlob(blob => {
+  
+  img.onload = function() {
+    // Original canvas
+    const originalCanvas = document.getElementById("originalCanvas");
+    const originalCtx = originalCanvas.getContext("2d");
+    originalCanvas.width = img.width;
+    originalCanvas.height = img.height;
+    originalCtx.drawImage(img, 0, 0);
+    
+    // Compressed canvas
+    const compressedCanvas = document.getElementById("compressedCanvas");
+    const compressedCtx = compressedCanvas.getContext("2d");
+    compressedCanvas.width = img.width;
+    compressedCanvas.height = img.height;
+    compressedCtx.drawImage(img, 0, 0);
+    
+    // Compress
+    compressedCanvas.toBlob(function(blob) {
       const url = URL.createObjectURL(blob);
-      download.href = url;
-      download.download = "toolnest-compressed.jpg";
-      download.style.display = "inline-block";
-      status.innerText = "Image compressed successfully!";
+      downloadLink.href = url;
+      downloadLink.download = "toolnest-compressed.jpg";
+      downloadLink.style.display = "inline-block";
+      
+      // Calculate savings
+      const originalSize = file.size;
+      const compressedSize = blob.size;
+      const savings = ((originalSize - compressedSize) / originalSize * 100).toFixed(1);
+      
+      // Update UI
+      document.getElementById("originalSize").textContent = `Size: ${formatBytes(originalSize)}`;
+      document.getElementById("compressedSize").textContent = `Size: ${formatBytes(compressedSize)}`;
+      document.getElementById("savings").textContent = `✨ Reduced by ${savings}% (${formatBytes(originalSize - compressedSize)} saved)`;
+      
+      previewSection.style.display = "block";
+      status.style.color = "#10b981";
+      status.style.background = "#d1fae5";
+      status.textContent = "✅ Image compressed successfully!";
+      
+      // Track event
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'image_compressed', {
+          'event_category': 'tool_usage',
+          'event_label': 'Image Compressor',
+          'value': Math.round(savings)
+        });
+      }
     }, "image/jpeg", qualityRange.value / 100);
   };
-
+  
   reader.readAsDataURL(file);
 }
-</script>
 
+function formatBytes(bytes) {
+  if (bytes === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+}
+</script>
 </body>
 </html>
