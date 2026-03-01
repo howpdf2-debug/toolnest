@@ -1,97 +1,69 @@
-// ============================================
-// GOOGLE ADSENSE INTEGRATION
-// ============================================
-// Replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID from Step 1B
+// Google AdSense Configuration
+// Publisher ID: ca-pub-9233973597909198
 
 (function() {
-  'use strict';
-  
-  // Your AdSense Publisher ID
-  const ADSENSE_PUBLISHER_ID = 'ca-pub-9233973597909198'; // ← CHANGE THIS
-  
-  // Check if already loaded
-  if (window.adsbygoogle) {
-    console.log('AdSense already loaded');
-    return;
-  }
-  
-  // Create and load AdSense script
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUBLISHER_ID}`;
-  script.crossOrigin = 'anonymous';
-  
-  script.onload = function() {
-    console.log('✅ AdSense loaded successfully');
-  };
-  
-  script.onerror = function() {
-    console.error('❌ Failed to load AdSense (might be blocked by ad blocker)');
-  };
-  
-  document.head.appendChild(script);
-  
-  console.log('💰 AdSense script initialized');
+    'use strict';
+    
+    const ADSENSE_PUBLISHER_ID = 'ca-pub-9233973597909198';
+    
+    // Load AdSense script
+    const adsenseScript = document.createElement('script');
+    adsenseScript.async = true;
+    adsenseScript.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUBLISHER_ID}`;
+    adsenseScript.crossOrigin = 'anonymous';
+    
+    adsenseScript.onload = function() {
+        console.log('✅ AdSense loaded (ca-pub-9233973597909198)');
+        
+        // Initialize existing ad units
+        const adUnits = document.querySelectorAll('.adsbygoogle');
+        if (adUnits.length > 0) {
+            console.log('📢 Found ' + adUnits.length + ' ad unit(s)');
+            
+            // Push ads after a short delay
+            setTimeout(function() {
+                adUnits.forEach(function(ad) {
+                    try {
+                        if (!ad.getAttribute('data-adsbygoogle-status')) {
+                            (window.adsbygoogle = window.adsbygoogle || []).push({});
+                        }
+                    } catch (e) {
+                        console.error('AdSense error:', e);
+                    }
+                });
+            }, 100);
+        }
+    };
+    
+    adsenseScript.onerror = function() {
+        console.warn('⚠️ AdSense script failed to load (ad blocker or network issue)');
+    };
+    
+    document.head.appendChild(adsenseScript);
+    
+    console.log('💰 AdSense script initialized');
+    
+    // Helper function to create ad unit
+    window.createAdUnit = function(options) {
+        const defaults = {
+            client: 'ca-pub-9233973597909198',
+            slot: '0000000000',
+            format: 'auto',
+            fullWidthResponsive: true,
+            style: 'display:block'
+        };
+        
+        const config = Object.assign({}, defaults, options);
+        
+        const ins = document.createElement('ins');
+        ins.className = 'adsbygoogle';
+        ins.style.cssText = config.style;
+        ins.setAttribute('data-ad-client', config.client);
+        ins.setAttribute('data-ad-slot', config.slot);
+        ins.setAttribute('data-ad-format', config.format);
+        ins.setAttribute('data-full-width-responsive', config.fullWidthResponsive);
+        
+        return ins;
+    };
+    
 })();
-
-// ============================================
-// AUTO-INITIALIZE ADS AFTER PAGE LOAD
-// ============================================
-window.addEventListener('load', function() {
-  // Wait a bit for page to settle
-  setTimeout(function() {
-    const adElements = document.querySelectorAll('.adsbygoogle');
-    
-    if (adElements.length === 0) {
-      console.log('ℹ️ No ad slots found on this page');
-      return;
-    }
-    
-    console.log(`💰 Found ${adElements.length} ad slot(s), initializing...`);
-    
-    adElements.forEach(function(ad, index) {
-      // Check if ad is already initialized
-      if (ad.dataset.adsbygoogleStatus === 'done') {
-        console.log(`Ad ${index + 1} already initialized`);
-        return;
-      }
-      
-      try {
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        console.log(`✅ Ad ${index + 1} initialized`);
-      } catch (e) {
-        console.error(`❌ Failed to initialize ad ${index + 1}:`, e);
-      }
-    });
-  }, 1000);
-});
-
-// ============================================
-// HELPER FUNCTION TO CREATE AD UNITS
-// ============================================
-window.createAdUnit = function(options) {
-  const defaults = {
-    client: 'ca-pub-XXXXXXXXXXXXXXXX', // ← CHANGE THIS
-    slot: '1234567890',
-    format: 'auto',
-    responsive: true,
-    style: 'display:block'
-  };
-  
-  const config = Object.assign({}, defaults, options);
-  
-  const ad = document.createElement('ins');
-  ad.className = 'adsbygoogle';
-  ad.style.cssText = config.style;
-  ad.setAttribute('data-ad-client', config.client);
-  ad.setAttribute('data-ad-slot', config.slot);
-  ad.setAttribute('data-ad-format', config.format);
-  
-  if (config.responsive) {
-    ad.setAttribute('data-full-width-responsive', 'true');
-  }
-  
-  return ad;
-};
-
-console.log('💰 AdSense utilities loaded');
