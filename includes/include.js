@@ -1,4 +1,4 @@
-// ToolNest - Dynamic Component Loader & Initialization
+// ToolNest - Dynamic Component Loader & Complete Initialization
 (function() {
     'use strict';
     
@@ -39,6 +39,7 @@
             return;
         }
         
+        // Toggle mobile menu
         mobileToggle.addEventListener('click', function(e) {
             e.stopPropagation();
             const isActive = navRight.classList.toggle('active');
@@ -48,6 +49,7 @@
             document.body.style.overflow = isActive ? 'hidden' : '';
         });
         
+        // Close menu when clicking overlay
         if (mobileOverlay) {
             mobileOverlay.addEventListener('click', function() {
                 navRight.classList.remove('active');
@@ -58,6 +60,7 @@
             });
         }
         
+        // Close menu when clicking nav links
         const navLinks = navRight.querySelectorAll('.nav-link');
         navLinks.forEach(function(link) {
             link.addEventListener('click', function() {
@@ -71,6 +74,7 @@
             });
         });
         
+        // Dropdown functionality
         if (dropdownBtn && dropdownContent) {
             dropdownBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -97,6 +101,7 @@
             });
         }
         
+        // Dark mode toggle
         if (darkToggle) {
             const savedMode = localStorage.getItem('darkMode');
             if (savedMode === 'true') {
@@ -111,9 +116,11 @@
                 const isDark = document.documentElement.classList.contains('dark');
                 localStorage.setItem('darkMode', isDark);
                 darkToggle.textContent = isDark ? '☀️' : '🌙';
+                console.log('🌓 Dark mode:', isDark ? 'ON' : 'OFF');
             });
         }
         
+        // Close dropdown when clicking outside
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.dropdown')) {
                 if (dropdownContent) dropdownContent.classList.remove('show');
@@ -121,6 +128,7 @@
             }
         });
         
+        // Close mobile menu on window resize
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 navRight.classList.remove('active');
@@ -135,7 +143,7 @@
         console.log('✅ Mobile menu initialized');
     }
     
-    // Load script helper
+    // Script loader helper
     function loadScript(src) {
         return new Promise((resolve, reject) => {
             const script = document.createElement('script');
@@ -147,7 +155,7 @@
         });
     }
     
-    // Load all scripts
+    // Load all scripts sequentially
     Promise.all([
         loadScript('/includes/analytics.js'),
         loadScript('/includes/adsense.js'),
@@ -157,13 +165,11 @@
         loadScript('/includes/search.js'),
         loadScript('/includes/cookie-consent.js'),
         loadScript('/includes/back-to-top.js')
-        loadScript('/includes/breadcrumbs.js');
-        loadScript('/includes/lazy-load.js');
     ]).then(() => {
         console.log('✅ All scripts loaded successfully');
+        console.log('🎉 ToolNest initialization complete');
     }).catch(err => {
         console.warn('⚠️ Some scripts failed to load:', err);
     });
     
-    console.log('🎉 ToolNest initialization complete');
 })();
