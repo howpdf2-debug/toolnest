@@ -6,7 +6,7 @@
   </a>
   
   <!-- Mobile Menu Toggle Button -->
-  <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+  <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu" aria-expanded="false">
     <span class="hamburger"></span>
     <span class="hamburger"></span>
     <span class="hamburger"></span>
@@ -18,6 +18,7 @@
     <a href="/about.html" class="nav-link">ℹ️ About</a>
     <a href="/contact.html" class="nav-link">📧 Contact</a>
     <a href="/blog.html" class="nav-link">📚 Blog</a>
+    <a href="/faq.html" class="nav-link">❓ FAQ</a>
     
     <!-- Tools Dropdown -->
     <div class="dropdown">
@@ -44,8 +45,9 @@
 <!-- Mobile Overlay -->
 <div class="mobile-overlay" id="mobileOverlay"></div>
 
-<!-- Mobile Menu Styles & Script -->
 <style>
+/* ============ MOBILE MENU STYLES ============ */
+
 /* Mobile Menu Toggle Button */
 .mobile-menu-toggle {
   display: none;
@@ -91,7 +93,7 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: 998;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -115,11 +117,11 @@
     height: 100vh;
     background: var(--bg-card);
     flex-direction: column;
-    align-items: flex-start;
-    padding: 80px 20px 20px;
+    align-items: stretch;
+    padding: 80px 0 20px;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
-    z-index: 1000;
+    z-index: 999;
     overflow-y: auto;
     gap: 0;
   }
@@ -130,9 +132,17 @@
   
   .nav-right .nav-link {
     width: 100%;
-    padding: 15px 20px;
+    padding: 16px 25px;
     border-bottom: 1px solid var(--border);
     font-size: 16px;
+    text-decoration: none;
+    color: var(--text-main);
+    display: block;
+    transition: background 0.2s;
+  }
+  
+  .nav-right .nav-link:hover {
+    background: var(--bg-main);
   }
   
   .nav-right .dropdown {
@@ -143,12 +153,23 @@
   .nav-right .dropbtn {
     width: 100%;
     text-align: left;
-    padding: 15px 20px;
+    padding: 16px 25px;
     border-bottom: 1px solid var(--border);
     background: transparent;
     border-radius: 0;
     font-size: 16px;
     justify-content: space-between;
+    display: flex;
+    align-items: center;
+    color: var(--text-main);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    cursor: pointer;
+  }
+  
+  .nav-right .dropbtn:hover {
+    background: var(--bg-main);
   }
   
   .nav-right .dropdown-content {
@@ -169,8 +190,9 @@
   }
   
   .nav-right .dropdown-content a {
-    padding: 12px 20px 12px 40px;
+    padding: 14px 25px 14px 45px;
     border-bottom: 1px solid var(--border);
+    font-size: 15px;
   }
   
   .nav-right .dropdown-content a:last-child {
@@ -179,13 +201,27 @@
   
   .nav-right .dark-toggle-btn {
     width: 100%;
-    padding: 15px 20px;
+    padding: 16px 25px;
     text-align: left;
     background: transparent;
     border: none;
     border-radius: 0;
     font-size: 24px;
     cursor: pointer;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .nav-right .dark-toggle-btn:hover {
+    background: var(--bg-main);
+  }
+  
+  .nav-right .dark-toggle-btn::before {
+    content: 'Dark Mode';
+    font-size: 16px;
+    font-weight: 600;
   }
   
   .arrow {
@@ -193,7 +229,6 @@
     display: inline-block;
   }
   
-  .dropdown-content.show ~ .dropbtn .arrow,
   .dropbtn[aria-expanded="true"] .arrow {
     transform: rotate(180deg);
   }
@@ -212,6 +247,22 @@
     height: auto !important;
     padding: 0 !important;
     box-shadow: none !important;
+    background: transparent !important;
+  }
+  
+  .nav-right .nav-link {
+    width: auto;
+    padding: 8px 15px;
+    border: none;
+  }
+  
+  .nav-right .dropbtn {
+    width: auto;
+    border: none;
+  }
+  
+  .nav-right .dark-toggle-btn::before {
+    display: none;
   }
 }
 </style>
@@ -220,13 +271,13 @@
 (function() {
   'use strict';
   
-  // Wait for DOM to be ready
   function initMobileMenu() {
     const mobileToggle = document.getElementById('mobileMenuToggle');
     const navRight = document.getElementById('navRight');
     const mobileOverlay = document.getElementById('mobileOverlay');
     const dropdownBtn = document.getElementById('toolsDropdownBtn');
     const dropdownContent = document.getElementById('toolsDropdown');
+    const darkToggle = document.getElementById('darkToggle');
     
     if (!mobileToggle || !navRight) {
       console.warn('Mobile menu elements not found');
@@ -242,10 +293,8 @@
         mobileOverlay.classList.toggle('active');
       }
       
-      // Update ARIA
-      this.setAttribute('aria-expanded', isActive);
+      mobileToggle.setAttribute('aria-expanded', isActive);
       
-      // Prevent body scroll when menu open
       if (isActive) {
         document.body.style.overflow = 'hidden';
       } else {
@@ -264,7 +313,7 @@
       });
     }
     
-    // Close menu when clicking nav links (mobile only)
+    // Close menu when clicking nav links
     const navLinks = navRight.querySelectorAll('.nav-link');
     navLinks.forEach(function(link) {
       link.addEventListener('click', function() {
@@ -284,28 +333,51 @@
     if (dropdownBtn && dropdownContent) {
       dropdownBtn.addEventListener('click', function(e) {
         e.stopPropagation();
+        e.preventDefault();
         const isExpanded = dropdownContent.classList.toggle('show');
         this.setAttribute('aria-expanded', isExpanded);
       });
       
-      // Close dropdown when clicking dropdown links
+      // Close dropdown when clicking links
       const dropdownLinks = dropdownContent.querySelectorAll('a');
       dropdownLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function(e) {
           dropdownContent.classList.remove('show');
           dropdownBtn.setAttribute('aria-expanded', 'false');
           
-          // Also close mobile menu if open
+          // Close mobile menu
           if (window.innerWidth <= 768) {
-            navRight.classList.remove('active');
-            mobileToggle.classList.remove('active');
-            if (mobileOverlay) {
-              mobileOverlay.classList.remove('active');
-            }
-            mobileToggle.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
+            setTimeout(function() {
+              navRight.classList.remove('active');
+              mobileToggle.classList.remove('active');
+              if (mobileOverlay) {
+                mobileOverlay.classList.remove('active');
+              }
+              mobileToggle.setAttribute('aria-expanded', 'false');
+              document.body.style.overflow = '';
+            }, 100);
           }
         });
+      });
+    }
+    
+    // Dark mode toggle
+    if (darkToggle) {
+      // Load saved preference
+      const savedMode = localStorage.getItem('darkMode');
+      if (savedMode === 'true') {
+        document.documentElement.classList.add('dark');
+        darkToggle.textContent = '☀️';
+      }
+      
+      darkToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('darkMode', isDark);
+        darkToggle.textContent = isDark ? '☀️' : '🌙';
+        console.log('🌓 Dark mode:', isDark ? 'ON' : 'OFF');
       });
     }
     
@@ -340,7 +412,7 @@
     console.log('✅ Mobile menu initialized');
   }
   
-  // Initialize when DOM is ready
+  // Initialize when DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMobileMenu);
   } else {
