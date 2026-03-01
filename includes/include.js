@@ -157,6 +157,7 @@
         loadScript('/includes/search.js'),
         loadScript('/includes/cookie-consent.js'),
         loadScript('/includes/back-to-top.js')
+        loadScript('/includes/breadcrumbs.js');
     ]).then(() => {
         console.log('✅ All scripts loaded successfully');
     }).catch(err => {
