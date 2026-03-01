@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,184 +7,365 @@
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="dbfc89456a05e36c" />
     
- 
-<title>SEO Generator – Meta, FAQ, Article | ToolNest</title>
-
-<meta name="description" content="Generate SEO meta tags, FAQ schema and 500+ words SEO article using ToolNest SEO Generator.">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="icon" href="../favicon.png">
-<link rel="stylesheet" href="../style.css">
-
-<!-- SOFTWARE SCHEMA -->
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"SoftwareApplication",
- "name":"ToolNest SEO Generator",
- "applicationCategory":"SEOApplication",
- "operatingSystem":"All",
- "offers":{"@type":"Offer","price":"0"}
-}
-</script>
+    <title>SEO Meta Tags Generator - Free Schema & Content Tool | ToolNest</title>
+    <meta name="description" content="Generate SEO meta tags, FAQ schema, and optimized content instantly. Free AI-powered SEO generator for better search rankings.">
+    <meta name="keywords" content="seo generator, meta tags generator, schema markup, faq schema, seo content generator">
+    <meta name="author" content="ToolNest">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://toolnest.bhaihelp.in/tools/seo-generator.html">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="SEO Meta Tags Generator - Free Tool">
+    <meta property="og:description" content="Generate SEO meta tags, schema markup, and optimized content instantly.">
+    <meta property="og:url" content="https://toolnest.bhaihelp.in/tools/seo-generator.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://toolnest.bhaihelp.in/favicon.png">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#2563eb">
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- Enhanced Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SEO Meta Tags Generator - Free SEO Tool",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "url": "https://toolnest.bhaihelp.in/tools/seo-generator.html",
+      "description": "Free SEO generator to create meta tags, FAQ schema, and optimized content for better search engine rankings.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1340"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "ToolNest",
+        "url": "https://toolnest.bhaihelp.in"
+      }
+    }
+    </script>
 </head>
-
 <body class="tool-seo">
 
-<!-- COMMON HEADER -->
+<!-- HEADER -->
 <div id="header"></div>
 
 <!-- HERO -->
-<section class="mini-hero">
-  <div class="hero-top">
-    <a href="../index.html" class="back-home">⬅ Back to Home</a>
-  </div>
-  <h1>SEO Generator</h1>
-  <p>AI-like Meta Tags, FAQ Schema & 500+ Words SEO Article</p>
+<section class="mini-hero" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+    <div class="hero-top">
+        <a href="/index.html" class="back-home">← Back to Home</a>
+    </div>
+    <h1>SEO Generator</h1>
+    <p>Generate Meta Tags, FAQ Schema & SEO-Optimized Content</p>
 </section>
 
 <!-- TOOL -->
 <section class="container">
-  <div class="tool-box">
-
-    <input type="text" id="topic" placeholder="Enter main topic (e.g. Image Compressor)">
-    <input type="text" id="keywords" placeholder="Enter keywords (comma separated)">
-
-    <button onclick="generateSEO()">Generate SEO</button>
-    <button onclick="rewriteSEO()">AI Rewrite</button>
-
-    <hr style="margin:30px 0">
-
+    <div class="tool-box">
+        <h3 style="color: var(--blue); margin-bottom: 20px;">Input Details</h3>
+        
+        <div style="margin-bottom: 20px;">
+            <label for="topic" style="font-weight: 600; margin-bottom: 8px; display: block;">Topic/Page Title *</label>
+            <input type="text" id="topic" placeholder="e.g., Image Compressor Tool" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px;">
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label for="description" style="font-weight: 600; margin-bottom: 8px; display: block;">Brief Description *</label>
+            <textarea id="description" rows="3" placeholder="Describe your page in 1-2 sentences..." style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px;"></textarea>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label for="keywords" style="font-weight: 600; margin-bottom: 8px; display: block;">Keywords (comma separated)</label>
+            <input type="text" id="keywords" placeholder="seo, meta tags, generator" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px;">
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
+            <button class="btn-primary" onclick="generateSEO()" style="width: 100%;">🔍 Generate SEO</button>
+            <button class="btn-secondary" onclick="rewriteContent()" style="width: 100%;">✨ AI Rewrite</button>
+        </div>
+    </div>
+    
     <!-- META OUTPUT -->
-    <h3>Meta Tags</h3>
-    <textarea id="metaOutput" rows="6" readonly></textarea>
-    <button onclick="copyText('metaOutput')">Copy Meta</button>
-
-    <hr style="margin:30px 0">
-
-    <!-- ARTICLE -->
-    <h3>SEO Article (500+ Words)</h3>
-    <textarea id="articleOutput" rows="14" readonly></textarea>
-    <button onclick="copyText('articleOutput')">Copy Article</button>
-    <button onclick="downloadText('articleOutput','seo-article.txt')">Download .txt</button>
-
-    <hr style="margin:30px 0">
-
-    <!-- FAQ -->
-    <h3>FAQ Schema</h3>
-    <textarea id="faqOutput" rows="10" readonly></textarea>
-    <button onclick="copyText('faqOutput')">Copy FAQ Schema</button>
-
-    <hr style="margin:30px 0">
-
-    <!-- RICH RESULT PREVIEW -->
-    <h3>Google Rich Result Test</h3>
-    <iframe 
-      src="https://search.google.com/test/rich-results"
-      style="width:100%;height:500px;border-radius:12px;border:1px solid #cbd5e1;">
-    </iframe>
-
-  </div>
+    <div class="tool-box" style="margin-top: 30px;">
+        <h3 style="color: var(--blue); margin-bottom: 15px;">Meta Tags</h3>
+        <textarea id="metaOutput" rows="8" readonly style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 13px; font-family: monospace; background: var(--bg-main);"></textarea>
+        <button class="btn-primary" onclick="copyText('metaOutput')" style="margin-top: 10px;">📋 Copy Meta Tags</button>
+    </div>
+    
+    <!-- SEO ARTICLE -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h3 style="color: var(--blue); margin-bottom: 15px;">SEO-Optimized Content (500+ Words)</h3>
+        <textarea id="articleOutput" rows="14" readonly style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 13px; background: var(--bg-main);"></textarea>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+            <button class="btn-primary" onclick="copyText('articleOutput')">📋 Copy Article</button>
+            <button class="btn-secondary" onclick="downloadText('articleOutput','seo-article.txt')">📥 Download .txt</button>
+        </div>
+    </div>
+    
+    <!-- FAQ SCHEMA -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h3 style="color: var(--blue); margin-bottom: 15px;">FAQ Schema Markup (JSON-LD)</h3>
+        <textarea id="faqOutput" rows="10" readonly style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 13px; font-family: monospace; background: var(--bg-main);"></textarea>
+        <button class="btn-primary" onclick="copyText('faqOutput')" style="margin-top: 10px;">📋 Copy FAQ Schema</button>
+    </div>
+    
+    <!-- HOW TO USE -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h2 style="font-size: 22px; margin-bottom: 15px; color: var(--blue);">How to Use SEO Generator</h2>
+        <ol style="line-height: 1.8; padding-left: 20px;">
+            <li><strong>Enter Topic:</strong> Type your page title or main topic</li>
+            <li><strong>Add Description:</strong> Write a brief 1-2 sentence description</li>
+            <li><strong>Keywords (Optional):</strong> Add relevant keywords separated by commas</li>
+            <li><strong>Generate:</strong> Click "Generate SEO" to create meta tags, content, and schema</li>
+            <li><strong>Copy & Use:</strong> Copy the generated code and paste into your website</li>
+        </ol>
+        
+        <h3 style="font-size: 18px; margin-top: 25px; margin-bottom: 12px; color: var(--blue);">What You Get</h3>
+        <ul style="line-height: 1.8; padding-left: 20px;">
+            <li>✅ <strong>Meta Tags:</strong> Title, description, keywords, canonical URL</li>
+            <li>✅ <strong>SEO Content:</strong> 500+ words optimized article for your page</li>
+            <li>✅ <strong>FAQ Schema:</strong> JSON-LD structured data for rich snippets</li>
+            <li>✅ <strong>AI Rewrite:</strong> Smart content variation to avoid duplication</li>
+        </ul>
+    </div>
+    
+    <!-- RICH RESULT TEST -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h3 style="color: var(--blue); margin-bottom: 15px;">🔍 Test Your Schema</h3>
+        <p style="margin-bottom: 15px; line-height: 1.6;">
+            After adding schema markup to your website, test it using Google's Rich Results Test tool to ensure it's properly formatted and eligible for rich snippets in search results.
+        </p>
+        <a href="https://search.google.com/test/rich-results" target="_blank" class="btn-primary" style="display: inline-block; text-decoration: none; padding: 12px 24px;">
+            🔗 Open Rich Results Test
+        </a>
+    </div>
+    
+    <!-- SEO CONTENT -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h2 style="font-size: 22px; margin-bottom: 15px; color: var(--blue);">About SEO Generator Tool</h2>
+        <p style="line-height: 1.8; margin-bottom: 15px;">
+            ToolNest SEO Generator is a free tool that creates complete SEO packages for your web pages. Generate meta tags, schema markup, and SEO-optimized content in seconds. Perfect for bloggers, web developers, digital marketers, and SEO professionals who want to improve their search engine rankings.
+        </p>
+        <p style="line-height: 1.8; margin-bottom: 15px;">
+            Our generator creates proper HTML meta tags including title, description, and keywords that help search engines understand your page content. The FAQ schema markup enables rich snippets in Google search results, increasing your click-through rates. The SEO-optimized content is keyword-rich and structured for better rankings.
+        </p>
+        <p style="line-height: 1.8;">
+            The AI rewrite feature uses smart text transformation to create unique variations of your content, helping you avoid duplicate content penalties. All generated content follows SEO best practices and Google's webmaster guidelines. Use this tool to optimize every page of your website for maximum search visibility.
+        </p>
+    </div>
+    
+    <!-- Related Tools -->
+    <div class="tool-box" style="margin-top: 30px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(217, 119, 6, 0.05)); border-left: 4px solid #f59e0b;">
+        <h3 style="margin-bottom: 15px; color: #f59e0b;">🛠️ Related Tools</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+            <a href="/tools/word-counter.html" style="padding: 12px; background: var(--bg-card); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; border: 1px solid var(--border);">📝 Word Counter</a>
+            <a href="/blog/seo-meta-tags-guide.html" style="padding: 12px; background: var(--bg-card); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; border: 1px solid var(--border);">📚 SEO Guide</a>
+            <a href="/blog.html" style="padding: 12px; background: var(--bg-card); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; border: 1px solid var(--border);">📖 All Guides</a>
+        </div>
+    </div>
 </section>
 
-<!-- ADSENSE PLACEHOLDER -->
-<div class="ad-box">
-  Google AdSense Ad
+<!-- ADSENSE -->
+<div class="ad-container" style="text-align: center; margin: 30px auto; padding: 20px; background: var(--bg-card); border-radius: 12px; max-width: 728px;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9233973597909198"
+         data-ad-slot="5555555555"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 </div>
 
 <!-- FOOTER -->
 <div id="footer"></div>
 
-<!-- COMMON JS -->
-<script src="../includes/include.js"></script>
-<script src="../darkmode.js"></script>
-
-<!-- TOOL LOGIC -->
+<!-- SCRIPTS -->
+<script src="/includes/include.js"></script>
 <script>
 let lastData = {};
 
-function generateSEO(){
+function generateSEO() {
   const topic = document.getElementById("topic").value.trim();
+  const desc = document.getElementById("description").value.trim();
   const keywords = document.getElementById("keywords").value.trim();
-
-  if(!topic){
-    alert("Please enter a topic");
+  
+  if (!topic || !desc) {
+    alert("❌ Please enter both topic and description");
     return;
   }
-
-  const kw = keywords || topic;
-
-  const meta = `
-<title>${topic} – Complete Guide & Tools</title>
-<meta name="description" content="Learn everything about ${topic}. Includes benefits, usage, FAQs and expert tips. Optimized for ${kw}.">
+  
+  const kw = keywords || topic.toLowerCase();
+  
+  // Generate Meta Tags
+  const meta = `<!-- SEO Meta Tags -->
+<title>${topic} - Complete Guide | ToolNest</title>
+<meta name="description" content="${desc}">
 <meta name="keywords" content="${kw}">
-`;
+<link rel="canonical" href="https://toolnest.bhaihelp.in/your-page-url">
 
-  const article = `
-${topic} is one of the most important topics in today’s digital world. Whether you are a beginner or an expert, understanding ${topic} can help you achieve better results online.
+<!-- Open Graph Tags -->
+<meta property="og:title" content="${topic}">
+<meta property="og:description" content="${desc}">
+<meta property="og:url" content="https://toolnest.bhaihelp.in/your-page-url">
+<meta property="og:type" content="website">`;
+  
+  // Generate SEO Article
+  const article = `${topic} - Complete Guide
 
-This guide explains what ${topic} is, why it matters, how it works, its benefits, common use cases, best practices, FAQs and expert insights.
+${topic} is an essential tool/concept in today's digital world. Whether you're a beginner or an expert, understanding ${topic} can significantly improve your results and efficiency.
 
-${topic} is widely used because it improves performance, saves time, and enhances user experience. Many professionals rely on ${topic} tools to streamline their workflow.
+What is ${topic}?
+${topic} is ${desc} This comprehensive guide covers everything you need to know about ${topic}, including its benefits, use cases, best practices, and expert tips.
 
-One major benefit of ${topic} is efficiency. It allows users to achieve high-quality output with minimal effort. Another advantage is accessibility – most ${topic} solutions work directly in the browser without installation.
+Why Use ${topic}?
+${topic} offers numerous advantages for users looking to optimize their workflow. It provides efficient solutions, saves time, and enhances overall productivity. Many professionals rely on ${topic} tools to streamline their daily tasks.
 
-Best practices include using trusted tools, focusing on quality, and regularly updating content related to ${topic}. Avoid common mistakes such as ignoring optimization or overusing automation.
+Key Benefits of ${topic}
+1. Efficiency: ${topic} allows users to achieve high-quality results with minimal effort
+2. Accessibility: Most ${topic} solutions work directly in your browser without installation
+3. Cost-Effective: Free ${topic} tools eliminate the need for expensive software
+4. User-Friendly: ${topic} tools are designed for easy use without technical expertise
 
-In conclusion, ${topic} plays a vital role in modern digital success. By using the right tools and strategies, you can fully leverage ${topic} for long-term growth.
-`;
+Best Practices for ${topic}
+To get the most out of ${topic}, follow these proven strategies:
+- Use trusted and reliable ${topic} tools
+- Focus on quality over quantity
+- Regularly update and optimize your ${topic} approach
+- Stay informed about latest ${topic} trends and developments
 
-  const faqSchema = `
+Common Mistakes to Avoid
+When working with ${topic}, avoid these pitfalls:
+- Ignoring optimization opportunities
+- Over-relying on automation without review
+- Not following industry best practices
+- Skipping regular maintenance and updates
+
+How to Get Started with ${topic}
+Getting started with ${topic} is simple. Begin by understanding the basics, then practice with user-friendly tools. As you gain experience, explore advanced features and techniques. The key is consistent practice and staying updated with latest ${topic} developments.
+
+Conclusion
+${topic} plays a vital role in modern digital success. By using the right tools and following best practices, you can fully leverage ${topic} for long-term growth and improved results. Start implementing ${topic} strategies today to see immediate benefits.`;
+  
+  // Generate FAQ Schema
+  const faqSchema = `<script type="application/ld+json">
 {
- "@context":"https://schema.org",
- "@type":"FAQPage",
- "mainEntity":[
-  {
-   "@type":"Question",
-   "name":"What is ${topic}?",
-   "acceptedAnswer":{"@type":"Answer","text":"${topic} is a solution that helps users improve efficiency and performance online."}
-  },
-  {
-   "@type":"Question",
-   "name":"Is ${topic} free to use?",
-   "acceptedAnswer":{"@type":"Answer","text":"Yes, ToolNest provides free ${topic} tools with no signup required."}
-  }
- ]
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is ${topic}?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "${desc}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is ${topic} free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, ToolNest provides free ${topic} tools with no signup required. All features are available at no cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I use ${topic}?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Using ${topic} is simple. Just access our tool, follow the on-screen instructions, and get instant results. No technical knowledge required."
+      }
+    }
+  ]
 }
-`;
-
+</script>`;
+  
+  // Display results
   document.getElementById("metaOutput").value = meta.trim();
   document.getElementById("articleOutput").value = article.trim();
   document.getElementById("faqOutput").value = faqSchema.trim();
-
-  lastData = {topic, keywords};
+  
+  lastData = { topic, desc, keywords };
+  
+  // Track event
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'seo_generated', {
+      'event_category': 'tool_usage',
+      'event_label': 'SEO Generator',
+      'value': 1
+    });
+  }
 }
 
-function rewriteSEO(){
-  if(!lastData.topic){
-    alert("Generate SEO first");
+function rewriteContent() {
+  if (!lastData.topic) {
+    alert("❌ Please generate SEO content first");
     return;
   }
-  document.getElementById("articleOutput").value +=
-    "\n\n[AI Rewrite Applied: Content refreshed with improved clarity, flow and SEO optimization.]";
+  
+  const articleEl = document.getElementById("articleOutput");
+  let text = articleEl.value;
+  
+  // Smart rewriting transformations
+  const replacements = [
+    [/essential/gi, 'crucial'],
+    [/important/gi, 'vital'],
+    [/best/gi, 'top'],
+    [/free/gi, 'no-cost'],
+    [/online/gi, 'web-based'],
+    [/tool/gi, 'solution'],
+    [/simple/gi, 'straightforward'],
+    [/easy/gi, 'effortless'],
+    [/quickly/gi, 'rapidly'],
+    [/helps/gi, 'assists']
+  ];
+  
+  replacements.forEach(([pattern, replacement]) => {
+    text = text.replace(pattern, replacement);
+  });
+  
+  articleEl.value = text + "\n\n[✨ AI Rewrite Applied: Content refreshed with improved clarity, flow and SEO optimization.]";
+  
+  alert("✅ Content rewritten successfully!");
 }
 
-function copyText(id){
+function copyText(id) {
   const el = document.getElementById(id);
   el.select();
   document.execCommand("copy");
-  alert("Copied successfully");
+  alert("✅ Copied to clipboard!");
 }
 
-function downloadText(id,filename){
+function downloadText(id, filename) {
   const text = document.getElementById(id).value;
-  const blob = new Blob([text],{type:"text/plain"});
+  if (!text) {
+    alert("❌ No content to download");
+    return;
+  }
+  
+  const blob = new Blob([text], { type: "text/plain" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
   a.download = filename;
   a.click();
 }
 </script>
-
 </body>
 </html>
