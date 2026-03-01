@@ -939,3 +939,143 @@ footer a:focus-visible {
     border: 1px solid var(--border);
   }
 }
+
+
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+    /* Hide unnecessary elements */
+    header, 
+    footer, 
+    .topbar, 
+    .nav-right, 
+    .mobile-menu-toggle, 
+    .mobile-overlay,
+    .ad-container, 
+    .newsletter-section,
+    .breadcrumb-nav,
+    #cookieConsentBanner,
+    #backToTopBtn,
+    #searchModal,
+    .search-icon-btn,
+    .dark-toggle-btn {
+        display: none !important;
+    }
+    
+    /* Reset colors for print */
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+    
+    /* Ensure text is readable */
+    * {
+        background: transparent !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    /* Make links visible */
+    a {
+        color: black !important;
+        text-decoration: underline;
+    }
+    
+    /* Show link URLs after text */
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 10pt;
+        color: #666 !important;
+    }
+    
+    /* Don't show URL for internal links */
+    a[href^="/"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+    
+    /* Page breaks */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+    
+    img, table, figure {
+        page-break-inside: avoid;
+    }
+    
+    /* Ensure content blocks don't split */
+    .tool-box, 
+    .blog-card,
+    .faq-item {
+        border: 1px solid #ddd !important;
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+    }
+    
+    /* Header styles for print */
+    h1 {
+        font-size: 24pt;
+        margin-bottom: 12pt;
+    }
+    
+    h2 {
+        font-size: 18pt;
+        margin-top: 12pt;
+        margin-bottom: 6pt;
+    }
+    
+    h3 {
+        font-size: 14pt;
+        margin-top: 12pt;
+        margin-bottom: 6pt;
+    }
+    
+    /* Code blocks */
+    pre, code {
+        border: 1px solid #ccc !important;
+        page-break-inside: avoid;
+        font-family: monospace;
+    }
+    
+    /* Lists */
+    ul, ol {
+        margin-left: 20pt;
+    }
+    
+    /* Tables */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    table, th, td {
+        border: 1px solid #ddd !important;
+    }
+    
+    th, td {
+        padding: 8pt;
+        text-align: left;
+    }
+    
+    /* Images */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    
+    /* Container widths */
+    .container,
+    .tool-box {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}
