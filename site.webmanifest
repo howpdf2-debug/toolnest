@@ -1,21 +1,27 @@
 {
-  "name": "ToolNest",
+  "name": "ToolNest - Free Online Tools",
   "short_name": "ToolNest",
-  "description": "Free Online Tools for PDF, Images, SEO, and More",
+  "description": "Free online tools for PDF editing, image compression, invoice generation, SEO, and more. No signup required.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/favicon.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/favicon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "categories": ["productivity", "utilities", "tools"],
+  "lang": "en-US",
+  "dir": "ltr"
 }
