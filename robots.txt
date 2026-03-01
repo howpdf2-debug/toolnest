@@ -1,55 +1,33 @@
-# ============================================
-# ROBOTS.TXT FOR TOOLNEST
-# Updated: 2026-02-27
-# ============================================
+# ToolNest Robots.txt - Complete Configuration
+# Last Updated: 2026-02-27
 
-# Allow all good bots
 User-agent: *
 Allow: /
 
-# Allow Google to crawl CSS and JS for better rendering
-User-agent: Googlebot
-Allow: /*.js$
-Allow: /*.css$
-Allow: /
-
-# ============================================
-# DISALLOW SENSITIVE AREAS
-# ============================================
-
-# Admin panel (password protected)
-Disallow: /admin/
-
-# Private includes (no need to index)
-Disallow: /includes/
-
-# Don't index data files
-Disallow: /*.json$
-
-# Don't waste crawl budget on verification files
-Disallow: /google*.html$
-
-# ============================================
-# CRAWL SETTINGS
-# ============================================
-
-# Crawl delay (1 second between requests)
-Crawl-delay: 1
-
-# Request rate
-Request-rate: 1/1
-
-# ============================================
-# SITEMAP LOCATION (MOST IMPORTANT!)
-# ============================================
-
+# Sitemap Location
 Sitemap: https://toolnest.bhaihelp.in/sitemap.xml
 
-# ============================================
-# BLOCK BAD BOTS (Save bandwidth)
-# ============================================
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /*.json$
 
-# Block aggressive SEO crawlers
+# Disallow search parameters
+Disallow: /*?*
+Disallow: /*&*
+
+# Allow important resources for rendering
+Allow: /style.css
+Allow: /includes/*.js
+Allow: /includes/*.css
+Allow: /favicon.png
+
+# Block verification files from indexing
+Disallow: /googledbfc89456a05e36c.html
+Disallow: /google*.html
+Disallow: /.well-known/
+
+# Block bad bots and scrapers
 User-agent: AhrefsBot
 Disallow: /
 
@@ -63,6 +41,12 @@ User-agent: BLEXBot
 Disallow: /
 
 User-agent: DotBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: PetalBot
 Disallow: /
 
 # Block AI scrapers
@@ -81,21 +65,22 @@ Disallow: /
 User-agent: Claude-Web
 Disallow: /
 
-# ============================================
-# SPECIFIC BOT CONFIGURATIONS
-# ============================================
+User-agent: cohere-ai
+Disallow: /
 
-# Allow Bing
-User-agent: Bingbot
-Allow: /
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+# Crawl delay for good bots
 Crawl-delay: 1
 
-# Allow Yandex
-User-agent: Yandex
+# Special rules for Google
+User-agent: Googlebot
 Allow: /
-Crawl-delay: 2
+Crawl-delay: 0
 
-# Allow DuckDuckGo
-User-agent: DuckDuckBot
+User-agent: Googlebot-Image
 Allow: /
-Crawl-delay: 1
