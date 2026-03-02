@@ -1,311 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="dbfc89456a05e36c" />
     
-    <title>Blog - ToolNest | Tips, Tutorials & Updates</title>
-    <meta name="description" content="Read ToolNest blog for tips, tutorials, and updates about free online tools, PDF editing, image compression, GST invoicing, and more.">
+    <title>Blog - ToolNest | Free Online Tools Tips & Tutorials</title>
+    <meta name="description" content="Read ToolNest blog for expert tips, tutorials, and guides about free online tools, PDF editing, image compression, GST invoicing, SEO, and productivity.">
+    <meta name="keywords" content="toolnest blog, online tools tutorials, pdf tips, seo guides, business tools, productivity tips">
+    <meta name="author" content="ToolNest">
     <meta name="robots" content="index, follow">
+    
     <link rel="canonical" href="https://toolnest.bhaihelp.in/blog.html">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Header -->
-    <header class="topbar">
-        <a href="/index.html" class="logo">
-            <img src="/favicon.png" alt="ToolNest logo">
-            ToolNest
-        </a>
-        <div class="nav-right">
-            <a href="/index.html">Home</a>
-            <a href="/about.html">About</a>
-            <a href="/contact.html">Contact</a>
-            <a href="/blog.html">Blog</a>
-            <div class="dropdown">
-                <button class="dropbtn" id="toolsDropdownBtn">Tools ▾</button>
-                <div class="dropdown-content" id="toolsDropdown">
-                    <a href="/tools/invoice-generator.html">🧾 Invoice Generator</a>
-                    <a href="/tools/merge-pdf.html">📄 Merge PDF</a>
-                    <a href="/tools/image-compress.html">🖼️ Image Compressor</a>
-                    <a href="/tools/pdf-to-jpg.html">🔄 PDF to JPG</a>
-                    <a href="/tools/youtube-downloader.html">📺 YouTube Downloader</a>
-                    <a href="/tools/seo-generator.html">🔍 SEO Generator</a>
-                </div>
-            </div>
-            <button id="darkToggle">🌙</button>
-        </div>
-    </header>
     
-    <!-- Hero -->
-    <section class="mini-hero">
-        <div class="hero-top">
-            <a href="/index.html" class="back-home">← Back to Home</a>
-        </div>
-        <h1>📚 ToolNest Blog</h1>
-        <p>Tips, tutorials, and updates to help you master our free online tools</p>
-    </section>
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="ToolNest Blog - Tips & Tutorials">
+    <meta property="og:description" content="Expert tips and tutorials for free online tools">
+    <meta property="og:url" content="https://toolnest.bhaihelp.in/blog.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://toolnest.bhaihelp.in/favicon.png">
     
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Featured Post (Auto-loaded) -->
-        <section class="featured-post" id="featuredPost" style="display: none;">
-            <!-- Will be populated by JavaScript -->
-        </section>
-        
-        <!-- Filter Tags -->
-        <div class="blog-filters">
-            <h3>Filter by Topic:</h3>
-            <div class="filter-tags">
-                <button class="filter-tag active" data-filter="all">All Posts</button>
-                <button class="filter-tag" data-filter="tutorial">Tutorials</button>
-                <button class="filter-tag" data-filter="tips">Tips & Tricks</button>
-                <button class="filter-tag" data-filter="guide">Guides</button>
-                <button class="filter-tag" data-filter="update">Updates</button>
-                <button class="filter-tag" data-filter="seo">SEO</button>
-            </div>
-        </div>
-        
-        <!-- Loading Indicator -->
-        <div id="loadingIndicator" style="text-align: center; padding: 40px;">
-            <p style="color: var(--text-muted);">Loading posts...</p>
-        </div>
-        
-        <!-- Blog Grid (Auto-loaded from JSON) -->
-        <div class="blog-grid" id="blogGrid">
-            <!-- Posts will be loaded automatically from blog-data.json -->
-        </div>
-        
-        <!-- Pagination -->
-        <div class="pagination">
-            <button class="btn-secondary" id="prevBtn" disabled>← Previous</button>
-            <span class="page-info" id="pageInfo">Page 1 of 1</span>
-            <button class="btn-secondary" id="nextBtn" disabled>Next →</button>
-        </div>
-        
-        <!-- Newsletter Signup -->
-        <section class="newsletter-section">
-            <h2>📬 Subscribe to Our Newsletter</h2>
-            <p>Get the latest tips, tutorials, and updates delivered to your inbox every week</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit" class="btn-primary">Subscribe Free</button>
-            </form>
-            <p class="newsletter-note">✅ Free forever • 📧 Weekly updates • 🔒 No spam, unsubscribe anytime</p>
-        </section>
-    </main>
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#2563eb">
     
-    <!-- Footer -->
-    <footer>
-        <p><strong>ToolNest</strong> – Free online tools for PDFs, images, and SEO.</p>
-        <p>
-            <a href="/index.html">Home</a> |
-            <a href="/blog.html">Blog</a> |
-            <a href="/about.html">About</a> |
-            <a href="/contact.html">Contact</a> |
-            <a href="/privacy-policy.html">Privacy</a>
-        </p>
-        <p>© 2026 ToolNest. All rights reserved.</p>
-    </footer>
+    <link rel="stylesheet" href="/style.css">
     
-    <!-- Scripts -->
-    <!-- Scripts -->
-    <script>
-        let allPosts = [];
-        let currentPage = 1;
-        const postsPerPage = 9;
-        
-        // Dark Mode
-        const darkToggle = document.getElementById('darkToggle');
-        const savedMode = localStorage.getItem('darkMode');
-        if (savedMode === 'true') {
-            document.documentElement.classList.add('dark');
-            darkToggle.textContent = '☀️';
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "ToolNest Blog",
+      "description": "Expert tips, tutorials, and guides about free online tools",
+      "url": "https://toolnest.bhaihelp.in/blog.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolNest",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://toolnest.bhaihelp.in/favicon.png"
         }
-        darkToggle.addEventListener('click', function() {
-            document.documentElement.classList.toggle('dark');
-            const isDark = document.documentElement.classList.contains('dark');
-            localStorage.setItem('darkMode', isDark);
-            darkToggle.textContent = isDark ? '☀️' : '🌙';
-        });
-        
-        // Dropdown
-        const dropdownBtn = document.getElementById('toolsDropdownBtn');
-        const dropdownContent = document.getElementById('toolsDropdown');
-        dropdownBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            dropdownContent.classList.toggle('show');
-        });
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.dropdown')) {
-                dropdownContent.classList.remove('show');
-            }
-        });
-        
-        // Load Blog Posts from JSON
-        async function loadBlogPosts() {
-            try {
-                const response = await fetch('/blog/blog-data.json');
-                
-                if (!response.ok) {
-                    throw new Error('HTTP error! status: ' + response.status);
-                }
-                
-                const data = await response.json();
-                
-                if (!data || !data.posts || !Array.isArray(data.posts)) {
-                    throw new Error('Invalid blog data format');
-                }
-                
-                allPosts = data.posts;
-                
-                // Hide loading indicator
-                document.getElementById('loadingIndicator').style.display = 'none';
-                
-                // Display featured post
-                displayFeaturedPost();
-                
-                // Display all posts
-                displayPosts(allPosts);
-                
-                console.log('✅ Loaded ' + allPosts.length + ' blog posts successfully');
-                
-            } catch (error) {
-                console.error('Error loading blog posts:', error);
-                
-                document.getElementById('loadingIndicator').style.display = 'none';
-                
-                const blogGrid = document.getElementById('blogGrid');
-                blogGrid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: var(--bg-card); border-radius: 16px;"><h2 style="color: #ef4444; margin-bottom: 15px;">⚠️ Error Loading Posts</h2><p style="color: var(--text-muted); margin-bottom: 20px;">Unable to load blog posts. Please refresh the page.</p><button onclick="window.location.reload()" class="btn-primary">🔄 Retry</button></div>';
-            }
-        }
-        
-        function displayFeaturedPost() {
-            const featuredPost = allPosts.find(function(post) {
-                return post.featured;
-            });
-            
-            if (!featuredPost) return;
-            
-            const featuredSection = document.getElementById('featuredPost');
-            featuredSection.style.display = 'block';
-            featuredSection.innerHTML = '<div class="featured-tag">⭐ Featured Article</div><h2>' + featuredPost.title + '</h2><p class="featured-meta">📅 ' + formatDate(featuredPost.date) + ' • ⏱️ ' + featuredPost.readTime + ' read • 🏷️ ' + capitalizeFirst(featuredPost.category) + '</p><p class="featured-excerpt">' + featuredPost.excerpt + '</p><a href="/blog/' + featuredPost.slug + '.html" class="btn-primary">Read Full Article →</a>';
-        }
-        
-        function displayPosts(posts) {
-            const blogGrid = document.getElementById('blogGrid');
-            const startIndex = (currentPage - 1) * postsPerPage;
-            const endIndex = startIndex + postsPerPage;
-            const postsToShow = posts.slice(startIndex, endIndex);
-            
-            blogGrid.innerHTML = '';
-            
-            postsToShow.forEach(function(post) {
-                const categoryColors = {
-                    'tutorial': 'linear-gradient(135deg, #2563eb, #1e40af)',
-                    'tips': 'linear-gradient(135deg, #10b981, #059669)',
-                    'guide': 'linear-gradient(135deg, #a855f7, #7c3aed)',
-                    'update': 'linear-gradient(135deg, #06b6d4, #0891b2)',
-                    'seo': 'linear-gradient(135deg, #f59e0b, #d97706)'
-                };
-                
-                const postCard = '<article class="blog-card" data-category="' + post.category + '"><div class="blog-image" style="background: ' + (categoryColors[post.category] || categoryColors.tutorial) + ';"><span class="blog-category ' + post.category + '">' + capitalizeFirst(post.category) + '</span></div><div class="blog-content"><h3>' + post.title + '</h3><p class="blog-meta">📅 ' + formatDate(post.date) + ' • ⏱️ ' + post.readTime + ' read</p><p>' + post.excerpt + '</p><a href="/blog/' + post.slug + '.html" class="read-more">Read More →</a></div></article>';
-                
-                blogGrid.innerHTML += postCard;
-            });
-            
-            updatePagination(posts.length);
-        }
-        
-        function updatePagination(totalPosts) {
-            const totalPages = Math.ceil(totalPosts / postsPerPage);
-            document.getElementById('pageInfo').textContent = 'Page ' + currentPage + ' of ' + totalPages;
-            
-            document.getElementById('prevBtn').disabled = currentPage === 1;
-            document.getElementById('nextBtn').disabled = currentPage === totalPages;
-        }
-        
-        // Pagination buttons
-        document.getElementById('prevBtn').addEventListener('click', function() {
-            if (currentPage > 1) {
-                currentPage--;
-                displayPosts(getFilteredPosts());
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        });
-        
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            const totalPages = Math.ceil(getFilteredPosts().length / postsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-                displayPosts(getFilteredPosts());
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        });
-        
-        // Filter functionality
-        const filterTags = document.querySelectorAll('.filter-tag');
-        let currentFilter = 'all';
-        
-        filterTags.forEach(function(tag) {
-            tag.addEventListener('click', function() {
-                currentFilter = this.getAttribute('data-filter');
-                currentPage = 1;
-                
-                filterTags.forEach(function(t) {
-                    t.classList.remove('active');
-                });
-                this.classList.add('active');
-                
-                const filteredPosts = getFilteredPosts();
-                displayPosts(filteredPosts);
-            });
-        });
-        
-        function getFilteredPosts() {
-            if (currentFilter === 'all') {
-                return allPosts;
-            }
-            return allPosts.filter(function(post) {
-                return post.category === currentFilter;
-            });
-        }
-        
-        // Helper functions
-        function formatDate(dateStr) {
-            const date = new Date(dateStr);
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return date.toLocaleDateString('en-US', options);
-        }
-        
-        function capitalizeFirst(str) {
-            return str.charAt(0).toUpperCase() + str.slice(1);
-        }
-        
-        // Newsletter Form
-        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('✅ Thank you for subscribing! Check your email for confirmation.');
-            this.reset();
-        });
-        
-        // Load posts on page load
-        document.addEventListener('DOMContentLoaded', loadBlogPosts);
+      }
+    }
     </script>
     
     <style>
         /* Featured Post */
         .featured-post {
-            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            background: linear-gradient(135deg, var(--blue), #1e40af);
             color: #fff;
             padding: 40px;
             border-radius: 20px;
             margin-bottom: 40px;
-            box-shadow: 0 15px 40px var(--shadow);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
         
         .featured-tag {
@@ -342,6 +95,10 @@
             color: var(--blue);
         }
         
+        .featured-post .btn-primary:hover {
+            background: #f0f9ff;
+        }
+        
         /* Blog Filters */
         .blog-filters {
             margin-bottom: 35px;
@@ -350,6 +107,7 @@
         .blog-filters h3 {
             margin-bottom: 15px;
             color: var(--text-main);
+            font-size: 18px;
         }
         
         .filter-tags {
@@ -374,6 +132,7 @@
             background: var(--blue);
             color: #fff;
             border-color: var(--blue);
+            transform: translateY(-2px);
         }
         
         /* Blog Grid */
@@ -394,7 +153,8 @@
         
         .blog-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px var(--shadow);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--blue);
         }
         
         .blog-image {
@@ -402,6 +162,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
         
         .blog-category {
@@ -424,13 +185,17 @@
             line-height: 1.4;
         }
         
+        .blog-content h3:hover {
+            color: var(--blue);
+        }
+        
         .blog-meta {
             color: var(--text-muted);
             font-size: 13px;
             margin-bottom: 12px;
         }
         
-        .blog-content p {
+        .blog-content > p {
             color: var(--text-muted);
             line-height: 1.6;
             margin-bottom: 15px;
@@ -441,6 +206,8 @@
             color: var(--blue);
             font-weight: 600;
             font-size: 14px;
+            text-decoration: none;
+            transition: 0.2s;
         }
         
         .read-more:hover {
@@ -463,19 +230,20 @@
         
         /* Newsletter */
         .newsletter-section {
-            background: var(--bg-card);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(59, 130, 246, 0.05));
             padding: 40px;
             border-radius: 18px;
             text-align: center;
-            border: 1px solid var(--border);
+            border: 2px solid var(--blue);
             margin-top: 40px;
         }
         
         .newsletter-section h2 {
             margin-bottom: 10px;
+            color: var(--text-main);
         }
         
-        .newsletter-section p {
+        .newsletter-section > p {
             color: var(--text-muted);
             margin-bottom: 25px;
         }
@@ -490,10 +258,47 @@
         .newsletter-form input {
             flex: 1;
             margin: 0;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+        }
+        
+        .newsletter-form input:focus {
+            border-color: var(--blue);
         }
         
         .newsletter-note {
             font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        /* Loading State */
+        #loadingIndicator {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        #loadingIndicator p {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 2px dashed var(--border);
+        }
+        
+        .empty-state h3 {
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+        
+        .empty-state p {
             color: var(--text-muted);
         }
         
@@ -519,5 +324,254 @@
             }
         }
     </style>
+</head>
+<body>
+
+    <!-- HEADER (Dynamic Load) -->
+    <div id="header"></div>
+    
+    <!-- Hero -->
+    <section class="mini-hero">
+        <div class="hero-top">
+            <a href="/index.html" class="back-home">← Back to Home</a>
+        </div>
+        <h1>📚 ToolNest Blog</h1>
+        <p>Tips, tutorials, and guides to master free online tools</p>
+    </section>
+    
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Featured Post -->
+        <section class="featured-post" id="featuredPost" style="display: none;">
+            <!-- Populated by JavaScript -->
+        </section>
+        
+        <!-- Filter Tags -->
+        <div class="blog-filters">
+            <h3>Filter by Category:</h3>
+            <div class="filter-tags">
+                <button class="filter-tag active" data-filter="all">All Posts</button>
+                <button class="filter-tag" data-filter="Business">Business</button>
+                <button class="filter-tag" data-filter="Career">Career</button>
+                <button class="filter-tag" data-filter="SEO">SEO</button>
+                <button class="filter-tag" data-filter="Writing">Writing</button>
+                <button class="filter-tag" data-filter="Technology">Technology</button>
+                <button class="filter-tag" data-filter="Education">Education</button>
+            </div>
+        </div>
+        
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator">
+            <p>⏳ Loading blog posts...</p>
+        </div>
+        
+        <!-- Blog Grid -->
+        <div class="blog-grid" id="blogGrid">
+            <!-- Posts loaded by JavaScript -->
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="btn-secondary" id="prevBtn" disabled>← Previous</button>
+            <span class="page-info" id="pageInfo">Page 1 of 1</span>
+            <button class="btn-secondary" id="nextBtn" disabled>Next →</button>
+        </div>
+        
+        <!-- Newsletter Signup -->
+        <section class="newsletter-section">
+            <h2>📬 Subscribe to Our Newsletter</h2>
+            <p>Get the latest tips, tutorials, and tool updates delivered weekly</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn-primary">Subscribe Free</button>
+            </form>
+            <p class="newsletter-note">✅ Free forever • 📧 Weekly updates • 🔒 No spam, unsubscribe anytime</p>
+        </section>
+        
+    </main>
+    
+    <!-- FOOTER (Dynamic Load) -->
+    <div id="footer"></div>
+    
+    <!-- SCRIPTS -->
+    <script src="/includes/include.js"></script>
+    
+    <script>
+        let allPosts = [];
+        let currentPage = 1;
+        const postsPerPage = 9;
+        
+        // Load Blog Posts from JSON
+        async function loadBlogPosts() {
+            try {
+                // FIXED: Correct path to blog-data.json in ROOT
+                const response = await fetch('/blog-data.json');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load blog data (HTTP ' + response.status + ')');
+                }
+                
+                // FIXED: Parse direct array, not data.posts
+                const posts = await response.json();
+                
+                if (!Array.isArray(posts)) {
+                    throw new Error('Invalid blog data format - expected array');
+                }
+                
+                allPosts = posts;
+                
+                // Sort by date (newest first)
+                allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                // Hide loading indicator
+                document.getElementById('loadingIndicator').style.display = 'none';
+                
+                // Display featured post
+                displayFeaturedPost();
+                
+                // Display all posts
+                displayPosts(allPosts);
+                
+                console.log('✅ Loaded ' + allPosts.length + ' blog posts successfully');
+                
+            } catch (error) {
+                console.error('❌ Error loading blog posts:', error);
+                
+                document.getElementById('loadingIndicator').style.display = 'none';
+                
+                const blogGrid = document.getElementById('blogGrid');
+                blogGrid.innerHTML = '<div class="empty-state"><h3>⚠️ Unable to Load Posts</h3><p>Please refresh the page or try again later.</p><button onclick="window.location.reload()" class="btn-primary" style="margin-top: 15px;">🔄 Retry</button></div>';
+            }
+        }
+        
+        function displayFeaturedPost() {
+            const featuredPost = allPosts.find(post => post.featured === true);
+            
+            if (!featuredPost) return;
+            
+            const featuredSection = document.getElementById('featuredPost');
+            featuredSection.style.display = 'block';
+            featuredSection.innerHTML = `
+                <div class="featured-tag">⭐ Featured Article</div>
+                <h2>${featuredPost.title}</h2>
+                <p class="featured-meta">📅 ${formatDate(featuredPost.date)} • ⏱️ ${featuredPost.readTime} • 🏷️ ${featuredPost.category}</p>
+                <p class="featured-excerpt">${featuredPost.excerpt}</p>
+                <a href="/blog/${featuredPost.slug}.html" class="btn-primary">Read Full Article →</a>
+            `;
+        }
+        
+        function displayPosts(posts) {
+            const blogGrid = document.getElementById('blogGrid');
+            const startIndex = (currentPage - 1) * postsPerPage;
+            const endIndex = startIndex + postsPerPage;
+            const postsToShow = posts.slice(startIndex, endIndex);
+            
+            if (postsToShow.length === 0) {
+                blogGrid.innerHTML = '<div class="empty-state"><h3>📭 No Posts Found</h3><p>Try selecting a different category filter.</p></div>';
+                return;
+            }
+            
+            blogGrid.innerHTML = '';
+            
+            const categoryColors = {
+                'Business': 'linear-gradient(135deg, #2563eb, #1e40af)',
+                'Career': 'linear-gradient(135deg, #6366f1, #4f46e5)',
+                'SEO': 'linear-gradient(135deg, #f59e0b, #d97706)',
+                'Writing': 'linear-gradient(135deg, #06b6d4, #0891b2)',
+                'Technology': 'linear-gradient(135deg, #dc2626, #991b1b)',
+                'Education': 'linear-gradient(135deg, #10b981, #059669)',
+                'Web Development': 'linear-gradient(135deg, #a855f7, #7c3aed)'
+            };
+            
+            postsToShow.forEach(post => {
+                const postCard = `
+                    <article class="blog-card" data-category="${post.category}">
+                        <div class="blog-image" style="background: ${categoryColors[post.category] || categoryColors.Business};">
+                            <span class="blog-category">${post.category}</span>
+                        </div>
+                        <div class="blog-content">
+                            <h3><a href="/blog/${post.slug}.html" style="text-decoration: none; color: inherit;">${post.title}</a></h3>
+                            <p class="blog-meta">📅 ${formatDate(post.date)} • ⏱️ ${post.readTime}</p>
+                            <p>${post.excerpt}</p>
+                            <a href="/blog/${post.slug}.html" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                `;
+                
+                blogGrid.innerHTML += postCard;
+            });
+            
+            updatePagination(posts.length);
+        }
+        
+        function updatePagination(totalPosts) {
+            const totalPages = Math.ceil(totalPosts / postsPerPage);
+            document.getElementById('pageInfo').textContent = 'Page ' + currentPage + ' of ' + totalPages;
+            
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = currentPage === totalPages || totalPages === 0;
+        }
+        
+        // Pagination buttons
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayPosts(getFilteredPosts());
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+        
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            const totalPages = Math.ceil(getFilteredPosts().length / postsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayPosts(getFilteredPosts());
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+        
+        // Filter functionality
+        const filterTags = document.querySelectorAll('.filter-tag');
+        let currentFilter = 'all';
+        
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', function() {
+                currentFilter = this.getAttribute('data-filter');
+                currentPage = 1;
+                
+                filterTags.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filteredPosts = getFilteredPosts();
+                displayPosts(filteredPosts);
+            });
+        });
+        
+        function getFilteredPosts() {
+            if (currentFilter === 'all') {
+                return allPosts;
+            }
+            return allPosts.filter(post => post.category === currentFilter);
+        }
+        
+        // Helper functions
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+        
+        // Newsletter Form
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('✅ Thank you for subscribing! Check your email for confirmation.');
+            this.reset();
+        });
+        
+        // Load posts on page load
+        loadBlogPosts();
+    </script>
+    
 </body>
 </html>
