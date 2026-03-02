@@ -569,8 +569,65 @@
             this.reset();
         });
         
-        // Load posts on page load
-        loadBlogPosts();
+       
+        // Load Blog Posts from JSON - DUAL PATH CHECK
+async function loadBlogPosts() {
+    const paths = [
+        '/blog-data.json',           // Try ROOT first
+        '/blog/blog-data.json'       // Fallback to /blog folder
+    ];
+    
+    let posts = null;
+    let loadedFrom = '';
+    
+    // Try both paths
+    for (const path of paths) {
+        try {
+            console.log('🔍 Trying to load from:', path);
+            const response = await fetch(path);
+            
+            if (response.ok) {
+                posts = await response.json();
+                loadedFrom = path;
+                console.log('✅ Successfully loaded from:', path);
+                break;
+            }
+        } catch (error) {
+            console.log('❌ Failed to load from:', path, error.message);
+        }
+    }
+    
+    // If no posts loaded
+    if (!posts) {
+        throw new Error('Blog data file not found in any location');
+    }
+    
+    // Validate posts
+    if (!Array.isArray(posts)) {
+        console.error('❌ Invalid format. Received:', posts);
+        throw new Error('Invalid blog data format - expected array, got: ' + typeof posts);
+    }
+    
+    if (posts.length === 0) {
+        throw new Error('Blog data is empty');
+    }
+    
+    allPosts = posts;
+    
+    // Sort by date (newest first)
+    allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    // Hide loading indicator
+    document.getElementById('loadingIndicator').style.display = 'none';
+    
+    // Display featured post
+    displayFeaturedPost();
+    
+    // Display all posts
+    displayPosts(allPosts);
+    
+    console.log('✅ Loaded ' + allPosts.length + ' blog posts from ' + loadedFrom);
+}
     </script>
     
 </body>
