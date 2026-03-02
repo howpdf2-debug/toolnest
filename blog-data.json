@@ -1,3 +1,4 @@
+[
   {
     "title": "Complete GST Invoice Guide for Indian Businesses",
     "slug": "gst-invoice-guide",
@@ -5,8 +6,7 @@
     "date": "2026-02-20",
     "category": "Business",
     "readTime": "10 min",
-    "featured": true,
-    "image": "/favicon.png"
+    "featured": true
   },
   {
     "title": "Image Compression Tips for Faster Websites",
@@ -15,8 +15,7 @@
     "date": "2026-02-21",
     "category": "Web Development",
     "readTime": "8 min",
-    "featured": false,
-    "image": "/favicon.png"
+    "featured": false
   },
   {
     "title": "Best Free PDF Tools for Students in 2026",
@@ -25,8 +24,7 @@
     "date": "2026-02-22",
     "category": "Education",
     "readTime": "12 min",
-    "featured": false,
-    "image": "/favicon.png"
+    "featured": false
   },
   {
     "title": "Professional Resume Writing Tips for 2026",
@@ -35,8 +33,7 @@
     "date": "2026-02-27",
     "category": "Career",
     "readTime": "18 min",
-    "featured": true,
-    "image": "/favicon.png"
+    "featured": true
   },
   {
     "title": "SEO Meta Tags Guide: Complete Tutorial for 2026",
@@ -45,8 +42,7 @@
     "date": "2026-02-23",
     "category": "SEO",
     "readTime": "15 min",
-    "featured": false,
-    "image": "/favicon.png"
+    "featured": false
   },
   {
     "title": "10 Best Free Online Tools for Small Businesses in 2026",
@@ -55,8 +51,7 @@
     "date": "2026-02-25",
     "category": "Business",
     "readTime": "12 min",
-    "featured": true,
-    "image": "/favicon.png"
+    "featured": true
   },
   {
     "title": "Word Counter Tool - Complete Guide 2026",
@@ -65,8 +60,7 @@
     "date": "2026-02-22",
     "category": "Writing",
     "readTime": "7 min",
-    "featured": false,
-    "image": "/favicon.png"
+    "featured": false
   },
   {
     "title": "YouTube Video Download Guide: Legal & Safe Methods",
@@ -75,8 +69,7 @@
     "date": "2026-02-24",
     "category": "Technology",
     "readTime": "10 min",
-    "featured": false,
-    "image": "/favicon.png"
+    "featured": false
   },
   {
     "title": "How to Create Professional Invoices: Complete Guide",
@@ -85,7 +78,6 @@
     "date": "2026-02-26",
     "category": "Business",
     "readTime": "15 min",
-    "featured": false,
-    "image": "/favicon.png"
+    "featured": false
   }
-
+]
