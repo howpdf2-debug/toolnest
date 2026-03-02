@@ -1,214 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="dbfc89456a05e36c" />
+    
+    <title>Blog - ToolNest | Tips & Tutorials</title>
+    <meta name="description" content="Read ToolNest blog for expert tips and tutorials">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://toolnest.bhaihelp.in/blog.html">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="/style.css">
+    
+    <style>
+        .featured-post {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .featured-post h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .blog-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .blog-image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .blog-category {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-content h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .blog-meta {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+        
+        .read-more {
+            color: var(--blue);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        #loadingIndicator {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div id="header"></div>
+
+<section class="mini-hero">
+    <div class="hero-top">
+        <a href="/index.html" class="back-home">← Back to Home</a>
+    </div>
+    <h1>📚 ToolNest Blog</h1>
+    <p>Tips, tutorials, and guides</p>
+</section>
+
+<main class="container">
+    
+    <section class="featured-post" id="featuredPost" style="display: none;"></section>
+    
+    <div id="loadingIndicator">
+        <p>⏳ Loading blog posts...</p>
+        <p style="font-size: 14px; margin-top: 10px;">Check console (F12) for details</p>
+    </div>
+    
+    <div class="blog-grid" id="blogGrid"></div>
+    
+</main>
+
+<div id="footer"></div>
+
 <script src="/includes/include.js"></script>
 
 <script>
-    let allPosts = [];
-    let currentPage = 1;
-    const postsPerPage = 9;
+// ULTRA SIMPLE VERSION - MAXIMUM DEBUG
+console.log('🚀 Script started');
+
+let allPosts = [];
+
+async function loadBlogPosts() {
+    console.log('1️⃣ loadBlogPosts function called');
     
-    // Load Blog Posts - ENHANCED VERSION
-    async function loadBlogPosts() {
-        const loadingIndicator = document.getElementById('loadingIndicator');
-        const blogGrid = document.getElementById('blogGrid');
-        
-        try {
-            console.log('🔄 Starting to load blog posts...');
-            
-            // Try to fetch
-            const response = await fetch('/blog-data.json');
-            console.log('📡 Response status:', response.status);
-            
-            if (!response.ok) {
-                throw new Error('HTTP error! status: ' + response.status);
-            }
-            
-            // Get text first to check content
-            const text = await response.text();
-            console.log('📄 Response received, length:', text.length);
-            
-            // Parse JSON
-            let posts;
-            try {
-                posts = JSON.parse(text);
-            } catch (parseError) {
-                console.error('❌ JSON Parse Error:', parseError);
-                console.log('📄 Raw content:', text.substring(0, 200));
-                throw new Error('Invalid JSON format');
-            }
-            
-            // Validate
-            if (!Array.isArray(posts)) {
-                console.error('❌ Not an array:', typeof posts);
-                throw new Error('Blog data must be an array');
-            }
-            
-            if (posts.length === 0) {
-                throw new Error('No blog posts found');
-            }
-            
-            console.log('✅ Successfully parsed', posts.length, 'posts');
-            
-            allPosts = posts;
-            
-            // Sort by date
-            allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-            
-            // Hide loading
-            loadingIndicator.style.display = 'none';
-            
-            // Display
-            displayFeaturedPost();
-            displayPosts(allPosts);
-            
-            console.log('✅ Blog posts loaded and displayed successfully');
-            
-        } catch (error) {
-            console.error('❌ Error loading blog posts:', error);
-            
-            loadingIndicator.style.display = 'none';
-            
-            blogGrid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: var(--bg-card); border-radius: 16px; border: 2px solid #ef4444;">
-                    <h3 style="color: #ef4444; margin-bottom: 15px;">⚠️ Error Loading Posts</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 10px;">${error.message}</p>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
-                        Check browser console (F12) for details
-                    </p>
-                    <button onclick="window.location.reload()" class="btn-primary">
-                        🔄 Retry
-                    </button>
-                </div>
-            `;
-        }
-    }
+    const loadingDiv = document.getElementById('loadingIndicator');
+    const blogGrid = document.getElementById('blogGrid');
     
-    function displayFeaturedPost() {
-        const featuredPost = allPosts.find(post => post.featured === true);
+    try {
+        console.log('2️⃣ About to fetch /blog-data.json');
         
-        if (!featuredPost) {
-            console.log('ℹ️ No featured post found');
-            return;
+        const response = await fetch('/blog-data.json', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        console.log('3️⃣ Fetch completed');
+        console.log('   Status:', response.status);
+        console.log('   OK:', response.ok);
+        
+        if (!response.ok) {
+            throw new Error('HTTP ' + response.status);
         }
         
-        const featuredSection = document.getElementById('featuredPost');
-        featuredSection.style.display = 'block';
-        featuredSection.innerHTML = `
-            <div class="featured-tag">⭐ Featured Article</div>
-            <h2>${featuredPost.title}</h2>
-            <p class="featured-meta">📅 ${formatDate(featuredPost.date)} • ⏱️ ${featuredPost.readTime} • 🏷️ ${featuredPost.category}</p>
-            <p class="featured-excerpt">${featuredPost.excerpt}</p>
-            <a href="/blog/${featuredPost.slug}.html" class="btn-primary">Read Full Article →</a>
+        console.log('4️⃣ Getting text...');
+        const text = await response.text();
+        console.log('   Text length:', text.length);
+        console.log('   First 100 chars:', text.substring(0, 100));
+        
+        console.log('5️⃣ Parsing JSON...');
+        const posts = JSON.parse(text);
+        console.log('   Posts count:', posts.length);
+        console.log('   First post:', posts[0].title);
+        
+        allPosts = posts;
+        
+        console.log('6️⃣ Hiding loading...');
+        loadingDiv.style.display = 'none';
+        
+        console.log('7️⃣ Displaying posts...');
+        displayPosts(posts);
+        
+        console.log('✅ SUCCESS - All done!');
+        
+    } catch (error) {
+        console.error('❌ ERROR:', error);
+        console.error('   Message:', error.message);
+        console.error('   Stack:', error.stack);
+        
+        loadingDiv.innerHTML = `
+            <h3 style="color: #ef4444;">❌ Error</h3>
+            <p>${error.message}</p>
+            <p style="font-size: 13px;">Check console (F12) for details</p>
+            <button onclick="location.reload()" class="btn-primary">Retry</button>
         `;
-        
-        console.log('✅ Featured post displayed:', featuredPost.title);
     }
+}
+
+function displayPosts(posts) {
+    console.log('📝 displayPosts called with', posts.length, 'posts');
     
-    function displayPosts(posts) {
-        const blogGrid = document.getElementById('blogGrid');
-        const startIndex = (currentPage - 1) * postsPerPage;
-        const endIndex = startIndex + postsPerPage;
-        const postsToShow = posts.slice(startIndex, endIndex);
-        
-        if (postsToShow.length === 0) {
-            blogGrid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
-                    <h3>📭 No Posts Found</h3>
-                    <p style="color: var(--text-muted);">Try selecting a different category filter.</p>
-                </div>
-            `;
-            return;
-        }
-        
-        blogGrid.innerHTML = '';
-        
-        const categoryColors = {
-            'Business': 'linear-gradient(135deg, #2563eb, #1e40af)',
-            'Career': 'linear-gradient(135deg, #6366f1, #4f46e5)',
-            'SEO': 'linear-gradient(135deg, #f59e0b, #d97706)',
-            'Writing': 'linear-gradient(135deg, #06b6d4, #0891b2)',
-            'Technology': 'linear-gradient(135deg, #dc2626, #991b1b)',
-            'Education': 'linear-gradient(135deg, #10b981, #059669)',
-            'Web Development': 'linear-gradient(135deg, #a855f7, #7c3aed)'
-        };
-        
-        postsToShow.forEach(post => {
-            const postCard = `
-                <article class="blog-card">
-                    <div class="blog-image" style="background: ${categoryColors[post.category] || categoryColors.Business};">
-                        <span class="blog-category">${post.category}</span>
-                    </div>
-                    <div class="blog-content">
-                        <h3><a href="/blog/${post.slug}.html" style="text-decoration: none; color: inherit;">${post.title}</a></h3>
-                        <p class="blog-meta">📅 ${formatDate(post.date)} • ⏱️ ${post.readTime}</p>
-                        <p>${post.excerpt}</p>
-                        <a href="/blog/${post.slug}.html" class="read-more">Read More →</a>
-                    </div>
-                </article>
-            `;
-            blogGrid.innerHTML += postCard;
-        });
-        
-        updatePagination(posts.length);
-        console.log('✅ Displayed', postsToShow.length, 'posts');
-    }
+    const grid = document.getElementById('blogGrid');
     
-    function updatePagination(totalPosts) {
-        const totalPages = Math.ceil(totalPosts / postsPerPage);
-        document.getElementById('pageInfo').textContent = 'Page ' + currentPage + ' of ' + totalPages;
-        document.getElementById('prevBtn').disabled = currentPage === 1;
-        document.getElementById('nextBtn').disabled = currentPage === totalPages || totalPages === 0;
-    }
+    const colors = {
+        'Business': '#2563eb',
+        'Career': '#6366f1',
+        'SEO': '#f59e0b',
+        'Writing': '#06b6d4',
+        'Technology': '#dc2626',
+        'Education': '#10b981'
+    };
     
-    document.getElementById('prevBtn').addEventListener('click', function() {
-        if (currentPage > 1) {
-            currentPage--;
-            displayPosts(getFilteredPosts());
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    });
+    grid.innerHTML = posts.map(post => `
+        <article class="blog-card">
+            <div class="blog-image" style="background: ${colors[post.category] || '#2563eb'};">
+                <span class="blog-category">${post.category}</span>
+            </div>
+            <div class="blog-content">
+                <h3>${post.title}</h3>
+                <p class="blog-meta">📅 ${post.date} • ⏱️ ${post.readTime}</p>
+                <p>${post.excerpt.substring(0, 100)}...</p>
+                <a href="/blog/${post.slug}.html" class="read-more">Read More →</a>
+            </div>
+        </article>
+    `).join('');
     
-    document.getElementById('nextBtn').addEventListener('click', function() {
-        const totalPages = Math.ceil(getFilteredPosts().length / postsPerPage);
-        if (currentPage < totalPages) {
-            currentPage++;
-            displayPosts(getFilteredPosts());
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    });
-    
-    const filterTags = document.querySelectorAll('.filter-tag');
-    let currentFilter = 'all';
-    
-    filterTags.forEach(tag => {
-        tag.addEventListener('click', function() {
-            currentFilter = this.getAttribute('data-filter');
-            currentPage = 1;
-            filterTags.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            displayPosts(getFilteredPosts());
-        });
-    });
-    
-    function getFilteredPosts() {
-        if (currentFilter === 'all') return allPosts;
-        return allPosts.filter(post => post.category === currentFilter);
-    }
-    
-    function formatDate(dateStr) {
-        const date = new Date(dateStr);
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        return date.toLocaleDateString('en-US', options);
-    }
-    
-    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('✅ Thank you for subscribing!');
-        this.reset();
-    });
-    
-    // Auto-load on page ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadBlogPosts);
-    } else {
-        loadBlogPosts();
-    }
+    console.log('✅ Posts displayed in grid');
+}
+
+// START
+console.log('🏁 Auto-starting load...');
+setTimeout(loadBlogPosts, 100);
 </script>
+
+</body>
+</html>
