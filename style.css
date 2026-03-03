@@ -1079,33 +1079,42 @@ footer a:focus-visible {
         margin: 0 !important;
     }
 }
-/* Mobile Menu Additional Fixes */
+/* ============================================
+   MOBILE MENU FIX - ADDITIONAL STYLES
+============================================ */
+
+/* Ensure hamburger is visible on mobile */
 @media (max-width: 768px) {
-    body.menu-open {
-        overflow: hidden;
+    .mobile-menu-toggle {
+        display: flex !important;
     }
     
-    .mobile-menu {
-        -webkit-overflow-scrolling: touch;
+    .hamburger {
+        background: #fff !important;
     }
     
-    .mobile-menu-btn {
-        position: relative;
-        z-index: 1001;
-    }
-    
-    .mobile-menu-content {
-        padding-bottom: 50px;
+    html.dark .hamburger {
+        background: #e5e7eb !important;
     }
 }
 
-/* Prevent scroll when menu is open */
-body:has(.mobile-menu.active) {
-    overflow: hidden;
-}
-
-/* Smooth transitions */
-.mobile-menu,
-.mobile-menu-btn span {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Desktop dropdown improvements */
+@media (min-width: 769px) {
+    .dropdown-content {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    
+    .dropdown-content::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .dropdown-content::-webkit-scrollbar-track {
+        background: var(--bg-main);
+    }
+    
+    .dropdown-content::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 3px;
+    }
 }
