@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="google-site-verification" content="dbfc89456a05e36c" />
+    
+    <title>JPG to PDF Converter - Free Online Tool | ToolNest</title>
+    <meta name="description" content="Convert JPG images to PDF instantly. Free online JPG to PDF converter with batch support, custom page size, and quality control.">
+    <meta name="keywords" content="jpg to pdf, image to pdf converter, jpeg to pdf, photo to pdf, convert jpg to pdf online free">
+    <meta name="author" content="ToolNest">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://toolnest.bhaihelp.in/tools/jpg-to-pdf.html">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="/style.css">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "JPG to PDF Converter",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "url": "https://toolnest.bhaihelp.in/tools/jpg-to-pdf.html",
+      "description": "Free online JPG to PDF converter. Convert images to PDF with custom settings.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
+    <style>
+        .upload-area {
+            border: 3px dashed var(--border);
+            border-radius: 12px;
+            padding: 50px 20px;
+            text-align: center;
+            background: var(--bg-card);
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .upload-area.dragover {
+            border-color: var(--blue);
+            background: rgba(37, 99, 235, 0.05);
+        }
+        
+        .upload-area:hover {
+            border-color: var(--blue);
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .preview-item {
+            position: relative;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg-card);
+        }
+        
+        .preview-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="header"></div>
+
+<section class="mini-hero" style="background: linear-gradient(135deg, #10b981, #059669);">
+    <div class="hero-top">
+        <a href="/index.html" class="back-home">← Back to Home</a>
+    </div>
+    <h1>JPG to PDF Converter</h1>
+    <p>Convert images to PDF instantly - Free & Easy</p>
+</section>
+
+<section class="container">
+    <div class="tool-box">
+        <h3 style="color: var(--blue); margin-bottom: 20px;">📸 Upload Images</h3>
+        
+        <div class="upload-area" id="uploadArea">
+            <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
+            <div style="font-size: 48px; margin-bottom: 15px;">📁</div>
+            <h3>Drop images here or click to browse</h3>
+            <p style="color: var(--text-muted); margin-top: 10px;">Supports JPG, JPEG, PNG, GIF, BMP</p>
+        </div>
+        
+        <div class="preview-grid" id="previewGrid"></div>
+        
+        <div class="options-grid">
+            <div>
+                <label style="font-weight: 600; display: block; margin-bottom: 8px;">Page Size</label>
+                <select id="pageSize" style="width: 100%; padding: 10px; border-radius: 8px; border: 2px solid var(--border);">
+                    <option value="a4">A4 (210 x 297 mm)</option>
+                    <option value="letter">Letter (8.5 x 11 in)</option>
+                    <option value="a3">A3 (297 x 420 mm)</option>
+                    <option value="custom">Custom Size</option>
+                </select>
+            </div>
+            
+            <div>
+                <label style="font-weight: 600; display: block; margin-bottom: 8px;">Orientation</label>
+                <select id="orientation" style="width: 100%; padding: 10px; border-radius: 8px; border: 2px solid var(--border);">
+                    <option value="portrait">Portrait</option>
+                    <option value="landscape">Landscape</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn-primary" onclick="convertToPDF()" id="convertBtn" style="width: 100%; margin-top: 20px;" disabled>
+            📄 Convert to PDF
+        </button>
+    </div>
+    
+    <!-- How to Use -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h2 style="font-size: 22px; margin-bottom: 15px; color: var(--blue);">How to Use JPG to PDF Converter</h2>
+        <ol style="line-height: 1.8; padding-left: 20px;">
+            <li>Click upload area or drag & drop your JPG/JPEG images</li>
+            <li>You can select multiple images at once</li>
+            <li>Choose page size and orientation (optional)</li>
+            <li>Click "Convert to PDF" button</li>
+            <li>Download your PDF file</li>
+        </ol>
+    </div>
+</section>
+
+<div id="footer"></div>
+
+<script src="/includes/include.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+let selectedFiles = [];
+
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+const previewGrid = document.getElementById('previewGrid');
+const convertBtn = document.getElementById('convertBtn');
+
+// Click to upload
+uploadArea.addEventListener('click', () => fileInput.click());
+
+// File selection
+fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+// Drag and drop
+uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.classList.add('dragover');
+});
+
+uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('dragover');
+});
+
+uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+    handleFiles(e.dataTransfer.files);
+});
+
+function handleFiles(files) {
+    for (let file of files) {
+        if (file.type.startsWith('image/')) {
+            selectedFiles.push(file);
+            displayPreview(file);
+        }
+    }
+    convertBtn.disabled = selectedFiles.length === 0;
+}
+
+function displayPreview(file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const div = document.createElement('div');
+        div.className = 'preview-item';
+        div.innerHTML = `
+            <img src="${e.target.result}" alt="Preview">
+            <button class="remove-btn" onclick="removeImage(${selectedFiles.length - 1})">×</button>
+        `;
+        previewGrid.appendChild(div);
+    };
+    reader.readAsDataURL(file);
+}
+
+function removeImage(index) {
+    selectedFiles.splice(index, 1);
+    previewGrid.children[index].remove();
+    convertBtn.disabled = selectedFiles.length === 0;
+}
+
+async function convertToPDF() {
+    if (selectedFiles.length === 0) {
+        alert('❌ Please select at least one image');
+        return;
+    }
+    
+    convertBtn.textContent = '⏳ Converting...';
+    convertBtn.disabled = true;
+    
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({
+        orientation: document.getElementById('orientation').value,
+        unit: 'mm',
+        format: document.getElementById('pageSize').value
+    });
+    
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    
+    for (let i = 0; i < selectedFiles.length; i++) {
+        if (i > 0) pdf.addPage();
+        
+        const reader = new FileReader();
+        await new Promise((resolve) => {
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    const ratio = img.width / img.height;
+                    let width = pageWidth - 20;
+                    let height = width / ratio;
+                    
+                    if (height > pageHeight - 20) {
+                        height = pageHeight - 20;
+                        width = height * ratio;
+                    }
+                    
+                    const x = (pageWidth - width) / 2;
+                    const y = (pageHeight - height) / 2;
+                    
+                    pdf.addImage(e.target.result, 'JPEG', x, y, width, height);
+                    resolve();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(selectedFiles[i]);
+        });
+    }
+    
+    pdf.save('converted-images.pdf');
+    
+    convertBtn.textContent = '✅ Converted! Generate Another?';
+    setTimeout(() => {
+        convertBtn.textContent = '📄 Convert to PDF';
+        convertBtn.disabled = false;
+    }, 3000);
+}
+</script>
+
+</body>
+</html>
