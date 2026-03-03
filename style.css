@@ -1079,3 +1079,33 @@ footer a:focus-visible {
         margin: 0 !important;
     }
 }
+/* Mobile Menu Additional Fixes */
+@media (max-width: 768px) {
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    .mobile-menu {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .mobile-menu-btn {
+        position: relative;
+        z-index: 1001;
+    }
+    
+    .mobile-menu-content {
+        padding-bottom: 50px;
+    }
+}
+
+/* Prevent scroll when menu is open */
+body:has(.mobile-menu.active) {
+    overflow: hidden;
+}
+
+/* Smooth transitions */
+.mobile-menu,
+.mobile-menu-btn span {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
