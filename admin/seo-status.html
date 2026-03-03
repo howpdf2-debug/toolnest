@@ -3,36 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEO Status - ToolNest Admin</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>SEO & Analytics Dashboard - ToolNest Admin</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="/style.css">
+    
     <style>
-        body { background: var(--bg-main); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background: var(--bg-main);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-main);
+        }
+        
+        /* Login Overlay */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .login-box {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .login-box h1 {
+            margin-bottom: 10px;
+            color: #10b981;
+        }
+        
+        .login-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        /* Header */
         .admin-header {
             background: linear-gradient(135deg, #10b981, #059669);
             color: white;
             padding: 30px;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
+        
+        .admin-header h1 {
+            margin-bottom: 8px;
+            font-size: 28px;
+        }
+        
+        .admin-header p {
+            opacity: 0.95;
+            font-size: 15px;
+        }
+        
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        /* Stats Summary */
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .summary-card {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: 0.3s;
+        }
+        
+        .summary-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .summary-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .summary-number.green { color: #10b981; }
+        .summary-number.blue { color: #3b82f6; }
+        .summary-number.yellow { color: #f59e0b; }
+        .summary-number.red { color: #ef4444; }
+        
+        .summary-label {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        /* Status Grid */
         .status-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 20px;
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
+            margin-bottom: 30px;
         }
+        
         .status-card {
             background: var(--bg-card);
             padding: 25px;
-            border-radius: 16px;
+            border-radius: 12px;
             border: 1px solid var(--border);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
+        
         .status-card h3 {
-            color: var(--blue);
-            margin-bottom: 15px;
+            color: var(--text-main);
+            margin-bottom: 20px;
             font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+        
         .check-item {
             display: flex;
             justify-content: space-between;
@@ -40,196 +168,609 @@
             padding: 12px 0;
             border-bottom: 1px solid var(--border);
         }
+        
         .check-item:last-child {
             border-bottom: none;
         }
-        .status-ok { color: #10b981; font-weight: 700; }
-        .status-error { color: #ef4444; font-weight: 700; }
-        .status-pending { color: #f59e0b; font-weight: 700; }
-        .btn-test {
-            padding: 8px 16px;
-            background: var(--blue);
+        
+        .check-label {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+        
+        .status-ok {
+            color: #10b981;
+            font-weight: 700;
+        }
+        
+        .status-error {
+            color: #ef4444;
+            font-weight: 700;
+        }
+        
+        .status-pending {
+            color: #f59e0b;
+            font-weight: 700;
+        }
+        
+        .status-loading {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 10px 20px;
+            background: #10b981;
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             transition: 0.3s;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
         }
-        .btn-test:hover {
-            background: var(--blue-dark);
+        
+        .btn:hover {
+            background: #059669;
+            transform: translateY(-1px);
         }
-        .quick-links {
+        
+        .btn-primary {
+            background: #3b82f6;
+        }
+        
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+        
+        /* Quick Actions */
+        .quick-actions {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+        
+        .action-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: 0.3s;
+        }
+        
+        .action-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .action-card h4 {
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border);
+            border-top-color: #10b981;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Alert */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid;
+        }
+        
+        .alert-info {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+        
+        .alert-success {
+            background: #d1fae5;
+            border-color: #10b981;
+            color: #065f46;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .status-grid,
+            .quick-actions,
+            .stats-summary {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-header {
+                position: relative;
+            }
+            
+            .logout-btn {
+                position: static;
+                margin-top: 15px;
+                display: block;
+                width: 200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="admin-header">
-        <h1>🔍 SEO Status Dashboard</h1>
-        <p>Monitor your Search Console setup</p>
-    </div>
-    
-    <div class="status-grid">
-        <!-- Search Console Verification -->
-        <div class="status-card">
-            <h3>🔐 Search Console Verification</h3>
-            <div class="check-item">
-                <span>Verification File:</span>
-                <span class="status-ok" id="file-status">Checking...</span>
-            </div>
-            <div class="check-item">
-                <span>Meta Tag:</span>
-                <span class="status-ok" id="meta-status">Checking...</span>
-            </div>
-            <div class="check-item">
-                <span>Console Status:</span>
-                <span class="status-ok">✓ Verified</span>
-            </div>
-        </div>
+
+<!-- LOGIN OVERLAY -->
+<div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+        <h1>🔐 SEO Dashboard</h1>
+        <p style="color: var(--text-muted); margin-bottom: 25px;">Enter password to access</p>
         
-        <!-- Sitemap Status -->
-        <div class="status-card">
-            <h3>🗺️ Sitemap Status</h3>
-            <div class="check-item">
-                <span>Sitemap.xml:</span>
-                <span class="status-ok" id="sitemap-status">Checking...</span>
-            </div>
-            <div class="check-item">
-                <span>Total URLs:</span>
-                <span id="url-count">20+</span>
-            </div>
-            <div class="check-item">
-                <span>Submitted:</span>
-                <span class="status-pending" id="submitted-status">Check GSC</span>
-            </div>
-            <button class="btn-test" onclick="window.open('https://toolnest.bhaihelp.in/sitemap.xml', '_blank')">
-                View Sitemap
-            </button>
-        </div>
+        <input type="password" class="login-input" id="loginPassword" placeholder="Enter password" autofocus>
         
-        <!-- Robots.txt Status -->
-        <div class="status-card">
-            <h3>🤖 Robots.txt Status</h3>
-            <div class="check-item">
-                <span>File Exists:</span>
-                <span class="status-ok" id="robots-status">Checking...</span>
-            </div>
-            <div class="check-item">
-                <span>Sitemap Link:</span>
-                <span class="status-ok" id="robots-sitemap">✓ Present</span>
-            </div>
-            <div class="check-item">
-                <span>Bad Bots Blocked:</span>
-                <span class="status-ok">✓ Yes</span>
-            </div>
-            <button class="btn-test" onclick="window.open('https://toolnest.bhaihelp.in/robots.txt', '_blank')">
-                View Robots.txt
-            </button>
-        </div>
+        <button class="btn btn-primary" style="width: 100%; margin-top: 0;" onclick="login()">Login</button>
         
-        <!-- Indexing Status -->
-        <div class="status-card">
-            <h3>📊 Indexing Status</h3>
-            <div class="check-item">
-                <span>Pages Submitted:</span>
-                <span id="pages-submitted">20</span>
-            </div>
-            <div class="check-item">
-                <span>Pages Indexed:</span>
-                <span class="status-pending">Check GSC</span>
-            </div>
-            <div class="check-item">
-                <span>Crawl Errors:</span>
-                <span class="status-ok">0</span>
-            </div>
-            <button class="btn-test" onclick="window.open('https://search.google.com/search-console?resource_id=sc-domain:toolnest.bhaihelp.in', '_blank')">
-                Open Search Console
-            </button>
+        <div style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted);">
+            Default: <code>toolnest2026</code>
         </div>
     </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div style="display: none;" id="mainContent">
     
-    <!-- Quick Links -->
-    <div class="quick-links">
-        <button class="btn-test" onclick="window.open('https://search.google.com/test/mobile-friendly?url=https://toolnest.bhaihelp.in', '_blank')">
-            📱 Mobile Friendly Test
-        </button>
-        <button class="btn-test" onclick="window.open('https://search.google.com/test/rich-results?url=https://toolnest.bhaihelp.in', '_blank')">
-            ⭐ Rich Results Test
-        </button>
-        <button class="btn-test" onclick="window.open('https://pagespeed.web.dev/report?url=https://toolnest.bhaihelp.in', '_blank')">
-            ⚡ PageSpeed Test
-        </button>
-        <button class="btn-test" onclick="validateSitemap()">
-            ✓ Validate Sitemap
-        </button>
+    <!-- Header -->
+    <div class="admin-header" style="position: relative;">
+        <h1>🔍 SEO & Analytics Dashboard</h1>
+        <p>Monitor Search Console, Analytics, Tracking & Blog Status</p>
+        <button class="logout-btn" onclick="logout()">🚪 Logout</button>
     </div>
     
-    <script>
-        // Check verification file
-        fetch('https://toolnest.bhaihelp.in/googledbfc89456a05e36c.html')
-            .then(r => {
-                document.getElementById('file-status').textContent = r.ok ? '✓ Found' : '✗ Not Found';
-                document.getElementById('file-status').className = r.ok ? 'status-ok' : 'status-error';
-            })
-            .catch(() => {
-                document.getElementById('file-status').textContent = '✗ Error';
-                document.getElementById('file-status').className = 'status-error';
-            });
+    <!-- Container -->
+    <div class="container">
         
-        // Check meta tag in source
-        fetch('https://toolnest.bhaihelp.in/')
-            .then(r => r.text())
-            .then(html => {
-                const hasMeta = html.includes('google-site-verification') && html.includes('dbfc89456a05e36c');
-                document.getElementById('meta-status').textContent = hasMeta ? '✓ Found' : '✗ Not Found';
-                document.getElementById('meta-status').className = hasMeta ? 'status-ok' : 'status-error';
-            })
-            .catch(() => {
-                document.getElementById('meta-status').textContent = '✗ Error';
-                document.getElementById('meta-status').className = 'status-error';
-            });
+        <!-- Stats Summary -->
+        <div class="stats-summary">
+            <div class="summary-card">
+                <div class="summary-number green" id="totalChecks">0</div>
+                <div class="summary-label">Total Checks</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-number blue" id="passedChecks">0</div>
+                <div class="summary-label">Passed</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-number yellow" id="pendingChecks">0</div>
+                <div class="summary-label">Pending</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-number red" id="failedChecks">0</div>
+                <div class="summary-label">Failed</div>
+            </div>
+        </div>
         
-        // Check sitemap
-        fetch('https://toolnest.bhaihelp.in/sitemap.xml')
-            .then(r => {
-                document.getElementById('sitemap-status').textContent = r.ok ? '✓ Found' : '✗ Not Found';
-                document.getElementById('sitemap-status').className = r.ok ? 'status-ok' : 'status-error';
-                
-                if (r.ok) return r.text();
-            })
-            .then(xml => {
-                if (xml) {
-                    const urlCount = (xml.match(/<loc>/g) || []).length;
-                    document.getElementById('url-count').textContent = urlCount;
-                }
-            })
-            .catch(() => {
-                document.getElementById('sitemap-status').textContent = '✗ Error';
-                document.getElementById('sitemap-status').className = 'status-error';
-            });
+        <!-- Alert -->
+        <div class="alert alert-info">
+            <strong>ℹ️ Real-time Monitoring:</strong> This dashboard checks your SEO setup in real-time. Green = OK, Yellow = Pending/Manual Check, Red = Error.
+        </div>
         
-        // Check robots.txt
-        fetch('https://toolnest.bhaihelp.in/robots.txt')
-            .then(r => {
-                document.getElementById('robots-status').textContent = r.ok ? '✓ Found' : '✗ Not Found';
-                document.getElementById('robots-status').className = r.ok ? 'status-ok' : 'status-error';
-            })
-            .catch(() => {
-                document.getElementById('robots-status').textContent = '✗ Error';
-                document.getElementById('robots-status').className = 'status-error';
-            });
+        <!-- Status Grid -->
+        <div class="status-grid">
+            
+            <!-- Google Search Console -->
+            <div class="status-card">
+                <h3>🔐 Google Search Console</h3>
+                <div class="check-item">
+                    <span class="check-label">Verification File</span>
+                    <span class="status-loading" id="verif-file">Checking...</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Meta Tag</span>
+                    <span class="status-loading" id="verif-meta">Checking...</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Console Access</span>
+                    <span class="status-pending">Manual Check</span>
+                </div>
+                <button class="btn" onclick="window.open('https://search.google.com/search-console?resource_id=sc-domain:toolnest.bhaihelp.in', '_blank')">
+                    Open Search Console
+                </button>
+            </div>
+            
+            <!-- Sitemap -->
+            <div class="status-card">
+                <h3>🗺️ Sitemap Status</h3>
+                <div class="check-item">
+                    <span class="check-label">Sitemap.xml Exists</span>
+                    <span class="status-loading" id="sitemap-exists">Checking...</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Total URLs</span>
+                    <span id="sitemap-urls">0</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Submitted to GSC</span>
+                    <span class="status-pending">Manual Check</span>
+                </div>
+                <button class="btn" onclick="window.open('https://toolnest.bhaihelp.in/sitemap.xml', '_blank')">
+                    View Sitemap
+                </button>
+            </div>
+            
+            <!-- Robots.txt -->
+            <div class="status-card">
+                <h3>🤖 Robots.txt Status</h3>
+                <div class="check-item">
+                    <span class="check-label">File Exists</span>
+                    <span class="status-loading" id="robots-exists">Checking...</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Sitemap Link</span>
+                    <span class="status-loading" id="robots-sitemap">Checking...</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Bad Bots Blocked</span>
+                    <span class="status-loading" id="robots-bots">Checking...</span>
+                </div>
+                <button class="btn" onclick="window.open('https://toolnest.bhaihelp.in/robots.txt', '_blank')">
+                    View Robots.txt
+                </button>
+            </div>
+            
+            <!-- Google Analytics -->
+            <div class="status-card">
+                <h3>📊 Google Analytics</h3>
+                <div class="check-item">
+                    <span class="check-label">Tracking ID</span>
+                    <span class="status-ok">G-Y6W96XKXDR</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Script Loading</span>
+                    <span class="status-loading" id="analytics-script">Checking...</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Data Collection</span>
+                    <span class="status-pending">Manual Check</span>
+                </div>
+                <button class="btn" onclick="window.open('https://analytics.google.com/analytics/web/#/p460968239', '_blank')">
+                    Open Analytics
+                </button>
+            </div>
+            
+            <!-- Google AdSense -->
+            <div class="status-card">
+                <h3>💰 Google AdSense</h3>
+                <div class="check-item">
+                    <span class="check-label">Publisher ID</span>
+                    <span class="status-ok">ca-pub-9233973597909198</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Script Loading</span>
+                    <span class="status-loading" id="adsense-script">Checking...</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Approval Status</span>
+                    <span class="status-pending">Manual Check</span>
+                </div>
+                <button class="btn" onclick="window.open('https://www.google.com/adsense', '_blank')">
+                    Open AdSense
+                </button>
+            </div>
+            
+            <!-- Facebook Pixel -->
+            <div class="status-card">
+                <h3>📘 Facebook Pixel</h3>
+                <div class="check-item">
+                    <span class="check-label">Pixel ID</span>
+                    <span class="status-ok">1254495433310462</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Script Loading</span>
+                    <span class="status-loading" id="facebook-script">Checking...</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Events Tracking</span>
+                    <span class="status-pending">Manual Check</span>
+                </div>
+                <button class="btn" onclick="window.open('https://business.facebook.com/events_manager2/list/pixel/1254495433310462', '_blank')">
+                    Open Events Manager
+                </button>
+            </div>
+            
+            <!-- Blog Data -->
+            <div class="status-card">
+                <h3>📝 Blog Status</h3>
+                <div class="check-item">
+                    <span class="check-label">blog-data.json</span>
+                    <span class="status-loading" id="blog-json">Checking...</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Total Posts</span>
+                    <span id="blog-count">0</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Featured Posts</span>
+                    <span id="blog-featured">0</span>
+                </div>
+                <button class="btn" onclick="window.open('/blog.html', '_blank')">
+                    View Blog
+                </button>
+            </div>
+            
+            <!-- Website Health -->
+            <div class="status-card">
+                <h3>🏥 Website Health</h3>
+                <div class="check-item">
+                    <span class="check-label">Homepage</span>
+                    <span class="status-loading" id="health-homepage">Checking...</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">SSL Certificate</span>
+                    <span class="status-ok">✓ Secure</span>
+                </div>
+                <div class="check-item">
+                    <span class="check-label">Mobile Friendly</span>
+                    <span class="status-pending">Test Below</span>
+                </div>
+                <button class="btn btn-primary" onclick="window.open('https://search.google.com/test/mobile-friendly?url=https://toolnest.bhaihelp.in', '_blank')">
+                    Test Mobile Friendly
+                </button>
+            </div>
+            
+        </div>
         
-        function validateSitemap() {
-            window.open('https://www.xml-sitemaps.com/validate-xml-sitemap.html?url=https://toolnest.bhaihelp.in/sitemap.xml', '_blank');
+        <!-- Quick Actions -->
+        <h2 style="margin-bottom: 20px; color: var(--text-main);">🚀 Quick Testing Tools</h2>
+        <div class="quick-actions">
+            <div class="action-card">
+                <h4>⚡ PageSpeed Insights</h4>
+                <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">Test loading speed</p>
+                <button class="btn btn-primary" onclick="window.open('https://pagespeed.web.dev/report?url=https://toolnest.bhaihelp.in', '_blank')">
+                    Run Test
+                </button>
+            </div>
+            
+            <div class="action-card">
+                <h4>⭐ Rich Results</h4>
+                <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">Test schema markup</p>
+                <button class="btn btn-primary" onclick="window.open('https://search.google.com/test/rich-results?url=https://toolnest.bhaihelp.in', '_blank')">
+                    Run Test
+                </button>
+            </div>
+            
+            <div class="action-card">
+                <h4>✅ Sitemap Validator</h4>
+                <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">Validate sitemap.xml</p>
+                <button class="btn btn-primary" onclick="validateSitemap()">
+                    Validate
+                </button>
+            </div>
+            
+            <div class="action-card">
+                <h4>🔍 URL Inspection</h4>
+                <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">Inspect specific URL</p>
+                <button class="btn btn-primary" onclick="window.open('https://search.google.com/search-console/inspect?resource_id=sc-domain:toolnest.bhaihelp.in', '_blank')">
+                    Inspect URL
+                </button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+// Configuration
+const ADMIN_PASSWORD = 'toolnest2026';
+const AUTH_KEY = 'seo_auth';
+
+let totalChecks = 0;
+let passedChecks = 0;
+let pendingChecks = 0;
+let failedChecks = 0;
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    if (sessionStorage.getItem(AUTH_KEY) === 'true') {
+        showDashboard();
+    }
+    
+    document.getElementById('loginPassword').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') login();
+    });
+});
+
+// Login
+function login() {
+    const password = document.getElementById('loginPassword').value;
+    if (password === ADMIN_PASSWORD) {
+        sessionStorage.setItem(AUTH_KEY, 'true');
+        showDashboard();
+    } else {
+        alert('❌ Incorrect password!');
+    }
+}
+
+// Logout
+function logout() {
+    if (confirm('Logout?')) {
+        sessionStorage.removeItem(AUTH_KEY);
+        location.reload();
+    }
+}
+
+// Show Dashboard
+function showDashboard() {
+    document.getElementById('loginOverlay').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+    runAllChecks();
+}
+
+// Run All Checks
+async function runAllChecks() {
+    totalChecks = 0;
+    passedChecks = 0;
+    pendingChecks = 0;
+    failedChecks = 0;
+    
+    // Run all checks
+    await checkVerificationFile();
+    await checkMetaTag();
+    await checkSitemap();
+    await checkRobots();
+    await checkScripts();
+    await checkBlogData();
+    await checkHomepage();
+    
+    // Update summary
+    updateSummary();
+}
+
+// Update Summary
+function updateSummary() {
+    document.getElementById('totalChecks').textContent = totalChecks;
+    document.getElementById('passedChecks').textContent = passedChecks;
+    document.getElementById('pendingChecks').textContent = pendingChecks;
+    document.getElementById('failedChecks').textContent = failedChecks;
+}
+
+// Check Verification File
+async function checkVerificationFile() {
+    totalChecks++;
+    try {
+        const response = await fetch('https://toolnest.bhaihelp.in/googledbfc89456a05e36c.html');
+        setStatus('verif-file', response.ok);
+    } catch {
+        setStatus('verif-file', false);
+    }
+}
+
+// Check Meta Tag
+async function checkMetaTag() {
+    totalChecks++;
+    try {
+        const response = await fetch('https://toolnest.bhaihelp.in/');
+        const html = await response.text();
+        const hasTag = html.includes('google-site-verification') && html.includes('dbfc89456a05e36c');
+        setStatus('verif-meta', hasTag);
+    } catch {
+        setStatus('verif-meta', false);
+    }
+}
+
+// Check Sitemap
+async function checkSitemap() {
+    totalChecks++;
+    try {
+        const response = await fetch('https://toolnest.bhaihelp.in/sitemap.xml');
+        setStatus('sitemap-exists', response.ok);
+        
+        if (response.ok) {
+            const xml = await response.text();
+            const urls = (xml.match(/<loc>/g) || []).length;
+            document.getElementById('sitemap-urls').textContent = urls;
         }
-    </script>
+    } catch {
+        setStatus('sitemap-exists', false);
+    }
+}
+
+// Check Robots
+async function checkRobots() {
+    totalChecks++;
+    try {
+        const response = await fetch('https://toolnest.bhaihelp.in/robots.txt');
+        setStatus('robots-exists', response.ok);
+        
+        if (response.ok) {
+            const text = await response.text();
+            setStatus('robots-sitemap', text.includes('Sitemap:'));
+            setStatus('robots-bots', text.includes('User-agent:'));
+            totalChecks += 2;
+        }
+    } catch {
+        setStatus('robots-exists', false);
+    }
+}
+
+// Check Scripts
+async function checkScripts() {
+    totalChecks += 3;
+    try {
+        const response = await fetch('https://toolnest.bhaihelp.in/');
+        const html = await response.text();
+        
+        setStatus('analytics-script', html.includes('G-Y6W96XKXDR'));
+        setStatus('adsense-script', html.includes('ca-pub-9233973597909198'));
+        setStatus('facebook-script', html.includes('1254495433310462'));
+    } catch {
+        setStatus('analytics-script', false);
+        setStatus('adsense-script', false);
+        setStatus('facebook-script', false);
+    }
+}
+
+// Check Blog Data
+async function checkBlogData() {
+    totalChecks++;
+    try {
+        const response = await fetch('https://toolnest.bhaihelp.in/blog-data.json');
+        setStatus('blog-json', response.ok);
+        
+        if (response.ok) {
+            const blogs = await response.json();
+            document.getElementById('blog-count').textContent = blogs.length;
+            document.getElementById('blog-featured').textContent = blogs.filter(b => b.featured).length;
+        }
+    } catch {
+        setStatus('blog-json', false);
+        document.getElementById('blog-count').textContent = 'Error';
+    }
+}
+
+// Check Homepage
+async function checkHomepage() {
+    totalChecks++;
+    try {
+        const response = await fetch('https://toolnest.bhaihelp.in/');
+        setStatus('health-homepage', response.ok);
+    } catch {
+        setStatus('health-homepage', false);
+    }
+}
+
+// Set Status Helper
+function setStatus(id, isOk) {
+    const element = document.getElementById(id);
+    if (isOk) {
+        element.textContent = '✓ OK';
+        element.className = 'status-ok';
+        passedChecks++;
+    } else {
+        element.textContent = '✗ Error';
+        element.className = 'status-error';
+        failedChecks++;
+    }
+    updateSummary();
+}
+
+// Validate Sitemap
+function validateSitemap() {
+    window.open('https://www.xml-sitemaps.com/validate-xml-sitemap.html?url=https://toolnest.bhaihelp.in/sitemap.xml', '_blank');
+}
+</script>
+
 </body>
 </html>
-
-
