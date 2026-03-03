@@ -3,66 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Admin Panel - ToolNest (FIXED)</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>Blog Admin Panel - ToolNest</title>
+    <meta name="robots" content="noindex, nofollow">
     
-    <!-- PASSWORD PROTECTION -->
-    <script>
-        const ADMIN_PASSWORD = "MySecurePass@2026"; // ⚠️ CHANGE THIS!
-        
-        if (sessionStorage.getItem('adminAuth') !== ADMIN_PASSWORD) {
-            let attempts = 0;
-            const maxAttempts = 3;
-            
-            while (attempts < maxAttempts) {
-                const entered = prompt(`🔒 Admin Panel\n\nPassword (${attempts + 1}/${maxAttempts}):`);
-                
-                if (entered === null) {
-                    alert("⚠️ Access Cancelled");
-                    window.location.href = '/';
-                    break;
-                }
-                
-                if (entered === ADMIN_PASSWORD) {
-                    sessionStorage.setItem('adminAuth', ADMIN_PASSWORD);
-                    alert("✅ Login Successful!");
-                    break;
-                } else {
-                    attempts++;
-                    if (attempts >= maxAttempts) {
-                        alert("❌ Access Denied!");
-                        window.location.href = '/';
-                    } else {
-                        alert(`❌ Wrong! ${maxAttempts - attempts} left.`);
-                    }
-                }
-            }
-        }
-        
-        function adminLogout() {
-            if (confirm("🚪 Logout?")) {
-                sessionStorage.clear();
-                localStorage.clear();
-                alert("✅ Logged out!");
-                window.location.href = '/';
-            }
-        }
-    </script>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="/style.css">
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
+        :root {
+            --admin-blue: #2563eb;
+            --admin-blue-dark: #1e40af;
+        }
+        
         body {
             background: var(--bg-main);
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-main);
         }
         
+        /* Login Screen */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .login-box {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .login-box h1 {
+            margin-bottom: 10px;
+            color: var(--admin-blue);
+        }
+        
+        .login-box p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+        
+        .login-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .login-input:focus {
+            outline: none;
+            border-color: var(--admin-blue);
+        }
+        
+        /* Admin Header */
         .admin-header {
-            background: linear-gradient(135deg, #2563eb, #1e40af);
+            background: linear-gradient(135deg, var(--admin-blue), var(--admin-blue-dark));
             color: white;
             padding: 20px 30px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .admin-header h1 {
@@ -77,14 +93,11 @@
         }
         
         .logout-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
             background: rgba(255,255,255,0.2);
             color: white;
             border: 1px solid rgba(255,255,255,0.3);
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 10px 20px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             transition: 0.3s;
@@ -100,12 +113,19 @@
             padding: 30px 20px;
         }
         
+        /* Alert */
         .alert {
             padding: 15px 20px;
             border-radius: 8px;
             margin-bottom: 20px;
             font-weight: 500;
             display: none;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .alert.show { display: block; }
@@ -128,6 +148,13 @@
             border-left: 4px solid #f59e0b;
         }
         
+        .alert-info {
+            background: #dbeafe;
+            color: #1e40af;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        /* Tabs */
         .tabs {
             display: flex;
             gap: 10px;
@@ -149,12 +176,12 @@
         }
         
         .tab-btn:hover {
-            color: var(--blue);
+            color: var(--admin-blue);
         }
         
         .tab-btn.active {
-            color: var(--blue);
-            border-bottom-color: var(--blue);
+            color: var(--admin-blue);
+            border-bottom-color: var(--admin-blue);
         }
         
         .tab-content {
@@ -165,6 +192,7 @@
             display: block;
         }
         
+        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -178,12 +206,18 @@
             border-radius: 12px;
             border: 1px solid var(--border);
             text-align: center;
+            transition: 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         .stat-number {
             font-size: 36px;
             font-weight: 700;
-            color: var(--blue);
+            color: var(--admin-blue);
             margin-bottom: 5px;
         }
         
@@ -192,6 +226,7 @@
             font-size: 14px;
         }
         
+        /* Card */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -200,6 +235,12 @@
             margin-bottom: 20px;
         }
         
+        .card h2 {
+            margin-bottom: 20px;
+            color: var(--admin-blue);
+        }
+        
+        /* Form */
         .form-group {
             margin-bottom: 20px;
         }
@@ -215,18 +256,33 @@
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border);
+            padding: 12px 15px;
+            border: 2px solid var(--border);
             border-radius: 8px;
             font-size: 14px;
-            background: var(--bg-input);
+            background: var(--bg-main);
             color: var(--text-main);
             font-family: inherit;
+            transition: 0.2s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--admin-blue);
         }
         
         .form-group textarea {
             min-height: 100px;
             resize: vertical;
+        }
+        
+        .form-group small {
+            display: block;
+            margin-top: 5px;
+            color: var(--text-muted);
+            font-size: 12px;
         }
         
         .form-row {
@@ -235,6 +291,7 @@
             gap: 20px;
         }
         
+        /* Buttons */
         .btn {
             padding: 12px 24px;
             border: none;
@@ -245,19 +302,24 @@
             font-size: 14px;
         }
         
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
         .btn-primary {
-            background: var(--blue);
+            background: var(--admin-blue);
             color: white;
         }
         
         .btn-primary:hover {
-            background: var(--blue-dark);
+            background: var(--admin-blue-dark);
         }
         
         .btn-secondary {
             background: var(--bg-card);
             color: var(--text-main);
-            border: 1px solid var(--border);
+            border: 2px solid var(--border);
         }
         
         .btn-danger {
@@ -265,6 +327,16 @@
             color: white;
         }
         
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+        
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+        
+        /* Posts List */
         .posts-list {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -279,6 +351,11 @@
             justify-content: space-between;
             align-items: center;
             gap: 20px;
+            transition: 0.2s;
+        }
+        
+        .post-item:hover {
+            background: var(--bg-main);
         }
         
         .post-item:last-child {
@@ -302,6 +379,7 @@
             flex-shrink: 0;
         }
         
+        /* Badge */
         .badge {
             display: inline-block;
             padding: 4px 10px;
@@ -312,13 +390,15 @@
             margin-right: 8px;
         }
         
-        .badge-featured { background: #fbbf24; color: #78350f; }
-        .badge-tutorial { background: #dbeafe; color: #1e40af; }
-        .badge-tips { background: #d1fae5; color: #065f46; }
-        .badge-guide { background: #e9d5ff; color: #6b21a8; }
-        .badge-update { background: #cffafe; color: #0e7490; }
-        .badge-seo { background: #fed7aa; color: #92400e; }
+        .badge-Business { background: #dbeafe; color: #1e40af; }
+        .badge-Career { background: #e9d5ff; color: #6b21a8; }
+        .badge-SEO { background: #fed7aa; color: #92400e; }
+        .badge-Writing { background: #cffafe; color: #0e7490; }
+        .badge-Technology { background: #fee2e2; color: #991b1b; }
+        .badge-Education { background: #d1fae5; color: #065f46; }
+        .badge-Web-Development { background: #fae8ff; color: #86198f; }
         
+        /* JSON Preview */
         .json-preview {
             background: #1e293b;
             color: #e2e8f0;
@@ -333,18 +413,21 @@
             overflow-y: auto;
         }
         
+        /* Info Box */
         .info-box {
             background: #dbeafe;
             border-left: 4px solid #3b82f6;
             padding: 15px 20px;
             border-radius: 8px;
             margin-bottom: 20px;
+            line-height: 1.6;
         }
         
         .info-box strong {
             color: #1e40af;
         }
         
+        /* Responsive */
         @media (max-width: 768px) {
             .form-row {
                 grid-template-columns: 1fr;
@@ -355,11 +438,9 @@
                 align-items: flex-start;
             }
             
-            .logout-btn {
-                position: static;
-                margin-top: 15px;
-                display: block;
-                width: 100%;
+            .admin-header {
+                flex-direction: column;
+                gap: 15px;
             }
             
             .stats-grid {
@@ -369,11 +450,33 @@
     </style>
 </head>
 <body>
+
+<!-- LOGIN OVERLAY -->
+<div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+        <h1>🔐 Admin Login</h1>
+        <p>Enter password to access blog admin panel</p>
+        
+        <input type="password" class="login-input" id="loginPassword" placeholder="Enter password" autofocus>
+        
+        <button class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" onclick="login()">Login</button>
+        
+        <div style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-muted);">
+            Default: <code>toolnest2026</code>
+        </div>
+    </div>
+</div>
+
+<!-- ADMIN DASHBOARD -->
+<div style="display: none;" id="adminDashboard">
+    
     <!-- Header -->
     <div class="admin-header">
-        <h1>📝 Blog Admin Panel (Fixed Version)</h1>
-        <p>Create and manage blog posts • Syncs with blog-data.json</p>
-        <button class="logout-btn" onclick="adminLogout()">🚪 Logout</button>
+        <div>
+            <h1>📝 Blog Admin Panel</h1>
+            <p>Manage blog posts • Export to blog-data.json</p>
+        </div>
+        <button class="logout-btn" onclick="logout()">🚪 Logout</button>
     </div>
     
     <!-- Container -->
@@ -382,21 +485,16 @@
         <!-- Alert -->
         <div id="alertBox" class="alert"></div>
         
-        <!-- Important Notice -->
-        <div class="alert alert-warning show">
-            <strong>⚠️ IMPORTANT:</strong> This admin panel uses localStorage for demo purposes. After creating posts, download the JSON file and manually upload to <code>/blog/blog-data.json</code> on your server. Posts also need HTML files created in <code>/blog/</code> folder.
-        </div>
-        
         <!-- Tabs -->
         <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('dashboard')">📊 Dashboard</button>
             <button class="tab-btn" onclick="switchTab('create')">➕ Create Post</button>
             <button class="tab-btn" onclick="switchTab('manage')">📋 Manage Posts</button>
-            <button class="tab-btn" onclick="switchTab('json')">💾 Export JSON</button>
-            <a href="/blog.html" target="_blank" class="tab-btn" style="margin-left: auto; text-decoration: none;">👁️ View Blog</a>
+            <button class="tab-btn" onclick="switchTab('export')">💾 Export JSON</button>
+            <a href="/blog.html" target="_blank" class="tab-btn" style="text-decoration: none; margin-left: auto;">👁️ View Blog</a>
         </div>
         
-        <!-- Dashboard Tab -->
+        <!-- DASHBOARD TAB -->
         <div id="dashboard" class="tab-content active">
             <div class="stats-grid">
                 <div class="stat-card">
@@ -408,43 +506,52 @@
                     <div class="stat-label">Featured</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number" id="tutorialCount">0</div>
-                    <div class="stat-label">Tutorials</div>
+                    <div class="stat-number" id="categoriesCount">0</div>
+                    <div class="stat-label">Categories</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number" id="lastUpdate">-</div>
+                    <div class="stat-number" id="lastUpdate" style="font-size: 18px;">-</div>
                     <div class="stat-label">Last Update</div>
                 </div>
             </div>
             
-            <h2>Recent Posts</h2>
-            <div class="posts-list" id="recentPosts"></div>
+            <div class="card">
+                <h2>Recent Posts</h2>
+                <div class="posts-list" id="recentPosts"></div>
+            </div>
         </div>
         
-        <!-- Create Post Tab -->
+        <!-- CREATE POST TAB -->
         <div id="create" class="tab-content">
             <div class="card">
                 <h2>Create New Blog Post</h2>
                 
                 <div class="info-box">
-                    <strong>ℹ️ Quick Guide:</strong> Fill all fields below. The slug is auto-generated from title. After creating, download JSON and upload to server. Don't forget to create the actual HTML file!
+                    <strong>📝 Quick Guide:</strong><br>
+                    1. Fill all fields below (slug auto-generates from title)<br>
+                    2. Click "Add Post" to save<br>
+                    3. Go to "Export JSON" tab<br>
+                    4. Download <code>blog-data.json</code><br>
+                    5. Upload to GitHub root directory<br>
+                    6. Create corresponding HTML file in <code>/blog/</code> folder
                 </div>
                 
-                <form id="createForm">
+                <form id="createForm" onsubmit="createPost(event)">
                     <div class="form-row">
                         <div class="form-group">
                             <label>Post Title *</label>
-                            <input type="text" id="title" required placeholder="e.g., How to Create GST Invoices Online">
+                            <input type="text" id="title" required placeholder="e.g., Complete Guide to PDF Tools">
                         </div>
                         <div class="form-group">
-                            <label>URL Slug * (auto-generated)</label>
-                            <input type="text" id="slug" required placeholder="gst-invoice-guide">
+                            <label>URL Slug *</label>
+                            <input type="text" id="slug" required placeholder="complete-guide-pdf-tools">
+                            <small>Auto-generated from title</small>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label>Excerpt (Short Description) *</label>
-                        <textarea id="excerpt" required placeholder="Brief 2-3 line summary of the post..."></textarea>
+                        <textarea id="excerpt" required placeholder="Brief 2-3 line summary (150-200 characters)"></textarea>
                     </div>
                     
                     <div class="form-row">
@@ -452,242 +559,319 @@
                             <label>Category *</label>
                             <select id="category" required>
                                 <option value="">Select category</option>
-                                <option value="tutorial">Tutorial</option>
-                                <option value="tips">Tips & Tricks</option>
-                                <option value="guide">Guide</option>
-                                <option value="update">Update</option>
-                                <option value="seo">SEO</option>
+                                <option value="Business">Business</option>
+                                <option value="Career">Career</option>
+                                <option value="SEO">SEO</option>
+                                <option value="Writing">Writing</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Education">Education</option>
+                                <option value="Web Development">Web Development</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Read Time</label>
-                            <input type="text" id="readTime" value="5 min" placeholder="e.g., 5 min">
+                            <input type="text" id="readTime" value="10 min" placeholder="e.g., 10 min">
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label>
+                        <label>Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="display: inline-flex; align-items: center; cursor: pointer;">
                             <input type="checkbox" id="featured" style="width: auto; margin-right: 8px;">
                             Mark as Featured Post
                         </label>
                     </div>
                     
                     <div style="display: flex; gap: 10px;">
-                        <button type="submit" class="btn btn-primary">✅ Add Post</button>
-                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('createForm').reset()">🔄 Reset</button>
+                        <button type="submit" class="btn btn-success">✅ Add Post</button>
+                        <button type="button" class="btn btn-secondary" onclick="resetForm()">🔄 Reset</button>
                     </div>
                 </form>
             </div>
         </div>
         
-        <!-- Manage Posts Tab -->
+        <!-- MANAGE POSTS TAB -->
         <div id="manage" class="tab-content">
-            <h2>All Posts (<span id="postsCount">0</span>)</h2>
-            <div class="posts-list" id="allPosts"></div>
+            <div class="card">
+                <h2>All Posts (<span id="postsCount">0</span>)</h2>
+                <div class="posts-list" id="allPosts"></div>
+            </div>
         </div>
         
-        <!-- Export JSON Tab -->
-        <div id="json" class="tab-content">
+        <!-- EXPORT JSON TAB -->
+        <div id="export" class="tab-content">
             <div class="card">
                 <h2>💾 Export to blog-data.json</h2>
                 
-                <div class="info-box">
-                    <strong>📝 Instructions:</strong><br>
-                    1. Copy the JSON below or download the file<br>
-                    2. Upload to your server at <code>/blog/blog-data.json</code><br>
-                    3. Create corresponding HTML files for each post in <code>/blog/</code> folder
+                <div class="alert alert-info show">
+                    <strong>📝 IMPORTANT - Deployment Steps:</strong><br><br>
+                    <strong>1. Download JSON:</strong> Click "Download JSON" button below<br>
+                    <strong>2. Upload to GitHub:</strong> Go to your repository root<br>
+                    <strong>3. Location:</strong> Upload as <code>/blog-data.json</code> (in root, NOT in /blog folder)<br>
+                    <strong>4. Wait:</strong> 2-3 minutes for GitHub Pages to deploy<br>
+                    <strong>5. Verify:</strong> Visit <code>https://toolnest.bhaihelp.in/blog-data.json</code><br>
+                    <strong>6. Test:</strong> Check blog page for new posts
                 </div>
                 
                 <div class="json-preview" id="jsonOutput"></div>
                 
-                <div style="display: flex; gap: 10px; margin-top: 20px;">
-                    <button class="btn btn-primary" onclick="downloadJSON()">💾 Download JSON File</button>
+                <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+                    <button class="btn btn-primary" onclick="downloadJSON()">📥 Download JSON File</button>
                     <button class="btn btn-secondary" onclick="copyJSON()">📋 Copy to Clipboard</button>
+                    <button class="btn btn-success" onclick="updateJSON()">🔄 Refresh Preview</button>
+                </div>
+                
+                <div style="margin-top: 20px; padding: 15px; background: var(--bg-main); border-radius: 8px; border: 1px solid var(--border);">
+                    <strong>Git Commands:</strong>
+                    <pre style="background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 6px; margin-top: 10px; overflow-x: auto;">cd toolnest
+git add blog-data.json
+git commit -m "Update blog posts"
+git push origin main</pre>
                 </div>
             </div>
         </div>
         
     </div>
+</div>
+
+<script>
+// Configuration
+const ADMIN_PASSWORD = 'toolnest2026'; // ⚠️ CHANGE THIS!
+const STORAGE_KEY = 'toolnest_blogs';
+const AUTH_KEY = 'toolnest_auth';
+
+let blogs = [];
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    // Check auth
+    if (sessionStorage.getItem(AUTH_KEY) === 'true') {
+        showDashboard();
+    }
     
-    <script>
-        let posts = [];
-        
-        // Load posts from localStorage
-        function loadPosts() {
-            const saved = localStorage.getItem('toolnest_blog_posts');
-            if (saved) {
-                try {
-                    posts = JSON.parse(saved);
-                } catch(e) {
-                    console.error('Error loading posts:', e);
-                    posts = [];
-                }
-            }
-            updateDashboard();
-            updateAllPosts();
-            updateJSON();
+    // Set today's date
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').value = today;
+    
+    // Auto-generate slug
+    document.getElementById('title').addEventListener('input', function() {
+        const slug = this.value
+            .toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-')
+            .trim();
+        document.getElementById('slug').value = slug;
+    });
+    
+    // Enter key for login
+    document.getElementById('loginPassword').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') login();
+    });
+    
+    loadBlogs();
+});
+
+// Login
+function login() {
+    const password = document.getElementById('loginPassword').value;
+    
+    if (password === ADMIN_PASSWORD) {
+        sessionStorage.setItem(AUTH_KEY, 'true');
+        showDashboard();
+    } else {
+        showAlert('❌ Incorrect password!', 'error');
+    }
+}
+
+// Logout
+function logout() {
+    if (confirm('Are you sure you want to logout?')) {
+        sessionStorage.removeItem(AUTH_KEY);
+        location.reload();
+    }
+}
+
+// Show Dashboard
+function showDashboard() {
+    document.getElementById('loginOverlay').style.display = 'none';
+    document.getElementById('adminDashboard').style.display = 'block';
+    updateStats();
+}
+
+// Load Blogs
+function loadBlogs() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+        try {
+            blogs = JSON.parse(stored);
+        } catch(e) {
+            console.error('Error loading blogs:', e);
+            blogs = [];
         }
-        
-        // Save posts to localStorage
-        function savePosts() {
-            localStorage.setItem('toolnest_blog_posts', JSON.stringify(posts));
-            updateDashboard();
-            updateAllPosts();
-            updateJSON();
-        }
-        
-        // Switch tabs
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            
-            document.getElementById(tab).classList.add('active');
-            event.target.classList.add('active');
-        }
-        
-        // Show alert
-        function showAlert(message, type = 'success') {
-            const alertBox = document.getElementById('alertBox');
-            alertBox.className = `alert alert-${type} show`;
-            alertBox.textContent = message;
-            
-            setTimeout(() => {
-                alertBox.classList.remove('show');
-            }, 5000);
-        }
-        
-        // Auto-generate slug
-        document.getElementById('title').addEventListener('input', function() {
-            const slug = this.value
-                .toLowerCase()
-                .replace(/[^a-z0-9\s-]/g, '')
-                .replace(/\s+/g, '-')
-                .replace(/-+/g, '-')
-                .trim();
-            document.getElementById('slug').value = slug;
-        });
-        
-        // Form submission
-        document.getElementById('createForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const newPost = {
-                title: document.getElementById('title').value.trim(),
-                slug: document.getElementById('slug').value.trim(),
-                excerpt: document.getElementById('excerpt').value.trim(),
-                category: document.getElementById('category').value,
-                readTime: document.getElementById('readTime').value.trim(),
-                date: new Date().toISOString().split('T')[0],
-                featured: document.getElementById('featured').checked
-            };
-            
-            // Check for duplicate slug
-            if (posts.some(p => p.slug === newPost.slug)) {
-                showAlert('⚠️ A post with this slug already exists!', 'error');
-                return;
-            }
-            
-            posts.unshift(newPost);
-            savePosts();
-            showAlert('✅ Post added successfully! Don\'t forget to download JSON and create HTML file.');
-            this.reset();
-            
-            // Switch to JSON tab
-            switchTab('json');
-            document.querySelector('[onclick="switchTab(\'json\')"]').classList.add('active');
-        });
-        
-        // Update dashboard
-        function updateDashboard() {
-            document.getElementById('totalPosts').textContent = posts.length;
-            document.getElementById('featuredCount').textContent = posts.filter(p => p.featured).length;
-            document.getElementById('tutorialCount').textContent = posts.filter(p => p.category === 'tutorial').length;
-            document.getElementById('lastUpdate').textContent = posts.length > 0 
-                ? new Date(posts[0].date).toLocaleDateString() 
-                : '-';
-            
-            const recentContainer = document.getElementById('recentPosts');
-            recentContainer.innerHTML = posts.slice(0, 5).map(post => `
-                <div class="post-item">
-                    <div class="post-info">
-                        <h3>${post.featured ? '⭐ ' : ''}${post.title}</h3>
-                        <div class="post-meta">
-                            <span class="badge badge-${post.category}">${post.category}</span>
-                            📅 ${new Date(post.date).toLocaleDateString()} • ⏱️ ${post.readTime}
-                        </div>
-                    </div>
+    }
+    updateStats();
+    updateAllPosts();
+    updateJSON();
+}
+
+// Save Blogs
+function saveBlogs() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(blogs));
+    updateStats();
+    updateAllPosts();
+    updateJSON();
+}
+
+// Switch Tab
+function switchTab(tab) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    
+    document.getElementById(tab).classList.add('active');
+    event.target.classList.add('active');
+}
+
+// Show Alert
+function showAlert(message, type = 'success') {
+    const alertBox = document.getElementById('alertBox');
+    alertBox.className = `alert alert-${type} show`;
+    alertBox.textContent = message;
+    
+    setTimeout(() => {
+        alertBox.classList.remove('show');
+    }, 5000);
+}
+
+// Create Post
+function createPost(e) {
+    e.preventDefault();
+    
+    const newBlog = {
+        title: document.getElementById('title').value.trim(),
+        slug: document.getElementById('slug').value.trim(),
+        excerpt: document.getElementById('excerpt').value.trim(),
+        date: document.getElementById('date').value,
+        category: document.getElementById('category').value,
+        readTime: document.getElementById('readTime').value.trim(),
+        featured: document.getElementById('featured').checked
+    };
+    
+    // Check duplicate slug
+    if (blogs.some(b => b.slug === newBlog.slug)) {
+        showAlert('⚠️ A post with this slug already exists!', 'error');
+        return;
+    }
+    
+    blogs.unshift(newBlog);
+    saveBlogs();
+    showAlert('✅ Post added! Now go to Export tab and download JSON.');
+    resetForm();
+    
+    // Auto-switch to export tab after 2 seconds
+    setTimeout(() => {
+        switchTab('export');
+        document.querySelector('[onclick="switchTab(\'export\')"]').classList.add('active');
+    }, 2000);
+}
+
+// Reset Form
+function resetForm() {
+    document.getElementById('createForm').reset();
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').value = today;
+}
+
+// Update Stats
+function updateStats() {
+    document.getElementById('totalPosts').textContent = blogs.length;
+    document.getElementById('featuredCount').textContent = blogs.filter(b => b.featured).length;
+    
+    const categories = [...new Set(blogs.map(b => b.category))];
+    document.getElementById('categoriesCount').textContent = categories.length;
+    
+    const lastDate = blogs.length > 0 ? new Date(blogs[0].date).toLocaleDateString() : '-';
+    document.getElementById('lastUpdate').textContent = lastDate;
+    
+    // Recent posts
+    const recentContainer = document.getElementById('recentPosts');
+    recentContainer.innerHTML = blogs.slice(0, 5).map(blog => `
+        <div class="post-item">
+            <div class="post-info">
+                <h3>${blog.featured ? '⭐ ' : ''}${blog.title}</h3>
+                <div class="post-meta">
+                    <span class="badge badge-${blog.category.replace(' ', '-')}">${blog.category}</span>
+                    📅 ${new Date(blog.date).toLocaleDateString()} • ⏱️ ${blog.readTime}
                 </div>
-            `).join('') || '<div class="post-item"><p style="color: var(--text-muted);">No posts yet. Create your first post!</p></div>';
-        }
-        
-        // Update all posts
-        function updateAllPosts() {
-            document.getElementById('postsCount').textContent = posts.length;
-            
-            const container = document.getElementById('allPosts');
-            container.innerHTML = posts.map((post, index) => `
-                <div class="post-item">
-                    <div class="post-info">
-                        <h3>${post.featured ? '⭐ ' : ''}${post.title}</h3>
-                        <div class="post-meta">
-                            <span class="badge badge-${post.category}">${post.category}</span>
-                            📅 ${post.date} • ⏱️ ${post.readTime} • 🔗 /blog/${post.slug}.html
-                        </div>
-                    </div>
-                    <div class="post-actions">
-                        <button class="btn btn-danger" onclick="deletePost(${index})">🗑️ Delete</button>
-                    </div>
+            </div>
+        </div>
+    `).join('') || '<div class="post-item"><p style="color: var(--text-muted); text-align: center;">No posts yet. Create your first post!</p></div>';
+}
+
+// Update All Posts
+function updateAllPosts() {
+    document.getElementById('postsCount').textContent = blogs.length;
+    
+    const container = document.getElementById('allPosts');
+    container.innerHTML = blogs.map((blog, index) => `
+        <div class="post-item">
+            <div class="post-info">
+                <h3>${blog.featured ? '⭐ ' : ''}${blog.title}</h3>
+                <div class="post-meta">
+                    <span class="badge badge-${blog.category.replace(' ', '-')}">${blog.category}</span>
+                    📅 ${blog.date} • ⏱️ ${blog.readTime} • 🔗 /blog/${blog.slug}.html
                 </div>
-            `).join('') || '<div class="post-item"><p style="color: var(--text-muted);">No posts yet.</p></div>';
-        }
-        
-        // Update JSON output
-        function updateJSON() {
-            const output = {
-                posts: posts,
-                lastUpdated: new Date().toISOString()
-            };
-            document.getElementById('jsonOutput').textContent = JSON.stringify(output, null, 2);
-        }
-        
-        // Delete post
-        function deletePost(index) {
-            if (confirm('Delete this post?')) {
-                posts.splice(index, 1);
-                savePosts();
-                showAlert('🗑️ Post deleted successfully!');
-            }
-        }
-        
-        // Download JSON
-        function downloadJSON() {
-            const output = {
-                posts: posts,
-                lastUpdated: new Date().toISOString()
-            };
-            const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'blog-data.json';
-            a.click();
-            URL.revokeObjectURL(url);
-            showAlert('✅ JSON file downloaded! Upload to /blog/blog-data.json');
-        }
-        
-        // Copy JSON
-        function copyJSON() {
-            const text = document.getElementById('jsonOutput').textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                showAlert('✅ JSON copied to clipboard!');
-            });
-        }
-        
-        // Initialize
-        loadPosts();
-    </script>
+            </div>
+            <div class="post-actions">
+                <button class="btn btn-danger" onclick="deletePost(${index})">🗑️ Delete</button>
+            </div>
+        </div>
+    `).join('') || '<div class="post-item"><p style="color: var(--text-muted); text-align: center;">No posts yet.</p></div>';
+}
+
+// Update JSON
+function updateJSON() {
+    // ✅ FIXED: Export as ARRAY (not object with "posts" property)
+    const json = JSON.stringify(blogs, null, 2);
+    document.getElementById('jsonOutput').textContent = json;
+}
+
+// Delete Post
+function deletePost(index) {
+    if (confirm(`Delete "${blogs[index].title}"?`)) {
+        blogs.splice(index, 1);
+        saveBlogs();
+        showAlert('🗑️ Post deleted!');
+    }
+}
+
+// Download JSON
+function downloadJSON() {
+    // ✅ FIXED: Export as ARRAY (correct format)
+    const json = JSON.stringify(blogs, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'blog-data.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    
+    showAlert('✅ JSON downloaded! Upload to GitHub root as /blog-data.json');
+}
+
+// Copy JSON
+function copyJSON() {
+    const text = document.getElementById('jsonOutput').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        showAlert('✅ JSON copied to clipboard!');
+    });
+}
+</script>
+
 </body>
 </html>
-
-
-
