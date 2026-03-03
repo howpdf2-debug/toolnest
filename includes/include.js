@@ -10,7 +10,8 @@
         .then(data => {
             document.getElementById('header').innerHTML = data;
             console.log('✅ Header loaded');
-            initializeMobileMenu();
+            // Initialize mobile menu after header is loaded
+            setTimeout(initializeMobileMenu, 100);
         })
         .catch(err => console.error('❌ Header load error:', err));
     
@@ -47,6 +48,7 @@
             if (mobileOverlay) mobileOverlay.classList.toggle('active');
             mobileToggle.setAttribute('aria-expanded', isActive);
             document.body.style.overflow = isActive ? 'hidden' : '';
+            console.log('📱 Mobile menu:', isActive ? 'OPENED' : 'CLOSED');
         });
         
         // Close menu when clicking overlay
@@ -57,6 +59,7 @@
                 this.classList.remove('active');
                 mobileToggle.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
+                console.log('📱 Mobile menu closed (overlay click)');
             });
         }
         
@@ -70,6 +73,7 @@
                     if (mobileOverlay) mobileOverlay.classList.remove('active');
                     mobileToggle.setAttribute('aria-expanded', 'false');
                     document.body.style.overflow = '';
+                    console.log('📱 Mobile menu closed (nav link click)');
                 }
             });
         });
@@ -81,6 +85,7 @@
                 e.preventDefault();
                 const isExpanded = dropdownContent.classList.toggle('show');
                 this.setAttribute('aria-expanded', isExpanded);
+                console.log('🔽 Dropdown:', isExpanded ? 'OPENED' : 'CLOSED');
             });
             
             const dropdownLinks = dropdownContent.querySelectorAll('a');
@@ -88,6 +93,8 @@
                 link.addEventListener('click', function(e) {
                     dropdownContent.classList.remove('show');
                     dropdownBtn.setAttribute('aria-expanded', 'false');
+                    
+                    // Close mobile menu
                     if (window.innerWidth <= 768) {
                         setTimeout(function() {
                             navRight.classList.remove('active');
@@ -140,7 +147,7 @@
             }
         });
         
-        console.log('✅ Mobile menu initialized');
+        console.log('✅ Mobile menu initialized successfully');
     }
     
     // Script loader helper
@@ -149,8 +156,14 @@
             const script = document.createElement('script');
             script.src = src;
             script.async = true;
-            script.onload = resolve;
-            script.onerror = reject;
+            script.onload = () => {
+                console.log('✅ Loaded:', src);
+                resolve();
+            };
+            script.onerror = () => {
+                console.warn('⚠️ Failed to load:', src);
+                resolve(); // Still resolve to continue loading other scripts
+            };
             document.head.appendChild(script);
         });
     }
@@ -166,10 +179,10 @@
         loadScript('/includes/cookie-consent.js'),
         loadScript('/includes/back-to-top.js')
     ]).then(() => {
-        console.log('✅ All scripts loaded successfully');
+        console.log('✅ All scripts loaded');
         console.log('🎉 ToolNest initialization complete');
     }).catch(err => {
-        console.warn('⚠️ Some scripts failed to load:', err);
+        console.warn('⚠️ Some scripts failed:', err);
     });
     
 })();
