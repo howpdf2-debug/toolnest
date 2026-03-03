@@ -26,17 +26,29 @@
         🛠️ Tools <span class="arrow">▾</span>
       </button>
       <div class="dropdown-content" id="toolsDropdown" role="menu">
-        <a href="/tools/invoice-generator.html" role="menuitem">🧾 Invoice Generator</a>
-        <a href="/tools/merge-pdf.html" role="menuitem">📄 Merge PDF</a>
-        <a href="/tools/image-compress.html" role="menuitem">🖼️ Image Compressor</a>
-        <a href="/tools/pdf-to-jpg.html" role="menuitem">🔄 PDF to JPG</a>
-        <a href="/tools/youtube-downloader.html" role="menuitem">📺 YouTube Downloader</a>
-        <a href="/tools/seo-generator.html" role="menuitem">🔍 SEO Generator</a>
-        <a href="/tools/word-counter.html" role="menuitem">📝 Word Counter</a>
-        <a href="/tools/resume-builder.html" role="menuitem">💼 Resume Builder</a>
-        <a href="/tools/json-formatter.html" role="menuitem">💼 json-formatter</a>
-        <a href="/tools/password-generator.html" role="menuitem">💼 password-generator</a>
-        <a href="/tools/qr-code-generator.html" role="menuitem">💼 qr-code-generator</a>
+        <!-- Document Tools -->
+        <div class="dropdown-section-header">📄 Document Tools</div>
+        <a href="/tools/merge-pdf.html" role="menuitem">Merge PDF</a>
+        <a href="/tools/pdf-to-jpg.html" role="menuitem">PDF to JPG</a>
+        <a href="/tools/jpg-to-pdf.html" role="menuitem">JPG to PDF</a>
+        
+        <!-- Media Tools -->
+        <div class="dropdown-section-header">🖼️ Media Tools</div>
+        <a href="/tools/image-compress.html" role="menuitem">Image Compressor</a>
+        <a href="/tools/youtube-downloader.html" role="menuitem">YouTube Downloader</a>
+        
+        <!-- Productivity Tools -->
+        <div class="dropdown-section-header">⚡ Productivity</div>
+        <a href="/tools/qr-code-generator.html" role="menuitem">QR Code Generator</a>
+        <a href="/tools/password-generator.html" role="menuitem">Password Generator</a>
+        <a href="/tools/word-counter.html" role="menuitem">Word Counter</a>
+        <a href="/tools/json-formatter.html" role="menuitem">JSON Formatter</a>
+        <a href="/tools/base64-encoder.html" role="menuitem">Base64 Encoder</a>
+        
+        <!-- Business Tools -->
+        <div class="dropdown-section-header">💼 Business</div>
+        <a href="/tools/invoice-generator.html" role="menuitem">Invoice Generator</a>
+        <a href="/tools/seo-generator.html" role="menuitem">SEO Generator</a>
       </div>
     </div>
     
@@ -49,9 +61,24 @@
 <div class="mobile-overlay" id="mobileOverlay"></div>
 
 <style>
-/* ============ MOBILE MENU STYLES ============ */
+/* Dropdown Section Headers */
+.dropdown-section-header {
+  padding: 10px 16px 6px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--blue);
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
 
-/* Mobile Menu Toggle Button */
+.dropdown-section-header:first-child {
+  border-top: none;
+  margin-top: 0;
+}
+
+/* Mobile Menu Styles */
 .mobile-menu-toggle {
   display: none;
   flex-direction: column;
@@ -68,7 +95,7 @@
 .hamburger {
   width: 28px;
   height: 3px;
-  background: var(--text-main);
+  background: #fff;
   border-radius: 10px;
   transition: all 0.3s ease;
   transform-origin: 1px;
@@ -188,18 +215,22 @@
   }
   
   .nav-right .dropdown-content.show {
-    max-height: 500px;
+    max-height: 600px;
     border-bottom: 1px solid var(--border);
   }
   
   .nav-right .dropdown-content a {
-    padding: 14px 25px 14px 45px;
+    padding: 12px 25px 12px 45px;
     border-bottom: 1px solid var(--border);
-    font-size: 15px;
+    font-size: 14px;
   }
   
   .nav-right .dropdown-content a:last-child {
     border-bottom: none;
+  }
+  
+  .nav-right .dropdown-section-header {
+    padding: 12px 25px 6px 45px;
   }
   
   .nav-right .dark-toggle-btn {
@@ -269,157 +300,3 @@
   }
 }
 </style>
-
-<script>
-(function() {
-  'use strict';
-  
-  function initMobileMenu() {
-    const mobileToggle = document.getElementById('mobileMenuToggle');
-    const navRight = document.getElementById('navRight');
-    const mobileOverlay = document.getElementById('mobileOverlay');
-    const dropdownBtn = document.getElementById('toolsDropdownBtn');
-    const dropdownContent = document.getElementById('toolsDropdown');
-    const darkToggle = document.getElementById('darkToggle');
-    
-    if (!mobileToggle || !navRight) {
-      console.warn('Mobile menu elements not found');
-      return;
-    }
-    
-    // Toggle mobile menu
-    mobileToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      const isActive = navRight.classList.toggle('active');
-      mobileToggle.classList.toggle('active');
-      if (mobileOverlay) {
-        mobileOverlay.classList.toggle('active');
-      }
-      
-      mobileToggle.setAttribute('aria-expanded', isActive);
-      
-      if (isActive) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-    });
-    
-    // Close menu when clicking overlay
-    if (mobileOverlay) {
-      mobileOverlay.addEventListener('click', function() {
-        navRight.classList.remove('active');
-        mobileToggle.classList.remove('active');
-        this.classList.remove('active');
-        mobileToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
-    }
-    
-    // Close menu when clicking nav links
-    const navLinks = navRight.querySelectorAll('.nav-link');
-    navLinks.forEach(function(link) {
-      link.addEventListener('click', function() {
-        if (window.innerWidth <= 768) {
-          navRight.classList.remove('active');
-          mobileToggle.classList.remove('active');
-          if (mobileOverlay) {
-            mobileOverlay.classList.remove('active');
-          }
-          mobileToggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        }
-      });
-    });
-    
-    // Dropdown functionality
-    if (dropdownBtn && dropdownContent) {
-      dropdownBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        const isExpanded = dropdownContent.classList.toggle('show');
-        this.setAttribute('aria-expanded', isExpanded);
-      });
-      
-      // Close dropdown when clicking links
-      const dropdownLinks = dropdownContent.querySelectorAll('a');
-      dropdownLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          dropdownContent.classList.remove('show');
-          dropdownBtn.setAttribute('aria-expanded', 'false');
-          
-          // Close mobile menu
-          if (window.innerWidth <= 768) {
-            setTimeout(function() {
-              navRight.classList.remove('active');
-              mobileToggle.classList.remove('active');
-              if (mobileOverlay) {
-                mobileOverlay.classList.remove('active');
-              }
-              mobileToggle.setAttribute('aria-expanded', 'false');
-              document.body.style.overflow = '';
-            }, 100);
-          }
-        });
-      });
-    }
-    
-    // Dark mode toggle
-    if (darkToggle) {
-      // Load saved preference
-      const savedMode = localStorage.getItem('darkMode');
-      if (savedMode === 'true') {
-        document.documentElement.classList.add('dark');
-        darkToggle.textContent = '☀️';
-      }
-      
-      darkToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        document.documentElement.classList.toggle('dark');
-        const isDark = document.documentElement.classList.contains('dark');
-        localStorage.setItem('darkMode', isDark);
-        darkToggle.textContent = isDark ? '☀️' : '🌙';
-        console.log('🌓 Dark mode:', isDark ? 'ON' : 'OFF');
-      });
-    }
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.dropdown')) {
-        if (dropdownContent) {
-          dropdownContent.classList.remove('show');
-        }
-        if (dropdownBtn) {
-          dropdownBtn.setAttribute('aria-expanded', 'false');
-        }
-      }
-    });
-    
-    // Close mobile menu on window resize
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 768) {
-        navRight.classList.remove('active');
-        mobileToggle.classList.remove('active');
-        if (mobileOverlay) {
-          mobileOverlay.classList.remove('active');
-        }
-        mobileToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-        if (dropdownContent) {
-          dropdownContent.classList.remove('show');
-        }
-      }
-    });
-    
-    console.log('✅ Mobile menu initialized');
-  }
-  
-  // Initialize when DOM ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileMenu);
-  } else {
-    initMobileMenu();
-  }
-})();
-</script>
