@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="google-site-verification" content="dbfc89456a05e36c" />
+    
+    <title>Base64 Encoder & Decoder - Free Online Tool | ToolNest</title>
+    <meta name="description" content="Encode and decode Base64 strings online. Free Base64 converter with file support, URL encoding, and instant results.">
+    <meta name="keywords" content="base64 encoder, base64 decoder, base64 converter, encode base64, decode base64 online">
+    <meta name="author" content="ToolNest">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://toolnest.bhaihelp.in/tools/base64-encoder.html">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="/style.css">
+    
+    <style>
+        .converter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .converter-panel {
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .converter-textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            background: #1e293b;
+            color: #e2e8f0;
+            resize: vertical;
+        }
+        
+        .action-btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .file-upload {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .file-upload:hover {
+            border-color: var(--blue);
+            background: rgba(37, 99, 235, 0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .converter-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="header"></div>
+
+<section class="mini-hero" style="background: linear-gradient(135deg, #a855f7, #7c3aed);">
+    <div class="hero-top">
+        <a href="/index.html" class="back-home">← Back to Home</a>
+    </div>
+    <h1>Base64 Encoder & Decoder</h1>
+    <p>Encode and decode Base64 strings instantly</p>
+</section>
+
+<section class="container">
+    
+    <div class="converter-grid">
+        
+        <!-- Encoder -->
+        <div class="converter-panel">
+            <div class="panel-header">
+                <h3 style="color: var(--blue); margin: 0;">🔒 Encode to Base64</h3>
+            </div>
+            
+            <textarea class="converter-textarea" id="encodeInput" placeholder="Enter text to encode..."></textarea>
+            
+            <div class="action-btns">
+                <button class="btn-primary" onclick="encodeText()">🔒 Encode</button>
+                <button class="btn-secondary" onclick="clearEncode()">🗑️ Clear</button>
+                <button class="btn-secondary" onclick="copyEncoded()">📋 Copy</button>
+                <button class="btn-secondary" onclick="downloadEncoded()">💾 Download</button>
+            </div>
+            
+            <div class="file-upload" onclick="document.getElementById('encodeFile').click()">
+                <input type="file" id="encodeFile" style="display: none;" onchange="encodeFile(this)">
+                <div style="font-size: 36px; margin-bottom: 10px;">📁</div>
+                <p style="font-weight: 600;">Upload file to encode</p>
+                <p style="color: var(--text-muted); font-size: 13px; margin-top: 5px;">Max 5MB</p>
+            </div>
+        </div>
+        
+        <!-- Decoder -->
+        <div class="converter-panel">
+            <div class="panel-header">
+                <h3 style="color: var(--blue); margin: 0;">🔓 Decode from Base64</h3>
+            </div>
+            
+            <textarea class="converter-textarea" id="decodeInput" placeholder="Enter Base64 string to decode..."></textarea>
+            
+            <div class="action-btns">
+                <button class="btn-primary" onclick="decodeText()">🔓 Decode</button>
+                <button class="btn-secondary" onclick="clearDecode()">🗑️ Clear</button>
+                <button class="btn-secondary" onclick="copyDecoded()">📋 Copy</button>
+                <button class="btn-secondary" onclick="downloadDecoded()">💾 Download</button>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: rgba(168, 85, 247, 0.1); border-radius: 8px;">
+                <p style="font-size: 13px; margin: 0; color: var(--text-main);">
+                    <strong>💡 Tip:</strong> Base64 is commonly used for encoding binary data, images, and files for transmission over text-based protocols.
+                </p>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Options -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h3 style="color: var(--blue); margin-bottom: 15px;">⚙️ Options</h3>
+        
+        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; cursor: pointer;">
+            <input type="checkbox" id="urlSafe" style="width: 20px; height: 20px;">
+            <span>URL-safe encoding (replace +/ with -_)</span>
+        </label>
+        
+        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+            <input type="checkbox" id="removePadding" style="width: 20px; height: 20px;">
+            <span>Remove padding (=)</span>
+        </label>
+    </div>
+    
+    <!-- How to Use -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h2 style="font-size: 22px; margin-bottom: 15px; color: var(--blue);">How to Use Base64 Encoder/Decoder</h2>
+        
+        <h3 style="font-size: 18px; margin-top: 20px; margin-bottom: 10px;">Encoding:</h3>
+        <ol style="line-height: 1.8; padding-left: 20px;">
+            <li>Enter text in the left panel or upload a file</li>
+            <li>Click "Encode" button</li>
+            <li>Base64 encoded result appears in the same panel</li>
+            <li>Copy or download the encoded text</li>
+        </ol>
+        
+        <h3 style="font-size: 18px; margin-top: 20px; margin-bottom: 10px;">Decoding:</h3>
+        <ol style="line-height: 1.8; padding-left: 20px;">
+            <li>Paste Base64 string in the right panel</li>
+            <li>Click "Decode" button</li>
+            <li>Original text appears in the same panel</li>
+            <li>Copy or download the decoded text</li>
+        </ol>
+    </div>
+    
+</section>
+
+<div id="footer"></div>
+
+<script src="/includes/include.js"></script>
+
+<script>
+// Encode text
+function encodeText() {
+    const input = document.getElementById('encodeInput').value;
+    if (!input) {
+        alert('❌ Please enter text to encode');
+        return;
+    }
+    
+    try {
+        let encoded = btoa(unescape(encodeURIComponent(input)));
+        
+        if (document.getElementById('urlSafe').checked) {
+            encoded = encoded.replace(/\+/g, '-').replace(/\//g, '_');
+        }
+        
+        if (document.getElementById('removePadding').checked) {
+            encoded = encoded.replace(/=/g, '');
+        }
+        
+        document.getElementById('encodeInput').value = encoded;
+        alert('✅ Text encoded successfully!');
+    } catch (error) {
+        alert('❌ Encoding failed: ' + error.message);
+    }
+}
+
+// Decode text
+function decodeText() {
+    let input = document.getElementById('decodeInput').value;
+    if (!input) {
+        alert('❌ Please enter Base64 string to decode');
+        return;
+    }
+    
+    try {
+        // Handle URL-safe Base64
+        input = input.replace(/-/g, '+').replace(/_/g, '/');
+        
+        // Add padding if removed
+        while (input.length % 4) {
+            input += '=';
+        }
+        
+        const decoded = decodeURIComponent(escape(atob(input)));
+        document.getElementById('decodeInput').value = decoded;
+        alert('✅ Text decoded successfully!');
+    } catch (error) {
+        alert('❌ Decoding failed: Invalid Base64 string');
+    }
+}
+
+// Encode file
+function encodeFile(input) {
+    const file = input.files[0];
+    if (!file) return;
+    
+    if (file.size > 5 * 1024 * 1024) {
+        alert('❌ File too large. Maximum 5MB allowed.');
+        return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const base64 = e.target.result.split(',')[1];
+        document.getElementById('encodeInput').value = base64;
+        alert('✅ File encoded to Base64!');
+    };
+    reader.readAsDataURL(file);
+}
+
+// Copy functions
+function copyEncoded() {
+    const text = document.getElementById('encodeInput').value;
+    if (!text) {
+        alert('❌ Nothing to copy');
+        return;
+    }
+    navigator.clipboard.writeText(text);
+    alert('✅ Copied to clipboard!');
+}
+
+function copyDecoded() {
+    const text = document.getElementById('decodeInput').value;
+    if (!text) {
+        alert('❌ Nothing to copy');
+        return;
+    }
+    navigator.clipboard.writeText(text);
+    alert('✅ Copied to clipboard!');
+}
+
+// Download functions
+function downloadEncoded() {
+    const text = document.getElementById('encodeInput').value;
+    if (!text) {
+        alert('❌ Nothing to download');
+        return;
+    }
+    downloadFile(text, 'encoded.txt');
+}
+
+function downloadDecoded() {
+    const text = document.getElementById('decodeInput').value;
+    if (!text) {
+        alert('❌ Nothing to download');
+        return;
+    }
+    downloadFile(text, 'decoded.txt');
+}
+
+function downloadFile(content, filename) {
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+// Clear functions
+function clearEncode() {
+    document.getElementById('encodeInput').value = '';
+}
+
+function clearDecode() {
+    document.getElementById('decodeInput').value = '';
+}
+</script>
+
+</body>
+</html>
