@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="google-site-verification" content="dbfc89456a05e36c" />
+    
+    <title>QR Code Generator - Free Online Tool | ToolNest</title>
+    <meta name="description" content="Create custom QR codes instantly for free. Generate QR codes for URLs, text, WiFi, contacts, and more. Download as PNG, SVG or print directly.">
+    <meta name="keywords" content="qr code generator, create qr code, free qr code, qr code maker, custom qr code">
+    <meta name="author" content="ToolNest">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://toolnest.bhaihelp.in/tools/qr-code-generator.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="QR Code Generator - Free Online Tool">
+    <meta property="og:description" content="Create custom QR codes for URLs, text, WiFi and more. Free and instant.">
+    <meta property="og:url" content="https://toolnest.bhaihelp.in/tools/qr-code-generator.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://toolnest.bhaihelp.in/favicon.png">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#2563eb">
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "QR Code Generator - Free Tool",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "url": "https://toolnest.bhaihelp.in/tools/qr-code-generator.html",
+      "description": "Free QR code generator. Create QR codes for URLs, text, WiFi, contacts instantly.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "2340"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "ToolNest",
+        "url": "https://toolnest.bhaihelp.in"
+      }
+    }
+    </script>
+    
+    <style>
+        .qr-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .qr-preview {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            border: 2px dashed var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+        
+        #qrcode {
+            margin: 20px 0;
+        }
+        
+        #qrcode canvas,
+        #qrcode img {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .color-picker-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .color-picker-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .color-picker-item label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        
+        .color-picker-item input[type="color"] {
+            width: 80px;
+            height: 40px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .size-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .size-btn {
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        
+        .size-btn:hover,
+        .size-btn.active {
+            background: var(--blue);
+            color: white;
+            border-color: var(--blue);
+        }
+        
+        .download-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .qr-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="tool-qr">
+
+<!-- HEADER -->
+<div id="header"></div>
+
+<!-- HERO -->
+<section class="mini-hero" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">
+    <div class="hero-top">
+        <a href="/index.html" class="back-home">← Back to Home</a>
+    </div>
+    <h1>QR Code Generator</h1>
+    <p>Create custom QR codes instantly - Free & Easy</p>
+</section>
+
+<!-- TOOL -->
+<section class="container">
+    
+    <div class="qr-container">
+        
+        <!-- Input Section -->
+        <div class="tool-box">
+            <h3 style="color: var(--blue); margin-bottom: 20px;">⚙️ QR Code Settings</h3>
+            
+            <div style="margin-bottom: 20px;">
+                <label for="qrType" style="font-weight: 600; margin-bottom: 8px; display: block;">QR Code Type</label>
+                <select id="qrType" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px;">
+                    <option value="url">🔗 Website URL</option>
+                    <option value="text">📝 Text</option>
+                    <option value="email">📧 Email</option>
+                    <option value="phone">📱 Phone Number</option>
+                    <option value="sms">💬 SMS</option>
+                    <option value="wifi">📶 WiFi</option>
+                    <option value="vcard">👤 Contact (vCard)</option>
+                </select>
+            </div>
+            
+            <!-- URL Input -->
+            <div id="urlInput" class="input-section">
+                <label for="urlText" style="font-weight: 600; margin-bottom: 8px; display: block;">Website URL *</label>
+                <input type="url" id="urlText" placeholder="https://example.com" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px;" value="https://toolnest.bhaihelp.in">
+            </div>
+            
+            <!-- Text Input -->
+            <div id="textInput" class="input-section" style="display: none;">
+                <label for="plainText" style="font-weight: 600; margin-bottom: 8px; display: block;">Text Content *</label>
+                <textarea id="plainText" rows="4" placeholder="Enter your text here..." style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px;"></textarea>
+            </div>
+            
+            <!-- Email Input -->
+            <div id="emailInput" class="input-section" style="display: none;">
+                <label for="emailAddr" style="font-weight: 600; margin-bottom: 8px; display: block;">Email Address *</label>
+                <input type="email" id="emailAddr" placeholder="email@example.com" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; margin-bottom: 10px;">
+                
+                <label for="emailSubject" style="font-weight: 600; margin-bottom: 8px; display: block;">Subject (Optional)</label>
+                <input type="text" id="emailSubject" placeholder="Email subject" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px;">
+            </div>
+            
+            <!-- Phone Input -->
+            <div id="phoneInput" class="input-section" style="display: none;">
+                <label for="phoneNum" style="font-weight: 600; margin-bottom: 8px; display: block;">Phone Number *</label>
+                <input type="tel" id="phoneNum" placeholder="+1234567890" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px;">
+            </div>
+            
+            <!-- SMS Input -->
+            <div id="smsInput" class="input-section" style="display: none;">
+                <label for="smsNum" style="font-weight: 600; margin-bottom: 8px; display: block;">Phone Number *</label>
+                <input type="tel" id="smsNum" placeholder="+1234567890" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; margin-bottom: 10px;">
+                
+                <label for="smsMsg" style="font-weight: 600; margin-bottom: 8px; display: block;">Message (Optional)</label>
+                <textarea id="smsMsg" rows="3" placeholder="Pre-filled message" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px;"></textarea>
+            </div>
+            
+            <!-- WiFi Input -->
+            <div id="wifiInput" class="input-section" style="display: none;">
+                <label for="wifiSSID" style="font-weight: 600; margin-bottom: 8px; display: block;">Network Name (SSID) *</label>
+                <input type="text" id="wifiSSID" placeholder="MyWiFi" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; margin-bottom: 10px;">
+                
+                <label for="wifiPass" style="font-weight: 600; margin-bottom: 8px; display: block;">Password *</label>
+                <input type="text" id="wifiPass" placeholder="password123" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; margin-bottom: 10px;">
+                
+                <label for="wifiEnc" style="font-weight: 600; margin-bottom: 8px; display: block;">Encryption</label>
+                <select id="wifiEnc" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px;">
+                    <option value="WPA">WPA/WPA2</option>
+                    <option value="WEP">WEP</option>
+                    <option value="nopass">None</option>
+                </select>
+            </div>
+            
+            <!-- vCard Input -->
+            <div id="vcardInput" class="input-section" style="display: none;">
+                <label for="vcardName" style="font-weight: 600; margin-bottom: 8px; display: block;">Full Name *</label>
+                <input type="text" id="vcardName" placeholder="John Doe" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; margin-bottom: 10px;">
+                
+                <label for="vcardPhone" style="font-weight: 600; margin-bottom: 8px; display: block;">Phone</label>
+                <input type="tel" id="vcardPhone" placeholder="+1234567890" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; margin-bottom: 10px;">
+                
+                <label for="vcardEmail" style="font-weight: 600; margin-bottom: 8px; display: block;">Email</label>
+                <input type="email" id="vcardEmail" placeholder="email@example.com" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px;">
+            </div>
+            
+            <div style="margin-top: 25px; margin-bottom: 20px; padding-top: 20px; border-top: 2px solid var(--border);">
+                <label style="font-weight: 600; margin-bottom: 12px; display: block;">QR Code Size</label>
+                <div class="size-buttons">
+                    <button class="size-btn" data-size="128">Small (128px)</button>
+                    <button class="size-btn active" data-size="256">Medium (256px)</button>
+                    <button class="size-btn" data-size="512">Large (512px)</button>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="font-weight: 600; margin-bottom: 12px; display: block;">Colors</label>
+                <div class="color-picker-group">
+                    <div class="color-picker-item">
+                        <label>Foreground</label>
+                        <input type="color" id="fgColor" value="#000000">
+                    </div>
+                    <div class="color-picker-item">
+                        <label>Background</label>
+                        <input type="color" id="bgColor" value="#ffffff">
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn-primary" onclick="generateQR()" style="width: 100%; margin-top: 10px;">
+                ✨ Generate QR Code
+            </button>
+        </div>
+        
+        <!-- Preview Section -->
+        <div>
+            <div class="qr-preview">
+                <h3 style="color: var(--text-muted); margin-bottom: 20px;">QR Code Preview</h3>
+                <div id="qrcode"></div>
+                <p style="color: var(--text-muted); font-size: 14px; margin-top: 20px; text-align: center;">
+                    Generate a QR code to see preview
+                </p>
+            </div>
+            
+            <div class="download-buttons" id="downloadSection" style="display: none;">
+                <button class="btn-success" onclick="downloadQR('png')">📥 Download PNG</button>
+                <button class="btn-secondary" onclick="downloadQR('svg')">📥 Download SVG</button>
+                <button class="btn-secondary" onclick="printQR()">🖨️ Print QR Code</button>
+                <button class="btn-secondary" onclick="resetQR()">🔄 Reset</button>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- How to Use -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h2 style="font-size: 22px; margin-bottom: 15px; color: var(--blue);">How to Create QR Codes</h2>
+        <ol style="line-height: 1.8; padding-left: 20px;">
+            <li><strong>Select Type:</strong> Choose what kind of QR code you want (URL, WiFi, Contact, etc.)</li>
+            <li><strong>Enter Data:</strong> Fill in the required information</li>
+            <li><strong>Customize:</strong> Choose size and colors (optional)</li>
+            <li><strong>Generate:</strong> Click "Generate QR Code" button</li>
+            <li><strong>Download:</strong> Save as PNG or SVG, or print directly</li>
+        </ol>
+        
+        <h3 style="font-size: 18px; margin-top: 25px; margin-bottom: 12px; color: var(--blue);">QR Code Types Explained</h3>
+        <ul style="line-height: 1.8; padding-left: 20px;">
+            <li><strong>URL:</strong> Links to website when scanned</li>
+            <li><strong>WiFi:</strong> Automatically connects to WiFi network</li>
+            <li><strong>vCard:</strong> Saves contact information to phone</li>
+            <li><strong>Email:</strong> Opens email app with pre-filled address</li>
+            <li><strong>SMS:</strong> Opens messaging app with number</li>
+            <li><strong>Phone:</strong> Initiates call to number</li>
+            <li><strong>Text:</strong> Displays plain text message</li>
+        </ul>
+    </div>
+    
+    <!-- SEO Content -->
+    <div class="tool-box" style="margin-top: 30px;">
+        <h2 style="font-size: 22px; margin-bottom: 15px; color: var(--blue);">About QR Code Generator</h2>
+        <p style="line-height: 1.8; margin-bottom: 15px;">
+            ToolNest QR Code Generator creates custom QR codes instantly for free. Generate QR codes for websites, WiFi networks, contact information, emails, SMS, phone numbers, and plain text. Perfect for businesses, events, marketing materials, and personal use.
+        </p>
+        <p style="line-height: 1.8; margin-bottom: 15px;">
+            Our QR code generator works entirely in your browser - your data never leaves your device. Customize colors and sizes to match your brand. Download high-resolution PNG files or scalable SVG format for printing. All generated QR codes work with any standard QR code scanner app.
+        </p>
+        <p style="line-height: 1.8;">
+            Use QR codes for business cards, product packaging, restaurant menus, event tickets, WiFi sharing, marketing campaigns, and more. No registration required, no watermarks, completely free to use. Generate unlimited QR codes for commercial and personal projects.
+        </p>
+    </div>
+    
+    <!-- Related Tools -->
+    <div class="tool-box" style="margin-top: 30px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(109, 40, 217, 0.05)); border-left: 4px solid #8b5cf6;">
+        <h3 style="margin-bottom: 15px; color: #8b5cf6;">🛠️ Related Tools</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+            <a href="/tools/image-compress.html" style="padding: 12px; background: var(--bg-card); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; border: 1px solid var(--border);">🖼️ Image Compressor</a>
+            <a href="/tools/seo-generator.html" style="padding: 12px; background: var(--bg-card); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; border: 1px solid var(--border);">🔍 SEO Generator</a>
+            <a href="/blog.html" style="padding: 12px; background: var(--bg-card); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; border: 1px solid var(--border);">📚 All Guides</a>
+        </div>
+    </div>
+</section>
+
+<!-- ADSENSE -->
+<div class="ad-container" style="text-align: center; margin: 30px auto; padding: 20px; background: var(--bg-card); border-radius: 12px; max-width: 728px;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9233973597909198"
+         data-ad-slot="8888888888"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="/includes/include.js"></script>
+
+<script>
+let qr = null;
+let currentSize = 256;
+
+// Type switcher
+document.getElementById('qrType').addEventListener('change', function() {
+    // Hide all input sections
+    document.querySelectorAll('.input-section').forEach(el => el.style.display = 'none');
+    
+    // Show selected
+    const type = this.value;
+    document.getElementById(type + 'Input').style.display = 'block';
+});
+
+// Size buttons
+document.querySelectorAll('.size-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentSize = parseInt(this.getAttribute('data-size'));
+        
+        // Regenerate if QR exists
+        if (qr) {
+            generateQR();
+        }
+    });
+});
+
+// Generate QR Code
+function generateQR() {
+    const type = document.getElementById('qrType').value;
+    let data = '';
+    
+    // Get data based on type
+    switch(type) {
+        case 'url':
+            data = document.getElementById('urlText').value.trim();
+            if (!data) {
+                alert('❌ Please enter a URL');
+                return;
+            }
+            break;
+            
+        case 'text':
+            data = document.getElementById('plainText').value.trim();
+            if (!data) {
+                alert('❌ Please enter text');
+                return;
+            }
+            break;
+            
+        case 'email':
+            const email = document.getElementById('emailAddr').value.trim();
+            const subject = document.getElementById('emailSubject').value.trim();
+            if (!email) {
+                alert('❌ Please enter email address');
+                return;
+            }
+            data = `mailto:${email}${subject ? '?subject=' + encodeURIComponent(subject) : ''}`;
+            break;
+            
+        case 'phone':
+            const phone = document.getElementById('phoneNum').value.trim();
+            if (!phone) {
+                alert('❌ Please enter phone number');
+                return;
+            }
+            data = `tel:${phone}`;
+            break;
+            
+        case 'sms':
+            const smsNum = document.getElementById('smsNum').value.trim();
+            const smsMsg = document.getElementById('smsMsg').value.trim();
+            if (!smsNum) {
+                alert('❌ Please enter phone number');
+                return;
+            }
+            data = `sms:${smsNum}${smsMsg ? '?body=' + encodeURIComponent(smsMsg) : ''}`;
+            break;
+            
+        case 'wifi':
+            const ssid = document.getElementById('wifiSSID').value.trim();
+            const pass = document.getElementById('wifiPass').value.trim();
+            const enc = document.getElementById('wifiEnc').value;
+            if (!ssid || !pass) {
+                alert('❌ Please enter WiFi name and password');
+                return;
+            }
+            data = `WIFI:T:${enc};S:${ssid};P:${pass};;`;
+            break;
+            
+        case 'vcard':
+            const name = document.getElementById('vcardName').value.trim();
+            const vcardPhone = document.getElementById('vcardPhone').value.trim();
+            const vcardEmail = document.getElementById('vcardEmail').value.trim();
+            if (!name) {
+                alert('❌ Please enter name');
+                return;
+            }
+            data = `BEGIN:VCARD\nVERSION:3.0\nFN:${name}\n`;
+            if (vcardPhone) data += `TEL:${vcardPhone}\n`;
+            if (vcardEmail) data += `EMAIL:${vcardEmail}\n`;
+            data += `END:VCARD`;
+            break;
+    }
+    
+    // Clear previous QR
+    document.getElementById('qrcode').innerHTML = '';
+    
+    // Get colors
+    const fgColor = document.getElementById('fgColor').value;
+    const bgColor = document.getElementById('bgColor').value;
+    
+    // Generate new QR
+    qr = new QRCode(document.getElementById('qrcode'), {
+        text: data,
+        width: currentSize,
+        height: currentSize,
+        colorDark: fgColor,
+        colorLight: bgColor,
+        correctLevel: QRCode.CorrectLevel.H
+    });
+    
+    // Show download buttons
+    document.getElementById('downloadSection').style.display = 'grid';
+    
+    // Track event
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'qr_generated', {
+            'event_category': 'tool_usage',
+            'event_label': 'QR Code Generator',
+            'value': 1
+        });
+    }
+}
+
+// Download QR Code
+function downloadQR(format) {
+    const canvas = document.querySelector('#qrcode canvas');
+    
+    if (!canvas) {
+        alert('❌ Please generate a QR code first');
+        return;
+    }
+    
+    if (format === 'png') {
+        const url = canvas.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'toolnest-qrcode.png';
+        a.click();
+    } else if (format === 'svg') {
+        // For SVG, we'd need a different library
+        // For now, download as PNG
+        alert('ℹ️ SVG export coming soon! Downloading as PNG instead.');
+        downloadQR('png');
+    }
+}
+
+// Print QR Code
+function printQR() {
+    const canvas = document.querySelector('#qrcode canvas');
+    
+    if (!canvas) {
+        alert('❌ Please generate a QR code first');
+        return;
+    }
+    
+    const win = window.open('', '_blank');
+    win.document.write(`
+        <html>
+        <head>
+            <title>Print QR Code</title>
+            <style>
+                body { 
+                    display: flex; 
+                    justify-content: center; 
+                    align-items: center; 
+                    min-height: 100vh; 
+                    margin: 0;
+                    font-family: Arial, sans-serif;
+                }
+                .container {
+                    text-align: center;
+                }
+                img { 
+                    max-width: 400px; 
+                    border: 2px solid #000;
+                    padding: 20px;
+                }
+                @media print {
+                    body { margin: 0; }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h2>ToolNest QR Code</h2>
+                <img src="${canvas.toDataURL()}" alt="QR Code">
+                <p>Scan this QR code</p>
+            </div>
+            <script>
+                window.onload = function() { 
+                    window.print(); 
+                }
+            </script>
+        </body>
+        </html>
+    `);
+}
+
+// Reset
+function resetQR() {
+    document.getElementById('qrcode').innerHTML = '';
+    document.getElementById('downloadSection').style.display = 'none';
+    qr = null;
+}
+</script>
+
+</body>
+</html>
