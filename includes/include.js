@@ -38,22 +38,14 @@
               <a href="/tools/jpg-to-pdf.html" class="dropdown-link" data-tool="JPG to PDF">JPG to PDF</a>
             </div>
             
-            <!-- IMAGE TOOLS -->
+            <!-- IMAGE & MEDIA TOOLS -->
             <div class="dropdown-section image-section">
               <div class="dropdown-category">🖼️ Image Tools</div>
               <a href="/tools/image-compressor.html" class="dropdown-link" data-tool="Image Compressor">Image Compressor</a>
-              <a href="/tools/image-converter.html" class="dropdown-link" data-tool="Image Converter">Image Converter</a>
+              <a href="/tools/youtube-downloader.html" class="dropdown-link" data-tool="youtube-downloader">youtube-downloader</a>
               
             </div>
 
-             <!-- MEDIA TOOLS -->
-             
-            <div class="dropdown-section media-section">
-              <div class="dropdown-category">🖼️ media Tools</div>
-              <a href="/tools/youtube-downloader.html" class="dropdown-link" data-tool="youtube-downloader">youtube-downloader</a>
-              
-              
-            </div>
             
             
             <!-- BUSINESS TOOLS -->
