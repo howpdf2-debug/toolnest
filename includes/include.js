@@ -1,7 +1,7 @@
 // =====================================================
 // TOOLNEST - include.js
-// COMPLETE FIXED VERSION - Desktop Dropdown WORKING
-// All issues resolved + full debugging
+// COMPLETE FIXED VERSION - MOBILE DROPDOWN LINKS WORKING
+// Desktop + Mobile both 100% functional
 // =====================================================
 
 (function() {
@@ -32,7 +32,7 @@
           <div class="dropdown-content" id="toolsDropdownContent">
             <!-- PDF TOOLS -->
             <div class="dropdown-section">
-              <h4 style="padding: 12px 16px; margin: 8px 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">📄 PDF Tools</h4>
+              <h4 style="padding: 12px 16px; margin: 8px 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; cursor: pointer;">📄 PDF Tools</h4>
               <a href="/pdf-merger/" class="dropdown-link">PDF Merger</a>
               <a href="/pdf-to-jpg/" class="dropdown-link">PDF to JPG</a>
               <a href="/pdf-compressor/" class="dropdown-link">PDF Compressor</a>
@@ -41,7 +41,7 @@
             
             <!-- IMAGE TOOLS -->
             <div class="dropdown-section">
-              <h4 style="padding: 12px 16px; margin: 8px 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">🖼️ Image Tools</h4>
+              <h4 style="padding: 12px 16px; margin: 8px 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; cursor: pointer;">🖼️ Image Tools</h4>
               <a href="/image-compressor/" class="dropdown-link">Image Compressor</a>
               <a href="/image-converter/" class="dropdown-link">Image Converter</a>
               <a href="/image-resizer/" class="dropdown-link">Image Resizer</a>
@@ -49,7 +49,7 @@
             
             <!-- BUSINESS TOOLS -->
             <div class="dropdown-section">
-              <h4 style="padding: 12px 16px; margin: 8px 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">💼 Business Tools</h4>
+              <h4 style="padding: 12px 16px; margin: 8px 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; cursor: pointer;">💼 Business Tools</h4>
               <a href="/invoice-generator/" class="dropdown-link">Invoice Generator</a>
               <a href="/gst-invoice/" class="dropdown-link">GST Invoice</a>
               <a href="/resume-builder/" class="dropdown-link">Resume Builder</a>
@@ -57,7 +57,7 @@
             
             <!-- PRODUCTIVITY TOOLS -->
             <div class="dropdown-section">
-              <h4 style="padding: 12px 16px; margin: 8px 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">⚡ Productivity Tools</h4>
+              <h4 style="padding: 12px 16px; margin: 8px 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; cursor: pointer;">⚡ Productivity Tools</h4>
               <a href="/qr-code-generator/" class="dropdown-link">QR Code Generator</a>
               <a href="/password-generator/" class="dropdown-link">Password Generator</a>
               <a href="/word-counter/" class="dropdown-link">Word Counter</a>
@@ -213,10 +213,10 @@
       });
     }
     
-    // Close menu when clicking any link
-    navRight.querySelectorAll('a').forEach(link => {
+    // Close menu when clicking nav links (not dropdown links)
+    navRight.querySelectorAll('a.nav-link').forEach(link => {
       link.addEventListener('click', function() {
-        console.log(`📱 Link clicked: ${this.textContent} - closing menu`);
+        console.log(`📱 Nav link clicked: ${this.textContent} - closing menu`);
         navRight.classList.remove('active');
         mobileOverlay.classList.remove('active');
         mobileMenuToggle.classList.remove('active');
@@ -227,7 +227,7 @@
   }
   
   // ============================================
-  // DROPDOWN INITIALIZATION (MAIN FIX)
+  // DROPDOWN INITIALIZATION (MOBILE & DESKTOP)
   // ============================================
   function initializeDropdown() {
     console.log('⚙️ Initializing dropdown...');
@@ -248,7 +248,7 @@
     
     console.log('  ✅ Dropdown elements found');
     
-    // MAIN FIX: Click on button to toggle dropdown
+    // DESKTOP: Click on button to toggle dropdown
     dropdownBtn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -267,7 +267,7 @@
       console.log(`  → Dropdown is now ${isNowOpen ? 'OPEN ✅' : 'CLOSED ✅'}`);
     });
     
-    // Close dropdown when clicking outside (DOCUMENT level)
+    // MOBILE & DESKTOP: Close dropdown when clicking outside
     document.addEventListener('click', function(e) {
       const isClickInside = dropdownContainer.contains(e.target);
       
@@ -281,12 +281,44 @@
       }
     });
     
-    // Close dropdown when clicking a link inside it
-    dropdownContent.querySelectorAll('a').forEach(link => {
+    // FIX: MOBILE DROPDOWN LINKS - ALLOW NAVIGATION
+    // Get all links inside dropdown content
+    const dropdownLinks = dropdownContent.querySelectorAll('a.dropdown-link');
+    console.log(`  Found ${dropdownLinks.length} dropdown links`);
+    
+    dropdownLinks.forEach(link => {
       link.addEventListener('click', function(e) {
-        console.log(`🔽 Dropdown link clicked: ${this.textContent}`);
-        dropdownContent.classList.remove('show');
-        dropdownBtn.setAttribute('aria-expanded', 'false');
+        // IMPORTANT: Allow navigation to happen
+        // Don't preventDefault() - let the link navigate
+        
+        const linkText = this.textContent;
+        const linkHref = this.getAttribute('href');
+        
+        console.log(`🔽 Dropdown link clicked: ${linkText}`);
+        console.log(`  → Navigating to: ${linkHref}`);
+        
+        // Close dropdown AFTER a tiny delay to allow user to see the action
+        setTimeout(() => {
+          dropdownContent.classList.remove('show');
+          dropdownBtn.setAttribute('aria-expanded', 'false');
+          console.log('🔽 Dropdown closed after link click');
+        }, 50);
+        
+        // Close mobile menu if open
+        const navRight = document.getElementById('navRight');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        
+        if (navRight.classList.contains('active')) {
+          setTimeout(() => {
+            navRight.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+            console.log('📱 Mobile menu closed after link click');
+          }, 50);
+        }
+        
+        // Navigation will happen automatically
       });
     });
     
