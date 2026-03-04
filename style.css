@@ -403,20 +403,6 @@ input::placeholder {
   color: var(--text-muted);
 }
 
-/* Improved select element styling for mobile */
-select {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232563eb' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  padding-right: 36px;
-  cursor: pointer;
-}
-
-html.dark select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e5e7eb' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-}
-
 html.dark input,
 html.dark textarea,
 html.dark select {
@@ -811,6 +797,29 @@ footer a:focus-visible {
 }
 
 /* =====================================================
+   PRINT STYLES
+===================================================== */
+@media print {
+  .topbar,
+  footer,
+  .ad-box,
+  .ad-space,
+  #darkToggle,
+  .back-home {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+}
+
+/* =====================================================
    MOBILE NAVIGATION ENHANCEMENTS
 ===================================================== */
 .mobile-menu-toggle {
@@ -908,32 +917,18 @@ footer a:focus-visible {
     margin-bottom: 10px;
     max-height: 0;
     overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    visibility: hidden;
+    transition: max-height 0.3s ease;
   }
   
   .dropdown-content.show {
-    max-height: 600px;
-    opacity: 1;
-    visibility: visible;
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    max-height: 500px;
   }
   
   .dropdown-content a {
-    display: block;
-    padding: 12px 16px;
-    color: var(--text-main);
-    font-weight: 500;
-    transition: background 0.3s ease;
     border: none;
     border-left: 3px solid var(--blue) !important;
-    background: var(--bg-card);
-  }
-  
-  .dropdown-content a:hover {
-    background: rgba(37, 99, 235, 0.1);
+    margin-bottom: 0;
   }
   
   #darkToggle {
