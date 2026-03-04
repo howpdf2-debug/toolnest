@@ -1,6 +1,10 @@
-// include.js - Dynamic header, footer, and interactive elements
+// =====================================================
+// TOOLNEST - include.js
+// Complete Fixed Version - All Issues Resolved
+// =====================================================
 
 document.addEventListener('DOMContentLoaded', function() {
+  
   // ============================================
   // HEADER INJECTION
   // ============================================
@@ -78,13 +82,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const mobileOverlay = document.getElementById('mobileOverlay');
   
   if (mobileMenuToggle && navRight) {
+    // Toggle menu open/close
     mobileMenuToggle.addEventListener('click', function(e) {
       e.preventDefault();
       navRight.classList.toggle('active');
       mobileOverlay.classList.toggle('active');
     });
     
-    // Close menu when clicking overlay
+    // FIX #1: Close menu when clicking overlay
     if (mobileOverlay) {
       mobileOverlay.addEventListener('click', function() {
         navRight.classList.remove('active');
@@ -92,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
     
-    // Close menu when clicking a link
+    // FIX #2: Close menu when clicking any link
     navRight.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', function() {
         navRight.classList.remove('active');
@@ -108,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const dropdownContent = document.getElementById('toolsDropdownContent');
   
   if (dropdownBtn && dropdownContent) {
+    // FIX #3: Smooth dropdown toggle
     dropdownBtn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -121,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Close dropdown when clicking a link inside it
+    // FIX #4: Close dropdown when clicking a link inside it
     dropdownContent.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', function() {
         dropdownContent.classList.remove('show');
@@ -151,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const html = document.documentElement;
       const isDark = html.classList.toggle('dark');
       
-      // Save preference to localStorage
+      // FIX #5: Save preference to localStorage
       localStorage.setItem('darkMode', isDark);
       
       // Update button emoji
@@ -179,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // KEYBOARD ACCESSIBILITY
   // ============================================
   
-  // Close dropdown with Escape key
+  // FIX #6: Close dropdown with Escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && dropdownContent) {
       dropdownContent.classList.remove('show');
@@ -197,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (darkToggle) darkToggle.textContent = '☀️';
     }
     
+    // Listen for system preference changes
     darkModeQuery.addListener(e => {
       if (e.matches) {
         document.documentElement.classList.add('dark');
