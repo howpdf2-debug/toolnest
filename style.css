@@ -231,7 +231,7 @@ html.dark .topbar {
   border-left: 4px solid #1e40af !important;
 }
 
-/* Image Tools - Purple Gradient */
+/* Image & Media Tools - Purple Gradient */
 .image-section .dropdown-category,
 .image-section .dropdown-header,
 .image-section h4 {
@@ -239,13 +239,6 @@ html.dark .topbar {
   border-left: 4px solid #7c3aed !important;
 }
 
-/* Media Tools - Red Gradient */
-.image-section .dropdown-category,
-.image-section .dropdown-header,
-.image-section h4 {
-  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
-  border-left: 4px solid #dc2626 !important;
-}
 
 /* Business Tools - Green Gradient */
 .business-section .dropdown-category,
