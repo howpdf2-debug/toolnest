@@ -1,6 +1,12 @@
 /* =====================================================
-   🎨 GLOBAL COLOR SYSTEM
-===================================================== */
+   🎨 TOOLNEST - COMPLETE CSS FILE
+   All styles combined with dropdown fixes
+   Production Ready ✅
+   ===================================================== */
+
+/* =====================================================
+   GLOBAL COLOR SYSTEM
+   ===================================================== */
 :root {
   --bg-main: #f8fafc;
   --bg-card: #ffffff;
@@ -26,7 +32,7 @@ html.dark {
 
 /* =====================================================
    RESET & BASE
-===================================================== */
+   ===================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -64,7 +70,7 @@ button:focus-visible {
 
 /* =====================================================
    HEADER / TOPBAR
-===================================================== */
+   ===================================================== */
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -136,10 +142,12 @@ html.dark .topbar {
 }
 
 /* =====================================================
-   DROPDOWN (HEADER)
-===================================================== */
+   DROPDOWN (MAIN FIX - COMPLETE STYLING)
+   ===================================================== */
+
 .dropdown {
   position: relative;
+  display: inline-block;
 }
 
 .dropbtn {
@@ -151,32 +159,98 @@ html.dark .topbar {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 .dropbtn:hover {
   background: rgba(255, 255, 255, 0.25);
 }
 
+.dropbtn:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* DROPDOWN CONTENT - DESKTOP MODE */
 .dropdown-content {
+  /* Hidden by default - IMPORTANT FIX */
   display: none;
   position: absolute;
   right: 0;
   top: 45px;
   background: var(--bg-card);
-  min-width: 220px;
+  min-width: 280px;
+  max-width: 350px;
   border-radius: 12px;
-  box-shadow: 0 12px 30px var(--shadow);
-  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  max-height: 500px;
   z-index: 1000;
   border: 1px solid var(--border);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
 }
 
+/* Show the dropdown - IMPORTANT FIX */
 .dropdown-content.show {
   display: block;
-  animation: fadeIn 0.2s ease;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
-@keyframes fadeIn {
+/* Dropdown link styles */
+.dropdown-content a {
+  display: block;
+  padding: 12px 16px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-content a:hover {
+  background: rgba(37, 99, 235, 0.08);
+  border-left-color: var(--blue);
+  color: var(--blue);
+}
+
+.dropdown-content a:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: -2px;
+  background: rgba(37, 99, 235, 0.08);
+}
+
+/* Dropdown section headers */
+.dropdown-section {
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-section h4 {
+  margin: 0;
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  background: var(--bg-main);
+  border-bottom: 1px solid var(--border);
+}
+
+.dropdown-section:first-child h4 {
+  border-top: 0;
+  margin-top: 0;
+}
+
+/* Dropdown animation */
+@keyframes dropdownFadeIn {
   from {
     opacity: 0;
     transform: translateY(-10px);
@@ -187,23 +261,13 @@ html.dark .topbar {
   }
 }
 
-.dropdown-content a {
-  display: block;
-  padding: 12px 16px;
-  color: var(--text-main);
-  font-weight: 500;
-  transition: background 0.3s ease;
-  border-left: 3px solid transparent;
-}
-
-.dropdown-content a:hover {
-  background: rgba(37, 99, 235, 0.1);
-  border-left-color: var(--blue);
+.dropdown-content.show {
+  animation: dropdownFadeIn 0.3s ease forwards;
 }
 
 /* =====================================================
    HERO – HOME
-===================================================== */
+   ===================================================== */
 .hero {
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
   color: #fff;
@@ -237,7 +301,7 @@ html.dark .hero {
 
 /* =====================================================
    MINI HERO – TOOLS
-===================================================== */
+   ===================================================== */
 .mini-hero {
   padding: 50px 20px;
   color: #fff;
@@ -275,7 +339,7 @@ html.dark .mini-hero {
 
 /* =====================================================
    CONTAINER
-===================================================== */
+   ===================================================== */
 .container {
   max-width: 1100px;
   margin: auto;
@@ -284,7 +348,7 @@ html.dark .mini-hero {
 
 /* =====================================================
    IMPROVED TOOLS GRID
-===================================================== */
+   ===================================================== */
 .tools {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -352,7 +416,7 @@ html.dark .mini-hero {
 
 /* =====================================================
    TOOL BOX
-===================================================== */
+   ===================================================== */
 .tool-box {
   background: var(--bg-card);
   padding: 32px;
@@ -375,7 +439,7 @@ html.dark .mini-hero {
 
 /* =====================================================
    FORM ELEMENTS
-===================================================== */
+   ===================================================== */
 input,
 select,
 textarea {
@@ -403,20 +467,6 @@ input::placeholder {
   color: var(--text-muted);
 }
 
-/* Improved select element styling for mobile */
-select {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232563eb' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  padding-right: 36px;
-  cursor: pointer;
-}
-
-html.dark select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e5e7eb' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-}
-
 html.dark input,
 html.dark textarea,
 html.dark select {
@@ -432,9 +482,23 @@ html.dark select:focus {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
+/* Improved select element styling for mobile */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232563eb' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+html.dark select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e5e7eb' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+
 /* =====================================================
    BUTTON SYSTEM
-===================================================== */
+   ===================================================== */
 button {
   padding: 12px 22px;
   border: none;
@@ -479,7 +543,7 @@ button:disabled {
 
 /* =====================================================
    ADS
-===================================================== */
+   ===================================================== */
 .ad-box,
 .ad-space {
   margin: 30px auto;
@@ -498,7 +562,7 @@ button:disabled {
 
 /* =====================================================
    CONTENT SECTION
-===================================================== */
+   ===================================================== */
 .content-section {
   margin-top: 40px;
 }
@@ -532,7 +596,7 @@ button:disabled {
 
 /* =====================================================
    BLOG SECTION (HOMEPAGE)
-===================================================== */
+   ===================================================== */
 .blog-section {
   margin-top: 50px;
   padding: 40px 20px;
@@ -650,7 +714,7 @@ button:disabled {
 
 /* =====================================================
    FOOTER
-===================================================== */
+   ===================================================== */
 footer {
   background: #020617;
   color: #e5e7eb;
@@ -690,7 +754,7 @@ footer a:focus-visible {
 
 /* =====================================================
    RESPONSIVE DESIGN
-===================================================== */
+   ===================================================== */
 @media (max-width: 768px) {
   .topbar {
     flex-direction: row;
@@ -754,6 +818,46 @@ footer a:focus-visible {
     padding: 10px 16px;
     font-size: 14px;
   }
+
+  /* MOBILE DROPDOWN - IMPORTANT FIX */
+  .dropdown-content {
+    position: static !important;
+    width: 100%;
+    top: auto;
+    right: auto;
+    border-radius: 8px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    box-shadow: none;
+    border: 1px solid var(--border);
+    max-height: 0;
+    min-width: auto;
+    overflow: hidden;
+  }
+  
+  .dropdown-content.show {
+    max-height: 600px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropdown-content a {
+    border-left: 3px solid var(--blue);
+  }
+  
+  .dropbtn {
+    width: 100%;
+    text-align: left;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--text-main);
+    padding: 12px 15px;
+    margin-bottom: 10px;
+  }
+  
+  .dropbtn:hover {
+    background: rgba(37, 99, 235, 0.15);
+  }
 }
 
 @media (max-width: 480px) {
@@ -791,7 +895,7 @@ footer a:focus-visible {
 
 /* =====================================================
    ACCESSIBILITY
-===================================================== */
+   ===================================================== */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -808,11 +912,115 @@ footer a:focus-visible {
   button {
     border: 2px solid currentColor;
   }
+
+  .dropdown-content {
+    border: 2px solid var(--text-main);
+  }
+  
+  .dropbtn {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  .dropdown-content a {
+    border-left: 4px solid var(--blue);
+  }
+}
+
+/* =====================================================
+   DROPDOWN SCROLLBAR STYLING
+   ===================================================== */
+.dropdown-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Firefox scrollbar */
+.dropdown-content {
+  scrollbar-color: var(--border) var(--bg-main);
+  scrollbar-width: thin;
+}
+
+/* =====================================================
+   DARK MODE DROPDOWN STYLES
+   ===================================================== */
+html.dark .dropdown-content {
+  background: var(--bg-card);
+  border-color: var(--border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+html.dark .dropdown-content a {
+  color: var(--text-main);
+}
+
+html.dark .dropdown-content a:hover {
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--blue);
+}
+
+html.dark .dropdown-section h4 {
+  background: var(--bg-main);
+  color: var(--text-muted);
+  border-bottom-color: var(--border);
+}
+
+html.dark .dropbtn {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+html.dark .dropbtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* =====================================================
+   PRINT STYLES
+   ===================================================== */
+@media print {
+  .topbar,
+  footer,
+  .ad-box,
+  .ad-space,
+  #darkToggle,
+  .back-home,
+  .dropdown-content {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  a[href^="/"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
 }
 
 /* =====================================================
    MOBILE NAVIGATION ENHANCEMENTS
-===================================================== */
+   ===================================================== */
 .mobile-menu-toggle {
   display: none;
   background: rgba(255, 255, 255, 0.15);
@@ -892,234 +1100,45 @@ footer a:focus-visible {
   .dropbtn {
     width: 100%;
     text-align: left;
-    background: rgba(37, 99, 235, 0.1) !important;
-    color: var(--text-main) !important;
-    padding: 12px 15px;
-    border: 1px solid var(--border);
-    margin-bottom: 10px;
   }
-  
-  .dropdown-content {
-    position: static !important;
-    width: 100%;
-    margin-top: 0;
-    box-shadow: none;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    visibility: hidden;
-  }
-  
-  .dropdown-content.show {
-    max-height: 600px;
-    opacity: 1;
-    visibility: visible;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .dropdown-content a {
-    display: block;
-    padding: 12px 16px;
-    color: var(--text-main);
-    font-weight: 500;
-    transition: background 0.3s ease;
-    border: none;
-    border-left: 3px solid var(--blue) !important;
-    background: var(--bg-card);
-  }
-  
-  .dropdown-content a:hover {
-    background: rgba(37, 99, 235, 0.1);
-  }
-  
-  #darkToggle {
-    width: 100%;
-    background: rgba(37, 99, 235, 0.1) !important;
-    color: var(--text-main) !important;
-    padding: 12px 15px;
-    border: 1px solid var(--border);
-  }
-}
-
-
-
-/* ========================================
-   PRINT STYLES
-   ======================================== */
-
-@media print {
-    /* Hide unnecessary elements */
-    header, 
-    footer, 
-    .topbar, 
-    .nav-right, 
-    .mobile-menu-toggle, 
-    .mobile-overlay,
-    .ad-container, 
-    .newsletter-section,
-    .breadcrumb-nav,
-    #cookieConsentBanner,
-    #backToTopBtn,
-    #searchModal,
-    .search-icon-btn,
-    .dark-toggle-btn {
-        display: none !important;
-    }
-    
-    /* Reset colors for print */
-    body {
-        background: white !important;
-        color: black !important;
-        font-size: 12pt;
-        line-height: 1.5;
-    }
-    
-    /* Ensure text is readable */
-    * {
-        background: transparent !important;
-        color: black !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-    
-    /* Make links visible */
-    a {
-        color: black !important;
-        text-decoration: underline;
-    }
-    
-    /* Show link URLs after text */
-    a[href]:after {
-        content: " (" attr(href) ")";
-        font-size: 10pt;
-        color: #666 !important;
-    }
-    
-    /* Don't show URL for internal links */
-    a[href^="/"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
-    
-    /* Page breaks */
-    h1, h2, h3, h4, h5, h6 {
-        page-break-after: avoid;
-        page-break-inside: avoid;
-    }
-    
-    img, table, figure {
-        page-break-inside: avoid;
-    }
-    
-    /* Ensure content blocks don't split */
-    .tool-box, 
-    .blog-card,
-    .faq-item {
-        border: 1px solid #ddd !important;
-        page-break-inside: avoid;
-        margin-bottom: 20px;
-    }
-    
-    /* Header styles for print */
-    h1 {
-        font-size: 24pt;
-        margin-bottom: 12pt;
-    }
-    
-    h2 {
-        font-size: 18pt;
-        margin-top: 12pt;
-        margin-bottom: 6pt;
-    }
-    
-    h3 {
-        font-size: 14pt;
-        margin-top: 12pt;
-        margin-bottom: 6pt;
-    }
-    
-    /* Code blocks */
-    pre, code {
-        border: 1px solid #ccc !important;
-        page-break-inside: avoid;
-        font-family: monospace;
-    }
-    
-    /* Lists */
-    ul, ol {
-        margin-left: 20pt;
-    }
-    
-    /* Tables */
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    
-    table, th, td {
-        border: 1px solid #ddd !important;
-    }
-    
-    th, td {
-        padding: 8pt;
-        text-align: left;
-    }
-    
-    /* Images */
-    img {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-    
-    /* Container widths */
-    .container,
-    .tool-box {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-}
-/* ============================================
-   MOBILE MENU FIX - ADDITIONAL STYLES
-============================================ */
-
-/* Ensure hamburger is visible on mobile */
-@media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: flex !important;
-    }
-    
-    .hamburger {
-        background: #fff !important;
-    }
-    
-    html.dark .hamburger {
-        background: #e5e7eb !important;
-    }
 }
 
 /* Desktop dropdown improvements */
 @media (min-width: 769px) {
-    .dropdown-content {
-        max-height: 400px;
-        overflow-y: auto;
-    }
-    
-    .dropdown-content::-webkit-scrollbar {
-        width: 6px;
-    }
-    
-    .dropdown-content::-webkit-scrollbar-track {
-        background: var(--bg-main);
-    }
-    
-    .dropdown-content::-webkit-scrollbar-thumb {
-        background: var(--border);
-        border-radius: 3px;
-    }
+  .dropdown-content {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  
+  .dropdown-content::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .dropdown-content::-webkit-scrollbar-track {
+    background: var(--bg-main);
+  }
+  
+  .dropdown-content::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
 }
+
+/* Ensure hamburger is visible on mobile */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex !important;
+  }
+  
+  .hamburger {
+    background: #fff !important;
+  }
+  
+  html.dark .hamburger {
+    background: #e5e7eb !important;
+  }
+}
+
+/* =====================================================
+   END OF COMPLETE CSS FILE
+   ===================================================== */
