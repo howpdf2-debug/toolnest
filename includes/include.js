@@ -1,7 +1,7 @@
 // =====================================================
 // TOOLNEST - include.js
-// PROFESSIONAL DESIGN - Navy + Teal + Gold
-// Matches style-PROFESSIONAL.css
+// COMPLETE WORKING VERSION - INTERNAL TOOL LINKS
+// All links point to YOUR tools, not external sites
 // =====================================================
 
 (function() {
@@ -10,7 +10,7 @@
   console.log('🚀 ToolNest initializing...');
   
   // ============================================
-  // STEP 1: INJECT HEADER
+  // STEP 1: INJECT HEADER WITH PROPER HTML
   // ============================================
   console.log('📝 Step 1: Injecting header...');
   
@@ -31,35 +31,38 @@
           <button class="dropbtn" id="toolsDropdown" type="button" aria-label="Tools menu" aria-expanded="false">Tools ▼</button>
           <div class="dropdown-content" id="toolsDropdownContent">
             <!-- PDF TOOLS -->
-            <div class="dropdown-section">
-              <div class="dropdown-category">📄 Document Tools</div>
-              <a href="/tools/merge-pdf.html" class="dropdown-link" data-tool="Merge PDF">Merge PDF Files</a>
+            <div class="dropdown-section pdf-section">
+              <div class="dropdown-category">📄 PDF Tools</div>
+              <a href="/tools/pdf-merger.html" class="dropdown-link" data-tool="PDF Merger">PDF Merger</a>
               <a href="/tools/pdf-to-jpg.html" class="dropdown-link" data-tool="PDF to JPG">PDF to JPG</a>
+              <a href="/tools/pdf-compressor.html" class="dropdown-link" data-tool="PDF Compressor">PDF Compressor</a>
               <a href="/tools/jpg-to-pdf.html" class="dropdown-link" data-tool="JPG to PDF">JPG to PDF</a>
             </div>
             
             <!-- IMAGE TOOLS -->
-            <div class="dropdown-section">
-              <div class="dropdown-category">🖼️ Media Tools</div>
-              <a href="/tools/image-compress.html" class="dropdown-link" data-tool="Image Compressor">Image Compressor</a>
-              <a href="/tools/youtube-downloader.html" class="dropdown-link" data-tool="YouTube Downloader">YouTube Downloader</a>
-            </div>
-            
-            <!-- PRODUCTIVITY TOOLS -->
-            <div class="dropdown-section">
-              <div class="dropdown-category">⚡ Productivity</div>
-              <a href="/tools/qr-code-generator.html" class="dropdown-link" data-tool="QR Code Generator">QR Code Generator</a>
-              <a href="/tools/password-generator.html" class="dropdown-link" data-tool="Password Generator">Password Generator</a>
-              <a href="/tools/word-counter.html" class="dropdown-link" data-tool="Word Counter">Word Counter</a>
-              <a href="/tools/json-formatter.html" class="dropdown-link" data-tool="JSON Formatter">JSON Formatter</a>
-              <a href="/tools/base64-encoder.html" class="dropdown-link" data-tool="Base64 Encoder">Base64 Encoder</a>
+            <div class="dropdown-section image-section">
+              <div class="dropdown-category">🖼️ Image Tools</div>
+              <a href="/tools/image-compressor.html" class="dropdown-link" data-tool="Image Compressor">Image Compressor</a>
+              <a href="/tools/image-converter.html" class="dropdown-link" data-tool="Image Converter">Image Converter</a>
+              <a href="/tools/image-resizer.html" class="dropdown-link" data-tool="Image Resizer">Image Resizer</a>
             </div>
             
             <!-- BUSINESS TOOLS -->
-            <div class="dropdown-section">
-              <div class="dropdown-category">💼 Business</div>
+            <div class="dropdown-section business-section">
+              <div class="dropdown-category">💼 Business Tools</div>
               <a href="/tools/invoice-generator.html" class="dropdown-link" data-tool="Invoice Generator">Invoice Generator</a>
-              <a href="/tools/seo-generator.html" class="dropdown-link" data-tool="SEO Generator">SEO Meta Tags</a>
+              <a href="/tools/gst-invoice.html" class="dropdown-link" data-tool="GST Invoice">GST Invoice</a>
+              <a href="/tools/resume-builder.html" class="dropdown-link" data-tool="Resume Builder">Resume Builder</a>
+            </div>
+            
+            <!-- PRODUCTIVITY TOOLS -->
+            <div class="dropdown-section productivity-section">
+              <div class="dropdown-category">⚡ Productivity Tools</div>
+              <a href="/tools/qr-code-generator.html" class="dropdown-link" data-tool="QR Code Generator">QR Code Generator</a>
+              <a href="/tools/password-generator.html" class="dropdown-link" data-tool="Password Generator">Password Generator</a>
+              <a href="/tools/word-counter.html" class="dropdown-link" data-tool="Word Counter">Word Counter</a>
+              <a href="/tools/base64-encoder.html" class="dropdown-link" data-tool="Base64 Encoder">Base64 Encoder</a>
+              <a href="/tools/json-formatter.html" class="dropdown-link" data-tool="JSON Formatter">JSON Formatter</a>
             </div>
           </div>
         </div>
@@ -95,18 +98,18 @@
   const footerHTML = `
     <footer>
       <div class="container" style="text-align: center; padding: 40px 20px;">
-        <p style="margin-bottom: 20px;">
-          © 2024 ToolNest. Free professional online tools for everyone. Made with ❤️
+        <p style="margin-bottom: 20px; color: var(--text-muted);">
+          © 2026 ToolNest. Free online tools for everyone. Made with ❤️
         </p>
         <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-          <a href="/about.html" style="font-weight: 600;">About</a>
-          <a href="/contact.html" style="font-weight: 600;">Contact</a>
-          <a href="/blog.html" style="font-weight: 600;">Blog</a>
-          <a href="/privacy.html" style="font-weight: 600;">Privacy</a>
-          <a href="/terms.html" style="font-weight: 600;">Terms</a>
+          <a href="/about.html" style="color: var(--blue); font-weight: 500;">About</a>
+          <a href="/contact.html" style="color: var(--blue); font-weight: 500;">Contact</a>
+          <a href="/privacy-policy.html" style="color: var(--blue); font-weight: 500;">Privacy</a>
+          <a href="/terms.html" style="color: var(--blue); font-weight: 500;">Terms</a>
+          <a href="/disclaimer.html" style="color: var(--blue); font-weight: 500;">Disclaimer</a>
         </div>
-        <p style="font-size: 13px;">
-          All tools are 100% free, no registration required, and process securely on your device.
+        <p style="font-size: 12px; color: var(--text-muted);">
+          All tools are 100% free, no signup required, and process locally in your browser.
         </p>
       </div>
     </footer>
@@ -125,11 +128,14 @@
   }
   
   // ============================================
-  // STEP 3: INITIALIZE COMPONENTS
+  // STEP 3: WAIT FOR DOM & INITIALIZE
   // ============================================
-  console.log('⏳ Initializing all components...');
+  console.log('⏳ Step 3: Waiting for DOM ready...');
   
   function initializeAllComponents() {
+    console.log('🔧 Initializing all components...');
+    
+    // Initialize in order
     initializeElements();
     initializeMobileMenu();
     initializeDropdown();
@@ -137,13 +143,16 @@
     initializeSmoothScroll();
     initializeKeyboardAccessibility();
     
-    console.log('✅ All components initialized');
+    console.log('✅ All components initialized successfully');
     console.log('🎉 ToolNest ready!');
   }
   
-  // Element verification
+  // ============================================
+  // ELEMENT VERIFICATION
+  // ============================================
   function initializeElements() {
     console.log('✓ Verifying elements...');
+    
     const elements = {
       'header': 'header',
       'footer': 'footer',
@@ -157,187 +166,278 @@
     
     for (let [name, id] of Object.entries(elements)) {
       const el = document.getElementById(id);
-      console.log(`  ${el ? '✅' : '⚠️'} ${name}`);
+      if (el) {
+        console.log(`  ✅ ${name} (ID: ${id}) found`);
+      } else {
+        console.warn(`  ⚠️ ${name} (ID: ${id}) NOT found`);
+      }
     }
   }
   
-  // Mobile menu
+  // ============================================
+  // MOBILE MENU INITIALIZATION
+  // ============================================
   function initializeMobileMenu() {
     console.log('⚙️ Initializing mobile menu...');
     
-    const toggle = document.getElementById('mobileMenuToggle');
-    const nav = document.getElementById('navRight');
-    const overlay = document.getElementById('mobileOverlay');
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navRight = document.getElementById('navRight');
+    const mobileOverlay = document.getElementById('mobileOverlay');
     
-    if (!toggle) return;
+    if (!mobileMenuToggle) {
+      console.warn('⚠️ Mobile menu toggle not found');
+      return;
+    }
     
-    toggle.addEventListener('click', function(e) {
+    // Toggle mobile menu
+    mobileMenuToggle.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
+      console.log('📱 Mobile menu toggle clicked');
       
-      nav.classList.toggle('active');
-      overlay.classList.toggle('active');
-      toggle.classList.toggle('active');
+      navRight.classList.toggle('active');
+      mobileOverlay.classList.toggle('active');
+      mobileMenuToggle.classList.toggle('active');
       
-      console.log('📱 Menu toggled');
+      const isOpen = navRight.classList.contains('active');
+      console.log(`  → Menu is now ${isOpen ? 'OPEN' : 'CLOSED'}`);
     });
     
-    if (overlay) {
-      overlay.addEventListener('click', function() {
-        nav.classList.remove('active');
-        overlay.classList.remove('active');
-        toggle.classList.remove('active');
+    // Close menu when clicking overlay
+    if (mobileOverlay) {
+      mobileOverlay.addEventListener('click', function() {
+        console.log('📱 Overlay clicked - closing menu');
+        navRight.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
       });
     }
     
-    nav.querySelectorAll('a.nav-link').forEach(link => {
+    // Close menu when clicking nav links
+    navRight.querySelectorAll('a.nav-link').forEach(link => {
       link.addEventListener('click', function() {
-        nav.classList.remove('active');
-        overlay.classList.remove('active');
-        toggle.classList.remove('active');
+        console.log(`📱 Nav link clicked: ${this.textContent} - closing menu`);
+        navRight.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
       });
     });
     
-    console.log('✅ Mobile menu ready');
+    console.log('✅ Mobile menu initialized');
   }
   
-  // Dropdown
+  // ============================================
+  // DROPDOWN INITIALIZATION
+  // ============================================
   function initializeDropdown() {
     console.log('⚙️ Initializing dropdown...');
     
-    const btn = document.getElementById('toolsDropdown');
-    const content = document.getElementById('toolsDropdownContent');
-    const container = document.getElementById('toolsDropdownContainer');
+    const dropdownBtn = document.getElementById('toolsDropdown');
+    const dropdownContent = document.getElementById('toolsDropdownContent');
+    const dropdownContainer = document.getElementById('toolsDropdownContainer');
     
-    if (!btn || !content) return;
+    if (!dropdownBtn) {
+      console.error('❌ Dropdown button NOT found (ID: toolsDropdown)');
+      return;
+    }
     
-    btn.addEventListener('click', function(e) {
+    if (!dropdownContent) {
+      console.error('❌ Dropdown content NOT found (ID: toolsDropdownContent)');
+      return;
+    }
+    
+    console.log('  ✅ Dropdown elements found');
+    
+    // Click on button to toggle dropdown
+    dropdownBtn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       
-      const isOpen = content.classList.toggle('show');
-      btn.setAttribute('aria-expanded', isOpen);
+      console.log('🔽 Dropdown button clicked');
       
-      console.log(`🔽 Dropdown ${isOpen ? 'opened' : 'closed'}`);
+      const isCurrentlyOpen = dropdownContent.classList.contains('show');
+      console.log(`  → Dropdown is currently ${isCurrentlyOpen ? 'OPEN' : 'CLOSED'}`);
+      
+      dropdownContent.classList.toggle('show');
+      
+      const isNowOpen = dropdownContent.classList.contains('show');
+      dropdownBtn.setAttribute('aria-expanded', isNowOpen);
+      
+      console.log(`  → Dropdown is now ${isNowOpen ? 'OPEN ✅' : 'CLOSED ✅'}`);
     });
     
+    // Close dropdown when clicking outside
     document.addEventListener('click', function(e) {
-      if (!container.contains(e.target)) {
-        content.classList.remove('show');
-        btn.setAttribute('aria-expanded', 'false');
+      const isClickInside = dropdownContainer.contains(e.target);
+      
+      if (!isClickInside) {
+        const wasOpen = dropdownContent.classList.contains('show');
+        if (wasOpen) {
+          console.log('🔽 Click outside - closing dropdown');
+          dropdownContent.classList.remove('show');
+          dropdownBtn.setAttribute('aria-expanded', 'false');
+        }
       }
     });
     
-    content.querySelectorAll('a.dropdown-link').forEach(link => {
+    // FIX: DROPDOWN LINKS - NAVIGATE TO YOUR TOOLS
+    const dropdownLinks = dropdownContent.querySelectorAll('a.dropdown-link');
+    console.log(`  Found ${dropdownLinks.length} dropdown links`);
+    
+    dropdownLinks.forEach(link => {
       link.addEventListener('click', function(e) {
-        const tool = this.getAttribute('data-tool') || this.textContent;
-        console.log(`🔽 Tool clicked: ${tool}`);
+        // Allow default navigation - links will open your tools
+        const linkText = this.getAttribute('data-tool') || this.textContent;
+        const linkHref = this.getAttribute('href');
         
+        console.log(`🔽 Dropdown link clicked: ${linkText}`);
+        console.log(`  → Opening your tool: ${linkHref}`);
+        
+        // Close dropdown after opening link
         setTimeout(() => {
-          content.classList.remove('show');
-          btn.setAttribute('aria-expanded', 'false');
+          dropdownContent.classList.remove('show');
+          dropdownBtn.setAttribute('aria-expanded', 'false');
+          console.log('🔽 Dropdown closed after link click');
         }, 100);
         
-        const nav = document.getElementById('navRight');
-        const overlay = document.getElementById('mobileOverlay');
-        const toggle = document.getElementById('mobileMenuToggle');
+        // Close mobile menu if open
+        const navRight = document.getElementById('navRight');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         
-        if (nav.classList.contains('active')) {
+        if (navRight.classList.contains('active')) {
           setTimeout(() => {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-            toggle.classList.remove('active');
+            navRight.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+            console.log('📱 Mobile menu closed after link click');
           }, 100);
         }
+        
+        // Link navigates to your tool page naturally
       });
     });
     
-    console.log('✅ Dropdown ready');
+    console.log('✅ Dropdown initialized');
   }
   
-  // Dark mode
+  // ============================================
+  // DARK MODE INITIALIZATION
+  // ============================================
   function initializeDarkMode() {
     console.log('⚙️ Initializing dark mode...');
     
-    const toggle = document.getElementById('darkToggle');
-    if (!toggle) return;
+    const darkToggle = document.getElementById('darkToggle');
     
-    const isDark = localStorage.getItem('darkMode') === 'true';
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      toggle.textContent = '☀️';
-    } else {
-      toggle.textContent = '🌙';
+    if (!darkToggle) {
+      console.warn('⚠️ Dark toggle button not found');
+      return;
     }
     
-    toggle.addEventListener('click', function(e) {
+    // Check localStorage for saved preference
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      darkToggle.textContent = '☀️';
+      console.log('🌙 Dark mode loaded from storage');
+    } else {
+      darkToggle.textContent = '🌙';
+    }
+    
+    // Toggle dark mode on button click
+    darkToggle.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       
       const html = document.documentElement;
-      const isDarkNow = html.classList.toggle('dark');
+      const isDark = html.classList.toggle('dark');
       
-      localStorage.setItem('darkMode', isDarkNow);
-      toggle.textContent = isDarkNow ? '☀️' : '🌙';
+      localStorage.setItem('darkMode', isDark);
+      darkToggle.textContent = isDark ? '☀️' : '🌙';
       
-      console.log(`🌓 Dark mode: ${isDarkNow ? 'ON' : 'OFF'}`);
+      console.log(`🌓 Dark mode toggled: ${isDark ? 'ON' : 'OFF'} (saved to storage)`);
     });
     
-    if (window.matchMedia && !localStorage.getItem('darkMode')) {
-      const query = window.matchMedia('(prefers-color-scheme: dark)');
-      if (query.matches) {
+    // Respect system dark mode preference
+    if (window.matchMedia && localStorage.getItem('darkMode') === null) {
+      const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      if (darkModeQuery.matches) {
         document.documentElement.classList.add('dark');
-        toggle.textContent = '☀️';
+        darkToggle.textContent = '☀️';
+        console.log('🌙 System dark mode detected');
       }
+      
+      darkModeQuery.addListener(e => {
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+          darkToggle.textContent = '☀️';
+        } else {
+          document.documentElement.classList.remove('dark');
+          darkToggle.textContent = '🌙';
+        }
+      });
     }
     
-    console.log('✅ Dark mode ready');
+    console.log('✅ Dark mode initialized');
   }
   
-  // Smooth scroll
+  // ============================================
+  // SMOOTH SCROLL FOR ANCHOR LINKS
+  // ============================================
   function initializeSmoothScroll() {
     console.log('⚙️ Initializing smooth scroll...');
     
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function(e) {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         if (href !== '#' && href !== '') {
           e.preventDefault();
           const target = document.querySelector(href);
           if (target) {
+            console.log(`⬇️ Scrolling to ${href}`);
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }
       });
     });
     
-    console.log('✅ Smooth scroll ready');
+    console.log('✅ Smooth scroll initialized');
   }
   
-  // Keyboard support
+  // ============================================
+  // KEYBOARD ACCESSIBILITY
+  // ============================================
   function initializeKeyboardAccessibility() {
-    console.log('⚙️ Initializing keyboard support...');
+    console.log('⚙️ Initializing keyboard accessibility...');
     
+    // Close dropdown with ESC key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
-        const content = document.getElementById('toolsDropdownContent');
-        const btn = document.getElementById('toolsDropdown');
+        const dropdownContent = document.getElementById('toolsDropdownContent');
+        const dropdownBtn = document.getElementById('toolsDropdown');
         
-        if (content && content.classList.contains('show')) {
-          content.classList.remove('show');
-          btn.setAttribute('aria-expanded', 'false');
-          console.log('⌨️ ESC: Dropdown closed');
+        if (dropdownContent && dropdownContent.classList.contains('show')) {
+          console.log('⌨️ ESC key pressed - closing dropdown');
+          dropdownContent.classList.remove('show');
+          dropdownBtn.setAttribute('aria-expanded', 'false');
         }
       }
     });
     
-    console.log('✅ Keyboard support ready');
+    console.log('✅ Keyboard accessibility initialized');
   }
   
-  // Start
+  // ============================================
+  // START INITIALIZATION
+  // ============================================
+  
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeAllComponents);
+    console.log('📋 DOMContentLoaded event listener added');
   } else {
+    console.log('📋 DOM already ready - initializing now');
     setTimeout(initializeAllComponents, 100);
   }
   
