@@ -232,6 +232,7 @@ html.dark .topbar {
   padding: 0;
 }
 
+.dropdown-section .dropdown-header,
 .dropdown-section h4 {
   margin: 0;
   padding: 12px 16px;
@@ -242,11 +243,28 @@ html.dark .topbar {
   letter-spacing: 0.5px;
   background: var(--bg-main);
   border-bottom: 1px solid var(--border);
+  display: block;
+  width: 100%;
 }
 
+.dropdown-section:first-child .dropdown-header,
 .dropdown-section:first-child h4 {
   border-top: 0;
   margin-top: 0;
+}
+
+/* Ensure dropdown links are always visible on mobile */
+.dropdown-content .dropdown-link {
+  display: block !important;
+  width: 100% !important;
+  padding: 12px 16px !important;
+  color: var(--text-main) !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  transition: all 0.2s ease !important;
+  border-left: 3px solid transparent !important;
+  box-sizing: border-box !important;
 }
 
 /* Dropdown animation */
