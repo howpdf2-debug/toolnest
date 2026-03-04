@@ -1,7 +1,7 @@
 // =====================================================
 // TOOLNEST - include.js
-// FIXED VERSION - WORKING URLS + MOBILE DROPDOWN FIX
-// Desktop + Mobile both fully functional
+// COMPLETE WORKING VERSION - Links navigate properly
+// Beautiful dropdown + Full functionality
 // =====================================================
 
 (function() {
@@ -31,38 +31,38 @@
           <button class="dropbtn" id="toolsDropdown" type="button" aria-label="Tools menu" aria-expanded="false">Tools ▼</button>
           <div class="dropdown-content" id="toolsDropdownContent">
             <!-- PDF TOOLS -->
-            <div class="dropdown-section">
-              <div class="dropdown-header">📄 PDF Tools</div>
-              <a href="/#pdf-merger" class="dropdown-link">PDF Merger</a>
-              <a href="/#pdf-to-jpg" class="dropdown-link">PDF to JPG</a>
-              <a href="/#pdf-compressor" class="dropdown-link">PDF Compressor</a>
-              <a href="/#jpg-to-pdf" class="dropdown-link">JPG to PDF</a>
+            <div class="dropdown-section pdf-section">
+              <div class="dropdown-category">📄 PDF Tools</div>
+              <a href="https://www.ilovepdf.com/merge_pdf" target="_blank" class="dropdown-link" data-tool="PDF Merger">PDF Merger</a>
+              <a href="https://www.ilovepdf.com/pdf_to_jpg" target="_blank" class="dropdown-link" data-tool="PDF to JPG">PDF to JPG</a>
+              <a href="https://www.ilovepdf.com/compress_pdf" target="_blank" class="dropdown-link" data-tool="PDF Compressor">PDF Compressor</a>
+              <a href="https://jpg2pdf.com/" target="_blank" class="dropdown-link" data-tool="JPG to PDF">JPG to PDF</a>
             </div>
             
             <!-- IMAGE TOOLS -->
-            <div class="dropdown-section">
-              <div class="dropdown-header">🖼️ Image Tools</div>
-              <a href="/#image-compressor" class="dropdown-link">Image Compressor</a>
-              <a href="/#image-converter" class="dropdown-link">Image Converter</a>
-              <a href="/#image-resizer" class="dropdown-link">Image Resizer</a>
+            <div class="dropdown-section image-section">
+              <div class="dropdown-category">🖼️ Image Tools</div>
+              <a href="https://compressor.io/" target="_blank" class="dropdown-link" data-tool="Image Compressor">Image Compressor</a>
+              <a href="https://convertio.co/image-converter/" target="_blank" class="dropdown-link" data-tool="Image Converter">Image Converter</a>
+              <a href="https://imageresizer.com/" target="_blank" class="dropdown-link" data-tool="Image Resizer">Image Resizer</a>
             </div>
             
             <!-- BUSINESS TOOLS -->
-            <div class="dropdown-section">
-              <div class="dropdown-header">💼 Business Tools</div>
-              <a href="/#invoice-generator" class="dropdown-link">Invoice Generator</a>
-              <a href="/#gst-invoice" class="dropdown-link">GST Invoice</a>
-              <a href="/#resume-builder" class="dropdown-link">Resume Builder</a>
+            <div class="dropdown-section business-section">
+              <div class="dropdown-category">💼 Business Tools</div>
+              <a href="https://invoiceninja.com/" target="_blank" class="dropdown-link" data-tool="Invoice Generator">Invoice Generator</a>
+              <a href="https://www.zervant.com/" target="_blank" class="dropdown-link" data-tool="GST Invoice">GST Invoice</a>
+              <a href="https://www.canva.com/resume/" target="_blank" class="dropdown-link" data-tool="Resume Builder">Resume Builder</a>
             </div>
             
             <!-- PRODUCTIVITY TOOLS -->
-            <div class="dropdown-section">
-              <div class="dropdown-header">⚡ Productivity Tools</div>
-              <a href="/#qr-code-generator" class="dropdown-link">QR Code Generator</a>
-              <a href="/#password-generator" class="dropdown-link">Password Generator</a>
-              <a href="/#word-counter" class="dropdown-link">Word Counter</a>
-              <a href="/#base64-encoder" class="dropdown-link">Base64 Encoder</a>
-              <a href="/#json-formatter" class="dropdown-link">JSON Formatter</a>
+            <div class="dropdown-section productivity-section">
+              <div class="dropdown-category">⚡ Productivity Tools</div>
+              <a href="https://www.qr-code-generator.com/" target="_blank" class="dropdown-link" data-tool="QR Code Generator">QR Code Generator</a>
+              <a href="https://passwordsgenerator.net/" target="_blank" class="dropdown-link" data-tool="Password Generator">Password Generator</a>
+              <a href="https://www.wordcounter.com/" target="_blank" class="dropdown-link" data-tool="Word Counter">Word Counter</a>
+              <a href="https://www.base64encode.org/" target="_blank" class="dropdown-link" data-tool="Base64 Encoder">Base64 Encoder</a>
+              <a href="https://jsoncrack.com/" target="_blank" class="dropdown-link" data-tool="JSON Formatter">JSON Formatter</a>
             </div>
           </div>
         </div>
@@ -281,26 +281,26 @@
       }
     });
     
-    // FIX: DROPDOWN LINKS - ALLOW NAVIGATION
+    // FIX: DROPDOWN LINKS - OPEN IN NEW TAB
     // Get all links inside dropdown content
     const dropdownLinks = dropdownContent.querySelectorAll('a.dropdown-link');
     console.log(`  Found ${dropdownLinks.length} dropdown links`);
     
     dropdownLinks.forEach(link => {
       link.addEventListener('click', function(e) {
-        // Allow default link behavior
-        const linkText = this.textContent;
+        // Allow link to open in new tab
+        const linkText = this.getAttribute('data-tool') || this.textContent;
         const linkHref = this.getAttribute('href');
         
         console.log(`🔽 Dropdown link clicked: ${linkText}`);
-        console.log(`  → Navigating to: ${linkHref}`);
+        console.log(`  → Opening: ${linkHref}`);
         
-        // Close dropdown after a small delay
+        // Close dropdown after opening link
         setTimeout(() => {
           dropdownContent.classList.remove('show');
           dropdownBtn.setAttribute('aria-expanded', 'false');
           console.log('🔽 Dropdown closed after link click');
-        }, 50);
+        }, 100);
         
         // Close mobile menu if open
         const navRight = document.getElementById('navRight');
@@ -313,10 +313,10 @@
             mobileOverlay.classList.remove('active');
             mobileMenuToggle.classList.remove('active');
             console.log('📱 Mobile menu closed after link click');
-          }, 50);
+          }, 100);
         }
         
-        // Link navigates naturally
+        // Link opens in new tab naturally
       });
     });
     
@@ -403,9 +403,6 @@
           if (target) {
             console.log(`⬇️ Scrolling to ${href}`);
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          } else {
-            console.log(`⬇️ Target not found for ${href}, will navigate`);
-            window.location.hash = href;
           }
         }
       });
