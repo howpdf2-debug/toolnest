@@ -33,9 +33,8 @@
             <!-- PDF TOOLS -->
             <div class="dropdown-section pdf-section">
               <div class="dropdown-category">📄 PDF Tools</div>
-              <a href="/tools/pdf-merger.html" class="dropdown-link" data-tool="PDF Merger">PDF Merger</a>
+              <a href="/tools/merge-pdf.html" class="dropdown-link" data-tool="MERGE-PDF">MERGE-PDF</a>
               <a href="/tools/pdf-to-jpg.html" class="dropdown-link" data-tool="PDF to JPG">PDF to JPG</a>
-              <a href="/tools/pdf-compressor.html" class="dropdown-link" data-tool="PDF Compressor">PDF Compressor</a>
               <a href="/tools/jpg-to-pdf.html" class="dropdown-link" data-tool="JPG to PDF">JPG to PDF</a>
             </div>
             
@@ -44,14 +43,23 @@
               <div class="dropdown-category">🖼️ Image Tools</div>
               <a href="/tools/image-compressor.html" class="dropdown-link" data-tool="Image Compressor">Image Compressor</a>
               <a href="/tools/image-converter.html" class="dropdown-link" data-tool="Image Converter">Image Converter</a>
-              <a href="/tools/image-resizer.html" class="dropdown-link" data-tool="Image Resizer">Image Resizer</a>
+              
             </div>
+
+             <!-- MEDIA TOOLS -->
+             
+            <div class="dropdown-section media-section">
+              <div class="dropdown-category">🖼️ media Tools</div>
+              <a href="/tools/youtube-downloader.html" class="dropdown-link" data-tool="youtube-downloader">youtube-downloader</a>
+              
+              
+            </div>
+            
             
             <!-- BUSINESS TOOLS -->
             <div class="dropdown-section business-section">
               <div class="dropdown-category">💼 Business Tools</div>
               <a href="/tools/invoice-generator.html" class="dropdown-link" data-tool="Invoice Generator">Invoice Generator</a>
-              <a href="/tools/gst-invoice.html" class="dropdown-link" data-tool="GST Invoice">GST Invoice</a>
               <a href="/tools/resume-builder.html" class="dropdown-link" data-tool="Resume Builder">Resume Builder</a>
             </div>
             
