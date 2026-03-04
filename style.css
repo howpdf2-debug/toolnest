@@ -1,6 +1,6 @@
 /* =====================================================
-   🎨 TOOLNEST - COMPLETE CSS FILE
-   All styles combined with dropdown fixes
+   🎨 TOOLNEST - COMPLETE BEAUTIFUL CSS
+   With Colorful Dropdown + All Styles
    Production Ready ✅
    ===================================================== */
 
@@ -142,7 +142,7 @@ html.dark .topbar {
 }
 
 /* =====================================================
-   DROPDOWN (MAIN FIX - COMPLETE STYLING)
+   BEAUTIFUL COLORFUL DROPDOWN
    ===================================================== */
 
 .dropdown {
@@ -172,9 +172,8 @@ html.dark .topbar {
   outline-offset: 2px;
 }
 
-/* DROPDOWN CONTENT - DESKTOP MODE */
+/* DROPDOWN CONTENT */
 .dropdown-content {
-  /* Hidden by default - IMPORTANT FIX */
   display: none;
   position: absolute;
   right: 0;
@@ -194,7 +193,6 @@ html.dark .topbar {
   transition: all 0.3s ease;
 }
 
-/* Show the dropdown - IMPORTANT FIX */
 .dropdown-content.show {
   display: block;
   opacity: 1;
@@ -202,73 +200,96 @@ html.dark .topbar {
   transform: translateY(0);
 }
 
-/* Dropdown link styles */
-.dropdown-content a {
-  display: block;
-  padding: 12px 16px;
-  color: var(--text-main);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 14px;
-  transition: all 0.2s ease;
-  border-left: 3px solid transparent;
-}
-
-.dropdown-content a:hover {
-  background: rgba(37, 99, 235, 0.08);
-  border-left-color: var(--blue);
-  color: var(--blue);
-}
-
-.dropdown-content a:focus {
-  outline: 2px solid var(--blue);
-  outline-offset: -2px;
-  background: rgba(37, 99, 235, 0.08);
-}
-
-/* Dropdown section headers */
+/* Dropdown Section Styling - Colorful */
 .dropdown-section {
   margin: 0;
   padding: 0;
 }
 
+/* Category Headers - Colorful */
+.dropdown-category,
 .dropdown-section .dropdown-header,
 .dropdown-section h4 {
-  margin: 0;
-  padding: 12px 16px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-  background: var(--bg-main);
-  border-bottom: 1px solid var(--border);
-  display: block;
-  width: 100%;
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 14px 16px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: white !important;
+  letter-spacing: 0.5px !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
 }
 
-.dropdown-section:first-child .dropdown-header,
-.dropdown-section:first-child h4 {
-  border-top: 0;
-  margin-top: 0;
+/* PDF Tools - Blue Gradient */
+.pdf-section .dropdown-category,
+.pdf-section .dropdown-header,
+.pdf-section h4 {
+  background: linear-gradient(135deg, #2563eb, #1e40af) !important;
+  border-left: 4px solid #1e40af !important;
 }
 
-/* Ensure dropdown links are always visible on mobile */
+/* Image Tools - Purple Gradient */
+.image-section .dropdown-category,
+.image-section .dropdown-header,
+.image-section h4 {
+  background: linear-gradient(135deg, #a855f7, #7c3aed) !important;
+  border-left: 4px solid #7c3aed !important;
+}
+
+/* Business Tools - Green Gradient */
+.business-section .dropdown-category,
+.business-section .dropdown-header,
+.business-section h4 {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  border-left: 4px solid #059669 !important;
+}
+
+/* Productivity Tools - Orange Gradient */
+.productivity-section .dropdown-category,
+.productivity-section .dropdown-header,
+.productivity-section h4 {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  border-left: 4px solid #d97706 !important;
+}
+
+/* Dropdown Links */
 .dropdown-content .dropdown-link {
   display: block !important;
   width: 100% !important;
-  padding: 12px 16px !important;
+  padding: 14px 16px !important;
   color: var(--text-main) !important;
   text-decoration: none !important;
   font-weight: 500 !important;
   font-size: 14px !important;
-  transition: all 0.2s ease !important;
+  transition: all 0.25s ease !important;
   border-left: 3px solid transparent !important;
+  border-bottom: 1px solid var(--border) !important;
   box-sizing: border-box !important;
+  background: var(--bg-card) !important;
+}
+
+.dropdown-content .dropdown-link:hover {
+  background: var(--bg-main) !important;
+  border-left-color: var(--blue) !important;
+  color: var(--blue) !important;
+  padding-left: 20px !important;
+  font-weight: 600 !important;
+}
+
+.dropdown-content .dropdown-link:active {
+  transform: scale(0.98) !important;
+}
+
+.dropdown-content .dropdown-link:focus-visible {
+  outline: 2px solid var(--blue) !important;
+  outline-offset: -2px !important;
 }
 
 /* Dropdown animation */
-@keyframes dropdownFadeIn {
+@keyframes slideDown {
   from {
     opacity: 0;
     transform: translateY(-10px);
@@ -280,11 +301,47 @@ html.dark .topbar {
 }
 
 .dropdown-content.show {
-  animation: dropdownFadeIn 0.3s ease forwards;
+  animation: slideDown 0.3s ease forwards;
+}
+
+/* Scrollbar styling */
+.dropdown-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2563eb, #a855f7);
+  border-radius: 3px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #1e40af, #7c3aed);
+}
+
+/* Dark mode dropdown */
+html.dark .dropdown-content {
+  background: var(--bg-card);
+  border-color: var(--border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+html.dark .dropdown-content .dropdown-link {
+  color: var(--text-main);
+  border-bottom-color: var(--border);
+  background: var(--bg-card);
+}
+
+html.dark .dropdown-content .dropdown-link:hover {
+  background: #1e293b;
+  color: #60a5fa;
 }
 
 /* =====================================================
-   HERO – HOME
+   HERO SECTION
    ===================================================== */
 .hero {
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
@@ -318,45 +375,7 @@ html.dark .hero {
 }
 
 /* =====================================================
-   MINI HERO – TOOLS
-   ===================================================== */
-.mini-hero {
-  padding: 50px 20px;
-  color: #fff;
-  text-align: center;
-  background: #475569;
-  transition: background 0.3s ease;
-}
-
-html.dark .mini-hero {
-  background: #1e293b;
-}
-
-.hero-top {
-  display: flex;
-  justify-content: flex-end;
-  max-width: 1100px;
-  margin: 0 auto 12px;
-  padding: 0 20px;
-}
-
-.back-home {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 6px 16px;
-  border-radius: 30px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.back-home:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-/* =====================================================
-   CONTAINER
+   CONTAINER & BASE
    ===================================================== */
 .container {
   max-width: 1100px;
@@ -364,9 +383,6 @@ html.dark .mini-hero {
   padding: 40px 20px;
 }
 
-/* =====================================================
-   IMPROVED TOOLS GRID
-   ===================================================== */
 .tools {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -390,24 +406,6 @@ html.dark .mini-hero {
   justify-content: center;
   gap: 12px;
   min-height: 140px;
-  position: relative;
-  overflow: hidden;
-}
-
-.tool::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--blue), var(--teal));
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.tool:hover::before {
-  transform: scaleX(1);
 }
 
 .tool:hover {
@@ -416,51 +414,14 @@ html.dark .mini-hero {
   border-color: var(--blue);
 }
 
-.tool:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 2px;
-}
-
 .tool-icon {
   font-size: 36px;
-  display: block;
-}
-
-.tool-name {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-main);
 }
 
 /* =====================================================
-   TOOL BOX
+   FORMS
    ===================================================== */
-.tool-box {
-  background: var(--bg-card);
-  padding: 32px;
-  border-radius: 18px;
-  box-shadow: 0 10px 25px var(--shadow);
-  border: 1px solid var(--border);
-}
-
-.tool-box h2 {
-  margin-bottom: 20px;
-  color: var(--text-main);
-}
-
-.tool-box h3 {
-  margin-top: 25px;
-  margin-bottom: 15px;
-  color: var(--text-main);
-  font-size: 20px;
-}
-
-/* =====================================================
-   FORM ELEMENTS
-   ===================================================== */
-input,
-select,
-textarea {
+input, select, textarea {
   width: 100%;
   padding: 12px;
   margin: 12px 0;
@@ -470,52 +431,25 @@ textarea {
   color: var(--text-main);
   font-family: inherit;
   font-size: 16px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
+input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--blue);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-input::placeholder {
-  color: var(--text-muted);
-}
-
-html.dark input,
-html.dark textarea,
-html.dark select {
-  background: #1e293b;
-  color: #e5e7eb;
-  border: 1px solid #334155;
-}
-
-html.dark input:focus,
-html.dark textarea:focus,
-html.dark select:focus {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-}
-
-/* Improved select element styling for mobile */
 select {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232563eb' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   padding-right: 36px;
-  cursor: pointer;
-}
-
-html.dark select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e5e7eb' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
 }
 
 /* =====================================================
-   BUTTON SYSTEM
+   BUTTONS
    ===================================================== */
 button {
   padding: 12px 22px;
@@ -536,198 +470,12 @@ button:active {
   transform: scale(0.98);
 }
 
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
 .btn-primary {
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
 }
 
-.btn-primary:hover:not(:disabled) {
+.btn-primary:hover {
   box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
-}
-
-.btn-secondary {
-  background: #64748b;
-}
-
-.btn-secondary:hover:not(:disabled) {
-  background: #475569;
-  box-shadow: 0 8px 20px rgba(100, 116, 139, 0.2);
-}
-
-/* =====================================================
-   ADS
-   ===================================================== */
-.ad-box,
-.ad-space {
-  margin: 30px auto;
-  padding: 25px;
-  max-width: 1100px;
-  border: 2px dashed var(--border);
-  text-align: center;
-  color: var(--text-muted);
-  border-radius: 12px;
-  background: var(--bg-card);
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* =====================================================
-   CONTENT SECTION
-   ===================================================== */
-.content-section {
-  margin-top: 40px;
-}
-
-.content-section h2 {
-  margin-bottom: 20px;
-  color: var(--text-main);
-}
-
-.content-section h3 {
-  margin-top: 30px;
-  margin-bottom: 15px;
-  color: var(--text-main);
-}
-
-.content-section p {
-  margin-bottom: 15px;
-  line-height: 1.7;
-  color: var(--text-main);
-}
-
-.content-section ul {
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
-
-.content-section li {
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-
-/* =====================================================
-   BLOG SECTION (HOMEPAGE)
-   ===================================================== */
-.blog-section {
-  margin-top: 50px;
-  padding: 40px 20px;
-  background: var(--bg-card);
-  border-radius: 20px;
-  border: 1px solid var(--border);
-}
-
-.blog-section h2 {
-  text-align: center;
-  margin-bottom: 10px;
-  color: var(--text-main);
-  font-size: 32px;
-}
-
-.section-subtitle {
-  text-align: center;
-  color: var(--text-muted);
-  margin-bottom: 35px;
-  font-size: 16px;
-}
-
-.blog-preview-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  margin-bottom: 30px;
-}
-
-.blog-preview-card {
-  background: var(--bg-main);
-  border-radius: 16px;
-  padding: 25px;
-  border: 1px solid var(--border);
-  transition: all 0.3s ease;
-}
-
-.blog-preview-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px var(--shadow);
-  border-color: var(--blue);
-}
-
-.blog-preview-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.blog-tag {
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.blog-tag.tutorial {
-  background: rgba(37, 99, 235, 0.1);
-  color: var(--blue);
-}
-
-.blog-tag.tips {
-  background: rgba(15, 118, 110, 0.1);
-  color: var(--teal);
-}
-
-.blog-tag.guide {
-  background: rgba(168, 85, 247, 0.1);
-  color: #a855f7;
-}
-
-.blog-date {
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-.blog-preview-card h3 {
-  font-size: 20px;
-  margin-bottom: 12px;
-  color: var(--text-main);
-  line-height: 1.4;
-}
-
-.blog-preview-card p {
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 15px;
-  font-size: 15px;
-}
-
-.blog-read-more {
-  color: var(--blue);
-  font-weight: 600;
-  font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.blog-read-more:hover {
-  color: var(--blue-dark);
-  text-decoration: underline;
-}
-
-.blog-cta {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.blog-cta .btn-primary {
-  padding: 14px 28px;
-  font-size: 16px;
-  display: inline-block;
 }
 
 /* =====================================================
@@ -741,10 +489,6 @@ footer {
   margin-top: 60px;
 }
 
-html.dark footer {
-  background: #0f0f1e;
-}
-
 footer p {
   max-width: 800px;
   margin: 0 auto 12px;
@@ -755,8 +499,6 @@ footer p {
 
 footer a {
   color: #93c5fd;
-  margin: 0 8px;
-  font-size: 14px;
   transition: color 0.3s ease;
 }
 
@@ -765,32 +507,16 @@ footer a:hover {
   text-decoration: underline;
 }
 
-footer a:focus-visible {
-  outline: 2px solid #93c5fd;
-  outline-offset: 2px;
-}
-
 /* =====================================================
    RESPONSIVE DESIGN
    ===================================================== */
 @media (max-width: 768px) {
   .topbar {
-    flex-direction: row;
-    gap: 12px;
     padding: 12px 16px;
   }
 
   .logo {
     font-size: 18px;
-  }
-  
-  .logo img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .nav-right a:not(.dropbtn) {
-    display: none;
   }
 
   .hero {
@@ -802,10 +528,6 @@ footer a:focus-visible {
     font-size: 32px;
   }
 
-  .hero p {
-    font-size: 16px;
-  }
-
   .tools {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 16px;
@@ -815,66 +537,49 @@ footer a:focus-visible {
     padding: 24px 16px;
     min-height: 120px;
   }
-  
+
   .tool-icon {
     font-size: 32px;
   }
+
+  /* Mobile Dropdown */
+  .dropdown-content {
+    position: static !important;
+    width: 100% !important;
+    top: auto !important;
+    right: auto !important;
+    border-radius: 12px !important;
+    margin-top: 8px !important;
+    margin-bottom: 10px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+  }
   
-  .tool-name {
-    font-size: 14px;
+  .dropdown-content.show {
+    max-height: 700px !important;
+    overflow-y: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    animation: slideDown 0.3s ease forwards !important;
+  }
+  
+  .dropbtn {
+    width: 100% !important;
+    text-align: left !important;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(37, 99, 235, 0.08)) !important;
+    color: var(--blue) !important;
+    padding: 14px 16px !important;
+    margin-bottom: 10px !important;
+    border: 1px solid var(--blue) !important;
+  }
+  
+  .dropbtn:hover {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(37, 99, 235, 0.12)) !important;
   }
 
   .container {
     padding: 30px 16px;
-  }
-
-  .mini-hero {
-    padding: 40px 16px;
-  }
-
-  button {
-    padding: 10px 16px;
-    font-size: 14px;
-  }
-
-  /* MOBILE DROPDOWN - IMPORTANT FIX */
-  .dropdown-content {
-    position: static !important;
-    width: 100%;
-    top: auto;
-    right: auto;
-    border-radius: 8px;
-    margin-top: 0;
-    margin-bottom: 10px;
-    box-shadow: none;
-    border: 1px solid var(--border);
-    max-height: 0;
-    min-width: auto;
-    overflow: hidden;
-  }
-  
-  .dropdown-content.show {
-    max-height: 600px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .dropdown-content a {
-    border-left: 3px solid var(--blue);
-  }
-  
-  .dropbtn {
-    width: 100%;
-    text-align: left;
-    background: rgba(37, 99, 235, 0.1);
-    color: var(--text-main);
-    padding: 12px 15px;
-    margin-bottom: 10px;
-  }
-  
-  .dropbtn:hover {
-    background: rgba(37, 99, 235, 0.15);
   }
 }
 
@@ -883,31 +588,8 @@ footer a:focus-visible {
     font-size: 24px;
   }
 
-  .hero p {
-    font-size: 14px;
-  }
-
   .tools {
     grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .tool {
-    padding: 20px 16px;
-    min-height: 100px;
-  }
-
-  button {
-    width: 100%;
-  }
-
-  footer p {
-    font-size: 12px;
-  }
-
-  footer a {
-    display: block;
-    margin: 8px 0;
   }
 }
 
@@ -917,127 +599,28 @@ footer a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
 
 @media (prefers-contrast: more) {
-  body {
-    --border: #1a1a1a;
+  .dropdown-category,
+  .dropdown-content .dropdown-link {
+    font-weight: 900 !important;
   }
-
-  button {
-    border: 2px solid currentColor;
-  }
-
-  .dropdown-content {
-    border: 2px solid var(--text-main);
-  }
-  
-  .dropbtn {
-    border: 1px solid rgba(255, 255, 255, 0.5);
-  }
-  
-  .dropdown-content a {
-    border-left: 4px solid var(--blue);
-  }
-}
-
-/* =====================================================
-   DROPDOWN SCROLLBAR STYLING
-   ===================================================== */
-.dropdown-content::-webkit-scrollbar {
-  width: 6px;
-}
-
-.dropdown-content::-webkit-scrollbar-track {
-  background: var(--bg-main);
-}
-
-.dropdown-content::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
-}
-
-.dropdown-content::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
-}
-
-/* Firefox scrollbar */
-.dropdown-content {
-  scrollbar-color: var(--border) var(--bg-main);
-  scrollbar-width: thin;
-}
-
-/* =====================================================
-   DARK MODE DROPDOWN STYLES
-   ===================================================== */
-html.dark .dropdown-content {
-  background: var(--bg-card);
-  border-color: var(--border);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
-
-html.dark .dropdown-content a {
-  color: var(--text-main);
-}
-
-html.dark .dropdown-content a:hover {
-  background: rgba(37, 99, 235, 0.15);
-  color: var(--blue);
-}
-
-html.dark .dropdown-section h4 {
-  background: var(--bg-main);
-  color: var(--text-muted);
-  border-bottom-color: var(--border);
-}
-
-html.dark .dropbtn {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-}
-
-html.dark .dropbtn:hover {
-  background: rgba(255, 255, 255, 0.25);
 }
 
 /* =====================================================
    PRINT STYLES
    ===================================================== */
 @media print {
-  .topbar,
-  footer,
-  .ad-box,
-  .ad-space,
-  #darkToggle,
-  .back-home,
-  .dropdown-content {
+  .topbar, footer, .dropdown-content {
     display: none !important;
-  }
-
-  body {
-    background: white;
-    color: black;
-  }
-
-  .container {
-    max-width: 100%;
-  }
-
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-
-  a[href^="/"]:after,
-  a[href^="#"]:after {
-    content: "";
   }
 }
 
 /* =====================================================
-   MOBILE NAVIGATION ENHANCEMENTS
+   MOBILE NAVIGATION
    ===================================================== */
 .mobile-menu-toggle {
   display: none;
@@ -1075,7 +658,7 @@ html.dark .dropbtn:hover {
 
 @media (max-width: 768px) {
   .mobile-menu-toggle {
-    display: block;
+    display: flex !important;
   }
   
   .nav-right {
@@ -1101,62 +684,17 @@ html.dark .dropbtn:hover {
     display: block !important;
     color: var(--text-main) !important;
     padding: 12px 15px;
+    margin-bottom: 10px;
     border-radius: 8px;
     border: 1px solid var(--border);
-    margin-bottom: 10px;
   }
   
   .nav-right > a:hover {
     background: var(--blue) !important;
     color: white !important;
   }
-  
-  .dropdown {
-    width: 100%;
-  }
-  
-  .dropbtn {
-    width: 100%;
-    text-align: left;
-  }
-}
-
-/* Desktop dropdown improvements */
-@media (min-width: 769px) {
-  .dropdown-content {
-    max-height: 500px;
-    overflow-y: auto;
-  }
-  
-  .dropdown-content::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  .dropdown-content::-webkit-scrollbar-track {
-    background: var(--bg-main);
-  }
-  
-  .dropdown-content::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 3px;
-  }
-}
-
-/* Ensure hamburger is visible on mobile */
-@media (max-width: 768px) {
-  .mobile-menu-toggle {
-    display: flex !important;
-  }
-  
-  .hamburger {
-    background: #fff !important;
-  }
-  
-  html.dark .hamburger {
-    background: #e5e7eb !important;
-  }
 }
 
 /* =====================================================
-   END OF COMPLETE CSS FILE
+   END OF COMPLETE CSS
    ===================================================== */
