@@ -1,7 +1,7 @@
 // =====================================================
 // TOOLNEST - include.js
-// COMPLETE FIXED VERSION - MOBILE DROPDOWN LINKS WORKING
-// Desktop + Mobile both 100% functional
+// FIXED VERSION - WORKING URLS + MOBILE DROPDOWN FIX
+// Desktop + Mobile both fully functional
 // =====================================================
 
 (function() {
@@ -32,37 +32,37 @@
           <div class="dropdown-content" id="toolsDropdownContent">
             <!-- PDF TOOLS -->
             <div class="dropdown-section">
-              <h4 style="padding: 12px 16px; margin: 8px 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; cursor: pointer;">📄 PDF Tools</h4>
-              <a href="/pdf-merger/" class="dropdown-link">PDF Merger</a>
-              <a href="/pdf-to-jpg/" class="dropdown-link">PDF to JPG</a>
-              <a href="/pdf-compressor/" class="dropdown-link">PDF Compressor</a>
-              <a href="/jpg-to-pdf/" class="dropdown-link">JPG to PDF</a>
+              <div class="dropdown-header">📄 PDF Tools</div>
+              <a href="/#pdf-merger" class="dropdown-link">PDF Merger</a>
+              <a href="/#pdf-to-jpg" class="dropdown-link">PDF to JPG</a>
+              <a href="/#pdf-compressor" class="dropdown-link">PDF Compressor</a>
+              <a href="/#jpg-to-pdf" class="dropdown-link">JPG to PDF</a>
             </div>
             
             <!-- IMAGE TOOLS -->
             <div class="dropdown-section">
-              <h4 style="padding: 12px 16px; margin: 8px 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; cursor: pointer;">🖼️ Image Tools</h4>
-              <a href="/image-compressor/" class="dropdown-link">Image Compressor</a>
-              <a href="/image-converter/" class="dropdown-link">Image Converter</a>
-              <a href="/image-resizer/" class="dropdown-link">Image Resizer</a>
+              <div class="dropdown-header">🖼️ Image Tools</div>
+              <a href="/#image-compressor" class="dropdown-link">Image Compressor</a>
+              <a href="/#image-converter" class="dropdown-link">Image Converter</a>
+              <a href="/#image-resizer" class="dropdown-link">Image Resizer</a>
             </div>
             
             <!-- BUSINESS TOOLS -->
             <div class="dropdown-section">
-              <h4 style="padding: 12px 16px; margin: 8px 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; cursor: pointer;">💼 Business Tools</h4>
-              <a href="/invoice-generator/" class="dropdown-link">Invoice Generator</a>
-              <a href="/gst-invoice/" class="dropdown-link">GST Invoice</a>
-              <a href="/resume-builder/" class="dropdown-link">Resume Builder</a>
+              <div class="dropdown-header">💼 Business Tools</div>
+              <a href="/#invoice-generator" class="dropdown-link">Invoice Generator</a>
+              <a href="/#gst-invoice" class="dropdown-link">GST Invoice</a>
+              <a href="/#resume-builder" class="dropdown-link">Resume Builder</a>
             </div>
             
             <!-- PRODUCTIVITY TOOLS -->
             <div class="dropdown-section">
-              <h4 style="padding: 12px 16px; margin: 8px 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; cursor: pointer;">⚡ Productivity Tools</h4>
-              <a href="/qr-code-generator/" class="dropdown-link">QR Code Generator</a>
-              <a href="/password-generator/" class="dropdown-link">Password Generator</a>
-              <a href="/word-counter/" class="dropdown-link">Word Counter</a>
-              <a href="/base64-encoder/" class="dropdown-link">Base64 Encoder</a>
-              <a href="/json-formatter/" class="dropdown-link">JSON Formatter</a>
+              <div class="dropdown-header">⚡ Productivity Tools</div>
+              <a href="/#qr-code-generator" class="dropdown-link">QR Code Generator</a>
+              <a href="/#password-generator" class="dropdown-link">Password Generator</a>
+              <a href="/#word-counter" class="dropdown-link">Word Counter</a>
+              <a href="/#base64-encoder" class="dropdown-link">Base64 Encoder</a>
+              <a href="/#json-formatter" class="dropdown-link">JSON Formatter</a>
             </div>
           </div>
         </div>
@@ -281,23 +281,21 @@
       }
     });
     
-    // FIX: MOBILE DROPDOWN LINKS - ALLOW NAVIGATION
+    // FIX: DROPDOWN LINKS - ALLOW NAVIGATION
     // Get all links inside dropdown content
     const dropdownLinks = dropdownContent.querySelectorAll('a.dropdown-link');
     console.log(`  Found ${dropdownLinks.length} dropdown links`);
     
     dropdownLinks.forEach(link => {
       link.addEventListener('click', function(e) {
-        // IMPORTANT: Allow navigation to happen
-        // Don't preventDefault() - let the link navigate
-        
+        // Allow default link behavior
         const linkText = this.textContent;
         const linkHref = this.getAttribute('href');
         
         console.log(`🔽 Dropdown link clicked: ${linkText}`);
         console.log(`  → Navigating to: ${linkHref}`);
         
-        // Close dropdown AFTER a tiny delay to allow user to see the action
+        // Close dropdown after a small delay
         setTimeout(() => {
           dropdownContent.classList.remove('show');
           dropdownBtn.setAttribute('aria-expanded', 'false');
@@ -318,7 +316,7 @@
           }, 50);
         }
         
-        // Navigation will happen automatically
+        // Link navigates naturally
       });
     });
     
@@ -405,6 +403,9 @@
           if (target) {
             console.log(`⬇️ Scrolling to ${href}`);
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            console.log(`⬇️ Target not found for ${href}, will navigate`);
+            window.location.hash = href;
           }
         }
       });
