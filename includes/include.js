@@ -1,7 +1,7 @@
 // =====================================================
 // TOOLNEST - include.js
-// COMPLETE WORKING VERSION - Links navigate properly
-// Beautiful dropdown + Full functionality
+// COMPLETE WORKING VERSION - INTERNAL TOOL LINKS
+// All links point to YOUR tools, not external sites
 // =====================================================
 
 (function() {
@@ -33,36 +33,36 @@
             <!-- PDF TOOLS -->
             <div class="dropdown-section pdf-section">
               <div class="dropdown-category">📄 PDF Tools</div>
-              <a href="https://www.ilovepdf.com/merge_pdf" target="_blank" class="dropdown-link" data-tool="PDF Merger">PDF Merger</a>
-              <a href="https://www.ilovepdf.com/pdf_to_jpg" target="_blank" class="dropdown-link" data-tool="PDF to JPG">PDF to JPG</a>
-              <a href="https://www.ilovepdf.com/compress_pdf" target="_blank" class="dropdown-link" data-tool="PDF Compressor">PDF Compressor</a>
-              <a href="https://jpg2pdf.com/" target="_blank" class="dropdown-link" data-tool="JPG to PDF">JPG to PDF</a>
+              <a href="/tools/pdf-merger.html" class="dropdown-link" data-tool="PDF Merger">PDF Merger</a>
+              <a href="/tools/pdf-to-jpg.html" class="dropdown-link" data-tool="PDF to JPG">PDF to JPG</a>
+              <a href="/tools/pdf-compressor.html" class="dropdown-link" data-tool="PDF Compressor">PDF Compressor</a>
+              <a href="/tools/jpg-to-pdf.html" class="dropdown-link" data-tool="JPG to PDF">JPG to PDF</a>
             </div>
             
             <!-- IMAGE TOOLS -->
             <div class="dropdown-section image-section">
               <div class="dropdown-category">🖼️ Image Tools</div>
-              <a href="https://compressor.io/" target="_blank" class="dropdown-link" data-tool="Image Compressor">Image Compressor</a>
-              <a href="https://convertio.co/image-converter/" target="_blank" class="dropdown-link" data-tool="Image Converter">Image Converter</a>
-              <a href="https://imageresizer.com/" target="_blank" class="dropdown-link" data-tool="Image Resizer">Image Resizer</a>
+              <a href="/tools/image-compressor.html" class="dropdown-link" data-tool="Image Compressor">Image Compressor</a>
+              <a href="/tools/image-converter.html" class="dropdown-link" data-tool="Image Converter">Image Converter</a>
+              <a href="/tools/image-resizer.html" class="dropdown-link" data-tool="Image Resizer">Image Resizer</a>
             </div>
             
             <!-- BUSINESS TOOLS -->
             <div class="dropdown-section business-section">
               <div class="dropdown-category">💼 Business Tools</div>
-              <a href="https://invoiceninja.com/" target="_blank" class="dropdown-link" data-tool="Invoice Generator">Invoice Generator</a>
-              <a href="https://www.zervant.com/" target="_blank" class="dropdown-link" data-tool="GST Invoice">GST Invoice</a>
-              <a href="https://www.canva.com/resume/" target="_blank" class="dropdown-link" data-tool="Resume Builder">Resume Builder</a>
+              <a href="/tools/invoice-generator.html" class="dropdown-link" data-tool="Invoice Generator">Invoice Generator</a>
+              <a href="/tools/gst-invoice.html" class="dropdown-link" data-tool="GST Invoice">GST Invoice</a>
+              <a href="/tools/resume-builder.html" class="dropdown-link" data-tool="Resume Builder">Resume Builder</a>
             </div>
             
             <!-- PRODUCTIVITY TOOLS -->
             <div class="dropdown-section productivity-section">
               <div class="dropdown-category">⚡ Productivity Tools</div>
-              <a href="https://www.qr-code-generator.com/" target="_blank" class="dropdown-link" data-tool="QR Code Generator">QR Code Generator</a>
-              <a href="https://passwordsgenerator.net/" target="_blank" class="dropdown-link" data-tool="Password Generator">Password Generator</a>
-              <a href="https://www.wordcounter.com/" target="_blank" class="dropdown-link" data-tool="Word Counter">Word Counter</a>
-              <a href="https://www.base64encode.org/" target="_blank" class="dropdown-link" data-tool="Base64 Encoder">Base64 Encoder</a>
-              <a href="https://jsoncrack.com/" target="_blank" class="dropdown-link" data-tool="JSON Formatter">JSON Formatter</a>
+              <a href="/tools/qr-code-generator.html" class="dropdown-link" data-tool="QR Code Generator">QR Code Generator</a>
+              <a href="/tools/password-generator.html" class="dropdown-link" data-tool="Password Generator">Password Generator</a>
+              <a href="/tools/word-counter.html" class="dropdown-link" data-tool="Word Counter">Word Counter</a>
+              <a href="/tools/base64-encoder.html" class="dropdown-link" data-tool="Base64 Encoder">Base64 Encoder</a>
+              <a href="/tools/json-formatter.html" class="dropdown-link" data-tool="JSON Formatter">JSON Formatter</a>
             </div>
           </div>
         </div>
@@ -213,7 +213,7 @@
       });
     }
     
-    // Close menu when clicking nav links (not dropdown links)
+    // Close menu when clicking nav links
     navRight.querySelectorAll('a.nav-link').forEach(link => {
       link.addEventListener('click', function() {
         console.log(`📱 Nav link clicked: ${this.textContent} - closing menu`);
@@ -227,7 +227,7 @@
   }
   
   // ============================================
-  // DROPDOWN INITIALIZATION (MOBILE & DESKTOP)
+  // DROPDOWN INITIALIZATION
   // ============================================
   function initializeDropdown() {
     console.log('⚙️ Initializing dropdown...');
@@ -248,7 +248,7 @@
     
     console.log('  ✅ Dropdown elements found');
     
-    // DESKTOP: Click on button to toggle dropdown
+    // Click on button to toggle dropdown
     dropdownBtn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -258,7 +258,6 @@
       const isCurrentlyOpen = dropdownContent.classList.contains('show');
       console.log(`  → Dropdown is currently ${isCurrentlyOpen ? 'OPEN' : 'CLOSED'}`);
       
-      // Toggle the show class
       dropdownContent.classList.toggle('show');
       
       const isNowOpen = dropdownContent.classList.contains('show');
@@ -267,7 +266,7 @@
       console.log(`  → Dropdown is now ${isNowOpen ? 'OPEN ✅' : 'CLOSED ✅'}`);
     });
     
-    // MOBILE & DESKTOP: Close dropdown when clicking outside
+    // Close dropdown when clicking outside
     document.addEventListener('click', function(e) {
       const isClickInside = dropdownContainer.contains(e.target);
       
@@ -281,19 +280,18 @@
       }
     });
     
-    // FIX: DROPDOWN LINKS - OPEN IN NEW TAB
-    // Get all links inside dropdown content
+    // FIX: DROPDOWN LINKS - NAVIGATE TO YOUR TOOLS
     const dropdownLinks = dropdownContent.querySelectorAll('a.dropdown-link');
     console.log(`  Found ${dropdownLinks.length} dropdown links`);
     
     dropdownLinks.forEach(link => {
       link.addEventListener('click', function(e) {
-        // Allow link to open in new tab
+        // Allow default navigation - links will open your tools
         const linkText = this.getAttribute('data-tool') || this.textContent;
         const linkHref = this.getAttribute('href');
         
         console.log(`🔽 Dropdown link clicked: ${linkText}`);
-        console.log(`  → Opening: ${linkHref}`);
+        console.log(`  → Opening your tool: ${linkHref}`);
         
         // Close dropdown after opening link
         setTimeout(() => {
@@ -316,7 +314,7 @@
           }, 100);
         }
         
-        // Link opens in new tab naturally
+        // Link navigates to your tool page naturally
       });
     });
     
@@ -355,10 +353,7 @@
       const html = document.documentElement;
       const isDark = html.classList.toggle('dark');
       
-      // Save to localStorage
       localStorage.setItem('darkMode', isDark);
-      
-      // Update button emoji
       darkToggle.textContent = isDark ? '☀️' : '🌙';
       
       console.log(`🌓 Dark mode toggled: ${isDark ? 'ON' : 'OFF'} (saved to storage)`);
@@ -438,12 +433,10 @@
   // START INITIALIZATION
   // ============================================
   
-  // If DOM is already ready, initialize now
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeAllComponents);
     console.log('📋 DOMContentLoaded event listener added');
   } else {
-    // DOM is already ready
     console.log('📋 DOM already ready - initializing now');
     setTimeout(initializeAllComponents, 100);
   }
