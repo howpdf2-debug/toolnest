@@ -454,63 +454,172 @@ function sp(){
 }
 
 function updatePreview(){
-  document.getElementById('invoicePreview').srcdoc = buildHTML(false);
+  document.getElementById('invoicePreview').srcdoc = buildHTML();
 }
 
-// ─── INVOICE HTML BUILDER ────────────────────────────
-function buildHTML(forPrint){
+// ─── INVOICE DATA BUILDER (shared by preview + PDF) ──
+function getInvoiceData(){
   const cur = getCur();
   const sub = rows.reduce((s,r)=>s+parseNum(r.qty)*parseNum(r.rate),0);
   const discPct = getDisc(), disc = sub*discPct/100;
-  const gstPct = getGst(), gstAmt = (sub-disc)*gstPct/100;
-  const total = sub - disc + gstAmt;
-
+  const gstPct  = getGst(),  gstAmt = (sub-disc)*gstPct/100;
+  const total   = sub - disc + gstAmt;
   const rowsHTML = rows.map((r,i)=>`
     <tr>
-      <td>${i+1}</td>
-      <td>${ea(r.desc)||'—'}</td>
-      <td style="text-align:right">${parseNum(r.qty)}</td>
-      <td>${ea(r.unit)}</td>
-      <td style="text-align:right">${cur}${parseNum(r.rate).toFixed(2)}</td>
-      <td style="text-align:right">${cur}${(parseNum(r.qty)*parseNum(r.rate)).toFixed(2)}</td>
+      <td style="padding:7px 9px;border-bottom:1px solid #eee">${i+1}</td>
+      <td style="padding:7px 9px;border-bottom:1px solid #eee">${ea(r.desc)||'—'}</td>
+      <td style="padding:7px 9px;border-bottom:1px solid #eee;text-align:right">${parseNum(r.qty)}</td>
+      <td style="padding:7px 9px;border-bottom:1px solid #eee">${ea(r.unit)}</td>
+      <td style="padding:7px 9px;border-bottom:1px solid #eee;text-align:right">${cur}${parseNum(r.rate).toFixed(2)}</td>
+      <td style="padding:7px 9px;border-bottom:1px solid #eee;text-align:right;font-weight:700">${cur}${(parseNum(r.qty)*parseNum(r.rate)).toFixed(2)}</td>
     </tr>`).join('');
+  return {cur, sub, discPct, disc, gstPct, gstAmt, total, rowsHTML,
+    bank: v('bank').replace(/\n/g,'<br>'),
+    notes: v('notes'), terms: v('terms')};
+}
 
-  const bank = v('bank').replace(/\n/g,'<br>');
+// ─── BUILD INVOICE ELEMENT (real DOM node — works with html2pdf) ──
+// KEY FIX: html2pdf needs a real DOM element with inline/embedded styles.
+// We create an actual <div> node and set styles directly — no separate <style>
+// block that can get lost when html2pdf captures the element.
+function buildInvoiceElement(){
+  const {cur,sub,discPct,disc,gstPct,gstAmt,total,rowsHTML,bank,notes,terms} = getInvoiceData();
 
+  const el = document.createElement('div');
+  el.style.cssText = 'font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#111;background:#fff;width:190mm;padding:18mm 12mm;box-sizing:border-box';
+
+  el.innerHTML = `
+  <!-- HEADER -->
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;padding-bottom:16px;border-bottom:3px solid #FF4D00">
+    <div>
+      <div style="font-size:20px;font-weight:800;color:#111;margin-bottom:4px;letter-spacing:-.3px">${ea(v('bizName'))||'Your Business Name'}</div>
+      <div style="font-size:11px;color:#666;line-height:1.8">
+        ${v('bizGst')?`<span style="font-weight:700">GST: ${ea(v('bizGst'))}</span><br>`:''}
+        ${[ea(v('bizPhone')),ea(v('bizEmail'))].filter(Boolean).join(' &nbsp;·&nbsp; ')}
+        ${v('bizPhone')||v('bizEmail')?'<br>':''}
+        ${ea(v('bizAddr')).replace(/\n/g,'<br>')}
+      </div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:26px;font-weight:900;color:#FF4D00;letter-spacing:-1px">INVOICE</div>
+      <div style="font-size:13px;font-weight:700;color:#111;margin-top:3px">${ea(v('invNum'))||'INV-001'}</div>
+      <div style="font-size:11px;color:#777;margin-top:4px;line-height:1.75">
+        Date: ${v('invDate')||todayStr()}
+        ${v('dueDate')?`<br>Due: ${v('dueDate')}`:''}
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTIES -->
+  <div style="display:flex;gap:14px;margin-bottom:18px">
+    <div style="flex:1;background:#F7F7F5;border-radius:8px;padding:11px 13px">
+      <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:#aaa;margin-bottom:5px">From</div>
+      <div style="font-size:13px;font-weight:800;color:#111;margin-bottom:3px">${ea(v('bizName'))||'—'}</div>
+      <div style="font-size:11px;color:#666;line-height:1.65">
+        ${v('bizGst')?`GST: ${ea(v('bizGst'))}`:''}
+        ${v('bizPhone')?`<br>${ea(v('bizPhone'))}`:''}
+      </div>
+    </div>
+    <div style="flex:1;background:#F7F7F5;border-radius:8px;padding:11px 13px">
+      <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:#aaa;margin-bottom:5px">Bill To</div>
+      <div style="font-size:13px;font-weight:800;color:#111;margin-bottom:3px">${ea(v('clientName'))||'Client Name'}</div>
+      <div style="font-size:11px;color:#666;line-height:1.65">
+        ${v('clientGst')?`GST: ${ea(v('clientGst'))}<br>`:''}
+        ${ea(v('clientPhone'))||''}
+        ${ea(v('clientAddr')).replace(/\n/g,'<br>')||''}
+      </div>
+    </div>
+  </div>
+
+  <!-- ITEMS TABLE -->
+  <table style="width:100%;border-collapse:collapse;margin-bottom:14px;font-size:11.5px">
+    <thead>
+      <tr>
+        <th style="background:#111;color:#fff;padding:8px 9px;text-align:left;font-size:11px;width:28px">#</th>
+        <th style="background:#111;color:#fff;padding:8px 9px;text-align:left;font-size:11px">Item / Description</th>
+        <th style="background:#111;color:#fff;padding:8px 9px;text-align:right;font-size:11px;width:40px">Qty</th>
+        <th style="background:#111;color:#fff;padding:8px 9px;text-align:left;font-size:11px;width:44px">Unit</th>
+        <th style="background:#111;color:#fff;padding:8px 9px;text-align:right;font-size:11px;width:78px">Rate</th>
+        <th style="background:#111;color:#fff;padding:8px 9px;text-align:right;font-size:11px;width:82px">Amount</th>
+      </tr>
+    </thead>
+    <tbody>${rowsHTML}</tbody>
+  </table>
+
+  <!-- TOTALS -->
+  <div style="margin-left:auto;width:240px;margin-bottom:16px">
+    <div style="display:flex;justify-content:space-between;padding:5px 0;font-size:12px;color:#555;border-bottom:1px solid #f0f0f0">
+      <span>Subtotal</span><span style="font-weight:700;color:#111">${cur}${sub.toFixed(2)}</span>
+    </div>
+    ${discPct>0?`<div style="display:flex;justify-content:space-between;padding:5px 0;font-size:12px;color:#555;border-bottom:1px solid #f0f0f0">
+      <span>Discount (${discPct}%)</span><span style="font-weight:700;color:#059669">−${cur}${disc.toFixed(2)}</span>
+    </div>`:''}
+    <div style="display:flex;justify-content:space-between;padding:5px 0;font-size:12px;color:#555;border-bottom:1px solid #f0f0f0">
+      <span>GST (${gstPct}%)</span><span style="font-weight:700;color:#111">${cur}${gstAmt.toFixed(2)}</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;padding:9px 0 5px;font-size:15px;font-weight:800;color:#FF4D00;border-top:2.5px solid #FF4D00;margin-top:4px">
+      <span>Total Due</span><span>${cur}${total.toFixed(2)}</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="display:flex;justify-content:space-between;gap:18px;margin-top:14px;padding-top:14px;border-top:1px solid #eee">
+    <div>
+      ${bank?`<div style="font-size:11px;font-weight:700;color:#111;margin-bottom:5px">Payment Details:</div>
+       <div style="font-size:11px;color:#555;line-height:1.8">${bank}</div>`:''}
+      ${notes?`<div style="font-size:11px;color:#555;margin-top:9px"><b>Note:</b> ${ea(notes)}</div>`:''}
+      ${terms?`<div style="font-size:11px;color:#777;margin-top:4px"><b>Terms:</b> ${ea(terms)}</div>`:''}
+    </div>
+    <div>
+      <div style="border-top:1.5px solid #111;width:130px;margin:36px 0 5px auto;font-size:11px;color:#777;padding-top:5px;text-align:center">Authorised Signature</div>
+      <div style="font-size:10px;color:#bbb;text-align:right">${ea(v('bizName'))}</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;font-size:9.5px;color:#ccc;margin-top:16px;padding-top:10px;border-top:1px solid #f0f0f0">
+    Generated by ToolNest · toolnest.bhaihelp.in
+  </div>`;
+
+  return el;
+}
+
+// ─── PREVIEW (iframe srcdoc — needs full HTML string) ──
+function buildHTML(){
+  const {cur,sub,discPct,disc,gstPct,gstAmt,total,rowsHTML,bank,notes,terms} = getInvoiceData();
+  // For iframe preview we use a full HTML document with <style> block — this is fine in iframes
   return `<!DOCTYPE html><html><head><meta charset="UTF-8">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;font-size:12px;color:#111;background:#fff;padding:${forPrint?'0':'20px'}}
-.inv{max-width:${forPrint?'100%':'580px'};margin:0 auto;padding:28px;background:#fff;${forPrint?'':'border:1px solid #e0e0e0;border-radius:10px'}}
-.hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;padding-bottom:18px;border-bottom:2.5px solid #FF4D00}
-.bn{font-size:20px;font-weight:800;color:#111;margin-bottom:4px}
-.bd{font-size:11px;color:#666;line-height:1.75}
+body{font-family:Arial,sans-serif;font-size:12px;color:#111;background:#f0f0ee;padding:20px}
+.inv{max-width:580px;margin:0 auto;padding:28px;background:#fff;border:1px solid #ddd;border-radius:10px}
+.hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;padding-bottom:16px;border-bottom:2.5px solid #FF4D00}
+.bn{font-size:19px;font-weight:800;color:#111;margin-bottom:4px}
+.bd{font-size:11px;color:#666;line-height:1.8}
 .ib{font-size:24px;font-weight:900;color:#FF4D00;letter-spacing:-1px;text-align:right}
 .in{font-size:13px;font-weight:700;color:#111;margin-top:3px;text-align:right}
-.id{font-size:11px;color:#777;text-align:right;margin-top:4px;line-height:1.7}
-.pts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
-.pc{background:#F7F7F5;border-radius:8px;padding:11px 13px}
-.pl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:#bbb;margin-bottom:5px}
+.id{font-size:11px;color:#777;text-align:right;margin-top:4px;line-height:1.75}
+.pts{display:flex;gap:14px;margin-bottom:18px}
+.pc{flex:1;background:#F7F7F5;border-radius:8px;padding:11px 13px}
+.pl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:#aaa;margin-bottom:5px}
 .pn{font-size:13px;font-weight:800;color:#111;margin-bottom:3px}
 .pd{font-size:11px;color:#666;line-height:1.65}
-table{width:100%;border-collapse:collapse;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:11.5px}
 th{background:#111;color:#fff;padding:8px 9px;font-size:11px;font-weight:700;text-align:left}
-td{padding:7px 9px;border-bottom:1px solid #eee;font-size:11.5px}
+td{padding:7px 9px;border-bottom:1px solid #eee}
 tr:nth-child(even) td{background:#fafafa}
 .tot{margin-left:auto;width:235px;margin-bottom:16px}
 .tr{display:flex;justify-content:space-between;padding:5px 0;font-size:12px;color:#555;border-bottom:1px solid #f0f0f0}
 .tr b{color:#111}
-.tg{font-size:15px;font-weight:800;color:#FF4D00;border-top:2.5px solid #FF4D00;border-bottom:none;padding-top:9px;margin-top:6px}
+.tg{font-size:15px;font-weight:800;color:#FF4D00;border-top:2.5px solid #FF4D00;border-bottom:none;padding-top:9px;margin-top:4px}
 .ft{display:flex;justify-content:space-between;gap:18px;margin-top:14px;padding-top:14px;border-top:1px solid #eee}
 .sl{border-top:1.5px solid #111;width:130px;margin:36px 0 5px auto;font-size:11px;color:#777;padding-top:5px;text-align:center}
-</style>
-</head><body><div class="inv">
+</style></head><body><div class="inv">
 <div class="hd">
   <div>
     <div class="bn">${ea(v('bizName'))||'Your Business Name'}</div>
     <div class="bd">
-      ${v('bizGst')?'GST: <b>'+ea(v('bizGst'))+'</b><br>':''}
-      ${[ea(v('bizPhone')),ea(v('bizEmail'))].filter(Boolean).join(' &nbsp;·&nbsp; ')}
+      ${v('bizGst')?'<b>GST: '+ea(v('bizGst'))+'</b><br>':''}
+      ${[ea(v('bizPhone')),ea(v('bizEmail'))].filter(Boolean).join(' · ')}
       ${v('bizPhone')||v('bizEmail')?'<br>':''}
       ${ea(v('bizAddr')).replace(/\n/g,'<br>')}
     </div>
@@ -518,39 +627,15 @@ tr:nth-child(even) td{background:#fafafa}
   <div>
     <div class="ib">INVOICE</div>
     <div class="in">${ea(v('invNum'))||'INV-001'}</div>
-    <div class="id">
-      Date: ${v('invDate')||todayStr()}
-      ${v('dueDate')?'<br>Due: '+v('dueDate'):''}
-    </div>
+    <div class="id">Date: ${v('invDate')||todayStr()}${v('dueDate')?'<br>Due: '+v('dueDate'):''}</div>
   </div>
 </div>
 <div class="pts">
-  <div class="pc">
-    <div class="pl">From</div>
-    <div class="pn">${ea(v('bizName'))||'—'}</div>
-    <div class="pd">${v('bizGst')?'GST: '+ea(v('bizGst')):''}${v('bizPhone')?'<br>'+ea(v('bizPhone')):''}</div>
-  </div>
-  <div class="pc">
-    <div class="pl">Bill To</div>
-    <div class="pn">${ea(v('clientName'))||'Client Name'}</div>
-    <div class="pd">
-      ${v('clientGst')?'GST: '+ea(v('clientGst'))+'<br>':''}
-      ${ea(v('clientPhone'))||''}
-      ${ea(v('clientAddr')).replace(/\n/g,'<br>')||''}
-    </div>
-  </div>
+  <div class="pc"><div class="pl">From</div><div class="pn">${ea(v('bizName'))||'—'}</div><div class="pd">${v('bizGst')?'GST: '+ea(v('bizGst')):''}${v('bizPhone')?'<br>'+ea(v('bizPhone')):''}</div></div>
+  <div class="pc"><div class="pl">Bill To</div><div class="pn">${ea(v('clientName'))||'Client Name'}</div><div class="pd">${v('clientGst')?'GST: '+ea(v('clientGst'))+'<br>':''}${ea(v('clientPhone'))||''}${ea(v('clientAddr')).replace(/\n/g,'<br>')||''}</div></div>
 </div>
 <table>
-  <thead>
-    <tr>
-      <th style="width:28px">#</th>
-      <th>Item / Description</th>
-      <th style="width:38px;text-align:right">Qty</th>
-      <th style="width:44px">Unit</th>
-      <th style="width:78px;text-align:right">Rate</th>
-      <th style="width:82px;text-align:right">Amount</th>
-    </tr>
-  </thead>
+  <thead><tr><th style="width:28px">#</th><th>Item / Description</th><th style="width:38px;text-align:right">Qty</th><th style="width:44px">Unit</th><th style="width:78px;text-align:right">Rate</th><th style="width:82px;text-align:right">Amount</th></tr></thead>
   <tbody>${rowsHTML}</tbody>
 </table>
 <div class="tot">
@@ -562,33 +647,49 @@ tr:nth-child(even) td{background:#fafafa}
 <div class="ft">
   <div>
     ${bank?`<div style="font-size:11px;font-weight:700;color:#111;margin-bottom:5px">Payment Details:</div><div style="font-size:11px;color:#555;line-height:1.8">${bank}</div>`:''}
-    ${v('notes')?`<div style="font-size:11px;color:#555;margin-top:9px"><b>Note:</b> ${ea(v('notes'))}</div>`:''}
-    ${v('terms')?`<div style="font-size:11px;color:#777;margin-top:4px"><b>Terms:</b> ${ea(v('terms'))}</div>`:''}
+    ${notes?`<div style="font-size:11px;color:#555;margin-top:9px"><b>Note:</b> ${ea(notes)}</div>`:''}
+    ${terms?`<div style="font-size:11px;color:#777;margin-top:4px"><b>Terms:</b> ${ea(terms)}</div>`:''}
   </div>
-  <div>
-    <div class="sl">Authorised Signature</div>
-    <div style="font-size:10px;color:#bbb;text-align:right">${ea(v('bizName'))}</div>
-  </div>
+  <div><div class="sl">Authorised Signature</div><div style="font-size:10px;color:#bbb;text-align:right">${ea(v('bizName'))}</div></div>
 </div>
-<div style="text-align:center;font-size:9.5px;color:#ccc;margin-top:16px;padding-top:10px;border-top:1px solid #f0f0f0">
-  Generated by ToolNest · toolnest.bhaihelp.in
-</div>
+<div style="text-align:center;font-size:9.5px;color:#ccc;margin-top:16px;padding-top:10px;border-top:1px solid #f0f0f0">Generated by ToolNest · toolnest.bhaihelp.in</div>
 </div></body></html>`;
 }
 
 // ─── DOWNLOAD PDF ────────────────────────────────────
+// KEY FIX: Use buildInvoiceElement() which returns a real DOM node
+// with inline styles — html2pdf captures it correctly.
+// Do NOT use innerHTML = fullHTMLstring (strips <style> blocks).
 function downloadPDF(){
   const fname = `${v('invNum')||'invoice'}-${v('clientName')||'client'}.pdf`;
-  const wrap = document.createElement('div');
-  wrap.innerHTML = buildHTML(true);
-  document.body.appendChild(wrap);
-  html2pdf().set({
-    margin:10,filename:fname,
-    image:{type:'jpeg',quality:.96},
-    html2canvas:{scale:2,useCORS:true,logging:false},
-    jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
-  }).from(wrap.querySelector('.inv')).save()
-    .then(()=>document.body.removeChild(wrap));
+
+  // Build a styled container and append to body (must be visible for html2canvas)
+  const container = document.createElement('div');
+  container.style.cssText = 'position:fixed;left:-9999px;top:0;z-index:-1;background:#fff';
+  const invEl = buildInvoiceElement();
+  container.appendChild(invEl);
+  document.body.appendChild(container);
+
+  html2pdf()
+    .set({
+      margin: [10, 10, 10, 10],
+      filename: fname,
+      image: { type: 'jpeg', quality: 0.97 },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff'
+      },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    })
+    .from(invEl)
+    .save()
+    .then(() => document.body.removeChild(container))
+    .catch(err => {
+      document.body.removeChild(container);
+      alert('PDF download failed: ' + err.message);
+    });
 }
 </script>
 </body>
