@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Add Watermark to PDF Free Online | ToolNest</title>
+<meta name="description" content="Add text watermark to PDF pages online for free. Customize text, color, opacity, position and size. No signup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--br:#FF4D00;--brd:#D93F00;--brl:#FFF3EE;--brb:rgba(255,77,0,.18);--ink:#111;--i2:#555;--i3:#999;--bg:#F7F7F5;--wh:#fff;--bd:#E8E8E6;--sf:#F2F2F0;--gr:#059669;--grb:#ECFDF5;--grbr:#A7F3D0;--rd:#DC2626;--rdb:#FEF2F2;--am:#D97706;--amb:#FFFBEB;--r:12px;--rl:18px;--sh:0 2px 8px rgba(0,0,0,.07)}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+nav{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd);height:58px;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:999;box-shadow:var(--sh)}
+.logo{display:flex;align-items:center;gap:9px;font-family:'Sora',sans-serif;font-weight:800;font-size:17px;color:var(--ink)}
+.lm{width:32px;height:32px;background:var(--br);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800}
+.bc{font-size:13px;color:var(--i3)}.bc a{color:var(--br)}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--i2);background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:6px 14px;transition:.15s}
+.back:hover{border-color:var(--br);color:var(--br)}
+.hero{background:var(--wh);border-bottom:1px solid var(--bd);padding:2.5rem 1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 0%,rgba(217,119,6,.05) 0%,transparent 70%);pointer-events:none}
+.hi{width:62px;height:62px;background:var(--amb);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 1rem;border:1px solid rgba(217,119,6,.2)}
+h1{font-family:'Sora',sans-serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;color:var(--ink);margin-bottom:.6rem;letter-spacing:-.5px}
+.sub{font-size:14.5px;color:var(--i2);max-width:500px;margin:0 auto .9rem;line-height:1.65}
+.tr{display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap}
+.tp{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--i3);font-weight:500}
+.wrap{max-width:760px;margin:0 auto;padding:2rem 1.5rem}
+.ad{background:var(--wh);border:1px solid var(--bd);border-radius:var(--r);padding:.9rem;text-align:center;font-size:12px;color:var(--i3);margin-bottom:1.5rem}
+.dz{background:var(--wh);border:2.5px dashed var(--bd);border-radius:var(--rl);padding:2.5rem 2rem;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:1.25rem}
+.dz:hover,.dz.ov{border-color:var(--am);background:var(--amb)}
+.dzi{font-size:2.8rem;margin-bottom:.8rem;display:block}
+.dzt{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.dzs{font-size:13px;color:var(--i3);margin-bottom:1.25rem}
+.bc2{background:var(--am);color:#fff;border:none;padding:11px 26px;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+#fi{display:none}
+.card{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--rl);padding:1.5rem;margin-bottom:1.25rem;display:none}
+.card h3{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--bd)}
+.finfo{display:flex;align-items:center;gap:12px;background:var(--sf);border-radius:10px;padding:.9rem 1rem;margin-bottom:1.1rem}
+.fn{font-size:13px;font-weight:600;color:var(--ink)}.fs{font-size:12px;color:var(--i3)}
+.frm{margin-left:auto;background:none;border:none;font-size:13px;color:var(--i3);cursor:pointer;padding:4px;border-radius:6px}
+.frm:hover{background:var(--rdb);color:var(--rd)}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--i2);margin-bottom:.35rem}
+.fi2{width:100%;border:1.5px solid var(--bd);border-radius:9px;padding:9px 12px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;transition:.15s;background:var(--wh)}
+.fi2:focus{border-color:var(--am)}
+.fi2-full{grid-column:1/-1}
+.preview-box{background:var(--sf);border-radius:12px;padding:1.5rem;margin-bottom:1rem;text-align:center;min-height:160px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.preview-page{width:120px;height:160px;background:var(--wh);border:1px solid var(--bd);border-radius:4px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.preview-wm{position:absolute;pointer-events:none;white-space:nowrap;font-weight:700}
+.slider-row{display:flex;align-items:center;gap:10px;margin-bottom:.5rem}
+.sl{flex:1;accent-color:var(--am)}
+.sv{font-size:13px;font-weight:700;color:var(--am);min-width:40px;text-align:right}
+.pos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:1rem}
+.pos-btn{padding:8px 6px;border-radius:8px;border:1.5px solid var(--bd);background:var(--sf);font-size:12px;font-weight:600;cursor:pointer;text-align:center;transition:.15s;font-family:'DM Sans',sans-serif}
+.pos-btn.ac,.pos-btn:hover{border-color:var(--am);background:var(--amb);color:var(--am)}
+.btn-main{width:100%;background:var(--am);color:#fff;border:none;padding:13px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;margin-top:.5rem}
+.btn-main:hover:not(:disabled){background:#B45309;transform:translateY(-1px)}
+.btn-main:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.pw{display:none;margin-top:1rem}.pt{background:var(--sf);border-radius:20px;height:8px;overflow:hidden}.pf{background:var(--am);height:100%;border-radius:20px;width:0%;transition:width .3s}.pm{font-size:13px;color:var(--i2);text-align:center;margin-top:.6rem}
+.sb{display:none;background:var(--grb);border:1.5px solid var(--grbr);border-radius:var(--rl);padding:1.75rem;text-align:center;margin-top:1rem}
+.sb h3{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:#065F46;margin-bottom:.4rem}
+.sb p{font-size:13px;color:#047857;margin-bottom:1.2rem}
+.dld{background:var(--gr);color:#fff;border:none;padding:12px 30px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:8px}
+.eb{display:none;background:var(--rdb);border:1.5px solid #FECACA;border-radius:var(--r);padding:.9rem 1.1rem;font-size:13px;color:var(--rd);margin-top:1rem}
+.rel{margin-top:2rem}.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:480px){.rg{grid-template-columns:1fr}.fg{grid-template-columns:1fr}}
+.rc2{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--r);padding:.9rem 1rem;cursor:pointer;transition:.15s;display:flex;gap:10px;align-items:center}
+.rc2:hover{border-color:var(--br);background:var(--brl)}
+footer{background:var(--wh);border-top:1px solid var(--bd);padding:1.5rem;text-align:center;font-size:12px;color:var(--i3);margin-top:3rem}
+footer a{color:var(--br)}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo"><div class="lm">TN</div>Tool<span style="color:#FF4D00">Nest</span></a>
+  <div class="bc"><a href="/">Home</a> / Watermark PDF</div>
+  <a href="/" class="back">← All Tools</a>
+</nav>
+<div class="hero">
+  <div class="hi">🏷</div>
+  <h1>Watermark PDF</h1>
+  <p class="sub">Add custom text watermarks to every page of your PDF. Customize position, size, color and opacity. Free and instant.</p>
+  <div class="tr">
+    <div class="tp"><span>🔒</span>Files stay on device</div>
+    <div class="tp"><span>🎨</span>Custom colors</div>
+    <div class="tp"><span>📄</span>All pages</div>
+    <div class="tp"><span>🆓</span>Free forever</div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="ad">[ Advertisement ]</div>
+  <div class="dz" id="dz" onclick="document.getElementById('fi').click()" ondragover="dzo(event)" ondragleave="dzl()" ondrop="dzd(event)">
+    <span class="dzi">🏷</span>
+    <div class="dzt">Drop your PDF here</div>
+    <div class="dzs">Select a PDF to add a watermark</div>
+    <button class="bc2" onclick="event.stopPropagation();document.getElementById('fi').click()">Choose PDF File</button>
+    <input type="file" id="fi" accept=".pdf,application/pdf" onchange="load(this.files[0])">
+  </div>
+  <div class="card" id="card">
+    <h3>Watermark Settings</h3>
+    <div class="finfo" id="finfo"></div>
+
+    <!-- LIVE PREVIEW -->
+    <div class="preview-box">
+      <div class="preview-page">
+        <div style="font-size:10px;color:#ddd;text-align:center;padding:8px">PDF<br>Page</div>
+        <div class="preview-wm" id="prevWm">CONFIDENTIAL</div>
+      </div>
+    </div>
+
+    <div class="fg">
+      <div class="fi2-full">
+        <label class="fl">Watermark Text</label>
+        <input class="fi2" id="wmText" value="CONFIDENTIAL" placeholder="Enter watermark text" oninput="updatePreview()">
+      </div>
+      <div>
+        <label class="fl">Font Size</label>
+        <div class="slider-row">
+          <input type="range" class="sl" id="fontSize" min="10" max="80" value="36" oninput="updatePreview();document.getElementById('fsv').textContent=this.value+'px'">
+          <span class="sv" id="fsv">36px</span>
+        </div>
+      </div>
+      <div>
+        <label class="fl">Opacity</label>
+        <div class="slider-row">
+          <input type="range" class="sl" id="opacity" min="5" max="100" value="20" oninput="updatePreview();document.getElementById('opv').textContent=this.value+'%'">
+          <span class="sv" id="opv">20%</span>
+        </div>
+      </div>
+      <div>
+        <label class="fl">Rotation Angle</label>
+        <div class="slider-row">
+          <input type="range" class="sl" id="rotation" min="-90" max="90" value="-45" oninput="updatePreview();document.getElementById('rtv').textContent=this.value+'°'">
+          <span class="sv" id="rtv">-45°</span>
+        </div>
+      </div>
+      <div>
+        <label class="fl">Color</label>
+        <input class="fi2" type="color" id="wmColor" value="#ff0000" oninput="updatePreview()">
+      </div>
+    </div>
+    <label class="fl" style="margin-bottom:.5rem">Position</label>
+    <div class="pos-grid" id="posGrid">
+      <div class="pos-btn" onclick="setPos('top-left',this)">↖ Top Left</div>
+      <div class="pos-btn" onclick="setPos('top-center',this)">↑ Top Center</div>
+      <div class="pos-btn" onclick="setPos('top-right',this)">↗ Top Right</div>
+      <div class="pos-btn" onclick="setPos('center-left',this)">← Center Left</div>
+      <div class="pos-btn ac" onclick="setPos('center',this)">⊕ Center</div>
+      <div class="pos-btn" onclick="setPos('center-right',this)">→ Center Right</div>
+      <div class="pos-btn" onclick="setPos('bottom-left',this)">↙ Bottom Left</div>
+      <div class="pos-btn" onclick="setPos('bottom-center',this)">↓ Bottom Center</div>
+      <div class="pos-btn" onclick="setPos('bottom-right',this)">↘ Bottom Right</div>
+    </div>
+    <button class="btn-main" onclick="doWatermark()">🏷 Add Watermark</button>
+  </div>
+  <div class="pw" id="progWrap"><div class="pt"><div class="pf" id="pf"></div></div><div class="pm" id="pm"></div></div>
+  <div class="sb" id="sb">
+    <h3>✅ Watermark Added Successfully!</h3>
+    <p id="smeta"></p>
+    <button class="dld" id="dlbtn">📥 Download Watermarked PDF</button>
+    <p style="font-size:11.5px;color:#047857;margin-top:.75rem">✓ Processed locally — never uploaded</p>
+  </div>
+  <div class="eb" id="eb"></div>
+  <div class="ad" style="margin-top:1.5rem">[ Advertisement ]</div>
+  <div class="rel">
+    <h2 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:.9rem">Related Tools</h2>
+    <div class="rg">
+      <div class="rc2" onclick="location.href='/tools/protect-pdf.html'"><span style="font-size:20px">🔐</span><div><div style="font-size:13px;font-weight:700">Protect PDF</div><div style="font-size:11.5px;color:var(--i3)">Add password</div></div></div>
+      <div class="rc2" onclick="location.href='/tools/merge-pdf.html'"><span style="font-size:20px">📎</span><div><div style="font-size:13px;font-weight:700">Merge PDF</div><div style="font-size:11.5px;color:var(--i3)">Combine PDFs</div></div></div>
+      <div class="rc2" onclick="location.href='/tools/compress-pdf.html'"><span style="font-size:20px">📦</span><div><div style="font-size:13px;font-weight:700">Compress PDF</div><div style="font-size:11.5px;color:var(--i3)">Reduce size</div></div></div>
+    </div>
+  </div>
+</div>
+<footer><a href="/">ToolNest</a> · <a href="/privacy.html">Privacy</a> · Made with ❤️ in India</footer>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script>
+let loadedFile=null,posMode='center',outBytes=null;
+function dzo(e){e.preventDefault();document.getElementById('dz').classList.add('ov')}
+function dzl(){document.getElementById('dz').classList.remove('ov')}
+function dzd(e){e.preventDefault();dzl();if(e.dataTransfer.files[0])load(e.dataTransfer.files[0])}
+function load(f){
+  if(!(f.type==='application/pdf'||f.name.endsWith('.pdf'))){showErr('Please select a valid PDF.');return}
+  loadedFile=f;clr();
+  document.getElementById('dz').style.display='none';document.getElementById('card').style.display='block';
+  document.getElementById('finfo').innerHTML=`<span style="font-size:24px">📄</span><div><div class="fn">${f.name}</div><div class="fs">${fmtSize(f.size)}</div></div><button class="frm" onclick="reset()">✕</button>`;
+  updatePreview();
+}
+function setPos(p,el){posMode=p;document.querySelectorAll('.pos-btn').forEach(b=>b.classList.remove('ac'));el.classList.add('ac');updatePreview()}
+function hexToRgb(hex){const r=parseInt(hex.slice(1,3),16)/255,g=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255;return{r,g,b}}
+function updatePreview(){
+  const text=document.getElementById('wmText').value||'WATERMARK';
+  const fs=+document.getElementById('fontSize').value;
+  const op=+document.getElementById('opacity').value/100;
+  const rot=+document.getElementById('rotation').value;
+  const color=document.getElementById('wmColor').value;
+  const wm=document.getElementById('prevWm');
+  const scale=120/595;
+  wm.style.cssText=`position:absolute;white-space:nowrap;font-weight:700;font-size:${Math.max(6,Math.round(fs*scale))}px;color:${color};opacity:${op};transform:rotate(${rot}deg);pointer-events:none;`;
+  const posMap={
+    'top-left':{top:'15%',left:'10%',transform:`rotate(${rot}deg)`},
+    'top-center':{top:'15%',left:'50%',transform:`translateX(-50%) rotate(${rot}deg)`},
+    'top-right':{top:'15%',right:'10%',transform:`rotate(${rot}deg)`},
+    'center-left':{top:'50%',left:'10%',transform:`translateY(-50%) rotate(${rot}deg)`},
+    'center':{top:'50%',left:'50%',transform:`translate(-50%,-50%) rotate(${rot}deg)`},
+    'center-right':{top:'50%',right:'10%',transform:`translateY(-50%) rotate(${rot}deg)`},
+    'bottom-left':{bottom:'15%',left:'10%',transform:`rotate(${rot}deg)`},
+    'bottom-center':{bottom:'15%',left:'50%',transform:`translateX(-50%) rotate(${rot}deg)`},
+    'bottom-right':{bottom:'15%',right:'10%',transform:`rotate(${rot}deg)`},
+  };
+  const pm=posMap[posMode]||posMap['center'];
+  Object.assign(wm.style,{top:'',left:'',right:'',bottom:''},pm);
+  wm.textContent=text;
+}
+async function doWatermark(){
+  if(!loadedFile)return;clr();
+  const text=document.getElementById('wmText').value.trim();
+  if(!text){showErr('Please enter watermark text.');return}
+  showProg(0,'Reading PDF…');
+  try{
+    const {PDFDocument,StandardFonts,degrees,rgb,grayscale}=PDFLib;
+    const ab=await readAB(loadedFile);
+    const pdf=await PDFDocument.load(ab,{ignoreEncryption:true});
+    const font=await pdf.embedFont(StandardFonts.HelveticaBold);
+    const pages=pdf.getPages();
+    const fs=+document.getElementById('fontSize').value;
+    const op=+document.getElementById('opacity').value/100;
+    const rot=+document.getElementById('rotation').value;
+    const {r,g,b}=hexToRgb(document.getElementById('wmColor').value);
+    const tw=font.widthOfTextAtSize(text,fs);
+
+    pages.forEach((page,i)=>{
+      showProg(Math.round(i/pages.length*80),`Adding watermark to page ${i+1}…`);
+      const {width:pw,height:ph}=page.getSize();
+      let x,y;
+      const pm=posMode;
+      if(pm.includes('left'))x=pw*0.1;
+      else if(pm.includes('right'))x=pw*0.9-tw;
+      else x=(pw-tw)/2;
+      if(pm.includes('top'))y=ph*0.85;
+      else if(pm.includes('bottom'))y=ph*0.15;
+      else y=ph/2-fs/2;
+      page.drawText(text,{x,y,size:fs,font,color:rgb(r,g,b),opacity:op,rotate:degrees(rot)});
+    });
+    showProg(90,'Saving…');
+    outBytes=await pdf.save();
+    showProg(100,'Done!');
+    setTimeout(()=>{
+      document.getElementById('progWrap').style.display='none';
+      const sb=document.getElementById('sb');sb.style.display='block';
+      document.getElementById('smeta').textContent=`${pages.length} page(s) watermarked · ${fmtSize(outBytes.length)}`;
+      document.getElementById('dlbtn').onclick=()=>{
+        const url=URL.createObjectURL(new Blob([outBytes],{type:'application/pdf'}));
+        Object.assign(document.createElement('a'),{href:url,download:'toolnest-watermarked.pdf'}).click();URL.revokeObjectURL(url);
+      };
+      sb.scrollIntoView({behavior:'smooth',block:'nearest'});
+    },300);
+  }catch(e){document.getElementById('progWrap').style.display='none';showErr(e.message)}
+}
+function showProg(p,m){const w=document.getElementById('progWrap');w.style.display='block';document.getElementById('pf').style.width=p+'%';document.getElementById('pm').textContent=m}
+function showErr(m){const b=document.getElementById('eb');b.style.display='block';b.textContent='⚠️ '+m}
+function clr(){['progWrap','eb','sb'].forEach(id=>document.getElementById(id).style.display='none')}
+function reset(){loadedFile=null;document.getElementById('dz').style.display='block';document.getElementById('card').style.display='none';document.getElementById('fi').value='';clr()}
+function readAB(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=e=>res(e.target.result);r.onerror=()=>rej(new Error('Read error'));r.readAsArrayBuffer(f)})}
+function fmtSize(b){return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(1)+' MB'}
+updatePreview();
+</script>
+</body>
+</html>
