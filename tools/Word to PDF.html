@@ -4,106 +4,19 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Word to PDF Free Online — Convert DOCX to PDF | ToolNest</title>
 <meta name="description" content="Convert Word documents (.docx) to PDF online free. Also convert plain text and HTML to PDF. No signup. Browser-based.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--br:#FF4D00;--brd:#D93F00;--brl:#FFF3EE;--brb:rgba(255,77,0,.18);--ink:#111;--i2:#555;--i3:#999;--bg:#F7F7F5;--wh:#fff;--bd:#E8E8E6;--sf:#F2F2F0;--gr:#059669;--grb:#ECFDF5;--grbr:#A7F3D0;--rd:#DC2626;--rdb:#FEF2F2;--bl:#2563EB;--blb:#EFF6FF;--r:12px;--rl:18px;--sh:0 2px 8px rgba(0,0,0,.07)}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
-a{text-decoration:none;color:inherit}
-nav{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd);height:58px;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:999;box-shadow:var(--sh)}
-.logo{display:flex;align-items:center;gap:9px;font-family:'Sora',sans-serif;font-weight:800;font-size:17px;color:var(--ink)}
-.lm{width:32px;height:32px;background:var(--br);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800}
-.logo span{color:var(--br)}.bc{font-size:13px;color:var(--i3)}.bc a{color:var(--br)}
-.back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--i2);background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:6px 14px;transition:.15s}
-.back:hover{border-color:var(--br);color:var(--br)}
-.hero{background:var(--wh);border-bottom:1px solid var(--bd);padding:2.5rem 1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 0%,rgba(37,99,235,.05) 0%,transparent 70%);pointer-events:none}
-.hero-icon{width:62px;height:62px;background:var(--blb);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 1rem;border:1px solid rgba(37,99,235,.15)}
-.hero h1{font-family:'Sora',sans-serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;color:var(--ink);margin-bottom:.6rem;letter-spacing:-.5px}
-.hero p{font-size:14.5px;color:var(--i2);max-width:500px;margin:0 auto .9rem;line-height:1.65}
-.trust{display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap}
-.tp{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--i3);font-weight:500}
-.wrap{max-width:820px;margin:0 auto;padding:2rem 1.5rem}
-.ad{background:var(--wh);border:1px solid var(--bd);border-radius:var(--r);padding:.9rem;text-align:center;font-size:12px;color:var(--i3);margin-bottom:1.5rem}
 
-/* MODE TABS */
-.mode-tabs{display:flex;background:var(--sf);border-radius:12px;padding:4px;gap:4px;margin-bottom:1.25rem}
-.mode-tab{flex:1;padding:10px 16px;border-radius:9px;border:none;background:transparent;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--i2);transition:.15s;text-align:center}
-.mode-tab.active{background:var(--wh);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1)}
 
-/* UPLOAD */
-.dz{background:var(--wh);border:2.5px dashed var(--bd);border-radius:var(--rl);padding:2.5rem 2rem;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:1.25rem}
-.dz:hover,.dz.over{border-color:var(--bl);background:var(--blb)}
-.dz-icon{font-size:2.8rem;margin-bottom:.8rem;display:block}
-.dz-title{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:.35rem}
-.dz-sub{font-size:13px;color:var(--i3);margin-bottom:1.25rem}
-.btn-ch{background:var(--bl);color:#fff;border:none;padding:11px 26px;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
-#fi{display:none}
 
-/* TEXT EDITOR MODE */
-.editor-wrap{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--rl);overflow:hidden;margin-bottom:1.25rem}
-.editor-toolbar{background:var(--sf);border-bottom:1px solid var(--bd);padding:.6rem 1rem;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.tb-btn{background:var(--wh);border:1px solid var(--bd);border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;transition:.15s;font-family:'DM Sans',sans-serif}
-.tb-btn:hover{border-color:var(--bl);background:var(--blb)}
-.tb-sep{width:1px;height:22px;background:var(--bd);margin:0 2px}
-#editor{width:100%;min-height:360px;border:none;outline:none;padding:1.25rem;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);resize:none;line-height:1.75}
 
-/* FILE PREVIEW */
-.file-card{display:flex;align-items:center;gap:12px;background:var(--sf);border-radius:10px;padding:.9rem 1rem;margin-bottom:1.25rem}
-.fc-icon{font-size:26px;flex-shrink:0}
-.fc-name{font-size:14px;font-weight:600;color:var(--ink)}
-.fc-size{font-size:12px;color:var(--i3);margin-top:2px}
-.fc-rm{margin-left:auto;background:none;border:none;font-size:14px;cursor:pointer;color:var(--i3);padding:4px 8px;border-radius:6px}
-.fc-rm:hover{background:var(--rdb);color:var(--rd)}
-
-/* SETTINGS */
-.settings-card{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--rl);padding:1.25rem;margin-bottom:1.25rem}
-.settings-card h3{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:1rem}
-.srow{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:.75rem}
-.opt{flex:1;padding:9px;border-radius:9px;border:2px solid var(--bd);background:var(--sf);font-size:13px;font-weight:600;cursor:pointer;text-align:center;transition:.15s;font-family:'DM Sans',sans-serif;min-width:80px}
-.opt.on,.opt:hover{border-color:var(--bl);background:var(--blb);color:var(--bl)}
-
-.btn-main{width:100%;background:var(--bl);color:#fff;border:none;padding:13px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s}
-.btn-main:hover{background:#1D4ED8;transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,99,235,.3)}
-.btn-main:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
-
-.prog{display:none;margin-top:1rem}
-.prog-track{background:var(--sf);border-radius:20px;height:8px;overflow:hidden}
-.prog-fill{background:var(--bl);height:100%;border-radius:20px;width:0%;transition:width .3s}
-.prog-txt{font-size:13px;color:var(--i2);text-align:center;margin-top:.6rem}
-
-.ok-box{display:none;background:var(--grb);border:1.5px solid var(--grbr);border-radius:var(--rl);padding:1.75rem;text-align:center;margin-top:1rem}
-.ok-box h3{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:#065F46;margin-bottom:.4rem}
-.ok-box p{font-size:13px;color:#047857;margin-bottom:1.2rem}
-.btn-dl{background:var(--gr);color:#fff;border:none;padding:12px 30px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:8px}
-.btn-dl:hover{background:#047857}
-
-.err{display:none;background:var(--rdb);border:1.5px solid #FECACA;border-radius:var(--r);padding:.9rem 1.1rem;font-size:13px;color:var(--rd);margin-top:1rem}
-
-.how-card{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--rl);padding:1.75rem;margin-top:2rem}
-.how-card h2{font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:1.2rem}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-@media(max-width:560px){.steps{grid-template-columns:1fr 1fr}}
-.step{text-align:center}
-.sn{width:38px;height:38px;background:var(--bl);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:15px;font-weight:700;margin:0 auto .65rem}
-.st{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
-.sd{font-size:12px;color:var(--i3);line-height:1.5}
-.rel{margin-top:2rem}.rel h2{font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:.9rem}
-.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-@media(max-width:480px){.rel-grid{grid-template-columns:1fr}}
-.rc{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--r);padding:.9rem 1rem;cursor:pointer;transition:.15s;display:flex;gap:10px;align-items:center}
-.rc:hover{border-color:var(--br);background:var(--brl)}
-footer{background:var(--wh);border-top:1px solid var(--bd);padding:1.5rem;text-align:center;font-size:12px;color:var(--i3);margin-top:3rem}
-footer a{color:var(--br)}
-</style>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta name="theme-color" content="#0F1B3D">
+<meta name="google-site-verification" content="dbfc89456a05e36c">
+<link rel="stylesheet" href="/style.css">
+<script src="/darkmode.js"></script>
 </head>
 <body>
-<nav>
-  <a href="/" class="logo"><div class="lm">TN</div>Tool<span>Nest</span></a>
-  <div class="bc"><a href="/">Home</a> / Word to PDF</div>
-  <a href="/" class="back">← All Tools</a>
-</nav>
+<div id="tn-nav"></div>
 <div class="hero">
   <div class="hero-icon">📝</div>
   <h1>Word / Text to PDF</h1>
@@ -224,7 +137,7 @@ footer a{color:var(--br)}
     </div>
   </div>
 </div>
-<footer><a href="/">ToolNest</a> · <a href="/privacy.html">Privacy</a> · Made with ❤️ in India</footer>
+<div id="tn-footer"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -364,5 +277,6 @@ function readText(f){return new Promise((r,j)=>{const rd=new FileReader();rd.onl
 function escHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function fmtSz(b){return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(1)+' MB'}
 </script>
+<script src="/nav-footer.js"></script>
 </body>
 </html>
