@@ -6,118 +6,20 @@
 <title>Image Compressor Online Free - Reduce Image Size | ToolNest</title>
 <meta name="description" content="Compress JPG, PNG, WebP images online for free. Reduce file size up to 90% without visible quality loss. No signup, browser-based, instant results.">
 <link rel="canonical" href="https://toolnest.bhaihelp.in/tools/image-compress.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --pri:#FF4D00;--pri-dark:#D93F00;--pri-light:#FFF3EE;--pri-border:rgba(255,77,0,.2);
-  --text:#111827;--text2:#6B7280;--text3:#9CA3AF;
-  --bg:#F3F4F6;--white:#fff;--border:#E5E7EB;
-  --green:#059669;--green-bg:#ECFDF5;
-  --purple:#7C3AED;--purple-bg:#F5F3FF;
-  --radius:10px;--radius-lg:14px;
-  --shadow:0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md:0 4px 12px rgba(0,0,0,0.08);
-}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
-a{text-decoration:none;color:inherit}
-.nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:200;box-shadow:var(--shadow)}
-.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px;color:var(--text)}
-.logo-box{width:34px;height:34px;background:var(--pri);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:800}
-.breadcrumb{font-size:13px;color:var(--text2)}
-.breadcrumb a{color:var(--pri)}
-.btn-back{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--text2);padding:7px 12px;border-radius:8px;border:1px solid var(--border);background:var(--white);cursor:pointer;transition:all .15s}
-.btn-back:hover{border-color:var(--pri);color:var(--pri)}
-.tool-hero{background:var(--white);border-bottom:1px solid var(--border);padding:2.5rem 1.5rem 2rem;text-align:center}
-.tool-hero-icon{width:56px;height:56px;background:var(--purple-bg);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 1rem}
-.tool-hero h1{font-size:1.9rem;font-weight:800;color:var(--text);margin-bottom:.6rem;letter-spacing:-0.4px}
-.tool-hero p{font-size:14px;color:var(--text2);max-width:480px;margin:0 auto}
-.trust-badges{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;flex-wrap:wrap}
-.trust-badge{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text2);font-weight:500}
-.container{max-width:820px;margin:0 auto;padding:2rem 1.5rem}
-.drop-zone{border:2px dashed var(--border);border-radius:var(--radius-lg);background:var(--white);padding:2.5rem 2rem;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:1.25rem}
-.drop-zone:hover,.drop-zone.dragover{border-color:var(--purple);background:var(--purple-bg)}
-.drop-icon{font-size:2.5rem;margin-bottom:.75rem}
-.drop-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:.4rem}
-.drop-sub{font-size:13px;color:var(--text2);margin-bottom:1.25rem}
-.btn-choose{background:var(--purple);color:#fff;border:none;padding:10px 24px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
-.btn-choose:hover{background:#6D28D9}
-#fileInput{display:none}
 
-/* SETTINGS CARD */
-.settings-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.25rem}
-.settings-card h3{font-size:14px;font-weight:700;color:var(--text);margin-bottom:1rem}
-.slider-wrap{display:flex;align-items:center;gap:14px;margin-bottom:.75rem}
-.slider-label{font-size:13px;color:var(--text2);min-width:80px}
-.slider-wrap input[type=range]{flex:1;accent-color:var(--purple)}
-.quality-display{font-size:14px;font-weight:700;color:var(--purple);min-width:40px;text-align:right}
-.quality-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-top:2px}
-.format-row{display:flex;gap:8px;margin-top:1rem}
-.format-btn{flex:1;padding:8px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);font-size:13px;font-weight:500;cursor:pointer;text-align:center;transition:all .15s;font-family:inherit}
-.format-btn.active{border-color:var(--purple);background:var(--purple-bg);color:var(--purple)}
-.format-btn:hover:not(.active){border-color:var(--purple)}
 
-/* RESULT */
-.result-grid{display:none;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1.25rem}
-.result-panel{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
-.result-panel-header{padding:.75rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.result-panel-title{font-size:13px;font-weight:700;color:var(--text)}
-.result-panel-meta{font-size:12px;color:var(--text2)}
-.result-panel img{width:100%;height:200px;object-fit:contain;background:var(--bg);display:block}
-.result-panel-footer{padding:.75rem 1rem;display:flex;justify-content:space-between;align-items:center}
-.result-size{font-size:13px;font-weight:700;color:var(--text)}
-.saved-badge{font-size:12px;font-weight:700;background:#D1FAE5;color:#065F46;padding:3px 9px;border-radius:8px}
-@media(max-width:560px){.result-grid{grid-template-columns:1fr}}
 
-.action-row{display:flex;gap:10px;flex-wrap:wrap}
-.btn-compress{flex:1;background:var(--purple);color:#fff;border:none;padding:13px 24px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px}
-.btn-compress:hover:not(:disabled){background:#6D28D9;transform:translateY(-1px)}
-.btn-compress:disabled{opacity:.5;cursor:not-allowed}
-.btn-clear{background:var(--white);border:1px solid var(--border);color:var(--text2);padding:13px 18px;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit}
-.btn-download-img{width:100%;background:var(--green);color:#fff;border:none;padding:11px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:.75rem;display:flex;align-items:center;justify-content:center;gap:7px}
-.btn-download-img:hover{background:#047857}
-.error-box{display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1rem;font-size:13px;color:#B91C1C}
-.processing-text{display:none;text-align:center;padding:1rem;font-size:14px;color:var(--text2)}
 
-/* BATCH RESULTS */
-.batch-results{display:none;margin-bottom:1.25rem}
-.batch-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:.8rem 1rem;display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.batch-thumb{width:36px;height:36px;object-fit:cover;border-radius:6px;flex-shrink:0}
-.batch-name{flex:1;font-size:13px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.batch-sizes{font-size:12px;color:var(--text2);white-space:nowrap}
-.batch-saved{font-size:11px;font-weight:700;background:#D1FAE5;color:#065F46;padding:2px 7px;border-radius:6px;white-space:nowrap}
-.batch-dl{background:var(--green);color:#fff;border:none;padding:5px 12px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
-
-.how-to{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;margin-top:1.75rem}
-.how-to h2{font-size:15px;font-weight:700;color:var(--text);margin-bottom:1rem}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-.step{text-align:center}
-.step-num{width:36px;height:36px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;margin:0 auto .6rem}
-.step-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px}
-.step-desc{font-size:12px;color:var(--text2)}
-@media(max-width:580px){.steps{grid-template-columns:repeat(2,1fr)}}
-.ad-wrap{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem;text-align:center;font-size:12px;color:var(--text3);margin:1.5rem 0}
-.related{margin-top:1.5rem}
-.related h2{font-size:15px;font-weight:700;color:var(--text);margin-bottom:.8rem}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.related-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:.9rem 1rem;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:9px}
-.related-card:hover{border-color:var(--purple);background:var(--purple-bg)}
-.related-card-icon{font-size:18px}
-.related-card-name{font-size:13px;font-weight:600;color:var(--text)}
-.related-card-desc{font-size:11px;color:var(--text3)}
-@media(max-width:480px){.related-grid{grid-template-columns:1fr}}
-footer{background:var(--white);border-top:1px solid var(--border);padding:1.5rem;text-align:center;font-size:12px;color:var(--text3);margin-top:2rem}
-footer a{color:var(--pri)}
-</style>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta name="theme-color" content="#0F1B3D">
+<meta name="google-site-verification" content="dbfc89456a05e36c">
+<link rel="stylesheet" href="/style.css">
+<script src="/darkmode.js"></script>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="/" class="logo"><div class="logo-mark">TN</div>Tool<span>Nest</span></a>
-  <div class="breadcrumb"><a href="/">Home</a> / Image Compressor</div>
-  <a href="/" class="btn-back">← All Tools</a>
-</nav>
+<div id="tn-nav"></div>
 
 <div class="tool-hero">
   <div class="tool-hero-icon">🗜️</div>
@@ -221,9 +123,7 @@ footer a{color:var(--pri)}
   </div>
 </div>
 
-<footer>
-  <a href="/">ToolNest</a> · Free Online Tools · <a href="/privacy.html">Privacy</a> · Made with ❤️ in India
-</footer>
+<div id="tn-footer"></div>
 
 <script>
 let loadedFiles = [];
@@ -399,5 +299,6 @@ function formatSize(b) {
 function showError(msg) { const b = document.getElementById('errorBox'); b.style.display='block'; b.textContent='⚠️ '+msg; }
 function hideError() { document.getElementById('errorBox').style.display='none'; }
 </script>
+<script src="/nav-footer.js"></script>
 </body>
 </html>
