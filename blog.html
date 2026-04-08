@@ -1,87 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Blog — ToolNest | Expert Tips & Guides</title>
-<meta name="description" content="Free tools ke expert tips, GST invoice guide, PDF tricks, resume tips aur productivity hacks.">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Blog — ToolNest | Expert Tips, Tutorials & Guides</title>
+<meta name="description" content="Read ToolNest blog for expert tips and guides on PDF tools, image compression, GST invoices, SEO, productivity and more.">
+<link rel="canonical" href="https://toolnest.bhaihelp.in/blog.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="theme-color" content="#0F1B3D">
 <link rel="stylesheet" href="/style.css">
 <script src="/darkmode.js"></script>
+<meta name="google-site-verification" content="dbfc89456a05e36c">
 </head>
 <body>
 <div id="tn-nav"></div>
-
-<!-- Improved Mini Hero -->
-<div class="mini-hero" style="padding:4rem 1.5rem 3rem;">
-  <div style="max-width:800px;margin:0 auto;text-align:center;">
-    <h1 style="font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;margin-bottom:1rem;">ToolNest Blog</h1>
-    <p style="font-size:1.1rem;color:rgba(255,255,255,0.75);max-width:600px;margin:0 auto;">Practical tips, tutorials & guides for PDF tools, GST invoicing, image optimization, resume building & more.</p>
-  </div>
-</div>
-
+<div class="mini-hero"><h1>📚 ToolNest Blog</h1><p>Expert tips, tutorials, and guides for free online tools</p></div>
 <div class="page-wrap">
-  <!-- Featured Posts -->
-  <div id="featuredSection" style="display:none;margin-bottom:3rem;">
-    <div class="sec-hd"><div class="sec-title">⭐ Featured Articles</div></div>
-    <div id="featuredGrid" class="blog-grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));"></div>
-  </div>
-
-  <!-- Category Filter -->
-  <div class="cat-scroll" id="catFilter" style="margin-bottom:2rem;display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;"></div>
-
-  <!-- All Articles -->
+  <div class="ad-box">[ Advertisement ]</div>
   <div class="sec-hd">
     <div class="sec-title" id="blogTitle">All Articles</div>
     <div class="sec-more" id="blogCount"></div>
   </div>
-
+  <!-- Category filter -->
+  <div class="cat-scroll" id="catFilter" style="margin-bottom:1.5rem"></div>
+  <!-- Blog grid -->
   <div class="blog-grid" id="blogGrid"></div>
-
-  <div id="noArticles" style="display:none;text-align:center;padding:4rem 1rem;color:#888;">
-    <p style="font-size:1.3rem;">No articles found</p>
-  </div>
+  <div class="ad-box" style="margin-top:1rem">[ Advertisement ]</div>
 </div>
-
 <div id="tn-footer"></div>
 <script src="/nav-footer.js"></script>
-
 <script>
-// Same loadPosts, renderCats, filterTag functions rakh sakte ho (tumhare purane code se)
+let posts=[], activeTag='All';
 
-function renderPosts(filteredPosts) {
-  // Featured alag render
-  const featured = filteredPosts.filter(p => p.featured);
-  if (featured.length > 0) {
-    document.getElementById('featuredSection').style.display = 'block';
-    document.getElementById('featuredGrid').innerHTML = featured.map(p => createCardHTML(p, true)).join('');
+async function loadPosts(){
+  try{
+    const r = await fetch('/blog-data.json');
+    posts = await r.json();
+  } catch(e){
+    // Fallback inline data
+    posts = [
+      {title:"Complete GST Invoice Guide for Indian Businesses",slug:"gst-invoice-guide",excerpt:"Master GST invoice creation with our comprehensive guide. Learn mandatory fields, tax calculations, and compliance requirements.",date:"2026-02-20",category:"Business",readTime:"10 min",featured:true},
+      {title:"Image Compression Tips for Faster Websites",slug:"image-compression-tips",excerpt:"Learn how to compress images without losing quality. Improve website speed, SEO rankings, and user experience.",date:"2026-02-21",category:"Web Development",readTime:"8 min",featured:false},
+      {title:"Best Free PDF Tools for Students in 2026",slug:"pdf-tools-for-students",excerpt:"Discover essential free PDF tools every student needs. Merge, convert, compress PDFs without spending money.",date:"2026-02-22",category:"Education",readTime:"12 min",featured:false},
+      {title:"10 Best Free Online Tools for Small Businesses",slug:"small-business-online-tools-2026",excerpt:"Discover the top 10 free online tools every small business needs. Save time, reduce costs, and boost productivity.",date:"2026-02-25",category:"Business",readTime:"12 min",featured:true},
+      {title:"SEO Meta Tags Guide: Complete Tutorial for 2026",slug:"seo-meta-tags-guide",excerpt:"Complete guide to SEO meta tags. Learn title tags, meta descriptions, Open Graph and boost your search rankings.",date:"2026-02-23",category:"SEO",readTime:"15 min",featured:false},
+      {title:"Professional Resume Writing Tips for 2026",slug:"resume-writing-tips-2026",excerpt:"Master resume writing with ATS optimization, modern formats, action verbs and proven strategies to land more interviews.",date:"2026-02-27",category:"Career",readTime:"18 min",featured:true},
+    ];
   }
-
-  const normal = filteredPosts.filter(p => !p.featured);
-  const grid = document.getElementById('blogGrid');
-  grid.innerHTML = normal.map(p => createCardHTML(p)).join('');
-  
-  document.getElementById('blogCount').textContent = filteredPosts.length + ' articles';
+  renderCats();
+  renderPosts();
 }
 
-function createCardHTML(p, isFeatured = false) {
-  const date = new Date(p.date).toLocaleDateString('en-IN', {year:'numeric', month:'short', day:'numeric'});
-  return `
-    <div class="blog-card ${isFeatured ? 'featured-card' : ''}" onclick="navigateToArticle('${p.slug}')">
-      ${p.thumbnail ? `<img src="${p.thumbnail}" alt="${p.title}" style="width:100%;height:180px;object-fit:cover;border-radius:12px 12px 0 0;">` : ''}
-      <div class="blog-card-body" style="padding:1.25rem;">
+function renderCats(){
+  const cats = ['All', ...new Set(posts.map(p=>p.category))];
+  document.getElementById('catFilter').innerHTML = cats.map(c=>`
+    <div class="cat-chip${c==='All'?' active':''}" onclick="filterTag('${c}',this)">${c}</div>`).join('');
+}
+
+function filterTag(tag, el){
+  activeTag = tag;
+  document.querySelectorAll('#catFilter .cat-chip').forEach(c=>c.classList.remove('active'));
+  if(el) el.classList.add('active');
+  renderPosts();
+}
+
+function renderPosts(){
+  const filtered = activeTag==='All' ? posts : posts.filter(p=>p.category===activeTag);
+  document.getElementById('blogCount').textContent = filtered.length + ' articles';
+  document.getElementById('blogTitle').textContent = activeTag==='All' ? 'All Articles' : activeTag;
+  document.getElementById('blogGrid').innerHTML = filtered.map(p=>`
+    <div class="blog-card" onclick="location.href='/blog/${p.slug}.html'">
+      <div class="blog-card-body">
         <div class="blog-cat">${p.category}</div>
         <div class="blog-title">${p.title}</div>
-        <div class="blog-excerpt" style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${p.excerpt}</div>
+        <div class="blog-excerpt">${p.excerpt}</div>
         <div class="blog-meta">
-          <span>${date}</span>
-          <span>${p.readTime}</span>
+          <span>📅 ${new Date(p.date).toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</span>
+          <span>⏱ ${p.readTime}</span>
+          ${p.featured?'<span style="color:var(--brand);font-weight:600">⭐ Featured</span>':''}
         </div>
       </div>
-    </div>
-  `;
+    </div>`).join('');
 }
 
-// navigateToArticle same rakho (baad mein blog-post.html?slug= pe point karenge)
+loadPosts();
 </script>
 </body>
 </html>
