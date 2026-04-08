@@ -3,353 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<!-- Primary Meta Tags -->
-<title>Blog — ToolNest | Expert Tips, Tutorials & Guides on Free Online Tools</title>
-<meta name="title" content="Blog — ToolNest | Expert Tips, Tutorials & Guides">
-<meta name="description" content="Read expert articles on PDF tools, image compression, GST invoices, SEO optimization, productivity tips and more. Free tutorials and guides for Indian businesses.">
-<meta name="keywords" content="PDF tools blog, image compression guide, GST invoice tutorial, SEO tips, productivity tools, online tools guide, business tools India">
-<meta name="author" content="ToolNest">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://toolnest.bhaihelp.in/blog.html">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://toolnest.bhaihelp.in/blog.html">
-<meta property="og:title" content="ToolNest Blog - Expert Tips & Tutorials">
-<meta property="og:description" content="Read expert articles on PDF tools, image compression, SEO, and productivity. Free guides for businesses and students.">
-<meta property="og:image" content="https://toolnest.bhaihelp.in/images/blog-og-image.jpg">
-<meta property="og:site_name" content="ToolNest">
-
-<!-- Twitter Card -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://toolnest.bhaihelp.in/blog.html">
-<meta property="twitter:title" content="ToolNest Blog - Expert Tips & Tutorials">
-<meta property="twitter:description" content="Expert articles on PDF tools, image compression, SEO, and productivity.">
-<meta property="twitter:image" content="https://toolnest.bhaihelp.in/images/blog-twitter-image.jpg">
-
-<!-- Favicon & Theme -->
-<link rel="icon" type="image/png" href="/favicon.png">
-<meta name="theme-color" content="#0F1B3D">
-
-<!-- Google Site Verification -->
-<meta name="google-site-verification" content="dbfc89456a05e36c">
-
-<!-- Stylesheet -->
+<title>Blog — ToolNest | Expert Tips & Guides</title>
+<meta name="description" content="Free tools ke expert tips, GST invoice guide, PDF tricks, resume tips aur productivity hacks.">
 <link rel="stylesheet" href="/style.css">
-
-<!-- Google Analytics (Replace G-XXXXXXXXXX with your actual tracking ID) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
-
-<!-- Schema Markup - Blog Page -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": "ToolNest Blog",
-  "description": "Expert tips, tutorials, and guides for free online tools",
-  "url": "https://toolnest.bhaihelp.in/blog.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "ToolNest",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://toolnest.bhaihelp.in/images/logo.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://toolnest.bhaihelp.in/blog.html"
-  }
-}
-</script>
-
-<!-- Breadcrumb Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://toolnest.bhaihelp.in/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "https://toolnest.bhaihelp.in/blog.html"
-    }
-  ]
-}
-</script>
-
 <script src="/darkmode.js"></script>
 </head>
 <body>
 <div id="tn-nav"></div>
 
-<!-- Breadcrumb Navigation -->
-<div class="breadcrumb" style="max-width:1200px;margin:1rem auto;padding:0 1rem;font-size:0.9rem;color:#666;">
-  <a href="/" style="color:#667eea;text-decoration:none;">Home</a> → <span>Blog</span>
-</div>
-
-<div class="mini-hero">
-  <h1>📚 ToolNest Blog</h1>
-  <p>Expert tips, tutorials, and guides for free online tools</p>
+<!-- Improved Mini Hero -->
+<div class="mini-hero" style="padding:4rem 1.5rem 3rem;">
+  <div style="max-width:800px;margin:0 auto;text-align:center;">
+    <h1 style="font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;margin-bottom:1rem;">ToolNest Blog</h1>
+    <p style="font-size:1.1rem;color:rgba(255,255,255,0.75);max-width:600px;margin:0 auto;">Practical tips, tutorials & guides for PDF tools, GST invoicing, image optimization, resume building & more.</p>
+  </div>
 </div>
 
 <div class="page-wrap">
-  <div class="ad-box">[ Advertisement ]</div>
-  
+  <!-- Featured Posts -->
+  <div id="featuredSection" style="display:none;margin-bottom:3rem;">
+    <div class="sec-hd"><div class="sec-title">⭐ Featured Articles</div></div>
+    <div id="featuredGrid" class="blog-grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));"></div>
+  </div>
+
+  <!-- Category Filter -->
+  <div class="cat-scroll" id="catFilter" style="margin-bottom:2rem;display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;"></div>
+
+  <!-- All Articles -->
   <div class="sec-hd">
     <div class="sec-title" id="blogTitle">All Articles</div>
     <div class="sec-more" id="blogCount"></div>
   </div>
-  
-  <!-- Category filter -->
-  <div class="cat-scroll" id="catFilter" style="margin-bottom:1.5rem"></div>
-  
-  <!-- Blog grid -->
+
   <div class="blog-grid" id="blogGrid"></div>
-  
-  <!-- No articles message -->
-  <div id="noArticles" style="display:none;text-align:center;padding:3rem;color:#666;">
-    <p style="font-size:1.2rem;margin-bottom:0.5rem;">No articles found in this category</p>
-    <p>Try selecting a different category above</p>
+
+  <div id="noArticles" style="display:none;text-align:center;padding:4rem 1rem;color:#888;">
+    <p style="font-size:1.3rem;">No articles found</p>
   </div>
-  
-  <div class="ad-box" style="margin-top:1rem">[ Advertisement ]</div>
 </div>
 
 <div id="tn-footer"></div>
 <script src="/nav-footer.js"></script>
 
 <script>
-let posts = [], activeTag = 'All';
+// Same loadPosts, renderCats, filterTag functions rakh sakte ho (tumhare purane code se)
 
-async function loadPosts() {
-  try {
-    const r = await fetch('/blog-data.json');
-    posts = await r.json();
-  } catch(e) {
-    console.log('Loading fallback blog data');
-    // Fallback inline data with COMPLETE article info
-    posts = [
-      {
-        title: "Complete GST Invoice Guide for Indian Businesses",
-        slug: "gst-invoice-guide",
-        excerpt: "Master GST invoice creation with our comprehensive guide. Learn mandatory fields, tax calculations, HSN/SAC codes, and compliance requirements for Indian businesses.",
-        date: "2026-02-20",
-        category: "Business",
-        readTime: "10 min",
-        featured: true,
-        author: "ToolNest Team",
-        keywords: "GST invoice, GST billing, invoice format, tax invoice India"
-      },
-      {
-        title: "Image Compression Tips for Faster Websites",
-        slug: "image-compression-tips",
-        excerpt: "Learn how to compress images without losing quality. Improve website speed, SEO rankings, and user experience with proven compression techniques.",
-        date: "2026-02-21",
-        category: "Web Development",
-        readTime: "8 min",
-        featured: false,
-        author: "ToolNest Team",
-        keywords: "image compression, optimize images, website speed, image optimization"
-      },
-      {
-        title: "Best Free PDF Tools for Students in 2026",
-        slug: "pdf-tools-for-students",
-        excerpt: "Discover essential free PDF tools every student needs. Merge, convert, compress, and annotate PDFs without spending money. Perfect for assignments and research.",
-        date: "2026-02-22",
-        category: "Education",
-        readTime: "12 min",
-        featured: false,
-        author: "ToolNest Team",
-        keywords: "PDF tools students, free PDF editor, student tools, PDF converter"
-      },
-      {
-        title: "10 Best Free Online Tools for Small Businesses",
-        slug: "small-business-online-tools-2026",
-        excerpt: "Discover the top 10 free online tools every small business needs in 2026. Save time, reduce costs, and boost productivity with these essential tools.",
-        date: "2026-02-25",
-        category: "Business",
-        readTime: "12 min",
-        featured: true,
-        author: "ToolNest Team",
-        keywords: "small business tools, free business tools, productivity tools, business software"
-      },
-      {
-        title: "SEO Meta Tags Guide: Complete Tutorial for 2026",
-        slug: "seo-meta-tags-guide",
-        excerpt: "Complete guide to SEO meta tags. Learn title tags, meta descriptions, Open Graph tags, Twitter cards, and schema markup to boost your search rankings.",
-        date: "2026-02-23",
-        category: "SEO",
-        readTime: "15 min",
-        featured: false,
-        author: "ToolNest Team",
-        keywords: "SEO meta tags, title tags, meta description, Open Graph, schema markup"
-      },
-      {
-        title: "Professional Resume Writing Tips for 2026",
-        slug: "resume-writing-tips-2026",
-        excerpt: "Master resume writing with ATS optimization, modern formats, powerful action verbs and proven strategies to land more interviews in 2026.",
-        date: "2026-02-27",
-        category: "Career",
-        readTime: "18 min",
-        featured: true,
-        author: "ToolNest Team",
-        keywords: "resume writing, CV tips, ATS resume, job application, resume format"
-      }
-    ];
+function renderPosts(filteredPosts) {
+  // Featured alag render
+  const featured = filteredPosts.filter(p => p.featured);
+  if (featured.length > 0) {
+    document.getElementById('featuredSection').style.display = 'block';
+    document.getElementById('featuredGrid').innerHTML = featured.map(p => createCardHTML(p, true)).join('');
   }
-  renderCats();
-  renderPosts();
+
+  const normal = filteredPosts.filter(p => !p.featured);
+  const grid = document.getElementById('blogGrid');
+  grid.innerHTML = normal.map(p => createCardHTML(p)).join('');
+  
+  document.getElementById('blogCount').textContent = filteredPosts.length + ' articles';
 }
 
-function renderCats() {
-  const cats = ['All', ...new Set(posts.map(p => p.category))];
-  const catHTML = cats.map(c => `
-    <div class="cat-chip${c === 'All' ? ' active' : ''}" onclick="filterTag('${c}', this)">
-      ${c}
-    </div>
-  `).join('');
-  document.getElementById('catFilter').innerHTML = catHTML;
-}
-
-function filterTag(tag, el) {
-  activeTag = tag;
-  
-  // Update active state
-  document.querySelectorAll('#catFilter .cat-chip').forEach(c => c.classList.remove('active'));
-  if (el) el.classList.add('active');
-  
-  // Track category filter in Analytics (if available)
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'category_filter', {
-      'event_category': 'Blog',
-      'event_label': tag
-    });
-  }
-  
-  renderPosts();
-}
-
-function renderPosts() {
-  const filtered = activeTag === 'All' ? posts : posts.filter(p => p.category === activeTag);
-  
-  // Update count and title
-  document.getElementById('blogCount').textContent = filtered.length + ' article' + (filtered.length !== 1 ? 's' : '');
-  document.getElementById('blogTitle').textContent = activeTag === 'All' ? 'All Articles' : activeTag;
-  
-  // Show/hide no articles message
-  const blogGrid = document.getElementById('blogGrid');
-  const noArticles = document.getElementById('noArticles');
-  
-  if (filtered.length === 0) {
-    blogGrid.style.display = 'none';
-    noArticles.style.display = 'block';
-    return;
-  } else {
-    blogGrid.style.display = 'grid';
-    noArticles.style.display = 'none';
-  }
-  
-  // Render blog cards
-  const cardsHTML = filtered.map(p => {
-    const date = new Date(p.date);
-    const formattedDate = date.toLocaleDateString('en-IN', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    });
-    
-    return `
-    <div class="blog-card" onclick="navigateToArticle('${p.slug}')" role="article" aria-label="${p.title}">
-      <div class="blog-card-body">
+function createCardHTML(p, isFeatured = false) {
+  const date = new Date(p.date).toLocaleDateString('en-IN', {year:'numeric', month:'short', day:'numeric'});
+  return `
+    <div class="blog-card ${isFeatured ? 'featured-card' : ''}" onclick="navigateToArticle('${p.slug}')">
+      ${p.thumbnail ? `<img src="${p.thumbnail}" alt="${p.title}" style="width:100%;height:180px;object-fit:cover;border-radius:12px 12px 0 0;">` : ''}
+      <div class="blog-card-body" style="padding:1.25rem;">
         <div class="blog-cat">${p.category}</div>
         <div class="blog-title">${p.title}</div>
-        <div class="blog-excerpt">${p.excerpt}</div>
+        <div class="blog-excerpt" style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${p.excerpt}</div>
         <div class="blog-meta">
-          <span>📅 ${formattedDate}</span>
-          <span>⏱ ${p.readTime}</span>
-          ${p.featured ? '<span style="color:var(--brand);font-weight:600">⭐ Featured</span>' : ''}
+          <span>${date}</span>
+          <span>${p.readTime}</span>
         </div>
       </div>
     </div>
-    `;
-  }).join('');
-  
-  blogGrid.innerHTML = cardsHTML;
+  `;
 }
 
-function navigateToArticle(slug) {
-  // Track article click in Analytics
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'article_click', {
-      'event_category': 'Blog',
-      'event_label': slug
-    });
-  }
-  
-  window.location.href = '/blog/' + slug + '.html';
-}
-
-// Initialize on page load
-loadPosts();
-
-// Add keyboard navigation
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    // Reset to All categories
-    filterTag('All', document.querySelector('#catFilter .cat-chip'));
-  }
-});
+// navigateToArticle same rakho (baad mein blog-post.html?slug= pe point karenge)
 </script>
-
-<!-- FAQ Schema for Blog Page -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What topics does ToolNest blog cover?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ToolNest blog covers PDF tools, image compression, business tools like GST invoices, SEO optimization, career tips, productivity guides, and web development tutorials."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How often are new articles published?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We publish new articles weekly, covering the latest tips, tutorials, and guides for free online tools and digital productivity."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are ToolNest articles free to read?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, all ToolNest blog articles are completely free to read. No registration or subscription required."
-      }
-    }
-  ]
-}
-</script>
-
 </body>
 </html>
