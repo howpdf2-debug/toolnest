@@ -2,119 +2,73 @@
   {
     "title": "Complete GST Invoice Guide for Indian Businesses",
     "slug": "gst-invoice-guide",
-    "excerpt": "Master GST invoice creation with our comprehensive guide. Learn mandatory fields, tax calculations, compliance requirements, and best practices for Indian businesses.",
+    "excerpt": "Master GST invoice creation with our comprehensive guide. Learn mandatory fields, tax calculations, HSN/SAC codes, and compliance requirements for Indian businesses.",
     "date": "2026-02-20",
     "category": "Business",
     "readTime": "10 min",
-    "featured": true
+    "featured": true,
+    "author": "ToolNest Team",
+    "keywords": "GST invoice, GST billing, invoice format, tax invoice India, HSN code, SAC code",
+    "thumbnail": "/images/blog/gst-invoice-thumbnail.jpg"
   },
   {
     "title": "Image Compression Tips for Faster Websites",
     "slug": "image-compression-tips",
-    "excerpt": "Learn how to compress images without losing quality. Improve website speed, SEO rankings, and user experience with our expert compression techniques.",
+    "excerpt": "Learn how to compress images without losing quality. Improve website speed, SEO rankings, and user experience with proven compression techniques.",
     "date": "2026-02-21",
     "category": "Web Development",
     "readTime": "8 min",
-    "featured": false
+    "featured": false,
+    "author": "ToolNest Team",
+    "keywords": "image compression, optimize images, website speed, image optimization, compress photos",
+    "thumbnail": "/images/blog/image-compression-thumbnail.jpg"
   },
   {
     "title": "Best Free PDF Tools for Students in 2026",
     "slug": "pdf-tools-for-students",
-    "excerpt": "Discover essential free PDF tools every student needs. Merge, convert, compress PDFs and more without spending money on expensive software.",
+    "excerpt": "Discover essential free PDF tools every student needs. Merge, convert, compress, and annotate PDFs without spending money. Perfect for assignments and research.",
     "date": "2026-02-22",
     "category": "Education",
     "readTime": "12 min",
-    "featured": false
+    "featured": false,
+    "author": "ToolNest Team",
+    "keywords": "PDF tools students, free PDF editor, student tools, PDF converter, merge PDF",
+    "thumbnail": "/images/blog/pdf-students-thumbnail.jpg"
   },
   {
-    "title": "Professional Resume Writing Tips for 2026",
-    "slug": "resume-writing-tips-2026",
-    "excerpt": "Master resume writing with our 2026 guide. Learn ATS optimization, modern formats, action verbs, and proven strategies to land more job interviews.",
-    "date": "2026-02-27",
-    "category": "Career",
-    "readTime": "18 min",
-    "featured": true
+    "title": "10 Best Free Online Tools for Small Businesses",
+    "slug": "small-business-online-tools-2026",
+    "excerpt": "Discover the top 10 free online tools every small business needs in 2026. Save time, reduce costs, and boost productivity with these essential tools.",
+    "date": "2026-02-25",
+    "category": "Business",
+    "readTime": "12 min",
+    "featured": true,
+    "author": "ToolNest Team",
+    "keywords": "small business tools, free business tools, productivity tools, business software, entrepreneur tools",
+    "thumbnail": "/images/blog/business-tools-thumbnail.jpg"
   },
   {
     "title": "SEO Meta Tags Guide: Complete Tutorial for 2026",
     "slug": "seo-meta-tags-guide",
-    "excerpt": "Complete guide to SEO meta tags. Learn title tags, meta descriptions, Open Graph, schema markup and boost your search rankings in 2026.",
+    "excerpt": "Complete guide to SEO meta tags. Learn title tags, meta descriptions, Open Graph tags, Twitter cards, and schema markup to boost your search rankings.",
     "date": "2026-02-23",
     "category": "SEO",
     "readTime": "15 min",
-    "featured": false
+    "featured": false,
+    "author": "ToolNest Team",
+    "keywords": "SEO meta tags, title tags, meta description, Open Graph, schema markup, Twitter cards",
+    "thumbnail": "/images/blog/seo-meta-tags-thumbnail.jpg"
   },
   {
-    "title": "10 Best Free Online Tools for Small Businesses in 2026",
-    "slug": "small-business-online-tools-2026",
-    "excerpt": "Discover the top 10 free online tools every small business needs in 2026. Save time, reduce costs, and boost productivity with these essential business tools.",
-    "date": "2026-02-25",
-    "category": "Business",
-    "readTime": "12 min",
-    "featured": true
-  },
-  {
-    "title": "Word Counter Tool - Complete Guide 2026",
-    "slug": "word-counter-guide",
-    "excerpt": "Learn how to use our free word counter tool to count words, characters, sentences, and paragraphs. Perfect for essays, assignments, SEO, and social media posts.",
-    "date": "2026-02-22",
-    "category": "Writing",
-    "readTime": "7 min",
-    "featured": false
-  },
-  {
-    "title": "YouTube Video Download Guide: Legal & Safe Methods",
-    "slug": "youtube-video-download-guide",
-    "excerpt": "Complete guide to downloading YouTube videos legally. Learn about YouTube Premium, copyright rules, fair use, and safe download methods for educational purposes.",
-    "date": "2026-02-24",
-    "category": "Technology",
-    "readTime": "10 min",
-    "featured": false
-  },
-  {
-    "title": "How to Create Professional Invoices: Complete Guide",
-    "slug": "professional-invoice-creation-guide",
-    "excerpt": "Learn how to create professional invoices that get paid faster. Complete guide covering invoice elements, GST compliance, payment terms, and best practices.",
-    "date": "2026-02-26",
-    "category": "Business",
-    "readTime": "15 min",
-    "featured": false
-  },
- {
-  "title": "Free vs Paid PDF Tools: Complete Comparison 2026",
-  "slug": "free-vs-paid-pdf-tools-2026",
-  "excerpt": "Complete comparison of free vs paid PDF tools in 2026. Discover which option is right for you with detailed feature analysis, pricing, and recommendations.",
-  "date": "2026-03-03",
-  "category": "Technology",
-  "readTime": "16 min",
-  "featured": false
-},
-  {
-  "title": "10 Time-Saving Productivity Tools for Students 2026",
-  "slug": "productivity-tools-for-students-2026",
-  "excerpt": "Discover the best free productivity tools for students in 2026. Boost your grades, save time, and stay organized with these essential student tools.",
-  "date": "2026-03-04",
-  "category": "Education",
-  "readTime": "14 min",
-  "featured": true
-},
-  {
-  "title": "Digital Marketing Tools Every Startup Needs in 2026",
-  "slug": "digital-marketing-tools-startups-2026",
-  "excerpt": "Essential free and affordable digital marketing tools for startups. Learn which tools successful startups use for SEO, social media, email marketing, analytics, and content creation.",
-  "date": "2026-03-05",
-  "category": "Business",
-  "readTime": "18 min",
-  "featured": true
-},
-  {
-  "title": "Remote Work Essentials: Free Tools Guide 2026",
-  "slug": "remote-work-tools-guide-2026",
-  "excerpt": "Complete guide to essential free tools for remote work. Discover the best communication, collaboration, productivity, and security tools for working from home in 2026.",
-  "date": "2026-03-06",
-  "category": "Productivity",
-  "readTime": "17 min",
-  "featured": true
-}
-  
+    "title": "Professional Resume Writing Tips for 2026",
+    "slug": "resume-writing-tips-2026",
+    "excerpt": "Master resume writing with ATS optimization, modern formats, powerful action verbs and proven strategies to land more interviews in 2026.",
+    "date": "2026-02-27",
+    "category": "Career",
+    "readTime": "18 min",
+    "featured": true,
+    "author": "ToolNest Team",
+    "keywords": "resume writing, CV tips, ATS resume, job application, resume format, resume builder",
+    "thumbnail": "/images/blog/resume-tips-thumbnail.jpg"
+  }
 ]
