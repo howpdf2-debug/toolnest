@@ -1,88 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Blog — ToolNest | Expert Tips, Tutorials & Guides</title>
-<meta name="description" content="Read ToolNest blog for expert tips and guides on PDF tools, image compression, GST invoices, SEO, productivity and more.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="dbfc89456a05e36c">
+<title>Blog — ToolNest | Expert Tips, Tutorials &amp; Guides</title>
+<meta name="description" content="Read ToolNest blog for expert tips and guides on PDF tools, image compression, GST invoices, SEO, and productivity. Free tutorials.">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://toolnest.bhaihelp.in/blog.html">
+<meta property="og:title" content="ToolNest Blog — Expert Tips &amp; Tutorials">
+<meta property="og:description" content="Expert tips, tutorials and guides for free online tools.">
+<meta property="og:url" content="https://toolnest.bhaihelp.in/blog.html">
+<meta property="og:image" content="https://toolnest.bhaihelp.in/favicon.png">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0F1B3D">
 <link rel="stylesheet" href="/style.css">
 <script src="/darkmode.js"></script>
-<meta name="google-site-verification" content="dbfc89456a05e36c">
+<style>
+.bf-pill{display:flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;border:1.5px solid var(--border);background:var(--white);font-size:13px;font-weight:600;color:var(--ink2);cursor:pointer;white-space:nowrap;transition:all .15s;flex-shrink:0}
+.bf-pill:hover{border-color:var(--gold);color:var(--gold-d);background:var(--gold-l)}
+.bf-pill.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.bfbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.75rem;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.bfbar::-webkit-scrollbar{display:none}
+.bcard{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);overflow:hidden;cursor:pointer;transition:all .2s;box-shadow:var(--sh-xs)}
+.bcard:hover{border-color:var(--gold-b);box-shadow:0 0 0 3px var(--gold-b),var(--sh);transform:translateY(-3px)}
+.bcard-top{height:5px;background:linear-gradient(90deg,var(--gold),var(--gold-d))}
+.bcard-body{padding:1.35rem}
+.bcat{display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:3px 11px;border-radius:999px;background:var(--gold-l);color:var(--gold-d);margin-bottom:.65rem;text-transform:uppercase;letter-spacing:.4px}
+.bfeat{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--navy);color:var(--gold);margin-left:5px}
+.btitle{font-family:var(--f-display);font-size:15px;font-weight:800;color:var(--ink);margin-bottom:.45rem;line-height:1.35}
+.bexc{font-size:13px;color:var(--ink2);line-height:1.65;margin-bottom:.8rem}
+.bmeta{font-size:12px;color:var(--ink3);display:flex;gap:10px;align-items:center}
+.bmore{font-size:13px;font-weight:700;color:var(--gold-d);margin-top:.7rem;display:block}
+.bcard:hover .bmore{color:var(--gold)}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;margin-bottom:2rem}
+.bnone{text-align:center;padding:3rem;color:var(--ink3);grid-column:1/-1}
+.bnone-icon{font-size:2.5rem;display:block;margin-bottom:.5rem}
+</style>
 </head>
 <body>
+
 <div id="tn-nav"></div>
-<div class="mini-hero"><h1>📚 ToolNest Blog</h1><p>Expert tips, tutorials, and guides for free online tools</p></div>
+
+<div class="mini-hero">
+  <div class="mini-hero-inner">
+    <h1>📚 ToolNest Blog</h1>
+    <p>Expert tips, tutorials &amp; guides for free online tools</p>
+  </div>
+</div>
+
 <div class="page-wrap">
   <div class="ad-box">[ Advertisement ]</div>
+
+  <div class="bfbar" id="filterBar"></div>
+
   <div class="sec-hd">
     <div class="sec-title" id="blogTitle">All Articles</div>
-    <div class="sec-more" id="blogCount"></div>
+    <div class="sec-count" id="blogCount">13 articles</div>
   </div>
-  <!-- Category filter -->
-  <div class="cat-scroll" id="catFilter" style="margin-bottom:1.5rem"></div>
-  <!-- Blog grid -->
-  <div class="blog-grid" id="blogGrid"></div>
-  <div class="ad-box" style="margin-top:1rem">[ Advertisement ]</div>
+
+  <div class="bgrid" id="blogGrid">
+    <div class="bnone"><span class="bnone-icon">⏳</span>Loading articles...</div>
+  </div>
+
+  <div class="ad-box">[ Advertisement ]</div>
+
+  <div class="cta-band" style="margin-bottom:1.5rem">
+    <h2>Explore Our Free Tools</h2>
+    <p>Put knowledge from these guides to use with 20+ free online tools.</p>
+    <button class="btn-gold" onclick="location.href='/'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+      Explore All Tools
+    </button>
+  </div>
 </div>
+
 <div id="tn-footer"></div>
 <script src="/nav-footer.js"></script>
+
 <script>
-let posts=[], activeTag='All';
-
-async function loadPosts(){
-  try{
-    const r = await fetch('/blog-data.json');
-    posts = await r.json();
-  } catch(e){
-    // Fallback inline data
-    posts = [
-      {title:"Complete GST Invoice Guide for Indian Businesses",slug:"gst-invoice-guide",excerpt:"Master GST invoice creation with our comprehensive guide. Learn mandatory fields, tax calculations, and compliance requirements.",date:"2026-02-20",category:"Business",readTime:"10 min",featured:true},
-      {title:"Image Compression Tips for Faster Websites",slug:"image-compression-tips",excerpt:"Learn how to compress images without losing quality. Improve website speed, SEO rankings, and user experience.",date:"2026-02-21",category:"Web Development",readTime:"8 min",featured:false},
-      {title:"Best Free PDF Tools for Students in 2026",slug:"pdf-tools-for-students",excerpt:"Discover essential free PDF tools every student needs. Merge, convert, compress PDFs without spending money.",date:"2026-02-22",category:"Education",readTime:"12 min",featured:false},
-      {title:"10 Best Free Online Tools for Small Businesses",slug:"small-business-online-tools-2026",excerpt:"Discover the top 10 free online tools every small business needs. Save time, reduce costs, and boost productivity.",date:"2026-02-25",category:"Business",readTime:"12 min",featured:true},
-      {title:"SEO Meta Tags Guide: Complete Tutorial for 2026",slug:"seo-meta-tags-guide",excerpt:"Complete guide to SEO meta tags. Learn title tags, meta descriptions, Open Graph and boost your search rankings.",date:"2026-02-23",category:"SEO",readTime:"15 min",featured:false},
-      {title:"Professional Resume Writing Tips for 2026",slug:"resume-writing-tips-2026",excerpt:"Master resume writing with ATS optimization, modern formats, action verbs and proven strategies to land more interviews.",date:"2026-02-27",category:"Career",readTime:"18 min",featured:true},
-    ];
+const POSTS = [
+  {
+    title:"Complete GST Invoice Guide for Indian Businesses",
+    slug:"gst-invoice-guide",
+    excerpt:"Master GST invoice creation. Learn mandatory fields, tax calculations, compliance requirements, and best practices for Indian businesses.",
+    date:"2026-02-20",
+    category:"Business",
+    readTime:"10 min",
+    featured:true
+  },
+  {
+    title:"Image Compression Tips for Faster Websites",
+    slug:"image-compression-tips",
+    excerpt:"Learn how to compress images without losing quality. Improve website speed, SEO rankings, and user experience.",
+    date:"2026-02-21",
+    category:"Web Development",
+    readTime:"8 min",
+    featured:false
+  },
+  {
+    title:"Best Free PDF Tools for Students in 2026",
+    slug:"pdf-tools-for-students",
+    excerpt:"Discover essential free PDF tools every student needs. Merge, convert, compress PDFs without spending money.",
+    date:"2026-02-22",
+    category:"Education",
+    readTime:"12 min",
+    featured:false
+  },
+  {
+    title:"Professional Resume Writing Tips for 2026",
+    slug:"resume-writing-tips-2026",
+    excerpt:"Master resume writing with ATS optimization, modern formats, action verbs, and proven strategies to land more interviews.",
+    date:"2026-02-27",
+    category:"Career",
+    readTime:"18 min",
+    featured:true
+  },
+  {
+    title:"SEO Meta Tags Guide: Complete Tutorial for 2026",
+    slug:"seo-meta-tags-guide",
+    excerpt:"Complete guide to SEO meta tags. Learn title tags, meta descriptions, Open Graph markup and boost your search rankings.",
+    date:"2026-02-23",
+    category:"SEO",
+    readTime:"15 min",
+    featured:false
+  },
+  {
+    title:"10 Best Free Online Tools for Small Businesses",
+    slug:"small-business-online-tools-2026",
+    excerpt:"Discover the top 10 free online tools every small business needs. Save time, reduce costs, and boost productivity.",
+    date:"2026-02-25",
+    category:"Business",
+    readTime:"12 min",
+    featured:true
+  },
+  {
+    title:"Word Counter Tool — Complete Guide 2026",
+    slug:"word-counter-guide",
+    excerpt:"Learn how to count words, characters, sentences and paragraphs. Perfect for essays, assignments, SEO, and social media.",
+    date:"2026-02-22",
+    category:"Writing",
+    readTime:"7 min",
+    featured:false
+  },
+  {
+    title:"YouTube Video Download: Legal & Safe Methods",
+    slug:"youtube-video-download-guide",
+    excerpt:"Complete guide to downloading YouTube videos legally. Learn about YouTube Premium, copyright rules, and safe methods.",
+    date:"2026-02-24",
+    category:"Technology",
+    readTime:"10 min",
+    featured:false
+  },
+  {
+    title:"How to Create Professional Invoices: Complete Guide",
+    slug:"professional-invoice-creation-guide",
+    excerpt:"Learn how to create professional invoices that get paid faster. GST compliance, payment terms, and best practices.",
+    date:"2026-02-26",
+    category:"Business",
+    readTime:"15 min",
+    featured:false
+  },
+  {
+    title:"Free vs Paid PDF Tools: Complete Comparison 2026",
+    slug:"free-vs-paid-pdf-tools-2026",
+    excerpt:"Complete comparison of free vs paid PDF tools. Discover which option is right for you with feature analysis.",
+    date:"2026-03-03",
+    category:"Technology",
+    readTime:"16 min",
+    featured:false
+  },
+  {
+    title:"10 Time-Saving Productivity Tools for Students 2026",
+    slug:"productivity-tools-for-students-2026",
+    excerpt:"Discover the best free productivity tools for students in 2026. Boost your grades and stay organized.",
+    date:"2026-03-04",
+    category:"Education",
+    readTime:"14 min",
+    featured:true
+  },
+  {
+    title:"Digital Marketing Tools Every Startup Needs in 2026",
+    slug:"digital-marketing-tools-startups-2026",
+    excerpt:"Essential free tools for startups. SEO, social media, email marketing, analytics, and content creation.",
+    date:"2026-03-05",
+    category:"Business",
+    readTime:"18 min",
+    featured:true
+  },
+  {
+    title:"Remote Work Essentials: Free Tools Guide 2026",
+    slug:"remote-work-tools-guide-2026",
+    excerpt:"Essential free tools for remote work. Communication, collaboration, productivity, and security tools.",
+    date:"2026-03-06",
+    category:"Productivity",
+    readTime:"17 min",
+    featured:true
   }
-  renderCats();
-  renderPosts();
+];
+
+var activeTag = 'All';
+
+function fmtDate(d) {
+  try {
+    return new Date(d).toLocaleDateString('en-IN', {day:'numeric', month:'short', year:'numeric'});
+  } catch(e) { return d; }
 }
 
-function renderCats(){
-  const cats = ['All', ...new Set(posts.map(p=>p.category))];
-  document.getElementById('catFilter').innerHTML = cats.map(c=>`
-    <div class="cat-chip${c==='All'?' active':''}" onclick="filterTag('${c}',this)">${c}</div>`).join('');
+function renderFilter() {
+  var cats = ['All'];
+  POSTS.forEach(function(p) {
+    if (cats.indexOf(p.category) === -1) cats.push(p.category);
+  });
+  var html = '';
+  cats.forEach(function(c) {
+    html += '<div class="bf-pill' + (c === 'All' ? ' active' : '') + '" onclick="setTag(\'' + c + '\',this)">' + c + '</div>';
+  });
+  document.getElementById('filterBar').innerHTML = html;
 }
 
-function filterTag(tag, el){
+function setTag(tag, el) {
   activeTag = tag;
-  document.querySelectorAll('#catFilter .cat-chip').forEach(c=>c.classList.remove('active'));
-  if(el) el.classList.add('active');
+  var pills = document.querySelectorAll('.bf-pill');
+  for (var i = 0; i < pills.length; i++) pills[i].classList.remove('active');
+  el.classList.add('active');
   renderPosts();
 }
 
-function renderPosts(){
-  const filtered = activeTag==='All' ? posts : posts.filter(p=>p.category===activeTag);
-  document.getElementById('blogCount').textContent = filtered.length + ' articles';
-  document.getElementById('blogTitle').textContent = activeTag==='All' ? 'All Articles' : activeTag;
-  document.getElementById('blogGrid').innerHTML = filtered.map(p=>`
-    <div class="blog-card" onclick="location.href='/blog/${p.slug}.html'">
-      <div class="blog-card-body">
-        <div class="blog-cat">${p.category}</div>
-        <div class="blog-title">${p.title}</div>
-        <div class="blog-excerpt">${p.excerpt}</div>
-        <div class="blog-meta">
-          <span>📅 ${new Date(p.date).toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</span>
-          <span>⏱ ${p.readTime}</span>
-          ${p.featured?'<span style="color:var(--brand);font-weight:600">⭐ Featured</span>':''}
-        </div>
-      </div>
-    </div>`).join('');
+function renderPosts() {
+  var list = activeTag === 'All' ? POSTS : POSTS.filter(function(p) { return p.category === activeTag; });
+  document.getElementById('blogTitle').textContent = activeTag === 'All' ? 'All Articles' : activeTag;
+  document.getElementById('blogCount').textContent = list.length + ' article' + (list.length === 1 ? '' : 's');
+
+  if (!list.length) {
+    document.getElementById('blogGrid').innerHTML = '<div class="bnone"><span class="bnone-icon">📭</span><p>No articles yet in this category.</p></div>';
+    return;
+  }
+
+  var html = '';
+  list.forEach(function(p) {
+    html += '<div class="bcard" onclick="location.href=\'/blog/' + p.slug + '.html\'">';
+    html += '<div class="bcard-top"></div>';
+    html += '<div class="bcard-body">';
+    html += '<span class="bcat">' + p.category + '</span>';
+    if (p.featured) html += '<span class="bfeat">⭐ Featured</span>';
+    html += '<div class="btitle">' + p.title + '</div>';
+    html += '<div class="bexc">' + p.excerpt + '</div>';
+    html += '<div class="bmeta"><span>📅 ' + fmtDate(p.date) + '</span><span>⏱ ' + p.readTime + ' read</span></div>';
+    html += '<span class="bmore">Read article →</span>';
+    html += '</div></div>';
+  });
+  document.getElementById('blogGrid').innerHTML = html;
 }
 
-loadPosts();
+function init() {
+  renderFilter();
+  renderPosts();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 </script>
 </body>
 </html>
