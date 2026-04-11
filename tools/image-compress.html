@@ -3,201 +3,936 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Compressor Online Free - Reduce Image Size | ToolNest</title>
+<title>Image Compressor Online Free — Reduce Image Size | ToolNest</title>
 <meta name="description" content="Compress JPG, PNG, WebP images online for free. Reduce file size up to 90% without visible quality loss. No signup, browser-based, instant results.">
 <link rel="canonical" href="https://toolnest.bhaihelp.in/tools/image-compress.html">
-
-
-
-
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <meta name="theme-color" content="#0F1B3D">
-<meta name="google-site-verification" content="dbfc89456a05e36c">
-<link rel="stylesheet" href="/style.css">
-<script src="/darkmode.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,opsz,wght@0,6..18,300..800;1,6..18,300..800&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════
+   TOOLNEST DESIGN SYSTEM
+   ═══════════════════════════════════════════════════ */
+:root {
+  --gold:        #F5A623;
+  --gold-d:      #D4891A;
+  --gold-l:      #FEF3DC;
+  --gold-b:      rgba(245,166,35,.22);
+  --navy:        #0F1B3D;
+  --navy-mid:    #1A2E5E;
+  --navy-l:      #E8ECF5;
+  --blue:        #1E4FCB;
+  --blue-l:      #EEF3FF;
+  --green:       #00B37E;
+  --green-l:     #E6FAF4;
+  --red:         #E53E3E;
+  --red-l:       #FFF0F0;
+  --ink:         #0D0D14;
+  --ink2:        #44455A;
+  --ink3:        #8A8BA5;
+  --paper:       #F5F6FA;
+  --white:       #FFFFFF;
+  --border:      #E2E4EF;
+  --border2:     #C8CADF;
+  --surface:     #EDEEF7;
+
+  --c-compress:  #F5620A;
+  --c-compress-l:#FFF0EB;
+  --c-convert:   #1E4FCB;
+  --c-convert-l: #EEF3FF;
+  --c-organize:  #00B37E;
+  --c-organize-l:#E6FAF4;
+  --c-edit:      #6C3FC4;
+  --c-edit-l:    #F2EDFF;
+  --c-image:     #E91E8C;
+  --c-image-l:   #FCE4F0;
+  --c-prod:      #E88B00;
+  --c-prod-l:    #FFF8E6;
+  --c-biz:       #0891B2;
+  --c-biz-l:     #E8F8FD;
+
+  --f-display:  'Outfit', sans-serif;
+  --f-body:     'Plus Jakarta Sans', sans-serif;
+  --r-sm:  8px; --r: 12px; --r-lg: 18px; --r-xl: 24px; --r-pill: 999px;
+  --sh-xs: 0 1px 2px rgba(13,13,20,.06);
+  --sh-sm: 0 2px 8px rgba(13,13,20,.08);
+  --sh:    0 4px 16px rgba(13,13,20,.10);
+  --sh-lg: 0 8px 32px rgba(13,13,20,.13);
+  --sh-gold: 0 4px 24px rgba(245,166,35,.30);
+  --sh-pink: 0 4px 24px rgba(233,30,140,.28);
+
+  --nav-h:      64px;
+  --sidebar-w:  255px;
+  --right-w:    220px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
+
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+/* ═══ NAV ═══ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);
+  background:rgba(255,255,255,.90);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);padding:0 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:var(--sh-xs);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:20px;color:var(--ink);white-space:nowrap;flex-shrink:0}
+.nav-logo img{width:40px;height:40px;border-radius:10px;object-fit:cover;box-shadow:0 2px 8px rgba(245,166,35,.4)}
+.nav-logo-fallback{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#FF9500);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 2px 8px rgba(245,166,35,.4);flex-shrink:0}
+.nav-logo span{color:var(--gold)}
+.nav-search{flex:1;max-width:440px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-pill);padding:0 16px;height:38px;transition:border-color .2s,box-shadow .2s}
+.nav-search:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-b)}
+.nav-search input{flex:1;border:none;background:transparent;outline:none;font-size:13.5px;color:var(--ink)}
+.nav-search input::placeholder{color:var(--ink3)}
+.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.nav-link{padding:7px 14px;border-radius:var(--r-sm);font-size:14px;font-weight:500;color:var(--ink2);transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:5px}
+.nav-link:hover{background:var(--surface);color:var(--ink)}
+.btn-nav-gold{background:var(--gold);color:var(--navy);padding:8px 20px;border-radius:var(--r-pill);font-size:13.5px;font-weight:700;box-shadow:var(--sh-gold);transition:all .15s;display:flex;align-items:center;gap:6px}
+.btn-nav-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
+.hamburger{display:none;width:38px;height:38px;border-radius:var(--r-sm);background:var(--surface);border:1.5px solid var(--border);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;flex-shrink:0}
+.hamburger span{display:block;width:18px;height:1.5px;background:var(--ink);border-radius:2px;transition:all .25s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+
+/* ═══ LAYOUT ═══ */
+.app-shell{display:flex;padding-top:var(--nav-h);min-height:100vh}
+
+/* ═══ LEFT SIDEBAR ═══ */
+.left-sidebar{width:var(--sidebar-w);min-width:var(--sidebar-w);background:var(--white);border-right:1px solid var(--border);position:fixed;top:var(--nav-h);left:0;bottom:0;overflow-y:auto;overflow-x:hidden;z-index:100;transition:width .3s cubic-bezier(.4,0,.2,1),min-width .3s cubic-bezier(.4,0,.2,1),transform .3s ease;scrollbar-width:thin}
+.left-sidebar.collapsed{width:0;min-width:0}
+.sidebar-toggle{position:fixed;top:50%;left:var(--sidebar-w);transform:translateY(-50%) translateX(-50%);z-index:200;width:22px;height:44px;background:var(--white);border:1.5px solid var(--border);border-radius:0 var(--r-pill) var(--r-pill) 0;border-left:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:left .3s cubic-bezier(.4,0,.2,1),background .15s;box-shadow:3px 0 10px rgba(0,0,0,.07)}
+.sidebar-toggle:hover{background:var(--gold-l);border-color:var(--gold)}
+.sidebar-toggle svg{transition:transform .3s;color:var(--ink3)}
+.sidebar-toggle.collapsed{left:0;box-shadow:4px 0 12px rgba(0,0,0,.1)}
+.sidebar-toggle.collapsed svg{transform:rotate(180deg)}
+.sidebar-inner{padding:1.1rem .8rem 6rem}
+.sb-header{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:800;font-size:15px;color:var(--ink);padding:.2rem .3rem .85rem;border-bottom:1px solid var(--border);margin-bottom:.75rem}
+.sb-header-icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#FF9500);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;box-shadow:0 2px 6px rgba(245,166,35,.35)}
+.sb-search{display:flex;align-items:center;gap:7px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:7px 10px;margin-bottom:.8rem;transition:border-color .15s}
+.sb-search:focus-within{border-color:var(--gold)}
+.sb-search input{border:none;background:transparent;outline:none;font-size:12.5px;color:var(--ink);width:100%}
+.sb-search input::placeholder{color:var(--ink3)}
+.cat-lbl{font-size:9.5px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--ink3);padding:.55rem .4rem .25rem;margin-top:.1rem}
+.tool-item{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:9px;font-size:13px;font-weight:500;color:var(--ink2);cursor:pointer;transition:all .15s;margin-bottom:1px;position:relative}
+.tool-item:hover{background:var(--surface);color:var(--ink)}
+.ti-icon{width:28px;height:28px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px}
+.ti-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ti-badge{font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:var(--r-pill);text-transform:uppercase;letter-spacing:.3px;flex-shrink:0}
+.badge-hot{background:#FFE8D6;color:#B85000}
+.badge-new{background:#D3F9D8;color:#00612A}
+
+.cat-compress .ti-icon{background:var(--c-compress-l);color:var(--c-compress)}
+.cat-compress.active,.cat-compress:hover{background:var(--c-compress-l)!important}
+.cat-compress.active .ti-icon{background:var(--c-compress);color:#fff}
+.cat-compress.active{color:var(--c-compress)!important;font-weight:700}
+.cat-convert .ti-icon{background:var(--c-convert-l);color:var(--c-convert)}
+.cat-convert.active,.cat-convert:hover{background:var(--c-convert-l)!important}
+.cat-convert.active .ti-icon{background:var(--c-convert);color:#fff}
+.cat-convert.active{color:var(--c-convert)!important;font-weight:700}
+.cat-organize .ti-icon{background:var(--c-organize-l);color:var(--c-organize)}
+.cat-organize.active,.cat-organize:hover{background:var(--c-organize-l)!important}
+.cat-organize.active .ti-icon{background:var(--c-organize);color:#fff}
+.cat-organize.active{color:var(--c-organize)!important;font-weight:700}
+.cat-edit .ti-icon{background:var(--c-edit-l);color:var(--c-edit)}
+.cat-edit.active,.cat-edit:hover{background:var(--c-edit-l)!important}
+.cat-edit.active .ti-icon{background:var(--c-edit);color:#fff}
+.cat-edit.active{color:var(--c-edit)!important;font-weight:700}
+.cat-image .ti-icon{background:var(--c-image-l);color:var(--c-image)}
+.cat-image.active,.cat-image:hover{background:var(--c-image-l)!important}
+.cat-image.active .ti-icon{background:var(--c-image);color:#fff}
+.cat-image.active{color:var(--c-image)!important;font-weight:700}
+.cat-prod .ti-icon{background:var(--c-prod-l);color:var(--c-prod)}
+.cat-prod.active,.cat-prod:hover{background:var(--c-prod-l)!important}
+.cat-prod.active .ti-icon{background:var(--c-prod);color:#fff}
+.cat-prod.active{color:var(--c-prod)!important;font-weight:700}
+.cat-biz .ti-icon{background:var(--c-biz-l);color:var(--c-biz)}
+.cat-biz.active,.cat-biz:hover{background:var(--c-biz-l)!important}
+.cat-biz.active .ti-icon{background:var(--c-biz);color:#fff}
+.cat-biz.active{color:var(--c-biz)!important;font-weight:700}
+
+.sb-stats{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.sb-stat{border-radius:9px;padding:.65rem .55rem;text-align:center}
+.sb-stat-num{font-family:var(--f-display);font-weight:900;font-size:17px;line-height:1}
+.sb-stat-lbl{font-size:9.5px;color:var(--ink3);font-weight:600;margin-top:2px}
+
+/* ═══ MAIN CONTENT ═══ */
+.main-content{flex:1;margin-left:var(--sidebar-w);margin-right:var(--right-w);min-width:0;transition:margin-left .3s cubic-bezier(.4,0,.2,1)}
+.main-content.sb-collapsed{margin-left:0}
+
+/* ═══ RIGHT SIDEBAR ═══ */
+.right-sidebar{width:var(--right-w);min-width:var(--right-w);background:var(--white);border-left:1px solid var(--border);position:fixed;top:var(--nav-h);right:0;bottom:0;overflow-y:auto;padding:1.1rem .85rem 5rem;display:flex;flex-direction:column;gap:.85rem;scrollbar-width:thin}
+.ad-slot{background:var(--surface);border:1.5px dashed var(--border2);border-radius:var(--r);padding:.7rem .6rem;text-align:center;font-size:10px;color:var(--ink3);position:relative;overflow:hidden}
+.ad-slot::before{content:'AD';position:absolute;top:4px;right:6px;font-size:7.5px;font-weight:800;color:var(--ink3);letter-spacing:.5px;opacity:.7}
+.ad-tall{min-height:260px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.ad-sm{min-height:80px;display:flex;align-items:center;justify-content:center}
+.rsb-stats{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:var(--r-lg);padding:.9rem;position:relative;overflow:hidden}
+.rsb-stats::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 70px at 85% 10%,rgba(245,166,35,.2) 0%,transparent 60%);pointer-events:none}
+.rsb-stats-title{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.4);margin-bottom:.55rem;position:relative}
+.rsb-row{display:flex;justify-content:space-between;align-items:center;padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.06);position:relative}
+.rsb-row:last-child{border-bottom:none}
+.rsb-row-lbl{font-size:11px;color:rgba(255,255,255,.5)}
+.rsb-row-val{font-family:var(--f-display);font-size:13px;font-weight:700;color:var(--gold)}
+.rsb-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);margin-bottom:.5rem}
+.rsb-quick-item{display:flex;align-items:center;gap:7px;padding:6px 7px;border-radius:var(--r-sm);font-size:12px;font-weight:500;color:var(--ink2);cursor:pointer;transition:all .15s}
+.rsb-quick-item:hover{background:var(--gold-l);color:var(--gold-d)}
+.rsb-quick-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.rsb-trust{background:var(--c-organize-l);border:1.5px solid rgba(0,179,126,.18);border-radius:var(--r);padding:.85rem;text-align:center}
+.rsb-trust-icon{font-size:20px;margin-bottom:.3rem}
+.rsb-trust-title{font-size:11.5px;font-weight:700;color:var(--c-organize);margin-bottom:.2rem}
+.rsb-trust-desc{font-size:10.5px;color:#087F5B;line-height:1.55}
+
+/* ═══ COFFEE TAB ═══ */
+.coffee-tab{position:fixed;bottom:0;right:var(--right-w);z-index:500;background:linear-gradient(135deg,#FFDD00,#FF9500);color:#3D1C00;font-family:var(--f-display);font-size:12px;font-weight:700;padding:8px 16px 10px;border-radius:var(--r-lg) var(--r-lg) 0 0;box-shadow:0 -4px 18px rgba(245,166,35,.35);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;transform:translateY(2px);border:1.5px solid rgba(255,255,255,.45);border-bottom:none}
+.coffee-tab:hover{transform:translateY(-5px);box-shadow:0 -8px 24px rgba(245,166,35,.45)}
+.coffee-emoji{font-size:15px}
+
+/* ═══ TOOL HERO ═══ */
+.tool-hero{background:var(--navy);padding:2.75rem 2rem 2.25rem;position:relative;overflow:hidden}
+.tool-hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 80% at 0% 50%,rgba(233,30,140,.22) 0%,transparent 55%),
+    radial-gradient(ellipse 55% 60% at 100% 25%,rgba(245,166,35,.14) 0%,transparent 50%),
+    radial-gradient(ellipse 40% 50% at 50% 110%,rgba(108,63,196,.12) 0%,transparent 50%);
+  pointer-events:none;
+}
+.tool-hero::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:22px 22px;pointer-events:none;mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black 20%,transparent 100%)}
+.tool-hero-inner{position:relative;z-index:1}
+.tool-hero-row{display:flex;align-items:center;gap:.85rem;margin-bottom:1rem}
+.tool-hero-icon{width:58px;height:58px;border-radius:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;border:1.5px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.tool-hero h1{font-family:var(--f-display);font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.1}
+.tool-hero-sub{font-size:14px;color:rgba(255,255,255,.6);margin-top:.3rem;line-height:1.6}
+.trust-row{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:.85rem}
+.trust-pill{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.6);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-pill);padding:5px 11px}
+
+/* ═══ TOOL BODY ═══ */
+.tool-body{padding:1.75rem 2rem 2rem}
+.breadcrumb{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12.5px;color:var(--ink3);margin-bottom:1.5rem}
+.breadcrumb a{color:var(--gold-d);font-weight:600;transition:color .15s}
+.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb-sep{color:var(--ink3)}
+.breadcrumb-cur{color:var(--ink2);font-weight:500}
+
+/* Drop zone */
+.dropzone{background:var(--white);border:2px dashed var(--border2);border-radius:var(--r-xl);padding:2.5rem 2rem;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:1.1rem;position:relative;overflow:hidden;box-shadow:var(--sh-xs)}
+.dropzone::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 50% 110%,rgba(233,30,140,.03) 0%,transparent 60%);pointer-events:none}
+.dropzone:hover,.dropzone.over{border-color:var(--c-image);background:var(--c-image-l);box-shadow:inset 0 0 0 4px rgba(233,30,140,.06)}
+.dz-icon{font-size:2.8rem;display:block;margin-bottom:.7rem}
+.dz-title{font-family:var(--f-display);font-size:17px;font-weight:800;color:var(--ink);margin-bottom:.3rem}
+.dz-sub{font-size:13px;color:var(--ink3);margin-bottom:1.25rem}
+.btn-choose{display:inline-flex;align-items:center;gap:7px;background:var(--c-image);color:#fff;border:none;padding:11px 28px;border-radius:var(--r-pill);font-size:14px;font-weight:800;cursor:pointer;font-family:var(--f-body);transition:all .15s;box-shadow:var(--sh-pink)}
+.btn-choose:hover{background:#C01070;transform:translateY(-1px)}
+.dropzone input[type=file]{display:none}
+
+/* Settings card */
+.settings-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.5rem 1.6rem;margin-bottom:1.1rem;box-shadow:var(--sh-xs)}
+.settings-title{font-family:var(--f-display);font-size:14px;font-weight:800;color:var(--ink);margin-bottom:1.1rem;display:flex;align-items:center;gap:8px}
+.settings-title::before{content:'';display:block;width:4px;height:16px;background:var(--c-image);border-radius:2px;flex-shrink:0}
+
+/* Quality slider */
+.slider-section{margin-bottom:1.1rem}
+.slider-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.55rem}
+.slider-lbl{font-size:13px;font-weight:700;color:var(--ink)}
+.quality-val{font-family:var(--f-display);font-size:18px;font-weight:900;color:var(--c-image)}
+input[type=range]{
+  width:100%;-webkit-appearance:none;appearance:none;height:6px;
+  border-radius:99px;outline:none;cursor:pointer;
+  background:linear-gradient(to right,var(--c-image) 0%,var(--c-image) var(--val,75%),var(--surface) var(--val,75%),var(--surface) 100%);
+}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--c-image);cursor:pointer;box-shadow:0 2px 8px rgba(233,30,140,.35);border:3px solid #fff}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--c-image);cursor:pointer;box-shadow:0 2px 8px rgba(233,30,140,.35);border:3px solid #fff}
+.slider-hints{display:flex;justify-content:space-between;font-size:10.5px;color:var(--ink3);margin-top:.35rem}
+
+/* Format buttons */
+.format-section{margin-top:.9rem}
+.format-lbl{font-size:12px;font-weight:700;color:var(--ink2);margin-bottom:.5rem}
+.format-row{display:flex;gap:7px;flex-wrap:wrap}
+.format-btn{padding:7px 14px;border-radius:var(--r-pill);border:1.5px solid var(--border);background:var(--surface);font-size:12.5px;font-weight:600;color:var(--ink2);cursor:pointer;transition:all .15s;font-family:var(--f-body)}
+.format-btn:hover{border-color:var(--c-image);color:var(--c-image)}
+.format-btn.active{background:var(--c-image-l);border-color:var(--c-image);color:var(--c-image);font-weight:700}
+
+/* File list (batch) */
+.file-list-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.file-list-title{font-size:13px;font-weight:700;color:var(--ink)}
+.file-count-badge{font-size:11px;font-weight:700;padding:2px 10px;border-radius:var(--r-pill);background:var(--c-image-l);color:var(--c-image)}
+.file-list{display:flex;flex-direction:column;gap:5px;margin-bottom:.85rem;max-height:220px;overflow-y:auto}
+.file-item{display:flex;align-items:center;gap:10px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);padding:9px 13px;box-shadow:var(--sh-xs)}
+.fi-thumb{width:34px;height:34px;border-radius:7px;object-fit:cover;flex-shrink:0;background:var(--surface)}
+.fi-thumb-placeholder{width:34px;height:34px;border-radius:7px;flex-shrink:0;background:var(--c-image-l);display:flex;align-items:center;justify-content:center;font-size:16px}
+.fi-name{flex:1;font-size:12.5px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fi-size{font-size:11px;color:var(--ink3);white-space:nowrap}
+.fi-rm{width:24px;height:24px;border-radius:6px;border:none;background:transparent;color:var(--ink3);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.fi-rm:hover{background:var(--red-l);color:var(--red)}
+
+/* Action row */
+.action-row{display:flex;gap:10px;margin-bottom:1rem}
+.btn-main{flex:1;background:linear-gradient(135deg,var(--c-image),#C01070);color:#fff;border:none;padding:14px;border-radius:var(--r-pill);font-size:15px;font-weight:800;cursor:pointer;font-family:var(--f-body);display:flex;align-items:center;justify-content:center;gap:9px;transition:all .2s;box-shadow:var(--sh-pink)}
+.btn-main:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 28px rgba(233,30,140,.4)}
+.btn-main:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;background:var(--surface);color:var(--ink3)}
+.btn-sec{padding:14px 20px;background:var(--white);color:var(--ink2);border:1.5px solid var(--border);border-radius:var(--r-pill);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--f-body);transition:all .15s}
+.btn-sec:hover{border-color:var(--red);color:var(--red);background:var(--red-l)}
+
+/* Progress */
+.progress-wrap{display:none;margin:.75rem 0}
+.progress-track{background:var(--surface);border-radius:99px;height:8px;overflow:hidden}
+.progress-fill{height:100%;border-radius:99px;width:0%;transition:width .35s;background:linear-gradient(90deg,var(--c-image),var(--gold))}
+.progress-txt{font-size:12.5px;color:var(--ink2);text-align:center;margin-top:.5rem}
+
+/* Single result */
+.result-card{display:none;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);overflow:hidden;margin-bottom:.85rem;box-shadow:var(--sh)}
+.result-header{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+.result-panel-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink3);padding:.65rem 1rem;border-bottom:1px solid var(--border)}
+.result-panel-title.compressed{color:var(--c-image)}
+.result-imgs{display:grid;grid-template-columns:1fr 1fr}
+.result-img-wrap{position:relative;overflow:hidden;background:var(--surface);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
+.result-img-wrap img{width:100%;height:100%;object-fit:contain}
+.result-img-wrap+.result-img-wrap{border-left:1px solid var(--border)}
+.result-footer{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border)}
+.result-meta{padding:.7rem 1rem;font-size:12px;color:var(--ink2)}
+.result-meta strong{font-weight:700;color:var(--ink)}
+.result-meta+.result-meta{border-left:1px solid var(--border)}
+.saved-pill{display:inline-flex;align-items:center;gap:4px;background:var(--green-l);color:var(--green);font-size:11.5px;font-weight:800;padding:3px 10px;border-radius:var(--r-pill);margin-top:3px}
+
+/* Download area */
+.download-wrap{display:none;margin-bottom:.85rem}
+.btn-dl{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--green);color:#fff;border:none;padding:13px;border-radius:var(--r-pill);font-size:14.5px;font-weight:800;cursor:pointer;font-family:var(--f-body);transition:all .15s;box-shadow:0 4px 16px rgba(0,179,126,.3)}
+.btn-dl:hover{background:#009970;transform:translateY(-1px)}
+
+/* Batch results */
+.batch-box{display:none;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);overflow:hidden;margin-bottom:.85rem;box-shadow:var(--sh-xs)}
+.batch-header{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;border-bottom:1px solid var(--border)}
+.batch-header-title{font-family:var(--f-display);font-size:14px;font-weight:800;color:#087F5B;display:flex;align-items:center;gap:7px}
+.batch-dl-all{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;padding:7px 16px;border-radius:var(--r-pill);font-size:12.5px;font-weight:700;cursor:pointer;font-family:var(--f-body);transition:all .15s}
+.batch-dl-all:hover{background:#009970}
+.batch-list{display:flex;flex-direction:column}
+.batch-item{display:flex;align-items:center;gap:10px;padding:.7rem 1.1rem;border-bottom:1px solid var(--border);transition:background .15s}
+.batch-item:last-child{border-bottom:none}
+.batch-item:hover{background:var(--paper)}
+.b-thumb{width:38px;height:38px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--surface)}
+.b-name{flex:1;font-size:12.5px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.b-sizes{font-size:11px;color:var(--ink3);white-space:nowrap}
+.b-saved{font-size:11px;font-weight:700;padding:2px 8px;border-radius:var(--r-pill);background:var(--green-l);color:var(--green);white-space:nowrap;margin:0 6px}
+.b-dl{padding:6px 12px;background:var(--c-image-l);color:var(--c-image);border:1.5px solid rgba(233,30,140,.2);border-radius:var(--r-pill);font-size:11.5px;font-weight:700;cursor:pointer;font-family:var(--f-body);transition:all .15s;white-space:nowrap}
+.b-dl:hover{background:var(--c-image);color:#fff}
+
+/* Error */
+.err-box{display:none;background:var(--red-l);border:1.5px solid rgba(229,62,62,.2);border-radius:var(--r);padding:1rem 1.2rem;font-size:13px;color:#C03030;margin:.75rem 0}
+
+/* How-to card */
+.how-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;margin-top:1.75rem;box-shadow:var(--sh-xs)}
+.card-title{font-family:var(--f-display);font-size:16px;font-weight:800;color:var(--ink);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
+.card-title::before{content:'';display:block;width:4px;height:18px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.step{text-align:center}
+.step-num{width:38px;height:38px;border-radius:50%;background:var(--c-image);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-size:16px;font-weight:900;margin:0 auto .6rem;box-shadow:0 4px 12px rgba(233,30,140,.3)}
+.step-t{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.step-d{font-size:11.5px;color:var(--ink3);line-height:1.55}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:1.35rem}
+.feat-item{display:flex;align-items:flex-start;gap:9px;background:var(--surface);border-radius:var(--r);padding:.85rem .9rem}
+.feat-ic{font-size:17px;flex-shrink:0;margin-top:1px}
+.feat-t{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.feat-d{font-size:11.5px;color:var(--ink3);line-height:1.5}
+
+/* Related */
+.related-section{margin-top:1.85rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.rel-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:.95rem 1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px;box-shadow:var(--sh-xs);position:relative;overflow:hidden}
+.rel-card::after{content:'→';position:absolute;right:9px;bottom:9px;font-size:11px;color:var(--ink3);transition:all .2s}
+.rel-card:hover{border-color:var(--gold-b);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.09)}
+.rel-card:hover::after{right:6px;color:var(--gold-d)}
+.rel-icon{width:36px;height:36px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px}
+.rel-name{font-size:12.5px;font-weight:700;color:var(--ink)}
+.rel-desc{font-size:11px;color:var(--ink3);margin-top:1px}
+
+/* CTA band */
+.tool-cta{margin-top:2rem;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:var(--r-xl);padding:1.85rem 1.75rem;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(13,13,20,.13)}
+.tool-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 200px at 90% 20%,rgba(245,166,35,.13) 0%,transparent 60%),radial-gradient(circle 180px at 10% 80%,rgba(30,79,203,.2) 0%,transparent 60%)}
+.tool-cta-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.tool-cta h3{font-family:var(--f-display);font-size:17px;font-weight:800;color:#fff;margin-bottom:.25rem}
+.tool-cta p{font-size:13px;color:rgba(255,255,255,.55)}
+.btn-cta-gold{background:var(--gold);color:var(--navy);border:none;padding:11px 22px;border-radius:var(--r-pill);font-size:13.5px;font-weight:800;cursor:pointer;font-family:var(--f-body);transition:all .15s;box-shadow:var(--sh-gold);display:flex;align-items:center;gap:7px;white-space:nowrap}
+.btn-cta-gold:hover{background:var(--gold-d)}
+
+/* Mobile overlay */
+.mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99;display:none}
+.mobile-overlay.active{display:block}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1200px){:root{--right-w:200px}}
+@media(max-width:1024px){.right-sidebar{display:none}.main-content{margin-right:0}.coffee-tab{right:0}}
+@media(max-width:820px){
+  .left-sidebar{transform:translateX(-100%);box-shadow:none}
+  .left-sidebar.mobile-open{transform:translateX(0);box-shadow:4px 0 28px rgba(0,0,0,.18)}
+  .sidebar-toggle{display:none}
+  .main-content{margin-left:0!important}
+  .hamburger{display:flex}
+  .tool-body{padding:1.25rem 1.1rem 2rem}
+  .tool-hero{padding:1.75rem 1.25rem 1.5rem}
+  .steps{grid-template-columns:1fr 1fr}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .related-grid{grid-template-columns:1fr 1fr}
+  .result-imgs{grid-template-columns:1fr}
+  .result-img-wrap+.result-img-wrap{border-left:none;border-top:1px solid var(--border)}
+  .result-footer{grid-template-columns:1fr}
+  .result-meta+.result-meta{border-left:none;border-top:1px solid var(--border)}
+}
+@media(max-width:500px){
+  .tool-hero h1{font-size:1.5rem}
+  .feat-grid{grid-template-columns:1fr}
+  .related-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:.75rem}
+  .action-row{flex-direction:column}
+  .trust-pill{font-size:10.5px;padding:4px 9px}
+  .format-row{gap:5px}
+  .format-btn{font-size:11.5px;padding:6px 10px}
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.tool-body>*{animation:fadeUp .35s ease forwards}
+</style>
 </head>
 <body>
 
-<div id="tn-nav"></div>
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileSidebar()"></div>
 
-<div class="tool-hero">
-  <div class="tool-hero-icon">🗜️</div>
-  <h1>Image Compressor</h1>
-  <p>Reduce image size by up to 90% without visible quality loss. Supports JPG, PNG, WebP. Batch compress multiple images.</p>
-  <div class="trust-badges">
-    <div class="trust-badge">🔒 Files stay on your device</div>
-    <div class="trust-badge">📦 Batch compress</div>
-    <div class="trust-badge">🎨 JPG, PNG, WebP</div>
-    <div class="trust-badge">🆓 Always free</div>
+<!-- ═══ TOP NAV ═══ -->
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/favicon.png" alt="ToolNest" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="nav-logo-fallback" style="display:none">🔧</div>
+    Tool<span>Nest</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearch" placeholder="Search 20+ free tools…" oninput="syncSearch(this.value)" autocomplete="off">
   </div>
-</div>
-
-<div style="max-width:820px;margin:1.25rem auto 0;padding:0 1.5rem">
-  <div class="ad-wrap">Advertisement</div>
-</div>
-
-<div class="container">
-
-  <!-- DROP ZONE -->
-  <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
-    <div class="drop-icon">🖼️</div>
-    <div class="drop-title">Drop images here</div>
-    <div class="drop-sub">JPG, PNG, WebP supported · Batch compress multiple files</div>
-    <button class="btn-choose" onclick="event.stopPropagation();document.getElementById('fileInput').click()">Choose Images</button>
-    <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif" multiple onchange="loadImages(this.files)">
+  <div class="nav-right">
+    <a href="/" class="nav-link">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      Home
+    </a>
+    <a href="/" class="btn-nav-gold">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      All Tools
+    </a>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileSidebar()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</nav>
 
-  <!-- SETTINGS -->
-  <div class="settings-card" id="settingsCard" style="display:none">
-    <h3>Compression Settings</h3>
-    <div class="slider-wrap">
-      <div class="slider-label">Quality</div>
-      <input type="range" min="10" max="95" value="75" id="qualitySlider" oninput="updateQualityDisplay(this.value)">
-      <div class="quality-display" id="qualityDisplay">75%</div>
-    </div>
-    <div class="quality-labels"><span>Smallest file</span><span>Best quality</span></div>
-    <div class="format-row">
-      <button class="format-btn active" id="fmt-auto" onclick="setFormat('auto',this)">Auto (recommended)</button>
-      <button class="format-btn" id="fmt-jpeg" onclick="setFormat('jpeg',this)">Force JPEG</button>
-      <button class="format-btn" id="fmt-png" onclick="setFormat('png',this)">Force PNG</button>
-      <button class="format-btn" id="fmt-webp" onclick="setFormat('webp',this)">WebP</button>
-    </div>
-  </div>
+<!-- SIDEBAR TOGGLE -->
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleDesktopSidebar()" title="Toggle sidebar">
+  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+</button>
 
-  <!-- SINGLE IMAGE RESULT -->
-  <div class="result-grid" id="resultGrid">
-    <div class="result-panel">
-      <div class="result-panel-header"><div class="result-panel-title">Original</div><div class="result-panel-meta" id="origMeta"></div></div>
-      <img id="origPreview" alt="Original">
-      <div class="result-panel-footer"><div class="result-size" id="origSize"></div></div>
+<!-- ═══ APP SHELL ═══ -->
+<div class="app-shell">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="left-sidebar" id="leftSidebar">
+    <div class="sidebar-inner">
+
+      <div class="sb-header">
+        <div class="sb-header-icon">
+          <img src="/favicon.png" alt="" width="16" height="16" style="border-radius:4px;object-fit:cover" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span style="display:none">🔧</span>
+        </div>
+        ToolNest
+      </div>
+
+      <div class="sb-search">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--ink3);flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="sbSearch" placeholder="Find a tool…" oninput="filterSidebar(this.value)" autocomplete="off">
+      </div>
+
+      <div id="sbList">
+        <div class="cat-lbl">Compress</div>
+        <div class="tool-item cat-compress" onclick="go('/tools/compress-pdf.html')">
+          <div class="ti-icon">📦</div><span class="ti-name">Compress PDF</span><span class="ti-badge badge-hot">HOT</span>
+        </div>
+        <div class="tool-item cat-image active" onclick="go('/tools/image-compress.html')">
+          <div class="ti-icon">🗜</div><span class="ti-name">Image Compressor</span><span class="ti-badge badge-hot">HOT</span>
+        </div>
+
+        <div class="cat-lbl">Organize</div>
+        <div class="tool-item cat-organize" onclick="go('/tools/merge-pdf.html')">
+          <div class="ti-icon">📎</div><span class="ti-name">Merge PDF</span><span class="ti-badge badge-hot">HOT</span>
+        </div>
+        <div class="tool-item cat-organize" onclick="go('/tools/split-pdf.html')">
+          <div class="ti-icon">✂️</div><span class="ti-name">Split PDF</span>
+        </div>
+        <div class="tool-item cat-organize" onclick="go('/tools/rotate-pdf.html')">
+          <div class="ti-icon">🔁</div><span class="ti-name">Rotate PDF</span>
+        </div>
+
+        <div class="cat-lbl">Edit &amp; Secure</div>
+        <div class="tool-item cat-edit" onclick="go('/tools/protect-pdf.html')">
+          <div class="ti-icon">🔐</div><span class="ti-name">Protect PDF</span>
+        </div>
+        <div class="tool-item cat-edit" onclick="go('/tools/unlock-pdf.html')">
+          <div class="ti-icon">🔓</div><span class="ti-name">Unlock PDF</span>
+        </div>
+        <div class="tool-item cat-edit" onclick="go('/tools/watermark-pdf.html')">
+          <div class="ti-icon">🏷</div><span class="ti-name">Watermark PDF</span><span class="ti-badge badge-new">NEW</span>
+        </div>
+
+        <div class="cat-lbl">Convert</div>
+        <div class="tool-item cat-convert" onclick="go('/tools/jpg-to-pdf.html')">
+          <div class="ti-icon">📸</div><span class="ti-name">JPG to PDF</span><span class="ti-badge badge-hot">HOT</span>
+        </div>
+        <div class="tool-item cat-convert" onclick="go('/tools/pdf-to-jpg.html')">
+          <div class="ti-icon">🖼</div><span class="ti-name">PDF to JPG</span>
+        </div>
+        <div class="tool-item cat-convert" onclick="go('/tools/word-to-pdf.html')">
+          <div class="ti-icon">📝</div><span class="ti-name">Word to PDF</span><span class="ti-badge badge-new">NEW</span>
+        </div>
+        <div class="tool-item cat-convert" onclick="go('/tools/pdf-to-word.html')">
+          <div class="ti-icon">📄</div><span class="ti-name">PDF to Word</span><span class="ti-badge badge-new">NEW</span>
+        </div>
+
+        <div class="cat-lbl">Image Tools</div>
+        <div class="tool-item cat-image" onclick="go('/tools/image-resizer.html')">
+          <div class="ti-icon">📐</div><span class="ti-name">Image Resizer</span><span class="ti-badge badge-new">NEW</span>
+        </div>
+        <div class="tool-item cat-image" onclick="go('/tools/image-to-png.html')">
+          <div class="ti-icon">🎨</div><span class="ti-name">Image to PNG</span>
+        </div>
+
+        <div class="cat-lbl">Productivity</div>
+        <div class="tool-item cat-prod" onclick="go('/tools/qr-code-generator.html')">
+          <div class="ti-icon">📱</div><span class="ti-name">QR Code Generator</span><span class="ti-badge badge-hot">HOT</span>
+        </div>
+        <div class="tool-item cat-prod" onclick="go('/tools/password-generator.html')">
+          <div class="ti-icon">🔑</div><span class="ti-name">Password Generator</span>
+        </div>
+        <div class="tool-item cat-prod" onclick="go('/tools/word-counter.html')">
+          <div class="ti-icon">📊</div><span class="ti-name">Word Counter</span>
+        </div>
+        <div class="tool-item cat-prod" onclick="go('/tools/json-formatter.html')">
+          <div class="ti-icon">{ }</div><span class="ti-name">JSON Formatter</span>
+        </div>
+
+        <div class="cat-lbl">Business</div>
+        <div class="tool-item cat-biz" onclick="go('/tools/invoice-generator.html')">
+          <div class="ti-icon">🧾</div><span class="ti-name">GST Invoice</span><span class="ti-badge badge-hot">HOT</span>
+        </div>
+        <div class="tool-item cat-biz" onclick="go('/tools/seo-generator.html')">
+          <div class="ti-icon">🔍</div><span class="ti-name">SEO Meta Generator</span>
+        </div>
+      </div>
+
+      <div class="sb-stats">
+        <div class="sb-stat" style="background:var(--gold-l)">
+          <div class="sb-stat-num" style="color:var(--gold-d)">20+</div>
+          <div class="sb-stat-lbl">Free Tools</div>
+        </div>
+        <div class="sb-stat" style="background:var(--green-l)">
+          <div class="sb-stat-num" style="color:var(--green)">0</div>
+          <div class="sb-stat-lbl">Sign-ups</div>
+        </div>
+        <div class="sb-stat" style="background:var(--blue-l);grid-column:1/-1">
+          <div class="sb-stat-num" style="color:var(--blue)">∞</div>
+          <div class="sb-stat-lbl">Usage Limit</div>
+        </div>
+      </div>
+
     </div>
-    <div class="result-panel">
-      <div class="result-panel-header"><div class="result-panel-title">Compressed</div><div class="result-panel-meta" id="compMeta"></div></div>
-      <img id="compPreview" alt="Compressed">
-      <div class="result-panel-footer">
-        <div class="result-size" id="compSize"></div>
-        <div class="saved-badge" id="savedBadge"></div>
+  </aside>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <main class="main-content" id="mainContent">
+
+    <!-- TOOL HERO -->
+    <div class="tool-hero">
+      <div class="tool-hero-inner">
+        <div class="tool-hero-row">
+          <div class="tool-hero-icon">🗜️</div>
+          <div>
+            <h1>Image Compressor</h1>
+            <p class="tool-hero-sub">Reduce image size by up to 90%. Supports JPG, PNG, WebP. Batch compress multiple images. Files never leave your device.</p>
+          </div>
+        </div>
+        <div class="trust-row">
+          <div class="trust-pill"><span>🔒</span> Files stay on device</div>
+          <div class="trust-pill"><span>📦</span> Batch compress</div>
+          <div class="trust-pill"><span>🎨</span> JPG, PNG, WebP</div>
+          <div class="trust-pill"><span>🆓</span> Always free</div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- BATCH RESULTS -->
-  <div class="batch-results" id="batchResults"></div>
+    <!-- TOOL BODY -->
+    <div class="tool-body">
 
-  <!-- PROCESSING -->
-  <div class="processing-text" id="processingText">⏳ Compressing images...</div>
+      <div class="breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/">All Tools</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-cur">Image Compressor</span>
+      </div>
 
-  <!-- ERROR -->
-  <div class="error-box" id="errorBox"></div>
+      <!-- DROP ZONE -->
+      <div class="dropzone" id="dz"
+        onclick="document.getElementById('fileInput').click()"
+        ondragover="dzOver(event)" ondragleave="dzLeave()" ondrop="dzDrop(event)">
+        <span class="dz-icon">🖼️</span>
+        <div class="dz-title">Drop images here</div>
+        <div class="dz-sub">JPG, PNG, WebP supported · Batch compress multiple files</div>
+        <button class="btn-choose" onclick="event.stopPropagation();document.getElementById('fileInput').click()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Choose Images
+        </button>
+        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif" multiple onchange="loadImages(this.files)">
+      </div>
 
-  <!-- ACTION -->
-  <div class="action-row" id="actionRow" style="display:none">
-    <button class="btn-compress" id="compressBtn" onclick="compressAll()">🗜️ Compress Images</button>
-    <button class="btn-clear" onclick="clearAll()">Clear</button>
-  </div>
+      <!-- SETTINGS -->
+      <div class="settings-card" id="settingsCard" style="display:none">
 
-  <div id="downloadSingleWrap" style="display:none">
-    <button class="btn-download-img" id="downloadSingleBtn">📥 Download Compressed Image</button>
-  </div>
+        <!-- File list -->
+        <div id="fileListWrap">
+          <div class="file-list-header">
+            <div class="file-list-title">Selected Images</div>
+            <div class="file-count-badge" id="fileCountBadge">0 files</div>
+          </div>
+          <div class="file-list" id="fileList"></div>
+        </div>
 
-  <div class="ad-wrap">Advertisement</div>
+        <div class="settings-title">Compression Settings</div>
 
-  <div class="how-to">
-    <h2>How to Compress Images</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-title">Upload</div><div class="step-desc">Select one or more images from your device</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-title">Adjust</div><div class="step-desc">Set quality level using the slider</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-title">Compress</div><div class="step-desc">Click compress and see before/after</div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-title">Download</div><div class="step-desc">Save your compressed image(s)</div></div>
+        <!-- Quality slider -->
+        <div class="slider-section">
+          <div class="slider-top">
+            <div class="slider-lbl">Quality</div>
+            <div class="quality-val" id="qualityDisplay">75%</div>
+          </div>
+          <input type="range" min="10" max="95" value="75" id="qualitySlider"
+            oninput="updateQuality(this.value)" style="--val:75%">
+          <div class="slider-hints"><span>Smallest file</span><span>Best quality</span></div>
+        </div>
+
+        <!-- Format -->
+        <div class="format-section">
+          <div class="format-lbl">Output Format</div>
+          <div class="format-row">
+            <button class="format-btn active" id="fmt-auto" onclick="setFormat('auto',this)">🔄 Auto (recommended)</button>
+            <button class="format-btn" id="fmt-jpeg" onclick="setFormat('jpeg',this)">📷 Force JPEG</button>
+            <button class="format-btn" id="fmt-png" onclick="setFormat('png',this)">🖼 Force PNG</button>
+            <button class="format-btn" id="fmt-webp" onclick="setFormat('webp',this)">⚡ WebP</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="action-row" id="actionRow" style="display:none">
+        <button class="btn-main" id="compressBtn" onclick="compressAll()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="4" x2="21" y2="11"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+          Compress Images
+        </button>
+        <button class="btn-sec" onclick="clearAll()">✕ Clear All</button>
+      </div>
+
+      <!-- PROGRESS -->
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-txt" id="progressTxt">Compressing…</div>
+      </div>
+
+      <!-- ERROR -->
+      <div class="err-box" id="errBox"></div>
+
+      <!-- SINGLE RESULT -->
+      <div class="result-card" id="resultCard">
+        <div style="display:grid;grid-template-columns:1fr 1fr">
+          <div class="result-panel-title">Original</div>
+          <div class="result-panel-title compressed">Compressed ✨</div>
+        </div>
+        <div class="result-imgs">
+          <div class="result-img-wrap"><img id="origPreview" alt="Original"></div>
+          <div class="result-img-wrap"><img id="compPreview" alt="Compressed"></div>
+        </div>
+        <div class="result-footer">
+          <div class="result-meta"><strong id="origSzTxt">—</strong><br><span style="color:var(--ink3);font-size:11px">Original</span></div>
+          <div class="result-meta">
+            <strong id="compSzTxt">—</strong>
+            <div class="saved-pill" id="savedPill">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SINGLE DOWNLOAD -->
+      <div class="download-wrap" id="downloadWrap">
+        <button class="btn-dl" id="dlBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Compressed Image
+        </button>
+      </div>
+
+      <!-- BATCH RESULTS -->
+      <div class="batch-box" id="batchBox">
+        <div class="batch-header">
+          <div class="batch-header-title">
+            <span>✅</span> <span id="batchTitle">Images compressed</span>
+          </div>
+          <button class="batch-dl-all" onclick="downloadAll()">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download All
+          </button>
+        </div>
+        <div class="batch-list" id="batchList"></div>
+      </div>
+
+      <!-- HOW TO -->
+      <div class="how-card">
+        <div class="card-title">How to Compress Images</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-t">Upload</div><div class="step-d">Select one or more images from your device</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-t">Adjust</div><div class="step-d">Set quality level and output format</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-t">Compress</div><div class="step-d">Click Compress and see before/after</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-t">Download</div><div class="step-d">Save your compressed image(s)</div></div>
+        </div>
+        <div class="feat-grid">
+          <div class="feat-item"><span class="feat-ic">🔒</span><div><div class="feat-t">100% Private</div><div class="feat-d">Images processed in browser, never uploaded</div></div></div>
+          <div class="feat-item"><span class="feat-ic">📦</span><div><div class="feat-t">Batch Compress</div><div class="feat-d">Compress multiple images at once</div></div></div>
+          <div class="feat-item"><span class="feat-ic">🎨</span><div><div class="feat-t">Multi Format</div><div class="feat-d">JPG, PNG, WebP support &amp; conversion</div></div></div>
+          <div class="feat-item"><span class="feat-ic">⚖️</span><div><div class="feat-t">Quality Control</div><div class="feat-d">Slider to balance size vs. quality</div></div></div>
+          <div class="feat-item"><span class="feat-ic">🆓</span><div><div class="feat-t">Always Free</div><div class="feat-d">No watermarks, no subscriptions</div></div></div>
+          <div class="feat-item"><span class="feat-ic">⚡</span><div><div class="feat-t">Instant</div><div class="feat-d">No server wait — runs in your browser</div></div></div>
+        </div>
+      </div>
+
+      <!-- RELATED -->
+      <div class="related-section">
+        <div class="card-title" style="margin-bottom:.9rem">Related Tools</div>
+        <div class="related-grid">
+          <div class="rel-card" onclick="go('/tools/compress-pdf.html')">
+            <div class="rel-icon" style="background:var(--c-compress-l)">📦</div>
+            <div><div class="rel-name">Compress PDF</div><div class="rel-desc">Reduce PDF file size</div></div>
+          </div>
+          <div class="rel-card" onclick="go('/tools/image-resizer.html')">
+            <div class="rel-icon" style="background:var(--c-image-l)">📐</div>
+            <div><div class="rel-name">Image Resizer</div><div class="rel-desc">Resize to exact dimensions</div></div>
+          </div>
+          <div class="rel-card" onclick="go('/tools/image-to-png.html')">
+            <div class="rel-icon" style="background:var(--c-image-l)">🎨</div>
+            <div><div class="rel-name">Image to PNG</div><div class="rel-desc">Convert to PNG format</div></div>
+          </div>
+          <div class="rel-card" onclick="go('/tools/jpg-to-pdf.html')">
+            <div class="rel-icon" style="background:var(--c-convert-l)">📸</div>
+            <div><div class="rel-name">JPG to PDF</div><div class="rel-desc">Convert images to PDF</div></div>
+          </div>
+          <div class="rel-card" onclick="go('/tools/merge-pdf.html')">
+            <div class="rel-icon" style="background:var(--c-organize-l)">📎</div>
+            <div><div class="rel-name">Merge PDF</div><div class="rel-desc">Combine PDF files</div></div>
+          </div>
+          <div class="rel-card" onclick="go('/tools/qr-code-generator.html')">
+            <div class="rel-icon" style="background:var(--c-prod-l)">📱</div>
+            <div><div class="rel-name">QR Code Generator</div><div class="rel-desc">Create QR codes instantly</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="tool-cta">
+        <div class="tool-cta-inner">
+          <div>
+            <h3>Explore 20+ Free Tools</h3>
+            <p>PDF, images, QR codes, invoices — browser-based &amp; always free</p>
+          </div>
+          <button class="btn-cta-gold" onclick="go('/')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+            Browse All Tools
+          </button>
+        </div>
+      </div>
+
+      <div style="height:2rem"></div>
+    </div><!-- /tool-body -->
+
+    <div id="tn-footer"></div>
+  </main>
+
+  <!-- ═══ RIGHT SIDEBAR ═══ -->
+  <aside class="right-sidebar">
+    <div class="rsb-stats">
+      <div class="rsb-stats-title">ToolNest Stats</div>
+      <div class="rsb-row"><span class="rsb-row-lbl">Free Tools</span><span class="rsb-row-val">20+</span></div>
+      <div class="rsb-row"><span class="rsb-row-lbl">Sign-ups needed</span><span class="rsb-row-val">Zero</span></div>
+      <div class="rsb-row"><span class="rsb-row-lbl">Server uploads</span><span class="rsb-row-val">Never</span></div>
+      <div class="rsb-row"><span class="rsb-row-lbl">Usage limit</span><span class="rsb-row-val">∞</span></div>
     </div>
-  </div>
-
-  <div class="related">
-    <h2>Related Tools</h2>
-    <div class="related-grid">
-      <div class="related-card" onclick="location.href='/tools/jpg-to-pdf.html'"><div class="related-card-icon">📄</div><div><div class="related-card-name">JPG to PDF</div><div class="related-card-desc">Convert images to PDF</div></div></div>
-      <div class="related-card" onclick="location.href='/tools/image-to-png.html'"><div class="related-card-icon">🎨</div><div><div class="related-card-name">Image to PNG</div><div class="related-card-desc">Convert to PNG format</div></div></div>
-      <div class="related-card" onclick="location.href='/tools/merge-pdf.html'"><div class="related-card-icon">📄</div><div><div class="related-card-name">Merge PDF</div><div class="related-card-desc">Combine PDF files</div></div></div>
+    <div class="ad-slot ad-tall">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--ink3)"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      Advertisement
+      <span style="font-size:8.5px;opacity:.6">Google AdSense 300×250</span>
     </div>
-  </div>
-</div>
+    <div>
+      <div class="rsb-section-title">Popular Tools</div>
+      <div class="rsb-quick-item" onclick="go('/tools/compress-pdf.html')">
+        <span class="rsb-quick-dot" style="background:var(--c-compress)"></span>Compress PDF
+      </div>
+      <div class="rsb-quick-item" onclick="go('/tools/merge-pdf.html')">
+        <span class="rsb-quick-dot" style="background:var(--c-organize)"></span>Merge PDF
+      </div>
+      <div class="rsb-quick-item" onclick="go('/tools/qr-code-generator.html')">
+        <span class="rsb-quick-dot" style="background:var(--c-prod)"></span>QR Code Generator
+      </div>
+      <div class="rsb-quick-item" onclick="go('/tools/jpg-to-pdf.html')">
+        <span class="rsb-quick-dot" style="background:var(--c-convert)"></span>JPG to PDF
+      </div>
+      <div class="rsb-quick-item" onclick="go('/tools/invoice-generator.html')">
+        <span class="rsb-quick-dot" style="background:var(--c-biz)"></span>GST Invoice Generator
+      </div>
+    </div>
+    <div class="ad-slot ad-sm">Advertisement · 200×90</div>
+    <div class="rsb-trust">
+      <div class="rsb-trust-icon">🔒</div>
+      <div class="rsb-trust-title">100% Private</div>
+      <div class="rsb-trust-desc">Files never leave your device. Zero server upload. Fully browser-based.</div>
+    </div>
+    <div class="ad-slot ad-sm" style="flex:1;min-height:100px">Advertisement</div>
+  </aside>
 
-<div id="tn-footer"></div>
+</div><!-- /app-shell -->
+
+<!-- COFFEE TAB -->
+<button class="coffee-tab" onclick="window.open('https://buymeacoffee.com/','_blank')" title="Support ToolNest">
+  <span class="coffee-emoji">☕</span>Buy me a Coffee
+</button>
 
 <script>
+/* ─── Helpers ─── */
+function go(url){ location.href = url; }
+function syncSearch(v){ document.getElementById('sbSearch').value = v; filterSidebar(v); }
+function filterSidebar(q){
+  const s = q.toLowerCase().trim();
+  document.querySelectorAll('#sbList .tool-item').forEach(item => {
+    item.style.display = (!s || item.querySelector('.ti-name').textContent.toLowerCase().includes(s)) ? '' : 'none';
+  });
+  document.querySelectorAll('#sbList .cat-lbl').forEach(lbl => {
+    let el = lbl.nextElementSibling, anyVisible = false;
+    while(el && el.classList.contains('tool-item')){ if(el.style.display!=='none') anyVisible=true; el=el.nextElementSibling; }
+    lbl.style.display = anyVisible ? '' : 'none';
+  });
+}
+let sbCollapsed = false;
+function toggleDesktopSidebar(){
+  sbCollapsed = !sbCollapsed;
+  document.getElementById('leftSidebar').classList.toggle('collapsed', sbCollapsed);
+  document.getElementById('mainContent').classList.toggle('sb-collapsed', sbCollapsed);
+  document.getElementById('sidebarToggle').classList.toggle('collapsed', sbCollapsed);
+  document.getElementById('sidebarToggle').style.left = sbCollapsed ? '0px' : getComputedStyle(document.documentElement).getPropertyValue('--sidebar-w').trim();
+}
+function toggleMobileSidebar(){
+  const open = document.getElementById('leftSidebar').classList.toggle('mobile-open');
+  document.getElementById('mobileOverlay').classList.toggle('active', open);
+  document.getElementById('hamburger').classList.toggle('open', open);
+}
+function closeMobileSidebar(){
+  document.getElementById('leftSidebar').classList.remove('mobile-open');
+  document.getElementById('mobileOverlay').classList.remove('active');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+/* ─── Image Compress Logic ─── */
 let loadedFiles = [];
 let outputFormat = 'auto';
 let compressedBlobs = [];
 
-function updateQualityDisplay(v) {
+function updateQuality(v){
   document.getElementById('qualityDisplay').textContent = v + '%';
+  // Update slider fill
+  const pct = ((v - 10) / (95 - 10)) * 100;
+  document.getElementById('qualitySlider').style.setProperty('--val', pct + '%');
+  document.getElementById('qualitySlider').style.background =
+    `linear-gradient(to right, var(--c-image) 0%, var(--c-image) ${pct}%, var(--surface) ${pct}%, var(--surface) 100%)`;
 }
 
-function setFormat(fmt, el) {
+function setFormat(fmt, el){
   outputFormat = fmt;
   document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
 }
 
-function handleDragOver(e) { e.preventDefault(); document.getElementById('dropZone').classList.add('dragover'); }
-function handleDragLeave(e) { document.getElementById('dropZone').classList.remove('dragover'); }
-function handleDrop(e) {
-  e.preventDefault();
-  document.getElementById('dropZone').classList.remove('dragover');
-  loadImages(e.dataTransfer.files);
-}
+function dzOver(e){ e.preventDefault(); document.getElementById('dz').classList.add('over'); }
+function dzLeave(){ document.getElementById('dz').classList.remove('over'); }
+function dzDrop(e){ e.preventDefault(); dzLeave(); loadImages(e.dataTransfer.files); }
 
-function loadImages(files) {
+function loadImages(files){
   const imgs = Array.from(files).filter(f => f.type.startsWith('image/'));
-  if (!imgs.length) { showError('Please select valid image files (JPG, PNG, WebP, GIF).'); return; }
-  loadedFiles = imgs;
+  if(!imgs.length){ showErr('Please select valid image files (JPG, PNG, WebP, GIF).'); return; }
+  loadedFiles = [...loadedFiles, ...imgs];
+  renderFileList();
   document.getElementById('settingsCard').style.display = 'block';
   document.getElementById('actionRow').style.display = 'flex';
-  document.getElementById('resultGrid').style.display = 'none';
-  document.getElementById('batchResults').style.display = 'none';
-  document.getElementById('downloadSingleWrap').style.display = 'none';
-  hideError();
-
-  if (imgs.length === 1) {
-    const url = URL.createObjectURL(imgs[0]);
-    document.getElementById('origPreview').src = url;
-    document.getElementById('origMeta').textContent = imgs[0].name;
-    document.getElementById('origSize').textContent = formatSize(imgs[0].size);
-  }
+  hideResults(); clearErr();
 }
 
-async function compressAll() {
-  if (!loadedFiles.length) return;
+function renderFileList(){
+  const list = document.getElementById('fileList');
+  const badge = document.getElementById('fileCountBadge');
+  badge.textContent = loadedFiles.length + (loadedFiles.length === 1 ? ' file' : ' files');
+  list.innerHTML = loadedFiles.map((f, i) => {
+    const previewUrl = URL.createObjectURL(f);
+    return `<div class="file-item">
+      <img class="fi-thumb" src="${previewUrl}" alt="" onerror="this.style.display='none'">
+      <div class="fi-name" title="${f.name}">${f.name}</div>
+      <div class="fi-size">${fmtSize(f.size)}</div>
+      <button class="fi-rm" onclick="removeFile(${i})" title="Remove">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function removeFile(i){
+  loadedFiles.splice(i, 1);
+  if(!loadedFiles.length){ clearAll(); return; }
+  renderFileList();
+}
+
+async function compressAll(){
+  if(!loadedFiles.length) return;
   document.getElementById('compressBtn').disabled = true;
-  document.getElementById('processingText').style.display = 'block';
-  hideError();
+  showProgress(0, 'Starting compression…');
+  hideResults(); clearErr();
   compressedBlobs = [];
 
   const quality = parseInt(document.getElementById('qualitySlider').value) / 100;
 
   try {
-    for (const file of loadedFiles) {
-      const blob = await compressImage(file, quality);
-      compressedBlobs.push({ file, blob, name: getOutputName(file) });
+    for(let i = 0; i < loadedFiles.length; i++){
+      showProgress(Math.round((i / loadedFiles.length) * 85), `Compressing image ${i+1} of ${loadedFiles.length}…`);
+      const blob = await compressImage(loadedFiles[i], quality);
+      compressedBlobs.push({ file: loadedFiles[i], blob, name: getOutputName(loadedFiles[i]) });
     }
-
-    document.getElementById('processingText').style.display = 'none';
+    showProgress(100, 'Done!');
+    setTimeout(() => {
+      document.getElementById('progressWrap').style.display = 'none';
+      document.getElementById('compressBtn').disabled = false;
+      if(loadedFiles.length === 1) showSingleResult(compressedBlobs[0]);
+      else showBatchResults(compressedBlobs);
+    }, 350);
+  } catch(err){
+    document.getElementById('progressWrap').style.display = 'none';
     document.getElementById('compressBtn').disabled = false;
-
-    if (loadedFiles.length === 1) {
-      showSingleResult(compressedBlobs[0]);
-    } else {
-      showBatchResults(compressedBlobs);
-    }
-  } catch (err) {
-    document.getElementById('processingText').style.display = 'none';
-    document.getElementById('compressBtn').disabled = false;
-    showError('Compression failed: ' + err.message);
+    showErr('Compression failed: ' + err.message);
   }
 }
 
-function compressImage(file, quality) {
+function compressImage(file, quality){
   return new Promise((resolve, reject) => {
     const img = new Image();
     const url = URL.createObjectURL(file);
@@ -205,100 +940,111 @@ function compressImage(file, quality) {
       const canvas = document.createElement('canvas');
       canvas.width = img.naturalWidth;
       canvas.height = img.naturalHeight;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
+      canvas.getContext('2d').drawImage(img, 0, 0);
       URL.revokeObjectURL(url);
-
       let mime = 'image/jpeg';
-      if (outputFormat === 'png') mime = 'image/png';
-      else if (outputFormat === 'webp') mime = 'image/webp';
-      else if (outputFormat === 'auto') {
-        if (file.type === 'image/png') mime = 'image/png';
-        else if (file.type === 'image/webp') mime = 'image/webp';
+      if(outputFormat === 'png') mime = 'image/png';
+      else if(outputFormat === 'webp') mime = 'image/webp';
+      else if(outputFormat === 'auto'){
+        if(file.type === 'image/png') mime = 'image/png';
+        else if(file.type === 'image/webp') mime = 'image/webp';
       }
-
       const q = mime === 'image/png' ? undefined : quality;
       canvas.toBlob(blob => {
-        if (!blob) reject(new Error('Canvas toBlob failed'));
+        if(!blob) reject(new Error('Canvas toBlob failed for ' + file.name));
         else resolve(blob);
       }, mime, q);
     };
-    img.onerror = () => reject(new Error('Could not load image: ' + file.name));
+    img.onerror = () => reject(new Error('Could not load: ' + file.name));
     img.src = url;
   });
 }
 
-function getOutputName(file) {
+function getOutputName(file){
   const base = file.name.replace(/\.[^.]+$/, '');
   const ext = outputFormat === 'png' ? 'png' : outputFormat === 'webp' ? 'webp' : 'jpg';
   return base + '-compressed.' + ext;
 }
 
-function showSingleResult({ file, blob, name }) {
-  const url = URL.createObjectURL(blob);
-  document.getElementById('compPreview').src = url;
-  document.getElementById('compMeta').textContent = name;
-  document.getElementById('compSize').textContent = formatSize(blob.size);
+function showSingleResult({ file, blob, name }){
+  const origUrl = URL.createObjectURL(file);
+  const compUrl = URL.createObjectURL(blob);
+  document.getElementById('origPreview').src = origUrl;
+  document.getElementById('compPreview').src = compUrl;
+  document.getElementById('origSzTxt').textContent = fmtSize(file.size);
+  document.getElementById('compSzTxt').textContent = fmtSize(blob.size);
   const saved = Math.round((1 - blob.size / file.size) * 100);
-  document.getElementById('savedBadge').textContent = saved > 0 ? `${saved}% saved` : 'Optimized';
-  document.getElementById('resultGrid').style.display = 'grid';
-  document.getElementById('downloadSingleWrap').style.display = 'block';
-  document.getElementById('downloadSingleBtn').onclick = () => downloadBlob(blob, name);
-  document.getElementById('resultGrid').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  const pill = document.getElementById('savedPill');
+  pill.textContent = saved > 0 ? `📉 ${saved}% smaller` : '✓ Optimized';
+  pill.style.background = saved > 0 ? 'var(--green-l)' : 'var(--surface)';
+  pill.style.color = saved > 0 ? 'var(--green)' : 'var(--ink3)';
+  document.getElementById('resultCard').style.display = 'block';
+  document.getElementById('downloadWrap').style.display = 'block';
+  document.getElementById('dlBtn').onclick = () => downloadBlob(blob, name);
+  document.getElementById('resultCard').scrollIntoView({ behavior:'smooth', block:'nearest' });
 }
 
-function showBatchResults(items) {
-  const container = document.getElementById('batchResults');
-  container.style.display = 'block';
-  container.innerHTML = `<div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px">✅ ${items.length} images compressed</div>` +
-    items.map((it, i) => {
-      const saved = Math.round((1 - it.blob.size / it.file.size) * 100);
-      const thumb = URL.createObjectURL(it.blob);
-      return `<div class="batch-item">
-        <img class="batch-thumb" src="${thumb}" alt="">
-        <div class="batch-name">${it.file.name}</div>
-        <div class="batch-sizes">${formatSize(it.file.size)} → ${formatSize(it.blob.size)}</div>
-        <div class="batch-saved">${saved > 0 ? saved + '% saved' : 'ok'}</div>
-        <button class="batch-dl" onclick="downloadBlob(compressedBlobs[${i}].blob, compressedBlobs[${i}].name)">Download</button>
-      </div>`;
-    }).join('') +
-    `<button onclick="downloadAll()" style="width:100%;background:var(--green);color:#fff;border:none;padding:11px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:8px">📥 Download All Images</button>`;
-  container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+function showBatchResults(items){
+  document.getElementById('batchTitle').textContent = `${items.length} images compressed`;
+  const list = document.getElementById('batchList');
+  list.innerHTML = items.map((it, i) => {
+    const saved = Math.round((1 - it.blob.size / it.file.size) * 100);
+    const thumbUrl = URL.createObjectURL(it.blob);
+    return `<div class="batch-item">
+      <img class="b-thumb" src="${thumbUrl}" alt="">
+      <div class="b-name" title="${it.file.name}">${it.file.name}</div>
+      <div class="b-sizes">${fmtSize(it.file.size)} → ${fmtSize(it.blob.size)}</div>
+      <div class="b-saved">${saved > 0 ? saved + '% smaller' : 'ok'}</div>
+      <button class="b-dl" onclick="downloadBlob(compressedBlobs[${i}].blob, compressedBlobs[${i}].name)">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </button>
+    </div>`;
+  }).join('');
+  document.getElementById('batchBox').style.display = 'block';
+  document.getElementById('batchBox').scrollIntoView({ behavior:'smooth', block:'nearest' });
 }
 
-async function downloadAll() {
-  for (const { blob, name } of compressedBlobs) {
+async function downloadAll(){
+  for(const { blob, name } of compressedBlobs){
     downloadBlob(blob, name);
     await new Promise(r => setTimeout(r, 200));
   }
 }
 
-function downloadBlob(blob, name) {
+function downloadBlob(blob, name){
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = name; a.click();
+  Object.assign(document.createElement('a'), { href:url, download:name }).click();
   URL.revokeObjectURL(url);
 }
 
-function clearAll() {
+function clearAll(){
   loadedFiles = []; compressedBlobs = [];
   document.getElementById('settingsCard').style.display = 'none';
   document.getElementById('actionRow').style.display = 'none';
-  document.getElementById('resultGrid').style.display = 'none';
-  document.getElementById('batchResults').style.display = 'none';
-  document.getElementById('downloadSingleWrap').style.display = 'none';
   document.getElementById('fileInput').value = '';
-  hideError();
+  hideResults(); clearErr();
 }
 
-function formatSize(b) {
-  if (b < 1024) return b + ' B';
-  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
-  return (b/1048576).toFixed(1) + ' MB';
+function hideResults(){
+  document.getElementById('resultCard').style.display = 'none';
+  document.getElementById('downloadWrap').style.display = 'none';
+  document.getElementById('batchBox').style.display = 'none';
 }
-function showError(msg) { const b = document.getElementById('errorBox'); b.style.display='block'; b.textContent='⚠️ '+msg; }
-function hideError() { document.getElementById('errorBox').style.display='none'; }
+
+function showProgress(pct, msg){
+  document.getElementById('progressWrap').style.display = 'block';
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressTxt').textContent = msg;
+}
+function showErr(msg){ const b = document.getElementById('errBox'); b.style.display='block'; b.textContent='⚠️ '+msg; }
+function clearErr(){ document.getElementById('errBox').style.display='none'; }
+function fmtSize(b){ return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(1)+' MB'; }
+
+// Init slider fill
+updateQuality(75);
 </script>
+
 <script src="/nav-footer.js"></script>
 </body>
 </html>
