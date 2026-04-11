@@ -1233,6 +1233,9 @@ function showErr(msg){ const b=document.getElementById('errBox'); b.style.displa
 function clearMessages(){ ['successBox','errBox','progressWrap'].forEach(id=>document.getElementById(id).style.display='none'); }
 function fmtSize(b){ return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(1)+' MB'; }
 </script>
+<!-- FOOTER -->
+<div id="tn-footer"></div>
+ 
 <script src="/nav-footer.js"></script>
 </body>
 </html>
