@@ -291,26 +291,27 @@
   </footer>`;
 
   /* ══════════════════════════════════════════════════
-     AUTO-INJECT — works even if divs are missing
-     No need to manually add tn-nav / tn-footer to
-     any tools page. Script creates them automatically.
+     SMART INJECT
+     - Tools pages: have their own <nav>, so skip nav
+       injection. Only inject footer after .app-shell.
+     - Other pages (home, blog): use tn-nav / tn-footer
+       placeholder divs as normal.
      ══════════════════════════════════════════════════ */
 
-  /* ── NAV: inject or auto-create at top of <body> ── */
-  let navEl = document.getElementById('tn-nav');
-  if (!navEl) {
-    navEl = document.createElement('div');
-    navEl.id = 'tn-nav';
-    document.body.insertBefore(navEl, document.body.firstChild);
+  /* ── NAV: only inject if tn-nav placeholder exists
+     (home, blog pages). Tools pages have their own nav. ── */
+  const navEl = document.getElementById('tn-nav');
+  if (navEl) {
+    navEl.innerHTML = navHTML;
   }
-  navEl.innerHTML = navHTML;
 
-  /* ── FOOTER: inject or auto-create at end of <body> ── */
+  /* ── FOOTER: inject into placeholder if it exists,
+     otherwise auto-create after .app-shell (tools pages) ── */
   let footerEl = document.getElementById('tn-footer');
   if (!footerEl) {
     footerEl = document.createElement('div');
     footerEl.id = 'tn-footer';
-    /* On tools pages insert AFTER app-shell so footer is outside flex container */
+    /* Insert after .app-shell so footer is outside the flex container */
     const appShell = document.querySelector('.app-shell');
     if (appShell && appShell.parentNode) {
       appShell.parentNode.insertBefore(footerEl, appShell.nextSibling);
@@ -319,9 +320,27 @@
     }
   }
   footerEl.innerHTML = footerHTML;
-  /* Ensure full-width on tools pages (3-col layout) */
+  /* Full-width on tools pages (3-col sidebar layout) */
   if (isTools) {
     footerEl.style.cssText = 'display:block;width:100%;clear:both;position:relative;z-index:10';
+  }
+
+  /* ── Tools pages: patch existing nav to add Blog link ──
+     Runs only on /tools/ pages. Finds the existing hardcoded
+     <nav> and inserts a Blog link if not already present.     ── */
+  if (isTools) {
+    var existingNav = document.querySelector('nav.nav');
+    if (existingNav && !existingNav.querySelector('a[href="/blog.html"]')) {
+      var navRight = existingNav.querySelector('.nav-right');
+      if (navRight) {
+        /* Insert Blog link before the first child of nav-right */
+        var blogLink = document.createElement('a');
+        blogLink.href = '/blog.html';
+        blogLink.className = 'nav-link';
+        blogLink.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Blog';
+        navRight.insertBefore(blogLink, navRight.firstChild);
+      }
+    }
   }
 
   /* ── Tools dropdown toggle ── */
