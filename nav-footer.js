@@ -173,45 +173,109 @@
     </div>
   </div>`;
 
-  /* ── FOOTER HTML ── */
+  /* ── FOOTER HTML — fully self-contained inline styles (works on ALL pages) ── */
   const footerHTML = `
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a class="nav-logo" href="/" style="margin-bottom:.5rem">
-          <img src="/favicon.png" alt="ToolNest" width="36" height="36">
-          <span class="nav-logo-text" style="font-size:18px">Tool<span>Nest</span></span>
+  <style id="tn-footer-css">
+    .tn-footer{
+      background:#0F1B3D;
+      padding:3.5rem 1.5rem 0;
+      margin-top:4rem;
+      font-family:'Plus Jakarta Sans','Outfit',sans-serif;
+    }
+    .tn-footer-inner{
+      max-width:1180px;margin:0 auto;
+      display:grid;grid-template-columns:260px 1fr;gap:3.5rem;
+      padding-bottom:3rem;
+    }
+    .tn-footer-brand{}
+    .tn-footer-logo{
+      display:flex;align-items:center;gap:10px;
+      font-family:'Outfit',sans-serif;font-weight:800;font-size:19px;
+      color:#fff;text-decoration:none;margin-bottom:.6rem;
+    }
+    .tn-footer-logo img{
+      width:36px;height:36px;border-radius:9px;object-fit:cover;
+      box-shadow:0 2px 8px rgba(245,166,35,.4);flex-shrink:0;
+    }
+    .tn-footer-logo span{color:#F5A623}
+    .tn-footer-tagline{
+      font-size:13px;color:rgba(255,255,255,.42);
+      line-height:1.75;margin:.2rem 0 1rem;
+    }
+    .tn-footer-badge{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.22);
+      border-radius:999px;padding:5px 14px;
+      font-size:12px;font-weight:600;color:#F5A623;
+    }
+    .tn-footer-cols{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:1.75rem;
+    }
+    .tn-footer-col-title{
+      font-size:10px;font-weight:800;text-transform:uppercase;
+      letter-spacing:.9px;color:rgba(255,255,255,.28);
+      margin-bottom:.9rem;
+    }
+    .tn-footer-col a{
+      display:block;font-size:13px;color:rgba(255,255,255,.48);
+      margin-bottom:.5rem;text-decoration:none;
+      transition:color .15s;
+    }
+    .tn-footer-col a:hover{color:#F5A623}
+    .tn-footer-bottom{
+      max-width:1180px;margin:0 auto;
+      border-top:1px solid rgba(255,255,255,.07);
+      padding:1.25rem 0 1.5rem;
+      display:flex;justify-content:space-between;align-items:center;
+      font-size:12px;color:rgba(255,255,255,.3);
+      flex-wrap:wrap;gap:.5rem;
+    }
+    @media(max-width:900px){
+      .tn-footer-inner{grid-template-columns:1fr;gap:2rem}
+      .tn-footer-cols{grid-template-columns:1fr 1fr;gap:1.25rem}
+    }
+    @media(max-width:500px){
+      .tn-footer-cols{grid-template-columns:1fr}
+    }
+  </style>
+  <footer class="tn-footer">
+    <div class="tn-footer-inner">
+      <div class="tn-footer-brand">
+        <a class="tn-footer-logo" href="/">
+          <img src="/favicon.png" alt="ToolNest" width="36" height="36"
+            onerror="this.style.display='none'">
+          Tool<span>Nest</span>
         </a>
-        <p class="footer-tagline">Free PDF & online tools for everyone.<br>Fast, private & browser-based.</p>
-        <div class="footer-badge">🔒 Files never leave your device</div>
+        <p class="tn-footer-tagline">Free PDF &amp; online tools for everyone.<br>Fast, private &amp; browser-based.</p>
+        <div class="tn-footer-badge">🔒 Files never leave your device</div>
       </div>
 
-      <div class="footer-cols">
-        <div class="footer-col">
-          <div class="footer-col-title">PDF Tools</div>
+      <div class="tn-footer-cols">
+        <div class="tn-footer-col">
+          <div class="tn-footer-col-title">PDF Tools</div>
           <a href="/tools/merge-pdf.html">Merge PDF</a>
           <a href="/tools/compress-pdf.html">Compress PDF</a>
           <a href="/tools/split-pdf.html">Split PDF</a>
           <a href="/tools/protect-pdf.html">Protect PDF</a>
           <a href="/tools/watermark-pdf.html">Watermark PDF</a>
         </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Convert</div>
+        <div class="tn-footer-col">
+          <div class="tn-footer-col-title">Convert</div>
           <a href="/tools/jpg-to-pdf.html">JPG to PDF</a>
           <a href="/tools/pdf-to-jpg.html">PDF to JPG</a>
           <a href="/tools/word-to-pdf.html">Word to PDF</a>
           <a href="/tools/pdf-to-word.html">PDF to Word</a>
         </div>
-        <div class="footer-col">
-          <div class="footer-col-title">More Tools</div>
+        <div class="tn-footer-col">
+          <div class="tn-footer-col-title">More Tools</div>
           <a href="/tools/image-compress.html">Image Compressor</a>
           <a href="/tools/qr-code-generator.html">QR Code Generator</a>
           <a href="/tools/invoice-generator.html">GST Invoice</a>
           <a href="/tools/password-generator.html">Password Generator</a>
           <a href="/tools/seo-generator.html">SEO Meta Generator</a>
         </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Company</div>
+        <div class="tn-footer-col">
+          <div class="tn-footer-col-title">Company</div>
           <a href="/blog.html">Blog</a>
           <a href="/about.html">About</a>
           <a href="/contact.html">Contact</a>
@@ -220,24 +284,44 @@
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="tn-footer-bottom">
       <span>© ${new Date().getFullYear()} ToolNest. Made with ❤️ for India.</span>
       <span>All tools are free, forever.</span>
     </div>
   </footer>`;
 
-  /* ── Inject into DOM ── */
-  const navEl = document.getElementById('tn-nav');
-  const footerEl = document.getElementById('tn-footer');
-  if (navEl) navEl.innerHTML = navHTML;
-  if (footerEl) {
-    footerEl.innerHTML = footerHTML;
-    /* Tools pages use a 3-column layout; footer must span full width */
-    if (isTools) {
-      footerEl.style.cssText = 'display:block;width:100%;clear:both;position:relative;z-index:10';
-      const footer = footerEl.querySelector('.footer');
-      if (footer) footer.style.marginTop = '0';
+  /* ══════════════════════════════════════════════════
+     AUTO-INJECT — works even if divs are missing
+     No need to manually add tn-nav / tn-footer to
+     any tools page. Script creates them automatically.
+     ══════════════════════════════════════════════════ */
+
+  /* ── NAV: inject or auto-create at top of <body> ── */
+  let navEl = document.getElementById('tn-nav');
+  if (!navEl) {
+    navEl = document.createElement('div');
+    navEl.id = 'tn-nav';
+    document.body.insertBefore(navEl, document.body.firstChild);
+  }
+  navEl.innerHTML = navHTML;
+
+  /* ── FOOTER: inject or auto-create at end of <body> ── */
+  let footerEl = document.getElementById('tn-footer');
+  if (!footerEl) {
+    footerEl = document.createElement('div');
+    footerEl.id = 'tn-footer';
+    /* On tools pages insert AFTER app-shell so footer is outside flex container */
+    const appShell = document.querySelector('.app-shell');
+    if (appShell && appShell.parentNode) {
+      appShell.parentNode.insertBefore(footerEl, appShell.nextSibling);
+    } else {
+      document.body.appendChild(footerEl);
     }
+  }
+  footerEl.innerHTML = footerHTML;
+  /* Ensure full-width on tools pages (3-col layout) */
+  if (isTools) {
+    footerEl.style.cssText = 'display:block;width:100%;clear:both;position:relative;z-index:10';
   }
 
   /* ── Tools dropdown toggle ── */
