@@ -1,376 +1,325 @@
-/**
- * ToolNest — nav-footer.js  v2.0
- * ─────────────────────────────────────────────────────────────
- * Works for BOTH pages automatically:
- *
- *  Landing page  →  #tn-nav    full-width nav injected here
- *                   #tn-footer full-width footer at body level
- *
- *  Tool pages    →  Nav is hardcoded in HTML (no #tn-nav needed)
- *                   #tn-footer lives inside .main-content
- *                   → footer renders only in middle column ✓
- *
- * Detection:  if #tn-footer is a child of .main-content → tool mode
- *             otherwise                                 → landing mode
- * ─────────────────────────────────────────────────────────────
- */
+/* ═══════════════════════════════════════════════════
+   TOOLNEST nav-footer.js v5.0
+   Updated: Added Blog tab + Tools mega-dropdown
+   ═══════════════════════════════════════════════════ */
+
 (function () {
-  'use strict';
+  /* ── TOOLS DATA for mega menu ── */
+  const NAV_TOOLS = {
+    pdf: {
+      label: 'PDF Tools',
+      icon: '📄',
+      color: '#E53E3E',
+      items: [
+        { name: 'Merge PDF',      icon: '📎', url: '/tools/merge-pdf.html' },
+        { name: 'Compress PDF',   icon: '📦', url: '/tools/compress-pdf.html' },
+        { name: 'Split PDF',      icon: '✂️', url: '/tools/split-pdf.html' },
+        { name: 'Rotate PDF',     icon: '🔁', url: '/tools/rotate-pdf.html' },
+        { name: 'Protect PDF',    icon: '🔐', url: '/tools/protect-pdf.html' },
+        { name: 'Unlock PDF',     icon: '🔓', url: '/tools/unlock-pdf.html' },
+        { name: 'Watermark PDF',  icon: '🏷',  url: '/tools/watermark-pdf.html' },
+      ]
+    },
+    convert: {
+      label: 'Convert',
+      icon: '🔄',
+      color: '#1E4FCB',
+      items: [
+        { name: 'JPG to PDF',    icon: '📸', url: '/tools/jpg-to-pdf.html' },
+        { name: 'PDF to JPG',    icon: '🖼', url: '/tools/pdf-to-jpg.html' },
+        { name: 'Word to PDF',   icon: '📝', url: '/tools/word-to-pdf.html' },
+        { name: 'PDF to Word',   icon: '📄', url: '/tools/pdf-to-word.html' },
+      ]
+    },
+    image: {
+      label: 'Image',
+      icon: '🖼',
+      color: '#0891B2',
+      items: [
+        { name: 'Image Compressor', icon: '🗜', url: '/tools/image-compress.html' },
+        { name: 'Image Resizer',    icon: '📐', url: '/tools/image-resizer.html' },
+        { name: 'Image to PNG',     icon: '🎨', url: '/tools/image-to-png.html' },
+      ]
+    },
+    productivity: {
+      label: 'Productivity',
+      icon: '⚡',
+      color: '#E88B00',
+      items: [
+        { name: 'QR Code Generator', icon: '📱', url: '/tools/qr-code-generator.html' },
+        { name: 'Password Generator',icon: '🔑', url: '/tools/password-generator.html' },
+        { name: 'Word Counter',      icon: '📊', url: '/tools/word-counter.html' },
+        { name: 'JSON Formatter',    icon: '{ }',url: '/tools/json-formatter.html' },
+      ]
+    },
+    business: {
+      label: 'Business',
+      icon: '💼',
+      color: '#00B37E',
+      items: [
+        { name: 'GST Invoice Generator', icon: '🧾', url: '/tools/invoice-generator.html' },
+        { name: 'SEO Meta Generator',    icon: '🔍', url: '/tools/seo-generator.html' },
+      ]
+    }
+  };
 
-  /* ══════════════════════════════════════════════
-     1.  DETECT PAGE TYPE
-  ══════════════════════════════════════════════ */
-  const footerSlot = document.getElementById('tn-footer');
-  const navSlot    = document.getElementById('tn-nav');
+  /* ── Detect active page ── */
+  const path = window.location.pathname;
+  const isHome   = path === '/' || path === '/index.html';
+  const isBlog   = path.startsWith('/blog');
+  const isTools  = path.startsWith('/tools');
+  const isAbout  = path.startsWith('/about');
 
-  const isToolPage = footerSlot
-    ? !!footerSlot.closest('.main-content')
-    : false;
-
-  const mode = isToolPage ? 'tool' : 'landing';
-
-  /* ══════════════════════════════════════════════
-     2.  SHARED STYLES
-  ══════════════════════════════════════════════ */
-  const CSS = `
-/* ── ToolNest nav-footer injected styles ── */
-
-/* NAV (landing page only) */
-#tn-nav .tn-nav {
-  position: sticky; top: 0; z-index: 999; height: 64px;
-  background: rgba(255,255,255,.90);
-  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--border, #E2E4EF);
-  padding: 0 1.5rem;
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  box-shadow: 0 1px 2px rgba(13,13,20,.06);
-}
-.tn-nav-logo {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--f-display, 'Outfit', sans-serif);
-  font-weight: 800; font-size: 20px; color: var(--ink, #0D0D14);
-  white-space: nowrap; flex-shrink: 0;
-}
-.tn-nav-logo img {
-  width: 40px; height: 40px; border-radius: 10px; object-fit: cover;
-  box-shadow: 0 2px 8px rgba(245,166,35,.4);
-}
-.tn-nav-logo-fb {
-  width: 40px; height: 40px; border-radius: 10px;
-  background: linear-gradient(135deg,#F5A623,#FF9500);
-  display: none; align-items: center; justify-content: center;
-  font-size: 20px; box-shadow: 0 2px 8px rgba(245,166,35,.4); flex-shrink: 0;
-}
-.tn-nav-logo em { color: var(--gold, #F5A623); font-style: normal; }
-.tn-nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
-.tn-nav-links a {
-  padding: 7px 14px; border-radius: 8px;
-  font-size: 14px; font-weight: 500; color: var(--ink2, #44455A);
-  font-family: var(--f-body, 'Plus Jakarta Sans', sans-serif);
-  transition: all .15s; white-space: nowrap;
-}
-.tn-nav-links a:hover { background: var(--surface, #EDEEF7); color: var(--ink, #0D0D14); }
-.tn-nav-links a.active { color: var(--gold, #F5A623); font-weight: 600; }
-.tn-nav-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.tn-btn-dark {
-  width: 38px; height: 38px; border-radius: 8px;
-  background: var(--surface, #EDEEF7); border: 1px solid var(--border, #E2E4EF);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 17px; cursor: pointer; transition: all .15s; flex-shrink: 0;
-}
-.tn-btn-dark:hover { background: var(--gold-l, #FEF3DC); }
-@media(max-width: 900px) { .tn-nav-links { display: none; } }
-
-/* ── FOOTER: base (shared between both modes) ── */
-.tn-footer {
-  background: var(--navy, #0F1B3D);
-  position: relative; overflow: hidden;
-}
-.tn-footer::before {
-  content: ''; position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 0% 100%, rgba(30,79,203,.22) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 45% at 100% 0%, rgba(245,166,35,.10) 0%, transparent 50%);
-  pointer-events: none;
-}
-.tn-footer-inner { position: relative; z-index: 1; }
-.tn-footer-top {
-  display: grid; gap: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(255,255,255,.07);
-}
-.tn-footer-logo {
-  display: flex; align-items: center; gap: 9px;
-  font-family: var(--f-display, 'Outfit', sans-serif);
-  font-weight: 900; font-size: 18px; color: #fff; margin-bottom: .8rem;
-}
-.tn-footer-logo img {
-  width: 34px; height: 34px; border-radius: 9px; object-fit: cover;
-  box-shadow: 0 2px 8px rgba(245,166,35,.4); flex-shrink: 0;
-}
-.tn-footer-logo-fb {
-  display: none; width: 34px; height: 34px; border-radius: 9px;
-  background: linear-gradient(135deg, #F5A623, #FF9500);
-  align-items: center; justify-content: center;
-  font-size: 16px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(245,166,35,.4);
-}
-.tn-footer-logo em { color: var(--gold, #F5A623); font-style: normal; }
-.tn-footer-desc {
-  font-size: 12.5px; color: rgba(255,255,255,.42); line-height: 1.75;
-  margin-bottom: 1rem; font-family: var(--f-body, 'Plus Jakarta Sans', sans-serif);
-}
-.tn-footer-badge {
-  display: inline-flex; align-items: center; gap: 7px;
-  background: rgba(245,166,35,.1); border: 1px solid rgba(245,166,35,.22);
-  border-radius: 999px; padding: 5px 13px;
-  font-size: 11.5px; font-weight: 600; color: var(--gold, #F5A623);
-  font-family: var(--f-body, 'Plus Jakarta Sans', sans-serif);
-}
-.tn-footer-badge-dot {
-  width: 6px; height: 6px; background: var(--gold, #F5A623);
-  border-radius: 50%; animation: tnBlink 2s infinite;
-}
-@keyframes tnBlink {
-  0%,100% { opacity:1; transform:scale(1); }
-  50%      { opacity:.4; transform:scale(.75); }
-}
-.tn-footer-col h4 {
-  font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px;
-  color: rgba(255,255,255,.28); margin-bottom: .9rem;
-  font-family: var(--f-display, 'Outfit', sans-serif);
-}
-.tn-footer-col a {
-  display: block; font-size: 12.5px; color: rgba(255,255,255,.48);
-  margin-bottom: .45rem; transition: color .15s;
-  font-family: var(--f-body, 'Plus Jakarta Sans', sans-serif); font-weight: 500;
-}
-.tn-footer-col a:hover { color: var(--gold, #F5A623); }
-.tn-footer-bottom {
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: .6rem; padding: 1.1rem 0 1.25rem;
-  font-size: 11.5px;
-}
-.tn-footer-bottom-left {
-  color: rgba(255,255,255,.35);
-  font-family: var(--f-body, 'Plus Jakarta Sans', sans-serif);
-}
-.tn-footer-bottom-left a {
-  color: rgba(255,255,255,.45); margin-left: .75rem; transition: color .15s;
-  font-family: var(--f-body, 'Plus Jakarta Sans', sans-serif);
-}
-.tn-footer-bottom-left a:hover { color: var(--gold, #F5A623); }
-.tn-footer-bottom-right {
-  display: flex; align-items: center; gap: .55rem;
-  color: rgba(255,255,255,.3); font-size: 11px;
-  font-family: var(--f-body, 'Plus Jakarta Sans', sans-serif);
-}
-
-/* ── LANDING MODE: max-width container, 5-column grid ── */
-.tn-footer.tn-landing .tn-footer-inner {
-  max-width: 1180px; margin: 0 auto; padding: 3.5rem 1.5rem 0;
-}
-.tn-footer.tn-landing .tn-footer-top {
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-}
-
-/* ── TOOL MODE: full-width of middle column, 4-column grid ── */
-.tn-footer.tn-tool .tn-footer-inner {
-  padding: 2.5rem 2rem 0;
-}
-.tn-footer.tn-tool .tn-footer-top {
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-}
-
-/* ── Responsive ── */
-@media(max-width: 1024px) {
-  .tn-footer.tn-landing .tn-footer-top { grid-template-columns: 1fr 1fr 1fr; }
-  .tn-footer.tn-landing .tn-footer-brand { grid-column: 1 / -1; }
-}
-@media(max-width: 900px) {
-  .tn-footer.tn-tool .tn-footer-top { grid-template-columns: 1fr 1fr 1fr; }
-  .tn-footer.tn-tool .tn-footer-brand { grid-column: 1 / -1; }
-}
-@media(max-width: 640px) {
-  .tn-footer.tn-landing .tn-footer-top,
-  .tn-footer.tn-tool    .tn-footer-top  { grid-template-columns: 1fr 1fr; }
-  .tn-footer.tn-landing .tn-footer-inner { padding: 2rem 1.25rem 0; }
-  .tn-footer.tn-tool    .tn-footer-inner { padding: 2rem 1.25rem 0; }
-  .tn-footer-bottom { flex-direction: column; align-items: flex-start; gap: .4rem; }
-}
-@media(max-width: 380px) {
-  .tn-footer.tn-landing .tn-footer-top,
-  .tn-footer.tn-tool    .tn-footer-top  { grid-template-columns: 1fr; }
-}
-`;
-
-  /* ══════════════════════════════════════════════
-     3.  NAV HTML  (injected only when #tn-nav exists)
-  ══════════════════════════════════════════════ */
-  const NAV_LINKS = [
-    { href: '/tools/compress-pdf.html',      label: 'Compress PDF'     },
-    { href: '/tools/merge-pdf.html',          label: 'Merge PDF'        },
-    { href: '/tools/jpg-to-pdf.html',         label: 'JPG to PDF'       },
-    { href: '/tools/qr-code-generator.html',  label: 'QR Code'          },
-    { href: '/tools/invoice-generator.html',  label: 'GST Invoice'      },
-  ];
-
-  function buildNav() {
-    const cur = location.pathname;
-    const links = NAV_LINKS
-      .map(l => `<a href="${l.href}"${cur === l.href ? ' class="active"' : ''}>${l.label}</a>`)
-      .join('');
-    return `
-<nav class="tn-nav">
-  <a href="/" class="tn-nav-logo">
-    <img src="/favicon.png" alt="ToolNest" width="40" height="40"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="tn-nav-logo-fb">🔧</div>
-    Tool<em>Nest</em>
-  </a>
-  <div class="tn-nav-links">${links}</div>
-  <div class="tn-nav-right">
-    <button class="tn-btn-dark" onclick="tnToggleDark()" title="Toggle dark mode" id="tnDarkBtn">🌙</button>
-  </div>
-</nav>`;
+  /* ── Build mega menu columns ── */
+  function buildMegaMenu() {
+    return Object.entries(NAV_TOOLS).map(([key, cat]) => `
+      <div class="ndm-section">
+        <h4>
+          <span style="margin-right:5px">${cat.icon}</span>${cat.label}
+        </h4>
+        ${cat.items.map(t => `
+          <a class="ndm-link" href="${t.url}">
+            <span>${t.icon}</span>
+            <span>${t.name}</span>
+          </a>
+        `).join('')}
+      </div>
+    `).join('');
   }
 
-  /* ══════════════════════════════════════════════
-     4.  FOOTER HTML
-  ══════════════════════════════════════════════ */
-  function buildFooter(m) {
-    // 5th column (Company) shown on landing, hidden on tool page to save space
-    const companyCol = m === 'landing' ? `
-      <div class="tn-footer-col">
-        <h4>Company</h4>
-        <a href="/about.html">About Us</a>
-        <a href="/contact.html">Contact</a>
-        <a href="/blog.html">Blog</a>
-        <a href="/privacy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms of Use</a>
-        <a href="/sitemap.xml">Sitemap</a>
-      </div>` : '';
+  /* ── Build mobile panel ── */
+  function buildMobilePanel() {
+    return Object.entries(NAV_TOOLS).map(([key, cat]) => `
+      <div class="nmp-cat">${cat.icon} ${cat.label}</div>
+      ${cat.items.map(t => `
+        <a class="nmp-link" href="${t.url}">
+          <span class="ico">${t.icon}</span>
+          <span>${t.name}</span>
+        </a>
+      `).join('')}
+    `).join('<div class="nmp-divider"></div>');
+  }
 
-    return `
-<footer class="tn-footer tn-${m}">
-  <div class="tn-footer-inner">
-    <div class="tn-footer-top">
+  /* ── NAV HTML ── */
+  const navHTML = `
+  <nav class="nav" id="mainNav">
+    <!-- Logo -->
+    <a class="nav-logo" href="/">
+      <img src="/favicon.png" alt="ToolNest Logo" width="40" height="40">
+      <span class="nav-logo-text">Tool<span>Nest</span></span>
+    </a>
 
-      <div class="tn-footer-brand tn-footer-col">
-        <div class="tn-footer-logo">
-          <img src="/favicon.png" alt="ToolNest" width="34" height="34"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="tn-footer-logo-fb">🔧</div>
-          Tool<em>Nest</em>
-        </div>
-        <p class="tn-footer-desc">
-          20+ free browser-based tools for PDF, images, QR codes &amp; more.
-          No signup. No server upload. Made for India.
-        </p>
-        <div class="tn-footer-badge">
-          <span class="tn-footer-badge-dot"></span>
-          Free · No Signup · 100% Browser-based
+    <!-- Center links -->
+    <div class="nav-links" id="navLinks">
+      <a href="/" class="${isHome ? 'active' : ''}">Home</a>
+
+      <!-- Tools Dropdown -->
+      <div class="nav-dropdown" id="toolsDropdown">
+        <button class="nav-dropdown-btn ${isTools ? 'active' : ''}" id="toolsBtn" aria-expanded="false" aria-haspopup="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+          All Tools
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" id="toolsMenu" role="menu">
+          <div class="ndm-grid" style="grid-template-columns:repeat(5,1fr);min-width:780px">
+            ${buildMegaMenu()}
+          </div>
+          <div style="border-top:1px solid var(--border);margin-top:.75rem;padding-top:.75rem;text-align:center">
+            <a href="/" style="font-size:13px;font-weight:600;color:var(--gold-d);display:inline-flex;align-items:center;gap:5px">
+              ⚡ View All 20+ Tools →
+            </a>
+          </div>
         </div>
       </div>
 
-      <div class="tn-footer-col">
-        <h4>PDF Tools</h4>
-        <a href="/tools/compress-pdf.html">Compress PDF</a>
-        <a href="/tools/merge-pdf.html">Merge PDF</a>
-        <a href="/tools/split-pdf.html">Split PDF</a>
-        <a href="/tools/rotate-pdf.html">Rotate PDF</a>
-        <a href="/tools/protect-pdf.html">Protect PDF</a>
-        <a href="/tools/unlock-pdf.html">Unlock PDF</a>
-        <a href="/tools/watermark-pdf.html">Watermark PDF</a>
-      </div>
-
-      <div class="tn-footer-col">
-        <h4>Convert &amp; Image</h4>
-        <a href="/tools/jpg-to-pdf.html">JPG to PDF</a>
-        <a href="/tools/pdf-to-jpg.html">PDF to JPG</a>
-        <a href="/tools/word-to-pdf.html">Word to PDF</a>
-        <a href="/tools/pdf-to-word.html">PDF to Word</a>
-        <a href="/tools/image-compress.html">Image Compressor</a>
-        <a href="/tools/image-resizer.html">Image Resizer</a>
-        <a href="/tools/image-to-png.html">Image to PNG</a>
-      </div>
-
-      <div class="tn-footer-col">
-        <h4>More Tools</h4>
-        <a href="/tools/qr-code-generator.html">QR Code Generator</a>
-        <a href="/tools/password-generator.html">Password Generator</a>
-        <a href="/tools/word-counter.html">Word Counter</a>
-        <a href="/tools/json-formatter.html">JSON Formatter</a>
-        <a href="/tools/invoice-generator.html">GST Invoice</a>
-        <a href="/tools/seo-generator.html">SEO Meta Generator</a>
-      </div>
-
-      ${companyCol}
-
+      <a href="/blog.html" class="${isBlog ? 'active' : ''}">Blog</a>
+      <a href="/about.html" class="${isAbout ? 'active' : ''}">About</a>
     </div>
 
-    <div class="tn-footer-bottom">
-      <div class="tn-footer-bottom-left">
-        &copy; <span class="tn-yr"></span> ToolNest &middot; All rights reserved &middot;
-        <a href="/privacy.html">Privacy</a>
-        <a href="/terms.html">Terms</a>
+    <!-- Right side -->
+    <div class="nav-right">
+      <button class="btn-dark-toggle" id="darkBtn" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile panel -->
+  <div class="nav-mobile-panel" id="mobilePanel" aria-hidden="true">
+    <div class="nmp-inner">
+      <div class="nmp-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="Search tools…" oninput="mobileSearch(this.value)" id="mobileInput" autocomplete="off">
       </div>
-      <div class="tn-footer-bottom-right">
-        <span>🇮🇳 Made for India</span>
-        <span>&middot;</span>
-        <span>No signup needed</span>
-        <span>&middot;</span>
-        <span>Files never uploaded</span>
+
+      <a class="nmp-link" href="/">
+        <span class="ico">🏠</span><span>Home</span>
+      </a>
+      <a class="nmp-link" href="/blog.html">
+        <span class="ico">📚</span><span>Blog</span>
+      </a>
+      <a class="nmp-link" href="/about.html">
+        <span class="ico">ℹ️</span><span>About</span>
+      </a>
+
+      <div class="nmp-divider"></div>
+      <div id="mobilePanelTools">
+        ${buildMobilePanel()}
       </div>
     </div>
-  </div>
-</footer>`;
-  }
+  </div>`;
 
-  /* ══════════════════════════════════════════════
-     5.  INJECT STYLES (once)
-  ══════════════════════════════════════════════ */
-  if (!document.getElementById('tn-injected-css')) {
-    const s = document.createElement('style');
-    s.id = 'tn-injected-css';
-    s.textContent = CSS;
-    document.head.appendChild(s);
-  }
+  /* ── FOOTER HTML ── */
+  const footerHTML = `
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-logo" href="/" style="margin-bottom:.5rem">
+          <img src="/favicon.png" alt="ToolNest" width="36" height="36">
+          <span class="nav-logo-text" style="font-size:18px">Tool<span>Nest</span></span>
+        </a>
+        <p class="footer-tagline">Free PDF & online tools for everyone.<br>Fast, private & browser-based.</p>
+        <div class="footer-badge">🔒 Files never leave your device</div>
+      </div>
 
-  /* ══════════════════════════════════════════════
-     6.  INJECT NAV  (only if #tn-nav exists)
-  ══════════════════════════════════════════════ */
-  if (navSlot) {
-    navSlot.innerHTML = buildNav();
-  }
+      <div class="footer-cols">
+        <div class="footer-col">
+          <div class="footer-col-title">PDF Tools</div>
+          <a href="/tools/merge-pdf.html">Merge PDF</a>
+          <a href="/tools/compress-pdf.html">Compress PDF</a>
+          <a href="/tools/split-pdf.html">Split PDF</a>
+          <a href="/tools/protect-pdf.html">Protect PDF</a>
+          <a href="/tools/watermark-pdf.html">Watermark PDF</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Convert</div>
+          <a href="/tools/jpg-to-pdf.html">JPG to PDF</a>
+          <a href="/tools/pdf-to-jpg.html">PDF to JPG</a>
+          <a href="/tools/word-to-pdf.html">Word to PDF</a>
+          <a href="/tools/pdf-to-word.html">PDF to Word</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">More Tools</div>
+          <a href="/tools/image-compress.html">Image Compressor</a>
+          <a href="/tools/qr-code-generator.html">QR Code Generator</a>
+          <a href="/tools/invoice-generator.html">GST Invoice</a>
+          <a href="/tools/password-generator.html">Password Generator</a>
+          <a href="/tools/seo-generator.html">SEO Meta Generator</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <a href="/blog.html">Blog</a>
+          <a href="/about.html">About</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© ${new Date().getFullYear()} ToolNest. Made with ❤️ for India.</span>
+      <span>All tools are free, forever.</span>
+    </div>
+  </footer>`;
 
-  /* ══════════════════════════════════════════════
-     7.  INJECT FOOTER  (only if #tn-footer exists)
-  ══════════════════════════════════════════════ */
-  if (footerSlot) {
-    footerSlot.innerHTML = buildFooter(mode);
-    document.querySelectorAll('.tn-yr').forEach(el => {
-      el.textContent = new Date().getFullYear();
+  /* ── Inject into DOM ── */
+  const navEl = document.getElementById('tn-nav');
+  const footerEl = document.getElementById('tn-footer');
+  if (navEl) navEl.innerHTML = navHTML;
+  if (footerEl) footerEl.innerHTML = footerHTML;
+
+  /* ── Tools dropdown toggle ── */
+  const toolsDropdown = document.getElementById('toolsDropdown');
+  const toolsBtn      = document.getElementById('toolsBtn');
+
+  if (toolsBtn) {
+    toolsBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = toolsDropdown.classList.toggle('open');
+      toolsBtn.setAttribute('aria-expanded', isOpen);
     });
   }
 
-  /* ══════════════════════════════════════════════
-     8.  DARK MODE  (persisted via localStorage)
-  ══════════════════════════════════════════════ */
-  window.tnToggleDark = function () {
-    const isDark = document.documentElement.classList.toggle('dark');
-    const btn = document.getElementById('tnDarkBtn');
-    if (btn) btn.textContent = isDark ? '☀️' : '🌙';
-    try { localStorage.setItem('tn-dark', isDark ? '1' : '0'); } catch(e) {}
+  document.addEventListener('click', function (e) {
+    if (toolsDropdown && !toolsDropdown.contains(e.target)) {
+      toolsDropdown.classList.remove('open');
+      if (toolsBtn) toolsBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  /* ── Mobile hamburger ── */
+  const hamburger   = document.getElementById('hamburger');
+  const mobilePanel = document.getElementById('mobilePanel');
+
+  if (hamburger && mobilePanel) {
+    hamburger.addEventListener('click', function () {
+      const isOpen = hamburger.classList.toggle('open');
+      mobilePanel.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      mobilePanel.setAttribute('aria-hidden', !isOpen);
+      if (isOpen) document.getElementById('mobileInput') && document.getElementById('mobileInput').focus();
+    });
+
+    /* Close on outside click */
+    document.addEventListener('click', function (e) {
+      if (!hamburger.contains(e.target) && !mobilePanel.contains(e.target)) {
+        hamburger.classList.remove('open');
+        mobilePanel.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobilePanel.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
+
+  /* ── Mobile search ── */
+  window.mobileSearch = function (q) {
+    const s = q.toLowerCase().trim();
+    const container = document.getElementById('mobilePanelTools');
+    if (!container) return;
+
+    if (!s) {
+      container.innerHTML = buildMobilePanel();
+      return;
+    }
+
+    const allTools = Object.values(NAV_TOOLS).flatMap(c => c.items);
+    const results  = allTools.filter(t => t.name.toLowerCase().includes(s));
+
+    if (!results.length) {
+      container.innerHTML = '<div style="text-align:center;padding:1rem;color:var(--ink3);font-size:13px">No tools found</div>';
+      return;
+    }
+
+    container.innerHTML = results.map(t => `
+      <a class="nmp-link" href="${t.url}">
+        <span class="ico">${t.icon}</span>
+        <span>${t.name}</span>
+      </a>`).join('');
   };
 
-  // Restore on load
-  try {
-    if (localStorage.getItem('tn-dark') === '1') {
-      document.documentElement.classList.add('dark');
-      // update button if it exists
-      const btn = document.getElementById('tnDarkBtn');
-      if (btn) btn.textContent = '☀️';
+  /* ── Dark mode toggle ── */
+  const darkBtn = document.getElementById('darkBtn');
+  if (darkBtn) {
+    function applyDark(on) {
+      document.documentElement.classList.toggle('dark', on);
+      darkBtn.textContent = on ? '☀️' : '🌙';
+      try { localStorage.setItem('tn-dark', on ? '1' : '0'); } catch (e) {}
     }
-  } catch(e) {}
+
+    /* Apply saved preference */
+    try {
+      const saved = localStorage.getItem('tn-dark');
+      if (saved !== null) applyDark(saved === '1');
+      else applyDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    } catch (e) {}
+
+    darkBtn.addEventListener('click', function () {
+      applyDark(!document.documentElement.classList.contains('dark'));
+    });
+  }
 
 })();
