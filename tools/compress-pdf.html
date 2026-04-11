@@ -14,7 +14,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,opsz,wght@0,6..18,300..800;1,6..18,300..800&display=swap" rel="stylesheet">
 
 <style>
-/* EXACT CSS FROM merge-pdf.html — no changes */
+/* ═══════════════════════════════════════════════════
+   EXACT SAME CSS FROM merge-pdf.html
+   ═══════════════════════════════════════════════════ */
 :root {
   --gold:        #F5A623;
   --gold-d:      #D4891A;
@@ -91,7 +93,6 @@ input,select,textarea{font-family:var(--f-body)}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
 ::-webkit-scrollbar-thumb:hover{background:var(--gold)}
 
-/* All styles from merge-pdf.html copied exactly (nav, sidebar, hero, dropzone, file-item, buttons, progress, success, err, how-card, feat-grid, related, tool-cta, mobile, etc.) */
 .nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);background:rgba(255,255,255,.90);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:var(--sh-xs);}
 .nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:20px;color:var(--ink);white-space:nowrap;flex-shrink:0;}
 .nav-logo img{width:40px;height:40px;border-radius:10px;object-fit:cover;box-shadow:0 2px 8px rgba(245,166,35,.4);}
@@ -241,7 +242,7 @@ input,select,textarea{font-family:var(--f-body)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .tool-body>*{animation:fadeUp .35s ease forwards}
 
-/* Extra for Compress Tool */
+/* Compress specific */
 .preset-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1.25rem 0;}
 .preset-btn{padding:14px 12px;border:1.5px solid var(--border);border-radius:var(--r);background:var(--white);font-weight:600;font-size:13.5px;transition:all .15s;text-align:center;}
 .preset-btn.active{border-color:var(--gold);background:var(--gold-l);color:var(--gold-d);box-shadow:var(--sh-gold);}
@@ -251,7 +252,6 @@ input,select,textarea{font-family:var(--f-body)}
 
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileSidebar()"></div>
 
-<!-- TOP NAV (exact same) -->
 <nav class="nav">
   <a href="/" class="nav-logo">
     <img src="/favicon.png" alt="ToolNest" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -275,7 +275,7 @@ input,select,textarea{font-family:var(--f-body)}
 
 <div class="app-shell">
 
-  <!-- LEFT SIDEBAR (Compress active) -->
+  <!-- LEFT SIDEBAR -->
   <aside class="left-sidebar" id="leftSidebar">
     <div class="sidebar-inner">
       <div class="sb-header">
@@ -296,8 +296,30 @@ input,select,textarea{font-family:var(--f-body)}
         <div class="tool-item cat-organize" onclick="go('/tools/split-pdf.html')"><div class="ti-icon">✂️</div><span class="ti-name">Split PDF</span></div>
         <div class="tool-item cat-organize" onclick="go('/tools/rotate-pdf.html')"><div class="ti-icon">🔁</div><span class="ti-name">Rotate PDF</span></div>
 
-        <!-- Other categories same as original merge-pdf.html -->
-        <!-- (Copy remaining categories from your merge-pdf.html file) -->
+        <div class="cat-lbl" data-cat-lbl="edit">Edit &amp; Secure</div>
+        <div class="tool-item cat-edit" onclick="go('/tools/protect-pdf.html')"><div class="ti-icon">🔐</div><span class="ti-name">Protect PDF</span></div>
+        <div class="tool-item cat-edit" onclick="go('/tools/unlock-pdf.html')"><div class="ti-icon">🔓</div><span class="ti-name">Unlock PDF</span></div>
+        <div class="tool-item cat-edit" onclick="go('/tools/watermark-pdf.html')"><div class="ti-icon">🏷</div><span class="ti-name">Watermark PDF</span><span class="ti-badge badge-new">NEW</span></div>
+
+        <div class="cat-lbl" data-cat-lbl="convert">Convert</div>
+        <div class="tool-item cat-convert" onclick="go('/tools/jpg-to-pdf.html')"><div class="ti-icon">📸</div><span class="ti-name">JPG to PDF</span><span class="ti-badge badge-hot">HOT</span></div>
+        <div class="tool-item cat-convert" onclick="go('/tools/pdf-to-jpg.html')"><div class="ti-icon">🖼</div><span class="ti-name">PDF to JPG</span></div>
+        <div class="tool-item cat-convert" onclick="go('/tools/word-to-pdf.html')"><div class="ti-icon">📝</div><span class="ti-name">Word to PDF</span><span class="ti-badge badge-new">NEW</span></div>
+        <div class="tool-item cat-convert" onclick="go('/tools/pdf-to-word.html')"><div class="ti-icon">📄</div><span class="ti-name">PDF to Word</span><span class="ti-badge badge-new">NEW</span></div>
+
+        <div class="cat-lbl" data-cat-lbl="image">Image Tools</div>
+        <div class="tool-item cat-image" onclick="go('/tools/image-resizer.html')"><div class="ti-icon">📐</div><span class="ti-name">Image Resizer</span><span class="ti-badge badge-new">NEW</span></div>
+        <div class="tool-item cat-image" onclick="go('/tools/image-to-png.html')"><div class="ti-icon">🎨</div><span class="ti-name">Image to PNG</span></div>
+
+        <div class="cat-lbl" data-cat-lbl="productivity">Productivity</div>
+        <div class="tool-item cat-prod" onclick="go('/tools/qr-code-generator.html')"><div class="ti-icon">📱</div><span class="ti-name">QR Code Generator</span><span class="ti-badge badge-hot">HOT</span></div>
+        <div class="tool-item cat-prod" onclick="go('/tools/password-generator.html')"><div class="ti-icon">🔑</div><span class="ti-name">Password Generator</span></div>
+        <div class="tool-item cat-prod" onclick="go('/tools/word-counter.html')"><div class="ti-icon">📊</div><span class="ti-name">Word Counter</span></div>
+        <div class="tool-item cat-prod" onclick="go('/tools/json-formatter.html')"><div class="ti-icon">{ }</div><span class="ti-name">JSON Formatter</span></div>
+
+        <div class="cat-lbl" data-cat-lbl="business">Business</div>
+        <div class="tool-item cat-biz" onclick="go('/tools/invoice-generator.html')"><div class="ti-icon">🧾</div><span class="ti-name">GST Invoice</span><span class="ti-badge badge-hot">HOT</span></div>
+        <div class="tool-item cat-biz" onclick="go('/tools/seo-generator.html')"><div class="ti-icon">🔍</div><span class="ti-name">SEO Meta Generator</span></div>
       </div>
       <div class="sb-stats">
         <div class="sb-stat" style="background:var(--gold-l)"><div class="sb-stat-num" style="color:var(--gold-d)">20+</div><div class="sb-stat-lbl">Free Tools</div></div>
@@ -307,10 +329,7 @@ input,select,textarea{font-family:var(--f-body)}
     </div>
   </aside>
 
-  <!-- MAIN CONTENT -->
   <main class="main-content" id="mainContent">
-
-    <!-- TOOL HERO -->
     <div class="tool-hero">
       <div class="tool-hero-inner">
         <div class="tool-hero-row">
@@ -329,9 +348,7 @@ input,select,textarea{font-family:var(--f-body)}
       </div>
     </div>
 
-    <!-- TOOL BODY -->
     <div class="tool-body">
-
       <div class="breadcrumb">
         <a href="/">Home</a><span class="breadcrumb-sep">›</span>
         <a href="/">All Tools</a><span class="breadcrumb-sep">›</span>
@@ -349,7 +366,6 @@ input,select,textarea{font-family:var(--f-body)}
       <div class="file-list" id="fileList"></div>
       <div class="drag-tip" id="dragTip" style="display:none">Single file only</div>
 
-      <!-- Preset Buttons -->
       <div id="settingsSection" style="display:none;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;margin-top:1rem;">
         <h3 style="margin-bottom:1rem;">Compression Level</h3>
         <div class="preset-row">
@@ -379,7 +395,6 @@ input,select,textarea{font-family:var(--f-body)}
 
       <div class="err-box" id="errBox"></div>
 
-      <!-- HOW TO (adapted for compress) -->
       <div class="how-card">
         <div class="card-title">How to Compress PDF Files</div>
         <div class="steps">
@@ -388,25 +403,63 @@ input,select,textarea{font-family:var(--f-body)}
           <div class="step"><div class="step-num">3</div><div class="step-t">Compress</div><div class="step-d">Click Compress — instant</div></div>
           <div class="step"><div class="step-num">4</div><div class="step-t">Download</div><div class="step-d">Save your smaller PDF</div></div>
         </div>
-        <!-- feat-grid same as merge -->
-        <div class="feat-grid"> ... (copy from merge-pdf.html) </div>
+        <div class="feat-grid">
+          <div class="feat-item"><span class="feat-ic">🔒</span><div><div class="feat-t">100% Private</div><div class="feat-d">Files processed in browser, never uploaded</div></div></div>
+          <div class="feat-item"><span class="feat-ic">📉</span><div><div class="feat-t">Up to 80% Smaller</div><div class="feat-d">Real size reduction</div></div></div>
+          <div class="feat-item"><span class="feat-ic">✅</span><div><div class="feat-t">Quality Preserved</div><div class="feat-d">Text, images & formatting intact</div></div></div>
+          <div class="feat-item"><span class="feat-ic">📱</span><div><div class="feat-t">Mobile Friendly</div><div class="feat-d">Works on Android & iPhone</div></div></div>
+          <div class="feat-item"><span class="feat-ic">🆓</span><div><div class="feat-t">Always Free</div><div class="feat-d">No limits, no watermarks</div></div></div>
+          <div class="feat-item"><span class="feat-ic">⚡</span><div><div class="feat-t">No Server Wait</div><div class="feat-d">Instant local processing</div></div></div>
+        </div>
       </div>
 
-      <!-- RELATED TOOLS (same) -->
       <div class="related-section">
         <div class="card-title" style="margin-bottom:.9rem">Related Tools</div>
-        <div class="related-grid"> ... (copy from merge-pdf.html, keep Compress highlighted if needed) </div>
+        <div class="related-grid">
+          <div class="rel-card" onclick="go('/tools/merge-pdf.html')"><div class="rel-icon" style="background:var(--c-organize-l)">📎</div><div><div class="rel-name">Merge PDF</div><div class="rel-desc">Combine multiple PDFs</div></div></div>
+          <div class="rel-card" onclick="go('/tools/split-pdf.html')"><div class="rel-icon" style="background:var(--c-organize-l)">✂️</div><div><div class="rel-name">Split PDF</div><div class="rel-desc">Extract specific pages</div></div></div>
+          <div class="rel-card" onclick="go('/tools/rotate-pdf.html')"><div class="rel-icon" style="background:var(--c-organize-l)">🔁</div><div><div class="rel-name">Rotate PDF</div><div class="rel-desc">Fix page orientation</div></div></div>
+        </div>
       </div>
 
-      <div class="tool-cta"> ... (exact same as merge) </div>
+      <div class="tool-cta">
+        <div class="tool-cta-inner">
+          <div>
+            <h3>Explore 20+ Free Tools</h3>
+            <p>PDF, images, QR codes, invoices — browser-based & always free</p>
+          </div>
+          <button class="btn-cta-gold" onclick="go('/')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg> Browse All Tools</button>
+        </div>
+      </div>
       <div style="height:2rem"></div>
     </div>
-
     <div id="tn-footer"></div>
   </main>
 
-  <!-- RIGHT SIDEBAR (exact same as merge-pdf.html) -->
-  <aside class="right-sidebar"> ... (copy full right sidebar from your merge-pdf.html) </aside>
+  <!-- RIGHT SIDEBAR (exact same) -->
+  <aside class="right-sidebar">
+    <div class="rsb-stats">
+      <div class="rsb-stats-title">ToolNest Stats</div>
+      <div class="rsb-row"><span class="rsb-row-lbl">Free Tools</span><span class="rsb-row-val">20+</span></div>
+      <div class="rsb-row"><span class="rsb-row-lbl">Sign-ups needed</span><span class="rsb-row-val">Zero</span></div>
+      <div class="rsb-row"><span class="rsb-row-lbl">Server uploads</span><span class="rsb-row-val">Never</span></div>
+      <div class="rsb-row"><span class="rsb-row-lbl">Usage limit</span><span class="rsb-row-val">∞</span></div>
+    </div>
+    <div class="ad-slot ad-tall">Advertisement</div>
+    <div>
+      <div class="rsb-section-title">Popular Tools</div>
+      <div class="rsb-quick-item" onclick="go('/tools/compress-pdf.html')"><span class="rsb-quick-dot" style="background:var(--c-compress)"></span>Compress PDF</div>
+      <div class="rsb-quick-item" onclick="go('/tools/merge-pdf.html')"><span class="rsb-quick-dot" style="background:var(--c-organize)"></span>Merge PDF</div>
+      <div class="rsb-quick-item" onclick="go('/tools/jpg-to-pdf.html')"><span class="rsb-quick-dot" style="background:var(--c-convert)"></span>JPG to PDF</div>
+    </div>
+    <div class="ad-slot ad-sm">Advertisement</div>
+    <div class="rsb-trust">
+      <div class="rsb-trust-icon">🔒</div>
+      <div class="rsb-trust-title">100% Private</div>
+      <div class="rsb-trust-desc">Files never leave your device. Zero server upload. Fully browser-based.</div>
+    </div>
+    <div class="ad-slot ad-sm" style="flex:1;min-height:100px">Advertisement</div>
+  </aside>
 </div>
 
 <button class="coffee-tab" onclick="window.open('https://buymeacoffee.com/','_blank')" title="Support ToolNest">
@@ -416,19 +469,16 @@ input,select,textarea{font-family:var(--f-body)}
 <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 
 <script>
-/* All navigation functions exact same as merge-pdf.html */
 function go(url){ location.href = url; }
 function syncSearch(v){ document.getElementById('sbSearch').value = v; filterSidebar(v); }
-function filterSidebar(q){ /* exact same */ }
+function filterSidebar(q){ const s = q.toLowerCase().trim(); document.querySelectorAll('#sbList .tool-item').forEach(item => { const txt = item.querySelector('.ti-name').textContent.toLowerCase(); item.style.display = (!s || txt.includes(s)) ? '' : 'none'; }); document.querySelectorAll('#sbList .cat-lbl').forEach(lbl => { let el = lbl.nextElementSibling, anyVisible = false; while(el && el.classList.contains('tool-item')){ if(el.style.display!=='none') anyVisible=true; el=el.nextElementSibling; } lbl.style.display = anyVisible ? '' : 'none'; }); }
 let sbCollapsed = false;
-function toggleDesktopSidebar(){ /* exact same */ }
-function toggleMobileSidebar(){ /* exact same */ }
-function closeMobileSidebar(){ /* exact same */ }
+function toggleDesktopSidebar(){ sbCollapsed = !sbCollapsed; const sb = document.getElementById('leftSidebar'); const mc = document.getElementById('mainContent'); const st = document.getElementById('sidebarToggle'); sb.classList.toggle('collapsed', sbCollapsed); mc.classList.toggle('sb-collapsed', sbCollapsed); st.classList.toggle('collapsed', sbCollapsed); const sw = getComputedStyle(document.documentElement).getPropertyValue('--sidebar-w').trim(); st.style.left = sbCollapsed ? '0px' : sw; }
+function toggleMobileSidebar(){ const sb = document.getElementById('leftSidebar'); const ov = document.getElementById('mobileOverlay'); const hm = document.getElementById('hamburger'); const open = sb.classList.toggle('mobile-open'); ov.classList.toggle('active', open); hm.classList.toggle('open', open); }
+function closeMobileSidebar(){ document.getElementById('leftSidebar').classList.remove('mobile-open'); document.getElementById('mobileOverlay').classList.remove('active'); document.getElementById('hamburger').classList.remove('open'); }
 
-/* Compress Tool Logic */
-let loadedFile = null;
-let compressedBytes = null;
-let preset = 'mid';
+/* Compress Logic */
+let loadedFile = null, compressedBytes = null, preset = 'mid';
 
 function dzOver(e){ e.preventDefault(); document.getElementById('dz').classList.add('over'); }
 function dzLeave(){ document.getElementById('dz').classList.remove('over'); }
@@ -437,7 +487,7 @@ function dzDrop(e){ e.preventDefault(); dzLeave(); if(e.dataTransfer.files[0]) a
 function addFiles(newFiles){
   const pdfs = Array.from(newFiles).filter(f => f.type==='application/pdf' || f.name.toLowerCase().endsWith('.pdf'));
   if(!pdfs.length){ showErr('Only PDF files are accepted.'); return; }
-  if(pdfs.length > 1){ showErr('Only one PDF at a time for compression.'); return; }
+  if(pdfs.length > 1){ showErr('Compress tool supports only ONE PDF at a time.'); return; }
   loadedFile = pdfs[0];
   renderFile();
   clearMessages();
@@ -446,7 +496,7 @@ function addFiles(newFiles){
 
 function renderFile(){
   const list = document.getElementById('fileList');
-  list.innerHTML = `<div class="file-item"><div class="fi-num">1</div><div class="fi-icon">📄</div><div class="fi-name">${loadedFile.name}</div><div class="fi-size">${fmtSize(loadedFile.size)}</div><button class="fi-rm" onclick="clearAll()">✕</button></div>`;
+  list.innerHTML = `<div class="file-item"><div class="fi-num">1</div><div class="fi-icon">📄</div><div class="fi-name" title="${loadedFile.name}">${loadedFile.name}</div><div class="fi-size">${fmtSize(loadedFile.size)}</div><button class="fi-rm" onclick="clearAll()">✕</button></div>`;
   document.getElementById('compressBtn').disabled = false;
   document.getElementById('compressBtnTxt').textContent = `📦 Compress PDF (${preset.toUpperCase()})`;
 }
@@ -460,60 +510,34 @@ function setPreset(p, el){
 
 async function doCompress(){
   if(!loadedFile) return;
-  clearMessages();
-  showProgress(0, 'Reading PDF…');
+  clearMessages(); showProgress(0,'Reading PDF…');
   try{
     const {PDFDocument} = PDFLib;
     const ab = await readAB(loadedFile);
-    showProgress(40, 'Loading PDF…');
-    const pdf = await PDFDocument.load(ab, {ignoreEncryption:true});
-    showProgress(60, 'Optimizing…');
-    pdf.setTitle(''); pdf.setAuthor(''); pdf.setSubject(''); pdf.setKeywords([]);
-    pdf.setProducer('ToolNest'); pdf.setCreator('ToolNest');
-    showProgress(85, 'Saving compressed PDF…');
-    compressedBytes = await pdf.save({useObjectStreams: true});
-    showProgress(100, 'Done!');
-    setTimeout(() => {
-      document.getElementById('progressWrap').style.display = 'none';
-      showSuccess(loadedFile.size, compressedBytes.length);
-    }, 400);
-  }catch(err){
-    showErr('Failed: ' + err.message);
-    document.getElementById('progressWrap').style.display = 'none';
-  }
+    showProgress(40,'Loading PDF…');
+    const pdf = await PDFDocument.load(ab,{ignoreEncryption:true});
+    showProgress(60,'Optimizing…');
+    pdf.setTitle('');pdf.setAuthor('');pdf.setSubject('');pdf.setKeywords([]);
+    pdf.setProducer('ToolNest');pdf.setCreator('ToolNest');
+    showProgress(85,'Saving compressed file…');
+    compressedBytes = await pdf.save({useObjectStreams:true});
+    showProgress(100,'Done!');
+    setTimeout(()=>{ document.getElementById('progressWrap').style.display='none'; showSuccess(loadedFile.size,compressedBytes.length); },400);
+  }catch(err){ showErr('Could not compress: '+err.message); document.getElementById('progressWrap').style.display='none'; }
 }
 
-function showSuccess(orig, compressed){
-  const box = document.getElementById('successBox');
-  box.style.display = 'block';
-  const saved = Math.round((1 - compressed/orig) * 100);
-  document.getElementById('successMeta').innerHTML = `Original: <strong>${fmtSize(orig)}</strong><br>Compressed: <strong>${fmtSize(compressed)}</strong><br><span style="color:#00B37E">Reduced by ${saved}%</span>`;
-  document.getElementById('dlBtn').onclick = () => {
-    const url = URL.createObjectURL(new Blob([compressedBytes], {type:'application/pdf'}));
-    const a = document.createElement('a');
-    a.href = url; a.download = 'toolnest-compressed.pdf'; a.click();
-    URL.revokeObjectURL(url);
-  };
+function showSuccess(origSize,newSize){
+  const box=document.getElementById('successBox'); box.style.display='block';
+  const saved=Math.round((1-newSize/origSize)*100);
+  document.getElementById('successMeta').innerHTML=`Original: <strong>${fmtSize(origSize)}</strong><br>Compressed: <strong>${fmtSize(newSize)}</strong><br><span style="color:#00B37E">Reduced by ${saved}% 🎉</span>`;
+  document.getElementById('dlBtn').onclick=()=>{ const url=URL.createObjectURL(new Blob([compressedBytes],{type:'application/pdf'})); const a=document.createElement('a'); a.href=url; a.download='toolnest-compressed.pdf'; a.click(); URL.revokeObjectURL(url); };
 }
-
-function showProgress(pct, msg){
-  document.getElementById('progressWrap').style.display = 'block';
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressTxt').textContent = msg;
-}
-function showErr(msg){ document.getElementById('errBox').style.display='block'; document.getElementById('errBox').textContent = '⚠️ ' + msg; }
-function clearMessages(){ ['successBox','errBox','progressWrap'].forEach(id => document.getElementById(id).style.display='none'); }
-function clearAll(){
-  loadedFile = null; compressedBytes = null;
-  document.getElementById('fileList').innerHTML = '';
-  document.getElementById('settingsSection').style.display = 'none';
-  document.getElementById('fileInput').value = '';
-  clearMessages();
-  document.getElementById('compressBtn').disabled = true;
-  document.getElementById('compressBtnTxt').textContent = '📦 Select PDF File First';
-}
-function readAB(f){ return new Promise((res,rej) => { const r = new FileReader(); r.onload = e => res(e.target.result); r.onerror = () => rej(new Error('Read error')); r.readAsArrayBuffer(f); }); }
-function fmtSize(b){ return b<1024 ? b+' B' : b<1048576 ? (b/1024).toFixed(1)+' KB' : (b/1048576).toFixed(1)+' MB'; }
+function showProgress(pct,msg){ document.getElementById('progressWrap').style.display='block'; document.getElementById('progressFill').style.width=pct+'%'; document.getElementById('progressTxt').textContent=msg; }
+function showErr(msg){ const b=document.getElementById('errBox'); b.style.display='block'; b.textContent='⚠️ '+msg; }
+function clearMessages(){ ['successBox','errBox','progressWrap'].forEach(id=>document.getElementById(id).style.display='none'); }
+function clearAll(){ loadedFile=null; compressedBytes=null; document.getElementById('fileList').innerHTML=''; document.getElementById('settingsSection').style.display='none'; document.getElementById('fileInput').value=''; clearMessages(); document.getElementById('compressBtn').disabled=true; document.getElementById('compressBtnTxt').textContent='📦 Select PDF File First'; }
+function readAB(f){ return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=e=>res(e.target.result); r.onerror=()=>rej(new Error('Cannot read file')); r.readAsArrayBuffer(f); }); }
+function fmtSize(b){ return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(1)+' MB'; }
 </script>
 <script src="/nav-footer.js"></script>
 </body>
