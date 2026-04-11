@@ -230,7 +230,15 @@
   const navEl = document.getElementById('tn-nav');
   const footerEl = document.getElementById('tn-footer');
   if (navEl) navEl.innerHTML = navHTML;
-  if (footerEl) footerEl.innerHTML = footerHTML;
+  if (footerEl) {
+    footerEl.innerHTML = footerHTML;
+    /* Tools pages use a 3-column layout; footer must span full width */
+    if (isTools) {
+      footerEl.style.cssText = 'display:block;width:100%;clear:both;position:relative;z-index:10';
+      const footer = footerEl.querySelector('.footer');
+      if (footer) footer.style.marginTop = '0';
+    }
+  }
 
   /* ── Tools dropdown toggle ── */
   const toolsDropdown = document.getElementById('toolsDropdown');
