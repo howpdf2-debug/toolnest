@@ -1001,6 +1001,9 @@ input,select,textarea{font-family:var(--f-body)}
       <div style="height:2rem"></div>
     </div><!-- /tool-body -->
 
+    <!-- Footer injected here by nav-footer.js — stays inside middle column -->
+    <div id="tn-footer"></div>
+
   </main><!-- /main-content -->
 
   <!-- ═══ RIGHT SIDEBAR ═══ -->
@@ -1230,6 +1233,6 @@ function showErr(msg){ const b=document.getElementById('errBox'); b.style.displa
 function clearMessages(){ ['successBox','errBox','progressWrap'].forEach(id=>document.getElementById(id).style.display='none'); }
 function fmtSize(b){ return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(1)+' MB'; }
 </script>
-  <script src="/nav-footer.js"></script> 
+<script src="/nav-footer.js"></script>
 </body>
 </html>
