@@ -970,3 +970,49 @@ textarea.field-input{resize:vertical;min-height:60px;line-height:1.65}
 }
 @media print{.nav,.footer,.search-overlay{display:none!important}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ═══════════════════════════════════════════════════
+   NAV UPDATES v5.0 — Blog tab + active state
+   ═══════════════════════════════════════════════════ */
+.nav-dropdown-btn.active{color:var(--gold);font-weight:600}
+.nav-links a.active{color:var(--gold);font-weight:600;background:var(--gold-l)}
+
+/* Mega menu — 5 column grid */
+.ndm-grid{gap:4px}
+
+/* ═══════════════════════════════════════════════════
+   FOOTER v5.0 — updated classes for nav-footer.js
+   ═══════════════════════════════════════════════════ */
+.footer-inner{
+  max-width:1180px;margin:0 auto;
+  display:grid;grid-template-columns:280px 1fr;gap:4rem;margin-bottom:3rem;
+}
+.footer-brand{padding-right:1rem}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,.45);line-height:1.75;margin:.6rem 0 1rem}
+.footer-cols{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;
+}
+.footer-col-title{
+  font-size:10.5px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.8px;color:rgba(255,255,255,.3);margin-bottom:.85rem;
+}
+.footer-col a{
+  display:block;font-size:13px;color:rgba(255,255,255,.5);
+  margin-bottom:.5rem;transition:color .15s;
+}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{
+  max-width:1180px;margin:0 auto;
+  border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12.5px;color:rgba(255,255,255,.35);flex-wrap:wrap;gap:.75rem;
+}
+
+@media(max-width:900px){
+  .footer-inner{grid-template-columns:1fr;gap:2rem}
+  .footer-brand{padding:0}
+  .footer-cols{grid-template-columns:1fr 1fr;gap:1.5rem}
+}
+@media(max-width:500px){
+  .footer-cols{grid-template-columns:1fr}
+}
