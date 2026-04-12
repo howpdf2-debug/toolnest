@@ -12,7 +12,7 @@
 <link rel="canonical" href="https://toolnest.bhaihelp.in/blog.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ToolNest Blog — Expert Tips &amp; Tutorials for India">
-<meta property="og:description" content="Hindi + English mein helpful guides — PDF tools, GST invoice, image compression, EMI calculator aur more.">
+<meta property="og:description" content="Hindi + English mein helpful guides — PDF tools, GST invoice, image compression, EMI calculator aur more. 2000+ words each.">
 <meta property="og:url" content="https://toolnest.bhaihelp.in/blog.html">
 <meta property="og:site_name" content="ToolNest">
 <meta property="og:image" content="https://toolnest.bhaihelp.in/assets/og-blog.png">
@@ -22,693 +22,761 @@
 <meta name="twitter:title" content="ToolNest Blog — Free Tool Guides for India">
 <meta name="twitter:description" content="Expert guides in Hindi + English. PDF, GST, image tools & more.">
 <meta name="twitter:image" content="https://toolnest.bhaihelp.in/assets/og-blog.png">
-
-<!-- ✅ FIX BUG 9: Use toolnest.css NOT inline CSS -->
-<link rel="icon" type="image/png" href="/assets/images/favicon.png">
-<link rel="apple-touch-icon" href="/assets/images/favicon.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0F1B3D">
-<link rel="stylesheet" href="/assets/css/toolnest.css">
-
-<!-- Schema: Blog -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Blog",
-  "name":"ToolNest Blog",
-  "url":"https://toolnest.bhaihelp.in/blog.html",
-  "description":"Expert tips and guides for free online tools — Hindi and English",
-  "publisher":{
-    "@type":"Organization",
-    "name":"ToolNest",
-    "logo":{"@type":"ImageObject","url":"https://toolnest.bhaihelp.in/assets/images/favicon.png"}
-  },
-  "inLanguage":["en","hi"]
-}
+{"@context":"https://schema.org","@type":"Blog","name":"ToolNest Blog","url":"https://toolnest.bhaihelp.in/blog.html","description":"Expert tips and guides for free online tools","publisher":{"@type":"Organization","name":"ToolNest","logo":{"@type":"ImageObject","url":"https://toolnest.bhaihelp.in/favicon.png"}},"inLanguage":["en","hi"]}
 </script>
-
-<!-- ✅ FIX BUG 6: Blog-specific CSS only (not duplicating toolnest.css) -->
 <style>
-/* ── Blog page extras not in toolnest.css ── */
 
-/* Mini hero (blog-specific variant) */
-.blog-hero{
-  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 55%,#1E3A8A 100%);
-  padding:2.75rem 1.5rem 2.25rem;text-align:center;
-  position:relative;overflow:hidden;
-  margin-top:var(--nav-h);
-}
-.blog-hero::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle 350px at 80% 40%,rgba(245,166,35,.12) 0%,transparent 60%),
-             radial-gradient(circle 250px at 10% 70%,rgba(30,79,203,.18) 0%,transparent 60%);
-  pointer-events:none;
-}
-.blog-hero::after{
-  content:'';position:absolute;inset:0;
-  background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);
-  background-size:24px 24px;pointer-events:none;
-  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);
-}
-.blog-hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
-.blog-hero h1{font-family:var(--f-display);font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:.5rem;letter-spacing:-.5px}
-.blog-hero p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:1.1rem;line-height:1.6}
+:root{--gold:#F5A623;--gold-d:#D4891A;--gold-l:#FEF3DC;--gold-b:rgba(245,166,35,.20);--navy:#0F1B3D;--navy-mid:#1A2E5E;--blue:#1E4FCB;--blue-l:#EEF3FF;--green:#00B37E;--green-l:#E6FAF4;--red:#E53E3E;--red-l:#FFF0F0;--amber:#E88B00;--amber-l:#FFF8E6;--purple:#6C3FC4;--purple-l:#F2EDFF;--teal:#0891B2;--teal-l:#E8F8FD;--orange:#F5620A;--orange-l:#FFF0EB;--ink:#0D0D14;--ink2:#44455A;--ink3:#8A8BA5;--paper:#F5F6FA;--white:#FFFFFF;--border:#E2E4EF;--border2:#C8CADF;--surface:#EDEEF7;--f-display:'Outfit',sans-serif;--f-body:'Plus Jakarta Sans',sans-serif;--r-sm:8px;--r:12px;--r-lg:18px;--r-xl:24px;--r-pill:999px;--sh-xs:0 1px 3px rgba(13,13,20,.07);--sh-sm:0 2px 8px rgba(13,13,20,.09);--sh:0 4px 16px rgba(13,13,20,.11);--sh-lg:0 8px 32px rgba(13,13,20,.13);--sh-gold:0 4px 20px rgba(245,166,35,.28);--nav-h:64px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);background:rgba(255,255,255,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:var(--sh-xs)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:21px;color:var(--ink);flex-shrink:0}
+.nav-logo img{width:38px;height:38px;border-radius:10px;object-fit:cover;box-shadow:var(--sh-gold)}
+.nav-logo-box{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#FF9500);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:900;font-size:15px;color:var(--navy);box-shadow:var(--sh-gold);flex-shrink:0}
+.nav-logo span{color:var(--gold)}
+.nav-search{flex:1;max-width:480px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-pill);padding:0 16px;height:38px;transition:border-color .2s,box-shadow .2s}
+.nav-search:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-b)}
+.nav-search svg{color:var(--ink3);flex-shrink:0}
+.nav-search input{flex:1;border:none;background:transparent;outline:none;font-size:13.5px;color:var(--ink)}
+.nav-search input::placeholder{color:var(--ink3)}
+.nav-right{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.nav-link{padding:7px 13px;border-radius:var(--r-sm);font-size:13.5px;font-weight:500;color:var(--ink2);transition:all .15s;white-space:nowrap}
+.nav-link:hover{background:var(--surface);color:var(--ink)}.nav-link.active{color:var(--gold-d);font-weight:700}
+.btn-nav-gold{background:var(--gold);color:var(--navy);padding:8px 18px;border-radius:var(--r-pill);font-size:13px;font-weight:700;box-shadow:var(--sh-gold);transition:all .15s}
+.btn-nav-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
+.hamburger{display:none;width:36px;height:36px;border-radius:var(--r-sm);background:var(--surface);border:1.5px solid var(--border);flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;flex-shrink:0}
+.hamburger span{display:block;width:17px;height:1.5px;background:var(--ink);border-radius:2px;transition:all .25s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.mob-nav{position:fixed;top:var(--nav-h);left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);box-shadow:var(--sh-lg);z-index:900;padding:1rem 1.25rem 1.5rem;display:none;flex-direction:column;gap:4px}
+.mob-nav.open{display:flex}
+.mob-link{padding:9px 12px;border-radius:var(--r-sm);font-size:14px;font-weight:500;color:var(--ink2);transition:all .15s}
+.mob-link:hover,.mob-link.active{background:var(--gold-l);color:var(--gold-d);font-weight:700}
+.mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:850;display:none}
+.mob-overlay.open{display:block}
+.hero{margin-top:var(--nav-h);background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 55%,#1E3A8A 100%);padding:3.5rem 1.5rem 3rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 350px at 80% 40%,rgba(245,166,35,.12) 0%,transparent 60%),radial-gradient(circle 250px at 10% 70%,rgba(30,79,203,.18) 0%,transparent 60%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:780px;margin:0 auto}
+.hero-logo{width:72px;height:72px;border-radius:18px;margin:0 auto 1.1rem;object-fit:cover;box-shadow:0 6px 24px rgba(245,166,35,.35)}
+.hero-logo-fb{width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,var(--gold),#FF9500);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:900;font-size:28px;color:var(--navy);margin:0 auto 1.1rem;box-shadow:0 6px 24px rgba(245,166,35,.35)}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-pill);padding:5px 14px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:1.1rem;backdrop-filter:blur(4px)}
+.bdot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+.hero h1{font-family:var(--f-display);font-size:clamp(1.9rem,5vw,3rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:.85rem}
+.hero h1 .hl{color:var(--gold)}
+.hero-sub{font-size:clamp(13.5px,2vw,15.5px);color:rgba(255,255,255,.65);max-width:600px;margin:0 auto 1.75rem;line-height:1.7}
+.hero-search{display:flex;align-items:center;max-width:580px;margin:0 auto 1.75rem;background:var(--white);border-radius:var(--r-pill);box-shadow:var(--sh-lg);overflow:hidden;border:2.5px solid transparent;transition:border-color .2s}
+.hero-search:focus-within{border-color:var(--gold)}
+.hero-search input{flex:1;padding:14px 20px;border:none;outline:none;font-size:14px;font-family:var(--f-body);color:var(--ink);background:transparent;min-width:0}
+.hero-search input::placeholder{color:var(--ink3)}
+.hero-search button{background:var(--gold);color:var(--navy);padding:0 22px;min-height:52px;font-size:13.5px;font-weight:700;display:flex;align-items:center;gap:7px;white-space:nowrap;flex-shrink:0;transition:background .15s}
+.hero-search button:hover{background:var(--gold-d)}
+.hero-stats{display:flex;justify-content:center;gap:2.25rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.hs-num{font-family:var(--f-display);font-size:1.8rem;font-weight:900;color:var(--gold);line-height:1}
+.hs-lbl{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;font-weight:500}
+.proof-bar{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-pill);padding:5px 14px}
+.proof-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;animation:blink 2s ease-in-out infinite}
+.proof-text{font-size:12px;color:rgba(255,255,255,.7);font-weight:500}
+.proof-num{color:var(--gold);font-weight:700}
+.ad-strip{background:var(--white);border-bottom:1px solid var(--border);padding:.6rem 1.5rem;text-align:center}
+.ad-inner{min-height:80px;background:var(--surface);border:1.5px dashed var(--border2);border-radius:var(--r);display:flex;align-items:center;justify-content:center;max-width:900px;margin:0 auto;font-size:11px;color:var(--ink3);position:relative;flex-direction:column;gap:3px}
+.ad-inner::before,.ad-box::before{content:'AD';position:absolute;top:4px;right:8px;font-size:7.5px;font-weight:800;letter-spacing:.5px;opacity:.6}
+.ad-box{background:var(--white);border:1.5px dashed var(--border2);border-radius:var(--r-lg);min-height:110px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink3);margin:1.5rem 0;position:relative;flex-direction:column;gap:3px}
+.page-wrap{max-width:1200px;margin:0 auto;padding:0 1.25rem}
+.sec-hd{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.sec-title{font-family:var(--f-display);font-size:1.25rem;font-weight:800;color:var(--ink)}
+.sec-sub{font-size:12.5px;color:var(--ink3);margin-top:.2rem}
+.sec-link{font-size:13px;font-weight:600;color:var(--gold-d);transition:color .15s;white-space:nowrap}
+.sec-link:hover{color:var(--gold)}
+.sec-count{font-size:12px;color:var(--ink3);background:var(--surface);padding:3px 10px;border-radius:var(--r-pill);font-weight:600;flex-shrink:0}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:1.5rem 0 .5rem}
+.stat-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:1.1rem 1rem;text-align:center;box-shadow:var(--sh-xs);transition:all .2s;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:99px 99px 0 0}
+.sc-gold::before{background:var(--gold)}.sc-green::before{background:var(--green)}.sc-blue::before{background:var(--blue)}.sc-purple::before{background:var(--purple)}
+.stat-card:hover{transform:translateY(-3px);box-shadow:var(--sh)}
+.stat-num{font-family:var(--f-display);font-size:1.75rem;font-weight:900;line-height:1;margin-bottom:.25rem}
+.stat-lbl{font-size:11.5px;color:var(--ink3);font-weight:600}
+.cat-bar{display:flex;gap:7px;overflow-x:auto;padding:.5rem 0 .75rem;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.cat-bar::-webkit-scrollbar{display:none}
+.cat-pill{display:flex;align-items:center;gap:6px;padding:7px 15px;border-radius:var(--r-pill);font-size:13px;font-weight:600;color:var(--ink2);cursor:pointer;white-space:nowrap;border:1.5px solid var(--border);background:var(--white);transition:all .15s;flex-shrink:0}
+.cat-pill:hover{border-color:var(--gold);color:var(--gold-d);background:var(--gold-l)}
+.cat-pill.active{background:var(--gold);color:var(--navy);border-color:var(--gold);box-shadow:var(--sh-gold)}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:11px}
+.tool-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:1.1rem;cursor:pointer;transition:all .2s;position:relative;display:flex;flex-direction:column;gap:.5rem;box-shadow:var(--sh-xs);overflow:hidden}
+.tool-card::after{content:'→';position:absolute;bottom:10px;right:12px;font-size:13px;color:var(--ink3);transition:all .2s}
+.tool-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:var(--sh)}
+.tool-card:hover::after{right:8px;color:var(--gold-d)}
+.tc-badge{position:absolute;top:9px;right:9px;font-size:8px;font-weight:800;padding:2px 7px;border-radius:var(--r-pill);text-transform:uppercase;letter-spacing:.4px}
+.badge-hot{background:#FFE8D6;color:#B85000}.badge-new{background:#D3F9D8;color:#00612A}
+.tc-icon{font-size:1.7rem;line-height:1}.tc-name{font-family:var(--f-display);font-size:13px;font-weight:800;color:var(--ink);line-height:1.3;padding-right:28px}
+.tc-desc{font-size:11.5px;color:var(--ink3);line-height:1.5;flex:1}
+.tc-cat{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 7px;border-radius:var(--r-pill);margin-top:.25rem;display:inline-block}
+.no-results{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--ink3)}
+.feat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:1.5rem 0}
+.feat-item{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:1.35rem;box-shadow:var(--sh-xs);transition:all .2s}
+.feat-item:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.feat-icon{font-size:2rem;margin-bottom:.55rem}
+.feat-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--gold-d);margin-bottom:.2rem}
+.feat-title{font-family:var(--f-display);font-size:14.5px;font-weight:800;color:var(--ink);margin-bottom:.35rem}
+.feat-desc{font-size:12px;color:var(--ink3);line-height:1.6}
+.trending-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.trend-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:1rem;cursor:pointer;transition:all .2s;box-shadow:var(--sh-xs);position:relative}
+.trend-card:hover{transform:translateY(-3px);box-shadow:var(--sh);border-color:var(--gold-b)}
+.trend-rank{position:absolute;top:9px;right:9px;font-family:var(--f-display);font-size:11px;font-weight:900;color:var(--ink3)}
+.trend-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:.55rem}
+.trend-name{font-family:var(--f-display);font-size:13px;font-weight:800;color:var(--ink);line-height:1.3;margin-bottom:.2rem}
+.trend-searches{font-size:10px;color:var(--gold-d);font-weight:700;margin-top:.35rem}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.why-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:1.1rem 1.15rem;display:flex;align-items:flex-start;gap:.85rem;box-shadow:var(--sh-xs);transition:all .2s}
+.why-card:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.why-ico{width:42px;height:42px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.why-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:.22rem}
+.why-desc{font-size:11.5px;color:var(--ink3);line-height:1.55}
+.blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.blog-featured{grid-column:1/-1;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.4rem;box-shadow:var(--sh-sm);cursor:pointer;transition:all .2s;display:flex;gap:1.25rem;align-items:center}
+.blog-featured:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.bfthumb{width:88px;height:88px;border-radius:var(--r-lg);font-size:2.5rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bcat{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--gold-d);margin-bottom:.3rem}
+.bftitle{font-family:var(--f-display);font-size:15px;font-weight:800;color:var(--ink);line-height:1.4;margin-bottom:.3rem}
+.bfdesc{font-size:12px;color:var(--ink3);line-height:1.6}
+.bfmeta{font-size:11px;color:var(--ink3);margin-top:.5rem}
+.blog-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;transition:all .2s;box-shadow:var(--sh-xs);display:flex}
+.blog-card:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.bthumb{width:78px;min-width:78px;display:flex;align-items:center;justify-content:center;font-size:1.9rem}
+.binfo{padding:.8rem .9rem;flex:1;min-width:0}
+.btitle{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:.3rem}
+.bmeta{font-size:10.5px;color:var(--ink3)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.testi-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:1.2rem;box-shadow:var(--sh-xs)}
+.testi-stars{color:var(--gold);font-size:13.5px;margin-bottom:.7rem;letter-spacing:2px}
+.testi-text{font-size:12.5px;color:var(--ink2);line-height:1.65;font-style:italic;margin-bottom:.9rem}
+.testi-user{display:flex;align-items:center;gap:.6rem}
+.tavatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.tname{font-size:12.5px;font-weight:700;color:var(--ink)}
+.trole{font-size:11px;color:var(--ink3)}
+.newsletter{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:var(--r-xl);padding:2rem 1.75rem;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.newsletter::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 200px at 90% 20%,rgba(245,166,35,.15) 0%,transparent 60%);pointer-events:none}
+.nl-text{position:relative;z-index:1}
+.nl-text h3{font-family:var(--f-display);font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:.3rem}
+.nl-text p{font-size:13px;color:rgba(255,255,255,.5)}
+.nl-form{display:flex;gap:8px;flex-wrap:wrap;position:relative;z-index:1}
+.nl-form input{padding:10px 16px;border-radius:var(--r-pill);border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-size:13px;font-family:var(--f-body);outline:none;width:230px;transition:border-color .2s}
+.nl-form input::placeholder{color:rgba(255,255,255,.4)}.nl-form input:focus{border-color:var(--gold)}
+.btn-gold{background:var(--gold);color:var(--navy);padding:10px 22px;border-radius:var(--r-pill);font-size:13.5px;font-weight:700;transition:all .15s;box-shadow:var(--sh-gold);display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:none;font-family:var(--f-body)}
+.btn-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
+.cta-band{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:var(--r-xl);padding:2rem 1.75rem;text-align:center;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
+.cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 180px at 90% 20%,rgba(245,166,35,.12) 0%,transparent 60%)}
+.cta-band h2{font-family:var(--f-display);font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:.4rem;position:relative}
+.cta-band p{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:1.25rem;position:relative}
+.share-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1rem 1.35rem;margin:1.5rem 0;flex-wrap:wrap}
+.sbt{font-size:13px;font-weight:600;color:var(--ink)}.sbt span{color:var(--ink3);font-weight:400}
+.sbtns{display:flex;gap:8px}
+.btn-sh{display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:var(--r-pill);font-size:12.5px;font-weight:700;cursor:pointer;border:none;font-family:var(--f-body);transition:all .15s}
+.btn-sh:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.bwa{background:#25D366;color:#fff}.bx{background:#000;color:#fff}.bfb{background:#1877F2;color:#fff}
+.faq-wrap{display:flex;flex-direction:column;gap:7px;margin-top:.75rem}
+.faq-item{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color .15s}
+.faq-item.open{border-color:var(--gold)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:.9rem 1.1rem;cursor:pointer;font-size:13.5px;font-weight:700;color:var(--ink);user-select:none;transition:background .15s}
+.faq-q:hover,.faq-item.open .faq-q{background:var(--gold-l)}
+.faq-q svg{width:16px;height:16px;flex-shrink:0;color:var(--ink3);transition:transform .25s}
+.faq-item.open .faq-q svg{transform:rotate(180deg);color:var(--gold-d)}
+.faq-a{display:none;padding:.2rem 1.1rem 1rem;font-size:13px;color:var(--ink2);line-height:1.7}
+.faq-item.open .faq-a{display:block}
+.search-overlay{position:fixed;inset:0;background:rgba(10,12,20,.65);backdrop-filter:blur(4px);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding-top:80px}
+.search-overlay.open{display:flex}
+.search-modal{background:var(--white);border-radius:var(--r-xl);width:100%;max-width:600px;box-shadow:var(--sh-lg);overflow:hidden;max-height:calc(100vh - 120px);display:flex;flex-direction:column;margin:0 1rem}
+.smt{display:flex;align-items:center;gap:10px;padding:.85rem 1.1rem;border-bottom:1px solid var(--border)}
+.smt svg{color:var(--ink3);flex-shrink:0}
+.smt input{flex:1;border:none;outline:none;font-size:15px;font-family:var(--f-body);color:var(--ink)}
+.smt input::placeholder{color:var(--ink3)}
+.s-close{width:30px;height:30px;border-radius:var(--r-sm);background:var(--surface);border:none;font-size:16px;cursor:pointer;color:var(--ink3);transition:all .15s}
+.s-close:hover{background:var(--red-l);color:var(--red)}
+.s-results{overflow-y:auto;padding:.5rem}
+.s-item{display:flex;align-items:center;gap:10px;padding:.7rem .8rem;border-radius:var(--r);cursor:pointer;transition:background .15s}
+.s-item:hover{background:var(--gold-l)}
+.s-icon{width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.s-name{font-size:13.5px;font-weight:700;color:var(--ink)}
+.s-desc{font-size:11.5px;color:var(--ink3)}
+.s-empty{text-align:center;padding:2rem;color:var(--ink3);font-size:13px}
+/* UPI tab removed — donate section only at bottom of page */
+.footer{background:var(--navy);padding:3rem 1.5rem 1.5rem;margin-top:2rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.flogo{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:800;font-size:19px;color:#fff;margin-bottom:.7rem}
+.flogo-box{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--gold),#FF9500);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:900;font-size:14px;color:var(--navy)}
+.flogo span{color:var(--gold)}
+.fbrand p{font-size:12.5px;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:1rem}
+.fsocs{display:flex;gap:8px}
+.fsoc{width:34px;height:34px;border-radius:var(--r-sm);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s;color:rgba(255,255,255,.55)}
+.fsoc:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.fcol h4{font-family:var(--f-display);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.3);margin-bottom:.85rem}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.fcol ul li a{font-size:12.5px;color:rgba(255,255,255,.5);transition:color .15s}
+.fcol ul li a:hover{color:var(--gold)}
+.fbot{border-top:1px solid rgba(255,255,255,.08);padding-top:1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.fbot p{font-size:11px;color:rgba(255,255,255,.3)}
+.fbot a{color:rgba(255,255,255,.4)}.fbot a:hover{color:var(--gold)}
+.dbox{text-align:center;padding:2rem 1rem;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);margin-bottom:2rem}
 
-/* Blog search bar */
-.blog-search-wrap{
-  display:flex;align-items:center;max-width:480px;margin:0 auto .25rem;
-  background:var(--white);border-radius:var(--r-pill);
-  box-shadow:var(--sh-lg);overflow:hidden;
-  border:2.5px solid transparent;transition:border-color .2s;
-}
+/* ── ALL TOOLS NAV DROPDOWN ── */
+.nav-tools-wrap{position:relative}
+.nav-tools-btn{padding:7px 13px;border-radius:var(--r-sm);font-size:13.5px;font-weight:500;color:var(--ink2);transition:all .15s;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:5px;background:transparent;border:none;font-family:var(--f-body)}
+.nav-tools-btn:hover,.nav-tools-btn.open{background:var(--surface);color:var(--ink)}
+.nav-tools-btn svg{transition:transform .2s;color:var(--ink3)}
+.nav-tools-btn.open svg{transform:rotate(180deg)}
+.tools-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--sh-lg);padding:.75rem;width:540px;display:none;z-index:2000}
+.tools-dropdown.open{display:block}
+.td-header{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);padding:.3rem .5rem .6rem;border-bottom:1px solid var(--border);margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:center}
+.td-header a{font-size:11px;color:var(--gold-d);font-weight:600;letter-spacing:0;text-transform:none}
+.td-header a:hover{color:var(--gold)}
+.td-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.td-item{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:var(--r-sm);cursor:pointer;transition:all .15s;text-decoration:none;color:inherit}
+.td-item:hover{background:var(--gold-l)}
+.td-icon{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.td-name{font-size:12px;font-weight:600;color:var(--ink);line-height:1.3}
+.td-badge{font-size:7.5px;font-weight:800;padding:1px 5px;border-radius:var(--r-pill);text-transform:uppercase;display:inline-block;margin-top:2px}
+.td-divider{grid-column:1/-1;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);padding:.5rem .5rem .3rem;border-top:1px solid var(--border);margin-top:.25rem}
+
+/* ── HERO SEARCH DROPDOWN ── */
+.hero-search-wrap{position:relative;max-width:580px;margin:0 auto 1.75rem}
+.hero-search{margin:0}
+.hero-dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--sh-lg);overflow:hidden;display:none;z-index:100;max-height:380px;overflow-y:auto}
+.hero-dropdown.open{display:block}
+.hd-item{display:flex;align-items:center;gap:10px;padding:.65rem 1rem;cursor:pointer;transition:background .15s;text-decoration:none;color:inherit}
+.hd-item:hover{background:var(--gold-l)}
+.hd-item:not(:last-child){border-bottom:1px solid var(--border)}
+.hd-icon{width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.hd-name{font-size:13.5px;font-weight:700;color:var(--ink)}
+.hd-desc{font-size:11.5px;color:var(--ink3)}
+.hd-empty{text-align:center;padding:1.5rem;color:var(--ink3);font-size:13px}
+.hd-footer{text-align:center;padding:.6rem;border-top:1px solid var(--border);font-size:12px;color:var(--ink3);background:var(--surface)}
+.hd-footer a{color:var(--gold-d);font-weight:600}
+.hd-footer a:hover{color:var(--gold)}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:1024px){.trending-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr;gap:1.75rem}}
+@media(max-width:820px){.stats-bar,.testi-grid{grid-template-columns:repeat(2,1fr)}.feat-strip,.why-grid{grid-template-columns:1fr 1fr}.blog-grid{grid-template-columns:1fr}.blog-featured{flex-direction:column}.trending-grid{grid-template-columns:repeat(2,1fr)}.nav-search,.nav-link,.btn-nav-gold{display:none}.hamburger{display:flex}}
+@media(max-width:600px){.hero{padding:2.5rem 1rem 2.25rem}.hero h1{font-size:1.75rem}.hero-stats{gap:1.25rem}.stats-bar{grid-template-columns:repeat(2,1fr)}.tools-grid{grid-template-columns:repeat(2,1fr)}.feat-strip,.why-grid,.testi-grid{grid-template-columns:1fr}.trending-grid{grid-template-columns:repeat(2,1fr)}.newsletter{flex-direction:column;text-align:center}.nl-form input{width:100%;max-width:300px}.share-bar{flex-direction:column;text-align:center}.footer-grid{grid-template-columns:1fr}.page-wrap{padding:0 .9rem}}
+@media(max-width:420px){.tools-grid,.trending-grid{grid-template-columns:1fr}}
+
+/* ── BLOG PAGE EXTRAS ── */
+.mini-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 55%,#1E3A8A 100%);padding:2.75rem 1.5rem 2.25rem;text-align:center;position:relative;overflow:hidden;margin-top:var(--nav-h)}
+.mini-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 300px at 80% 50%,rgba(245,166,35,.12) 0%,transparent 60%);pointer-events:none}
+.mini-hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.mini-hero h1{font-family:var(--f-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:#fff;margin-bottom:.5rem}
+.mini-hero p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:1.1rem}
+.blog-search-wrap{display:flex;align-items:center;max-width:480px;margin:0 auto .25rem;background:var(--white);border-radius:var(--r-pill);box-shadow:var(--sh-lg);overflow:hidden;border:2.5px solid transparent;transition:border-color .2s}
 .blog-search-wrap:focus-within{border-color:var(--gold)}
-.blog-search-wrap input{
-  flex:1;padding:11px 18px;border:none;outline:none;
-  font-size:13.5px;font-family:var(--f-body);color:var(--ink);
-  background:transparent;min-width:0;
-}
+.blog-search-wrap input{flex:1;padding:11px 18px;border:none;outline:none;font-size:13.5px;font-family:var(--f-body);color:var(--ink);background:transparent;min-width:0}
 .blog-search-wrap input::placeholder{color:var(--ink3)}
-.blog-search-wrap button{
-  background:var(--gold);color:var(--navy);padding:0 18px;min-height:44px;
-  font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px;
-  white-space:nowrap;flex-shrink:0;transition:background .15s;
-  border:none;cursor:pointer;font-family:var(--f-body);
-}
+.blog-search-wrap button{background:var(--gold);color:var(--navy);padding:0 18px;min-height:44px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0;transition:background .15s;border:none;cursor:pointer;font-family:var(--f-body)}
 .blog-search-wrap button:hover{background:var(--gold-d)}
-
-/* Blog stats row */
-.blog-stats-row{display:flex;justify-content:center;gap:1.5rem;margin-top:.9rem;flex-wrap:wrap}
-.bs-item{font-size:12px;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:5px}
+.blog-stats{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;flex-wrap:wrap}
+.bs-stat{font-size:12px;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:5px}
 .bs-num{color:var(--gold);font-weight:700}
-
-/* Featured band */
-.featured-band{
-  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
-  border-radius:var(--r-xl);padding:1.4rem;
-  box-shadow:var(--sh-lg);margin-bottom:1.75rem;
-  position:relative;overflow:hidden;
-}
-.featured-band::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle 200px at 90% 20%,rgba(245,166,35,.15) 0%,transparent 60%);
-  pointer-events:none;
-}
-.featured-band-label{
-  font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;
-  color:rgba(255,255,255,.4);margin-bottom:.85rem;position:relative;z-index:1;
-}
-.fb-inner{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:10px;position:relative;z-index:1;
-}
-.fb-card{
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
-  border-radius:var(--r-lg);padding:.9rem 1rem;cursor:pointer;transition:all .15s;
-}
+.bfbar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.5rem;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.bfbar::-webkit-scrollbar{display:none}
+.bf-pill{display:flex;align-items:center;gap:6px;padding:7px 16px;border-radius:var(--r-pill);border:1.5px solid var(--border);background:var(--white);font-size:13px;font-weight:600;color:var(--ink2);cursor:pointer;white-space:nowrap;transition:all .15s;flex-shrink:0}
+.bf-pill:hover{border-color:var(--gold);color:var(--gold-d);background:var(--gold-l)}
+.bf-pill.active{background:var(--gold);border-color:var(--gold);color:var(--navy);box-shadow:var(--sh-gold)}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;margin-bottom:2rem}
+.bcard{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);overflow:hidden;cursor:pointer;transition:all .2s;box-shadow:var(--sh-xs)}
+.bcard:hover{border-color:var(--gold-b);box-shadow:0 0 0 3px var(--gold-b),var(--sh);transform:translateY(-3px)}
+.bcard-accent{height:4px}
+.bcard-body{padding:1.25rem}
+.bcat{display:inline-flex;align-items:center;font-size:10px;font-weight:700;padding:3px 10px;border-radius:var(--r-pill);background:var(--gold-l);color:var(--gold-d);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.4px}
+.bfeat{display:inline-flex;align-items:center;gap:3px;font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:var(--r-pill);background:var(--navy);color:var(--gold);margin-left:5px}
+.btitle{font-family:var(--f-display);font-size:14.5px;font-weight:800;color:var(--ink);margin-bottom:.4rem;line-height:1.35}
+.bexc{font-size:12.5px;color:var(--ink2);line-height:1.65;margin-bottom:.75rem}
+.bmeta{font-size:11.5px;color:var(--ink3);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bmore{font-size:12.5px;font-weight:700;color:var(--gold-d);margin-top:.65rem;display:block}
+.bcard:hover .bmore{color:var(--gold)}
+.bnone{text-align:center;padding:3rem 1rem;color:var(--ink3);grid-column:1/-1}
+.featured-band{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:var(--r-xl);padding:1.5rem;box-shadow:var(--sh-lg);margin-bottom:1.75rem;position:relative;overflow:hidden}
+.featured-band::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 200px at 90% 20%,rgba(245,166,35,.15) 0%,transparent 60%);pointer-events:none}
+.fb-inner{position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.fb-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-lg);padding:.9rem 1rem;cursor:pointer;transition:all .15s}
 .fb-card:hover{background:rgba(255,255,255,.14);border-color:var(--gold)}
 .fb-cat{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gold);margin-bottom:.3rem}
 .fb-title{font-size:13px;font-weight:700;color:#fff;line-height:1.35;margin-bottom:.4rem}
 .fb-meta{font-size:11px;color:rgba(255,255,255,.45)}
-
-/* Blog grid + cards */
-.blog-page-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;margin-bottom:2rem}
-.bcard{
-  background:var(--white);border:1.5px solid var(--border);
-  border-radius:var(--r-xl);overflow:hidden;cursor:pointer;
-  transition:all .2s;box-shadow:var(--sh-xs);
-}
-.bcard:hover{border-color:var(--gold-b);box-shadow:0 0 0 3px var(--gold-b),var(--sh);transform:translateY(-3px)}
-.bcard-accent{height:4px}
-.bcard-body{padding:1.25rem}
-.bcat{
-  display:inline-flex;align-items:center;font-size:10px;font-weight:700;
-  padding:3px 10px;border-radius:var(--r-pill);background:var(--gold-l);color:var(--gold-d);
-  margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.4px;
-}
-.bfeat{
-  display:inline-flex;align-items:center;gap:3px;font-size:9.5px;font-weight:700;
-  padding:2px 8px;border-radius:var(--r-pill);background:var(--navy);color:var(--gold);margin-left:5px;
-}
-.btitle{font-family:var(--f-display);font-size:14.5px;font-weight:800;color:var(--ink);margin-bottom:.4rem;line-height:1.35}
-.bexc{font-size:12.5px;color:var(--ink2);line-height:1.65;margin-bottom:.75rem}
-.bmeta{font-size:11.5px;color:var(--ink3);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.bmore{font-size:12.5px;font-weight:700;color:var(--gold-d);margin-top:.65rem;display:block;transition:color .15s}
-.bcard:hover .bmore{color:var(--gold)}
-.bnone-state{text-align:center;padding:3rem 1rem;color:var(--ink3);grid-column:1/-1}
-.bnone-state span{font-size:2.5rem;display:block;margin-bottom:.5rem}
-
-/* Filter pills */
-.blog-filter-bar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.5rem;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
-.blog-filter-bar::-webkit-scrollbar{display:none}
-.bf-pill{
-  display:flex;align-items:center;gap:6px;padding:7px 16px;
-  border-radius:var(--r-pill);border:1.5px solid var(--border);background:var(--white);
-  font-size:13px;font-weight:600;color:var(--ink2);cursor:pointer;white-space:nowrap;
-  transition:all .15s;flex-shrink:0;
-}
-.bf-pill:hover{border-color:var(--gold);color:var(--gold-d);background:var(--gold-l)}
-.bf-pill.active{background:var(--gold);border-color:var(--gold);color:var(--navy);box-shadow:var(--sh-gold)}
-
-/* Share row */
-.blog-share-row{
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);
-  padding:.9rem 1.25rem;margin:1.25rem 0;flex-wrap:wrap;
-}
-.sr-text{font-size:13px;font-weight:600;color:var(--ink)}
-.sr-text span{color:var(--ink3);font-weight:400}
-.sr-btns{display:flex;gap:7px}
-.btn-sh{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:6px 13px;border-radius:var(--r-pill);
-  font-size:12px;font-weight:700;cursor:pointer;border:none;
-  font-family:var(--f-body);transition:all .15s;
-}
-.btn-sh:hover{filter:brightness(1.1);transform:translateY(-1px)}
-.bwa{background:#25D366;color:#fff}
-.bx{background:#000;color:#fff}
-.bfb{background:#1877F2;color:#fff}
-
-/* Newsletter */
-.blog-newsletter{
-  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
-  border-radius:var(--r-xl);padding:2rem 1.75rem;position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin:1.5rem 0;
-}
-.blog-newsletter::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle 200px at 90% 20%,rgba(245,166,35,.15) 0%,transparent 60%);
-  pointer-events:none;
-}
+.newsletter{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:var(--r-xl);padding:2rem 1.75rem;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin:1.5rem 0}
+.newsletter::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 200px at 90% 20%,rgba(245,166,35,.15) 0%,transparent 60%);pointer-events:none}
 .nl-text{position:relative;z-index:1}
 .nl-text h3{font-family:var(--f-display);font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:.25rem}
 .nl-text p{font-size:13px;color:rgba(255,255,255,.5)}
 .nl-form{display:flex;gap:8px;flex-wrap:wrap;position:relative;z-index:1}
-.nl-form input{
-  padding:10px 16px;border-radius:var(--r-pill);border:1.5px solid rgba(255,255,255,.2);
-  background:rgba(255,255,255,.1);color:#fff;font-size:13px;font-family:var(--f-body);
-  outline:none;width:220px;transition:border-color .2s;
-}
-.nl-form input::placeholder{color:rgba(255,255,255,.4)}
-.nl-form input:focus{border-color:var(--gold)}
+.nl-form input{padding:10px 16px;border-radius:var(--r-pill);border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-size:13px;font-family:var(--f-body);outline:none;width:220px;transition:border-color .2s}
+.nl-form input::placeholder{color:rgba(255,255,255,.4)}.nl-form input:focus{border-color:var(--gold)}
+.btn-gold{background:var(--gold);color:var(--navy);padding:10px 22px;border-radius:var(--r-pill);font-size:13.5px;font-weight:700;transition:all .15s;box-shadow:var(--sh-gold);display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:none;font-family:var(--f-body)}
+.btn-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
+.cta-band{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:var(--r-xl);padding:2rem 1.75rem;text-align:center;position:relative;overflow:hidden;box-shadow:var(--sh-lg);margin:1.5rem 0}
+.cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 180px at 90% 20%,rgba(245,166,35,.12) 0%,transparent 60%)}
+.cta-band h2{font-family:var(--f-display);font-size:1.35rem;font-weight:900;color:#fff;margin-bottom:.4rem;position:relative}
+.cta-band p{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:1.25rem;position:relative}
+.share-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:.9rem 1.25rem;margin:1.25rem 0;flex-wrap:wrap}
+.sr-text{font-size:13px;font-weight:600;color:var(--ink)}
+.sr-text span{color:var(--ink3);font-weight:400}
+.sr-btns{display:flex;gap:7px}
+.btn-sh{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:var(--r-pill);font-size:12px;font-weight:700;cursor:pointer;border:none;font-family:var(--f-body);transition:all .15s}
+.btn-sh:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.bwa{background:#25D366;color:#fff}.bx{background:#000;color:#fff}.bfb{background:#1877F2;color:#fff}
+.ad-box{background:var(--white);border:1.5px dashed var(--border2);border-radius:var(--r-lg);min-height:100px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink3);margin:1.25rem 0;position:relative;flex-direction:column;gap:3px}
+.ad-box::before{content:'AD';position:absolute;top:5px;right:8px;font-size:7.5px;font-weight:800;letter-spacing:.5px;opacity:.6}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink3);margin-bottom:1.25rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--ink3);transition:color .15s}.breadcrumb a:hover{color:var(--gold-d)}
+.breadcrumb-sep{color:var(--border2)}
+.breadcrumb-cur{color:var(--ink2);font-weight:500}
+.sec-hd{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+.sec-title{font-family:var(--f-display);font-size:1.2rem;font-weight:800;color:var(--ink)}
+.sec-count{font-size:12px;color:var(--ink3);background:var(--surface);padding:3px 10px;border-radius:var(--r-pill);font-weight:600;flex-shrink:0}
+@media(max-width:820px){.nav-search,.nav-link,.btn-nav-gold{display:none}.hamburger{display:flex}}
+@media(max-width:600px){.page-wrap{padding:0 .9rem}.bgrid{grid-template-columns:1fr}.fb-inner{grid-template-columns:1fr}.newsletter{flex-direction:column;text-align:center}.nl-form input{width:100%;max-width:300px}.share-row{flex-direction:column;text-align:center}.mini-hero{padding:2rem 1rem 1.75rem}}
 
-/* Blog CTA */
-.blog-cta{
-  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
-  border-radius:var(--r-xl);padding:2rem 1.75rem;text-align:center;
-  position:relative;overflow:hidden;box-shadow:var(--sh-lg);margin:1.5rem 0;
-}
-.blog-cta::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle 180px at 90% 20%,rgba(245,166,35,.12) 0%,transparent 60%);
-}
-.blog-cta h2{font-family:var(--f-display);font-size:1.35rem;font-weight:900;color:#fff;margin-bottom:.4rem;position:relative}
-.blog-cta p{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:1.25rem;position:relative}
-.btn-cta-gold{
-  background:var(--gold);color:var(--navy);padding:11px 28px;border-radius:var(--r-pill);
-  font-size:13.5px;font-weight:700;transition:all .15s;box-shadow:var(--sh-gold);
-  display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:none;font-family:var(--f-body);
-  position:relative;
-}
-.btn-cta-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
-
-/* ── Ad boxes ── */
-.blog-ad{
-  background:var(--white);border:1.5px dashed var(--border2);border-radius:var(--r-lg);
-  min-height:100px;display:flex;align-items:center;justify-content:center;
-  font-size:11px;color:var(--ink3);margin:1.25rem 0;position:relative;flex-direction:column;gap:3px;
-}
-.blog-ad::before{content:'AD';position:absolute;top:5px;right:8px;font-size:7.5px;font-weight:800;letter-spacing:.5px;opacity:.6}
-
-/* ── Breadcrumb (blog-specific styling) ── */
-.blog-breadcrumb{
-  display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink3);
-  margin-bottom:1.25rem;flex-wrap:wrap;padding-top:1.25rem;
-}
-.blog-breadcrumb a{color:var(--ink3);transition:color .15s}
-.blog-breadcrumb a:hover{color:var(--gold-d)}
-.blog-breadcrumb-sep{color:var(--border2)}
-.blog-breadcrumb-cur{color:var(--ink2);font-weight:500}
-
-/* Pagination placeholder */
-.blog-pagination{display:flex;justify-content:center;gap:8px;margin:1.5rem 0;flex-wrap:wrap}
-.pg-btn{
-  padding:8px 16px;border-radius:var(--r-pill);border:1.5px solid var(--border);
-  background:var(--white);font-size:13px;font-weight:600;color:var(--ink2);
-  cursor:pointer;transition:all .15s;
-}
-.pg-btn:hover{border-color:var(--gold);color:var(--gold-d);background:var(--gold-l)}
-.pg-btn.active{background:var(--gold);border-color:var(--gold);color:var(--navy)}
-
-/* Responsive */
-@media(max-width:600px){
-  .blog-hero{padding:2rem 1rem 1.75rem}
-  .blog-newsletter{flex-direction:column;text-align:center}
-  .nl-form input{width:100%;max-width:300px}
-  .blog-share-row{flex-direction:column;text-align:center}
-  .fb-inner{grid-template-columns:1fr}
-  .blog-page-grid{grid-template-columns:1fr}
-}
 </style>
 </head>
+<body>
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo" aria-label="ToolNest Home">
+    <img src="/favicon.png" alt="ToolNest" width="38" height="38" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="nav-logo-box" style="display:none">TN</div>
+    Tool<span>Nest</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearch" placeholder="Search 24+ free tools…" oninput="heroSearch(this.value);document.getElementById('heroInput').value=this.value" autocomplete="off">
+  </div>
+  <div class="nav-right">
+    <a href="/" class="nav-link active">Home</a>
+    <!-- All Tools Dropdown -->
+    <div class="nav-tools-wrap" id="navToolsWrap">
+      <button class="nav-tools-btn" id="navToolsBtn" onclick="toggleToolsDD()" aria-expanded="false" aria-haspopup="true">
+        All Tools
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="tools-dropdown" id="toolsDropdown" role="menu">
+        <div class="td-header">
+          <span>24+ Free Tools — Koi signup nahi</span>
+          <a href="/tools/" onclick="closeToolsDD()">Sabhi dekhein →</a>
+        </div>
+        <div class="td-grid" id="tdGrid"><!-- Rendered by JS --></div>
+      </div>
+    </div>
+    <a href="/blog.html" class="nav-link">Blog</a>
+    <a href="/about.html" class="nav-link">About</a>
+    <a href="#donate" class="btn-nav-gold">❤️ Donate</a>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-overlay" id="mobOverlay" onclick="closeNav()"></div>
+<nav class="mob-nav" id="mobNav">
+  <a href="/" class="mob-link active">🏠 Home</a>
+  <a href="/tools/" class="mob-link">🛠 All Tools</a>
+  <a href="/blog.html" class="mob-link">📝 Blog</a>
+  <a href="/about.html" class="mob-link">👋 About</a>
+  <a href="#donate" class="mob-link" onclick="closeNav()">❤️ UPI Donate</a>
+</nav>
 
-<!-- ✅ FIX BUG 2: body class="tn-page" — shell.js detects this correctly -->
-<body class="tn-page">
-
-<!-- ✅ FIX BUG 10: Nav injected by shell.js — no hardcoded nav needed -->
-<div id="tn-nav"></div>
-
-<!-- ═══ BLOG HERO ═══ -->
-<div class="blog-hero">
-  <div class="blog-hero-inner">
+<!-- MINI HERO -->
+<div class="mini-hero">
+  <div class="mini-hero-inner">
     <h1>📚 ToolNest Blog</h1>
     <p>Hindi + English mein helpful guides — PDF tools, GST invoice, image compression, EMI calculator &amp; more</p>
-
-    <!-- ✅ FIX BUG 3+4: blog-specific search, no heroSearch(), no heroInput ref -->
     <div class="blog-search-wrap">
-      <input
-        type="text"
-        id="blogSearchInput"
-        placeholder="Search articles… e.g. pdf merge, gst invoice, image compress…"
-        oninput="TN.debounce(searchPosts, 200)(this.value)"
-        autocomplete="off"
-        aria-label="Search blog articles">
-      <button type="button" onclick="searchPosts(document.getElementById('blogSearchInput').value)">
+      <input type="text" id="blogSearchInput" placeholder="Search articles… e.g. pdf merge, gst invoice, image compress…" oninput="searchPosts(this.value)" autocomplete="off">
+      <button type="button">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         Search
       </button>
     </div>
-
-    <div class="blog-stats-row">
-      <!-- ✅ FIX BUG 17: dynamic count, not hardcoded "13" -->
-      <div class="bs-item"><span class="bs-num" id="bsTotal">0</span> articles</div>
-      <div class="bs-item"><span class="bs-num">2000+</span> words each</div>
-      <div class="bs-item"><span class="bs-num">🇮🇳</span> Made for India</div>
+    <div class="blog-stats">
+      <div class="bs-stat"><span class="bs-num" id="bsTotal">13</span> articles</div>
+      <div class="bs-stat"><span class="bs-num">2000+</span> words each</div>
+      <div class="bs-stat"><span class="bs-num">🇮🇳</span> Made for India</div>
     </div>
   </div>
 </div>
 
-<!-- ═══ MAIN CONTENT ═══ -->
-<div class="tn-page-wrap">
+<div class="page-wrap" style="max-width:1200px;margin:0 auto;padding:0 1.25rem">
 
-  <!-- AdSense Slot 1 — Leaderboard after hero -->
-  <div class="blog-ad">
-    <!-- REPLACE with AdSense:
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ID"></script>
+  <!-- ADSENSE SLOT 1: Leaderboard after hero -->
+  <div class="ad-box" style="margin-top:1.25rem">
+    <!-- REPLACE: <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ID"></script>
     <ins class="adsbygoogle" data-ad-client="ca-pub-YOUR_ID" data-ad-slot="SLOT_BLOG_1" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script> -->
     📢 AdSense Slot 1 — Blog Leaderboard (728×90)
     <span style="font-size:9px;opacity:.6">Blog hero ke baad — high viewability</span>
   </div>
 
-  <!-- Breadcrumb -->
-  <!-- ✅ FIX BUG 23: Blog is marked active, not Home -->
-  <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb">
     <a href="/">🏠 Home</a>
-    <span class="blog-breadcrumb-sep">›</span>
-    <span class="blog-breadcrumb-cur">Blog</span>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-cur">Blog</span>
   </nav>
 
-  <!-- Featured posts band -->
-  <div>
-    <div class="tn-sec-hd" style="margin-bottom:.75rem">
-      <div class="tn-sec-title">⭐ Featured Articles</div>
-    </div>
+  <!-- FEATURED POSTS BAND -->
+  <div style="margin-bottom:1.75rem">
+    <div class="sec-hd"><div style="font-family:var(--f-display);font-size:1.1rem;font-weight:800;color:var(--ink)">⭐ Featured Articles</div></div>
     <div class="featured-band">
-      <div class="featured-band-label">Editor's picks — sabse helpful guides</div>
-      <div class="fb-inner" id="featuredBand">
-        <div style="color:rgba(255,255,255,.4);font-size:13px;grid-column:1/-1;text-align:center;padding:.5rem">Loading...</div>
-      </div>
+      <div class="fb-inner" id="featuredBand"></div>
     </div>
   </div>
 
-  <!-- Filter pills -->
-  <div class="blog-filter-bar" id="filterBar" role="tablist" aria-label="Filter by category"></div>
+  <!-- FILTER PILLS -->
+  <div class="bfbar" id="filterBar"></div>
 
-  <!-- Section header -->
-  <div class="tn-sec-hd">
-    <div>
-      <div class="tn-sec-title" id="blogTitle">All Articles</div>
-      <div class="tn-sec-sub" id="blogSub">Sabhi categories ke articles</div>
-    </div>
-    <span class="tn-sec-count" id="blogCount">Loading…</span>
+  <!-- SECTION HEADER -->
+  <div class="sec-hd">
+    <div class="sec-title" id="blogTitle">All Articles</div>
+    <span class="sec-count" id="blogCount">13 articles</span>
   </div>
 
-  <!-- Blog grid -->
-  <div class="blog-page-grid" id="blogGrid">
-    <div class="bnone-state"><span>⏳</span>Loading articles...</div>
+  <!-- BLOG GRID -->
+  <div class="bgrid" id="blogGrid">
+    <div class="bnone">⏳ Loading articles...</div>
   </div>
 
-  <!-- Share row -->
-  <div class="blog-share-row">
+  <!-- SHARE -->
+  <div class="share-row">
     <div class="sr-text">Helpful laga? <span>Dosto ko share karein! 🎉</span></div>
     <div class="sr-btns">
-      <button class="btn-sh bwa" onclick="blogShare('wa')">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
-      </button>
-      <button class="btn-sh bx" onclick="blogShare('x')">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        X
-      </button>
-      <button class="btn-sh bfb" onclick="blogShare('fb')">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        Facebook
-      </button>
+      <button class="btn-sh bwa" onclick="shareWA()"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</button>
+      <button class="btn-sh bx" onclick="shareX()"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X</button>
+      <button class="btn-sh bfb" onclick="shareFB()"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</button>
     </div>
   </div>
 
-  <!-- AdSense Slot 2 — In-content -->
-  <div class="blog-ad">
+  <!-- ADSENSE SLOT 2: In-content -->
+  <div class="ad-box">
     📢 AdSense Slot 2 — In-content Rectangle (336×280)
     <span style="font-size:9px;opacity:.6">Blog grid ke baad — best RPM zone</span>
   </div>
 
-  <!-- Newsletter -->
-  <div class="blog-newsletter">
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
     <div class="nl-text">
       <h3>📬 Naye Articles ki Updates Paayein</h3>
       <p>Spam nahi, sirf new guides. Kabhi bhi unsubscribe kar sakte ho.</p>
     </div>
     <div class="nl-form">
       <input type="email" id="nlEmail" placeholder="aapka@email.com">
-      <button class="btn-cta-gold" onclick="subNL()">Subscribe 🚀</button>
+      <button class="btn-gold" onclick="subNL()">Subscribe 🚀</button>
     </div>
   </div>
 
   <!-- CTA -->
-  <div class="blog-cta">
-    <h2>25+ Free Tools Explore Karein</h2>
+  <div class="cta-band">
+    <h2>24+ Free Tools Explore Karein</h2>
     <p>Guides padhe? Ab tools use karein — koi signup nahi, 100% free.</p>
-    <button class="btn-cta-gold" onclick="location.href='/'">
+    <button class="btn-gold" onclick="location.href='/'">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline"><polyline points="18 15 12 9 6 15"/></svg>
       Sabhi Tools Dekhein
     </button>
   </div>
 
-  <!-- AdSense Slot 3 — Footer -->
-  <div class="blog-ad">
+  <!-- ADSENSE SLOT 3: Footer -->
+  <div class="ad-box">
     📢 AdSense Slot 3 — Footer Leaderboard
     <span style="font-size:9px;opacity:.6">Page exit zone — good for RPM</span>
   </div>
 
-</div><!-- /tn-page-wrap -->
+</div>
 
-<!-- ✅ FIX BUG 11: Footer injected by shell.js — no hardcoded footer -->
-<div id="tn-footer"></div>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="fbrand">
+        <div class="flogo"><div class="flogo-box">TN</div>Tool<span>Nest</span></div>
+        <p>Free · No Signup · 100% Browser-based · Made for India 🇮🇳<br>Aapki files kabhi bhi hamare server par nahi jaati.</p>
+        <div class="fsocs">
+          <a href="https://twitter.com/toolnest_in" class="fsoc" target="_blank" rel="noopener" aria-label="Twitter">𝕏</a>
+          <a href="https://instagram.com/toolnest_in" class="fsoc" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a href="https://wa.me/message/toolnest" class="fsoc" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+          <a href="https://youtube.com/@toolnest" class="fsoc" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="fcol"><h4>PDF Tools</h4><ul>
+        <li><a href="/tools/merge-pdf.html">Merge PDF</a></li>
+        <li><a href="/tools/compress-pdf.html">Compress PDF</a></li>
+        <li><a href="/tools/split-pdf.html">Split PDF</a></li>
+        <li><a href="/tools/jpg-to-pdf.html">JPG to PDF</a></li>
+        <li><a href="/tools/pdf-to-word.html">PDF to Word</a></li>
+        <li><a href="/tools/watermark-pdf.html">Watermark PDF</a></li>
+      </ul></div>
+      <div class="fcol"><h4>Other Tools</h4><ul>
+        <li><a href="/tools/image-compress.html">Image Compressor</a></li>
+        <li><a href="/tools/qr-code-generator.html">QR Code Generator</a></li>
+        <li><a href="/tools/invoice-generator.html">GST Invoice</a></li>
+        <li><a href="/tools/emi-calculator.html">EMI Calculator</a></li>
+        <li><a href="/tools/sip-calculator.html">SIP Calculator</a></li>
+        <li><a href="/tools/">All 24+ Tools →</a></li>
+      </ul></div>
+      <div class="fcol"><h4>Company</h4><ul>
+        <li><a href="/about.html">About Us</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms of Use</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/sitemap.xml">Sitemap</a></li>
+      </ul></div>
+    </div>
+    <div class="fbot">
+      <p>© 2026 <a href="https://toolnest.bhaihelp.in">toolnest.bhaihelp.in</a> · All rights reserved</p>
+      <p>Made with ❤️ for Indian Users · Privacy First · No Signup · Always Free</p>
+      <p><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/sitemap.xml">Sitemap</a></p>
+    </div>
+  </div>
+</footer>
 
-<!-- ✅ FIX BUG 9: shell.js injects nav + footer, handles dark mode -->
-<script src="/assets/js/shell.js" defer></script>
-<script src="/assets/js/utils.js" defer></script>
+<!-- SEARCH OVERLAY (shared with index.html) -->
+<div style="position:fixed;inset:0;background:rgba(10,12,20,.65);backdrop-filter:blur(4px);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding-top:80px" id="searchOverlay" onclick="if(event.target===this)closeSearch()">
+  <div style="background:var(--white);border-radius:var(--r-xl);width:100%;max-width:600px;box-shadow:var(--sh-lg);overflow:hidden;max-height:calc(100vh - 120px);display:flex;flex-direction:column;margin:0 1rem">
+    <div style="display:flex;align-items:center;gap:10px;padding:.85rem 1.1rem;border-bottom:1px solid var(--border)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--ink3);flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="overlayInput" placeholder="Search 24+ free tools…" oninput="overlaySearch(this.value)" autocomplete="off" style="flex:1;border:none;outline:none;font-size:15px;font-family:var(--f-body);color:var(--ink)">
+      <button onclick="closeSearch()" style="width:30px;height:30px;border-radius:var(--r-sm);background:var(--surface);border:none;font-size:16px;cursor:pointer;color:var(--ink3)">&#x2715;</button>
+    </div>
+    <div id="overlayResults" style="overflow-y:auto;padding:.5rem"></div>
+  </div>
+</div>
 
 <script>
-/* ════════════════════════════════════════════════════════════
-   BLOG POSTS DATA
-   ✅ FIX BUG 8: Single comprehensive POSTS array
-      (ideally this would be a shared /data/posts.json file
-       loaded via fetch — for now kept here for simplicity)
-   ✅ FIX BUG 7: TOOLS array removed — TN_TOOLS in shell.js
-   ✅ FIX BUG 12+13: FAQS/TRENDING arrays removed (unused)
-   ✅ FIX BUG 15: let/const instead of var
-════════════════════════════════════════════════════════════ */
-const POSTS = [
-  {
-    title:   'Best Free GST Invoice Generator India 2026 – No Signup Required',
-    slug:    'best-gst-invoice-generator-india-2026',
-    excerpt: 'Puri guide ki kaise ToolNest se professional GST invoice banayein — bilkul free, koi account nahi. GST rules, mandatory fields aur best practices.',
-    date:    '2026-04-01', category:'Finance',  readTime:'5 min',  featured:true
-  },
-  {
-    title:   'PDF Compress Kaise Karein Bina Quality Loss Ke? (Free Online)',
-    slug:    'compress-pdf-free-online-india',
-    excerpt: 'PDF file size reduce karna ab aasaan hai! ToolNest se bina quality lose kiye PDF compress karein — koi server upload nahi, 100% browser-based.',
-    date:    '2026-03-28', category:'PDF',      readTime:'4 min',  featured:false
-  },
-  {
-    title:   'Image Compress Karna Free Mein — Best Tools India 2026',
-    slug:    'compress-image-without-quality-loss',
-    excerpt: 'Website speed improve karna chahte ho? Janiye kaise images ko 90% tak compress karein bina quality lose kiye — bilkul free.',
-    date:    '2026-03-25', category:'Images',   readTime:'4 min',  featured:false
-  },
-  {
-    title:   'Complete GST Invoice Guide for Indian Businesses',
-    slug:    'gst-invoice-guide',
-    excerpt: 'Master GST invoice creation. Learn mandatory fields, tax calculations, compliance requirements, and best practices for Indian businesses.',
-    date:    '2026-02-20', category:'Business', readTime:'10 min', featured:true
-  },
-  {
-    title:   'Top 10 Free Online Tools for Small Business India 2026',
-    slug:    'free-online-tools-small-business-india',
-    excerpt: 'Chote business ke liye 10 zaroori free online tools. Time bachao, paise bachao aur productivity badhao bina kisi cost ke.',
-    date:    '2026-03-20', category:'Business', readTime:'7 min',  featured:false
-  },
-  {
-    title:   'EMI Calculator Guide — Home Loan, Car Loan India 2026',
-    slug:    'emi-calculator-home-loan-guide',
-    excerpt: 'Home loan, car loan ya personal loan — EMI calculate karna aur planning karna ab easy hai. Complete guide with examples.',
-    date:    '2026-03-15', category:'Finance',  readTime:'6 min',  featured:false
-  },
-  {
-    title:   'PDF Merge Kaise Karein? Complete Step-by-Step Guide',
-    slug:    'merge-pdf-guide-india-2026',
-    excerpt: 'Multiple PDF files ko ek file mein combine karna sikhein — drag & drop se reorder, 100% free, koi upload nahi.',
-    date:    '2026-03-10', category:'PDF',      readTime:'5 min',  featured:false
-  },
-  {
-    title:   'UPI QR Code Generator Free — PhonePe, GPay ke liye',
-    slug:    'upi-qr-code-generator-free-india',
-    excerpt: 'Apne payment ke liye UPI QR code banao bilkul free. PhonePe, GPay, Paytm — sabhi ke liye compatible.',
-    date:    '2026-03-05', category:'Tools',    readTime:'3 min',  featured:false
-  },
-  {
-    title:   'Best Free PDF Tools Online India — No Upload, No Signup',
-    slug:    'best-free-pdf-tools-india',
-    excerpt: "India ke best free PDF tools ka complete comparison. Kaunsa tool choose karein aur kyun — poori jaankari.",
-    date:    '2026-02-28', category:'PDF',      readTime:'7 min',  featured:false
-  },
-  {
-    title:   'SIP Calculator India — Mutual Fund Returns Kaise Calculate Karein',
-    slug:    'sip-calculator-mutual-fund-india',
-    excerpt: 'SIP mein invest karne se pehle returns calculate karo. ToolNest SIP calculator se apna financial plan banao.',
-    date:    '2026-02-25', category:'Finance',  readTime:'6 min',  featured:false
-  },
-  {
-    title:   'Free SEO Meta Tag Generator — Apni Website Ko Rank Karwao',
-    slug:    'free-seo-meta-tag-generator',
-    excerpt: 'SEO meta tags kyun zaroori hain aur kaise generate karein? Complete guide in Hindi + English.',
-    date:    '2026-02-20', category:'SEO',      readTime:'5 min',  featured:false
-  },
-  {
-    title:   'Image Compression Tips for Faster Websites',
-    slug:    'image-compression-tips',
-    excerpt: 'Learn how to compress images without losing quality. Improve website speed, SEO rankings, and user experience.',
-    date:    '2026-02-21', category:'Technology', readTime:'8 min', featured:false
-  },
-  {
-    title:   'Best Free PDF Tools for Students in 2026',
-    slug:    'pdf-tools-for-students',
-    excerpt: 'Discover essential free PDF tools every student needs. Merge, convert, compress PDFs without spending money.',
-    date:    '2026-02-22', category:'Education', readTime:'12 min', featured:false
-  },
-  {
-    title:   'SEO Meta Tags Guide: Complete Tutorial for 2026',
-    slug:    'seo-meta-tags-guide',
-    excerpt: 'Complete guide to SEO meta tags. Learn title tags, meta descriptions, Open Graph markup and boost your search rankings.',
-    date:    '2026-02-23', category:'SEO',      readTime:'15 min', featured:false
-  },
-  {
-    title:   '10 Time-Saving Productivity Tools for Students 2026',
-    slug:    'productivity-tools-for-students-2026',
-    excerpt: 'Discover the best free productivity tools for students in 2026. Boost your grades and stay organized.',
-    date:    '2026-03-04', category:'Education', readTime:'14 min', featured:true
-  },
-  {
-    title:   'Digital Marketing Tools Every Startup Needs in 2026',
-    slug:    'digital-marketing-tools-startups-2026',
-    excerpt: 'Essential free tools for startups. SEO, social media, email marketing, analytics, and content creation.',
-    date:    '2026-03-05', category:'Business', readTime:'18 min', featured:true
-  },
+const TOOLS=[
+  {name:'Compress PDF',icon:'📦',cat:'compress',badge:'hot',url:'/tools/compress-pdf.html',desc:'PDF size reduce karein bina quality loss ke'},
+  {name:'Image Compressor',icon:'🗜',cat:'compress',badge:'hot',url:'/tools/image-compress.html',desc:'Image size 90% tak kam karein, batch support'},
+  {name:'Merge PDF',icon:'📎',cat:'organize',badge:'hot',url:'/tools/merge-pdf.html',desc:'Multiple PDFs ko ek file mein combine karein'},
+  {name:'Split PDF',icon:'✂️',cat:'organize',badge:'',url:'/tools/split-pdf.html',desc:'PDF se specific pages extract karein'},
+  {name:'Rotate PDF',icon:'🔁',cat:'organize',badge:'',url:'/tools/rotate-pdf.html',desc:'Pages ko kisi bhi orientation mein rotate karein'},
+  {name:'Protect PDF',icon:'🔐',cat:'edit',badge:'',url:'/tools/protect-pdf.html',desc:'PDF par password protection lagayein'},
+  {name:'Unlock PDF',icon:'🔓',cat:'edit',badge:'',url:'/tools/unlock-pdf.html',desc:'PDF se password remove karein'},
+  {name:'Watermark PDF',icon:'🏷',cat:'edit',badge:'new',url:'/tools/watermark-pdf.html',desc:'PDF par custom text watermark add karein'},
+  {name:'JPG to PDF',icon:'📸',cat:'convert',badge:'hot',url:'/tools/jpg-to-pdf.html',desc:'Images ko PDF mein instantly convert karein'},
+  {name:'PDF to JPG',icon:'🖼',cat:'convert',badge:'',url:'/tools/pdf-to-jpg.html',desc:'PDF pages ko high-quality images mein convert'},
+  {name:'Word to PDF',icon:'📝',cat:'convert',badge:'new',url:'/tools/word-to-pdf.html',desc:'.docx ya typed text ko PDF mein convert karein'},
+  {name:'PDF to Word',icon:'📄',cat:'convert',badge:'new',url:'/tools/pdf-to-word.html',desc:'PDF text ko editable .docx mein extract karein'},
+  {name:'Image Resizer',icon:'📐',cat:'image',badge:'new',url:'/tools/image-resizer.html',desc:'Image ko exact pixel dimensions mein resize karein'},
+  {name:'Image to PNG',icon:'🎨',cat:'image',badge:'',url:'/tools/image-to-png.html',desc:'Koi bhi image format ko PNG mein convert karein'},
+  {name:'Background Remover',icon:'✂️',cat:'image',badge:'new',url:'/tools/bg-remover.html',desc:'Image ka background automatically remove karein'},
+  {name:'QR Code Generator',icon:'📱',cat:'productivity',badge:'hot',url:'/tools/qr-code-generator.html',desc:'URL, WiFi, UPI, vCard, SMS ke liye QR banao'},
+  {name:'Password Generator',icon:'🔑',cat:'productivity',badge:'',url:'/tools/password-generator.html',desc:'Cryptographically secure random passwords'},
+  {name:'Word Counter',icon:'📊',cat:'productivity',badge:'',url:'/tools/word-counter.html',desc:'Words, chars, sentences, reading time count'},
+  {name:'JSON Formatter',icon:'{ }',cat:'productivity',badge:'',url:'/tools/json-formatter.html',desc:'JSON data format, validate & beautify karein'},
+  {name:'GST Invoice Generator',icon:'🧾',cat:'business',badge:'hot',url:'/tools/invoice-generator.html',desc:'Professional GST invoices with PDF download'},
+  {name:'SEO Meta Generator',icon:'🔍',cat:'business',badge:'',url:'/tools/seo-generator.html',desc:'Meta tags & Open Graph tags generate karein'},
+  {name:'EMI Calculator',icon:'💳',cat:'calculator',badge:'hot',url:'/tools/emi-calculator.html',desc:'Home, car & personal loan EMI calculate karein'},
+  {name:'Age Calculator',icon:'🎂',cat:'calculator',badge:'',url:'/tools/age-calculator.html',desc:'Exact age years, months, days mein calculate'},
+  {name:'Percentage Calculator',icon:'🧮',cat:'calculator',badge:'',url:'/tools/percentage-calculator.html',desc:'% increase, decrease, of value — sab calculate'},
+  {name:'SIP Calculator',icon:'📈',cat:'calculator',badge:'new',url:'/tools/sip-calculator.html',desc:'Mutual fund SIP returns calculate karein'},
 ];
 
-/* Category → [bg, accent] */
-const CAT_ACCENTS = {
-  Finance:       ['#E6FAF4', '#00B37E'],
-  Business:      ['#E8F8FD', '#0891B2'],
-  PDF:           ['#FFF0EB', '#F5620A'],
-  Images:        ['#EEF3FF', '#1E4FCB'],
-  SEO:           ['#F2EDFF', '#6C3FC4'],
-  Tools:         ['#FFF8E6', '#E88B00'],
-  Technology:    ['#EEF3FF', '#1E4FCB'],
-  Education:     ['#D1FAE5', '#059669'],
-  'Web Development': ['#FCE4F0', '#E91E8C'],
+/* ════ BLOG POSTS (11+) ════ */
+const BLOGS=[
+  {e:'🧾',cat:'Finance',bg:'#E6FAF4',title:'Best Free GST Invoice Generator India 2026 – No Signup Required',url:'/blog/best-gst-invoice-generator-india-2026/',mins:5,feat:true,desc:'Puri guide ki kaise ToolNest se professional GST invoice banayein — bilkul free, koi account nahi.'},
+  {e:'📦',cat:'PDF',bg:'#FFF0EB',title:'PDF Compress Kaise Karein Bina Quality Loss Ke? (Free Online)',url:'/blog/compress-pdf-free-online-india/',mins:4,feat:false},
+  {e:'🖼️',cat:'Images',bg:'#EEF3FF',title:'Image Compress Karna Free Mein — Best Tools India 2026',url:'/blog/compress-image-without-quality-loss/',mins:4,feat:false},
+  {e:'💼',cat:'Business',bg:'#F2EDFF',title:'Top 10 Free Online Tools for Small Business India 2026',url:'/blog/free-online-tools-small-business-india/',mins:7,feat:false},
+  {e:'🏠',cat:'Finance',bg:'#FFF8E6',title:'EMI Calculator Guide — Home Loan, Car Loan India 2026',url:'/blog/emi-calculator-home-loan-guide/',mins:6,feat:false},
+  {e:'📎',cat:'PDF',bg:'#E6FAF4',title:'PDF Merge Kaise Karein? Complete Step-by-Step Guide',url:'/blog/merge-pdf-guide-india-2026/',mins:5,feat:false},
+  {e:'📱',cat:'Tools',bg:'#EEF3FF',title:'UPI QR Code Generator Free — PhonePe, GPay ke liye',url:'/blog/upi-qr-code-generator-free-india/',mins:3,feat:false},
+  {e:'📋',cat:'PDF',bg:'#FFF0EB',title:'Best Free PDF Tools Online India — No Upload, No Signup',url:'/blog/best-free-pdf-tools-india/',mins:7,feat:false},
+  {e:'🧮',cat:'Finance',bg:'#D1FAE5',title:'SIP Calculator India — Mutual Fund Returns Kaise Calculate Karein',url:'/blog/sip-calculator-mutual-fund-india/',mins:6,feat:false},
+  {e:'🔍',cat:'SEO',bg:'#F2EDFF',title:'Free SEO Meta Tag Generator — Apni Website Ko Rank Karwao',url:'/blog/free-seo-meta-tag-generator/',mins:5,feat:false},
+  {e:'🎂',cat:'Tools',bg:'#EEF3FF',title:'Age Calculator Online — Exact Umar Seconds Tak Jaano',url:'/blog/age-calculator-online-india/',mins:3,feat:false},
+];
+
+/* ════ FAQs ════ */
+const FAQS=[
+  {q:'Kya ToolNest ke sabhi tools 100% free hain?',a:'Haan! ToolNest ke 24+ tools completely free hain — koi hidden cost nahi, koi premium tier nahi, koi watermark nahi. Hum Google AdSense ads se supported hain.'},
+  {q:'Kya meri files server par upload hoti hain?',a:'Nahi. Hamare sabhi tools files locally aapke browser mein JavaScript ke through process karte hain. Files kabhi bhi aapke device se bahar nahi jaati — 100% privacy.'},
+  {q:'Kya account ya signup karna zaroori hai?',a:'Bilkul nahi. Koi account nahi, koi email nahi, koi OTP nahi. Seedha koi bhi tool kholein aur immediately use karein.'},
+  {q:'Kya ye tools Android ya iPhone par kaam karte hain?',a:'Haan! ToolNest ke sabhi tools fully responsive hain. Android, iPhone, iPad — koi bhi modern browser par perfectly kaam karte hain.'},
+  {q:'File size ki koi limit hai kya?',a:'Reasonable limits hain (50-100MB) jo 99% real-world use cases cover karti hain. Hum artificially size restrict nahi karte.'},
+  {q:'ToolNest paise kaise kamaata hai?',a:'Hum non-intrusive Google AdSense ads ke through supported hain. Aapka data kabhi nahi bechte, koi tool paywall ke peeche nahi rakhte.'},
+  {q:'Kaunse PDF tools available hain?',a:'Compress, Merge, Split, Rotate, Protect, Unlock, Watermark — plus JPG/Word conversions. Saare 11 PDF tools completely free hain.'},
+  {q:'Naye tools kab add honge?',a:'Hum regularly new tools add karte hain. Newsletter subscribe karein ya Instagram follow karein updates ke liye.'},
+];
+
+/* ════ TRENDING ════ */
+const TRENDING=[
+  {name:'EMI Calculator',icon:'💳',url:'/tools/emi-calculator.html',s:'2L+/mo',bg:'#E6FAF4'},
+  {name:'Percentage Calculator',icon:'🧮',url:'/tools/percentage-calculator.html',s:'150K/mo',bg:'#D1FAE5'},
+  {name:'Image Compressor',icon:'🗜',url:'/tools/image-compress.html',s:'90K/mo',bg:'#EEF3FF'},
+  {name:'PDF to Word',icon:'📄',url:'/tools/pdf-to-word.html',s:'60K/mo',bg:'#FFF0EB'},
+  {name:'QR Code Generator',icon:'📱',url:'/tools/qr-code-generator.html',s:'50K/mo',bg:'#FFF8E6'},
+  {name:'Background Remover',icon:'✂️',url:'/tools/bg-remover.html',s:'55K/mo',bg:'#FCE4F0'},
+  {name:'Merge PDF',icon:'📎',url:'/tools/merge-pdf.html',s:'40K/mo',bg:'#E6FAF4'},
+  {name:'GST Invoice Generator',icon:'🧾',url:'/tools/invoice-generator.html',s:'40K/mo',bg:'#E8F8FD'},
+];
+
+const CAT_BG={compress:['#FFF0EB','#F5620A'],convert:['#EEF3FF','#1E4FCB'],organize:['#E6FAF4','#00B37E'],edit:['#F2EDFF','#6C3FC4'],image:['#FCE4F0','#E91E8C'],productivity:['#FFF8E6','#E88B00'],business:['#E8F8FD','#0891B2'],calculator:['#D1FAE5','#059669']};
+const CAT_SC={compress:'#FFF0EB',convert:'#EEF3FF',organize:'#E6FAF4',edit:'#F2EDFF',image:'#FCE4F0',productivity:'#FFF8E6',business:'#E8F8FD',calculator:'#D1FAE5'};
+
+/* ════ BLOG POSTS — synced with index.html BLOGS ════ */
+const POSTS=[
+  {title:'Best Free GST Invoice Generator India 2026 – No Signup Required',slug:'best-gst-invoice-generator-india-2026',excerpt:'Puri guide ki kaise ToolNest se professional GST invoice banayein — bilkul free, koi account nahi. GST rules, mandatory fields aur best practices.',date:'2026-04-01',category:'Finance',readTime:'5 min',featured:true},
+  {title:'PDF Compress Kaise Karein Bina Quality Loss Ke? (Free Online)',slug:'compress-pdf-free-online-india',excerpt:'PDF file size reduce karna ab aasaan hai! ToolNest se bina quality lose kiye PDF compress karein — koi server upload nahi, 100% browser-based.',date:'2026-03-28',category:'PDF',readTime:'4 min',featured:false},
+  {title:'Image Compress Karna Free Mein — Best Tools India 2026',slug:'compress-image-without-quality-loss',excerpt:'Website speed improve karna chahte ho? Janiye kaise images ko 90% tak compress karein bina quality lose kiye — bilkul free.',date:'2026-03-25',category:'Images',readTime:'4 min',featured:false},
+  {title:'Complete GST Invoice Guide for Indian Businesses',slug:'gst-invoice-guide',excerpt:'Master GST invoice creation. Learn mandatory fields, tax calculations, compliance requirements, and best practices for Indian businesses.',date:'2026-02-20',category:'Business',readTime:'10 min',featured:true},
+  {title:'Top 10 Free Online Tools for Small Business India 2026',slug:'free-online-tools-small-business-india',excerpt:'Chote business ke liye 10 zaroori free online tools. Time bachao, paise bachao aur productivity badhao bina kisi cost ke.',date:'2026-03-20',category:'Business',readTime:'7 min',featured:false},
+  {title:'EMI Calculator Guide — Home Loan, Car Loan India 2026',slug:'emi-calculator-home-loan-guide',excerpt:'Home loan, car loan ya personal loan — EMI calculate karna aur planning karna ab easy hai. Complete guide with examples.',date:'2026-03-15',category:'Finance',readTime:'6 min',featured:false},
+  {title:'PDF Merge Kaise Karein? Complete Step-by-Step Guide',slug:'merge-pdf-guide-india-2026',excerpt:'Multiple PDF files ko ek file mein combine karna sikhein — drag & drop se reorder, 100% free, koi upload nahi.',date:'2026-03-10',category:'PDF',readTime:'5 min',featured:false},
+  {title:'UPI QR Code Generator Free — PhonePe, GPay ke liye',slug:'upi-qr-code-generator-free-india',excerpt:'Apne payment ke liye UPI QR code banao bilkul free. PhonePe, GPay, Paytm — sabhi ke liye compatible.',date:'2026-03-05',category:'Tools',readTime:'3 min',featured:false},
+  {title:'Best Free PDF Tools Online India — No Upload, No Signup',slug:'best-free-pdf-tools-india',excerpt:'India ke best free PDF tools ka complete comparison. Kaunsa tool choose karein aur kyun — poori jaankari.',date:'2026-02-28',category:'PDF',readTime:'7 min',featured:false},
+  {title:'SIP Calculator India — Mutual Fund Returns Kaise Calculate Karein',slug:'sip-calculator-mutual-fund-india',excerpt:'SIP mein invest karne se pehle returns calculate karo. ToolNest SIP calculator se apna financial plan banao.',date:'2026-02-25',category:'Finance',readTime:'6 min',featured:false},
+  {title:'Free SEO Meta Tag Generator — Apni Website Ko Rank Karwao',slug:'free-seo-meta-tag-generator',excerpt:'SEO meta tags kyun zaroori hain aur kaise generate karein? Complete guide in Hindi + English.',date:'2026-02-20',category:'SEO',readTime:'5 min',featured:false},
+  {title:'Image Compression Tips for Faster Websites',slug:'image-compression-tips',excerpt:'Learn how to compress images without losing quality. Improve website speed, SEO rankings, and user experience.',date:'2026-02-21',category:'Web Development',readTime:'8 min',featured:false},
+  {title:'Best Free PDF Tools for Students in 2026',slug:'pdf-tools-for-students',excerpt:'Discover essential free PDF tools every student needs. Merge, convert, compress PDFs without spending money.',date:'2026-02-22',category:'Education',readTime:'12 min',featured:false},
+  {title:'SEO Meta Tags Guide: Complete Tutorial for 2026',slug:'seo-meta-tags-guide',excerpt:'Complete guide to SEO meta tags. Learn title tags, meta descriptions, Open Graph markup and boost your search rankings.',date:'2026-02-23',category:'SEO',readTime:'15 min',featured:false},
+  {title:'10 Time-Saving Productivity Tools for Students 2026',slug:'productivity-tools-for-students-2026',excerpt:'Discover the best free productivity tools for students in 2026. Boost your grades and stay organized.',date:'2026-03-04',category:'Education',readTime:'14 min',featured:true},
+  {title:'Digital Marketing Tools Every Startup Needs in 2026',slug:'digital-marketing-tools-startups-2026',excerpt:'Essential free tools for startups. SEO, social media, email marketing, analytics, and content creation.',date:'2026-03-05',category:'Business',readTime:'18 min',featured:true},
+];
+
+/* Category accent colors */
+const CAT_ACCENTS={
+  Finance:['#E6FAF4','#00B37E'],Business:['#E8F8FD','#0891B2'],PDF:['#FFF0EB','#F5620A'],
+  Images:['#EEF3FF','#1E4FCB'],SEO:['#F2EDFF','#6C3FC4'],Tools:['#FFF8E6','#E88B00'],
+  'Web Development':['#FCE4F0','#E91E8C'],Education:['#D1FAE5','#059669'],'Technology':['#EEF3FF','#1E4FCB'],
 };
 
-/* State */
-let activeTag = 'All';
-let searchQuery = '';
+var activeTag='All';
 
-/* ════ HELPERS ════════════════════════════════════════════ */
-function fmtDate(d) {
-  try { return new Date(d).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }); }
-  catch(e) { return d; }
+function fmtDate(d){
+  try{return new Date(d).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});}
+  catch(e){return d;}
 }
 
-function getFilteredPosts() {
-  const q = searchQuery.toLowerCase().trim();
-  return POSTS.filter(p => {
-    const matchesCat = activeTag === 'All' || p.category === activeTag;
-    const matchesQ   = !q || p.title.toLowerCase().includes(q) || (p.excerpt || '').toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
-    return matchesCat && matchesQ;
-  });
-}
-
-/* ════ RENDER FEATURED ════════════════════════════════════ */
-function renderFeatured() {
-  const feat = POSTS.filter(p => p.featured);
-  const band = document.getElementById('featuredBand');
-  if (!band) return;
-  band.innerHTML = feat.map(p => `
-    <div class="fb-card" onclick="location.href='/blog/${p.slug}.html'"
-      role="button" tabindex="0" aria-label="${p.title}"
-      onkeydown="if(event.key==='Enter')location.href='/blog/${p.slug}.html'">
+/* ════ RENDER FEATURED BAND ════ */
+function renderFeatured(){
+  const feat=POSTS.filter(p=>p.featured);
+  document.getElementById('featuredBand').innerHTML=feat.map(p=>`
+    <div class="fb-card" onclick="location.href='/blog/${p.slug}.html'">
       <div class="fb-cat">${p.category}</div>
       <div class="fb-title">${p.title}</div>
       <div class="fb-meta">⏱ ${p.readTime} read &nbsp;·&nbsp; ${fmtDate(p.date)}</div>
     </div>`).join('');
 }
 
-/* ════ RENDER FILTER PILLS ════════════════════════════════ */
-function renderFilter() {
-  const cats = ['All', ...new Set(POSTS.map(p => p.category))];
-  const bar = document.getElementById('filterBar');
-  if (!bar) return;
-  bar.innerHTML = cats.map(c => `
-    <div class="bf-pill${c === activeTag ? ' active' : ''}"
-      onclick="setTag('${c}',this)" role="tab"
-      aria-selected="${c === activeTag}" tabindex="0"
-      onkeydown="if(event.key==='Enter')setTag('${c}',this)">
-      ${c}
-    </div>`).join('');
+/* ════ RENDER FILTER PILLS ════ */
+function renderFilter(){
+  const cats=['All'];
+  POSTS.forEach(p=>{if(!cats.includes(p.category))cats.push(p.category);});
+  document.getElementById('filterBar').innerHTML=cats.map(c=>`
+    <div class="bf-pill${c===activeTag?' active':''}" onclick="setTag('${c}',this)">${c}</div>`).join('');
 }
 
-/* ════ RENDER POSTS GRID ══════════════════════════════════ */
-function renderPosts() {
-  const list = getFilteredPosts();
-  const grid  = document.getElementById('blogGrid');
-  const title = document.getElementById('blogTitle');
-  const sub   = document.getElementById('blogSub');
-  const count = document.getElementById('blogCount');
-  const total = document.getElementById('bsTotal');
-
-  if (count) count.textContent = list.length + ' article' + (list.length === 1 ? '' : 's');
-  if (total) total.textContent = POSTS.length;
-
-  if (searchQuery) {
-    if (title) title.textContent = `Search: "${searchQuery}"`;
-    if (sub)   sub.textContent = list.length + ' result' + (list.length === 1 ? '' : 's') + ' found';
-  } else {
-    if (title) title.textContent = activeTag === 'All' ? 'All Articles' : activeTag;
-    if (sub)   sub.textContent = activeTag === 'All'
-      ? 'Sabhi categories ke articles'
-      : `${activeTag} category ke articles — ${list.length} total`;
-  }
-
-  if (!grid) return;
-  if (!list.length) {
-    grid.innerHTML = `<div class="bnone-state"><span>📭</span><p>Koi article nahi mila${searchQuery ? ` for "<b>${searchQuery}</b>"` : ''}.</p></div>`;
+/* ════ RENDER POSTS GRID ════ */
+function renderPosts(list){
+  const target=list||getPosts();
+  document.getElementById('blogCount').textContent=target.length+' article'+(target.length===1?'':'s');
+  document.getElementById('bsTotal').textContent=POSTS.length;
+  if(!target.length){
+    document.getElementById('blogGrid').innerHTML='<div class="bnone"><div style="font-size:2.5rem;margin-bottom:.5rem">📭</div><p>Koi article nahi mila.</p></div>';
     return;
   }
-
-  grid.innerHTML = list.map(p => {
-    const [bg, ac] = CAT_ACCENTS[p.category] || ['var(--gold-l)', 'var(--gold-d)'];
-    return `
-    <div class="bcard" onclick="location.href='/blog/${p.slug}.html'"
-      role="button" tabindex="0" aria-label="${p.title}"
-      onkeydown="if(event.key==='Enter')location.href='/blog/${p.slug}.html'">
+  document.getElementById('blogGrid').innerHTML=target.map(p=>{
+    const[bg,ac]=CAT_ACCENTS[p.category]||['var(--gold-l)','var(--gold-d)'];
+    return`<div class="bcard" onclick="location.href='/blog/${p.slug}.html'">
       <div class="bcard-accent" style="background:linear-gradient(90deg,${ac},${bg})"></div>
       <div class="bcard-body">
         <span class="bcat" style="background:${bg};color:${ac}">${p.category}</span>
-        ${p.featured ? '<span class="bfeat">⭐ Featured</span>' : ''}
+        ${p.featured?'<span class="bfeat">⭐ Featured</span>':''}
         <div class="btitle">${p.title}</div>
-        <div class="bexc">${p.excerpt || ''}</div>
-        <div class="bmeta">
-          <span>📅 ${fmtDate(p.date)}</span>
-          <span>⏱ ${p.readTime} read</span>
-        </div>
+        <div class="bexc">${p.excerpt}</div>
+        <div class="bmeta"><span>📅 ${fmtDate(p.date)}</span><span>⏱ ${p.readTime} read</span></div>
         <span class="bmore">Read article →</span>
       </div>
     </div>`;
   }).join('');
 }
 
-/* ════ FILTER + SEARCH ════════════════════════════════════ */
-function setTag(tag, el) {
-  activeTag = tag;
-  searchQuery = '';
-  const inp = document.getElementById('blogSearchInput');
-  if (inp) inp.value = '';
-  document.querySelectorAll('.bf-pill').forEach(p => {
-    p.classList.remove('active');
-    p.setAttribute('aria-selected', 'false');
+function getPosts(){
+  const q=document.getElementById('blogSearchInput').value.toLowerCase().trim();
+  let list=activeTag==='All'?[...POSTS]:POSTS.filter(p=>p.category===activeTag);
+  if(q)list=list.filter(p=>p.title.toLowerCase().includes(q)||p.excerpt.toLowerCase().includes(q)||p.category.toLowerCase().includes(q));
+  return list;
+}
+
+function setTag(tag,el){
+  activeTag=tag;
+  document.querySelectorAll('.bf-pill').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('blogTitle').textContent=tag==='All'?'All Articles':tag;
+  renderPosts();
+}
+
+function searchPosts(q){
+  document.querySelectorAll('.bf-pill').forEach(c=>c.classList.remove('active'));
+  document.querySelector('.bf-pill').classList.add('active');
+  activeTag='All';
+  document.getElementById('blogTitle').textContent=q?`Search: "${q}"`:'All Articles';
+  renderPosts();
+}
+
+/* ════ NAV DROPDOWN (same as index.html) ════ */
+function renderNavDropdown(){
+  const cats=[
+    {label:'PDF Tools',items:['compress','organize','edit','convert'].flatMap(c=>TOOLS.filter(t=>t.cat===c)).slice(0,9)},
+    {label:'Image & More',items:['image','productivity','business','calculator'].flatMap(c=>TOOLS.filter(t=>t.cat===c)).slice(0,9)},
+  ];
+  let h='';
+  cats.forEach(group=>{
+    h+=`<div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);grid-column:1/-1;padding:.4rem .4rem .2rem;border-top:1px solid var(--border);margin-top:.2rem">${group.label}</div>`;
+    h+=group.items.map(t=>{const[bg,ac]=CAT_BG[t.cat]||['var(--surface)','var(--gold)'];const badge=t.badge?`<span style="font-size:7.5px;font-weight:800;padding:1px 5px;border-radius:var(--r-pill);text-transform:uppercase;display:inline-block;margin-top:2px;background:${t.badge==='hot'?'#FFE8D6':'#D3F9D8'};color:${t.badge==='hot'?'#B85000':'#00612A'}">${t.badge}</span>`:'';
+    return`<a style="display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:var(--r-sm);cursor:pointer;transition:all .15s;text-decoration:none;color:inherit" href="${t.url}" onclick="closeToolsDD()" onmouseover="this.style.background='var(--gold-l)'" onmouseout="this.style.background=''">`+
+    `<div style="width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:${bg}">${t.icon}</div>`+
+    `<div><div style="font-size:12px;font-weight:600;color:var(--ink)">${t.name}</div>${badge}</div></a>`;}).join('');
   });
-  if (el) { el.classList.add('active'); el.setAttribute('aria-selected', 'true'); }
-  renderPosts();
+  document.getElementById('tdGrid').innerHTML=h;
 }
-
-/* ✅ FIX BUG 19: debounced via TN.debounce in utils.js */
-function searchPosts(q) {
-  searchQuery = q || '';
-  /* Reset category to All when searching */
-  if (searchQuery) {
-    activeTag = 'All';
-    document.querySelectorAll('.bf-pill').forEach(p => {
-      p.classList.toggle('active', p.textContent.trim() === 'All');
-      p.setAttribute('aria-selected', p.textContent.trim() === 'All' ? 'true' : 'false');
-    });
-  }
-  renderPosts();
-}
-
-/* ════ SHARE ══════════════════════════════════════════════ */
-const BLOG_URL  = encodeURIComponent('https://toolnest.bhaihelp.in/blog.html');
-const BLOG_TEXT = encodeURIComponent('ToolNest Blog — Free tool guides in Hindi + English! 🇮🇳');
-function blogShare(p) {
-  const urls = {
-    wa:  'https://wa.me/?text=' + BLOG_TEXT + '%20' + BLOG_URL,
-    x:   'https://x.com/intent/tweet?text=' + BLOG_TEXT + '&url=' + BLOG_URL,
-    fb:  'https://www.facebook.com/sharer/sharer.php?u=' + BLOG_URL,
-  };
-  if (urls[p]) window.open(urls[p], '_blank');
-}
-
-/* ════ NEWSLETTER ═════════════════════════════════════════ */
-function subNL() {
-  const inp = document.getElementById('nlEmail');
-  const btn = inp ? inp.nextElementSibling : null;
-  if (!inp || !inp.value || !inp.value.includes('@')) {
-    if (inp) { inp.style.borderColor = 'rgba(229,62,62,.8)'; setTimeout(() => inp.style.borderColor = '', 2000); }
-    return;
-  }
-  inp.value = '';
-  if (btn) { btn.textContent = '✅ Subscribed!'; setTimeout(() => btn.textContent = 'Subscribe 🚀', 3000); }
-}
-
-/* ════ KEYBOARD NAV ═══════════════════════════════════════ */
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    const inp = document.getElementById('blogSearchInput');
-    if (inp && searchQuery) { inp.value = ''; searchPosts(''); }
-  }
+function toggleToolsDD(){const btn=document.getElementById('navToolsBtn'),dd=document.getElementById('toolsDropdown');const isOpen=dd.classList.toggle('open');btn.classList.toggle('open',isOpen);btn.setAttribute('aria-expanded',isOpen);}
+function closeToolsDD(){const dd=document.getElementById('toolsDropdown');const btn=document.getElementById('navToolsBtn');if(dd)dd.classList.remove('open');if(btn){btn.classList.remove('open');btn.setAttribute('aria-expanded','false');}}
+document.addEventListener('click',e=>{
+  const w=document.getElementById('navToolsWrap');
+  if(w&&!w.contains(e.target))closeToolsDD();
 });
 
-/* ════ INIT ═══════════════════════════════════════════════ */
-/* Wait for shell.js to finish, then render blog content */
-document.addEventListener('DOMContentLoaded', () => {
-  renderFeatured();
-  renderFilter();
-  renderPosts();
-});
+/* ════ SEARCH OVERLAY (for tools) ════ */
+function closeSearch(){document.getElementById('searchOverlay').style.display='none';document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSearch();});
+function overlaySearch(q){
+  const s=q.toLowerCase(),res=s?TOOLS.filter(t=>t.name.toLowerCase().includes(s)||t.desc.toLowerCase().includes(s)):TOOLS.slice(0,12),c=document.getElementById('overlayResults');
+  if(!res.length){c.innerHTML=`<div style="text-align:center;padding:2rem;color:var(--ink3);font-size:13px">🔍 No tools found for "${q}"</div>`;return;}
+  c.innerHTML=res.map(t=>`<div style="display:flex;align-items:center;gap:10px;padding:.7rem .8rem;border-radius:var(--r);cursor:pointer;transition:background .15s" onclick="location.href='${t.url}'" onmouseover="this.style.background='var(--gold-l)'" onmouseout="this.style.background=''"><div style="width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;background:${CAT_SC[t.cat]||'var(--surface)'}">${t.icon}</div><div><div style="font-size:13.5px;font-weight:700;color:var(--ink)">${t.name}</div><div style="font-size:11.5px;color:var(--ink3)">${t.desc}</div></div></div>`).join('');
+}
+
+/* ════ MOBILE NAV ════ */
+function toggleNav(){const n=document.getElementById('mobNav'),o=document.getElementById('mobOverlay'),h=document.getElementById('hamburger'),open=n.classList.toggle('open');o.classList.toggle('open',open);h.classList.toggle('open',open);h.setAttribute('aria-expanded',open);}
+function closeNav(){document.getElementById('mobNav').classList.remove('open');document.getElementById('mobOverlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.getElementById('hamburger').setAttribute('aria-expanded','false');}
+
+/* ════ NEWSLETTER ════ */
+function subNL(){const i=document.getElementById('nlEmail'),b=i.nextElementSibling;if(!i.value||!i.value.includes('@')){i.style.borderColor='rgba(229,62,62,.8)';setTimeout(()=>i.style.borderColor='',2000);return;}i.value='';b.textContent='✅ Subscribed!';setTimeout(()=>b.textContent='Subscribe 🚀',3000);}
+
+/* ════ SHARE ════ */
+const PU=encodeURIComponent('https://toolnest.bhaihelp.in/blog.html');
+const PT=encodeURIComponent('ToolNest Blog — Free tool guides in Hindi + English! Check out these helpful tutorials 🇮🇳');
+function shareWA(){window.open('https://wa.me/?text='+PT+'%20'+PU,'_blank');}
+function shareX(){window.open('https://x.com/intent/tweet?text='+PT+'&url='+PU,'_blank');}
+function shareFB(){window.open('https://www.facebook.com/sharer/sharer.php?u='+PU,'_blank');}
+
+/* ════ INIT ════ */
+renderNavDropdown();
+renderFeatured();
+renderFilter();
+renderPosts();
 </script>
-
 </body>
 </html>
