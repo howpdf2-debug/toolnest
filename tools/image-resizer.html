@@ -334,9 +334,8 @@ input,select,textarea{font-family:var(--f-body)}
 
 <nav class="nav">
   <a href="/" class="nav-logo">
-    <img src="/favicon.png" alt="ToolNest"          
-     
-    <div class="nav-logo-fallback">🔧</div>
+    <img src="/favicon.png" alt="ToolNest" width="40" height="40" style="border-radius:10px;object-fit:cover;box-shadow:0 2px 8px rgba(245,166,35,.4)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="nav-logo-fallback" style="display:none">🔧</div>
     Tool<span>Nest</span>
   </a>
   <div class="nav-search">
@@ -573,7 +572,6 @@ input,select,textarea{font-family:var(--f-body)}
       </div>
       <div style="height:2rem"></div>
     </div>
-    <div id="tn-footer"></div>
   </main>
 
   <aside class="right-sidebar">
@@ -799,6 +797,5 @@ function toggleFaq(i){
   if(!isOpen){item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');item.querySelector('.faq-icon').textContent='×'}
 }
 </script>
-  <script src="/nav-footer.js"></script>
 </body>
 </html>
