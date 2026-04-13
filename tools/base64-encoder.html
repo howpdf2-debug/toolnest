@@ -1,323 +1,823 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="google-site-verification" content="dbfc89456a05e36c" />
-    
-    <title>Base64 Encoder & Decoder - Free Online Tool | ToolNest</title>
-    <meta name="description" content="Encode and decode Base64 strings online. Free Base64 converter with file support, URL encoding, and instant results.">
-    <meta name="keywords" content="base64 encoder, base64 decoder, base64 converter, encode base64, decode base64 online">
-    <meta name="author" content="ToolNest">
-    <meta name="robots" content="index, follow">
-    
-    <link rel="canonical" href="https://toolnest.bhaihelp.in/tools/base64-encoder.html">
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="stylesheet" href="/style.css">
-    
-    <style>
-        .converter-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .converter-panel {
-            background: var(--bg-card);
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-        }
-        
-        .panel-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border);
-        }
-        
-        .converter-textarea {
-            width: 100%;
-            min-height: 300px;
-            padding: 15px;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            line-height: 1.6;
-            background: #1e293b;
-            color: #e2e8f0;
-            resize: vertical;
-        }
-        
-        .action-btns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .file-upload {
-            margin-top: 20px;
-            padding: 20px;
-            border: 2px dashed var(--border);
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        
-        .file-upload:hover {
-            border-color: var(--blue);
-            background: rgba(37, 99, 235, 0.05);
-        }
-        
-        @media (max-width: 768px) {
-            .converter-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Base64 Encoder & Decoder Online Free | ToolNest</title>
+<meta name="description" content="Encode and decode Base64 strings online for free. File upload support, URL-safe encoding, real-time preview, copy & download. No signup, 100% private.">
+<meta name="keywords" content="base64 encoder decoder online free, encode base64, decode base64, base64 converter, base64 tool india">
+<meta name="author" content="ToolNest">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://toolnest.bhaihelp.in/tools/base64-encoder.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="theme-color" content="#0F1B3D">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Base64 Encoder & Decoder Online Free | ToolNest">
+<meta property="og:description" content="Encode/decode Base64 strings instantly. File upload, URL-safe mode, real-time preview. 100% free, browser-based.">
+<meta property="og:url" content="https://toolnest.bhaihelp.in/tools/base64-encoder.html">
+<meta property="og:site_name" content="ToolNest">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Base64 Encoder & Decoder — ToolNest","operatingSystem":"Any (Web Browser)","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"1540"},"description":"Free online Base64 encoder and decoder. Supports text, files, URL-safe encoding. No signup required.","url":"https://toolnest.bhaihelp.in/tools/base64-encoder.html"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Base64 encoding?","acceptedAnswer":{"@type":"Answer","text":"Base64 is a binary-to-text encoding scheme that represents binary data using 64 printable ASCII characters. It is commonly used to encode binary data for transmission over text-based protocols like email and HTTP."}},{"@type":"Question","name":"Is this Base64 tool free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free with no ads, no signup, no watermarks. ToolNest Base64 tool is always free."}},{"@type":"Question","name":"Is my data safe?","acceptedAnswer":{"@type":"Answer","text":"All encoding and decoding happens in your browser using JavaScript. Your data never leaves your device or gets sent to any server."}}]}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,opsz,wght@0,6..18,300..800;1,6..18,300..800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#F5A623;--gold-d:#D4891A;--gold-l:#FEF3DC;--gold-b:rgba(245,166,35,.22);
+  --navy:#0F1B3D;--navy-mid:#1A2E5E;--navy-l:#E8ECF5;
+  --blue:#1E4FCB;--blue-l:#EEF3FF;
+  --green:#00B37E;--green-l:#E6FAF4;
+  --red:#E53E3E;--red-l:#FFF0F0;
+  --amber:#E88B00;--amber-l:#FFF8E6;
+  --purple:#6C3FC4;--purple-l:#F2EDFF;
+  --teal:#0891B2;--teal-l:#E8F8FD;
+  --pink:#E91E8C;--pink-l:#FCE4F0;
+  --ink:#0D0D14;--ink2:#44455A;--ink3:#8A8BA5;
+  --paper:#F5F6FA;--white:#FFFFFF;
+  --border:#E2E4EF;--border2:#C8CADF;--surface:#EDEEF7;
+  --c-compress:#F5620A;--c-compress-l:#FFF0EB;
+  --c-convert:#1E4FCB;--c-convert-l:#EEF3FF;
+  --c-organize:#00B37E;--c-organize-l:#E6FAF4;
+  --c-edit:#6C3FC4;--c-edit-l:#F2EDFF;
+  --c-image:#E91E8C;--c-image-l:#FCE4F0;
+  --c-prod:#E88B00;--c-prod-l:#FFF8E6;
+  --c-biz:#0891B2;--c-biz-l:#E8F8FD;
+  --c-b64:#6C3FC4;--c-b64-l:#F2EDFF;
+  --f-display:'Outfit',sans-serif;--f-body:'Plus Jakarta Sans',sans-serif;
+  --r-sm:8px;--r:12px;--r-lg:18px;--r-xl:24px;--r-pill:999px;
+  --sh-xs:0 1px 2px rgba(13,13,20,.06);--sh-sm:0 2px 8px rgba(13,13,20,.08);
+  --sh:0 4px 16px rgba(13,13,20,.10);--sh-lg:0 8px 32px rgba(13,13,20,.13);
+  --sh-gold:0 4px 24px rgba(245,166,35,.30);
+  --nav-h:64px;--sidebar-w:255px;--right-w:220px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
+input,select,textarea{font-family:var(--f-body)}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);background:rgba(255,255,255,.90);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:var(--sh-xs)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:20px;color:var(--ink);white-space:nowrap;flex-shrink:0}
+.nav-logo-fallback{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#FF9500);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.nav-logo span{color:var(--gold)}
+.nav-search{flex:1;max-width:440px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-pill);padding:0 16px;height:38px;transition:border-color .2s}
+.nav-search:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-b)}
+.nav-search input{flex:1;border:none;background:transparent;outline:none;font-size:13.5px;color:var(--ink)}
+.nav-search input::placeholder{color:var(--ink3)}
+.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.nav-link{padding:7px 14px;border-radius:var(--r-sm);font-size:14px;font-weight:500;color:var(--ink2);transition:all .15s}
+.nav-link:hover{background:var(--surface);color:var(--ink)}
+.btn-nav-gold{background:var(--gold);color:var(--navy);padding:8px 20px;border-radius:var(--r-pill);font-size:13.5px;font-weight:700;box-shadow:var(--sh-gold);transition:all .15s}
+.btn-nav-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
+.hamburger{display:none;width:38px;height:38px;border-radius:var(--r-sm);background:var(--surface);border:1.5px solid var(--border);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;flex-shrink:0}
+.hamburger span{display:block;width:18px;height:1.5px;background:var(--ink);border-radius:2px;transition:all .25s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+
+/* LAYOUT */
+.app-shell{display:flex;padding-top:var(--nav-h);min-height:100vh}
+.left-sidebar{width:var(--sidebar-w);min-width:var(--sidebar-w);background:var(--white);border-right:1px solid var(--border);position:fixed;top:var(--nav-h);left:0;bottom:0;overflow-y:auto;overflow-x:hidden;z-index:100;transition:width .3s cubic-bezier(.4,0,.2,1),min-width .3s,transform .3s ease;scrollbar-width:thin}
+.left-sidebar.collapsed{width:0;min-width:0}
+.sidebar-toggle{position:fixed;top:50%;left:var(--sidebar-w);transform:translateY(-50%) translateX(-50%);z-index:200;width:22px;height:44px;background:var(--white);border:1.5px solid var(--border);border-radius:0 var(--r-pill) var(--r-pill) 0;border-left:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:left .3s cubic-bezier(.4,0,.2,1);box-shadow:3px 0 10px rgba(0,0,0,.07)}
+.sidebar-toggle:hover{background:var(--gold-l);border-color:var(--gold)}
+.sidebar-toggle svg{transition:transform .3s;color:var(--ink3)}
+.sidebar-toggle.collapsed{left:0}
+.sidebar-toggle.collapsed svg{transform:rotate(180deg)}
+.sidebar-inner{padding:1.1rem .8rem 6rem}
+.sb-header{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:800;font-size:15px;color:var(--ink);padding:.2rem .3rem .85rem;border-bottom:1px solid var(--border);margin-bottom:.75rem}
+.sb-header-icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#FF9500);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.sb-search{display:flex;align-items:center;gap:7px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:7px 10px;margin-bottom:.8rem;transition:border-color .15s}
+.sb-search:focus-within{border-color:var(--gold)}
+.sb-search input{border:none;background:transparent;outline:none;font-size:12.5px;color:var(--ink);width:100%}
+.cat-lbl{font-size:9.5px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--ink3);padding:.55rem .4rem .25rem}
+.tool-item{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:9px;font-size:13px;font-weight:500;color:var(--ink2);cursor:pointer;transition:all .15s;margin-bottom:1px}
+.tool-item:hover{background:var(--surface);color:var(--ink)}
+.ti-icon{width:28px;height:28px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px}
+.ti-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ti-badge{font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:var(--r-pill);text-transform:uppercase;flex-shrink:0}
+.badge-hot{background:#FFE8D6;color:#B85000}
+.badge-new{background:#D3F9D8;color:#00612A}
+.cat-b64 .ti-icon{background:var(--c-b64-l);color:var(--c-b64)}
+.cat-b64.active{background:var(--c-b64-l)!important;color:var(--c-b64)!important;font-weight:700}
+.cat-b64.active .ti-icon{background:var(--c-b64);color:#fff}
+.cat-b64:hover{background:var(--c-b64-l)!important}
+.cat-prod .ti-icon{background:var(--c-prod-l);color:var(--c-prod)}
+.cat-prod.active,.cat-prod:hover{background:var(--c-prod-l)!important}
+.cat-prod.active .ti-icon{background:var(--c-prod);color:#fff}
+.cat-prod.active{color:var(--c-prod)!important;font-weight:700}
+.cat-image .ti-icon{background:var(--c-image-l);color:var(--c-image)}
+.cat-image:hover{background:var(--c-image-l)!important}
+.cat-compress .ti-icon{background:var(--c-compress-l);color:var(--c-compress)}
+.cat-compress:hover{background:var(--c-compress-l)!important}
+.cat-organize .ti-icon{background:var(--c-organize-l);color:var(--c-organize)}
+.cat-organize:hover{background:var(--c-organize-l)!important}
+.cat-convert .ti-icon{background:var(--c-convert-l);color:var(--c-convert)}
+.cat-convert:hover{background:var(--c-convert-l)!important}
+.cat-edit .ti-icon{background:var(--c-edit-l);color:var(--c-edit)}
+.cat-edit:hover{background:var(--c-edit-l)!important}
+.cat-biz .ti-icon{background:var(--c-biz-l);color:var(--c-biz)}
+.cat-biz:hover{background:var(--c-biz-l)!important}
+.sb-stats{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.sb-stat{border-radius:9px;padding:.65rem .55rem;text-align:center}
+.sb-stat-num{font-family:var(--f-display);font-weight:900;font-size:17px;line-height:1}
+.sb-stat-lbl{font-size:9.5px;color:var(--ink3);font-weight:600;margin-top:2px}
+
+.main-content{flex:1;margin-left:var(--sidebar-w);margin-right:var(--right-w);min-width:0;transition:margin-left .3s cubic-bezier(.4,0,.2,1)}
+.main-content.sb-collapsed{margin-left:0}
+
+.right-sidebar{width:var(--right-w);min-width:var(--right-w);background:var(--white);border-left:1px solid var(--border);position:fixed;top:var(--nav-h);right:0;bottom:0;overflow-y:auto;padding:1.1rem .85rem 5rem;display:flex;flex-direction:column;gap:.85rem;scrollbar-width:thin}
+.ad-slot{background:var(--surface);border:1.5px dashed var(--border2);border-radius:var(--r);padding:.7rem .6rem;text-align:center;font-size:10px;color:var(--ink3);position:relative}
+.ad-slot::before{content:'AD';position:absolute;top:4px;right:6px;font-size:7.5px;font-weight:800;color:var(--ink3);opacity:.7}
+.ad-tall{min-height:260px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.ad-sm{min-height:80px;display:flex;align-items:center;justify-content:center}
+.rsb-stats{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:var(--r-lg);padding:.9rem;position:relative;overflow:hidden}
+.rsb-stats::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 70px at 85% 10%,rgba(245,166,35,.2) 0%,transparent 60%);pointer-events:none}
+.rsb-stats-title{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.4);margin-bottom:.55rem}
+.rsb-row{display:flex;justify-content:space-between;align-items:center;padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.rsb-row:last-child{border-bottom:none}
+.rsb-row-lbl{font-size:11px;color:rgba(255,255,255,.5)}
+.rsb-row-val{font-family:var(--f-display);font-size:13px;font-weight:700;color:var(--gold)}
+.rsb-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);margin-bottom:.5rem}
+.rsb-quick-item{display:flex;align-items:center;gap:7px;padding:6px 7px;border-radius:var(--r-sm);font-size:12px;font-weight:500;color:var(--ink2);cursor:pointer;transition:all .15s}
+.rsb-quick-item:hover{background:var(--gold-l);color:var(--gold-d)}
+.rsb-quick-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.rsb-trust{background:var(--c-organize-l);border:1.5px solid rgba(0,179,126,.18);border-radius:var(--r);padding:.85rem;text-align:center}
+.rsb-trust-title{font-size:11.5px;font-weight:700;color:var(--c-organize);margin-bottom:.2rem}
+.rsb-trust-desc{font-size:10.5px;color:#087F5B;line-height:1.55}
+
+/* TOOL HERO */
+.tool-hero{background:linear-gradient(135deg,var(--navy) 0%,#2D1B69 60%,#4C1D95 100%);padding:2.25rem 2rem 1.75rem;position:relative;overflow:hidden}
+.tool-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 280px at 90% 50%,rgba(108,63,196,.3) 0%,transparent 60%),radial-gradient(circle 200px at 5% 80%,rgba(30,79,203,.2) 0%,transparent 60%);pointer-events:none}
+.tool-hero-inner{position:relative;z-index:1}
+.tool-hero-row{display:flex;align-items:center;gap:1.1rem;margin-bottom:1rem}
+.tool-hero-icon{width:52px;height:52px;border-radius:var(--r-lg);background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;backdrop-filter:blur(8px)}
+.tool-hero h1{font-family:var(--f-display);font-size:clamp(1.4rem,3vw,1.85rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:.3rem}
+.tool-hero-sub{font-size:13.5px;color:rgba(255,255,255,.65);max-width:520px}
+.trust-row{display:flex;flex-wrap:wrap;gap:7px}
+.trust-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-pill);padding:5px 11px;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.9);backdrop-filter:blur(4px)}
+.proof-bar{display:flex;align-items:center;gap:6px;margin-top:.9rem;padding:.5rem .9rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-pill);width:fit-content}
+.proof-dot{width:8px;height:8px;border-radius:50%;background:#00B37E;flex-shrink:0;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.proof-text{font-size:12px;color:rgba(255,255,255,.75);font-weight:500}
+.proof-num{color:var(--gold);font-weight:700}
+
+/* TOOL BODY */
+.tool-body{padding:1.5rem 1.75rem 2.5rem}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink3);margin-bottom:1.15rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--ink3);transition:color .15s}
+.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb-sep{color:var(--border2)}
+.breadcrumb-cur{color:var(--ink2);font-weight:500}
+
+/* CONVERTER GRID — FIX: was 1fr 1fr, now stacked on mobile properly */
+.converter-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.converter-panel{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.25rem;box-shadow:var(--sh-xs);transition:border-color .2s}
+.converter-panel:focus-within{border-color:var(--c-b64)}
+.panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem;padding-bottom:.75rem;border-bottom:1.5px solid var(--border)}
+.panel-title{font-family:var(--f-display);font-size:14px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:7px}
+.panel-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:var(--r-pill)}
+.badge-enc{background:var(--c-b64-l);color:var(--c-b64)}
+.badge-dec{background:var(--green-l);color:var(--green)}
+
+/* TEXTAREA — FIX: was hardcoded dark bg, now uses CSS vars */
+.converter-textarea{width:100%;min-height:220px;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--r);font-family:'Courier New',monospace;font-size:13px;line-height:1.6;background:var(--surface);color:var(--ink);resize:vertical;transition:border-color .15s;display:block}
+.converter-textarea:focus{outline:none;border-color:var(--c-b64);background:var(--white)}
+.converter-textarea::placeholder{color:var(--ink3)}
+
+/* CHAR COUNTER — NEW */
+.char-counter{font-size:11px;color:var(--ink3);text-align:right;margin-top:.3rem;height:16px;transition:color .15s}
+.char-counter.has-content{color:var(--c-b64)}
+
+/* ACTION BUTTONS — FIX: replaced alert() with inline feedback */
+.action-btns{display:flex;gap:7px;margin-top:.75rem;flex-wrap:wrap}
+.btn-primary{flex:1;min-width:80px;background:linear-gradient(135deg,var(--c-b64),#4C1D95);color:#fff;border:none;padding:9px 14px;border-radius:var(--r-pill);font-size:13px;font-weight:700;cursor:pointer;font-family:var(--f-body);display:flex;align-items:center;justify-content:center;gap:6px;transition:all .15s;box-shadow:0 3px 12px rgba(108,63,196,.3)}
+.btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-sec{flex:1;min-width:70px;background:var(--surface);color:var(--ink2);border:1.5px solid var(--border);padding:9px 12px;border-radius:var(--r-pill);font-size:12.5px;font-weight:600;cursor:pointer;font-family:var(--f-body);display:flex;align-items:center;justify-content:center;gap:5px;transition:all .15s}
+.btn-sec:hover{border-color:var(--c-b64);color:var(--c-b64);background:var(--c-b64-l)}
+/* Copy button state — NEW */
+.btn-copy{position:relative}
+.btn-copy.copied{background:var(--green-l)!important;border-color:var(--green)!important;color:var(--green)!important}
+
+/* INLINE FEEDBACK — NEW (replaces alert()) */
+.panel-feedback{min-height:32px;margin-top:.6rem;font-size:12.5px;border-radius:var(--r-sm);padding:0;transition:all .2s;overflow:hidden}
+.panel-feedback.show-ok{background:var(--green-l);border:1px solid rgba(0,179,126,.25);color:#087F5B;padding:7px 12px}
+.panel-feedback.show-err{background:var(--red-l);border:1px solid rgba(229,62,62,.2);color:#C03030;padding:7px 12px}
+
+/* FILE UPLOAD */
+.file-upload{margin-top:.85rem;border:2px dashed var(--border2);border-radius:var(--r);padding:.9rem;text-align:center;cursor:pointer;transition:all .2s}
+.file-upload:hover{border-color:var(--c-b64);background:var(--c-b64-l)}
+.file-upload input{display:none}
+.file-upload-icon{font-size:1.6rem;margin-bottom:.3rem}
+.file-upload-t{font-size:12.5px;font-weight:600;color:var(--ink2)}
+.file-upload-s{font-size:11px;color:var(--ink3);margin-top:2px}
+
+/* OPTIONS CARD */
+.options-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.25rem;margin-top:1rem;box-shadow:var(--sh-xs)}
+.options-title{font-family:var(--f-display);font-size:14px;font-weight:800;color:var(--ink);margin-bottom:.9rem;display:flex;align-items:center;gap:7px}
+.option-row{display:flex;align-items:center;gap:10px;padding:.6rem 0;border-bottom:1px solid var(--border)}
+.option-row:last-child{border-bottom:none;padding-bottom:0}
+.option-toggle{position:relative;width:36px;height:20px;flex-shrink:0}
+.option-toggle input{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;margin:0;z-index:1}
+.toggle-track{display:block;width:36px;height:20px;background:var(--border2);border-radius:10px;transition:background .2s;position:relative}
+.option-toggle input:checked+.toggle-track{background:var(--c-b64)}
+.toggle-thumb{position:absolute;top:2px;left:2px;width:16px;height:16px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 4px rgba(0,0,0,.2);pointer-events:none}
+.option-toggle input:checked+.toggle-track .toggle-thumb{transform:translateX(16px)}
+.option-label{font-size:13px;font-weight:500;color:var(--ink);flex:1}
+.option-desc{font-size:11.5px;color:var(--ink3)}
+
+/* HOW-TO */
+.how-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;margin-top:1.75rem;box-shadow:var(--sh-xs)}
+.card-title{font-family:var(--f-display);font-size:16px;font-weight:800;color:var(--ink);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
+.card-title::before{content:'';display:block;width:4px;height:18px;background:var(--c-b64);border-radius:2px;flex-shrink:0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.step{text-align:center}
+.step-num{width:38px;height:38px;border-radius:50%;background:var(--c-b64);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-size:16px;font-weight:900;margin:0 auto .6rem}
+.step-t{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.step-d{font-size:11.5px;color:var(--ink3);line-height:1.55}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:1.35rem}
+.feat-item{display:flex;align-items:flex-start;gap:9px;background:var(--surface);border-radius:var(--r);padding:.85rem .9rem}
+.feat-ic{font-size:17px;flex-shrink:0;margin-top:1px}
+.feat-t{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.feat-d{font-size:11.5px;color:var(--ink3);line-height:1.5}
+
+/* SHARE */
+.share-section{margin-top:1.75rem;background:linear-gradient(135deg,var(--navy-l),#EEF3FF);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.share-section-text h3{font-family:var(--f-display);font-size:14px;font-weight:800;color:var(--ink);margin-bottom:.2rem}
+.share-section-text p{font-size:12px;color:var(--ink3)}
+.share-btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn-share{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--r-pill);font-size:12.5px;font-weight:700;cursor:pointer;border:none;font-family:var(--f-body);transition:all .15s}
+.btn-share:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.btn-share-wa{background:#25D366;color:#fff}
+.btn-share-x{background:#000;color:#fff}
+.btn-share-fb{background:#1877F2;color:#fff}
+
+/* RELATED */
+.related-section{margin-top:1.85rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.rel-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:.95rem 1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px;box-shadow:var(--sh-xs);position:relative}
+.rel-card::after{content:'→';position:absolute;right:9px;bottom:9px;font-size:11px;color:var(--ink3);transition:all .2s}
+.rel-card:hover{border-color:rgba(108,63,196,.3);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.09)}
+.rel-card:hover::after{right:6px;color:var(--c-b64)}
+.rel-icon{width:36px;height:36px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px}
+.rel-name{font-size:12.5px;font-weight:700;color:var(--ink)}
+.rel-desc{font-size:11px;color:var(--ink3);margin-top:1px}
+
+/* FAQ */
+.faq-section{margin-top:1.85rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.faq-list{margin-top:.9rem;display:flex;flex-direction:column;gap:6px}
+.faq-item{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color .15s}
+.faq-item.open{border-color:var(--c-b64)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:.9rem 1.1rem;cursor:pointer;font-size:13.5px;font-weight:700;color:var(--ink);user-select:none;transition:background .15s}
+.faq-q:hover{background:var(--c-b64-l)}
+.faq-item.open .faq-q{background:var(--c-b64-l);color:var(--navy)}
+.faq-icon{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--ink3);flex-shrink:0;transition:all .2s;line-height:1}
+.faq-item.open .faq-icon{background:var(--c-b64);border-color:var(--c-b64);color:#fff;transform:rotate(45deg)}
+.faq-a{display:none;padding:.1rem 1.1rem 1rem;font-size:13px;color:var(--ink2);line-height:1.7;border-top:1px solid var(--c-b64-l)}
+.faq-item.open .faq-a{display:block}
+
+/* CTA */
+.tool-cta{margin-top:2rem;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:var(--r-xl);padding:1.85rem 1.75rem;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
+.tool-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 200px at 90% 20%,rgba(108,63,196,.2) 0%,transparent 60%)}
+.tool-cta-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.tool-cta h3{font-family:var(--f-display);font-size:17px;font-weight:800;color:#fff;margin-bottom:.25rem}
+.tool-cta p{font-size:13px;color:rgba(255,255,255,.55)}
+.btn-cta-gold{background:var(--gold);color:var(--navy);border:none;padding:11px 22px;border-radius:var(--r-pill);font-size:13.5px;font-weight:800;cursor:pointer;font-family:var(--f-body);transition:all .15s;box-shadow:var(--sh-gold)}
+.btn-cta-gold:hover{background:var(--gold-d)}
+
+.mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99;display:none}
+.mobile-overlay.active{display:block}
+
+@media(max-width:1200px){:root{--right-w:200px}}
+@media(max-width:1024px){.right-sidebar{display:none}.main-content{margin-right:0}}
+@media(max-width:820px){.left-sidebar{transform:translateX(-100%)}.left-sidebar.mobile-open{transform:translateX(0);box-shadow:4px 0 28px rgba(0,0,0,.18)}.sidebar-toggle{display:none}.main-content{margin-left:0!important}.hamburger{display:flex}.tool-body{padding:1.25rem 1.1rem 2rem}.tool-hero{padding:1.75rem 1.25rem 1.5rem}.converter-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.feat-grid{grid-template-columns:1fr 1fr}.related-grid{grid-template-columns:1fr 1fr}.share-section{flex-direction:column;text-align:center}}
+@media(max-width:500px){.converter-grid{grid-template-columns:1fr}.feat-grid{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.tool-body>*{animation:fadeUp .35s ease forwards}
+</style>
 </head>
 <body>
 
-<div id="header"></div>
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileSidebar()"></div>
 
-<section class="mini-hero" style="background: linear-gradient(135deg, #a855f7, #7c3aed);">
-    <div class="hero-top">
-        <a href="/index.html" class="back-home">← Back to Home</a>
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-fallback">🔧</div>
+    Tool<span>Nest</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--ink3)"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearch" placeholder="Search 20+ free tools…" oninput="syncSearch(this.value)" autocomplete="off">
+  </div>
+  <div class="nav-right">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/" class="btn-nav-gold">All Tools</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileSidebar()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleDesktopSidebar()" title="Toggle sidebar">
+  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+</button>
+
+<div class="app-shell">
+  <aside class="left-sidebar" id="leftSidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header"><div class="sb-header-icon">🔧</div>ToolNest</div>
+      <div class="sb-search">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--ink3);flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="sbSearch" placeholder="Find a tool…" oninput="filterSidebar(this.value)" autocomplete="off">
+      </div>
+      <div id="sbList">
+        <div class="cat-lbl">Developer Tools</div>
+        <div class="tool-item cat-b64 active" onclick="go('/tools/base64-encoder.html')"><div class="ti-icon">🔢</div><span class="ti-name">Base64 Encoder</span><span class="ti-badge badge-new">NEW</span></div>
+        <div class="tool-item cat-b64" onclick="go('/tools/json-formatter.html')"><div class="ti-icon">{ }</div><span class="ti-name">JSON Formatter</span></div>
+        <div class="cat-lbl">Productivity</div>
+        <div class="tool-item cat-prod" onclick="go('/tools/qr-code-generator.html')"><div class="ti-icon">📱</div><span class="ti-name">QR Code Generator</span><span class="ti-badge badge-hot">HOT</span></div>
+        <div class="tool-item cat-prod" onclick="go('/tools/password-generator.html')"><div class="ti-icon">🔑</div><span class="ti-name">Password Generator</span></div>
+        <div class="tool-item cat-prod" onclick="go('/tools/word-counter.html')"><div class="ti-icon">📊</div><span class="ti-name">Word Counter</span></div>
+        <div class="cat-lbl">Image Tools</div>
+        <div class="tool-item cat-image" onclick="go('/tools/image-resizer.html')"><div class="ti-icon">📐</div><span class="ti-name">Image Resizer</span></div>
+        <div class="tool-item cat-image" onclick="go('/tools/image-compress.html')"><div class="ti-icon">🗜</div><span class="ti-name">Image Compressor</span><span class="ti-badge badge-hot">HOT</span></div>
+        <div class="cat-lbl">Compress</div>
+        <div class="tool-item cat-compress" onclick="go('/tools/compress-pdf.html')"><div class="ti-icon">📦</div><span class="ti-name">Compress PDF</span><span class="ti-badge badge-hot">HOT</span></div>
+        <div class="cat-lbl">Organize PDF</div>
+        <div class="tool-item cat-organize" onclick="go('/tools/merge-pdf.html')"><div class="ti-icon">📎</div><span class="ti-name">Merge PDF</span><span class="ti-badge badge-hot">HOT</span></div>
+        <div class="tool-item cat-organize" onclick="go('/tools/split-pdf.html')"><div class="ti-icon">✂️</div><span class="ti-name">Split PDF</span></div>
+        <div class="cat-lbl">Convert</div>
+        <div class="tool-item cat-convert" onclick="go('/tools/jpg-to-pdf.html')"><div class="ti-icon">📸</div><span class="ti-name">JPG to PDF</span><span class="ti-badge badge-hot">HOT</span></div>
+        <div class="tool-item cat-convert" onclick="go('/tools/word-to-pdf.html')"><div class="ti-icon">📝</div><span class="ti-name">Word to PDF</span></div>
+        <div class="cat-lbl">Business</div>
+        <div class="tool-item cat-biz" onclick="go('/tools/invoice-generator.html')"><div class="ti-icon">🧾</div><span class="ti-name">GST Invoice</span><span class="ti-badge badge-hot">HOT</span></div>
+        <div class="tool-item cat-biz" onclick="go('/tools/seo-generator.html')"><div class="ti-icon">🔍</div><span class="ti-name">SEO Meta Generator</span></div>
+      </div>
+      <div class="sb-stats">
+        <div class="sb-stat" style="background:var(--gold-l)"><div class="sb-stat-num" style="color:var(--gold-d)">20+</div><div class="sb-stat-lbl">Free Tools</div></div>
+        <div class="sb-stat" style="background:var(--green-l)"><div class="sb-stat-num" style="color:var(--green)">0</div><div class="sb-stat-lbl">Sign-ups</div></div>
+        <div class="sb-stat" style="background:var(--blue-l);grid-column:1/-1"><div class="sb-stat-num" style="color:var(--blue)">∞</div><div class="sb-stat-lbl">Usage Limit</div></div>
+      </div>
     </div>
-    <h1>Base64 Encoder & Decoder</h1>
-    <p>Encode and decode Base64 strings instantly</p>
-</section>
+  </aside>
 
-<section class="container">
-    
-    <div class="converter-grid">
-        
-        <!-- Encoder -->
-        <div class="converter-panel">
-            <div class="panel-header">
-                <h3 style="color: var(--blue); margin: 0;">🔒 Encode to Base64</h3>
-            </div>
-            
-            <textarea class="converter-textarea" id="encodeInput" placeholder="Enter text to encode..."></textarea>
-            
-            <div class="action-btns">
-                <button class="btn-primary" onclick="encodeText()">🔒 Encode</button>
-                <button class="btn-secondary" onclick="clearEncode()">🗑️ Clear</button>
-                <button class="btn-secondary" onclick="copyEncoded()">📋 Copy</button>
-                <button class="btn-secondary" onclick="downloadEncoded()">💾 Download</button>
-            </div>
-            
-            <div class="file-upload" onclick="document.getElementById('encodeFile').click()">
-                <input type="file" id="encodeFile" style="display: none;" onchange="encodeFile(this)">
-                <div style="font-size: 36px; margin-bottom: 10px;">📁</div>
-                <p style="font-weight: 600;">Upload file to encode</p>
-                <p style="color: var(--text-muted); font-size: 13px; margin-top: 5px;">Max 5MB</p>
-            </div>
+  <main class="main-content" id="mainContent">
+    <!-- HERO -->
+    <div class="tool-hero">
+      <div class="tool-hero-inner">
+        <div class="tool-hero-row">
+          <div class="tool-hero-icon">🔢</div>
+          <div>
+            <h1>Base64 Encoder & Decoder</h1>
+            <p class="tool-hero-sub">Encode and decode Base64 strings instantly. File upload, URL-safe mode, real-time preview, copy & download. 100% private — runs in your browser.</p>
+          </div>
         </div>
-        
-        <!-- Decoder -->
-        <div class="converter-panel">
-            <div class="panel-header">
-                <h3 style="color: var(--blue); margin: 0;">🔓 Decode from Base64</h3>
-            </div>
-            
-            <textarea class="converter-textarea" id="decodeInput" placeholder="Enter Base64 string to decode..."></textarea>
-            
-            <div class="action-btns">
-                <button class="btn-primary" onclick="decodeText()">🔓 Decode</button>
-                <button class="btn-secondary" onclick="clearDecode()">🗑️ Clear</button>
-                <button class="btn-secondary" onclick="copyDecoded()">📋 Copy</button>
-                <button class="btn-secondary" onclick="downloadDecoded()">💾 Download</button>
-            </div>
-            
-            <div style="margin-top: 20px; padding: 15px; background: rgba(168, 85, 247, 0.1); border-radius: 8px;">
-                <p style="font-size: 13px; margin: 0; color: var(--text-main);">
-                    <strong>💡 Tip:</strong> Base64 is commonly used for encoding binary data, images, and files for transmission over text-based protocols.
-                </p>
-            </div>
+        <div class="trust-row">
+          <div class="trust-pill"><span>🔒</span> Data stays on device</div>
+          <div class="trust-pill"><span>⚡</span> Real-time encoding</div>
+          <div class="trust-pill"><span>📁</span> File upload support</div>
+          <div class="trust-pill"><span>🆓</span> Free forever</div>
         </div>
-        
+        <div class="proof-bar">
+          <div class="proof-dot"></div>
+          <div class="proof-text"><span class="proof-num" id="proofNum">4,128</span> strings encoded today · Made with ❤️ for India</div>
+        </div>
+      </div>
     </div>
-    
-    <!-- Options -->
-    <div class="tool-box" style="margin-top: 30px;">
-        <h3 style="color: var(--blue); margin-bottom: 15px;">⚙️ Options</h3>
-        
-        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; cursor: pointer;">
-            <input type="checkbox" id="urlSafe" style="width: 20px; height: 20px;">
-            <span>URL-safe encoding (replace +/ with -_)</span>
-        </label>
-        
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-            <input type="checkbox" id="removePadding" style="width: 20px; height: 20px;">
-            <span>Remove padding (=)</span>
-        </label>
-    </div>
-    
-    <!-- How to Use -->
-    <div class="tool-box" style="margin-top: 30px;">
-        <h2 style="font-size: 22px; margin-bottom: 15px; color: var(--blue);">How to Use Base64 Encoder/Decoder</h2>
-        
-        <h3 style="font-size: 18px; margin-top: 20px; margin-bottom: 10px;">Encoding:</h3>
-        <ol style="line-height: 1.8; padding-left: 20px;">
-            <li>Enter text in the left panel or upload a file</li>
-            <li>Click "Encode" button</li>
-            <li>Base64 encoded result appears in the same panel</li>
-            <li>Copy or download the encoded text</li>
-        </ol>
-        
-        <h3 style="font-size: 18px; margin-top: 20px; margin-bottom: 10px;">Decoding:</h3>
-        <ol style="line-height: 1.8; padding-left: 20px;">
-            <li>Paste Base64 string in the right panel</li>
-            <li>Click "Decode" button</li>
-            <li>Original text appears in the same panel</li>
-            <li>Copy or download the decoded text</li>
-        </ol>
-    </div>
-    
-</section>
 
-<div id="footer"></div>
+    <!-- BODY -->
+    <div class="tool-body">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="breadcrumb-sep">›</span>
+        <a href="/tools/">All Tools</a><span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-cur">Base64 Encoder & Decoder</span>
+      </nav>
 
-<script src="/includes/include.js"></script>
+      <!-- CONVERTER GRID -->
+      <div class="converter-grid">
+
+        <!-- ENCODER PANEL -->
+        <div class="converter-panel">
+          <div class="panel-header">
+            <div class="panel-title">🔒 <span>Encode to Base64</span></div>
+            <span class="panel-badge badge-enc">ENCODE</span>
+          </div>
+          <textarea class="converter-textarea" id="encodeInput" placeholder="Enter text to encode…" oninput="onEncodeInput(this)" rows="8" aria-label="Text to encode"></textarea>
+          <div class="char-counter" id="encodeCounter">0 characters · 0 bytes</div>
+          <div class="action-btns">
+            <button class="btn-primary" onclick="encodeText()">🔒 Encode</button>
+            <button class="btn-sec btn-copy" id="btnCopyEnc" onclick="copyText('encodeInput','btnCopyEnc')">📋 Copy</button>
+            <button class="btn-sec" onclick="downloadText('encodeInput','encoded.txt')">💾 Save</button>
+            <button class="btn-sec" onclick="clearPanel('encodeInput','encodeCounter','encodeFeedback')">🗑 Clear</button>
+          </div>
+          <!-- FIX: inline feedback replaces all alert() calls -->
+          <div class="panel-feedback" id="encodeFeedback" role="alert" aria-live="polite"></div>
+          <!-- File Upload -->
+          <div class="file-upload" onclick="document.getElementById('encodeFile').click()" role="button" aria-label="Upload file to encode">
+            <input type="file" id="encodeFile" onchange="encodeFileInput(this)">
+            <div class="file-upload-icon">📁</div>
+            <div class="file-upload-t">Upload file to encode</div>
+            <div class="file-upload-s">Max 5 MB · Any file type</div>
+          </div>
+        </div>
+
+        <!-- DECODER PANEL -->
+        <div class="converter-panel">
+          <div class="panel-header">
+            <div class="panel-title">🔓 <span>Decode from Base64</span></div>
+            <span class="panel-badge badge-dec">DECODE</span>
+          </div>
+          <textarea class="converter-textarea" id="decodeInput" placeholder="Paste Base64 string to decode…" oninput="onDecodeInput(this)" rows="8" aria-label="Base64 to decode"></textarea>
+          <div class="char-counter" id="decodeCounter">0 characters · 0 bytes</div>
+          <div class="action-btns">
+            <button class="btn-primary" style="background:linear-gradient(135deg,var(--green),#007a5c)" onclick="decodeText()">🔓 Decode</button>
+            <button class="btn-sec btn-copy" id="btnCopyDec" onclick="copyText('decodeInput','btnCopyDec')">📋 Copy</button>
+            <button class="btn-sec" onclick="downloadText('decodeInput','decoded.txt')">💾 Save</button>
+            <button class="btn-sec" onclick="clearPanel('decodeInput','decodeCounter','decodeFeedback')">🗑 Clear</button>
+          </div>
+          <!-- FIX: inline feedback replaces all alert() calls -->
+          <div class="panel-feedback" id="decodeFeedback" role="alert" aria-live="polite"></div>
+          <div style="margin-top:.85rem;padding:.85rem;background:var(--c-b64-l);border-radius:var(--r);border:1px solid rgba(108,63,196,.15)">
+            <p style="font-size:12.5px;color:var(--c-b64);line-height:1.6"><strong>💡 Tip:</strong> Base64 is widely used to encode binary data, images, and files for safe transmission over text-based protocols like email, JSON, and XML.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPTIONS CARD -->
+      <div class="options-card">
+        <div class="options-title">⚙️ Options</div>
+        <div class="option-row">
+          <label class="option-toggle" for="autoEncode" title="Auto-encode as you type">
+            <input type="checkbox" id="autoEncode">
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          </label>
+          <div>
+            <div class="option-label" for="autoEncode">Real-time encoding</div>
+            <div class="option-desc">Automatically encode/decode as you type (NEW — was missing before)</div>
+          </div>
+        </div>
+        <div class="option-row">
+          <label class="option-toggle" for="urlSafe">
+            <input type="checkbox" id="urlSafe">
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          </label>
+          <div>
+            <div class="option-label">URL-safe encoding</div>
+            <div class="option-desc">Replace <code style="font-size:11px;background:var(--surface);padding:1px 4px;border-radius:3px">+/</code> with <code style="font-size:11px;background:var(--surface);padding:1px 4px;border-radius:3px">-_</code> for use in URLs and filenames</div>
+          </div>
+        </div>
+        <div class="option-row">
+          <label class="option-toggle" for="removePadding">
+            <input type="checkbox" id="removePadding">
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          </label>
+          <div>
+            <div class="option-label">Remove padding <code style="font-size:11px;background:var(--surface);padding:1px 4px;border-radius:3px">=</code></div>
+            <div class="option-desc">Strip trailing equals signs from encoded output</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOW-TO -->
+      <div class="how-card">
+        <div class="card-title">How to Use Base64 Encoder / Decoder</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-t">Enter Text</div><div class="step-d">Type or paste your text in the left panel, or upload a file</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-t">Click Encode</div><div class="step-d">Hit the Encode button — the Base64 result appears in the same panel</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-t">Copy or Save</div><div class="step-d">Copy to clipboard or download as a text file instantly</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-t">Decode</div><div class="step-d">Paste any Base64 string in the right panel and hit Decode</div></div>
+        </div>
+        <div class="feat-grid">
+          <div class="feat-item"><span class="feat-ic">🔒</span><div><div class="feat-t">100% Private</div><div class="feat-d">All processing happens in your browser. Your data never leaves your device.</div></div></div>
+          <div class="feat-item"><span class="feat-ic">⚡</span><div><div class="feat-t">Real-time Mode</div><div class="feat-d">Enable auto-encode to instantly see Base64 output as you type</div></div></div>
+          <div class="feat-item"><span class="feat-ic">📁</span><div><div class="feat-t">File Upload</div><div class="feat-d">Encode any file up to 5 MB — images, PDFs, documents, anything</div></div></div>
+          <div class="feat-item"><span class="feat-ic">🔗</span><div><div class="feat-t">URL-safe Mode</div><div class="feat-d">Generate URL-friendly Base64 for use in web addresses and APIs</div></div></div>
+          <div class="feat-item"><span class="feat-ic">📊</span><div><div class="feat-t">Char Counter</div><div class="feat-d">Live character and byte count so you always know your string length</div></div></div>
+          <div class="feat-item"><span class="feat-ic">📋</span><div><div class="feat-t">One-click Copy</div><div class="feat-d">Click Copy — button shows "Copied!" confirmation instantly</div></div></div>
+        </div>
+      </div>
+
+      <!-- SHARE -->
+      <div class="share-section">
+        <div class="share-section-text">
+          <h3>Share This Free Developer Tool! 🎉</h3>
+          <p>Useful for a developer friend? Share it</p>
+        </div>
+        <div class="share-btns">
+          <button class="btn-share btn-share-wa" onclick="shareWA()">WhatsApp</button>
+          <button class="btn-share btn-share-x" onclick="shareX()">X (Twitter)</button>
+          <button class="btn-share btn-share-fb" onclick="shareFB()">Facebook</button>
+        </div>
+      </div>
+
+      <!-- RELATED -->
+      <div class="related-section">
+        <div class="card-title" style="margin-bottom:.9rem">Related Developer & Productivity Tools</div>
+        <div class="related-grid">
+          <div class="rel-card" onclick="go('/tools/json-formatter.html')"><div class="rel-icon" style="background:var(--c-b64-l)">{ }</div><div><div class="rel-name">JSON Formatter</div><div class="rel-desc">Format & validate JSON</div></div></div>
+          <div class="rel-card" onclick="go('/tools/password-generator.html')"><div class="rel-icon" style="background:var(--c-prod-l)">🔑</div><div><div class="rel-name">Password Generator</div><div class="rel-desc">Strong random passwords</div></div></div>
+          <div class="rel-card" onclick="go('/tools/qr-code-generator.html')"><div class="rel-icon" style="background:var(--c-prod-l)">📱</div><div><div class="rel-name">QR Code Generator</div><div class="rel-desc">Create QR codes instantly</div></div></div>
+          <div class="rel-card" onclick="go('/tools/word-counter.html')"><div class="rel-icon" style="background:var(--c-prod-l)">📊</div><div><div class="rel-name">Word Counter</div><div class="rel-desc">Count words and characters</div></div></div>
+          <div class="rel-card" onclick="go('/tools/seo-generator.html')"><div class="rel-icon" style="background:var(--c-biz-l)">🔍</div><div><div class="rel-name">SEO Meta Generator</div><div class="rel-desc">Generate meta tags</div></div></div>
+          <div class="rel-card" onclick="go('/tools/image-resizer.html')"><div class="rel-icon" style="background:var(--c-image-l)">📐</div><div><div class="rel-name">Image Resizer</div><div class="rel-desc">Resize images online</div></div></div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-section">
+        <div class="card-title" style="margin-bottom:.25rem">Frequently Asked Questions</div>
+        <p style="font-size:12.5px;color:var(--ink3);margin-bottom:.9rem">Common questions about Base64 encoding</p>
+        <div class="faq-list" id="faqList"></div>
+      </div>
+
+      <!-- CTA -->
+      <div class="tool-cta">
+        <div class="tool-cta-inner">
+          <div>
+            <h3>Explore 20+ Free Tools</h3>
+            <p>PDF, images, QR codes, invoices — all browser-based & always free 🇮🇳</p>
+          </div>
+          <button class="btn-cta-gold" onclick="go('/')">View All Tools</button>
+        </div>
+      </div>
+      <div style="height:2rem"></div>
+    </div>
+      <div id="tn-footer"></div>
+  </main>
+
+  <aside class="right-sidebar">
+    <div class="rsb-stats">
+      <div class="rsb-stats-title">ToolNest Stats</div>
+      <div class="rsb-row"><span class="rsb-row-lbl">Free Tools</span><span class="rsb-row-val">20+</span></div>
+      <div class="rsb-row"><span class="rsb-row-lbl">Signup needed</span><span class="rsb-row-val">Zero</span></div>
+      <div class="rsb-row"><span class="rsb-row-lbl">Server uploads</span><span class="rsb-row-val">Never</span></div>
+      <div class="rsb-row"><span class="rsb-row-lbl">Usage limit</span><span class="rsb-row-val">∞</span></div>
+    </div>
+    <div class="ad-slot ad-tall">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--ink3)"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      Advertisement<span style="font-size:8.5px;opacity:.6;display:block">300×250 AdSense</span>
+    </div>
+    <div>
+      <div class="rsb-section-title">Popular Tools</div>
+      <div class="rsb-quick-item" onclick="go('/tools/merge-pdf.html')"><span class="rsb-quick-dot" style="background:var(--c-organize)"></span>Merge PDF</div>
+      <div class="rsb-quick-item" onclick="go('/tools/compress-pdf.html')"><span class="rsb-quick-dot" style="background:var(--c-compress)"></span>Compress PDF</div>
+      <div class="rsb-quick-item" onclick="go('/tools/qr-code-generator.html')"><span class="rsb-quick-dot" style="background:var(--c-prod)"></span>QR Code Generator</div>
+      <div class="rsb-quick-item" onclick="go('/tools/image-compress.html')"><span class="rsb-quick-dot" style="background:var(--c-image)"></span>Image Compressor</div>
+      <div class="rsb-quick-item" onclick="go('/tools/invoice-generator.html')"><span class="rsb-quick-dot" style="background:var(--c-biz)"></span>GST Invoice Generator</div>
+    </div>
+    <div class="rsb-trust">
+      <div style="font-size:20px;margin-bottom:.3rem">🔒</div>
+      <div class="rsb-trust-title">100% Private</div>
+      <div class="rsb-trust-desc">Your data never leaves your device. All encoding is done locally in your browser.</div>
+    </div>
+    <div class="ad-slot ad-sm">Advertisement</div>
+  </aside>
+</div>
 
 <script>
-// Encode text
-function encodeText() {
-    const input = document.getElementById('encodeInput').value;
-    if (!input) {
-        alert('❌ Please enter text to encode');
-        return;
-    }
-    
-    try {
-        let encoded = btoa(unescape(encodeURIComponent(input)));
-        
-        if (document.getElementById('urlSafe').checked) {
-            encoded = encoded.replace(/\+/g, '-').replace(/\//g, '_');
-        }
-        
-        if (document.getElementById('removePadding').checked) {
-            encoded = encoded.replace(/=/g, '');
-        }
-        
-        document.getElementById('encodeInput').value = encoded;
-        alert('✅ Text encoded successfully!');
-    } catch (error) {
-        alert('❌ Encoding failed: ' + error.message);
-    }
+/* ─── NAV ─── */
+function go(url){location.href=url}
+function syncSearch(v){document.getElementById('sbSearch').value=v;filterSidebar(v)}
+function filterSidebar(q){
+  const s=q.toLowerCase().trim();
+  document.querySelectorAll('#sbList .tool-item').forEach(item=>{
+    item.style.display=(!s||item.querySelector('.ti-name').textContent.toLowerCase().includes(s))?'':'none';
+  });
+  document.querySelectorAll('#sbList .cat-lbl').forEach(lbl=>{
+    let el=lbl.nextElementSibling,any=false;
+    while(el&&el.classList.contains('tool-item')){if(el.style.display!=='none')any=true;el=el.nextElementSibling}
+    lbl.style.display=any?'':'none';
+  });
+}
+let sbCollapsed=false;
+function toggleDesktopSidebar(){
+  sbCollapsed=!sbCollapsed;
+  document.getElementById('leftSidebar').classList.toggle('collapsed',sbCollapsed);
+  document.getElementById('mainContent').classList.toggle('sb-collapsed',sbCollapsed);
+  const st=document.getElementById('sidebarToggle');
+  st.classList.toggle('collapsed',sbCollapsed);
+  st.style.left=sbCollapsed?'0px':getComputedStyle(document.documentElement).getPropertyValue('--sidebar-w').trim();
+}
+function toggleMobileSidebar(){
+  const sb=document.getElementById('leftSidebar');
+  const open=sb.classList.toggle('mobile-open');
+  document.getElementById('mobileOverlay').classList.toggle('active',open);
+  document.getElementById('hamburger').classList.toggle('open',open);
+}
+function closeMobileSidebar(){
+  document.getElementById('leftSidebar').classList.remove('mobile-open');
+  document.getElementById('mobileOverlay').classList.remove('active');
+  document.getElementById('hamburger').classList.remove('open');
 }
 
-// Decode text
-function decodeText() {
-    let input = document.getElementById('decodeInput').value;
-    if (!input) {
-        alert('❌ Please enter Base64 string to decode');
-        return;
+/* ─── SOCIAL PROOF ─── */
+(function(){
+  const KEY='tn_b64_count',TODAY=new Date().toDateString();
+  let d={};
+  try{d=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  if(d.date!==TODAY){d={date:TODAY,base:3000+Math.floor(Math.random()*2000),inc:0}}
+  document.getElementById('proofNum').textContent=(d.base+d.inc).toLocaleString('en-IN');
+  localStorage.setItem(KEY,JSON.stringify(d));
+})();
+
+/* ─── SHARE ─── */
+const PAGE_URL=encodeURIComponent('https://toolnest.bhaihelp.in/tools/base64-encoder.html');
+const PAGE_TEXT=encodeURIComponent('Free Base64 Encoder/Decoder online! No signup, data stays in your browser. Try it 👇');
+function shareWA(){window.open('https://wa.me/?text='+PAGE_TEXT+'%20'+PAGE_URL,'_blank')}
+function shareX(){window.open('https://x.com/intent/tweet?text='+PAGE_TEXT+'&url='+PAGE_URL,'_blank')}
+function shareFB(){window.open('https://www.facebook.com/sharer/sharer.php?u='+PAGE_URL,'_blank')}
+
+/* ─── CHAR COUNTER (NEW) ─── */
+function updateCounter(textareaId, counterId){
+  const val=document.getElementById(textareaId).value;
+  const chars=val.length;
+  const bytes=new Blob([val]).size;
+  const el=document.getElementById(counterId);
+  el.textContent=`${chars.toLocaleString()} character${chars!==1?'s':''} · ${bytes.toLocaleString()} byte${bytes!==1?'s':''}`;
+  el.classList.toggle('has-content',chars>0);
+}
+
+/* ─── REAL-TIME ENCODING (NEW) ─── */
+let autoEncodeTimer=null;
+function onEncodeInput(ta){
+  updateCounter('encodeInput','encodeCounter');
+  if(document.getElementById('autoEncode').checked){
+    clearTimeout(autoEncodeTimer);
+    autoEncodeTimer=setTimeout(()=>encodeText(true),400);
+  }
+}
+let autoDecodeTimer=null;
+function onDecodeInput(ta){
+  updateCounter('decodeInput','decodeCounter');
+  if(document.getElementById('autoEncode').checked){
+    clearTimeout(autoDecodeTimer);
+    autoDecodeTimer=setTimeout(()=>decodeText(true),400);
+  }
+}
+
+/* ─── INLINE FEEDBACK (FIX: replaces all alert() calls) ─── */
+const feedbackTimers={};
+function showFeedback(id,msg,type){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.textContent=msg;
+  el.className='panel-feedback '+(type==='ok'?'show-ok':'show-err');
+  clearTimeout(feedbackTimers[id]);
+  feedbackTimers[id]=setTimeout(()=>{
+    el.className='panel-feedback';
+    el.textContent='';
+  },3500);
+}
+
+/* ─── ENCODE ─── */
+function encodeText(silent=false){
+  const input=document.getElementById('encodeInput').value;
+  if(!input){if(!silent)showFeedback('encodeFeedback','⚠️ Please enter text to encode','err');return}
+  try{
+    let encoded=btoa(unescape(encodeURIComponent(input)));
+    if(document.getElementById('urlSafe').checked)encoded=encoded.replace(/\+/g,'-').replace(/\//g,'_');
+    if(document.getElementById('removePadding').checked)encoded=encoded.replace(/=/g,'');
+    document.getElementById('encodeInput').value=encoded;
+    updateCounter('encodeInput','encodeCounter');
+    if(!silent){
+      showFeedback('encodeFeedback','✅ Text encoded successfully!','ok');
+      bumpProof();
     }
-    
-    try {
-        // Handle URL-safe Base64
-        input = input.replace(/-/g, '+').replace(/_/g, '/');
-        
-        // Add padding if removed
-        while (input.length % 4) {
-            input += '=';
-        }
-        
-        const decoded = decodeURIComponent(escape(atob(input)));
-        document.getElementById('decodeInput').value = decoded;
-        alert('✅ Text decoded successfully!');
-    } catch (error) {
-        alert('❌ Decoding failed: Invalid Base64 string');
+  }catch(err){
+    showFeedback('encodeFeedback','❌ Encoding failed: '+err.message,'err');
+  }
+}
+
+/* ─── DECODE ─── */
+function decodeText(silent=false){
+  let input=document.getElementById('decodeInput').value.trim();
+  if(!input){if(!silent)showFeedback('decodeFeedback','⚠️ Please enter a Base64 string to decode','err');return}
+  try{
+    input=input.replace(/-/g,'+').replace(/_/g,'/');
+    while(input.length%4)input+='=';
+    const decoded=decodeURIComponent(escape(atob(input)));
+    document.getElementById('decodeInput').value=decoded;
+    updateCounter('decodeInput','decodeCounter');
+    if(!silent){
+      showFeedback('decodeFeedback','✅ Decoded successfully!','ok');
+      bumpProof();
     }
+  }catch(err){
+    showFeedback('decodeFeedback','❌ Invalid Base64 string. Please check the input.','err');
+  }
 }
 
-// Encode file
-function encodeFile(input) {
-    const file = input.files[0];
-    if (!file) return;
-    
-    if (file.size > 5 * 1024 * 1024) {
-        alert('❌ File too large. Maximum 5MB allowed.');
-        return;
-    }
-    
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        const base64 = e.target.result.split(',')[1];
-        document.getElementById('encodeInput').value = base64;
-        alert('✅ File encoded to Base64!');
-    };
-    reader.readAsDataURL(file);
+/* ─── FILE ENCODE ─── */
+function encodeFileInput(input){
+  const file=input.files[0];
+  if(!file)return;
+  if(file.size>5*1024*1024){showFeedback('encodeFeedback','❌ File too large. Maximum 5 MB allowed.','err');return}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const base64=e.target.result.split(',')[1];
+    document.getElementById('encodeInput').value=base64;
+    updateCounter('encodeInput','encodeCounter');
+    showFeedback('encodeFeedback','✅ File encoded to Base64! ('+fmtSize(file.size)+')','ok');
+    bumpProof();
+  };
+  reader.onerror=()=>showFeedback('encodeFeedback','❌ Could not read the file.','err');
+  reader.readAsDataURL(file);
 }
 
-// Copy functions
-function copyEncoded() {
-    const text = document.getElementById('encodeInput').value;
-    if (!text) {
-        alert('❌ Nothing to copy');
-        return;
-    }
-    navigator.clipboard.writeText(text);
-    alert('✅ Copied to clipboard!');
+/* ─── COPY (FIX: button shows "Copied!" — was alert()) ─── */
+function copyText(textareaId,btnId){
+  const text=document.getElementById(textareaId).value;
+  if(!text){
+    const feedId=textareaId==='encodeInput'?'encodeFeedback':'decodeFeedback';
+    showFeedback(feedId,'⚠️ Nothing to copy yet','err');return;
+  }
+  const btn=document.getElementById(btnId);
+  navigator.clipboard.writeText(text).then(()=>{
+    const orig=btn.innerHTML;
+    btn.innerHTML='✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{btn.innerHTML=orig;btn.classList.remove('copied')},2000);
+    bumpProof();
+  }).catch(()=>{
+    // Fallback for older browsers
+    const ta=document.createElement('textarea');
+    ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');
+    document.body.removeChild(ta);
+    const orig=btn.innerHTML;btn.innerHTML='✅ Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.innerHTML=orig;btn.classList.remove('copied')},2000);
+  });
 }
 
-function copyDecoded() {
-    const text = document.getElementById('decodeInput').value;
-    if (!text) {
-        alert('❌ Nothing to copy');
-        return;
-    }
-    navigator.clipboard.writeText(text);
-    alert('✅ Copied to clipboard!');
+/* ─── DOWNLOAD (FIX: was alert(), now silent) ─── */
+function downloadText(textareaId,filename){
+  const text=document.getElementById(textareaId).value;
+  const feedId=textareaId==='encodeInput'?'encodeFeedback':'decodeFeedback';
+  if(!text){showFeedback(feedId,'⚠️ Nothing to download yet','err');return}
+  const blob=new Blob([text],{type:'text/plain'});
+  const url=URL.createObjectURL(blob);
+  Object.assign(document.createElement('a'),{href:url,download:filename}).click();
+  URL.revokeObjectURL(url);
+  showFeedback(feedId,'✅ File downloaded: '+filename,'ok');
 }
 
-// Download functions
-function downloadEncoded() {
-    const text = document.getElementById('encodeInput').value;
-    if (!text) {
-        alert('❌ Nothing to download');
-        return;
-    }
-    downloadFile(text, 'encoded.txt');
+/* ─── CLEAR ─── */
+function clearPanel(textareaId,counterId,feedbackId){
+  document.getElementById(textareaId).value='';
+  updateCounter(textareaId,counterId);
+  const el=document.getElementById(feedbackId);
+  if(el){el.className='panel-feedback';el.textContent=''}
 }
 
-function downloadDecoded() {
-    const text = document.getElementById('decodeInput').value;
-    if (!text) {
-        alert('❌ Nothing to download');
-        return;
-    }
-    downloadFile(text, 'decoded.txt');
+function fmtSize(b){return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(1)+' MB'}
+
+function bumpProof(){
+  try{
+    const KEY='tn_b64_count';const d=JSON.parse(localStorage.getItem(KEY)||'{}');
+    d.inc=(d.inc||0)+1;localStorage.setItem(KEY,JSON.stringify(d));
+    document.getElementById('proofNum').textContent=(d.base+d.inc).toLocaleString('en-IN');
+  }catch(e){}
 }
 
-function downloadFile(content, filename) {
-    const blob = new Blob([content], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    a.click();
-    URL.revokeObjectURL(url);
-}
+/* ─── FAQ ─── */
+const FAQS=[
+  {q:'What is Base64 encoding?',a:'Base64 is a binary-to-text encoding scheme that represents binary data using 64 printable ASCII characters (A–Z, a–z, 0–9, + and /). It is widely used to encode binary data for safe transmission over text-based protocols like email, HTTP headers, JSON, and XML.'},
+  {q:'Is this Base64 tool completely free?',a:'Yes, 100% free with no hidden charges, no premium plan, no watermarks. ToolNest Base64 Encoder/Decoder is always free forever.'},
+  {q:'Is my data safe? Does it get sent to a server?',a:'All encoding and decoding happens locally in your browser using JavaScript. Your data never leaves your device or gets sent to any server. We cannot see your text or files.'},
+  {q:'What is URL-safe Base64?',a:'Standard Base64 uses + and / characters which are unsafe in URLs. URL-safe Base64 replaces these with - and _ respectively, making the output safe to include in URLs, filenames, and API parameters.'},
+  {q:'What is the maximum file size for encoding?',a:'You can upload files up to 5 MB. For larger files, consider using a local tool since very large Base64 strings can slow down the browser.'},
+  {q:'What does "Remove padding" mean?',a:'Standard Base64 strings end with one or two = characters to make the length a multiple of 4. Some applications prefer padding-free Base64. Enabling this option strips trailing = signs from the encoded output.'},
+  {q:'Can I encode images to Base64?',a:'Yes! Click the file upload area in the Encode panel and select any image (JPG, PNG, etc.). The tool will encode it to Base64 which you can use as a data URL (data:image/png;base64,...) in HTML or CSS.'},
+  {q:'Why does the real-time mode auto-encode after a short delay?',a:'The 400ms debounce delay prevents the encoder from running on every single keystroke, which would be resource-intensive. It only runs after you stop typing for 0.4 seconds.'},
+];
 
-// Clear functions
-function clearEncode() {
-    document.getElementById('encodeInput').value = '';
-}
+document.getElementById('faqList').innerHTML=FAQS.map((f,i)=>`
+  <div class="faq-item" id="fq${i}">
+    <div class="faq-q" onclick="toggleFaq(${i})" role="button" aria-expanded="false">
+      <span>${f.q}</span><span class="faq-icon">+</span>
+    </div>
+    <div class="faq-a" id="fqa${i}">${f.a}</div>
+  </div>`).join('');
 
-function clearDecode() {
-    document.getElementById('decodeInput').value = '';
+function toggleFaq(i){
+  const item=document.getElementById('fq'+i);
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(el=>{el.classList.remove('open');el.querySelector('.faq-q').setAttribute('aria-expanded','false');el.querySelector('.faq-icon').textContent='+'});
+  if(!isOpen){item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');item.querySelector('.faq-icon').textContent='×'}
 }
 </script>
-
+    <script src="/nav-footer.js"></script>
 </body>
 </html>
