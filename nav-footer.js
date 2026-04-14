@@ -124,7 +124,7 @@ const TN = {
           <div class="nav-dd-menu" id="navDDMenu" role="menu">
             <div class="ndm-grid">${megaCols}</div>
             <div class="ndm-footer">
-              <a href="/">⚡ View All ${TN.tools.length}+ Tools →</a>
+              <a href="/#tools">⚡ View All ${TN.tools.length}+ Tools →</a>
             </div>
           </div>
         </div>
@@ -248,13 +248,13 @@ const TN = {
       else document.body.appendChild(el);
     }
     if (location.pathname.startsWith('/tools')) {
-      el.style.cssText = 'display:block;width:100%;clear:both;position:relative;z-index:10';
+      el.style.cssText = 'display:block;width:100%;position:relative;z-index:10;margin-top:0';
     }
 
     el.innerHTML = `
     <style id="tn-footer-css">
       .tn-foot{background:#0F1B3D;padding:3rem 1.5rem 0;margin-top:3rem;font-family:'Plus Jakarta Sans','Outfit',sans-serif}
-      .tn-foot-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:250px 1fr;gap:3rem;padding-bottom:2.5rem}
+      .tn-foot-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:250px 1fr;gap:3rem;padding-bottom:2.5rem;box-sizing:border-box}
       .tn-foot-logo{display:flex;align-items:center;gap:10px;font-family:'Outfit',sans-serif;font-weight:800;font-size:19px;color:#fff;text-decoration:none;margin-bottom:.5rem}
       .tn-foot-logo img{width:34px;height:34px;border-radius:9px;object-fit:cover;box-shadow:0 2px 8px rgba(245,166,35,.4);flex-shrink:0}
       .tn-foot-logo span{color:#F5A623}
