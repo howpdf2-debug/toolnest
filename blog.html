@@ -359,7 +359,7 @@ button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
     <input type="text" id="navSearch" placeholder="Search 24+ free tools…" oninput="heroSearch(this.value);document.getElementById('heroInput').value=this.value" autocomplete="off">
   </div>
   <div class="nav-right">
-    <a href="/" class="nav-link active">Home</a>
+    <a href="/" class="nav-link">Home</a>
     <!-- All Tools Dropdown -->
     <div class="nav-tools-wrap" id="navToolsWrap">
       <button class="nav-tools-btn" id="navToolsBtn" onclick="toggleToolsDD()" aria-expanded="false" aria-haspopup="true">
@@ -374,7 +374,7 @@ button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
         <div class="td-grid" id="tdGrid"><!-- Rendered by JS --></div>
       </div>
     </div>
-    <a href="/blog.html" class="nav-link">Blog</a>
+    <a href="/blog.html" class="nav-link active">Blog</a>
     <a href="/about.html" class="nav-link">About</a>
     <a href="#donate" class="btn-nav-gold">❤️ Donate</a>
     <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -382,9 +382,9 @@ button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
 </nav>
 <div class="mob-overlay" id="mobOverlay" onclick="closeNav()"></div>
 <nav class="mob-nav" id="mobNav">
-  <a href="/" class="mob-link active">🏠 Home</a>
+  <a href="/" class="mob-link">🏠 Home</a>
   <a href="/tools/" class="mob-link">🛠 All Tools</a>
-  <a href="/blog.html" class="mob-link">📝 Blog</a>
+  <a href="/blog.html" class="mob-link active">📝 Blog</a>
   <a href="/about.html" class="mob-link">👋 About</a>
   <a href="#donate" class="mob-link" onclick="closeNav()">❤️ UPI Donate</a>
 </nav>
@@ -500,7 +500,13 @@ button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="fbrand">
-        <div class="flogo"><div class="flogo-box">TN</div>Tool<span>Nest</span></div>
+        <div class="flogo">
+          <img src="/favicon.png" alt="ToolNest" width="34" height="34"
+            style="border-radius:9px;object-fit:cover;box-shadow:0 2px 8px rgba(245,166,35,.4);flex-shrink:0"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="flogo-box" style="display:none">TN</div>
+          Tool<span>Nest</span>
+        </div>
         <p>Free · No Signup · 100% Browser-based · Made for India 🇮🇳<br>Aapki files kabhi bhi hamare server par nahi jaati.</p>
         <div class="fsocs">
           <a href="https://twitter.com/toolnest_in" class="fsoc" target="_blank" rel="noopener" aria-label="Twitter">𝕏</a>
@@ -778,6 +784,5 @@ renderFeatured();
 renderFilter();
 renderPosts();
 </script>
-  
 </body>
 </html>
