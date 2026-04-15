@@ -253,7 +253,8 @@ const TN = {
 
     el.innerHTML = `
     <style id="tn-footer-css">
-      .tn-foot{background:#0F1B3D;padding:3rem 1.5rem 0;margin-top:3rem;font-family:'Plus Jakarta Sans','Outfit',sans-serif}
+      .tn-foot{background:#0F1B3D;padding:3rem 1.5rem 0;margin-top:0;font-family:'Plus Jakarta Sans','Outfit',sans-serif;padding-right:calc(1.5rem + var(--right-w,220px))}
+      .tn-foot-bottom{padding-right:0}
       .tn-foot-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:250px 1fr;gap:3rem;padding-bottom:2.5rem;box-sizing:border-box}
       .tn-foot-logo{display:flex;align-items:center;gap:10px;font-family:'Outfit',sans-serif;font-weight:800;font-size:19px;color:#fff;text-decoration:none;margin-bottom:.5rem}
       .tn-foot-logo img{width:34px;height:34px;border-radius:9px;object-fit:cover;box-shadow:0 2px 8px rgba(245,166,35,.4);flex-shrink:0}
@@ -265,7 +266,7 @@ const TN = {
       .tn-foot-col a{display:block;font-size:12.5px;color:rgba(255,255,255,.45);margin-bottom:.4rem;text-decoration:none;transition:color .15s}
       .tn-foot-col a:hover{color:#F5A623}
       .tn-foot-bottom{max-width:1180px;margin:0 auto;border-top:1px solid rgba(255,255,255,.07);padding:1.1rem 0 1.4rem;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:rgba(255,255,255,.28);flex-wrap:wrap;gap:.5rem}
-      @media(max-width:900px){.tn-foot-inner{grid-template-columns:1fr;gap:1.75rem}.tn-foot-cols{grid-template-columns:1fr 1fr}}
+      @media(max-width:1024px){.tn-foot{padding-right:1.5rem}}@media(max-width:900px){.tn-foot-inner{grid-template-columns:1fr;gap:1.75rem}.tn-foot-cols{grid-template-columns:1fr 1fr}}
       @media(max-width:500px){.tn-foot-cols{grid-template-columns:1fr}}
     </style>
     <footer class="tn-foot">
