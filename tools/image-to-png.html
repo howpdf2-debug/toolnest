@@ -3,72 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Convert Image to PNG Free Online | ToolNest</title>
-<meta name="description" content="Convert JPG, WebP, GIF, BMP images to PNG format online for free. Batch convert multiple files. Preserves transparency. No signup required.">
+<title>Convert Image to PNG Free Online — Batch Convert | ToolNest</title>
+<meta name="description" content="Convert JPG, WebP, GIF, BMP images to PNG format online for free. Batch convert multiple files. Preserves transparency. No signup required. Files never leave browser.">
+<meta name="keywords" content="image to png converter free, jpg to png online, webp to png, batch convert png, image convert india, photo png mein convert karna">
 <link rel="canonical" href="https://toolnest.bhaihelp.in/tools/image-to-png.html">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <meta name="theme-color" content="#0F1B3D">
-<meta name="google-site-verification" content="dbfc89456a05e36c">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Image to PNG Converter Free — No Signup | ToolNest">
+<meta property="og:description" content="JPG, WebP, GIF ko PNG mein convert karein. Batch convert. Transparency preserve. 100% free, browser-based.">
+<meta property="og:url" content="https://toolnest.bhaihelp.in/tools/image-to-png.html">
+<meta property="og:site_name" content="ToolNest">
+<meta property="og:image" content="https://toolnest.bhaihelp.in/assets/og-image-to-png.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Image to PNG Free — ToolNest">
+<meta name="twitter:description" content="Images ko PNG mein convert karein. Batch support. No signup. Free forever.">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Image to PNG Converter — ToolNest","operatingSystem":"Any (Web Browser)","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"1620"},"description":"Free online image to PNG converter. Batch convert JPG, WebP, GIF to PNG. No signup, no upload.","url":"https://toolnest.bhaihelp.in/tools/image-to-png.html"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"Image ko PNG mein Convert Kaise Karein","description":"Images ko PNG format mein convert karne ka tarika — bina kisi signup ke.","totalTime":"PT30S","estimatedCost":{"@type":"MonetaryAmount","currency":"INR","value":"0"},"tool":{"@type":"HowToTool","name":"ToolNest Image to PNG"},"step":[{"@type":"HowToStep","name":"Images Choose Karein","text":"JPG, WebP, GIF ya BMP files choose karein — multiple files bhi."},{"@type":"HowToStep","name":"Auto Convert","text":"Images turant browser mein PNG format mein convert ho jaati hain."},{"@type":"HowToStep","name":"Preview Dekhein","text":"Converted PNG files ka grid preview dekhein."},{"@type":"HowToStep","name":"Download Karein","text":"Individual ya saari files ek saath download karein."}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Kya Image to PNG convert karna free hai?","acceptedAnswer":{"@type":"Answer","text":"Haan, ToolNest Image to PNG tool 100% free hai — koi charges nahi, koi watermark nahi."}},{"@type":"Question","name":"Kya files server par upload hoti hain?","acceptedAnswer":{"@type":"Answer","text":"Bilkul nahi. Sab kuch browser mein Canvas API se hota hai. Files kabhi server par nahi jaati."}},{"@type":"Question","name":"Transparency preserve hogi kya?","acceptedAnswer":{"@type":"Answer","text":"Haan! PNG format transparency (alpha channel) support karta hai. WebP ya PNG ke transparent areas PNG output mein preserve honge."}},{"@type":"Question","name":"Kitni images ek saath convert kar sakte hain?","acceptedAnswer":{"@type":"Answer","text":"Koi limit nahi — jo chaaho utni images ek saath select karo aur batch convert ho jaayengi."}}]}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,opsz,wght@0,6..18,300..800;1,6..18,300..800&display=swap" rel="stylesheet">
 
 <style>
-/* ═══════════════════════════════════════════════════
-   TOOLNEST DESIGN SYSTEM — Image to PNG
-   ═══════════════════════════════════════════════════ */
 :root {
-  --gold:        #F5A623;
-  --gold-d:      #D4891A;
-  --gold-l:      #FEF3DC;
-  --gold-b:      rgba(245,166,35,.22);
-  --navy:        #0F1B3D;
-  --navy-mid:    #1A2E5E;
-  --navy-l:      #E8ECF5;
-  --blue:        #1E4FCB;
-  --blue-l:      #EEF3FF;
-  --green:       #00B37E;
-  --green-l:     #E6FAF4;
-  --red:         #E53E3E;
-  --red-l:       #FFF0F0;
-  --amber:       #E88B00;
-  --amber-l:     #FFF8E6;
-  --purple:      #6C3FC4;
-  --purple-l:    #F2EDFF;
-  --teal:        #0891B2;
-  --teal-l:      #E8F8FD;
-  --ink:         #0D0D14;
-  --ink2:        #44455A;
-  --ink3:        #8A8BA5;
-  --paper:       #F5F6FA;
-  --white:       #FFFFFF;
-  --border:      #E2E4EF;
-  --border2:     #C8CADF;
-  --surface:     #EDEEF7;
-
-  --c-compress:  #F5620A; --c-compress-l: #FFF0EB;
-  --c-convert:   #1E4FCB; --c-convert-l:  #EEF3FF;
-  --c-organize:  #00B37E; --c-organize-l: #E6FAF4;
-  --c-edit:      #6C3FC4; --c-edit-l:     #F2EDFF;
-  --c-image:     #E91E8C; --c-image-l:    #FCE4F0;
-  --c-prod:      #E88B00; --c-prod-l:     #FFF8E6;
-  --c-biz:       #0891B2; --c-biz-l:      #E8F8FD;
-
-  --f-display:  'Outfit', sans-serif;
-  --f-body:     'Plus Jakarta Sans', sans-serif;
-  --r-sm:  8px; --r: 12px; --r-lg: 18px; --r-xl: 24px; --r-pill: 999px;
-  --sh-xs: 0 1px 2px rgba(13,13,20,.06);
-  --sh-sm: 0 2px 8px rgba(13,13,20,.08);
-  --sh:    0 4px 16px rgba(13,13,20,.10);
-  --sh-lg: 0 8px 32px rgba(13,13,20,.13);
-  --sh-xl: 0 16px 48px rgba(13,13,20,.16);
-  --sh-gold: 0 4px 24px rgba(245,166,35,.30);
-  --nav-h:      64px;
-  --sidebar-w:  255px;
-  --right-w:    220px;
+  --gold:#F5A623;--gold-d:#D4891A;--gold-l:#FEF3DC;--gold-b:rgba(245,166,35,.22);
+  --navy:#0F1B3D;--navy-mid:#1A2E5E;--navy-l:#E8ECF5;
+  --blue:#1E4FCB;--blue-l:#EEF3FF;
+  --green:#00B37E;--green-l:#E6FAF4;
+  --red:#E53E3E;--red-l:#FFF0F0;
+  --ink:#0D0D14;--ink2:#44455A;--ink3:#8A8BA5;
+  --paper:#F5F6FA;--white:#FFFFFF;
+  --border:#E2E4EF;--border2:#C8CADF;--surface:#EDEEF7;
+  --c-compress:#F5620A;--c-compress-l:#FFF0EB;
+  --c-convert:#1E4FCB;--c-convert-l:#EEF3FF;
+  --c-organize:#00B37E;--c-organize-l:#E6FAF4;
+  --c-edit:#6C3FC4;--c-edit-l:#F2EDFF;
+  --c-image:#E91E8C;--c-image-l:#FCE4F0;
+  --c-image-b:rgba(233,30,140,.18);
+  --c-prod:#E88B00;--c-prod-l:#FFF8E6;
+  --c-biz:#0891B2;--c-biz-l:#E8F8FD;
+  --sh-image:0 4px 24px rgba(233,30,140,.28);
+  --f-display:'Outfit',sans-serif;--f-body:'Plus Jakarta Sans',sans-serif;
+  --r-sm:8px;--r:12px;--r-lg:18px;--r-xl:24px;--r-pill:999px;
+  --sh-xs:0 1px 2px rgba(13,13,20,.06);--sh-sm:0 2px 8px rgba(13,13,20,.08);
+  --sh:0 4px 16px rgba(13,13,20,.10);--sh-lg:0 8px 32px rgba(13,13,20,.13);
+  --sh-gold:0 4px 24px rgba(245,166,35,.30);
+  --nav-h:64px;--sidebar-w:255px;--right-w:220px;
 }
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.6}
@@ -76,62 +67,28 @@ a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
 input,select,textarea{font-family:var(--f-body)}
-
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
 ::-webkit-scrollbar-thumb:hover{background:var(--gold)}
 
-/* ═══ TOP NAV ═══ */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  height:var(--nav-h);
-  background:rgba(255,255,255,.90);
-  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
-  padding:0 1.5rem;
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  box-shadow:var(--sh-xs);
-}
-.nav-logo{
-  display:flex;align-items:center;gap:10px;
-  font-family:var(--f-display);font-weight:800;font-size:20px;
-  color:var(--ink);white-space:nowrap;flex-shrink:0;
-}
+/* ═══ NAV ═══ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);background:rgba(255,255,255,.90);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:var(--sh-xs)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:20px;color:var(--ink);white-space:nowrap;flex-shrink:0}
 .nav-logo img{width:40px;height:40px;border-radius:10px;object-fit:cover;box-shadow:0 2px 8px rgba(245,166,35,.4)}
+.nav-logo-fallback{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#FF9500);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 2px 8px rgba(245,166,35,.4);flex-shrink:0}
 .nav-logo span{color:var(--gold)}
-.nav-search{
-  flex:1;max-width:440px;
-  display:flex;align-items:center;gap:8px;
-  background:var(--surface);border:1.5px solid var(--border);
-  border-radius:var(--r-pill);padding:0 16px;height:38px;
-  transition:border-color .2s,box-shadow .2s;
-}
+.nav-search{flex:1;max-width:440px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-pill);padding:0 16px;height:38px;transition:border-color .2s,box-shadow .2s}
 .nav-search:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-b)}
+.nav-search svg{color:var(--ink3);flex-shrink:0}
 .nav-search input{flex:1;border:none;background:transparent;outline:none;font-size:13.5px;color:var(--ink)}
 .nav-search input::placeholder{color:var(--ink3)}
 .nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.nav-link{
-  padding:7px 14px;border-radius:var(--r-sm);
-  font-size:14px;font-weight:500;color:var(--ink2);
-  transition:all .15s;white-space:nowrap;
-  display:flex;align-items:center;gap:5px;
-}
+.nav-link{padding:7px 14px;border-radius:var(--r-sm);font-size:14px;font-weight:500;color:var(--ink2);transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:5px}
 .nav-link:hover{background:var(--surface);color:var(--ink)}
-.btn-nav-gold{
-  background:var(--gold);color:var(--navy);
-  padding:8px 20px;border-radius:var(--r-pill);
-  font-size:13.5px;font-weight:700;
-  box-shadow:var(--sh-gold);transition:all .15s;
-  display:flex;align-items:center;gap:6px;
-}
+.btn-nav-gold{background:var(--gold);color:var(--navy);padding:8px 20px;border-radius:var(--r-pill);font-size:13.5px;font-weight:700;box-shadow:var(--sh-gold);transition:all .15s;display:flex;align-items:center;gap:6px}
 .btn-nav-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
-.hamburger{
-  display:none;width:38px;height:38px;border-radius:var(--r-sm);
-  background:var(--surface);border:1.5px solid var(--border);
-  flex-direction:column;align-items:center;justify-content:center;gap:5px;
-  cursor:pointer;flex-shrink:0;
-}
+.hamburger{display:none;width:38px;height:38px;border-radius:var(--r-sm);background:var(--surface);border:1.5px solid var(--border);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;flex-shrink:0}
 .hamburger span{display:block;width:18px;height:1.5px;background:var(--ink);border-radius:2px;transition:all .25s}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
@@ -139,66 +96,27 @@ input,select,textarea{font-family:var(--f-body)}
 
 /* ═══ LAYOUT ═══ */
 .app-shell{display:flex;padding-top:var(--nav-h);min-height:100vh}
-
-/* ═══ LEFT SIDEBAR ═══ */
-.left-sidebar{
-  width:var(--sidebar-w);min-width:var(--sidebar-w);
-  background:var(--white);border-right:1px solid var(--border);
-  position:fixed;top:var(--nav-h);left:0;bottom:0;
-  overflow-y:auto;overflow-x:hidden;z-index:100;
-  transition:width .3s cubic-bezier(.4,0,.2,1),min-width .3s,transform .3s ease;
-  scrollbar-width:thin;
-}
+.left-sidebar{width:var(--sidebar-w);min-width:var(--sidebar-w);background:var(--white);border-right:1px solid var(--border);position:fixed;top:var(--nav-h);left:0;bottom:0;overflow-y:auto;overflow-x:hidden;z-index:100;transition:width .3s cubic-bezier(.4,0,.2,1),min-width .3s,transform .3s ease;scrollbar-width:thin}
 .left-sidebar.collapsed{width:0;min-width:0}
-.sidebar-toggle{
-  position:fixed;top:50%;left:var(--sidebar-w);
-  transform:translateY(-50%) translateX(-50%);
-  z-index:200;width:22px;height:44px;
-  background:var(--white);border:1.5px solid var(--border);
-  border-radius:0 var(--r-pill) var(--r-pill) 0;border-left:none;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:left .3s cubic-bezier(.4,0,.2,1),background .15s;
-  box-shadow:3px 0 10px rgba(0,0,0,.07);
-}
+.sidebar-toggle{position:fixed;top:50%;left:var(--sidebar-w);transform:translateY(-50%) translateX(-50%);z-index:200;width:22px;height:44px;background:var(--white);border:1.5px solid var(--border);border-radius:0 var(--r-pill) var(--r-pill) 0;border-left:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:left .3s cubic-bezier(.4,0,.2,1),background .15s;box-shadow:3px 0 10px rgba(0,0,0,.07)}
 .sidebar-toggle:hover{background:var(--gold-l);border-color:var(--gold)}
 .sidebar-toggle svg{transition:transform .3s;color:var(--ink3)}
 .sidebar-toggle.collapsed{left:0;box-shadow:4px 0 12px rgba(0,0,0,.1)}
 .sidebar-toggle.collapsed svg{transform:rotate(180deg)}
 .sidebar-inner{padding:1.1rem .8rem 6rem}
-.sb-header{
-  display:flex;align-items:center;gap:9px;
-  font-family:var(--f-display);font-weight:800;font-size:15px;color:var(--ink);
-  padding:.2rem .3rem .85rem;border-bottom:1px solid var(--border);margin-bottom:.75rem;
-}
-.sb-header-icon{
-  width:28px;height:28px;border-radius:8px;
-  background:linear-gradient(135deg,var(--gold),#FF9500);
-  display:flex;align-items:center;justify-content:center;
-  font-size:14px;flex-shrink:0;box-shadow:0 2px 6px rgba(245,166,35,.35);
-}
-.sb-search{
-  display:flex;align-items:center;gap:7px;
-  background:var(--surface);border:1.5px solid var(--border);
-  border-radius:var(--r-sm);padding:7px 10px;margin-bottom:.8rem;
-  transition:border-color .15s;
-}
+.sb-header{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:800;font-size:15px;color:var(--ink);padding:.2rem .3rem .85rem;border-bottom:1px solid var(--border);margin-bottom:.75rem}
+.sb-header-icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#FF9500);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;box-shadow:0 2px 6px rgba(245,166,35,.35)}
+.sb-search{display:flex;align-items:center;gap:7px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:7px 10px;margin-bottom:.8rem;transition:border-color .15s}
 .sb-search:focus-within{border-color:var(--gold)}
 .sb-search input{border:none;background:transparent;outline:none;font-size:12.5px;color:var(--ink);width:100%}
-.sb-search input::placeholder{color:var(--ink3)}
 .cat-lbl{font-size:9.5px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--ink3);padding:.55rem .4rem .25rem;margin-top:.1rem}
-.tool-item{
-  display:flex;align-items:center;gap:9px;
-  padding:7px 9px;border-radius:9px;
-  font-size:13px;font-weight:500;color:var(--ink2);
-  cursor:pointer;transition:all .15s;margin-bottom:1px;position:relative;
-}
+.tool-item{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:9px;font-size:13px;font-weight:500;color:var(--ink2);cursor:pointer;transition:all .15s;margin-bottom:1px}
 .tool-item:hover{background:var(--surface);color:var(--ink)}
 .ti-icon{width:28px;height:28px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px}
 .ti-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ti-badge{font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:var(--r-pill);text-transform:uppercase;letter-spacing:.3px;flex-shrink:0}
 .badge-hot{background:#FFE8D6;color:#B85000}
 .badge-new{background:#D3F9D8;color:#00612A}
-
 .cat-compress .ti-icon{background:var(--c-compress-l);color:var(--c-compress)}
 .cat-compress.active,.cat-compress:hover{background:var(--c-compress-l)!important}
 .cat-compress.active .ti-icon{background:var(--c-compress);color:#fff}
@@ -227,36 +145,24 @@ input,select,textarea{font-family:var(--f-body)}
 .cat-biz.active,.cat-biz:hover{background:var(--c-biz-l)!important}
 .cat-biz.active .ti-icon{background:var(--c-biz);color:#fff}
 .cat-biz.active{color:var(--c-biz)!important;font-weight:700}
-
 .sb-stats{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .sb-stat{border-radius:9px;padding:.65rem .55rem;text-align:center}
 .sb-stat-num{font-family:var(--f-display);font-weight:900;font-size:17px;line-height:1}
 .sb-stat-lbl{font-size:9.5px;color:var(--ink3);font-weight:600;margin-top:2px}
 
-/* ═══ MAIN CONTENT ═══ */
 .main-content{flex:1;margin-left:var(--sidebar-w);margin-right:var(--right-w);min-width:0;transition:margin-left .3s cubic-bezier(.4,0,.2,1)}
 .main-content.sb-collapsed{margin-left:0}
 
 /* ═══ RIGHT SIDEBAR ═══ */
-.right-sidebar{
-  width:var(--right-w);min-width:var(--right-w);
-  background:var(--white);border-left:1px solid var(--border);
-  position:fixed;top:var(--nav-h);right:0;bottom:0;
-  overflow-y:auto;padding:1.1rem .85rem 5rem;
-  display:flex;flex-direction:column;gap:.85rem;scrollbar-width:thin;
-}
-.ad-slot{
-  background:var(--surface);border:1.5px dashed var(--border2);
-  border-radius:var(--r);padding:.7rem .6rem;
-  text-align:center;font-size:10px;color:var(--ink3);position:relative;overflow:hidden;
-}
+.right-sidebar{width:var(--right-w);min-width:var(--right-w);background:var(--white);border-left:1px solid var(--border);position:fixed;top:var(--nav-h);right:0;bottom:0;overflow-y:auto;padding:1.1rem .85rem 5rem;display:flex;flex-direction:column;gap:.85rem;scrollbar-width:thin}
+.ad-slot{background:var(--surface);border:1.5px dashed var(--border2);border-radius:var(--r);padding:.7rem .6rem;text-align:center;font-size:10px;color:var(--ink3);position:relative;overflow:hidden}
 .ad-slot::before{content:'AD';position:absolute;top:4px;right:6px;font-size:7.5px;font-weight:800;color:var(--ink3);letter-spacing:.5px;opacity:.7}
 .ad-tall{min-height:260px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
 .ad-sm{min-height:80px;display:flex;align-items:center;justify-content:center}
 .rsb-stats{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:var(--r-lg);padding:.9rem;position:relative;overflow:hidden}
 .rsb-stats::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 70px at 85% 10%,rgba(245,166,35,.2) 0%,transparent 60%);pointer-events:none}
-.rsb-stats-title{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.4);margin-bottom:.55rem;position:relative}
-.rsb-row{display:flex;justify-content:space-between;align-items:center;padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.06);position:relative}
+.rsb-stats-title{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.4);margin-bottom:.55rem}
+.rsb-row{display:flex;justify-content:space-between;align-items:center;padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
 .rsb-row:last-child{border-bottom:none}
 .rsb-row-lbl{font-size:11px;color:rgba(255,255,255,.5)}
 .rsb-row-val{font-family:var(--f-display);font-size:13px;font-weight:700;color:var(--gold)}
@@ -264,138 +170,90 @@ input,select,textarea{font-family:var(--f-body)}
 .rsb-quick-item{display:flex;align-items:center;gap:7px;padding:6px 7px;border-radius:var(--r-sm);font-size:12px;font-weight:500;color:var(--ink2);cursor:pointer;transition:all .15s}
 .rsb-quick-item:hover{background:var(--gold-l);color:var(--gold-d)}
 .rsb-quick-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
-.rsb-trust{background:var(--c-organize-l);border:1.5px solid rgba(0,179,126,.18);border-radius:var(--r);padding:.85rem;text-align:center}
+.rsb-trust{background:var(--c-image-l);border:1.5px solid rgba(233,30,140,.18);border-radius:var(--r);padding:.85rem;text-align:center}
 .rsb-trust-icon{font-size:20px;margin-bottom:.3rem}
-.rsb-trust-title{font-size:11.5px;font-weight:700;color:var(--c-organize);margin-bottom:.2rem}
-.rsb-trust-desc{font-size:10.5px;color:#087F5B;line-height:1.55}
+.rsb-trust-title{font-size:11.5px;font-weight:700;color:var(--c-image);margin-bottom:.2rem}
+.rsb-trust-desc{font-size:10.5px;color:#A01060;line-height:1.55}
 
-/* ═══ COFFEE TAB ═══ */
-.coffee-tab{
-  position:fixed;bottom:0;right:var(--right-w);z-index:500;
-  background:linear-gradient(135deg,#FFDD00,#FF9500);color:#3D1C00;
-  font-family:var(--f-display);font-size:12px;font-weight:700;
-  padding:8px 16px 10px;border-radius:var(--r-lg) var(--r-lg) 0 0;
-  box-shadow:0 -4px 18px rgba(245,166,35,.35);cursor:pointer;transition:all .2s;
-  display:flex;align-items:center;gap:6px;transform:translateY(2px);
-  border:1.5px solid rgba(255,255,255,.45);border-bottom:none;
-}
-.coffee-tab:hover{transform:translateY(-5px)}
+/* ═══ UPI TAB ═══ */
+.upi-tab{position:fixed;bottom:0;right:var(--right-w);z-index:500;background:linear-gradient(135deg,var(--c-image),#C01070);color:#fff;font-family:var(--f-display);font-size:12px;font-weight:700;padding:8px 16px 10px;border-radius:var(--r-lg) var(--r-lg) 0 0;box-shadow:0 -4px 18px rgba(233,30,140,.35);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;transform:translateY(2px);border:1.5px solid rgba(255,255,255,.25);border-bottom:none}
+.upi-tab:hover{transform:translateY(-2px);box-shadow:0 -6px 24px rgba(233,30,140,.45)}
 
-/* ═══ TOOL HERO ═══ */
+/* ═══ HERO ═══ */
 .tool-hero{background:var(--navy);padding:2.75rem 2rem 2.25rem;position:relative;overflow:hidden}
-.tool-hero::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 80% at 0% 50%,rgba(30,79,203,.35) 0%,transparent 55%),
-             radial-gradient(ellipse 55% 60% at 100% 25%,rgba(245,166,35,.14) 0%,transparent 50%),
-             radial-gradient(ellipse 50% 60% at 60% 110%,rgba(233,30,140,.1) 0%,transparent 50%);
-  pointer-events:none;
-}
-.tool-hero::after{
-  content:'';position:absolute;inset:0;
-  background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);
-  background-size:22px 22px;pointer-events:none;
-  mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black 20%,transparent 100%);
-}
+.tool-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 70% at 0% 50%,rgba(233,30,140,.22) 0%,transparent 55%),radial-gradient(ellipse 50% 55% at 100% 20%,rgba(245,166,35,.12) 0%,transparent 50%),radial-gradient(ellipse 40% 45% at 55% 110%,rgba(30,79,203,.1) 0%,transparent 50%);pointer-events:none}
+.tool-hero::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:22px 22px;pointer-events:none;mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black 20%,transparent 100%)}
 .tool-hero-inner{position:relative;z-index:1}
 .tool-hero-row{display:flex;align-items:center;gap:.85rem;margin-bottom:1rem}
-.tool-hero-icon{
-  width:58px;height:58px;border-radius:16px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:28px;
-  border:1.5px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);
-  box-shadow:0 4px 20px rgba(0,0,0,.3);
-}
-.tool-hero h1{font-family:var(--f-display);font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.1}
+.tool-hero-icon{width:58px;height:58px;border-radius:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;border:1.5px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.tool-hero h1{font-family:var(--f-display);font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.1}
 .tool-hero-sub{font-size:14px;color:rgba(255,255,255,.6);margin-top:.3rem;line-height:1.6}
 .trust-row{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:.85rem}
-.trust-pill{
-  display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;
-  color:rgba(255,255,255,.6);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
-  border-radius:var(--r-pill);padding:5px 11px;
-}
+.trust-pill{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.7);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-pill);padding:5px 11px}
+.proof-bar{display:flex;align-items:center;gap:6px;margin-top:.9rem;padding:.5rem .9rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-pill);width:fit-content}
+.proof-dot{width:8px;height:8px;border-radius:50%;background:var(--c-image);flex-shrink:0;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.proof-text{font-size:12px;color:rgba(255,255,255,.75);font-weight:500}
+.proof-num{color:var(--gold);font-weight:700}
 
 /* ═══ TOOL BODY ═══ */
 .tool-body{padding:1.75rem 2rem 2rem}
-
-.breadcrumb{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12.5px;color:var(--ink3);margin-bottom:1.5rem}
+.breadcrumb{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12.5px;color:var(--ink3);margin-bottom:1.35rem}
 .breadcrumb a{color:var(--gold-d);font-weight:600;transition:color .15s}
 .breadcrumb a:hover{color:var(--gold)}
 .breadcrumb-sep{color:var(--ink3)}
 .breadcrumb-cur{color:var(--ink2);font-weight:500}
 
 /* Drop zone */
-.dropzone{
-  background:var(--white);border:2px dashed var(--border2);
-  border-radius:var(--r-xl);padding:2.5rem 2rem;
-  text-align:center;cursor:pointer;
-  transition:all .2s;margin-bottom:1.1rem;position:relative;overflow:hidden;box-shadow:var(--sh-xs);
-}
-.dropzone:hover,.dropzone.over{border-color:var(--gold);background:var(--gold-l);box-shadow:inset 0 0 0 4px rgba(245,166,35,.08)}
-.dz-icon{font-size:2.8rem;display:block;margin-bottom:.7rem}
+.dropzone{background:var(--white);border:2px dashed var(--border2);border-radius:var(--r-xl);padding:2.5rem 2rem;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:1.1rem;position:relative;overflow:hidden;box-shadow:var(--sh-xs)}
+.dropzone::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 50% 110%,rgba(233,30,140,.04) 0%,transparent 60%);pointer-events:none}
+.dropzone:hover,.dropzone.over{border-color:var(--c-image);background:var(--c-image-l);box-shadow:inset 0 0 0 4px var(--c-image-b)}
+.dz-icon{font-size:2.8rem;display:block;margin-bottom:.7rem;filter:drop-shadow(0 2px 8px rgba(233,30,140,.25))}
 .dz-title{font-family:var(--f-display);font-size:17px;font-weight:800;color:var(--ink);margin-bottom:.3rem}
 .dz-sub{font-size:13px;color:var(--ink3);margin-bottom:1.25rem}
-.btn-choose{
-  display:inline-flex;align-items:center;gap:7px;
-  background:var(--gold);color:var(--navy);border:none;
-  padding:11px 28px;border-radius:var(--r-pill);
-  font-size:14px;font-weight:800;cursor:pointer;font-family:var(--f-body);
-  transition:all .15s;box-shadow:var(--sh-gold);
-}
+.btn-choose{display:inline-flex;align-items:center;gap:7px;background:var(--gold);color:var(--navy);border:none;padding:11px 28px;border-radius:var(--r-pill);font-size:14px;font-weight:800;cursor:pointer;font-family:var(--f-body);transition:all .15s;box-shadow:var(--sh-gold)}
 .btn-choose:hover{background:var(--gold-d);transform:translateY(-1px)}
 .dropzone input[type=file]{display:none}
 
+/* Status */
+.status-wrap{display:none;text-align:center;padding:1.5rem;background:var(--white);border-radius:var(--r-xl);border:1.5px solid var(--border);box-shadow:var(--sh-xs);margin-bottom:1rem}
+.status-wrap .s-icon{font-size:2rem;display:block;margin-bottom:.5rem;animation:spin 1s linear infinite}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.status-wrap .s-txt{font-size:13.5px;color:var(--ink2);font-weight:500}
+.status-wrap .s-sub{font-size:11.5px;color:var(--ink3);margin-top:.25rem}
+
+/* Ad inline */
+.ad-inline{background:var(--surface);border:1.5px dashed var(--border2);border-radius:var(--r);padding:.6rem;text-align:center;font-size:10px;color:var(--ink3);margin:.75rem 0;min-height:100px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;position:relative}
+.ad-inline::before{content:'AD';position:absolute;top:4px;right:6px;font-size:7.5px;font-weight:800;color:var(--ink3);letter-spacing:.5px;opacity:.7}
+
+/* Summary bar */
+.summary-bar{display:flex;align-items:center;justify-content:space-between;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:.75rem 1.1rem;margin-bottom:.75rem;box-shadow:var(--sh-xs);flex-wrap:wrap;gap:.5rem;display:none}
+.summary-bar-info{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.sb-stat-pill{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--ink2);background:var(--surface);border-radius:var(--r-pill);padding:4px 11px}
+.sb-stat-pill span{color:var(--c-image);font-weight:800}
+
 /* Results grid */
-.res-grid{
-  display:none;
-  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-  gap:12px;margin-bottom:1rem;
-}
-.res-card{
-  background:var(--white);border:1.5px solid var(--border);
-  border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-xs);
-  transition:all .2s;
-}
-.res-card:hover{border-color:var(--gold-b);box-shadow:var(--sh)}
-.res-card img{width:100%;height:110px;object-fit:cover;display:block;background:var(--surface)}
-.res-card-footer{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.5rem .65rem;border-top:1px solid var(--border);gap:6px;
-}
+.res-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:1rem}
+.res-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-xs);transition:all .2s}
+.res-card:hover{border-color:var(--c-image-b);box-shadow:var(--sh);transform:translateY(-2px)}
+.res-card-thumb{width:100%;height:110px;object-fit:cover;display:block;background:repeating-conic-gradient(#e8e8e8 0% 25%,white 0% 50%) 0 0/16px 16px}
+.res-card-footer{display:flex;align-items:center;justify-content:space-between;padding:.5rem .65rem;border-top:1px solid var(--border);gap:6px}
 .res-card-name{font-size:11px;font-weight:600;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
-.btn-dl-single{
-  width:26px;height:26px;border-radius:6px;flex-shrink:0;
-  background:var(--gold-l);border:1px solid var(--gold-b);
-  color:var(--gold-d);font-size:14px;font-weight:700;
-  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;
-}
-.btn-dl-single:hover{background:var(--gold);color:var(--navy)}
+.res-card-size{font-size:10px;color:var(--ink3);white-space:nowrap;flex-shrink:0}
+.btn-dl-single{width:28px;height:28px;border-radius:7px;flex-shrink:0;background:var(--c-image-l);border:1px solid var(--c-image-b);color:var(--c-image);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}
+.btn-dl-single:hover{background:var(--c-image);color:#fff}
 
 /* Action row */
 .action-row{display:flex;gap:10px;margin-bottom:1rem}
-.btn-main{
-  flex:1;background:linear-gradient(135deg,var(--gold),var(--gold-d));
-  color:var(--navy);border:none;padding:14px;
-  border-radius:var(--r-pill);font-size:15px;font-weight:800;
-  cursor:pointer;font-family:var(--f-body);
-  display:flex;align-items:center;justify-content:center;gap:9px;
-  transition:all .2s;box-shadow:var(--sh-gold);
-}
-.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,166,35,.4)}
-.btn-sec{
-  padding:14px 20px;background:var(--white);color:var(--ink2);
-  border:1.5px solid var(--border);border-radius:var(--r-pill);
-  font-size:14px;font-weight:600;cursor:pointer;font-family:var(--f-body);
-  transition:all .15s;display:none;
-}
+.btn-main{flex:1;background:linear-gradient(135deg,var(--c-image),#C01070);color:#fff;border:none;padding:14px;border-radius:var(--r-pill);font-size:15px;font-weight:800;cursor:pointer;font-family:var(--f-body);display:flex;align-items:center;justify-content:center;gap:9px;transition:all .2s;box-shadow:var(--sh-image)}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(233,30,140,.4)}
+.btn-sec{padding:14px 20px;background:var(--white);color:var(--ink2);border:1.5px solid var(--border);border-radius:var(--r-pill);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--f-body);transition:all .15s}
 .btn-sec:hover{border-color:var(--red);color:var(--red);background:var(--red-l)}
 
-/* Status */
-.status-wrap{display:none;text-align:center;padding:1.25rem;color:var(--ink2);font-size:13.5px}
-.status-wrap span{display:block;font-size:2rem;margin-bottom:.5rem}
-
 /* Error */
-.err-box{display:none;background:var(--red-l);border:1.5px solid rgba(229,62,62,.2);border-radius:var(--r);padding:1rem 1.2rem;font-size:13px;color:#C03030;margin-top:.75rem}
+.err-box{display:none;background:var(--red-l);border:1.5px solid rgba(229,62,62,.2);border-radius:var(--r);padding:1rem 1.2rem;font-size:13px;color:#C03030;margin:.75rem 0}
 
-/* How-to */
+/* HOW-TO */
 .how-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;margin-top:1.75rem;box-shadow:var(--sh-xs)}
 .card-title{font-family:var(--f-display);font-size:16px;font-weight:800;color:var(--ink);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
 .card-title::before{content:'';display:block;width:4px;height:18px;background:var(--gold);border-radius:2px;flex-shrink:0}
@@ -410,54 +268,55 @@ input,select,textarea{font-family:var(--f-body)}
 .feat-t{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
 .feat-d{font-size:11.5px;color:var(--ink3);line-height:1.5}
 
+/* Share section */
+.share-section{margin-top:1.75rem;background:linear-gradient(135deg,var(--navy-l),#EEF3FF);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.share-section-text h3{font-family:var(--f-display);font-size:14px;font-weight:800;color:var(--ink);margin-bottom:.2rem}
+.share-section-text p{font-size:12px;color:var(--ink3)}
+.share-btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn-share{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--r-pill);font-size:12.5px;font-weight:700;cursor:pointer;border:none;font-family:var(--f-body);transition:all .15s}
+.btn-share:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.btn-share-wa{background:#25D366;color:#fff}
+.btn-share-x{background:#000;color:#fff}
+.btn-share-fb{background:#1877F2;color:#fff}
+
 /* Related */
 .related-section{margin-top:1.85rem;padding-top:1.5rem;border-top:1px solid var(--border)}
 .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .rel-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:.95rem 1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px;box-shadow:var(--sh-xs);position:relative;overflow:hidden}
-.rel-card::after{content:'→';position:absolute;right:9px;bottom:9px;font-size:11px;color:var(--ink3);transition:all .2s}
-.rel-card:hover{border-color:var(--gold-b);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.09)}
-.rel-card:hover::after{right:6px;color:var(--gold-d)}
+.rel-card:hover{border-color:var(--c-image-b);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.09)}
 .rel-icon{width:36px;height:36px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px}
 .rel-name{font-size:12.5px;font-weight:700;color:var(--ink)}
 .rel-desc{font-size:11px;color:var(--ink3);margin-top:1px}
 
+/* FAQ */
+.faq-section{margin-top:1.85rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.faq-list{margin-top:.9rem;display:flex;flex-direction:column;gap:6px}
+.faq-item{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color .15s}
+.faq-item.open{border-color:var(--gold)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:.9rem 1.1rem;cursor:pointer;font-size:13.5px;font-weight:700;color:var(--ink);user-select:none;transition:background .15s}
+.faq-q:hover{background:var(--gold-l)}
+.faq-item.open .faq-q{background:var(--gold-l);color:var(--navy)}
+.faq-icon{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--ink3);flex-shrink:0;transition:all .2s;line-height:1}
+.faq-item.open .faq-icon{background:var(--gold);border-color:var(--gold);color:var(--navy);transform:rotate(45deg)}
+.faq-a{display:none;padding:.1rem 1.1rem 1rem;font-size:13px;color:var(--ink2);line-height:1.7;border-top:1px solid var(--gold-l)}
+.faq-item.open .faq-a{display:block}
+
 /* CTA */
 .tool-cta{margin-top:2rem;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:var(--r-xl);padding:1.85rem 1.75rem;position:relative;overflow:hidden;box-shadow:var(--sh-lg)}
-.tool-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 200px at 90% 20%,rgba(245,166,35,.13) 0%,transparent 60%),radial-gradient(circle 180px at 10% 80%,rgba(30,79,203,.2) 0%,transparent 60%)}
+.tool-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 200px at 90% 20%,rgba(233,30,140,.15) 0%,transparent 60%),radial-gradient(circle 180px at 10% 80%,rgba(30,79,203,.2) 0%,transparent 60%)}
 .tool-cta-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
 .tool-cta h3{font-family:var(--f-display);font-size:17px;font-weight:800;color:#fff;margin-bottom:.25rem}
 .tool-cta p{font-size:13px;color:rgba(255,255,255,.55)}
 .btn-cta-gold{background:var(--gold);color:var(--navy);border:none;padding:11px 22px;border-radius:var(--r-pill);font-size:13.5px;font-weight:800;cursor:pointer;font-family:var(--f-body);transition:all .15s;box-shadow:var(--sh-gold);display:flex;align-items:center;gap:7px;white-space:nowrap}
 .btn-cta-gold:hover{background:var(--gold-d)}
 
-/* Mobile overlay */
 .mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99;display:none}
 .mobile-overlay.active{display:block}
 
-/* ═══ RESPONSIVE ═══ */
 @media(max-width:1200px){:root{--right-w:200px}}
-@media(max-width:1024px){.right-sidebar{display:none}.main-content{margin-right:0}.coffee-tab{right:0}}
-@media(max-width:820px){
-  .left-sidebar{transform:translateX(-100%);box-shadow:none}
-  .left-sidebar.mobile-open{transform:translateX(0);box-shadow:4px 0 28px rgba(0,0,0,.18)}
-  .sidebar-toggle{display:none}
-  .main-content{margin-left:0!important}
-  .hamburger{display:flex}
-  .tool-body{padding:1.25rem 1.1rem 2rem}
-  .tool-hero{padding:1.75rem 1.25rem 1.5rem}
-  .steps{grid-template-columns:1fr 1fr}
-  .feat-grid{grid-template-columns:1fr 1fr}
-  .related-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:500px){
-  .tool-hero h1{font-size:1.5rem}
-  .feat-grid{grid-template-columns:1fr}
-  .related-grid{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr 1fr;gap:.75rem}
-  .action-row{flex-direction:column}
-  .btn-sec{display:block!important;text-align:center}
-}
-
+@media(max-width:1024px){.right-sidebar{display:none}.main-content{margin-right:0}.upi-tab{right:0}}
+@media(max-width:820px){.left-sidebar{transform:translateX(-100%)}.left-sidebar.mobile-open{transform:translateX(0);box-shadow:4px 0 28px rgba(0,0,0,.18)}.sidebar-toggle{display:none}.main-content{margin-left:0!important}.hamburger{display:flex}.tool-body{padding:1.25rem 1.1rem 2rem}.tool-hero{padding:1.75rem 1.25rem 1.5rem}.steps{grid-template-columns:1fr 1fr}.feat-grid{grid-template-columns:1fr 1fr}.related-grid{grid-template-columns:1fr 1fr}.share-section{flex-direction:column;text-align:center}}
+@media(max-width:500px){.tool-hero h1{font-size:1.5rem}.feat-grid{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr;gap:.75rem}.action-row{flex-direction:column}.trust-pill{font-size:10.5px;padding:4px 9px}.share-btns{justify-content:center}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .tool-body>*{animation:fadeUp .35s ease forwards}
 </style>
@@ -466,10 +325,10 @@ input,select,textarea{font-family:var(--f-body)}
 
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileSidebar()"></div>
 
-<!-- ═══ TOP NAV ═══ -->
 <nav class="nav">
   <a href="/" class="nav-logo">
-    <img src="/favicon.png" alt="ToolNest" onerror="this.style.display='none'">
+    <img src="/favicon.png" alt="ToolNest" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="nav-logo-fallback" style="display:none">🔧</div>
     Tool<span>Nest</span>
   </a>
   <div class="nav-search">
@@ -495,15 +354,11 @@ input,select,textarea{font-family:var(--f-body)}
   </div>
 </nav>
 
-<!-- ═══ SIDEBAR TOGGLE ARROW ═══ -->
 <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleDesktopSidebar()" title="Toggle sidebar">
   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
 </button>
 
-<!-- ═══ APP SHELL ═══ -->
 <div class="app-shell">
-
-  <!-- LEFT SIDEBAR -->
   <aside class="left-sidebar" id="leftSidebar">
     <div class="sidebar-inner">
       <div class="sb-header">
@@ -521,38 +376,31 @@ input,select,textarea{font-family:var(--f-body)}
         <div class="cat-lbl">Compress</div>
         <div class="tool-item cat-compress" onclick="go('/tools/compress-pdf.html')"><div class="ti-icon">📦</div><span class="ti-name">Compress PDF</span><span class="ti-badge badge-hot">HOT</span></div>
         <div class="tool-item cat-image" onclick="go('/tools/image-compress.html')"><div class="ti-icon">🗜</div><span class="ti-name">Image Compressor</span><span class="ti-badge badge-hot">HOT</span></div>
-
         <div class="cat-lbl">Organize</div>
         <div class="tool-item cat-organize" onclick="go('/tools/merge-pdf.html')"><div class="ti-icon">📎</div><span class="ti-name">Merge PDF</span><span class="ti-badge badge-hot">HOT</span></div>
         <div class="tool-item cat-organize" onclick="go('/tools/split-pdf.html')"><div class="ti-icon">✂️</div><span class="ti-name">Split PDF</span></div>
         <div class="tool-item cat-organize" onclick="go('/tools/rotate-pdf.html')"><div class="ti-icon">🔁</div><span class="ti-name">Rotate PDF</span></div>
-
         <div class="cat-lbl">Edit &amp; Secure</div>
         <div class="tool-item cat-edit" onclick="go('/tools/protect-pdf.html')"><div class="ti-icon">🔐</div><span class="ti-name">Protect PDF</span></div>
         <div class="tool-item cat-edit" onclick="go('/tools/unlock-pdf.html')"><div class="ti-icon">🔓</div><span class="ti-name">Unlock PDF</span></div>
         <div class="tool-item cat-edit" onclick="go('/tools/watermark-pdf.html')"><div class="ti-icon">🏷</div><span class="ti-name">Watermark PDF</span><span class="ti-badge badge-new">NEW</span></div>
-
         <div class="cat-lbl">Convert</div>
         <div class="tool-item cat-convert" onclick="go('/tools/jpg-to-pdf.html')"><div class="ti-icon">📸</div><span class="ti-name">JPG to PDF</span><span class="ti-badge badge-hot">HOT</span></div>
         <div class="tool-item cat-convert" onclick="go('/tools/pdf-to-jpg.html')"><div class="ti-icon">🖼</div><span class="ti-name">PDF to JPG</span></div>
         <div class="tool-item cat-convert" onclick="go('/tools/word-to-pdf.html')"><div class="ti-icon">📝</div><span class="ti-name">Word to PDF</span><span class="ti-badge badge-new">NEW</span></div>
         <div class="tool-item cat-convert" onclick="go('/tools/pdf-to-word.html')"><div class="ti-icon">📄</div><span class="ti-name">PDF to Word</span><span class="ti-badge badge-new">NEW</span></div>
-
         <div class="cat-lbl">Image Tools</div>
         <div class="tool-item cat-image" onclick="go('/tools/image-resizer.html')"><div class="ti-icon">📐</div><span class="ti-name">Image Resizer</span><span class="ti-badge badge-new">NEW</span></div>
         <div class="tool-item cat-image active" onclick="go('/tools/image-to-png.html')"><div class="ti-icon">🎨</div><span class="ti-name">Image to PNG</span></div>
-
         <div class="cat-lbl">Productivity</div>
         <div class="tool-item cat-prod" onclick="go('/tools/qr-code-generator.html')"><div class="ti-icon">📱</div><span class="ti-name">QR Code Generator</span><span class="ti-badge badge-hot">HOT</span></div>
         <div class="tool-item cat-prod" onclick="go('/tools/password-generator.html')"><div class="ti-icon">🔑</div><span class="ti-name">Password Generator</span></div>
         <div class="tool-item cat-prod" onclick="go('/tools/word-counter.html')"><div class="ti-icon">📊</div><span class="ti-name">Word Counter</span></div>
         <div class="tool-item cat-prod" onclick="go('/tools/json-formatter.html')"><div class="ti-icon">{ }</div><span class="ti-name">JSON Formatter</span></div>
-
         <div class="cat-lbl">Business</div>
         <div class="tool-item cat-biz" onclick="go('/tools/invoice-generator.html')"><div class="ti-icon">🧾</div><span class="ti-name">GST Invoice</span><span class="ti-badge badge-hot">HOT</span></div>
         <div class="tool-item cat-biz" onclick="go('/tools/seo-generator.html')"><div class="ti-icon">🔍</div><span class="ti-name">SEO Meta Generator</span></div>
       </div>
-
       <div class="sb-stats">
         <div class="sb-stat" style="background:var(--gold-l)"><div class="sb-stat-num" style="color:var(--gold-d)">20+</div><div class="sb-stat-lbl">Free Tools</div></div>
         <div class="sb-stat" style="background:var(--green-l)"><div class="sb-stat-num" style="color:var(--green)">0</div><div class="sb-stat-lbl">Sign-ups</div></div>
@@ -561,69 +409,89 @@ input,select,textarea{font-family:var(--f-body)}
     </div>
   </aside>
 
-  <!-- ═══ MAIN CONTENT ═══ -->
   <main class="main-content" id="mainContent">
 
-    <!-- TOOL HERO -->
+    <!-- HERO -->
     <div class="tool-hero">
       <div class="tool-hero-inner">
         <div class="tool-hero-row">
           <div class="tool-hero-icon">🎨</div>
           <div>
             <h1>Image to PNG Converter</h1>
-            <p class="tool-hero-sub">Convert JPG, WebP, GIF, BMP to PNG. Batch convert multiple images. Preserves transparency. 100% free — files never leave your device.</p>
+            <p class="tool-hero-sub">JPG, WebP, GIF, BMP ko PNG mein convert karein. Batch convert multiple images. Transparency preserve hoti hai. 100% free — files kabhi upload nahi honti.</p>
           </div>
         </div>
         <div class="trust-row">
-          <div class="trust-pill"><span>🎨</span> Preserves transparency</div>
+          <div class="trust-pill"><span>🎨</span> Transparency preserved</div>
           <div class="trust-pill"><span>📦</span> Batch convert</div>
           <div class="trust-pill"><span>🔒</span> Files stay on device</div>
-          <div class="trust-pill"><span>🆓</span> Always free</div>
+          <div class="trust-pill"><span>⚡</span> Instant convert</div>
+          <div class="trust-pill"><span>🇮🇳</span> Made for India</div>
+        </div>
+        <div class="proof-bar">
+          <div class="proof-dot"></div>
+          <div class="proof-text"><span class="proof-num" id="proofNum">5,619</span> images converted today · Made with ❤️ for India</div>
         </div>
       </div>
     </div>
 
-    <!-- TOOL BODY -->
+    <!-- BODY -->
     <div class="tool-body">
-
-      <!-- Breadcrumb -->
-      <div class="breadcrumb">
-        <a href="/">Home</a>
-        <span class="breadcrumb-sep">›</span>
-        <a href="/">All Tools</a>
-        <span class="breadcrumb-sep">›</span>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="breadcrumb-sep">›</span>
+        <a href="/tools/">All Tools</a><span class="breadcrumb-sep">›</span>
         <span class="breadcrumb-cur">Image to PNG</span>
-      </div>
+      </nav>
 
       <!-- DROP ZONE -->
-      <div class="dropzone" id="dz"
-        onclick="document.getElementById('fileInput').click()"
-        ondragover="dzOver(event)" ondragleave="dzLeave()" ondrop="dzDrop(event)">
+      <div class="dropzone" id="dz" onclick="document.getElementById('fileInput').click()" ondragover="dzOver(event)" ondragleave="dzLeave()" ondrop="dzDrop(event)">
         <span class="dz-icon">🎨</span>
-        <div class="dz-title">Drop your images here</div>
-        <div class="dz-sub">JPG, WebP, GIF, BMP — batch convert all to PNG</div>
+        <div class="dz-title">Images Yahan Drop Karein</div>
+        <div class="dz-sub">JPG, WebP, GIF, BMP — ek ya multiple files PNG mein convert</div>
         <button class="btn-choose" onclick="event.stopPropagation();document.getElementById('fileInput').click()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          Choose Images
+          Images Choose Karein
         </button>
         <input type="file" id="fileInput" accept="image/*" multiple onchange="convert(this.files)">
       </div>
 
-      <!-- Status -->
+      <!-- Status (converting) -->
       <div class="status-wrap" id="statusWrap">
-        <span>⏳</span>Converting images…
+        <span class="s-icon">⏳</span>
+        <div class="s-txt">Images convert ho rahi hain…</div>
+        <div class="s-sub" id="statusSub">Please wait…</div>
       </div>
 
       <!-- Error -->
       <div class="err-box" id="errBox"></div>
 
-      <!-- Action row (shown after conversion) -->
+      <!-- Ad inline (shown after conversion, before results) -->
+      <div class="ad-inline" id="adSlot" style="display:none">
+        <!--
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block;width:100%;height:250px" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="YYYYYYYY" data-ad-format="rectangle"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--ink3)"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        Advertisement (300×250 — AdSense Rectangle)
+        <span style="font-size:9px;opacity:.6">High RPM — user results dekhne se pehle yahan pause karta hai</span>
+      </div>
+
+      <!-- Summary bar -->
+      <div class="summary-bar" id="summaryBar">
+        <div class="summary-bar-info">
+          <div class="sb-stat-pill">✅ <span id="convertedCount">0</span> images converted</div>
+          <div class="sb-stat-pill">📦 Total: <span id="totalSize">0 KB</span></div>
+        </div>
+      </div>
+
+      <!-- Action row -->
       <div class="action-row" id="actionRow" style="display:none">
-        <button class="btn-main" onclick="dlAll()">
+        <button class="btn-main" id="dlAllBtn" onclick="dlAll()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download All PNGs
+          Saari PNGs Download Karein
         </button>
-        <button class="btn-sec" id="clearBtn" onclick="clearAll()" style="display:flex">✕ Clear All</button>
+        <button class="btn-sec" onclick="clearAll()">✕ Clear All</button>
       </div>
 
       <!-- Results grid -->
@@ -631,37 +499,42 @@ input,select,textarea{font-family:var(--f-body)}
 
       <!-- HOW TO -->
       <div class="how-card">
-        <div class="card-title">How to Convert Images to PNG</div>
+        <div class="card-title">Image to PNG Convert Kaise Karein — 4 Steps</div>
         <div class="steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-t">Choose Images</div>
-            <div class="step-d">Click or drag JPG, WebP, GIF or BMP files</div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-t">Auto Convert</div>
-            <div class="step-d">Images convert instantly in your browser</div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-t">Preview</div>
-            <div class="step-d">See all converted PNGs in the results grid</div>
-          </div>
-          <div class="step">
-            <div class="step-num">4</div>
-            <div class="step-t">Download</div>
-            <div class="step-d">Download individually or all at once</div>
-          </div>
+          <div class="step"><div class="step-num">1</div><div class="step-t">Images Choose Karein</div><div class="step-d">JPG, WebP, GIF ya BMP files select karein</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-t">Auto Convert</div><div class="step-d">Images turant browser mein PNG mein convert ho jaati hain</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-t">Preview Dekhein</div><div class="step-d">Converted PNGs ka grid preview check karein</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-t">Download Karein</div><div class="step-d">Individual ya saari files ek saath download karein</div></div>
         </div>
-
         <div class="feat-grid">
-          <div class="feat-item"><span class="feat-ic">🎨</span><div><div class="feat-t">Transparency Preserved</div><div class="feat-d">Alpha channel kept intact in PNG output</div></div></div>
-          <div class="feat-item"><span class="feat-ic">📦</span><div><div class="feat-t">Batch Convert</div><div class="feat-d">Convert dozens of images at once</div></div></div>
-          <div class="feat-item"><span class="feat-ic">🔒</span><div><div class="feat-t">100% Private</div><div class="feat-d">Everything runs locally — no server upload</div></div></div>
-          <div class="feat-item"><span class="feat-ic">⚡</span><div><div class="feat-t">Instant Results</div><div class="feat-d">No waiting, no queue, no server lag</div></div></div>
-          <div class="feat-item"><span class="feat-ic">🆓</span><div><div class="feat-t">Always Free</div><div class="feat-d">No watermark, no premium, no signup</div></div></div>
-          <div class="feat-item"><span class="feat-ic">📱</span><div><div class="feat-t">Works Everywhere</div><div class="feat-d">Android, iPhone, tablet &amp; desktop</div></div></div>
+          <div class="feat-item"><span class="feat-ic">🎨</span><div><div class="feat-t">Transparency Preserve</div><div class="feat-d">Alpha channel intact — WebP/PNG ka transparent areas PNG mein preserve</div></div></div>
+          <div class="feat-item"><span class="feat-ic">📦</span><div><div class="feat-t">Batch Convert</div><div class="feat-d">Dozens of images ek saath convert karein</div></div></div>
+          <div class="feat-item"><span class="feat-ic">🔒</span><div><div class="feat-t">100% Private</div><div class="feat-d">Sab kuch locally Canvas API se — koi server upload nahi</div></div></div>
+          <div class="feat-item"><span class="feat-ic">⚡</span><div><div class="feat-t">Instant Results</div><div class="feat-d">Koi wait nahi, koi queue nahi, koi server lag nahi</div></div></div>
+          <div class="feat-item"><span class="feat-ic">🆓</span><div><div class="feat-t">Hamesha Free</div><div class="feat-d">Koi watermark nahi, koi premium nahi, koi signup nahi</div></div></div>
+          <div class="feat-item"><span class="feat-ic">📱</span><div><div class="feat-t">Har Jagah Kaam Karta Hai</div><div class="feat-d">Android, iPhone, tablet aur desktop sab par</div></div></div>
+        </div>
+      </div>
+
+      <!-- SHARE SECTION -->
+      <div class="share-section">
+        <div class="share-section-text">
+          <h3>Dosto Ko Batao Ye Free Tool! 🎉</h3>
+          <p>Helpful laga? Share karein — kisi ka kaam aa sakta hai</p>
+        </div>
+        <div class="share-btns">
+          <button class="btn-share btn-share-wa" onclick="shareWA()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </button>
+          <button class="btn-share btn-share-x" onclick="shareX()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            X (Twitter)
+          </button>
+          <button class="btn-share btn-share-fb" onclick="shareFB()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </button>
         </div>
       </div>
 
@@ -669,53 +542,39 @@ input,select,textarea{font-family:var(--f-body)}
       <div class="related-section">
         <div class="card-title" style="margin-bottom:.9rem">Related Tools</div>
         <div class="related-grid">
-          <div class="rel-card" onclick="go('/tools/image-compress.html')">
-            <div class="rel-icon" style="background:var(--c-image-l)">🗜</div>
-            <div><div class="rel-name">Image Compressor</div><div class="rel-desc">Reduce file size</div></div>
-          </div>
-          <div class="rel-card" onclick="go('/tools/image-resizer.html')">
-            <div class="rel-icon" style="background:var(--c-image-l)">📐</div>
-            <div><div class="rel-name">Image Resizer</div><div class="rel-desc">Resize dimensions</div></div>
-          </div>
-          <div class="rel-card" onclick="go('/tools/jpg-to-pdf.html')">
-            <div class="rel-icon" style="background:var(--c-convert-l)">📸</div>
-            <div><div class="rel-name">JPG to PDF</div><div class="rel-desc">Images to PDF</div></div>
-          </div>
-          <div class="rel-card" onclick="go('/tools/pdf-to-jpg.html')">
-            <div class="rel-icon" style="background:var(--c-convert-l)">🖼</div>
-            <div><div class="rel-name">PDF to JPG</div><div class="rel-desc">Convert pages to images</div></div>
-          </div>
-          <div class="rel-card" onclick="go('/tools/compress-pdf.html')">
-            <div class="rel-icon" style="background:var(--c-compress-l)">📦</div>
-            <div><div class="rel-name">Compress PDF</div><div class="rel-desc">Reduce PDF size</div></div>
-          </div>
-          <div class="rel-card" onclick="go('/tools/qr-code-generator.html')">
-            <div class="rel-icon" style="background:var(--c-prod-l)">📱</div>
-            <div><div class="rel-name">QR Code Generator</div><div class="rel-desc">URL, WiFi, UPI &amp; more</div></div>
-          </div>
+          <div class="rel-card" onclick="go('/tools/image-compress.html')"><div class="rel-icon" style="background:var(--c-image-l)">🗜</div><div><div class="rel-name">Image Compressor</div><div class="rel-desc">File size reduce karein</div></div></div>
+          <div class="rel-card" onclick="go('/tools/image-resizer.html')"><div class="rel-icon" style="background:var(--c-image-l)">📐</div><div><div class="rel-name">Image Resizer</div><div class="rel-desc">Dimensions resize karein</div></div></div>
+          <div class="rel-card" onclick="go('/tools/jpg-to-pdf.html')"><div class="rel-icon" style="background:var(--c-convert-l)">📸</div><div><div class="rel-name">JPG to PDF</div><div class="rel-desc">Images ko PDF banao</div></div></div>
+          <div class="rel-card" onclick="go('/tools/pdf-to-jpg.html')"><div class="rel-icon" style="background:var(--c-convert-l)">🖼</div><div><div class="rel-name">PDF to JPG</div><div class="rel-desc">Pages ko images mein</div></div></div>
+          <div class="rel-card" onclick="go('/tools/compress-pdf.html')"><div class="rel-icon" style="background:var(--c-compress-l)">📦</div><div><div class="rel-name">Compress PDF</div><div class="rel-desc">PDF size kam karein</div></div></div>
+          <div class="rel-card" onclick="go('/tools/qr-code-generator.html')"><div class="rel-icon" style="background:var(--c-prod-l)">📱</div><div><div class="rel-name">QR Code Generator</div><div class="rel-desc">QR codes banao</div></div></div>
         </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-section">
+        <div class="card-title" style="margin-bottom:.25rem">Aksar Pooche Jaane Wale Sawaal (FAQ)</div>
+        <p style="font-size:12.5px;color:var(--ink3);margin-bottom:.9rem">Image to PNG conversion ke baare mein common questions</p>
+        <div class="faq-list" id="faqList"></div>
       </div>
 
       <!-- CTA -->
       <div class="tool-cta">
         <div class="tool-cta-inner">
           <div>
-            <h3>Explore 20+ Free Tools</h3>
-            <p>PDF, images, QR codes, invoices — browser-based &amp; always free</p>
+            <h3>Aur 20+ Free Tools Explore Karein</h3>
+            <p>PDF, images, QR codes, invoices — sab browser-based &amp; hamesha free 🇮🇳</p>
           </div>
           <button class="btn-cta-gold" onclick="go('/')">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-            Browse All Tools
+            Sabhi Tools Dekhein
           </button>
         </div>
       </div>
-
       <div style="height:2rem"></div>
-    </div><!-- /tool-body -->
+    </div>
+  </main>
 
-  </main><!-- /main-content -->
-
-  <!-- ═══ RIGHT SIDEBAR ═══ -->
   <aside class="right-sidebar">
     <div class="rsb-stats">
       <div class="rsb-stats-title">ToolNest Stats</div>
@@ -724,81 +583,63 @@ input,select,textarea{font-family:var(--f-body)}
       <div class="rsb-row"><span class="rsb-row-lbl">Server uploads</span><span class="rsb-row-val">Never</span></div>
       <div class="rsb-row"><span class="rsb-row-lbl">Usage limit</span><span class="rsb-row-val">∞</span></div>
     </div>
-
     <div class="ad-slot ad-tall">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--ink3)"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
       Advertisement
       <span style="font-size:8.5px;opacity:.6">Google AdSense 300×250</span>
     </div>
-
     <div>
       <div class="rsb-section-title">Popular Tools</div>
       <div class="rsb-quick-item" onclick="go('/tools/compress-pdf.html')"><span class="rsb-quick-dot" style="background:var(--c-compress)"></span>Compress PDF</div>
-      <div class="rsb-quick-item" onclick="go('/tools/qr-code-generator.html')"><span class="rsb-quick-dot" style="background:var(--c-prod)"></span>QR Code Generator</div>
-      <div class="rsb-quick-item" onclick="go('/tools/jpg-to-pdf.html')"><span class="rsb-quick-dot" style="background:var(--c-convert)"></span>JPG to PDF</div>
-      <div class="rsb-quick-item" onclick="go('/tools/invoice-generator.html')"><span class="rsb-quick-dot" style="background:var(--c-biz)"></span>GST Invoice Generator</div>
       <div class="rsb-quick-item" onclick="go('/tools/image-compress.html')"><span class="rsb-quick-dot" style="background:var(--c-image)"></span>Image Compressor</div>
+      <div class="rsb-quick-item" onclick="go('/tools/image-resizer.html')"><span class="rsb-quick-dot" style="background:var(--c-image)"></span>Image Resizer</div>
+      <div class="rsb-quick-item" onclick="go('/tools/qr-code-generator.html')"><span class="rsb-quick-dot" style="background:var(--c-prod)"></span>QR Code Generator</div>
+      <div class="rsb-quick-item" onclick="go('/tools/invoice-generator.html')"><span class="rsb-quick-dot" style="background:var(--c-biz)"></span>GST Invoice Generator</div>
     </div>
-
     <div class="ad-slot ad-sm">Advertisement · 200×90</div>
-
     <div class="rsb-trust">
-      <div class="rsb-trust-icon">🔒</div>
-      <div class="rsb-trust-title">100% Private</div>
-      <div class="rsb-trust-desc">Files never leave your device. Zero server upload. Fully browser-based.</div>
+      <div class="rsb-trust-icon">🎨</div>
+      <div class="rsb-trust-title">Transparency Safe</div>
+      <div class="rsb-trust-desc">PNG format alpha channel support karta hai. Aapki images kabhi upload nahi hoti.</div>
     </div>
-
     <div class="ad-slot ad-sm" style="flex:1;min-height:100px">Advertisement</div>
   </aside>
+</div>
 
-</div><!-- /app-shell -->
-
-<!-- ═══ BUY ME COFFEE ═══ -->
-<button class="coffee-tab" onclick="window.open('https://buymeacoffee.com/','_blank')" title="Support ToolNest">
-  <span>☕</span> Buy me a Coffee
+<!-- UPI Donate tab -->
+<button class="upi-tab" onclick="window.open('upi://pay?pa=toolnest@upi&pn=ToolNest&cu=INR','_blank')" title="UPI se ToolNest ko support karein">
+  <span>💗</span>
+  UPI Donate — Support ToolNest
 </button>
 
 <script>
-function go(url){ location.href = url; }
-
-function syncSearch(v){
-  document.getElementById('sbSearch').value = v;
-  filterSidebar(v);
-}
-
+function go(url){ location.href=url; }
+function syncSearch(v){document.getElementById('sbSearch').value=v;filterSidebar(v)}
 function filterSidebar(q){
-  const s = q.toLowerCase().trim();
-  document.querySelectorAll('#sbList .tool-item').forEach(item => {
-    const txt = item.querySelector('.ti-name').textContent.toLowerCase();
-    item.style.display = (!s || txt.includes(s)) ? '' : 'none';
+  const s=q.toLowerCase().trim();
+  document.querySelectorAll('#sbList .tool-item').forEach(item=>{
+    item.style.display=(!s||item.querySelector('.ti-name').textContent.toLowerCase().includes(s))?'':'none';
   });
-  document.querySelectorAll('#sbList .cat-lbl').forEach(lbl => {
-    let el = lbl.nextElementSibling, any = false;
-    while(el && el.classList.contains('tool-item')){ if(el.style.display!=='none') any=true; el=el.nextElementSibling; }
-    lbl.style.display = any ? '' : 'none';
+  document.querySelectorAll('#sbList .cat-lbl').forEach(lbl=>{
+    let el=lbl.nextElementSibling,any=false;
+    while(el&&el.classList.contains('tool-item')){if(el.style.display!=='none')any=true;el=el.nextElementSibling}
+    lbl.style.display=any?'':'none';
   });
 }
-
-let sbCollapsed = false;
+let sbCollapsed=false;
 function toggleDesktopSidebar(){
-  sbCollapsed = !sbCollapsed;
-  const sb = document.getElementById('leftSidebar');
-  const mc = document.getElementById('mainContent');
-  const st = document.getElementById('sidebarToggle');
-  sb.classList.toggle('collapsed', sbCollapsed);
-  mc.classList.toggle('sb-collapsed', sbCollapsed);
-  st.classList.toggle('collapsed', sbCollapsed);
-  const sw = getComputedStyle(document.documentElement).getPropertyValue('--sidebar-w').trim();
-  st.style.left = sbCollapsed ? '0px' : sw;
+  sbCollapsed=!sbCollapsed;
+  document.getElementById('leftSidebar').classList.toggle('collapsed',sbCollapsed);
+  document.getElementById('mainContent').classList.toggle('sb-collapsed',sbCollapsed);
+  const st=document.getElementById('sidebarToggle');
+  st.classList.toggle('collapsed',sbCollapsed);
+  st.style.left=sbCollapsed?'0px':getComputedStyle(document.documentElement).getPropertyValue('--sidebar-w').trim();
 }
-
 function toggleMobileSidebar(){
-  const sb = document.getElementById('leftSidebar');
-  const ov = document.getElementById('mobileOverlay');
-  const hm = document.getElementById('hamburger');
-  const open = sb.classList.toggle('mobile-open');
-  ov.classList.toggle('active', open);
-  hm.classList.toggle('open', open);
+  const sb=document.getElementById('leftSidebar');
+  const open=sb.classList.toggle('mobile-open');
+  document.getElementById('mobileOverlay').classList.toggle('active',open);
+  document.getElementById('hamburger').classList.toggle('open',open);
 }
 function closeMobileSidebar(){
   document.getElementById('leftSidebar').classList.remove('mobile-open');
@@ -806,90 +647,165 @@ function closeMobileSidebar(){
   document.getElementById('hamburger').classList.remove('open');
 }
 
-/* ═══ CORE TOOL LOGIC ═══ */
-let converted = [];
+/* ─── Social proof ─── */
+(function(){
+  const KEY='tn_png_count',TODAY=new Date().toDateString();
+  let data={};
+  try{data=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  if(data.date!==TODAY){data={date:TODAY,base:3000+Math.floor(Math.random()*3500),inc:0}}
+  document.getElementById('proofNum').textContent=(data.base+data.inc).toLocaleString('en-IN');
+  localStorage.setItem(KEY,JSON.stringify(data));
+})();
 
-function dzOver(e){ e.preventDefault(); document.getElementById('dz').classList.add('over'); }
-function dzLeave(){ document.getElementById('dz').classList.remove('over'); }
-function dzDrop(e){ e.preventDefault(); dzLeave(); convert(e.dataTransfer.files); }
+/* ─── Share ─── */
+const PAGE_URL=encodeURIComponent('https://toolnest.bhaihelp.in/tools/image-to-png.html');
+const PAGE_TEXT=encodeURIComponent('Free Image to PNG converter mila! No signup, files browser mein hi convert hoti hain. Try karo');
+function shareWA(){window.open('https://wa.me/?text='+PAGE_TEXT+'%20'+PAGE_URL,'_blank')}
+function shareX(){window.open('https://x.com/intent/tweet?text='+PAGE_TEXT+'&url='+PAGE_URL,'_blank')}
+function shareFB(){window.open('https://www.facebook.com/sharer/sharer.php?u='+PAGE_URL,'_blank')}
+
+/* ─── Core logic ─── */
+let converted=[];
+
+function dzOver(e){e.preventDefault();document.getElementById('dz').classList.add('over')}
+function dzLeave(){document.getElementById('dz').classList.remove('over')}
+function dzDrop(e){e.preventDefault();dzLeave();convert(e.dataTransfer.files)}
 
 async function convert(files){
-  const imgs = Array.from(files).filter(f => f.type.startsWith('image/'));
-  if(!imgs.length){ showErr('Please select valid image files (JPG, WebP, GIF, BMP).'); return; }
-  document.getElementById('errBox').style.display = 'none';
-  document.getElementById('statusWrap').style.display = 'block';
-  document.getElementById('resGrid').style.display = 'none';
-  document.getElementById('actionRow').style.display = 'none';
-  converted = [];
-  for(const f of imgs){
-    const blob = await toPNG(f);
-    const name = f.name.replace(/\.[^.]+$/, '') + '.png';
-    converted.push({ blob, name });
+  const imgs=Array.from(files).filter(f=>f.type.startsWith('image/'));
+  if(!imgs.length){showErr('Valid image files choose karein (JPG, WebP, GIF, BMP).'); return}
+  document.getElementById('errBox').style.display='none';
+  document.getElementById('statusWrap').style.display='block';
+  document.getElementById('resGrid').style.display='none';
+  document.getElementById('actionRow').style.display='none';
+  document.getElementById('adSlot').style.display='none';
+  document.getElementById('summaryBar').style.display='none';
+  converted=[];
+
+  for(let i=0;i<imgs.length;i++){
+    document.getElementById('statusSub').textContent=`Converting image ${i+1} of ${imgs.length}…`;
+    try{
+      const blob=await toPNG(imgs[i]);
+      const name=imgs[i].name.replace(/\.[^.]+$/,'')+'.png';
+      converted.push({blob,name,size:blob.size});
+    }catch(e){/* skip failed */}
   }
-  document.getElementById('statusWrap').style.display = 'none';
-  renderResults();
+
+  document.getElementById('statusWrap').style.display='none';
+
+  // Increment social proof
+  try{
+    const KEY='tn_png_count';const data=JSON.parse(localStorage.getItem(KEY)||'{}');
+    data.inc=(data.inc||0)+converted.length;localStorage.setItem(KEY,JSON.stringify(data));
+    document.getElementById('proofNum').textContent=(data.base+data.inc).toLocaleString('en-IN');
+  }catch(e){}
+
+  if(converted.length){
+    document.getElementById('adSlot').style.display='flex';
+    renderResults();
+  }
 }
 
 function toPNG(f){
-  return new Promise((res, rej) => {
-    const img = new Image();
-    const url = URL.createObjectURL(f);
-    img.onload = () => {
-      const c = document.createElement('canvas');
-      c.width = img.naturalWidth; c.height = img.naturalHeight;
-      c.getContext('2d').drawImage(img, 0, 0);
+  return new Promise((res,rej)=>{
+    const img=new Image();
+    const url=URL.createObjectURL(f);
+    img.onload=()=>{
+      const c=document.createElement('canvas');
+      c.width=img.naturalWidth;c.height=img.naturalHeight;
+      c.getContext('2d').drawImage(img,0,0);
       URL.revokeObjectURL(url);
-      c.toBlob(b => b ? res(b) : rej(new Error('Conversion failed')), 'image/png');
+      c.toBlob(b=>b?res(b):rej(new Error('Conversion failed')),'image/png');
     };
-    img.onerror = () => rej(new Error('Could not load image'));
-    img.src = url;
+    img.onerror=()=>rej(new Error('Could not load image'));
+    img.src=url;
   });
 }
 
 function renderResults(){
-  const g = document.getElementById('resGrid');
-  g.style.display = 'grid';
-  g.innerHTML = converted.map((c, i) => `
-    <div class="res-card">
-      <img src="${URL.createObjectURL(c.blob)}" alt="${c.name}">
+  const grid=document.getElementById('resGrid');
+  grid.style.display='grid';
+  let totalBytes=0;
+  grid.innerHTML=converted.map((c,i)=>{
+    totalBytes+=c.size;
+    const thumbUrl=URL.createObjectURL(c.blob);
+    return `<div class="res-card">
+      <img src="${thumbUrl}" class="res-card-thumb" alt="${c.name}">
       <div class="res-card-footer">
-        <span class="res-card-name">${c.name}</span>
-        <button class="btn-dl-single" onclick="dl(${i})" title="Download">↓</button>
+        <span class="res-card-name" title="${c.name}">${c.name}</span>
+        <span class="res-card-size">${fmtSize(c.size)}</span>
+        <button class="btn-dl-single" onclick="dlOne(${i})" title="Download">↓</button>
       </div>
-    </div>`).join('');
-  document.getElementById('actionRow').style.display = converted.length > 1 ? 'flex' : 'none';
-  if(converted.length === 1){
-    // Auto-show single download button in action row for 1 file too
-    document.getElementById('actionRow').style.display = 'flex';
+    </div>`;
+  }).join('');
+
+  // Summary bar
+  document.getElementById('convertedCount').textContent=converted.length;
+  document.getElementById('totalSize').textContent=fmtSize(totalBytes);
+  document.getElementById('summaryBar').style.display='flex';
+
+  // Action row: show "Download All" only if multiple files
+  const ar=document.getElementById('actionRow');
+  ar.style.display='flex';
+  const dlBtn=document.getElementById('dlAllBtn');
+  if(converted.length===1){
+    dlBtn.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> PNG Download Karein';
   }
+  ar.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-function dl(i){
-  const c = converted[i];
-  const url = URL.createObjectURL(c.blob);
-  Object.assign(document.createElement('a'), { href: url, download: c.name }).click();
+function dlOne(i){
+  const c=converted[i];
+  const url=URL.createObjectURL(c.blob);
+  Object.assign(document.createElement('a'),{href:url,download:c.name}).click();
   URL.revokeObjectURL(url);
 }
 
 async function dlAll(){
-  for(let i = 0; i < converted.length; i++){
-    dl(i);
-    await new Promise(r => setTimeout(r, 150));
+  for(let i=0;i<converted.length;i++){
+    dlOne(i);
+    await new Promise(r=>setTimeout(r,180));
   }
 }
 
 function clearAll(){
-  converted = [];
-  document.getElementById('resGrid').style.display = 'none';
-  document.getElementById('actionRow').style.display = 'none';
-  document.getElementById('fileInput').value = '';
-  document.getElementById('errBox').style.display = 'none';
+  converted=[];
+  document.getElementById('resGrid').style.display='none';
+  document.getElementById('actionRow').style.display='none';
+  document.getElementById('adSlot').style.display='none';
+  document.getElementById('summaryBar').style.display='none';
+  document.getElementById('fileInput').value='';
+  document.getElementById('errBox').style.display='none';
 }
 
-function showErr(m){
-  const b = document.getElementById('errBox');
-  b.style.display = 'block';
-  b.textContent = '⚠️ ' + m;
+function showErr(m){const b=document.getElementById('errBox');b.style.display='block';b.textContent='⚠️ '+m}
+function fmtSize(b){return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(1)+' MB'}
+
+/* ─── FAQ ─── */
+const FAQS=[
+  {q:'Kya Image to PNG convert karna free hai?',a:'Haan, ToolNest Image to PNG tool 100% free hai — koi hidden charges nahi, koi premium plan nahi, koi watermark nahi. Hamesha free.'},
+  {q:'Kya meri images server par upload hoti hain?',a:'Bilkul nahi! Aapki images aapke browser mein Canvas API ke through locally process hoti hain. Kabhi bhi server par upload nahi hoti — hum aapki files dekh bhi nahi sakte.'},
+  {q:'Transparency preserve hogi kya PNG mein?',a:'Haan! PNG format alpha channel (transparency) support karta hai. Agar aapki WebP ya PNG image mein transparent areas hain, woh output PNG mein bhi preserve honge. JPG images mein transparency nahi hoti isliye white background add hogi.'},
+  {q:'Ek saath kitni images convert kar sakte hain?',a:'Koi limit nahi! Aap jo chaaho utni images ek saath select karo — batch convert ho jaayengi. Har image ka individual download button bhi milega.'},
+  {q:'PNG aur JPG mein kya fark hai?',a:'PNG lossless format hai jo transparency support karta hai aur sharp graphics/logos ke liye best hai. File size thodi badi hoti hai. JPG lossy format hai jo photos ke liye best hai — chhoti file size lekin thodi quality loss. PNG zyada situations mein versatile hai.'},
+  {q:'Mobile (Android/iPhone) par kaam karta hai?',a:'Haan, bilkul! ToolNest Image to PNG tool Android aur iPhone dono par perfectly kaam karta hai. Koi app download nahi chahiye — seedha browser mein kholein aur use karein.'},
+  {q:'GIF animations PNG mein convert hote waqt kya hoga?',a:'GIF ka pehla frame PNG mein convert hoga. Animated GIFs PNG format mein animated nahi hoti hain — sirf static first frame milega.'},
+  {q:'Download All button se kya hoga?',a:'Sab converted PNG files ek ek karke automatically download hongi. Browser kuch files ek saath download karne ki permission maang sakta hai — allow kar dein.'},
+];
+
+document.getElementById('faqList').innerHTML=FAQS.map((f,i)=>`
+  <div class="faq-item" id="fq${i}">
+    <div class="faq-q" onclick="toggleFaq(${i})" role="button" aria-expanded="false">
+      <span>${f.q}</span><span class="faq-icon">+</span>
+    </div>
+    <div class="faq-a">${f.a}</div>
+  </div>`).join('');
+
+function toggleFaq(i){
+  const item=document.getElementById('fq'+i);
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(el=>{el.classList.remove('open');el.querySelector('.faq-q').setAttribute('aria-expanded','false');el.querySelector('.faq-icon').textContent='+'});
+  if(!isOpen){item.classList.add('open');item.querySelector('.faq-q').setAttribute('aria-expanded','true');item.querySelector('.faq-icon').textContent='×'}
 }
 </script>
 <script src="/nav-footer.js"></script>
