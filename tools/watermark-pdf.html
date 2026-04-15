@@ -545,6 +545,24 @@ input,select,textarea{font-family:var(--f-body)}
 .btn-reset:hover{border-color:var(--red);color:var(--red);background:var(--red-l)}
 @media(max-width:600px){.wm-settings-grid{grid-template-columns:1fr}}
 
+
+/* ═══ FOOTER FULL-WIDTH FIX ═══
+   Right sidebar (position:fixed) ke saath footer overlap fix.
+   Footer ka right padding = right-sidebar width.
+   At <=1024px right sidebar hides, so padding resets.          */
+.tn-foot {
+  padding-right: calc(1.5rem + var(--right-w, 220px)) !important;
+  box-sizing: border-box;
+}
+.tn-foot-bottom {
+  padding-right: 0 !important;
+}
+@media(max-width:1200px) {
+  .tn-foot { padding-right: calc(1.5rem + var(--right-w, 200px)) !important; }
+}
+@media(max-width:1024px) {
+  .tn-foot { padding-right: 1.5rem !important; }
+}
 </style>
 </head>
 <body>
