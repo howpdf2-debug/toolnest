@@ -1,87 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Contact ToolNest — Get in Touch</title>
-<meta name="description" content="Contact ToolNest for support, feedback, or feature requests. We respond within 24-48 hours.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="dbfc89456a05e36c">
+<title>Contact ToolNest — Feedback, Bug Reports & Suggestions</title>
+<meta name="description" content="ToolNest se contact karein — bug report, feature request ya koi bhi feedback. Hum sunna chahte hain!">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://toolnest.bhaihelp.in/contact.html">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 <meta name="theme-color" content="#0F1B3D">
-<link rel="stylesheet" href="/style.css">
-<script src="/darkmode.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-.contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:2rem}
-@media(max-width:600px){.contact-grid{grid-template-columns:1fr}}
-.contact-tile{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.5rem;text-align:center}
-.contact-tile .icon{font-size:2.5rem;margin-bottom:.75rem;display:block}
-.contact-tile h3{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:.4rem}
-.contact-tile p{font-size:13px;color:var(--ink2)}
-.contact-tile a{color:var(--brand);font-weight:600}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
-@media(max-width:540px){.form-grid{grid-template-columns:1fr}}
-.fg{display:flex;flex-direction:column;gap:5px}
-.fg label{font-size:12px;font-weight:600;color:var(--ink2)}
-.fg input,.fg select,.fg textarea{border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;font-size:13px;font-family:var(--font-body);color:var(--ink);outline:none;background:var(--white);transition:border-color .15s}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--brand)}
-.fg textarea{resize:vertical;min-height:100px}
+:root{--gold:#F5A623;--gold-d:#D4891A;--gold-l:#FEF3DC;--gold-b:rgba(245,166,35,.20);--navy:#0F1B3D;--navy-mid:#1A2E5E;--blue:#1E4FCB;--blue-l:#EEF3FF;--green:#00B37E;--green-l:#E6FAF4;--red:#E53E3E;--red-l:#FFF0F0;--amber:#E88B00;--amber-l:#FFF8E6;--purple:#6C3FC4;--purple-l:#F2EDFF;--teal:#0891B2;--teal-l:#E8F8FD;--orange:#F5620A;--orange-l:#FFF0EB;--ink:#0D0D14;--ink2:#44455A;--ink3:#8A8BA5;--paper:#F5F6FA;--white:#FFFFFF;--border:#E2E4EF;--border2:#C8CADF;--surface:#EDEEF7;--f-display:'Outfit',sans-serif;--f-body:'Plus Jakarta Sans',sans-serif;--r-sm:8px;--r:12px;--r-lg:18px;--r-xl:24px;--r-pill:999px;--sh-xs:0 1px 3px rgba(13,13,20,.07);--sh-sm:0 2px 8px rgba(13,13,20,.09);--sh:0 4px 16px rgba(13,13,20,.11);--sh-lg:0 8px 32px rgba(13,13,20,.13);--sh-gold:0 4px 20px rgba(245,166,35,.28);--nav-h:64px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.6;padding-top:var(--nav-h)}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
+.page-container{max-width:900px;margin:0 auto;padding:3rem 1.5rem}
+.page-hero{background:linear-gradient(135deg,var(--navy),var(--navy-mid));padding:3rem 1.5rem;text-align:center;margin-bottom:2rem;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 200px at 80% 40%,rgba(245,166,35,.12) 0%,transparent 60%)}
+.page-hero-inner{position:relative;z-index:1}
+.page-hero h1{font-family:var(--f-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:#fff;margin-bottom:.5rem}
+.page-hero p{font-size:14px;color:rgba(255,255,255,.6)}
+.card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;margin-bottom:1.25rem;box-shadow:var(--sh-xs)}
+.card h2{font-family:var(--f-display);font-size:1.2rem;font-weight:800;color:var(--ink);margin-bottom:.85rem;display:flex;align-items:center;gap:8px}
+.card h2::before{content:'';display:block;width:4px;height:18px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.card p{font-size:13.5px;color:var(--ink2);line-height:1.75;margin-bottom:.75rem}
+.card p:last-child{margin-bottom:0}
+.card ul,.card ol{font-size:13.5px;color:var(--ink2);line-height:1.75;padding-left:1.5rem;margin-bottom:.75rem}
+.card li{margin-bottom:.35rem}
+.card a{color:var(--gold-d);font-weight:600}
+.card a:hover{color:var(--gold)}
+.highlight-box{background:var(--gold-l);border:1.5px solid var(--gold-b);border-radius:var(--r-lg);padding:1rem 1.25rem;font-size:13px;color:var(--gold-d);margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px}
+.btn-gold{background:var(--gold);color:var(--navy);padding:12px 28px;border-radius:var(--r-pill);font-size:14px;font-weight:700;transition:all .15s;box-shadow:var(--sh-gold);display:inline-flex;align-items:center;gap:7px;cursor:pointer;border:none;font-family:var(--f-body)}
+.btn-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+@media(max-width:600px){.contact-grid{grid-template-columns:1fr}.page-container{padding:2rem 1rem}}
+.fld{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.75rem}
+.fld label{font-size:12px;font-weight:700;color:var(--ink2)}
+.fld input,.fld textarea,.fld select{border:1.5px solid var(--border);border-radius:var(--r-sm);padding:9px 12px;font-size:13px;font-family:var(--f-body);color:var(--ink);outline:none;background:var(--white);transition:border-color .15s}
+.fld input:focus,.fld textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-b)}
+.fld textarea{resize:vertical;min-height:110px}
+/* Footer full-width fix */
+.tn-foot{padding-right:1.5rem !important}
 </style>
-<meta name="google-site-verification" content="dbfc89456a05e36c">
 </head>
 <body>
 <div id="tn-nav"></div>
-<div class="mini-hero"><h1>📧 Contact Us</h1><p>We're here to help! Get in touch with ToolNest</p></div>
-<div class="page-wrap-sm">
-  <div class="contact-grid">
-    <div class="contact-tile"><span class="icon">📧</span><h3>Email Us</h3><p>For general inquiries</p><a href="mailto:contact@bhaihelp.in">contact@bhaihelp.in</a></div>
-    <div class="contact-tile"><span class="icon">⏰</span><h3>Response Time</h3><p>We typically respond within</p><strong style="color:var(--brand)">24-48 hours</strong></div>
-    <div class="contact-tile"><span class="icon">🌐</span><h3>Website</h3><p>Made by</p><a href="https://bhaihelp.in">BhaiHelp.in</a></div>
-  </div>
-  <div class="content-card">
-    <h2>Send Us a Message</h2>
-    <form id="contactForm" onsubmit="submitForm(event)">
-      <div class="form-grid">
-        <div class="fg"><label>Your Name *</label><input type="text" name="name" required placeholder="Your Name"></div>
-        <div class="fg"><label>Your Email *</label><input type="email" name="email" required placeholder="you@email.com"></div>
-      </div>
-      <div class="fg" style="margin-bottom:14px">
-        <label>Subject *</label>
-        <select name="subject" required>
-          <option value="">Select a topic</option>
-          <option>General Inquiry</option>
-          <option>Technical Support</option>
-          <option>Feedback</option>
-          <option>Feature Request</option>
-          <option>Report a Bug</option>
-          <option>Business / Partnership</option>
-        </select>
-      </div>
-      <div class="fg" style="margin-bottom:16px"><label>Message *</label><textarea name="message" required placeholder="Tell us how we can help…"></textarea></div>
-      <button type="submit" class="btn-primary" style="width:100%">📨 Send Message</button>
-    </form>
-    <div id="formMsg" style="display:none;margin-top:1rem;padding:12px 16px;border-radius:10px"></div>
-  </div>
-  <div class="content-card">
-    <h2>Frequently Asked Questions</h2>
-    <h3>Are the tools really free?</h3><p>Yes! All tools are 100% free with no hidden costs or premium tiers.</p>
-    <h3>Do I need to create an account?</h3><p>No signup required. Use any tool immediately without registration.</p>
-    <h3>Is my data safe?</h3><p>Yes. Most tools process files locally in your browser. We don't store or share your files.</p>
-    <h3>Can I suggest a new tool?</h3><p>Absolutely! Use the form above or email us with your suggestions.</p>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div style="font-size:3rem;margin-bottom:.75rem">📩</div>
+    <h1>Contact Us</h1>
+    <p>Bug report, feature request ya koi bhi sawaal — hum yahan hain!</p>
   </div>
 </div>
-<div id="tn-footer"></div>
-<script src="/nav-footer.js"></script>
+<div class="page-container" style="padding-top:0">
+
+  <div class="highlight-box">
+    <span style="font-size:1.5rem;flex-shrink:0">⚡</span>
+    <div>Hum usually <strong>24-48 ghante</strong> mein reply karte hain. Sabse jaldi response ke liye email use karein.</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem">
+    <div class="card">
+      <h2>📧 Email</h2>
+      <p>General inquiries, partnerships aur media ke liye:</p>
+      <p><a href="mailto:hello@bhaihelp.in" style="font-size:1rem">hello@bhaihelp.in</a></p>
+    </div>
+    <div class="card">
+      <h2>🐛 Bug Report</h2>
+      <p>Koi tool theek se kaam nahi kar raha?</p>
+      <p><a href="mailto:bugs@bhaihelp.in?subject=Bug Report — ToolNest">bugs@bhaihelp.in</a></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>✉️ Send a Message</h2>
+    <form id="contactForm" onsubmit="sendContact(event)">
+      <div class="fld">
+        <label for="cf-name">Your Name <span style="color:var(--red)">*</span></label>
+        <input type="text" id="cf-name" placeholder="Aapka naam" required>
+      </div>
+      <div class="fld">
+        <label for="cf-email">Email Address <span style="color:var(--red)">*</span></label>
+        <input type="email" id="cf-email" placeholder="aapka@email.com" required>
+      </div>
+      <div class="fld">
+        <label for="cf-subject">Subject</label>
+        <select id="cf-subject">
+          <option value="bug">🐛 Bug Report</option>
+          <option value="feature" selected>💡 Feature Request / New Tool</option>
+          <option value="feedback">💬 General Feedback</option>
+          <option value="partnership">🤝 Partnership / Business</option>
+          <option value="other">📋 Other</option>
+        </select>
+      </div>
+      <div class="fld">
+        <label for="cf-msg">Message <span style="color:var(--red)">*</span></label>
+        <textarea id="cf-msg" placeholder="Aapka message yahan likhein..." required></textarea>
+      </div>
+      <button type="submit" class="btn-gold" id="cf-btn">📩 Send Message</button>
+      <div id="cf-status" style="display:none;margin-top:.75rem;padding:.75rem 1rem;border-radius:var(--r);font-size:13px;font-weight:600"></div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>💡 Popular Requests</h2>
+    <p>Ye features request mein hain — hum kaam kar rahe hain:</p>
+    <ul>
+      <li>Excel to PDF converter</li>
+      <li>PDF to Excel converter</li>
+      <li>Bulk image compression</li>
+      <li>Digital signature on PDF</li>
+      <li>Hindi language interface</li>
+    </ul>
+    <p style="margin-top:.75rem">Agar aap koi aur tool chahte hain to email karein — popular requests jaldi implement hoti hain!</p>
+  </div>
+
+</div>
 <script>
-function submitForm(e){
+async function sendContact(e) {
   e.preventDefault();
-  const msg=document.getElementById('formMsg');
-  msg.style.display='block';
-  msg.style.background='var(--green-l)';
-  msg.style.color='#065F46';
-  msg.style.border='1px solid #A7F3D0';
-  msg.textContent='✅ Thank you! Your message has been sent. We\'ll respond within 24-48 hours.';
-  e.target.reset();
-  setTimeout(()=>msg.style.display='none',6000);
+  const btn = document.getElementById('cf-btn');
+  const status = document.getElementById('cf-status');
+  const name = document.getElementById('cf-name').value;
+  const email = document.getElementById('cf-email').value;
+  const subject = document.getElementById('cf-subject').value;
+  const msg = document.getElementById('cf-msg').value;
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Sending…';
+
+  // Formspree: Replace YOUR_FORM_ID with actual ID from formspree.io
+  const FORMSPREE_ID = 'YOUR_FORM_ID';
+
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+    // Fallback: mailto
+    window.location.href = `mailto:<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="dbfc89456a05e36c">
+<title>Contact ToolNest — Feedback, Bug Reports & Suggestions</title>
+<meta name="description" content="ToolNest se contact karein — bug report, feature request ya koi bhi feedback. Hum sunna chahte hain!">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://toolnest.bhaihelp.in/contact.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta name="theme-color" content="#0F1B3D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#F5A623;--gold-d:#D4891A;--gold-l:#FEF3DC;--gold-b:rgba(245,166,35,.20);--navy:#0F1B3D;--navy-mid:#1A2E5E;--blue:#1E4FCB;--blue-l:#EEF3FF;--green:#00B37E;--green-l:#E6FAF4;--red:#E53E3E;--red-l:#FFF0F0;--amber:#E88B00;--amber-l:#FFF8E6;--purple:#6C3FC4;--purple-l:#F2EDFF;--teal:#0891B2;--teal-l:#E8F8FD;--orange:#F5620A;--orange-l:#FFF0EB;--ink:#0D0D14;--ink2:#44455A;--ink3:#8A8BA5;--paper:#F5F6FA;--white:#FFFFFF;--border:#E2E4EF;--border2:#C8CADF;--surface:#EDEEF7;--f-display:'Outfit',sans-serif;--f-body:'Plus Jakarta Sans',sans-serif;--r-sm:8px;--r:12px;--r-lg:18px;--r-xl:24px;--r-pill:999px;--sh-xs:0 1px 3px rgba(13,13,20,.07);--sh-sm:0 2px 8px rgba(13,13,20,.09);--sh:0 4px 16px rgba(13,13,20,.11);--sh-lg:0 8px 32px rgba(13,13,20,.13);--sh-gold:0 4px 20px rgba(245,166,35,.28);--nav-h:64px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.6;padding-top:var(--nav-h)}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
+.page-container{max-width:900px;margin:0 auto;padding:3rem 1.5rem}
+.page-hero{background:linear-gradient(135deg,var(--navy),var(--navy-mid));padding:3rem 1.5rem;text-align:center;margin-bottom:2rem;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 200px at 80% 40%,rgba(245,166,35,.12) 0%,transparent 60%)}
+.page-hero-inner{position:relative;z-index:1}
+.page-hero h1{font-family:var(--f-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:#fff;margin-bottom:.5rem}
+.page-hero p{font-size:14px;color:rgba(255,255,255,.6)}
+.card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;margin-bottom:1.25rem;box-shadow:var(--sh-xs)}
+.card h2{font-family:var(--f-display);font-size:1.2rem;font-weight:800;color:var(--ink);margin-bottom:.85rem;display:flex;align-items:center;gap:8px}
+.card h2::before{content:'';display:block;width:4px;height:18px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.card p{font-size:13.5px;color:var(--ink2);line-height:1.75;margin-bottom:.75rem}
+.card p:last-child{margin-bottom:0}
+.card ul,.card ol{font-size:13.5px;color:var(--ink2);line-height:1.75;padding-left:1.5rem;margin-bottom:.75rem}
+.card li{margin-bottom:.35rem}
+.card a{color:var(--gold-d);font-weight:600}
+.card a:hover{color:var(--gold)}
+.highlight-box{background:var(--gold-l);border:1.5px solid var(--gold-b);border-radius:var(--r-lg);padding:1rem 1.25rem;font-size:13px;color:var(--gold-d);margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px}
+.btn-gold{background:var(--gold);color:var(--navy);padding:12px 28px;border-radius:var(--r-pill);font-size:14px;font-weight:700;transition:all .15s;box-shadow:var(--sh-gold);display:inline-flex;align-items:center;gap:7px;cursor:pointer;border:none;font-family:var(--f-body)}
+.btn-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+@media(max-width:600px){.contact-grid{grid-template-columns:1fr}.page-container{padding:2rem 1rem}}
+.fld{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.75rem}
+.fld label{font-size:12px;font-weight:700;color:var(--ink2)}
+.fld input,.fld textarea,.fld select{border:1.5px solid var(--border);border-radius:var(--r-sm);padding:9px 12px;font-size:13px;font-family:var(--f-body);color:var(--ink);outline:none;background:var(--white);transition:border-color .15s}
+.fld input:focus,.fld textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-b)}
+.fld textarea{resize:vertical;min-height:110px}
+/* Footer full-width fix */
+.tn-foot{padding-right:1.5rem !important}
+</style>
+</head>
+<body>
+<div id="tn-nav"></div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div style="font-size:3rem;margin-bottom:.75rem">📩</div>
+    <h1>Contact Us</h1>
+    <p>Bug report, feature request ya koi bhi sawaal — hum yahan hain!</p>
+  </div>
+</div>
+<div class="page-container" style="padding-top:0">
+
+  <div class="highlight-box">
+    <span style="font-size:1.5rem;flex-shrink:0">⚡</span>
+    <div>Hum usually <strong>24-48 ghante</strong> mein reply karte hain. Sabse jaldi response ke liye email use karein.</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem">
+    <div class="card">
+      <h2>📧 Email</h2>
+      <p>General inquiries, partnerships aur media ke liye:</p>
+      <p><a href="mailto:hello@bhaihelp.in" style="font-size:1rem">hello@bhaihelp.in</a></p>
+    </div>
+    <div class="card">
+      <h2>🐛 Bug Report</h2>
+      <p>Koi tool theek se kaam nahi kar raha?</p>
+      <p><a href="mailto:bugs@bhaihelp.in?subject=Bug Report — ToolNest">bugs@bhaihelp.in</a></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>✉️ Send a Message</h2>
+    <form id="contactForm" onsubmit="sendContact(event)">
+      <div class="fld">
+        <label for="cf-name">Your Name <span style="color:var(--red)">*</span></label>
+        <input type="text" id="cf-name" placeholder="Aapka naam" required>
+      </div>
+      <div class="fld">
+        <label for="cf-email">Email Address <span style="color:var(--red)">*</span></label>
+        <input type="email" id="cf-email" placeholder="aapka@email.com" required>
+      </div>
+      <div class="fld">
+        <label for="cf-subject">Subject</label>
+        <select id="cf-subject">
+          <option value="bug">🐛 Bug Report</option>
+          <option value="feature" selected>💡 Feature Request / New Tool</option>
+          <option value="feedback">💬 General Feedback</option>
+          <option value="partnership">🤝 Partnership / Business</option>
+          <option value="other">📋 Other</option>
+        </select>
+      </div>
+      <div class="fld">
+        <label for="cf-msg">Message <span style="color:var(--red)">*</span></label>
+        <textarea id="cf-msg" placeholder="Aapka message yahan likhein..." required></textarea>
+      </div>
+      <button type="submit" class="btn-gold" id="cf-btn">📩 Send Message</button>
+      <div id="cf-status" style="display:none;margin-top:.75rem;padding:.75rem 1rem;border-radius:var(--r);font-size:13px;font-weight:600"></div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>💡 Popular Requests</h2>
+    <p>Ye features request mein hain — hum kaam kar rahe hain:</p>
+    <ul>
+      <li>Excel to PDF converter</li>
+      <li>PDF to Excel converter</li>
+      <li>Bulk image compression</li>
+      <li>Digital signature on PDF</li>
+      <li>Hindi language interface</li>
+    </ul>
+    <p style="margin-top:.75rem">Agar aap koi aur tool chahte hain to email karein — popular requests jaldi implement hoti hain!</p>
+  </div>
+
+</div>
+<script>
+async function sendContact(e) {
+  e.preventDefault();
+  const btn = document.getElementById('cf-btn');
+  const status = document.getElementById('cf-status');
+  const name = document.getElementById('cf-name').value;
+  const email = document.getElementById('cf-email').value;
+  const subject = document.getElementById('cf-subject').value;
+  const msg = document.getElementById('cf-msg').value;
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Sending…';
+
+  // Formspree: Replace YOUR_FORM_ID with actual ID from formspree.io
+  const FORMSPREE_ID = 'YOUR_FORM_ID';
+
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+    // Fallback: mailto
+    window.location.href = `mailto:hello@bhaihelp.in?subject=ToolNest Contact: ${encodeURIComponent(subject)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + msg)}`;
+    btn.disabled = false;
+    btn.textContent = '📩 Send Message';
+    return;
+  }
+
+  try {
+    const r = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, subject, message: msg })
+    });
+    if (r.ok) {
+      status.style.display = 'block';
+      status.style.background = 'var(--green-l)';
+      status.style.color = 'var(--green)';
+      status.textContent = '✅ Message bhej diya! Hum 24-48 ghante mein reply karenge.';
+      e.target.reset();
+    } else throw new Error();
+  } catch {
+    status.style.display = 'block';
+    status.style.background = 'var(--red-l)';
+    status.style.color = 'var(--red)';
+    status.textContent = '❌ Send nahi hua. Please directly email karein: hello@bhaihelp.in';
+  }
+  btn.disabled = false;
+  btn.textContent = '📩 Send Message';
 }
 </script>
+<div id="tn-footer"></div>
+<script src="/nav-footer.js"></script>
+</body>
+</html>?subject=ToolNest Contact: ${encodeURIComponent(subject)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + msg)}`;
+    btn.disabled = false;
+    btn.textContent = '📩 Send Message';
+    return;
+  }
+
+  try {
+    const r = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, subject, message: msg })
+    });
+    if (r.ok) {
+      status.style.display = 'block';
+      status.style.background = 'var(--green-l)';
+      status.style.color = 'var(--green)';
+      status.textContent = '✅ Message bhej diya! Hum 24-48 ghante mein reply karenge.';
+      e.target.reset();
+    } else throw new Error();
+  } catch {
+    status.style.display = 'block';
+    status.style.background = 'var(--red-l)';
+    status.style.color = 'var(--red)';
+    status.textContent = '❌ Send nahi hua. Please directly email karein: hello@bhaihelp.in';
+  }
+  btn.disabled = false;
+  btn.textContent = '📩 Send Message';
+}
+</script>
+<div id="tn-footer"></div>
+<script src="/nav-footer.js"></script>
 </body>
 </html>
