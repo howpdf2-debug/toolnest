@@ -1,245 +1,309 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
-  <!-- Homepage -->
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- ═══════════════════════════════════════════
+       TOOLNEST SITEMAP — Updated April 2026
+       Total: 1 homepage + 4 info pages + 25 tools
+              + 11 blog posts + blog index = 42 URLs
+       ═══════════════════════════════════════════ -->
+
+  <!-- HOMEPAGE -->
   <url>
     <loc>https://toolnest.bhaihelp.in/</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- Blog Homepage -->
+
+  <!-- CORE PAGES -->
   <url>
     <loc>https://toolnest.bhaihelp.in/blog.html</loc>
-    <lastmod>2026-02-27</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  
-  <!-- Essential Pages -->
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <url>
     <loc>https://toolnest.bhaihelp.in/about.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
   </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/contact.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/privacy.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/terms.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- ═══════════════════
+       PDF TOOLS (8)
+       ═══════════════════ -->
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/merge-pdf.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/compress-pdf.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/split-pdf.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/rotate-pdf.html</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
-  <url>
-    <loc>https://toolnest.bhaihelp.in/privacy-policy.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  
-  <url>
-    <loc>https://toolnest.bhaihelp.in/terms.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  
-  <url>
-    <loc>https://toolnest.bhaihelp.in/disclaimer.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  
-  <!-- PDF Tools (High Priority) -->
-  <url>
-    <loc>https://toolnest.bhaihelp.in/tools/merge-pdf.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://toolnest.bhaihelp.in/tools/compress-pdf.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://toolnest.bhaihelp.in/tools/split-pdf.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://toolnest.bhaihelp.in/tools/rotate-pdf.html</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/protect-pdf.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/unlock-pdf.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/watermark-pdf.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Conversion Tools -->
+
+  <!-- ═══════════════════
+       CONVERT TOOLS (4)
+       ═══════════════════ -->
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/jpg-to-pdf.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/pdf-to-jpg.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/word-to-pdf.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/pdf-to-word.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
-  
-  <!-- Image Tools -->
+
+  <!-- ═══════════════════
+       IMAGE TOOLS (4)
+       ═══════════════════ -->
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/image-compress.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/image-resizer.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/image-to-png.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/bg-remover.html</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Productivity Tools -->
+
+  <!-- ═══════════════════
+       PRODUCTIVITY TOOLS (4)
+       ═══════════════════ -->
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/qr-code-generator.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/password-generator.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/word-counter.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/json-formatter.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
-  
-  <!-- Business Tools -->
+
+  <!-- ═══════════════════
+       BUSINESS TOOLS (2)
+       ═══════════════════ -->
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/invoice-generator.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <url>
     <loc>https://toolnest.bhaihelp.in/tools/seo-generator.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- BLOG ARTICLES (CRITICAL - These were missing!) -->
+
+  <!-- ═══════════════════
+       CALCULATORS (4) — Previously missing!
+       ═══════════════════ -->
   <url>
-    <loc>https://toolnest.bhaihelp.in/blog/gst-invoice-guide.html</loc>
-    <lastmod>2026-02-20</lastmod>
+    <loc>https://toolnest.bhaihelp.in/tools/emi-calculator.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/tools/age-calculator.html</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
-    <loc>https://toolnest.bhaihelp.in/blog/image-compression-tips.html</loc>
-    <lastmod>2026-02-21</lastmod>
+    <loc>https://toolnest.bhaihelp.in/tools/percentage-calculator.html</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <url>
-    <loc>https://toolnest.bhaihelp.in/blog/pdf-tools-for-students.html</loc>
-    <lastmod>2026-02-22</lastmod>
+    <loc>https://toolnest.bhaihelp.in/tools/sip-calculator.html</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
+  <!-- ═══════════════════
+       BLOG — INDEX + POSTS (12)
+       ═══════════════════ -->
   <url>
-    <loc>https://toolnest.bhaihelp.in/blog/small-business-online-tools-2026.html</loc>
+    <loc>https://toolnest.bhaihelp.in/blog/best-gst-invoice-generator-india-2026/</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/blog/compress-pdf-free-online-india/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/blog/compress-image-without-quality-loss/</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/blog/free-online-tools-small-business-india/</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/blog/emi-calculator-home-loan-guide/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/blog/merge-pdf-guide-india-2026/</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/blog/upi-qr-code-generator-free-india/</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/blog/best-free-pdf-tools-india/</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolnest.bhaihelp.in/blog/sip-calculator-mutual-fund-india/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
-  
   <url>
-    <loc>https://toolnest.bhaihelp.in/blog/seo-meta-tags-guide.html</loc>
-    <lastmod>2026-02-23</lastmod>
+    <loc>https://toolnest.bhaihelp.in/blog/free-seo-meta-tag-generator/</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
-  
   <url>
-    <loc>https://toolnest.bhaihelp.in/blog/resume-writing-tips-2026.html</loc>
-    <lastmod>2026-02-27</lastmod>
+    <loc>https://toolnest.bhaihelp.in/blog/age-calculator-online-india/</loc>
+    <lastmod>2026-02-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
-  
+  <url>
+    <loc>https://toolnest.bhaihelp.in/blog/gst-invoice-guide/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
