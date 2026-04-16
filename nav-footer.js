@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   TOOLNEST — nav-footer.js v6.0
+   TOOLNEST — nav-footer.js v6.1
    Single source of truth. Ek baar edit karo, sab pages update.
 
    NAYA TOOL ADD KARNA: Sirf TN.tools array mein ek line add karo.
@@ -327,6 +327,14 @@ const TN = {
     if (document.getElementById('tn-nav-css')) return;
     const s = document.createElement('style');
     s.id = 'tn-nav-css';
+    // Also inject font preconnects if not already present
+    if (!document.querySelector('link[href*="fonts.gstatic.com"]')) {
+      const lp = document.createElement('link');
+      lp.rel = 'preconnect';
+      lp.href = 'https://fonts.gstatic.com';
+      lp.crossOrigin = 'anonymous';
+      document.head.insertBefore(lp, document.head.firstChild);
+    }
     s.textContent = `
       /* ── TN Nav Core ── */
       .nav-logo-text{font-family:'Outfit',sans-serif;font-weight:800;font-size:20px;color:var(--ink,#0D0D14)}
@@ -543,9 +551,36 @@ const TN = {
      ═══════════════════════════ */
   init() {
     TN._injectNavCSS();
+    TN._injectGA4();
     TN.injectNav();
     TN.injectSidebar();
     TN.injectFooter();
+  },
+
+  /* ═══════════════════════════════
+     GOOGLE ANALYTICS 4 — Auto inject
+     Replace TN_GA4_ID with real ID
+     ═══════════════════════════════ */
+  _GA4_ID: 'G-XXXXXXXXXX', // ← Apna GA4 Measurement ID yahan rakho
+
+  _injectGA4() {
+    const id = TN._GA4_ID;
+    if (!id || id === 'G-XXXXXXXXXX') return; // Skip if not configured
+    if (document.getElementById('tn-ga4')) return; // Already injected
+
+    // Inject gtag script
+    const s1 = document.createElement('script');
+    s1.id = 'tn-ga4';
+    s1.async = true;
+    s1.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+    document.head.appendChild(s1);
+
+    // Inject gtag config
+    const s2 = document.createElement('script');
+    s2.textContent = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${id}',{page_path:location.pathname});`;
+    document.head.appendChild(s2);
+
+    console.log('[TN] GA4 initialized:', id);
   }
 };
 
