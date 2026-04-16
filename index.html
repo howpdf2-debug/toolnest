@@ -26,6 +26,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0F1B3D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"ToolNest","url":"https://toolnest.bhaihelp.in","description":"24+ free online tools for Indian users","potentialAction":{"@type":"SearchAction","target":"https://toolnest.bhaihelp.in/?s={search_term_string}","query-input":"required name=search_term_string"},"publisher":{"@type":"Organization","name":"ToolNest","logo":{"@type":"ImageObject","url":"https://toolnest.bhaihelp.in/favicon.png"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Kya ToolNest ke sabhi tools free hain?","acceptedAnswer":{"@type":"Answer","text":"Haan, 100% free hain — koi hidden charge nahi, koi premium plan nahi, koi watermark nahi."}},{"@type":"Question","name":"Kya files server par upload hoti hain?","acceptedAnswer":{"@type":"Answer","text":"Nahi. Sabhi tools files locally browser mein process karte hain. Files kabhi device se bahar nahi jaati."}},{"@type":"Question","name":"Kya signup karna zaroori hai?","acceptedAnswer":{"@type":"Answer","text":"Bilkul nahi. Koi account, email ya registration nahi chahiye."}}]}</script>
@@ -759,7 +760,24 @@ function overlaySearch(q){
 }
 function toggleNav(){const n=document.getElementById('mobNav'),o=document.getElementById('mobOverlay'),h=document.getElementById('hamburger'),open=n.classList.toggle('open');o.classList.toggle('open',open);h.classList.toggle('open',open);h.setAttribute('aria-expanded',open);}
 function closeNav(){document.getElementById('mobNav').classList.remove('open');document.getElementById('mobOverlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.getElementById('hamburger').setAttribute('aria-expanded','false');}
-function subNL(){const i=document.getElementById('nlEmail'),b=i.nextElementSibling;if(!i.value||!i.value.includes('@')){i.style.borderColor='rgba(229,62,62,.8)';setTimeout(()=>i.style.borderColor='',2000);return;}i.value='';b.textContent='✅ Subscribed!';setTimeout(()=>b.textContent='Subscribe 🚀',3000);}
+async function subNL(){
+  const i=document.getElementById('nlEmail'),b=i.nextElementSibling;
+  if(!i.value||!i.value.includes('@')){i.style.borderColor='rgba(229,62,62,.8)';setTimeout(()=>i.style.borderColor='',2000);return;}
+  const email=i.value.trim();
+  b.disabled=true;b.textContent='⏳ Subscribing…';
+  try{
+    // Formspree: https://formspree.io/f/YOUR_FORM_ID replace karo
+    const FORMSPREE_ID='YOUR_FORM_ID'; // ← Formspree form ID yahan
+    if(FORMSPREE_ID==='YOUR_FORM_ID'){
+      // Fallback: mailto link open karo
+      window.location.href='mailto:toolnest@bhaihelp.in?subject=Newsletter Subscription&body=Subscribe: '+encodeURIComponent(email);
+      i.value='';b.disabled=false;b.textContent='Subscribe 🚀';return;
+    }
+    const r=await fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,source:'toolnest-newsletter'})});
+    if(r.ok){i.value='';b.textContent='✅ Subscribed!';setTimeout(()=>{b.textContent='Subscribe 🚀';b.disabled=false;},3000);}
+    else throw new Error('Server error');
+  }catch(e){b.disabled=false;b.textContent='Subscribe 🚀';alert('Please try again or email us directly.');}
+}
 const PU=encodeURIComponent('https://toolnest.bhaihelp.in'),PT=encodeURIComponent('ToolNest — 24+ free online tools for India! No signup, 100% browser-based 🇮🇳');
 function shareWA(){window.open('https://wa.me/?text='+PT+'%20'+PU,'_blank');}
 function shareX(){window.open('https://x.com/intent/tweet?text='+PT+'&url='+PU,'_blank');}
