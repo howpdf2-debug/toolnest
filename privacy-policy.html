@@ -1,35 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Privacy Policy — ToolNest</title>
-<meta name="description" content="ToolNest Privacy Policy. Learn how we handle your data and protect your privacy.">
-<link rel="canonical" href="https://toolnest.bhaihelp.in/privacy-policy.html">
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="stylesheet" href="/style.css">
-<script src="/darkmode.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="dbfc89456a05e36c">
+<title>Privacy Policy — ToolNest | Your Data is Safe</title>
+<meta name="description" content="ToolNest privacy policy. Aapki files aur data hamare servers par kabhi store nahi hote. 100% browser-based processing. No tracking of documents.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://toolnest.bhaihelp.in/privacy.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta name="theme-color" content="#0F1B3D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#F5A623;--gold-d:#D4891A;--gold-l:#FEF3DC;--gold-b:rgba(245,166,35,.20);--navy:#0F1B3D;--navy-mid:#1A2E5E;--blue:#1E4FCB;--blue-l:#EEF3FF;--green:#00B37E;--green-l:#E6FAF4;--red:#E53E3E;--red-l:#FFF0F0;--amber:#E88B00;--amber-l:#FFF8E6;--purple:#6C3FC4;--purple-l:#F2EDFF;--teal:#0891B2;--teal-l:#E8F8FD;--orange:#F5620A;--orange-l:#FFF0EB;--ink:#0D0D14;--ink2:#44455A;--ink3:#8A8BA5;--paper:#F5F6FA;--white:#FFFFFF;--border:#E2E4EF;--border2:#C8CADF;--surface:#EDEEF7;--f-display:'Outfit',sans-serif;--f-body:'Plus Jakarta Sans',sans-serif;--r-sm:8px;--r:12px;--r-lg:18px;--r-xl:24px;--r-pill:999px;--sh-xs:0 1px 3px rgba(13,13,20,.07);--sh-sm:0 2px 8px rgba(13,13,20,.09);--sh:0 4px 16px rgba(13,13,20,.11);--sh-lg:0 8px 32px rgba(13,13,20,.13);--sh-gold:0 4px 20px rgba(245,166,35,.28);--nav-h:64px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.6;padding-top:var(--nav-h)}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
+.page-container{max-width:900px;margin:0 auto;padding:3rem 1.5rem}
+.page-hero{background:linear-gradient(135deg,var(--navy),var(--navy-mid));padding:3rem 1.5rem;text-align:center;margin-bottom:2rem;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 200px at 80% 40%,rgba(245,166,35,.12) 0%,transparent 60%)}
+.page-hero-inner{position:relative;z-index:1}
+.page-hero h1{font-family:var(--f-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:#fff;margin-bottom:.5rem}
+.page-hero p{font-size:14px;color:rgba(255,255,255,.6)}
+.card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;margin-bottom:1.25rem;box-shadow:var(--sh-xs)}
+.card h2{font-family:var(--f-display);font-size:1.2rem;font-weight:800;color:var(--ink);margin-bottom:.85rem;display:flex;align-items:center;gap:8px}
+.card h2::before{content:'';display:block;width:4px;height:18px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.card p{font-size:13.5px;color:var(--ink2);line-height:1.75;margin-bottom:.75rem}
+.card p:last-child{margin-bottom:0}
+.card ul,.card ol{font-size:13.5px;color:var(--ink2);line-height:1.75;padding-left:1.5rem;margin-bottom:.75rem}
+.card li{margin-bottom:.35rem}
+.card a{color:var(--gold-d);font-weight:600}
+.card a:hover{color:var(--gold)}
+.highlight-box{background:var(--gold-l);border:1.5px solid var(--gold-b);border-radius:var(--r-lg);padding:1rem 1.25rem;font-size:13px;color:var(--gold-d);margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px}
+.btn-gold{background:var(--gold);color:var(--navy);padding:12px 28px;border-radius:var(--r-pill);font-size:14px;font-weight:700;transition:all .15s;box-shadow:var(--sh-gold);display:inline-flex;align-items:center;gap:7px;cursor:pointer;border:none;font-family:var(--f-body)}
+.btn-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+@media(max-width:600px){.contact-grid{grid-template-columns:1fr}.page-container{padding:2rem 1rem}}
+.fld{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.75rem}
+.fld label{font-size:12px;font-weight:700;color:var(--ink2)}
+.fld input,.fld textarea,.fld select{border:1.5px solid var(--border);border-radius:var(--r-sm);padding:9px 12px;font-size:13px;font-family:var(--f-body);color:var(--ink);outline:none;background:var(--white);transition:border-color .15s}
+.fld input:focus,.fld textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-b)}
+.fld textarea{resize:vertical;min-height:110px}
+/* Footer full-width fix */
+.tn-foot{padding-right:1.5rem !important}
+</style>
 </head>
 <body>
 <div id="tn-nav"></div>
-<div class="mini-hero"><h1>Privacy Policy</h1><p>Last updated: March 2026</p></div>
-<div class="page-wrap-sm">
-  <div class="content-card">
-    <h2>Overview</h2>
-    <p>ToolNest is committed to protecting your privacy. This policy explains how we handle information when you use our free online tools.</p>
-    <h3>Files & Data Processing</h3>
-    <p>All file processing on ToolNest happens <strong>locally in your browser</strong> using JavaScript. Your files are never uploaded to our servers. We cannot see, access, or store any files you process using our tools.</p>
-    <h3>Information We Collect</h3>
-    <p>We collect minimal anonymous usage data through Google Analytics (page views, browser type, general location) to improve our services. We do not collect personal information, file contents, or document data.</p>
-    <h3>Cookies</h3>
-    <p>We use cookies for: dark mode preference storage (local), and Google AdSense advertising cookies. You can disable cookies in your browser settings.</p>
-    <h3>Advertising</h3>
-    <p>ToolNest uses Google AdSense to display advertisements. Google may use cookies to serve ads based on your visits to this and other websites. You can opt out at <a href="https://www.google.com/settings/ads" style="color:var(--brand)">google.com/settings/ads</a>.</p>
-    <h3>Third-Party Services</h3>
-    <p>We use: Google Analytics (usage statistics), Google AdSense (advertising), and CDN libraries (PDF.js, pdf-lib, etc. for tool functionality). These services have their own privacy policies.</p>
-    <h3>Contact</h3>
-    <p>Questions about this privacy policy? <a href="/contact.html" style="color:var(--brand)">Contact us</a> or email contact@bhaihelp.in</p>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div style="font-size:3rem;margin-bottom:.75rem">🔒</div>
+    <h1>Privacy Policy</h1>
+    <p>Aapki privacy humari priority hai. Last updated: April 16, 2026</p>
   </div>
+</div>
+<div class="page-container" style="padding-top:0">
+
+  <div class="highlight-box">
+    <span style="font-size:1.5rem;flex-shrink:0">✅</span>
+    <div><strong>TL;DR:</strong> Aapki files kabhi bhi hamare servers par nahi jaati. Hum koi personal data collect nahi karte (sirf anonymized usage stats). No ads tracking. No data selling.</div>
+  </div>
+
+  <div class="card">
+    <h2>1. Files Aur Documents</h2>
+    <p>ToolNest ke <strong>sabhi tools 100% browser-based</strong> hain. Aapki koi bhi file — PDF, image, document — hamare servers par kabhi upload nahi hoti.</p>
+    <p>Processing sirf aapke browser (device) ki memory mein hoti hai. Page band karne par ya reload karne par files automatically delete ho jaati hain. Hum technically bhi aapki files dekh nahi sakte.</p>
+  </div>
+
+  <div class="card">
+    <h2>2. Kya Data Collect Hota Hai</h2>
+    <p>Hum collect karte hain:</p>
+    <ul>
+      <li><strong>Usage analytics (anonymized):</strong> Konsa tool use hua, page views — Google Analytics ke through. Koi personal info nahi.</li>
+      <li><strong>Error logs:</strong> Agar koi tool crash ho toh browser console mein error — hum ye nahi dekh sakte.</li>
+      <li><strong>Newsletter (optional):</strong> Agar aap newsletter subscribe karte hain toh sirf email address.</li>
+    </ul>
+    <p>Hum collect <strong>nahi</strong> karte: File contents, document text, images, invoice data, business information.</p>
+  </div>
+
+  <div class="card">
+    <h2>3. Cookies</h2>
+    <p>Hum use karte hain:</p>
+    <ul>
+      <li><strong>localStorage:</strong> Dark mode preference aur social proof counter (sirf aapke browser mein, server par nahi).</li>
+      <li><strong>Google Analytics cookies:</strong> Anonymized usage tracking ke liye. Aap browser settings mein block kar sakte hain.</li>
+    </ul>
+    <p>Koi third-party advertising cookies nahi.</p>
+  </div>
+
+  <div class="card">
+    <h2>4. Advertisements</h2>
+    <p>ToolNest Google AdSense ads dikhata hai. Google apni privacy policy ke according behavior-based ads serve kar sakta hai. Hum advertiser data ko tool usage se link nahi karte.</p>
+    <p>AdSense ke baare mein: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></p>
+  </div>
+
+  <div class="card">
+    <h2>5. Data Security</h2>
+    <p>Kyunki hum aapka data store hi nahi karte, data breach ka risk practically zero hai. Haari website HTTPS use karti hai. All connections encrypted hain.</p>
+  </div>
+
+  <div class="card">
+    <h2>6. Children's Privacy</h2>
+    <p>ToolNest 13 saal se kam umra ke users ke liye design nahi kiya gaya. Hum knowingly children ka data collect nahi karte.</p>
+  </div>
+
+  <div class="card">
+    <h2>7. Contact</h2>
+    <p>Privacy se related koi sawaal ya concern? Hum se contact karein:</p>
+    <p><a href="mailto:privacy@bhaihelp.in">privacy@bhaihelp.in</a></p>
+    <p style="margin-top:.5rem;font-size:12px;color:var(--ink3)">ToolNest is operated by bhaihelp.in, India.</p>
+  </div>
+
 </div>
 <div id="tn-footer"></div>
 <script src="/nav-footer.js"></script>
