@@ -27,6 +27,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0F1B3D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Blog","name":"ToolNest Blog","url":"https://toolnest.bhaihelp.in/blog.html","description":"Expert tips and guides for free online tools","publisher":{"@type":"Organization","name":"ToolNest","logo":{"@type":"ImageObject","url":"https://toolnest.bhaihelp.in/favicon.png"}},"inLanguage":["en","hi"]}
@@ -769,7 +770,24 @@ function toggleNav(){const n=document.getElementById('mobNav'),o=document.getEle
 function closeNav(){document.getElementById('mobNav').classList.remove('open');document.getElementById('mobOverlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.getElementById('hamburger').setAttribute('aria-expanded','false');}
 
 /* ════ NEWSLETTER ════ */
-function subNL(){const i=document.getElementById('nlEmail'),b=i.nextElementSibling;if(!i.value||!i.value.includes('@')){i.style.borderColor='rgba(229,62,62,.8)';setTimeout(()=>i.style.borderColor='',2000);return;}i.value='';b.textContent='✅ Subscribed!';setTimeout(()=>b.textContent='Subscribe 🚀',3000);}
+async function subNL(){
+  const i=document.getElementById('nlEmail'),b=i.nextElementSibling;
+  if(!i.value||!i.value.includes('@')){i.style.borderColor='rgba(229,62,62,.8)';setTimeout(()=>i.style.borderColor='',2000);return;}
+  const email=i.value.trim();
+  b.disabled=true;b.textContent='⏳ Subscribing…';
+  try{
+    // Formspree: https://formspree.io/f/YOUR_FORM_ID replace karo
+    const FORMSPREE_ID='YOUR_FORM_ID'; // ← Formspree form ID yahan
+    if(FORMSPREE_ID==='YOUR_FORM_ID'){
+      // Fallback: mailto link open karo
+      window.location.href='mailto:toolnest@bhaihelp.in?subject=Newsletter Subscription&body=Subscribe: '+encodeURIComponent(email);
+      i.value='';b.disabled=false;b.textContent='Subscribe 🚀';return;
+    }
+    const r=await fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,source:'toolnest-newsletter'})});
+    if(r.ok){i.value='';b.textContent='✅ Subscribed!';setTimeout(()=>{b.textContent='Subscribe 🚀';b.disabled=false;},3000);}
+    else throw new Error('Server error');
+  }catch(e){b.disabled=false;b.textContent='Subscribe 🚀';alert('Please try again or email us directly.');}
+}
 
 /* ════ SHARE ════ */
 const PU=encodeURIComponent('https://toolnest.bhaihelp.in/blog.html');
