@@ -538,83 +538,14 @@ const TN = {
       : '<div style="text-align:center;padding:1rem;color:#8A8BA5;font-size:13px">No tools found</div>';
   },
 
-
-  /* ═══════════════════════════════════════
-     GOOGLE FONTS — optimized inject
-     Adds fonts.gstatic.com preconnect (missing on most pages)
-     ═══════════════════════════════════════ */
-  _injectFonts() {
-    // Only inject if not already present
-    if (document.querySelector('link[href*="fonts.gstatic.com"]')) return;
-    const gc = document.createElement('link');
-    gc.rel = 'preconnect';
-    gc.href = 'https://fonts.gstatic.com';
-    gc.crossOrigin = 'anonymous';
-    document.head.insertBefore(gc, document.head.firstChild);
-  },
-
-  /* ═══════════════════════════════════════
-     GOOGLE ANALYTICS 4
-     Set GA_ID below with your actual G-XXXXXXXX
-     ═══════════════════════════════════════ */
-  _initAnalytics() {
-    const GA_ID = 'G-XXXXXXXXXX'; // ← APNA GA4 ID YAHAN DAALO
-    if (!GA_ID || GA_ID === 'G-XXXXXXXXXX') return; // Skip if not configured
-    if (window.gtag) return; // Already loaded
-
-    const s = document.createElement('script');
-    s.async = true;
-    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-    document.head.appendChild(s);
-
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function(){ window.dataLayer.push(arguments); };
-    window.gtag('js', new Date());
-    window.gtag('config', GA_ID, { 'send_page_view': true });
-  },
-
-  /* ═══════════════════════════════════════
-     TOOL PAGE NAV FIX
-     Tool pages have hardcoded nav with Back button.
-     This adds correct Back button behavior if missing.
-     ═══════════════════════════════════════ */
-  _fixToolPageNav() {
-    const cur = location.pathname;
-    if (!cur.startsWith('/tools')) return;
-
-    // Add Back button CSS if not already in style.css
-    if (!document.getElementById('tn-back-css')) {
-      const s = document.createElement('style');
-      s.id = 'tn-back-css';
-      s.textContent = `
-        .btn-nav-back{
-          display:inline-flex;align-items:center;gap:6px;
-          padding:8px 16px;border-radius:999px;
-          font-size:13.5px;font-weight:700;
-          color:var(--ink2,#44455A);background:var(--surface,#EDEEF7);
-          border:1.5px solid var(--border,#E2E4EF);
-          cursor:pointer;transition:all .15s;white-space:nowrap;
-          font-family:inherit;
-        }
-        .btn-nav-back:hover{
-          background:var(--navy-l,#E8ECF5);color:var(--navy,#0F1B3D);
-          border-color:var(--navy,#0F1B3D);transform:translateX(-2px);
-        }`;
-      document.head.appendChild(s);
-    }
-  },
-
   /* ═══════════════════════════
      INIT — auto runs on load
      ═══════════════════════════ */
   init() {
     TN._injectNavCSS();
-    TN._injectFonts();          // Google Fonts optimized
-    TN._injectAnalytics();      // Google Analytics 4
     TN.injectNav();
     TN.injectSidebar();
     TN.injectFooter();
-    TN._fixToolPageNav();       // Fix tool page hardcoded nav back button
   }
 };
 
