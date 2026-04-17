@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   TOOLNEST — nav-footer.js v6.1
+   TOOLNEST — nav-footer.js v6.0
    Single source of truth. Ek baar edit karo, sab pages update.
 
    NAYA TOOL ADD KARNA: Sirf TN.tools array mein ek line add karo.
@@ -327,14 +327,6 @@ const TN = {
     if (document.getElementById('tn-nav-css')) return;
     const s = document.createElement('style');
     s.id = 'tn-nav-css';
-    // Also inject font preconnects if not already present
-    if (!document.querySelector('link[href*="fonts.gstatic.com"]')) {
-      const lp = document.createElement('link');
-      lp.rel = 'preconnect';
-      lp.href = 'https://fonts.gstatic.com';
-      lp.crossOrigin = 'anonymous';
-      document.head.insertBefore(lp, document.head.firstChild);
-    }
     s.textContent = `
       /* ── TN Nav Core ── */
       .nav-logo-text{font-family:'Outfit',sans-serif;font-weight:800;font-size:20px;color:var(--ink,#0D0D14)}
@@ -546,41 +538,83 @@ const TN = {
       : '<div style="text-align:center;padding:1rem;color:#8A8BA5;font-size:13px">No tools found</div>';
   },
 
+
+  /* ═══════════════════════════════════════
+     GOOGLE FONTS — optimized inject
+     Adds fonts.gstatic.com preconnect (missing on most pages)
+     ═══════════════════════════════════════ */
+  _injectFonts() {
+    // Only inject if not already present
+    if (document.querySelector('link[href*="fonts.gstatic.com"]')) return;
+    const gc = document.createElement('link');
+    gc.rel = 'preconnect';
+    gc.href = 'https://fonts.gstatic.com';
+    gc.crossOrigin = 'anonymous';
+    document.head.insertBefore(gc, document.head.firstChild);
+  },
+
+  /* ═══════════════════════════════════════
+     GOOGLE ANALYTICS 4
+     Set GA_ID below with your actual G-XXXXXXXX
+     ═══════════════════════════════════════ */
+  _initAnalytics() {
+    const GA_ID = 'G-XXXXXXXXXX'; // ← APNA GA4 ID YAHAN DAALO
+    if (!GA_ID || GA_ID === 'G-XXXXXXXXXX') return; // Skip if not configured
+    if (window.gtag) return; // Already loaded
+
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { 'send_page_view': true });
+  },
+
+  /* ═══════════════════════════════════════
+     TOOL PAGE NAV FIX
+     Tool pages have hardcoded nav with Back button.
+     This adds correct Back button behavior if missing.
+     ═══════════════════════════════════════ */
+  _fixToolPageNav() {
+    const cur = location.pathname;
+    if (!cur.startsWith('/tools')) return;
+
+    // Add Back button CSS if not already in style.css
+    if (!document.getElementById('tn-back-css')) {
+      const s = document.createElement('style');
+      s.id = 'tn-back-css';
+      s.textContent = `
+        .btn-nav-back{
+          display:inline-flex;align-items:center;gap:6px;
+          padding:8px 16px;border-radius:999px;
+          font-size:13.5px;font-weight:700;
+          color:var(--ink2,#44455A);background:var(--surface,#EDEEF7);
+          border:1.5px solid var(--border,#E2E4EF);
+          cursor:pointer;transition:all .15s;white-space:nowrap;
+          font-family:inherit;
+        }
+        .btn-nav-back:hover{
+          background:var(--navy-l,#E8ECF5);color:var(--navy,#0F1B3D);
+          border-color:var(--navy,#0F1B3D);transform:translateX(-2px);
+        }`;
+      document.head.appendChild(s);
+    }
+  },
+
   /* ═══════════════════════════
      INIT — auto runs on load
      ═══════════════════════════ */
   init() {
     TN._injectNavCSS();
-    TN._injectGA4();
+    TN._injectFonts();          // Google Fonts optimized
+    TN._injectAnalytics();      // Google Analytics 4
     TN.injectNav();
     TN.injectSidebar();
     TN.injectFooter();
-  },
-
-  /* ═══════════════════════════════
-     GOOGLE ANALYTICS 4 — Auto inject
-     Replace TN_GA4_ID with real ID
-     ═══════════════════════════════ */
-  _GA4_ID: 'G-XXXXXXXXXX', // ← Apna GA4 Measurement ID yahan rakho
-
-  _injectGA4() {
-    const id = TN._GA4_ID;
-    if (!id || id === 'G-XXXXXXXXXX') return; // Skip if not configured
-    if (document.getElementById('tn-ga4')) return; // Already injected
-
-    // Inject gtag script
-    const s1 = document.createElement('script');
-    s1.id = 'tn-ga4';
-    s1.async = true;
-    s1.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
-    document.head.appendChild(s1);
-
-    // Inject gtag config
-    const s2 = document.createElement('script');
-    s2.textContent = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${id}',{page_path:location.pathname});`;
-    document.head.appendChild(s2);
-
-    console.log('[TN] GA4 initialized:', id);
+    TN._fixToolPageNav();       // Fix tool page hardcoded nav back button
   }
 };
 
