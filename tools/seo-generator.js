@@ -59,3 +59,4 @@ function generateFAQ(){
   document.getElementById("faqOutput").value=
     `<script type="application/ld+json">\n${JSON.stringify(schema,null,2)}\n</script>`;
 }
+
