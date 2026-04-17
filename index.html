@@ -465,11 +465,21 @@ button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
 
   <!-- NEWSLETTER -->
   <div class="newsletter reveal" style="margin:2rem 0">
-    <div class="nl-text"><h3>📬 New Tools ki Updates Paayein</h3><p>Spam nahi, sirf useful updates. Kabhi bhi unsubscribe kar sakte ho.</p></div>
-    <div class="nl-form">
-      <input type="email" id="nlEmail" placeholder="aapka@email.com">
-      <button class="btn-gold" onclick="subNL()">Subscribe 🚀</button>
+    <div class="nl-text">
+      <h3>📬 New Tools ki Updates Paayein</h3>
+      <p>ToolNest follow karein — spam nahi, sirf useful updates.</p>
     </div>
+    <div class="nl-form" style="gap:10px;align-items:center;flex-wrap:wrap">
+      <a href="https://instagram.com/toolnest_in" target="_blank" rel="noopener noreferrer"
+        class="btn-gold" style="text-decoration:none">📷 Instagram Follow Karein</a>
+      <a href="https://wa.me/message/toolnest" target="_blank" rel="noopener noreferrer"
+        style="padding:10px 20px;border-radius:999px;background:rgba(255,255,255,.12);
+        border:1.5px solid rgba(255,255,255,.25);color:#fff;font-size:13px;font-weight:600;
+        text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap">
+        💬 WhatsApp Community
+      </a>
+    </div>
+  </div>
   </div>
 
   <!-- FAQ -->
@@ -503,10 +513,10 @@ button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
         </div>
         <p>Free · No Signup · 100% Browser-based · Made for India 🇮🇳<br>Aapki files kabhi bhi hamare server par nahi jaati.</p>
         <div class="fsocs">
-          <a href="https://twitter.com/toolnest_in" class="fsoc" target="_blank" rel="noopener" aria-label="Twitter">𝕏</a>
-          <a href="https://instagram.com/toolnest_in" class="fsoc" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
-          <a href="https://wa.me/message/toolnest" class="fsoc" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
-          <a href="https://youtube.com/@toolnest" class="fsoc" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+          <a href="https://twitter.com/toolnest_in" class="fsoc" target="_blank" rel="noopener noreferrer" aria-label="Twitter">𝕏</a>
+          <a href="https://instagram.com/toolnest_in" class="fsoc" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+          <a href="https://wa.me/message/toolnest" class="fsoc" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a>
+          <a href="https://youtube.com/@toolnest" class="fsoc" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a>
         </div>
       </div>
       <div class="fcol"><h4>PDF Tools</h4><ul>
@@ -628,9 +638,13 @@ const CAT_BG={compress:['#FFF0EB','#F5620A'],convert:['#EEF3FF','#1E4FCB'],organ
 const CAT_LABELS={all:'All Tools',compress:'Compress Tools',convert:'Convert Tools',organize:'Organize Tools',edit:'Edit & Security',image:'Image Tools',productivity:'Productivity',business:'Business Tools',calculator:'Calculators'};
 const CAT_SC={compress:'#FFF0EB',convert:'#EEF3FF',organize:'#E6FAF4',edit:'#F2EDFF',image:'#FCE4F0',productivity:'#FFF8E6',business:'#E8F8FD',calculator:'#D1FAE5'};
 
-/* Auto-update counts */
+/* Auto-update counts from local TOOLS array */
 document.getElementById('htoolcount').textContent=TOOLS.length+'+';
 document.getElementById('statCount').textContent=TOOLS.length+'+';
+document.getElementById('toolCount').textContent=TOOLS.length+' tools';
+/* Note: nav-footer.js TN.tools is the master registry.
+   Update BOTH arrays when adding new tools, OR use TN.tools here:
+   if(window.TN) { renderTools(TN.tools.map(t=>({...t,cat:t.catClass?.replace('cat-','')}))); } */
 
 /* ═══ RENDER NAV TOOLS DROPDOWN ═══ */
 function renderNavDropdown(){
@@ -760,24 +774,7 @@ function overlaySearch(q){
 }
 function toggleNav(){const n=document.getElementById('mobNav'),o=document.getElementById('mobOverlay'),h=document.getElementById('hamburger'),open=n.classList.toggle('open');o.classList.toggle('open',open);h.classList.toggle('open',open);h.setAttribute('aria-expanded',open);}
 function closeNav(){document.getElementById('mobNav').classList.remove('open');document.getElementById('mobOverlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.getElementById('hamburger').setAttribute('aria-expanded','false');}
-async function subNL(){
-  const i=document.getElementById('nlEmail'),b=i.nextElementSibling;
-  if(!i.value||!i.value.includes('@')){i.style.borderColor='rgba(229,62,62,.8)';setTimeout(()=>i.style.borderColor='',2000);return;}
-  const email=i.value.trim();
-  b.disabled=true;b.textContent='⏳ Subscribing…';
-  try{
-    // Formspree: https://formspree.io/f/YOUR_FORM_ID replace karo
-    const FORMSPREE_ID='YOUR_FORM_ID'; // ← Formspree form ID yahan
-    if(FORMSPREE_ID==='YOUR_FORM_ID'){
-      // Fallback: mailto link open karo
-      window.location.href='mailto:toolnest@bhaihelp.in?subject=Newsletter Subscription&body=Subscribe: '+encodeURIComponent(email);
-      i.value='';b.disabled=false;b.textContent='Subscribe 🚀';return;
-    }
-    const r=await fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,source:'toolnest-newsletter'})});
-    if(r.ok){i.value='';b.textContent='✅ Subscribed!';setTimeout(()=>{b.textContent='Subscribe 🚀';b.disabled=false;},3000);}
-    else throw new Error('Server error');
-  }catch(e){b.disabled=false;b.textContent='Subscribe 🚀';alert('Please try again or email us directly.');}
-}
+/* subNL() removed — newsletter now uses social links (Instagram + WhatsApp) */
 const PU=encodeURIComponent('https://toolnest.bhaihelp.in'),PT=encodeURIComponent('ToolNest — 24+ free online tools for India! No signup, 100% browser-based 🇮🇳');
 function shareWA(){window.open('https://wa.me/?text='+PT+'%20'+PU,'_blank');}
 function shareX(){window.open('https://x.com/intent/tweet?text='+PT+'&url='+PU,'_blank');}
