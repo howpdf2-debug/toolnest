@@ -916,6 +916,14 @@ pre#codeOutput{background:var(--navy);color:#e2e8f0;padding:1rem;border-radius:v
 </button>
 
 <script>
+function go(url){location.href=url;}
+function syncSearch(v){document.getElementById('sbSearch').value=v;filterSidebar(v);}
+function filterSidebar(q){var s=q.toLowerCase().trim();document.querySelectorAll('#sbList .tool-item').forEach(function(item){item.style.display=(!s||item.querySelector('.ti-name').textContent.toLowerCase().includes(s))?'':' none';});document.querySelectorAll('#sbList .cat-lbl').forEach(function(lbl){var el=lbl.nextElementSibling,any=false;while(el&&el.classList.contains('tool-item')){if(el.style.display!=='none')any=true;el=el.nextElementSibling;}lbl.style.display=any?'':' none';});}
+var sbC=false;
+function toggleDesktopSidebar(){sbC=!sbC;var sb=document.getElementById('leftSidebar'),mc=document.getElementById('mainContent'),st=document.getElementById('sidebarToggle');sb.classList.toggle('collapsed',sbC);mc.classList.toggle('sb-collapsed',sbC);st.classList.toggle('collapsed',sbC);st.style.left=sbC?'0px':getComputedStyle(document.documentElement).getPropertyValue('--sidebar-w').trim();}
+function toggleMobileSidebar(){var sb=document.getElementById('leftSidebar'),ov=document.getElementById('mobileOverlay'),hm=document.getElementById('hamburger');var open=sb.classList.toggle('mobile-open');ov.classList.toggle('active',open);hm.classList.toggle('open',open);}
+function closeMobileSidebar(){document.getElementById('leftSidebar').classList.remove('mobile-open');document.getElementById('mobileOverlay').classList.remove('active');document.getElementById('hamburger').classList.remove('open');}
+
 function setTab(id,el){document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));el.classList.add('active');document.querySelectorAll('.prev-panel').forEach(p=>p.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');}
 function hintColor(len,warn,max){return len>max?'ch-over':len>warn?'ch-warn':'ch-ok'}
 function gv(id){return document.getElementById(id)?.value||''}
