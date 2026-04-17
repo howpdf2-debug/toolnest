@@ -238,7 +238,8 @@ DirectoryIndex index.html
     RedirectMatch 301 ^/index$ /
     RedirectMatch 301 ^/index\.html$ /
     RedirectMatch 301 ^/blog/$ /blog.html
-    RedirectMatch 301 ^/tools/$ /
+    # FIXED: was wrongly sending /tools/ to homepage
+    # RedirectMatch 301 ^/tools/$ /
     
     # Redirect old URLs to new (add as needed)
     # Redirect 301 /old-page.html /new-page.html
