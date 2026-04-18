@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   TOOLNEST — nav-footer.js v6.1
+   TOOLNEST — nav-footer.js v6.0
    Single source of truth. Ek baar edit karo, sab pages update.
 
    NAYA TOOL ADD KARNA: Sirf TN.tools array mein ek line add karo.
@@ -144,11 +144,7 @@ const TN = {
       </div>
     </nav>
 
-    <!-- Sidebar collapse arrow (only for tool pages) -->
-    <button class="sidebar-toggle" id="sidebarToggle"
-      onclick="TN.toggleDesktopSidebar()" title="Toggle sidebar" style="${isTools ? '' : 'display:none'}">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
+
 
     <!-- Mobile panel (for home/blog pages that use tn-nav) -->
     <div class="nav-mobile-panel" id="mobilePanel" aria-hidden="true">
@@ -169,6 +165,21 @@ const TN = {
     if (el) {
       el.innerHTML = navHTML;
       TN._initMobilePanel();
+
+      /* Inject sidebar-toggle outside tn-nav (needs fixed positioning) */
+      if (isTools) {
+        let st = document.getElementById('sidebarToggle');
+        if (!st) {
+          st = document.createElement('button');
+          st.id = 'sidebarToggle';
+          st.className = 'sidebar-toggle';
+          st.title = 'Toggle sidebar';
+          st.setAttribute('onclick', 'TN.toggleDesktopSidebar()');
+          st.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>';
+          /* Insert after tn-nav div */
+          el.parentNode.insertBefore(st, el.nextSibling);
+        }
+      }
     }
 
     /* Patch tool-page hardcoded nav to add Blog link if missing */
@@ -327,14 +338,6 @@ const TN = {
     if (document.getElementById('tn-nav-css')) return;
     const s = document.createElement('style');
     s.id = 'tn-nav-css';
-    // Also inject font preconnects if not already present
-    if (!document.querySelector('link[href*="fonts.gstatic.com"]')) {
-      const lp = document.createElement('link');
-      lp.rel = 'preconnect';
-      lp.href = 'https://fonts.gstatic.com';
-      lp.crossOrigin = 'anonymous';
-      document.head.insertBefore(lp, document.head.firstChild);
-    }
     s.textContent = `
       /* ── TN Nav Core ── */
       .nav-logo-text{font-family:'Outfit',sans-serif;font-weight:800;font-size:20px;color:var(--ink,#0D0D14)}
@@ -385,6 +388,18 @@ const TN = {
       .nmp-ico{width:24px;text-align:center;flex-shrink:0}
       .nmp-divider{height:1px;background:var(--border,#E2E4EF);margin:.5rem 0}
       .nmp-cat-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3,#8A8BA5);padding:.4rem .5rem;margin-top:.25rem}
+
+      /* cat-calc — calculator tools */
+      .cat-calc .ti-icon{background:#D1FAE5;color:#059669}
+      .cat-calc.active,.cat-calc:hover{background:#D1FAE5!important}
+      .cat-calc.active .ti-icon{background:#059669;color:#fff}
+      .cat-calc.active{color:#059669!important;font-weight:700}
+
+      /* cat-calc — Calculator tools */
+      .cat-calc .ti-icon{background:#D1FAE5;color:#059669}
+      .cat-calc.active,.cat-calc:hover{background:#D1FAE5!important}
+      .cat-calc.active .ti-icon{background:#059669;color:#fff}
+      .cat-calc.active{color:#059669!important;font-weight:700}
 
       @media(max-width:820px){
         .nav-hamburger{display:flex}
@@ -546,41 +561,32 @@ const TN = {
       : '<div style="text-align:center;padding:1rem;color:#8A8BA5;font-size:13px">No tools found</div>';
   },
 
+  /* ═══════════════════════════════════
+     GOOGLE FONTS PRECONNECT
+     Ensures gstatic.com preconnect exists
+     ═══════════════════════════════════ */
+  _injectFontsPreconnect() {
+    if (document.querySelector('link[href*="fonts.gstatic.com"]')) return;
+    const gc = document.createElement('link');
+    gc.rel = 'preconnect';
+    gc.href = 'https://fonts.gstatic.com';
+    gc.crossOrigin = 'anonymous';
+    document.head.insertBefore(gc, document.head.firstChild);
+  },
+
   /* ═══════════════════════════
      INIT — auto runs on load
      ═══════════════════════════ */
   init() {
     TN._injectNavCSS();
-    TN._injectGA4();
+    TN._injectFontsPreconnect();
     TN.injectNav();
     TN.injectSidebar();
     TN.injectFooter();
-  },
-
-  /* ═══════════════════════════════
-     GOOGLE ANALYTICS 4 — Auto inject
-     Replace TN_GA4_ID with real ID
-     ═══════════════════════════════ */
-  _GA4_ID: 'G-XXXXXXXXXX', // ← Apna GA4 Measurement ID yahan rakho
-
-  _injectGA4() {
-    const id = TN._GA4_ID;
-    if (!id || id === 'G-XXXXXXXXXX') return; // Skip if not configured
-    if (document.getElementById('tn-ga4')) return; // Already injected
-
-    // Inject gtag script
-    const s1 = document.createElement('script');
-    s1.id = 'tn-ga4';
-    s1.async = true;
-    s1.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
-    document.head.appendChild(s1);
-
-    // Inject gtag config
-    const s2 = document.createElement('script');
-    s2.textContent = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${id}',{page_path:location.pathname});`;
-    document.head.appendChild(s2);
-
-    console.log('[TN] GA4 initialized:', id);
+    /* Ensure go() is always available globally */
+    if (typeof window.go !== 'function') {
+      window.go = function(url) { location.href = url; };
+    }
   }
 };
 
