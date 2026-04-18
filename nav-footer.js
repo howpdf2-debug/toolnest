@@ -157,7 +157,8 @@ const TN = {
      SIDEBAR
      ════════════ */
   injectSidebar() {
-    const el = document.getElementById('tn-sidebar-list');
+    /* Support both new pages (id="tn-sidebar-list") and old pages (id="sbList") */
+    const el = document.getElementById('tn-sidebar-list') || document.getElementById('sbList');
     if (!el) return;
     const cur = location.pathname;
     let lastCat = '', html = '';
@@ -325,10 +326,11 @@ const TN = {
   },
   filterSidebar(q) {
     const s = (q||'').toLowerCase().trim();
-    document.querySelectorAll('#tn-sidebar-list .tool-item').forEach(item => {
+    /* Support both new id="tn-sidebar-list" and old id="sbList" pages */
+    document.querySelectorAll('#tn-sidebar-list .tool-item, #sbList .tool-item').forEach(item => {
       item.style.display = (!s || (item.querySelector('.ti-name')?.textContent.toLowerCase()||'').includes(s)) ? '' : 'none';
     });
-    document.querySelectorAll('#tn-sidebar-list .cat-lbl').forEach(lbl => {
+    document.querySelectorAll('#tn-sidebar-list .cat-lbl, #sbList .cat-lbl').forEach(lbl => {
       let el = lbl.nextElementSibling, any = false;
       while (el && el.classList.contains('tool-item')) { if (el.style.display!=='none') any=true; el=el.nextElementSibling; }
       lbl.style.display = any ? '' : 'none';
