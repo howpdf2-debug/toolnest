@@ -11,114 +11,585 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <meta name="theme-color" content="#0F1B3D">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Privacy Policy — ToolNest","url":"https://toolnest.bhaihelp.in/privacy.html","description":"ToolNest privacy policy. Files kabhi server par nahi jaatein. 100% browser-based processing.","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolnest.bhaihelp.in"},{"@type":"ListItem","position":2,"name":"Privacy Policy","item":"https://toolnest.bhaihelp.in/privacy.html"}]}}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-:root{--gold:#F5A623;--gold-d:#D4891A;--gold-l:#FEF3DC;--gold-b:rgba(245,166,35,.20);--navy:#0F1B3D;--navy-mid:#1A2E5E;--blue:#1E4FCB;--blue-l:#EEF3FF;--green:#00B37E;--green-l:#E6FAF4;--red:#E53E3E;--red-l:#FFF0F0;--amber:#E88B00;--amber-l:#FFF8E6;--purple:#6C3FC4;--purple-l:#F2EDFF;--teal:#0891B2;--teal-l:#E8F8FD;--orange:#F5620A;--orange-l:#FFF0EB;--ink:#0D0D14;--ink2:#44455A;--ink3:#8A8BA5;--paper:#F5F6FA;--white:#FFFFFF;--border:#E2E4EF;--border2:#C8CADF;--surface:#EDEEF7;--f-display:'Outfit',sans-serif;--f-body:'Plus Jakarta Sans',sans-serif;--r-sm:8px;--r:12px;--r-lg:18px;--r-xl:24px;--r-pill:999px;--sh-xs:0 1px 3px rgba(13,13,20,.07);--sh-sm:0 2px 8px rgba(13,13,20,.09);--sh:0 4px 16px rgba(13,13,20,.11);--sh-lg:0 8px 32px rgba(13,13,20,.13);--sh-gold:0 4px 20px rgba(245,166,35,.28);--nav-h:64px;}
+/* ── DESIGN SYSTEM ── */
+:root{
+  --gold:#F5A623;--gold-d:#D4891A;--gold-l:#FEF3DC;--gold-b:rgba(245,166,35,.20);
+  --navy:#0F1B3D;--navy-mid:#1A2E5E;--navy-l:#E8ECF5;
+  --blue:#1E4FCB;--blue-l:#EEF3FF;
+  --green:#00B37E;--green-l:#E6FAF4;
+  --red:#E53E3E;--red-l:#FFF0F0;
+  --amber:#E88B00;--amber-l:#FFF8E6;
+  --purple:#6C3FC4;--purple-l:#F2EDFF;
+  --teal:#0891B2;--teal-l:#E8F8FD;
+  --orange:#F5620A;--orange-l:#FFF0EB;
+  --ink:#0D0D14;--ink2:#44455A;--ink3:#8A8BA5;
+  --paper:#F5F6FA;--white:#FFFFFF;
+  --border:#E2E4EF;--border2:#C8CADF;--surface:#EDEEF7;
+  --f-display:'Outfit',sans-serif;--f-body:'Plus Jakarta Sans',sans-serif;
+  --r-sm:8px;--r:12px;--r-lg:18px;--r-xl:24px;--r-pill:999px;
+  --sh-xs:0 1px 3px rgba(13,13,20,.07);--sh-sm:0 2px 8px rgba(13,13,20,.09);
+  --sh:0 4px 16px rgba(13,13,20,.11);--sh-lg:0 8px 32px rgba(13,13,20,.13);
+  --sh-gold:0 4px 20px rgba(245,166,35,.28);
+  --nav-h:64px;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.6;padding-top:var(--nav-h)}
 a{text-decoration:none;color:inherit}
 button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
-.page-container{max-width:900px;margin:0 auto;padding:3rem 1.5rem}
-.page-hero{background:linear-gradient(135deg,var(--navy),var(--navy-mid));padding:3rem 1.5rem;text-align:center;margin-bottom:2rem;position:relative;overflow:hidden}
-.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 200px at 80% 40%,rgba(245,166,35,.12) 0%,transparent 60%)}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+/* ══════════════════════════════
+   FIX 1: FALLBACK NAV
+   ══════════════════════════════ */
+#tn-nav-fallback{display:none}
+#tn-nav-fallback.show{display:flex}
+.fallback-nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);
+  background:rgba(255,255,255,.95);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);padding:0 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:var(--sh-xs);
+}
+.fallback-nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:20px;color:var(--ink);white-space:nowrap;flex-shrink:0}
+.fallback-nav-logo span{color:var(--gold)}
+.fallback-nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+.fallback-nav-links a{display:inline-flex;align-items:center;padding:6px 14px;font-size:14px;font-weight:600;color:var(--ink2);border-radius:var(--r-pill);transition:all .15s}
+.fallback-nav-links a:hover{background:var(--gold-l);color:var(--gold-d)}
+.fallback-nav-links a.active{background:var(--gold-l);color:var(--gold-d);font-weight:700}
+
+/* ══════════════════════════════
+   FIX 2: NAV-FOOTER.JS OVERRIDES
+   ══════════════════════════════ */
+#tn-nav .nav,#tn-nav nav{
+  position:fixed!important;top:0!important;left:0!important;right:0!important;
+  z-index:1000!important;height:var(--nav-h)!important;
+  background:rgba(255,255,255,.92)!important;
+  backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;
+  border-bottom:1px solid var(--border)!important;padding:0 1.5rem!important;
+  display:flex!important;flex-direction:row!important;
+  align-items:center!important;justify-content:space-between!important;
+  gap:1rem!important;box-shadow:var(--sh-xs)!important;width:100%!important;
+}
+#tn-nav .nav-logo,#tn-nav .nav__logo,#tn-nav .logo{
+  display:flex!important;align-items:center!important;gap:10px!important;
+  font-family:var(--f-display)!important;font-weight:800!important;font-size:20px!important;
+  color:var(--ink)!important;white-space:nowrap!important;flex-shrink:0!important;text-decoration:none!important;
+}
+#tn-nav .nav-logo span,#tn-nav .nav__logo span{color:var(--gold)!important}
+#tn-nav .nav-search,#tn-nav .search-bar,#tn-nav .nav__search{flex:1!important;max-width:360px!important;display:flex!important;align-items:center!important}
+#tn-nav .nav-links,#tn-nav .nav-menu,#tn-nav .nav-items,
+#tn-nav .nav__links,#tn-nav .nav__menu,
+#tn-nav ul.nav-links,#tn-nav ul.nav-menu{
+  display:flex!important;flex-direction:row!important;align-items:center!important;
+  gap:4px!important;list-style:none!important;padding:0!important;margin:0!important;
+  position:static!important;background:transparent!important;box-shadow:none!important;
+  border:none!important;width:auto!important;height:auto!important;
+  overflow:visible!important;transform:none!important;opacity:1!important;
+  visibility:visible!important;pointer-events:all!important;
+  top:auto!important;right:auto!important;left:auto!important;bottom:auto!important;
+  z-index:auto!important;flex-shrink:0!important;
+}
+#tn-nav .nav-links li,#tn-nav .nav-menu li,#tn-nav .nav-items li,
+#tn-nav .nav-links .nav-item,#tn-nav .nav-menu .nav-item{
+  position:relative!important;display:flex!important;align-items:center!important;list-style:none!important;
+}
+#tn-nav .nav-links a,#tn-nav .nav-menu a,#tn-nav .nav-link,
+#tn-nav .nav-item>a,#tn-nav .nav__link{
+  display:inline-flex!important;align-items:center!important;gap:5px!important;
+  padding:6px 14px!important;font-family:var(--f-body)!important;
+  font-size:14px!important;font-weight:600!important;color:var(--ink2)!important;
+  border-radius:var(--r-pill)!important;transition:all .15s!important;
+  white-space:nowrap!important;text-decoration:none!important;
+  background:transparent!important;border:none!important;
+}
+#tn-nav .nav-links a:hover,#tn-nav .nav-menu a:hover{background:var(--gold-l)!important;color:var(--gold-d)!important}
+#tn-nav .nav-links a.active,#tn-nav .nav-links a[aria-current="page"],
+#tn-nav .nav-links .active>a,#tn-nav .nav-menu a.active,#tn-nav .nav-menu .active>a{
+  background:var(--gold-l)!important;color:var(--gold-d)!important;font-weight:700!important;
+}
+#tn-nav .nav-dropdown,#tn-nav .dropdown-menu,#tn-nav .tools-dropdown,#tn-nav .submenu{
+  position:absolute!important;top:calc(100% + 8px)!important;left:0!important;
+  min-width:220px!important;background:var(--white)!important;
+  border:1.5px solid var(--border)!important;border-radius:var(--r-lg)!important;
+  box-shadow:var(--sh-lg)!important;padding:8px!important;z-index:9999!important;display:none!important;
+}
+#tn-nav li:hover .nav-dropdown,#tn-nav li:hover .dropdown-menu,
+#tn-nav li:hover .submenu,#tn-nav li.open>.nav-dropdown{display:block!important}
+#tn-nav .nav-dropdown a,#tn-nav .dropdown-menu a,#tn-nav .submenu a{
+  display:flex!important;align-items:center!important;gap:8px!important;
+  padding:8px 12px!important;font-size:13px!important;font-weight:500!important;
+  color:var(--ink2)!important;border-radius:var(--r-sm)!important;transition:all .12s!important;
+}
+#tn-nav .nav-dropdown a:hover,#tn-nav .dropdown-menu a:hover{background:var(--gold-l)!important;color:var(--gold-d)!important}
+#tn-nav .hamburger,#tn-nav .nav-toggle,#tn-nav .menu-toggle,
+#tn-nav .nav-burger,#tn-nav .mobile-toggle,
+#tn-nav [class*="hamburger"],#tn-nav [class*="menu-btn"]{display:none!important}
+#tn-nav .mobile-sidebar,#tn-nav .nav-sidebar,#tn-nav .mobile-menu,
+#tn-nav .mobile-nav,#tn-nav .side-nav,
+#tn-nav [class*="mobile-nav"],#tn-nav [class*="sidebar"]{display:none!important}
+#tn-nav .nav-actions,#tn-nav .nav-right,#tn-nav .nav-end,#tn-nav .nav__actions{
+  display:flex!important;align-items:center!important;gap:8px!important;flex-shrink:0!important;
+}
+#mobileOverlay{display:none!important}
+
+/* ── PAGE COMPONENTS ── */
+.page-container{max-width:900px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+.page-hero{
+  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
+  padding:3rem 1.5rem;text-align:center;position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background:radial-gradient(circle 280px at 80% 40%,rgba(245,166,35,.12) 0%,transparent 60%),
+             radial-gradient(circle 180px at 15% 70%,rgba(30,79,203,.18) 0%,transparent 60%);
+  pointer-events:none;
+}
+.page-hero::after{
+  content:'';position:absolute;inset:0;z-index:0;
+  background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:22px 22px;pointer-events:none;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);
+}
 .page-hero-inner{position:relative;z-index:1}
 .page-hero h1{font-family:var(--f-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:#fff;margin-bottom:.5rem}
 .page-hero p{font-size:14px;color:rgba(255,255,255,.6)}
+
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink3);margin-bottom:1.5rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--ink3);transition:color .15s}
+.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb-sep{color:var(--border2)}
+.breadcrumb-cur{color:var(--ink2);font-weight:500}
+
 .card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;margin-bottom:1.25rem;box-shadow:var(--sh-xs)}
-.card h2{font-family:var(--f-display);font-size:1.2rem;font-weight:800;color:var(--ink);margin-bottom:.85rem;display:flex;align-items:center;gap:8px}
+.card h2{font-family:var(--f-display);font-size:1.15rem;font-weight:800;color:var(--ink);margin-bottom:.85rem;display:flex;align-items:center;gap:8px}
 .card h2::before{content:'';display:block;width:4px;height:18px;background:var(--gold);border-radius:2px;flex-shrink:0}
 .card p{font-size:13.5px;color:var(--ink2);line-height:1.75;margin-bottom:.75rem}
 .card p:last-child{margin-bottom:0}
-.card ul,.card ol{font-size:13.5px;color:var(--ink2);line-height:1.75;padding-left:1.5rem;margin-bottom:.75rem}
-.card li{margin-bottom:.35rem}
+.card ul{font-size:13.5px;color:var(--ink2);line-height:1.75;padding-left:1.5rem;margin-bottom:.75rem}
+.card li{margin-bottom:.4rem}
 .card a{color:var(--gold-d);font-weight:600}
 .card a:hover{color:var(--gold)}
-.highlight-box{background:var(--gold-l);border:1.5px solid var(--gold-b);border-radius:var(--r-lg);padding:1rem 1.25rem;font-size:13px;color:var(--gold-d);margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px}
-.btn-gold{background:var(--gold);color:var(--navy);padding:12px 28px;border-radius:var(--r-pill);font-size:14px;font-weight:700;transition:all .15s;box-shadow:var(--sh-gold);display:inline-flex;align-items:center;gap:7px;cursor:pointer;border:none;font-family:var(--f-body)}
+.card strong{color:var(--ink);font-weight:700}
+
+.highlight-box{
+  background:var(--gold-l);border:1.5px solid var(--gold-b);border-radius:var(--r-lg);
+  padding:1rem 1.25rem;font-size:13px;color:var(--gold-d);
+  margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px;line-height:1.7;
+}
+.green-box{
+  background:var(--green-l);border:1.5px solid rgba(0,179,126,.2);border-radius:var(--r-lg);
+  padding:1rem 1.25rem;font-size:13px;color:#087F5B;
+  margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px;line-height:1.7;
+}
+
+/* Quick TOC */
+.toc-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.5rem 1.75rem;margin-bottom:1.25rem;box-shadow:var(--sh-xs)}
+.toc-title{font-family:var(--f-display);font-size:13px;font-weight:800;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.85rem}
+.toc-links{display:flex;flex-wrap:wrap;gap:6px}
+.toc-link{display:inline-flex;align-items:center;padding:5px 13px;font-size:12.5px;font-weight:600;color:var(--ink2);background:var(--surface);border-radius:var(--r-pill);transition:all .15s;border:1px solid var(--border)}
+.toc-link:hover{background:var(--gold-l);color:var(--gold-d);border-color:var(--gold)}
+
+/* Data table */
+.data-table{width:100%;border-collapse:collapse;margin:.75rem 0;font-size:13px}
+.data-table th{background:var(--surface);padding:.6rem .85rem;text-align:left;font-weight:700;color:var(--ink);border-bottom:2px solid var(--border);font-size:12px;text-transform:uppercase;letter-spacing:.3px}
+.data-table td{padding:.6rem .85rem;color:var(--ink2);border-bottom:1px solid var(--border);line-height:1.55;vertical-align:top}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:var(--paper)}
+.badge{display:inline-flex;align-items:center;padding:2px 9px;font-size:11px;font-weight:700;border-radius:var(--r-pill)}
+.badge-yes{background:var(--green-l);color:#087F5B}
+.badge-no{background:var(--red-l);color:var(--red)}
+.badge-partial{background:var(--amber-l);color:var(--amber)}
+
+/* Compliance badges */
+.compliance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:.85rem}
+.compliance-tile{background:var(--surface);border-radius:var(--r-lg);padding:.85rem 1rem;text-align:center}
+.compliance-icon{font-size:1.5rem;margin-bottom:.3rem}
+.compliance-name{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.compliance-desc{font-size:11px;color:var(--ink3)}
+
+/* CTA */
+.cta-card{
+  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
+  border-radius:var(--r-xl);padding:1.75rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1.5rem;flex-wrap:wrap;box-shadow:var(--sh-lg);margin-bottom:1.25rem;
+  position:relative;overflow:hidden;
+}
+.cta-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 180px at 90% 30%,rgba(245,166,35,.13) 0%,transparent 60%)}
+.cta-card-text{position:relative;z-index:1}
+.cta-card h3{font-family:var(--f-display);font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:.2rem}
+.cta-card p{font-size:13px;color:rgba(255,255,255,.55)}
+.btn-gold{background:var(--gold);color:var(--navy);padding:12px 28px;border-radius:var(--r-pill);font-size:14px;font-weight:700;transition:all .15s;box-shadow:var(--sh-gold);display:inline-flex;align-items:center;gap:7px;cursor:pointer;border:none;font-family:var(--f-body);position:relative;z-index:1;white-space:nowrap;flex-shrink:0}
 .btn-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
-@media(max-width:600px){.contact-grid{grid-template-columns:1fr}.page-container{padding:2rem 1rem}}
-.fld{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.75rem}
-.fld label{font-size:12px;font-weight:700;color:var(--ink2)}
-.fld input,.fld textarea,.fld select{border:1.5px solid var(--border);border-radius:var(--r-sm);padding:9px 12px;font-size:13px;font-family:var(--f-body);color:var(--ink);outline:none;background:var(--white);transition:border-color .15s}
-.fld input:focus,.fld textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-b)}
-.fld textarea{resize:vertical;min-height:110px}
-/* Footer full-width fix */
-.tn-foot{padding-right:1.5rem !important}
+
+.coffee-tab{
+  position:fixed;bottom:0;right:0;z-index:500;
+  background:linear-gradient(135deg,#FFDD00,#FF9500);color:#3D1C00;
+  font-family:var(--f-display);font-size:12px;font-weight:700;
+  padding:8px 16px 10px;border-radius:var(--r-lg) var(--r-lg) 0 0;
+  box-shadow:0 -4px 18px rgba(245,166,35,.35);cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;gap:6px;transform:translateY(2px);
+  border:1.5px solid rgba(255,255,255,.45);border-bottom:none;
+}
+.coffee-tab:hover{transform:translateY(-5px)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-container>*{animation:fadeUp .3s ease forwards}
+
+@media(max-width:820px){
+  #tn-nav .hamburger,#tn-nav .nav-toggle,#tn-nav .menu-toggle,
+  #tn-nav .nav-burger,#tn-nav .mobile-toggle,
+  #tn-nav [class*="hamburger"],#tn-nav [class*="menu-btn"]{display:flex!important}
+  #tn-nav .nav-links,#tn-nav .nav-menu,#tn-nav .nav-items{display:none!important}
+  #tn-nav .nav-links.open,#tn-nav .nav-menu.open,
+  #tn-nav .mobile-sidebar.open,#tn-nav .nav-sidebar.open{display:flex!important;flex-direction:column!important}
+  .compliance-grid{grid-template-columns:1fr 1fr}
+  .cta-card{flex-direction:column;text-align:center}
+}
+@media(max-width:600px){
+  .page-container{padding:2rem 1rem}
+  .compliance-grid{grid-template-columns:1fr}
+  .data-table{font-size:12px}
+}
 </style>
 </head>
 <body>
+
+<!-- FIX: mobileOverlay — missing from original -->
+<div style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99;display:none"
+     id="mobileOverlay"
+     onclick="TN&&TN.closeMobileSidebar&&TN.closeMobileSidebar()"></div>
+
+<!-- Nav injected by nav-footer.js -->
 <div id="tn-nav"></div>
 
+<!-- FIX: Fallback nav -->
+<div id="tn-nav-fallback">
+  <nav class="fallback-nav">
+    <a href="/" class="fallback-nav-logo">🛠️ Tool<span>Nest</span></a>
+    <ul class="fallback-nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#tools">All Tools</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- Hero -->
 <div class="page-hero">
   <div class="page-hero-inner">
     <div style="font-size:3rem;margin-bottom:.75rem">🔒</div>
     <h1>Privacy Policy</h1>
-    <p>Aapki privacy humari priority hai. Last updated: April 16, 2026</p>
+    <p>Aapki privacy hamaari priority hai &nbsp;·&nbsp; Last updated: April 16, 2026</p>
   </div>
 </div>
-<div class="page-container" style="padding-top:0">
 
-  <div class="highlight-box">
+<div class="page-container">
+
+  <!-- FIX: Breadcrumb — was missing -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-cur">Privacy Policy</span>
+  </nav>
+
+  <!-- TL;DR summary -->
+  <div class="green-box">
     <span style="font-size:1.5rem;flex-shrink:0">✅</span>
-    <div><strong>TL;DR:</strong> Aapki files kabhi bhi hamare servers par nahi jaati. Hum koi personal data collect nahi karte (sirf anonymized usage stats). No ads tracking. No data selling.</div>
+    <div>
+      <strong>TL;DR — Simple summary:</strong> Aapki files kabhi bhi hamare servers par nahi jaatein.
+      Hum koi personal data collect nahi karte (sirf anonymized usage stats).
+      No ad-tracking. No data selling. Ever.
+    </div>
   </div>
 
-  <div class="card">
+  <div class="highlight-box">
+    <span style="font-size:1.5rem;flex-shrink:0">🇮🇳</span>
+    <div>Ye policy <strong>Indian IT Act 2000, IT (Amendment) Act 2008</strong> aur international
+    <strong>GDPR guidelines</strong> ke according likhi gayi hai. ToolNest, bhaihelp.in ka product hai — India mein operate karta hai.</div>
+  </div>
+
+  <!-- Quick TOC -->
+  <div class="toc-card">
+    <div class="toc-title">Quick Navigation</div>
+    <div class="toc-links">
+      <a href="#s1" class="toc-link">1. Files &amp; Documents</a>
+      <a href="#s2" class="toc-link">2. Data Collection</a>
+      <a href="#s3" class="toc-link">3. Cookies</a>
+      <a href="#s4" class="toc-link">4. Advertisements</a>
+      <a href="#s5" class="toc-link">5. Data Security</a>
+      <a href="#s6" class="toc-link">6. Your Rights</a>
+      <a href="#s7" class="toc-link">7. Third Parties</a>
+      <a href="#s8" class="toc-link">8. Children</a>
+      <a href="#s9" class="toc-link">9. IT Act Compliance</a>
+      <a href="#s10" class="toc-link">10. Changes</a>
+      <a href="#s11" class="toc-link">11. Contact</a>
+    </div>
+  </div>
+
+  <div class="card" id="s1">
     <h2>1. Files Aur Documents</h2>
     <p>ToolNest ke <strong>sabhi tools 100% browser-based</strong> hain. Aapki koi bhi file — PDF, image, document — hamare servers par kabhi upload nahi hoti.</p>
     <p>Processing sirf aapke browser (device) ki memory mein hoti hai. Page band karne par ya reload karne par files automatically delete ho jaati hain. Hum technically bhi aapki files dekh nahi sakte.</p>
-  </div>
-
-  <div class="card">
-    <h2>2. Kya Data Collect Hota Hai</h2>
-    <p>Hum collect karte hain:</p>
     <ul>
-      <li><strong>Usage analytics (anonymized):</strong> Konsa tool use hua, page views — Google Analytics ke through. Koi personal info nahi.</li>
-      <li><strong>Error logs:</strong> Agar koi tool crash ho toh browser console mein error — hum ye nahi dekh sakte.</li>
-      <li><strong>Newsletter (optional):</strong> Agar aap newsletter subscribe karte hain toh sirf email address.</li>
+      <li>✅ PDF merge, compress, convert — browser memory mein</li>
+      <li>✅ Image compress, resize — Canvas API (local)</li>
+      <li>✅ GST invoice data — sirf aapke device par</li>
+      <li>✅ Calculator inputs — pure JavaScript, no server</li>
     </ul>
-    <p>Hum collect <strong>nahi</strong> karte: File contents, document text, images, invoice data, business information.</p>
   </div>
 
-  <div class="card">
-    <h2>3. Cookies</h2>
+  <div class="card" id="s2">
+    <h2>2. Kya Data Collect Hota Hai</h2>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data Type</th>
+          <th>Collect Hota Hai?</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>File contents / Documents</td>
+          <td><span class="badge badge-no">❌ Nahi</span></td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Invoice / Business data</td>
+          <td><span class="badge badge-no">❌ Nahi</span></td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Page views (anonymized)</td>
+          <td><span class="badge badge-partial">⚠️ Anonymized</span></td>
+          <td>Usage analytics — Google Analytics</td>
+        </tr>
+        <tr>
+          <td>Tool usage (which tool used)</td>
+          <td><span class="badge badge-partial">⚠️ Anonymized</span></td>
+          <td>Feature improvement</td>
+        </tr>
+        <tr>
+          <td>IP Address</td>
+          <td><span class="badge badge-partial">⚠️ Google Analytics</span></td>
+          <td>Anonymized geographic stats</td>
+        </tr>
+        <tr>
+          <td>Email (newsletter)</td>
+          <td><span class="badge badge-partial">⚠️ Optional only</span></td>
+          <td>Sirf agar aap subscribe karein</td>
+        </tr>
+        <tr>
+          <td>Name / Personal info</td>
+          <td><span class="badge badge-no">❌ Nahi</span></td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Payment information</td>
+          <td><span class="badge badge-no">❌ Nahi</span></td>
+          <td>ToolNest free hai, no payments</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" id="s3">
+    <h2>3. Cookies Aur Local Storage</h2>
     <p>Hum use karte hain:</p>
     <ul>
-      <li><strong>localStorage:</strong> Dark mode preference aur social proof counter (sirf aapke browser mein, server par nahi).</li>
-      <li><strong>Google Analytics cookies:</strong> Anonymized usage tracking ke liye. Aap browser settings mein block kar sakte hain.</li>
+      <li><strong>localStorage (browser-only):</strong> Dark mode preference aur UI state — ye sirf aapke browser mein rehta hai, server par nahi jaata.</li>
+      <li><strong>Google Analytics cookies:</strong> Anonymized usage tracking. Aap browser settings mein in cookies ko block kar sakte hain.</li>
+      <li><strong>Google AdSense cookies:</strong> Ads personalization ke liye (see section 4). Aap <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google Ad Settings</a> mein opt-out kar sakte hain.</li>
     </ul>
-    <p>Koi third-party advertising cookies nahi.</p>
+    <p>Koi third-party tracking cookies nahi hain. Koi cross-site tracking nahi.</p>
   </div>
 
-  <div class="card">
+  <div class="card" id="s4">
     <h2>4. Advertisements</h2>
-    <p>ToolNest Google AdSense ads dikhata hai. Google apni privacy policy ke according behavior-based ads serve kar sakta hai. Hum advertiser data ko tool usage se link nahi karte.</p>
-    <p>AdSense ke baare mein: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></p>
+    <p>ToolNest ko free rakhne ke liye hum <strong>Google AdSense</strong> ads dikhate hain. Ye ads Google ki apni privacy policy ke according serve hoti hain.</p>
+    <p>Important points:</p>
+    <ul>
+      <li>Hum advertiser data ko aapke tool usage se link nahi karte</li>
+      <li>Aap <a href="https://adssettings.google.com" target="_blank" rel="noopener">ads personalization disable</a> kar sakte hain</li>
+      <li>Ad revenue sirf server costs aur development mein jaata hai</li>
+    </ul>
+    <p>More: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy →</a></p>
   </div>
 
-  <div class="card">
+  <div class="card" id="s5">
     <h2>5. Data Security</h2>
-    <p>Kyunki hum aapka data store hi nahi karte, data breach ka risk practically zero hai. Haari website HTTPS use karti hai. All connections encrypted hain.</p>
+    <!-- FIX: Corrected typo "Haari" → "Hamaari" -->
+    <p>Kyunki hum aapka sensitive data store hi nahi karte, data breach ka risk practically zero hai.</p>
+    <ul>
+      <li>✅ <strong>Hamaari website HTTPS use karti hai</strong> — sabhi connections encrypted hain</li>
+      <li>✅ No file storage — breach possible hi nahi</li>
+      <li>✅ No user accounts — credential leak ka risk zero</li>
+      <li>✅ Browser-only processing — aapka data aapke device par hi rehta hai</li>
+    </ul>
   </div>
 
-  <div class="card">
-    <h2>6. Children's Privacy</h2>
-    <p>ToolNest 13 saal se kam umra ke users ke liye design nahi kiya gaya. Hum knowingly children ka data collect nahi karte.</p>
+  <div class="card" id="s6">
+    <h2>6. Aapke Rights (GDPR + Indian IT Act)</h2>
+    <p>Aapko ye rights hain:</p>
+    <ul>
+      <li><strong>Right to Access:</strong> Aap jaanna chahein ki hum kya data rakhte hain — contact karein</li>
+      <li><strong>Right to Deletion:</strong> Newsletter subscribe kiya hai? Hum aapka email delete kar denge</li>
+      <li><strong>Right to Object:</strong> Analytics tracking ke against object kar sakte hain</li>
+      <li><strong>Data Portability:</strong> Aapka data (agar koi ho) export karne ka request kar sakte hain</li>
+    </ul>
+    <p>In rights ko exercise karne ke liye: <a href="mailto:privacy@bhaihelp.in">privacy@bhaihelp.in</a></p>
+    <div class="compliance-grid" style="margin-top:1rem">
+      <div class="compliance-tile">
+        <div class="compliance-icon">🇪🇺</div>
+        <div class="compliance-name">GDPR</div>
+        <div class="compliance-desc">EU data protection compliant</div>
+      </div>
+      <div class="compliance-tile">
+        <div class="compliance-icon">🇮🇳</div>
+        <div class="compliance-name">IT Act 2000</div>
+        <div class="compliance-desc">Indian IT Act compliant</div>
+      </div>
+      <div class="compliance-tile">
+        <div class="compliance-icon">🔒</div>
+        <div class="compliance-name">CCPA</div>
+        <div class="compliance-desc">California privacy guidelines</div>
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>7. Contact</h2>
-    <p>Privacy se related koi sawaal ya concern? Hum se contact karein:</p>
-    <p><a href="mailto:privacy@bhaihelp.in">privacy@bhaihelp.in</a></p>
-    <p style="margin-top:.5rem;font-size:12px;color:var(--ink3)">ToolNest is operated by bhaihelp.in, India.</p>
+  <div class="card" id="s7">
+    <h2>7. Third-Party Services</h2>
+    <p>Hum in third-party services use karte hain:</p>
+    <ul>
+      <li><strong>Google Analytics</strong> — Anonymized usage stats. <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Opt-out browser extension →</a></li>
+      <li><strong>Google AdSense</strong> — Ad serving. <a href="https://adssettings.google.com" target="_blank" rel="noopener">Manage ad preferences →</a></li>
+      <li><strong>Google Fonts</strong> — Typography (fonts.googleapis.com se load hoti hain)</li>
+      <li><strong>CDN Libraries</strong> — pdf-lib, PDF.js, jsPDF — ye sab open source hain, koi tracking nahi</li>
+    </ul>
+    <p>Hum aapka data kabhi sell, share, ya rent nahi karte — kisi bhi third party ko.</p>
   </div>
 
-</div>
+  <div class="card" id="s8">
+    <h2>8. Children's Privacy</h2>
+    <p>ToolNest 13 saal se kam umra ke users ke liye design nahi kiya gaya hai. Hum knowingly 13 se kam age ke children ka data collect nahi karte.</p>
+    <p>Agar aapko lagta hai koi minor ne data submit kiya hai — <a href="mailto:privacy@bhaihelp.in">humse contact karein</a> aur hum turant delete kar denge.</p>
+  </div>
+
+  <div class="card" id="s9">
+    <h2>9. Indian IT Act Compliance</h2>
+    <p>ToolNest <strong>Information Technology Act, 2000</strong> aur <strong>IT (Amendment) Act, 2008</strong> ke Section 43A ke accordance mein operate karta hai:</p>
+    <ul>
+      <li>Hum "Sensitive Personal Data or Information" (SPDI) collect nahi karte</li>
+      <li>Jahan bhi data collect hota hai (newsletter), aapka consent liya jaata hai</li>
+      <li>Data sirf stated purpose ke liye use hota hai</li>
+      <li>Reasonable security practices implement ki gayi hain (HTTPS, no storage)</li>
+    </ul>
+    <p style="font-size:12px;color:var(--ink3);margin-top:.5rem">Governing law: India. Jurisdiction: Courts of India.</p>
+  </div>
+
+  <div class="card" id="s10">
+    <h2>10. Policy Changes</h2>
+    <p>Hum is privacy policy ko kisi bhi time update kar sakte hain. Changes is page par post honge with updated date. Major changes ke liye hum website par notice denge.</p>
+    <p>Continued use of ToolNest = acceptance of updated policy.</p>
+  </div>
+
+  <div class="card" id="s11">
+    <h2>11. Contact — Privacy</h2>
+    <p>Privacy se related koi sawaal, concern, ya data deletion request:</p>
+    <p><a href="mailto:privacy@bhaihelp.in" style="font-size:1rem">privacy@bhaihelp.in</a></p>
+    <p style="margin-top:.5rem">Ya <a href="/contact.html">Contact page</a> ke through reach karein.</p>
+    <p style="margin-top:.75rem;font-size:12px;color:var(--ink3)">
+      ToolNest is operated by <strong>bhaihelp.in</strong>, India.<br>
+      This policy is effective as of April 16, 2026.
+    </p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-card">
+    <div class="cta-card-text">
+      <h3>25+ Free Tools — Safely Use Karein</h3>
+      <p>Files kabhi server par nahi jaatein. Browser-based &amp; always free 🇮🇳</p>
+    </div>
+    <button class="btn-gold" onclick="location.href='/'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+      Sabhi Tools Dekhein
+    </button>
+  </div>
+
+</div><!-- /page-container -->
+
 <div id="tn-footer"></div>
+
+<button class="coffee-tab" onclick="window.open('https://buymeacoffee.com/toolnest','_blank')">
+  <span style="font-size:15px">☕</span>Buy me a Coffee
+</button>
+
+<!-- FIX: nav-footer.js LAST — correct script placement -->
 <script src="/nav-footer.js"></script>
+
+<script>
+'use strict';
+
+/* ── FIX: Fallback nav check ── */
+(function(){
+  var attempts=0;
+  var t=setInterval(function(){
+    attempts++;
+    var el=document.getElementById('tn-nav');
+    if(el&&el.children.length>0){clearInterval(t);return}
+    if(attempts>=15){
+      clearInterval(t);
+      var f=document.getElementById('tn-nav-fallback');
+      if(f)f.classList.add('show');
+    }
+  },100);
+})();
+
+/* ── FIX: Force nav desktop layout ── */
+function forceNavDesktopLayout(){
+  var navEl=document.getElementById('tn-nav');
+  if(!navEl)return;
+  var isDesktop=window.innerWidth>820;
+  ['.nav-links','.nav-menu','.nav-items','.nav__links','.nav__menu'].forEach(function(sel){
+    navEl.querySelectorAll(sel).forEach(function(el){
+      if(isDesktop){
+        el.style.display='flex';el.style.flexDirection='row';
+        el.style.alignItems='center';el.style.position='static';
+        el.style.background='transparent';el.style.boxShadow='none';
+        el.style.width='auto';el.style.height='auto';
+        el.style.overflow='visible';el.style.transform='none';
+        el.style.opacity='1';el.style.visibility='visible';
+      }
+    });
+  });
+  if(isDesktop){
+    ['.hamburger','.nav-toggle','.menu-toggle','.nav-burger','.mobile-toggle'].forEach(function(sel){
+      navEl.querySelectorAll(sel).forEach(function(el){el.style.display='none';});
+    });
+  }
+}
+document.addEventListener('DOMContentLoaded',function(){
+  forceNavDesktopLayout();
+  setTimeout(forceNavDesktopLayout,300);
+  setTimeout(forceNavDesktopLayout,800);
+});
+window.addEventListener('resize',forceNavDesktopLayout);
+</script>
 </body>
 </html>
