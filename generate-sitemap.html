@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sitemap Generator — ToolNest Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#F5A623;--gold-d:#D4891A;--gold-l:#FEF3DC;--navy:#0F1B3D;--green:#00B37E;--green-l:#E6FAF4;--ink:#0D0D14;--ink2:#44455A;--ink3:#8A8BA5;--paper:#F5F6FA;--white:#fff;--border:#E2E4EF;--surface:#EDEEF7;--f-display:'Outfit',sans-serif;--f-body:'Plus Jakarta Sans',sans-serif;--r-lg:18px;--r-xl:24px;--r-pill:999px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.6;padding:2rem 1.5rem}
+.header{text-align:center;margin-bottom:2rem}
+.header h1{font-family:var(--f-display);font-size:1.75rem;font-weight:900;color:var(--ink);margin-bottom:.3rem}
+.header p{font-size:13.5px;color:var(--ink3)}
+.card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.5rem;margin-bottom:1.25rem;max-width:800px;margin-left:auto;margin-right:auto}
+.card-title{font-family:var(--f-display);font-size:15px;font-weight:800;color:var(--ink);margin-bottom:1rem;display:flex;align-items:center;gap:7px}
+.card-title::before{content:'';display:block;width:4px;height:16px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.domain-row{display:flex;gap:8px;margin-bottom:1rem}
+.domain-input{flex:1;border:1.5px solid var(--border);border-radius:var(--r-pill);padding:10px 16px;font-size:14px;font-family:var(--f-body);color:var(--ink);outline:none;background:var(--surface);transition:border-color .15s}
+.domain-input:focus{border-color:var(--gold)}
+.btn-gen{background:var(--gold);color:var(--navy);padding:10px 22px;border-radius:var(--r-pill);font-size:13.5px;font-weight:700;cursor:pointer;border:none;font-family:var(--f-body);transition:all .15s;white-space:nowrap}
+.btn-gen:hover{background:var(--gold-d)}
+.stats-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1rem}
+.stat-chip{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-pill);padding:5px 14px;font-size:12.5px;font-weight:600;color:var(--ink2)}
+.stat-chip span{color:var(--gold-d);font-weight:800}
+.xml-output{width:100%;min-height:320px;background:var(--navy);color:#A9DC76;font-family:'Courier New',Consolas,monospace;font-size:12.5px;border-radius:var(--r-lg);padding:1.25rem;border:none;outline:none;resize:vertical;line-height:1.65}
+.action-row{display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap}
+.btn-copy{background:var(--green);color:#fff;padding:9px 18px;border-radius:var(--r-pill);font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:var(--f-body);transition:all .15s;display:flex;align-items:center;gap:6px}
+.btn-copy:hover{background:#009970}
+.btn-dl{background:var(--navy);color:#fff;padding:9px 18px;border-radius:var(--r-pill);font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:var(--f-body);transition:all .15s;display:flex;align-items:center;gap:6px}
+.btn-dl:hover{background:#0F1B3D;opacity:.85}
+.instructions{background:var(--gold-l);border:1.5px solid rgba(245,166,35,.3);border-radius:var(--r-lg);padding:1rem 1.25rem;font-size:13px;color:var(--gold-d);line-height:1.7}
+.instructions strong{color:var(--navy)}
+.url-list{display:flex;flex-direction:column;gap:4px;max-height:300px;overflow-y:auto;margin-top:.75rem}
+.url-item{display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:8px;font-size:12.5px;background:var(--surface);color:var(--ink2)}
+.url-item .pri{background:var(--gold-l);color:var(--gold-d);font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;flex-shrink:0}
+.url-item .loc{flex:1;color:var(--ink);font-weight:500;font-family:'Courier New',monospace;font-size:11.5px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🗺️ Sitemap Generator</h1>
+  <p>TN.tools array se automatically sitemap.xml generate karo — naya tool add karo, sitemap auto-update.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">⚙️ Configuration</div>
+  <div class="domain-row">
+    <input type="url" class="domain-input" id="domainInput"
+      value="https://toolnest.bhaihelp.in"
+      placeholder="https://yourdomain.com">
+    <button class="btn-gen" onclick="generateSitemap()">
+      🗺️ Generate Sitemap
+    </button>
+  </div>
+  <div class="stats-row" id="statsRow">
+    <div class="stat-chip">Total URLs: <span id="totalCount">—</span></div>
+    <div class="stat-chip">Tools: <span id="toolCount">—</span></div>
+    <div class="stat-chip">Static Pages: <span id="staticCount">—</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">📋 Generated sitemap.xml</div>
+  <textarea class="xml-output" id="xmlOutput" readonly placeholder="Generate karein pehle…"></textarea>
+  <div class="action-row">
+    <button class="btn-copy" onclick="copySitemap()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      Copy XML
+    </button>
+    <button class="btn-dl" onclick="downloadSitemap()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download sitemap.xml
+    </button>
+    <button style="background:var(--surface);color:var(--ink2);border:1.5px solid var(--border);padding:9px 18px;border-radius:var(--r-pill);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--f-body)" onclick="openGSC()">
+      📤 Submit to Google Search Console
+    </button>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">📌 URL Preview</div>
+  <div class="url-list" id="urlList"></div>
+</div>
+
+<div class="card">
+  <div class="instructions">
+    <strong>Next Steps:</strong><br>
+    1. "Generate Sitemap" click karo → XML copy karo ya download karo<br>
+    2. File ko <code>sitemap.xml</code> naam se server ke root mein upload karo (<code>/sitemap.xml</code>)<br>
+    3. Google Search Console → Sitemaps → <code>https://yourdomain.com/sitemap.xml</code> submit karo<br>
+    4. Naya tool add karne ke baad yahan dobara generate karo aur re-upload karo<br><br>
+    <strong>Pro Tip:</strong> Nav-footer.js mein naya tool add karo → yahan regenerate → sitemap re-upload. 5 minute kaam!
+  </div>
+</div>
+
+<script src="/nav-footer.js"></script>
+<script>
+'use strict';
+
+var STATIC_PAGES = [
+  { loc: '/',           priority: '1.0', changefreq: 'daily'   },
+  { loc: '/tools/',     priority: '0.95', changefreq: 'weekly' },
+  { loc: '/blog.html',  priority: '0.90', changefreq: 'weekly' },
+  { loc: '/about.html', priority: '0.75', changefreq: 'monthly'},
+  { loc: '/pricing.html',priority: '0.85',changefreq: 'monthly'},
+  { loc: '/contact.html',priority: '0.65',changefreq: 'monthly'},
+  { loc: '/privacy.html',priority: '0.50',changefreq: 'yearly' },
+  { loc: '/terms.html',  priority: '0.50',changefreq: 'yearly' },
+];
+
+function waitForTN(cb) {
+  if (window.TN && TN.tools && TN.tools.length) { cb(); return; }
+  setTimeout(function(){ waitForTN(cb); }, 50);
+}
+
+waitForTN(function(){
+  document.getElementById('toolCount').textContent = TN.tools.length;
+  document.getElementById('staticCount').textContent = STATIC_PAGES.length;
+  document.getElementById('totalCount').textContent = TN.tools.length + STATIC_PAGES.length;
+  generateSitemap();
+});
+
+function generateSitemap() {
+  var domain = (document.getElementById('domainInput').value || 'https://toolnest.bhaihelp.in').replace(/\/$/, '');
+  var now = new Date().toISOString().split('T')[0];
+  var urls = [];
+
+  /* Static pages */
+  STATIC_PAGES.forEach(function(p){
+    urls.push({ loc: domain + p.loc, priority: p.priority, changefreq: p.changefreq, lastmod: now });
+  });
+
+  /* Tool pages from TN.tools */
+  TN.tools.forEach(function(t){
+    urls.push({
+      loc: domain + t.url,
+      priority: t.badge === 'HOT' ? '0.85' : '0.80',
+      changefreq: 'monthly',
+      lastmod: now,
+    });
+  });
+
+  var xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n';
+  xml += '        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n';
+  xml += '        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9\n';
+  xml += '        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">\n\n';
+  xml += '  <!-- Generated by ToolNest Sitemap Generator | '+new Date().toISOString()+' -->\n';
+  xml += '  <!-- Total URLs: '+urls.length+' | Tools: '+TN.tools.length+' | Static: '+STATIC_PAGES.length+' -->\n\n';
+
+  urls.forEach(function(u){
+    xml += '  <url>\n';
+    xml += '    <loc>'+u.loc+'</loc>\n';
+    xml += '    <lastmod>'+u.lastmod+'</lastmod>\n';
+    xml += '    <changefreq>'+u.changefreq+'</changefreq>\n';
+    xml += '    <priority>'+u.priority+'</priority>\n';
+    xml += '  </url>\n';
+  });
+  xml += '\n</urlset>';
+
+  document.getElementById('xmlOutput').value = xml;
+  document.getElementById('totalCount').textContent = urls.length;
+  document.getElementById('toolCount').textContent = TN.tools.length;
+  document.getElementById('staticCount').textContent = STATIC_PAGES.length;
+
+  /* URL preview */
+  document.getElementById('urlList').innerHTML = urls.map(function(u){
+    return '<div class="url-item"><span class="pri">'+u.priority+'</span><span class="loc">'+u.loc+'</span><span style="font-size:11px;color:var(--ink3)">'+u.changefreq+'</span></div>';
+  }).join('');
+}
+
+function copySitemap() {
+  var xml = document.getElementById('xmlOutput').value;
+  if (!xml) return;
+  navigator.clipboard.writeText(xml).then(function(){
+    var btn = event.target.closest('button');
+    var old = btn.innerHTML;
+    btn.innerHTML = '✅ Copied!';
+    setTimeout(function(){ btn.innerHTML = old; }, 2000);
+  });
+}
+
+function downloadSitemap() {
+  var xml = document.getElementById('xmlOutput').value;
+  if (!xml) return;
+  var blob = new Blob([xml], { type:'application/xml' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'sitemap.xml';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function openGSC() {
+  var domain = document.getElementById('domainInput').value || 'https://toolnest.bhaihelp.in';
+  window.open('https://search.google.com/search-console/sitemaps?resource_id='+encodeURIComponent(domain), '_blank');
+}
+</script>
+</body>
+</html>
