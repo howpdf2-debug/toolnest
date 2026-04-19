@@ -5,7 +5,7 @@
    NAYA TOOL ADD KARNA: Sirf TN.tools array mein ek line add karo.
 
    v7.0 NEW FEATURES:
-   ✅ GA4 Analytics — apna G-XXXXXXXXXX ID set karo (line ~20)
+   ✅ GA4 Analytics — apna G-5JCSYN9XX4 ID set karo (line ~20)
    ✅ Auto meta injection — title/desc tool ke naam se auto-update
    ✅ TN.track() — tool use events GA4 mein send karo (1 line)
    ✅ TN.showError() / TN.showSuccess() — global error/success UI
@@ -18,7 +18,7 @@
    ★ GA4 SETUP — Sirf yeh ek line change karo apna Measurement ID daalne ke liye
    analytics.google.com → Admin → Data Streams → Web → Measurement ID
    ═════════════════════════════════════════════════════════════════════ */
-const TN_GA_ID = 'G-XXXXXXXXXX'; // ← APNA ID YAHAN DAALO
+const TN_GA_ID = 'G-5JCSYN9XX4'; // ← APNA ID YAHAN DAALO
 
 const TN = {
 
