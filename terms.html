@@ -11,24 +11,196 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <meta name="theme-color" content="#0F1B3D">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Terms of Use — ToolNest","url":"https://toolnest.bhaihelp.in/terms.html","description":"ToolNest terms of use. Browser-based processing, no data stored.","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolnest.bhaihelp.in"},{"@type":"ListItem","position":2,"name":"Terms of Use","item":"https://toolnest.bhaihelp.in/terms.html"}]}}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-:root{--gold:#F5A623;--gold-d:#D4891A;--gold-l:#FEF3DC;--gold-b:rgba(245,166,35,.20);--navy:#0F1B3D;--navy-mid:#1A2E5E;--blue:#1E4FCB;--blue-l:#EEF3FF;--green:#00B37E;--green-l:#E6FAF4;--red:#E53E3E;--red-l:#FFF0F0;--amber:#E88B00;--amber-l:#FFF8E6;--purple:#6C3FC4;--purple-l:#F2EDFF;--teal:#0891B2;--teal-l:#E8F8FD;--orange:#F5620A;--orange-l:#FFF0EB;--ink:#0D0D14;--ink2:#44455A;--ink3:#8A8BA5;--paper:#F5F6FA;--white:#FFFFFF;--border:#E2E4EF;--border2:#C8CADF;--surface:#EDEEF7;--f-display:'Outfit',sans-serif;--f-body:'Plus Jakarta Sans',sans-serif;--r-sm:8px;--r:12px;--r-lg:18px;--r-xl:24px;--r-pill:999px;--sh-xs:0 1px 3px rgba(13,13,20,.07);--sh-sm:0 2px 8px rgba(13,13,20,.09);--sh:0 4px 16px rgba(13,13,20,.11);--sh-lg:0 8px 32px rgba(13,13,20,.13);--sh-gold:0 4px 20px rgba(245,166,35,.28);--nav-h:64px;}
+/* ── DESIGN SYSTEM ── */
+:root{
+  --gold:#F5A623;--gold-d:#D4891A;--gold-l:#FEF3DC;--gold-b:rgba(245,166,35,.20);
+  --navy:#0F1B3D;--navy-mid:#1A2E5E;--navy-l:#E8ECF5;
+  --blue:#1E4FCB;--blue-l:#EEF3FF;
+  --green:#00B37E;--green-l:#E6FAF4;
+  --red:#E53E3E;--red-l:#FFF0F0;
+  --amber:#E88B00;--amber-l:#FFF8E6;
+  --purple:#6C3FC4;--purple-l:#F2EDFF;
+  --teal:#0891B2;--teal-l:#E8F8FD;
+  --orange:#F5620A;--orange-l:#FFF0EB;
+  --ink:#0D0D14;--ink2:#44455A;--ink3:#8A8BA5;
+  --paper:#F5F6FA;--white:#FFFFFF;
+  --border:#E2E4EF;--border2:#C8CADF;--surface:#EDEEF7;
+  --f-display:'Outfit',sans-serif;--f-body:'Plus Jakarta Sans',sans-serif;
+  --r-sm:8px;--r:12px;--r-lg:18px;--r-xl:24px;--r-pill:999px;
+  --sh-xs:0 1px 3px rgba(13,13,20,.07);--sh-sm:0 2px 8px rgba(13,13,20,.09);
+  --sh:0 4px 16px rgba(13,13,20,.11);--sh-lg:0 8px 32px rgba(13,13,20,.13);
+  --sh-gold:0 4px 20px rgba(245,166,35,.28);
+  --nav-h:64px;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.6;padding-top:var(--nav-h)}
 a{text-decoration:none;color:inherit}
 button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
-.page-container{max-width:900px;margin:0 auto;padding:3rem 1.5rem}
-.page-hero{background:linear-gradient(135deg,var(--navy),var(--navy-mid));padding:3rem 1.5rem;text-align:center;margin-bottom:2rem;position:relative;overflow:hidden}
-.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 200px at 80% 40%,rgba(245,166,35,.12) 0%,transparent 60%)}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+/* ══════════════════════════════
+   FIX 1: FALLBACK NAV
+   ══════════════════════════════ */
+#tn-nav-fallback{display:none}
+#tn-nav-fallback.show{display:flex}
+.fallback-nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:var(--nav-h);background:rgba(255,255,255,.95);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);padding:0 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;box-shadow:var(--sh-xs);
+}
+.fallback-nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:20px;color:var(--ink);white-space:nowrap;flex-shrink:0}
+.fallback-nav-logo span{color:var(--gold)}
+.fallback-nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+.fallback-nav-links a{display:inline-flex;align-items:center;padding:6px 14px;font-size:14px;font-weight:600;color:var(--ink2);border-radius:var(--r-pill);transition:all .15s}
+.fallback-nav-links a:hover{background:var(--gold-l);color:var(--gold-d)}
+.fallback-nav-links a.active{background:var(--gold-l);color:var(--gold-d);font-weight:700}
+
+/* ══════════════════════════════
+   FIX 2: NAV-FOOTER.JS OVERRIDES
+   Forces correct desktop horizontal layout
+   ══════════════════════════════ */
+#tn-nav .nav,#tn-nav nav{
+  position:fixed!important;top:0!important;left:0!important;right:0!important;
+  z-index:1000!important;height:var(--nav-h)!important;
+  background:rgba(255,255,255,.92)!important;
+  backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;
+  border-bottom:1px solid var(--border)!important;padding:0 1.5rem!important;
+  display:flex!important;flex-direction:row!important;
+  align-items:center!important;justify-content:space-between!important;
+  gap:1rem!important;box-shadow:var(--sh-xs)!important;width:100%!important;
+}
+#tn-nav .nav-logo,#tn-nav .nav__logo,#tn-nav .logo{
+  display:flex!important;align-items:center!important;gap:10px!important;
+  font-family:var(--f-display)!important;font-weight:800!important;font-size:20px!important;
+  color:var(--ink)!important;white-space:nowrap!important;flex-shrink:0!important;
+  text-decoration:none!important;
+}
+#tn-nav .nav-logo span,#tn-nav .nav__logo span{color:var(--gold)!important}
+#tn-nav .nav-search,#tn-nav .search-bar,#tn-nav .nav__search{
+  flex:1!important;max-width:360px!important;display:flex!important;align-items:center!important;
+}
+
+/* FIX 3: THE MAIN BUG — force links horizontal on desktop */
+#tn-nav .nav-links,#tn-nav .nav-menu,#tn-nav .nav-items,
+#tn-nav .nav__links,#tn-nav .nav__menu,
+#tn-nav ul.nav-links,#tn-nav ul.nav-menu{
+  display:flex!important;flex-direction:row!important;align-items:center!important;
+  gap:4px!important;list-style:none!important;padding:0!important;margin:0!important;
+  position:static!important;background:transparent!important;box-shadow:none!important;
+  border:none!important;width:auto!important;height:auto!important;
+  overflow:visible!important;transform:none!important;opacity:1!important;
+  visibility:visible!important;pointer-events:all!important;
+  top:auto!important;right:auto!important;left:auto!important;bottom:auto!important;
+  z-index:auto!important;flex-shrink:0!important;
+}
+#tn-nav .nav-links li,#tn-nav .nav-menu li,#tn-nav .nav-items li,
+#tn-nav .nav-links .nav-item,#tn-nav .nav-menu .nav-item{
+  position:relative!important;display:flex!important;align-items:center!important;list-style:none!important;
+}
+#tn-nav .nav-links a,#tn-nav .nav-menu a,#tn-nav .nav-link,
+#tn-nav .nav-item>a,#tn-nav .nav__link{
+  display:inline-flex!important;align-items:center!important;gap:5px!important;
+  padding:6px 14px!important;font-family:var(--f-body)!important;
+  font-size:14px!important;font-weight:600!important;color:var(--ink2)!important;
+  border-radius:var(--r-pill)!important;transition:all .15s!important;
+  white-space:nowrap!important;text-decoration:none!important;
+  background:transparent!important;border:none!important;
+}
+#tn-nav .nav-links a:hover,#tn-nav .nav-menu a:hover,#tn-nav .nav-link:hover{
+  background:var(--gold-l)!important;color:var(--gold-d)!important;
+}
+#tn-nav .nav-links a.active,#tn-nav .nav-links a[aria-current="page"],
+#tn-nav .nav-links .active>a,#tn-nav .nav-menu a.active,#tn-nav .nav-menu .active>a{
+  background:var(--gold-l)!important;color:var(--gold-d)!important;font-weight:700!important;
+}
+/* Dropdown panel */
+#tn-nav .nav-dropdown,#tn-nav .dropdown-menu,#tn-nav .tools-dropdown,
+#tn-nav .mega-menu,#tn-nav .submenu{
+  position:absolute!important;top:calc(100% + 8px)!important;left:0!important;
+  right:auto!important;min-width:220px!important;background:var(--white)!important;
+  border:1.5px solid var(--border)!important;border-radius:var(--r-lg)!important;
+  box-shadow:var(--sh-lg)!important;padding:8px!important;z-index:9999!important;
+  display:none!important;
+}
+#tn-nav li:hover .nav-dropdown,#tn-nav li:hover .dropdown-menu,
+#tn-nav li:hover .tools-dropdown,#tn-nav li:hover .submenu,
+#tn-nav li.open>.nav-dropdown,#tn-nav li.open>.dropdown-menu{display:block!important}
+#tn-nav .nav-dropdown a,#tn-nav .dropdown-menu a,
+#tn-nav .tools-dropdown a,#tn-nav .submenu a{
+  display:flex!important;align-items:center!important;gap:8px!important;
+  padding:8px 12px!important;font-size:13px!important;font-weight:500!important;
+  color:var(--ink2)!important;border-radius:var(--r-sm)!important;transition:all .12s!important;
+}
+#tn-nav .nav-dropdown a:hover,#tn-nav .dropdown-menu a:hover{
+  background:var(--gold-l)!important;color:var(--gold-d)!important;
+}
+/* Hide hamburger on desktop */
+#tn-nav .hamburger,#tn-nav .nav-toggle,#tn-nav .menu-toggle,
+#tn-nav .nav-burger,#tn-nav .mobile-toggle,
+#tn-nav [class*="hamburger"],#tn-nav [class*="menu-btn"]{display:none!important}
+/* Hide mobile sidebar on desktop */
+#tn-nav .mobile-sidebar,#tn-nav .nav-sidebar,#tn-nav .mobile-menu,
+#tn-nav .mobile-nav,#tn-nav .side-nav,
+#tn-nav [class*="mobile-nav"],#tn-nav [class*="sidebar"]{display:none!important}
+/* Nav actions area */
+#tn-nav .nav-actions,#tn-nav .nav-right,#tn-nav .nav-end,#tn-nav .nav__actions{
+  display:flex!important;align-items:center!important;gap:8px!important;flex-shrink:0!important;
+}
+/* Mobile overlay — only JS controls this */
+#mobileOverlay{display:none!important}
+
+/* ── PAGE COMPONENTS ── */
+.page-container{max-width:900px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+
+/* FIX 4: Hero — consistent with about page (added dot-grid, proper z-index) */
+.page-hero{
+  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
+  padding:3rem 1.5rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background:radial-gradient(circle 280px at 80% 40%,rgba(245,166,35,.12) 0%,transparent 60%),
+             radial-gradient(circle 180px at 15% 70%,rgba(30,79,203,.18) 0%,transparent 60%);
+  pointer-events:none;
+}
+/* FIX 5: dot-grid pattern — was missing, added for consistency */
+.page-hero::after{
+  content:'';position:absolute;inset:0;z-index:0;
+  background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:22px 22px;pointer-events:none;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);
+}
 .page-hero-inner{position:relative;z-index:1}
 .page-hero h1{font-family:var(--f-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:#fff;margin-bottom:.5rem}
 .page-hero p{font-size:14px;color:rgba(255,255,255,.6)}
+
+/* Breadcrumb */
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink3);margin-bottom:1.5rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--ink3);transition:color .15s}
+.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb-sep{color:var(--border2)}
+.breadcrumb-cur{color:var(--ink2);font-weight:500}
+
 .card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.75rem;margin-bottom:1.25rem;box-shadow:var(--sh-xs)}
-.card h2{font-family:var(--f-display);font-size:1.2rem;font-weight:800;color:var(--ink);margin-bottom:.85rem;display:flex;align-items:center;gap:8px}
+.card h2{font-family:var(--f-display);font-size:1.15rem;font-weight:800;color:var(--ink);margin-bottom:.85rem;display:flex;align-items:center;gap:8px}
 .card h2::before{content:'';display:block;width:4px;height:18px;background:var(--gold);border-radius:2px;flex-shrink:0}
 .card p{font-size:13.5px;color:var(--ink2);line-height:1.75;margin-bottom:.75rem}
 .card p:last-child{margin-bottom:0}
@@ -36,23 +208,98 @@ button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
 .card li{margin-bottom:.35rem}
 .card a{color:var(--gold-d);font-weight:600}
 .card a:hover{color:var(--gold)}
-.highlight-box{background:var(--gold-l);border:1.5px solid var(--gold-b);border-radius:var(--r-lg);padding:1rem 1.25rem;font-size:13px;color:var(--gold-d);margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px}
-.btn-gold{background:var(--gold);color:var(--navy);padding:12px 28px;border-radius:var(--r-pill);font-size:14px;font-weight:700;transition:all .15s;box-shadow:var(--sh-gold);display:inline-flex;align-items:center;gap:7px;cursor:pointer;border:none;font-family:var(--f-body)}
+.card strong{color:var(--ink);font-weight:700}
+
+.highlight-box{
+  background:var(--gold-l);border:1.5px solid var(--gold-b);border-radius:var(--r-lg);
+  padding:1rem 1.25rem;font-size:13px;color:var(--gold-d);
+  margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px;line-height:1.7;
+}
+
+/* Quick nav TOC */
+.toc-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.5rem 1.75rem;margin-bottom:1.25rem;box-shadow:var(--sh-xs)}
+.toc-title{font-family:var(--f-display);font-size:13px;font-weight:800;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.85rem}
+.toc-links{display:flex;flex-wrap:wrap;gap:6px}
+.toc-link{display:inline-flex;align-items:center;padding:5px 13px;font-size:12.5px;font-weight:600;color:var(--ink2);background:var(--surface);border-radius:var(--r-pill);transition:all .15s;border:1px solid var(--border)}
+.toc-link:hover{background:var(--gold-l);color:var(--gold-d);border-color:var(--gold)}
+
+/* CTA card */
+.cta-card{
+  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
+  border-radius:var(--r-xl);padding:1.75rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1.5rem;flex-wrap:wrap;box-shadow:var(--sh-lg);margin-bottom:1.25rem;
+  position:relative;overflow:hidden;
+}
+.cta-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 180px at 90% 30%,rgba(245,166,35,.13) 0%,transparent 60%)}
+.cta-card-text{position:relative;z-index:1}
+.cta-card h3{font-family:var(--f-display);font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:.2rem}
+.cta-card p{font-size:13px;color:rgba(255,255,255,.55)}
+.btn-gold{
+  background:var(--gold);color:var(--navy);padding:12px 28px;border-radius:var(--r-pill);
+  font-size:14px;font-weight:700;transition:all .15s;box-shadow:var(--sh-gold);
+  display:inline-flex;align-items:center;gap:7px;cursor:pointer;border:none;
+  font-family:var(--f-body);position:relative;z-index:1;white-space:nowrap;flex-shrink:0;
+}
 .btn-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
-@media(max-width:600px){.contact-grid{grid-template-columns:1fr}.page-container{padding:2rem 1rem}}
-.fld{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.75rem}
-.fld label{font-size:12px;font-weight:700;color:var(--ink2)}
-.fld input,.fld textarea,.fld select{border:1.5px solid var(--border);border-radius:var(--r-sm);padding:9px 12px;font-size:13px;font-family:var(--f-body);color:var(--ink);outline:none;background:var(--white);transition:border-color .15s}
-.fld input:focus,.fld textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-b)}
-.fld textarea{resize:vertical;min-height:110px}
-/* Footer full-width fix */
-.tn-foot{padding-right:1.5rem !important}
+
+/* Coffee tab */
+.coffee-tab{
+  position:fixed;bottom:0;right:0;z-index:500;
+  background:linear-gradient(135deg,#FFDD00,#FF9500);color:#3D1C00;
+  font-family:var(--f-display);font-size:12px;font-weight:700;
+  padding:8px 16px 10px;border-radius:var(--r-lg) var(--r-lg) 0 0;
+  box-shadow:0 -4px 18px rgba(245,166,35,.35);cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;gap:6px;transform:translateY(2px);
+  border:1.5px solid rgba(255,255,255,.45);border-bottom:none;
+}
+.coffee-tab:hover{transform:translateY(-5px)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-container>*{animation:fadeUp .3s ease forwards}
+
+/* ── MOBILE ── */
+@media(max-width:820px){
+  #tn-nav .hamburger,#tn-nav .nav-toggle,#tn-nav .menu-toggle,
+  #tn-nav .nav-burger,#tn-nav .mobile-toggle,
+  #tn-nav [class*="hamburger"],#tn-nav [class*="menu-btn"]{display:flex!important}
+  #tn-nav .nav-links,#tn-nav .nav-menu,#tn-nav .nav-items{display:none!important}
+  #tn-nav .nav-links.open,#tn-nav .nav-menu.open,
+  #tn-nav .mobile-sidebar.open,#tn-nav .nav-sidebar.open{
+    display:flex!important;flex-direction:column!important;
+  }
+}
+@media(max-width:600px){
+  .page-container{padding:2rem 1rem}
+  .toc-links{flex-direction:column}
+  .cta-card{flex-direction:column;text-align:center}
+}
 </style>
 </head>
 <body>
+
+<!-- FIX: mobileOverlay — was missing from original -->
+<div style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99;display:none"
+     id="mobileOverlay"
+     onclick="TN&&TN.closeMobileSidebar&&TN.closeMobileSidebar()"></div>
+
+<!-- Nav injected by nav-footer.js -->
 <div id="tn-nav"></div>
 
+<!-- FIX: Fallback nav — shown if nav-footer.js fails -->
+<div id="tn-nav-fallback">
+  <nav class="fallback-nav">
+    <a href="/" class="fallback-nav-logo">🛠️ Tool<span>Nest</span></a>
+    <ul class="fallback-nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#tools">All Tools</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- Hero -->
 <div class="page-hero">
   <div class="page-hero-inner">
     <div style="font-size:3rem;margin-bottom:.75rem">📋</div>
@@ -60,19 +307,48 @@ button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
     <p>Effective date: April 16, 2026</p>
   </div>
 </div>
-<div class="page-container" style="padding-top:0">
 
-  <div class="card">
+<div class="page-container">
+
+  <!-- FIX: Breadcrumb — was missing -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-cur">Terms of Use</span>
+  </nav>
+
+  <!-- FIX: Quick-nav TOC — added for better UX on long legal pages -->
+  <div class="toc-card">
+    <div class="toc-title">Quick Navigation</div>
+    <div class="toc-links">
+      <a href="#s1" class="toc-link">1. Acceptance</a>
+      <a href="#s2" class="toc-link">2. Free Service</a>
+      <a href="#s3" class="toc-link">3. Acceptable Use</a>
+      <a href="#s4" class="toc-link">4. No Warranty</a>
+      <a href="#s5" class="toc-link">5. Intellectual Property</a>
+      <a href="#s6" class="toc-link">6. Liability</a>
+      <a href="#s7" class="toc-link">7. Privacy</a>
+      <a href="#s8" class="toc-link">8. Changes</a>
+      <a href="#s9" class="toc-link">9. Contact</a>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <span style="font-size:1.5rem;flex-shrink:0">⚖️</span>
+    <div><strong>Summary:</strong> ToolNest use karna free hai. Files kabhi server par nahi jaatein. Output aapka property hai. Critical documents ke liye hamesha verify karein.</div>
+  </div>
+
+  <div class="card" id="s1">
     <h2>1. Acceptance of Terms</h2>
     <p>ToolNest (toolnest.bhaihelp.in) use karke aap in terms se agree karte hain. Agar aap agree nahi karte to please site use mat karein.</p>
   </div>
 
-  <div class="card">
+  <div class="card" id="s2">
     <h2>2. Free Service</h2>
     <p>ToolNest completely free service hai. Hum kisi bhi time service discontinue, modify, ya pricing add karne ka right reserve karte hain — but we will always try to keep core tools free.</p>
   </div>
 
-  <div class="card">
+  <div class="card" id="s3">
     <h2>3. Acceptable Use</h2>
     <p>Aap ToolNest use kar sakte hain:</p>
     <ul>
@@ -88,7 +364,7 @@ button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
     </ul>
   </div>
 
-  <div class="card">
+  <div class="card" id="s4">
     <h2>4. No Warranty</h2>
     <p>ToolNest "as is" provide kiya jaata hai. Hum guarantee nahi dete ki:</p>
     <ul>
@@ -99,34 +375,106 @@ button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
     <p><strong>Important:</strong> Critical documents ke liye hamesha output verify karein aur backup rakhen.</p>
   </div>
 
-  <div class="card">
+  <div class="card" id="s5">
     <h2>5. Intellectual Property</h2>
     <p>ToolNest ka code, design aur content bhaihelp.in ka property hai. Tools ka output (generated PDFs, invoices, etc.) aapka property hai.</p>
   </div>
 
-  <div class="card">
+  <div class="card" id="s6">
     <h2>6. Limitation of Liability</h2>
     <p>ToolNest kisi bhi direct, indirect, incidental ya consequential damages ke liye liable nahi hai jo tools ke use ya misuse se arise ho.</p>
   </div>
 
-  <div class="card">
+  <div class="card" id="s7">
     <h2>7. Privacy</h2>
-    <p>Aapki privacy ke baare mein jaanne ke liye <a href="/privacy.html">Privacy Policy</a> padhen.</p>
+    <p>Aapki privacy ke baare mein jaanne ke liye <a href="/privacy.html">Privacy Policy</a> padhen. Files kabhi server par upload nahi hoti — sab kuch browser mein process hota hai.</p>
   </div>
 
-  <div class="card">
+  <div class="card" id="s8">
     <h2>8. Changes to Terms</h2>
-    <p>Hum in terms ko kisi bhi time update kar sakte hain. Continued use of the site = acceptance of new terms.</p>
+    <p>Hum in terms ko kisi bhi time update kar sakte hain. Continued use of the site = acceptance of new terms. Major changes ke liye hum website par notice denge.</p>
   </div>
 
-  <div class="card">
+  <div class="card" id="s9">
     <h2>9. Contact</h2>
-    <p>Terms se related questions: <a href="mailto:legal@bhaihelp.in">legal@bhaihelp.in</a></p>
+    <p>Terms se related questions ke liye: <a href="mailto:legal@bhaihelp.in">legal@bhaihelp.in</a></p>
+    <p style="margin-top:.5rem"><a href="/contact.html">Contact page</a> ke through bhi reach kar sakte hain.</p>
     <p style="margin-top:.5rem;font-size:12px;color:var(--ink3)">Governed by laws of India. Jurisdiction: India.</p>
   </div>
 
-</div>
+  <!-- CTA -->
+  <div class="cta-card">
+    <div class="cta-card-text">
+      <h3>25+ Free Tools Explore Karein</h3>
+      <p>PDF, images, QR codes, GST invoices — sab browser-based &amp; free 🇮🇳</p>
+    </div>
+    <button class="btn-gold" onclick="location.href='/'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+      Sabhi Tools Dekhein
+    </button>
+  </div>
+
+</div><!-- /page-container -->
+
+<!-- Footer injected by nav-footer.js -->
 <div id="tn-footer"></div>
+
+<!-- Coffee tab -->
+<button class="coffee-tab" onclick="window.open('https://buymeacoffee.com/toolnest','_blank')">
+  <span style="font-size:15px">☕</span>Buy me a Coffee
+</button>
+
+<!-- FIX: nav-footer.js LAST — correct order -->
 <script src="/nav-footer.js"></script>
+
+<script>
+'use strict';
+
+/* ── FIX: Fallback nav check ── */
+(function(){
+  var attempts=0;
+  var t=setInterval(function(){
+    attempts++;
+    var el=document.getElementById('tn-nav');
+    if(el&&el.children.length>0){clearInterval(t);return}
+    if(attempts>=15){
+      clearInterval(t);
+      var f=document.getElementById('tn-nav-fallback');
+      if(f)f.classList.add('show');
+    }
+  },100);
+})();
+
+/* ── FIX: Force nav desktop layout ── */
+function forceNavDesktopLayout(){
+  var navEl=document.getElementById('tn-nav');
+  if(!navEl)return;
+  var isDesktop=window.innerWidth>820;
+  var selectors=['.nav-links','.nav-menu','.nav-items','.nav__links','.nav__menu','ul.nav-links','ul.nav-menu'];
+  selectors.forEach(function(sel){
+    navEl.querySelectorAll(sel).forEach(function(el){
+      if(isDesktop){
+        el.style.display='flex';el.style.flexDirection='row';
+        el.style.alignItems='center';el.style.position='static';
+        el.style.background='transparent';el.style.boxShadow='none';
+        el.style.width='auto';el.style.height='auto';
+        el.style.overflow='visible';el.style.transform='none';
+        el.style.opacity='1';el.style.visibility='visible';
+      }
+    });
+  });
+  if(isDesktop){
+    ['.hamburger','.nav-toggle','.menu-toggle','.nav-burger','.mobile-toggle'].forEach(function(sel){
+      navEl.querySelectorAll(sel).forEach(function(el){el.style.display='none';});
+    });
+  }
+}
+document.addEventListener('DOMContentLoaded',function(){
+  forceNavDesktopLayout();
+  setTimeout(forceNavDesktopLayout,300);
+  setTimeout(forceNavDesktopLayout,800);
+});
+window.addEventListener('resize',forceNavDesktopLayout);
+</script>
 </body>
 </html>
