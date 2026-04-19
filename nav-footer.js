@@ -1,16 +1,24 @@
 /* ═══════════════════════════════════════════════════════════════
-   TOOLNEST — nav-footer.js v6.1
+   TOOLNEST — nav-footer.js v7.0
    Single source of truth. Ek baar edit karo, sab pages update.
 
    NAYA TOOL ADD KARNA: Sirf TN.tools array mein ek line add karo.
 
-   v6.1 FIXES:
-   - Calculator tools (EMI, Age, %, SIP) ab mobile dropdown mein
-   - Base64 Encoder add kiya
-   - Mega dropdown sabhi 6 categories dikhata hai (5 tha pehle)
-   - Mobile hamburger conflict fix — tool pages vs home/blog alag
-   - Duplicate cat-calc CSS remove kiya
+   v7.0 NEW FEATURES:
+   ✅ GA4 Analytics — apna G-XXXXXXXXXX ID set karo (line ~20)
+   ✅ Auto meta injection — title/desc tool ke naam se auto-update
+   ✅ TN.track() — tool use events GA4 mein send karo (1 line)
+   ✅ TN.showError() / TN.showSuccess() — global error/success UI
+   ✅ TN.saveState() / TN.loadState() — tool inputs localStorage mein save
+   ✅ TN.notify() — toast notification (top-right, auto-dismiss)
+   ✅ sbList + tn-sidebar-list dual support (v6.1 inherited)
    ═══════════════════════════════════════════════════════════════ */
+
+/* ═════════════════════════════════════════════════════════════════════
+   ★ GA4 SETUP — Sirf yeh ek line change karo apna Measurement ID daalne ke liye
+   analytics.google.com → Admin → Data Streams → Web → Measurement ID
+   ═════════════════════════════════════════════════════════════════════ */
+const TN_GA_ID = 'G-XXXXXXXXXX'; // ← APNA ID YAHAN DAALO
 
 const TN = {
 
@@ -437,14 +445,153 @@ const TN = {
       : '<div style="text-align:center;padding:1rem;color:#8A8BA5;font-size:13px">Koi tool nahi mila</div>';
   },
 
+  /* ═══════════════════════════════════════
+     GA4 ANALYTICS
+     TN.track('tool_used', {name:'age_calc'})
+     ═══════════════════════════════════════ */
+  _ga4Loaded: false,
+  _loadGA4() {
+    if (TN._ga4Loaded || TN_GA_ID === 'G-XXXXXXXXXX') return;
+    TN._ga4Loaded = true;
+    const s1 = document.createElement('script');
+    s1.async = true;
+    s1.src = 'https://www.googletagmanager.com/gtag/js?id=' + TN_GA_ID;
+    document.head.appendChild(s1);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', TN_GA_ID, { send_page_view: true });
+  },
+  track(eventName, params) {
+    if (typeof window.gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+    /* Also store locally for analytics dashboard */
+    try {
+      const key = 'tn_events';
+      const events = JSON.parse(localStorage.getItem(key) || '[]');
+      events.push({ e: eventName, p: params, t: Date.now() });
+      /* Keep last 500 events */
+      if (events.length > 500) events.splice(0, events.length - 500);
+      localStorage.setItem(key, JSON.stringify(events));
+    } catch(e) {}
+  },
+
+  /* ═══════════════════════════════════════════════════
+     META INJECTION — tool ka title/desc auto update
+     Works if TN.tools entry has metaTitle / metaDesc
+     ═══════════════════════════════════════════════════ */
+  _injectMeta() {
+    const cur = location.pathname;
+    const tool = TN.tools.find(t => cur.endsWith(t.url.split('/').pop()));
+    if (!tool) return;
+    if (tool.metaTitle) document.title = tool.metaTitle;
+    const md = document.querySelector('meta[name="description"]');
+    if (md && tool.metaDesc) md.setAttribute('content', tool.metaDesc);
+    const ogT = document.querySelector('meta[property="og:title"]');
+    if (ogT && tool.metaTitle) ogT.setAttribute('content', tool.metaTitle);
+    const ogD = document.querySelector('meta[property="og:description"]');
+    if (ogD && tool.metaDesc) ogD.setAttribute('content', tool.metaDesc);
+  },
+
+  /* ═══════════════════════════════════════════════
+     GLOBAL ERROR / SUCCESS UI
+     TN.showError('File too large', 'errorBox')
+     TN.showSuccess('Done!', 'successBox', 4000)
+     ═══════════════════════════════════════════════ */
+  showError(message, containerIdOrEl, autoDismissMs) {
+    const el = typeof containerIdOrEl === 'string'
+      ? document.getElementById(containerIdOrEl) : containerIdOrEl;
+    if (!el) return;
+    el.innerHTML = `<span>⚠️ ${message}</span>`;
+    el.style.cssText = 'display:block;background:var(--red-l,#FFF0F0);border:1.5px solid rgba(229,62,62,.2);border-radius:12px;padding:.85rem 1.1rem;font-size:13px;color:#C03030;margin-top:.65rem';
+    if (autoDismissMs) setTimeout(() => { el.style.display = 'none'; }, autoDismissMs);
+  },
+  showSuccess(message, containerIdOrEl, autoDismissMs) {
+    const el = typeof containerIdOrEl === 'string'
+      ? document.getElementById(containerIdOrEl) : containerIdOrEl;
+    if (!el) return;
+    el.innerHTML = `<span>✅ ${message}</span>`;
+    el.style.cssText = 'display:block;background:var(--green-l,#E6FAF4);border:1.5px solid rgba(0,179,126,.2);border-radius:12px;padding:.85rem 1.1rem;font-size:13px;color:#087F5B;margin-top:.65rem';
+    if (autoDismissMs) setTimeout(() => { el.style.display = 'none'; }, autoDismissMs);
+  },
+  hideMessage(containerIdOrEl) {
+    const el = typeof containerIdOrEl === 'string'
+      ? document.getElementById(containerIdOrEl) : containerIdOrEl;
+    if (el) el.style.display = 'none';
+  },
+
+  /* ═══════════════════════════════════════════════════════════
+     TOAST NOTIFICATIONS
+     TN.notify('PDF compressed! ✅', 'success')
+     TN.notify('Error occurred', 'error', 5000)
+     ═══════════════════════════════════════════════════════════ */
+  notify(message, type, durationMs) {
+    type = type || 'info';
+    durationMs = durationMs || 3500;
+    let wrap = document.getElementById('tn-toast-wrap');
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.id = 'tn-toast-wrap';
+      wrap.style.cssText = 'position:fixed;top:80px;right:16px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none';
+      document.body.appendChild(wrap);
+    }
+    const colors = {
+      success: 'background:#E6FAF4;border-color:rgba(0,179,126,.3);color:#087F5B',
+      error:   'background:#FFF0F0;border-color:rgba(229,62,62,.2);color:#C03030',
+      info:    'background:#EEF3FF;border-color:rgba(30,79,203,.2);color:#1E4FCB',
+      warn:    'background:#FFF8E6;border-color:rgba(232,139,0,.3);color:#92600A',
+    };
+    const icons = { success:'✅', error:'⚠️', info:'ℹ️', warn:'⚡' };
+    const toast = document.createElement('div');
+    toast.style.cssText = `${colors[type]||colors.info};border:1.5px solid;border-radius:12px;padding:10px 14px;font-size:13px;font-weight:600;font-family:var(--f-body,'Plus Jakarta Sans',sans-serif);box-shadow:0 4px 16px rgba(13,13,20,.12);pointer-events:auto;max-width:280px;transition:all .3s`;
+    toast.textContent = (icons[type]||'ℹ️') + ' ' + message;
+    wrap.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(20px)';
+      setTimeout(() => wrap.contains(toast) && wrap.removeChild(toast), 300);
+    }, durationMs);
+  },
+
+  /* ═══════════════════════════════════════════════════════
+     LOCAL STORAGE STATE — Tool inputs save/restore
+     TN.saveState('sip_calc', { amount:5000, rate:12 })
+     const s = TN.loadState('sip_calc')
+     ═══════════════════════════════════════════════════════ */
+  saveState(toolKey, data) {
+    try {
+      localStorage.setItem('tn_state_' + toolKey, JSON.stringify({ d: data, ts: Date.now() }));
+    } catch(e) {}
+  },
+  loadState(toolKey, maxAgeMs) {
+    try {
+      const raw = localStorage.getItem('tn_state_' + toolKey);
+      if (!raw) return null;
+      const obj = JSON.parse(raw);
+      if (maxAgeMs && (Date.now() - obj.ts) > maxAgeMs) return null;
+      return obj.d;
+    } catch(e) { return null; }
+  },
+  clearState(toolKey) {
+    try { localStorage.removeItem('tn_state_' + toolKey); } catch(e) {}
+  },
+
   /* ═══════
      INIT
      ═══════ */
   init() {
     TN._injectNavCSS();
+    TN._loadGA4();
     TN.injectNav();
     TN.injectSidebar();
     TN.injectFooter();
+    TN._injectMeta();
+    /* Track page view per tool */
+    const cur = location.pathname;
+    const tool = TN.tools.find(t => cur.endsWith(t.url.split('/').pop()));
+    if (tool) TN.track('page_view', { tool_name: tool.name, tool_cat: tool.cat });
+    /* Ensure go() globally available */
     if (typeof window.go !== 'function') {
       window.go = function(url) { location.href = url; };
     }
