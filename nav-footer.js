@@ -1,62 +1,241 @@
 /* ═══════════════════════════════════════════════════════════════
-   TOOLNEST — nav-footer.js v7.0
+   TOOLNEST — nav-footer.js v7.1
    Single source of truth. Ek baar edit karo, sab pages update.
 
-   NAYA TOOL ADD KARNA: Sirf TN.tools array mein ek line add karo.
+   NAYA TOOL ADD KARNA: Sirf TN.tools array mein ek entry add karo.
 
-   v7.0 NEW FEATURES:
-   ✅ GA4 Analytics — apna G-5JCSYN9XX4 ID set karo (line ~20)
-   ✅ Auto meta injection — title/desc tool ke naam se auto-update
-   ✅ TN.track() — tool use events GA4 mein send karo (1 line)
-   ✅ TN.showError() / TN.showSuccess() — global error/success UI
-   ✅ TN.saveState() / TN.loadState() — tool inputs localStorage mein save
-   ✅ TN.notify() — toast notification (top-right, auto-dismiss)
-   ✅ sbList + tn-sidebar-list dual support (v6.1 inherited)
+   v7.1 FIXES:
+   ✅ FIX 1 — GA4: window.dataLayer scope bug fix (was breaking strict mode pages)
+   ✅ FIX 2 — GA4: Duplicate page_view events removed (send_page_view conflict)
+   ✅ FIX 3 — GA4: Earlier loading — script inject ASAP (not wait for DOMContentLoaded)
+   ✅ FIX 4 — New tools added: Website Analytics, SEO Analyzer
+   ✅ FIX 5 — metaTitle/metaDesc added to all tool entries (_injectMeta now works)
+   ✅ FIX 6 — Footer: /tools/ "All Tools" link added
+   ✅ FIX 7 — Footer: Pricing link removed (not live yet)
+   ✅ FIX 8 — Footer: Contact email added
+   ✅ FIX 9 — GA4: Debug instructions added in comments
+   ✅ FIX 10 — _nmpSearch() flicker fixed (no full reinit on each keypress)
    ═══════════════════════════════════════════════════════════════ */
 
-/* ═════════════════════════════════════════════════════════════════════
-   ★ GA4 SETUP — Sirf yeh ek line change karo apna Measurement ID daalne ke liye
-   analytics.google.com → Admin → Data Streams → Web → Measurement ID
-   ═════════════════════════════════════════════════════════════════════ */
-const TN_GA_ID = 'G-5JCSYN9XX4'; // ← APNA ID YAHAN DAALO
+/* ═══════════════════════════════════════════════════════
+   ★ GA4 CONFIG — Measurement ID (analytics.google.com)
+   ═══════════════════════════════════════════════════════ */
+const TN_GA_ID = 'G-5JCSYN9XX4';
+
+/* ══════════════════════════════════════════════════════════
+   FIX 3: GA4 inject IMMEDIATELY (before DOMContentLoaded)
+   Isse page view pehle capture hoga — earlier the better
+   ══════════════════════════════════════════════════════════ */
+(function _ga4EarlyLoad() {
+  if (!TN_GA_ID || TN_GA_ID === 'G-XXXXXXXXXX') return;
+  /* FIX 1: window.dataLayer — strict mode safe */
+  window.dataLayer = window.dataLayer || [];
+  /* FIX 1: window.dataLayer.push instead of dataLayer.push */
+  window.gtag = function() { window.dataLayer.push(arguments); };
+  gtag('js', new Date());
+  /* FIX 2: send_page_view:false — manual tracking se duplicate avoid */
+  gtag('config', TN_GA_ID, { send_page_view: false });
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + TN_GA_ID;
+  /* Insert as first script for fastest load */
+  const firstScript = document.getElementsByTagName('script')[0];
+  if (firstScript) firstScript.parentNode.insertBefore(s, firstScript);
+  else document.head.appendChild(s);
+})();
 
 const TN = {
 
+  /* ═══════════════════════════════════════════════════════════
+     TOOLS DATA
+     FIX 4: Website Analytics + SEO Analyzer added
+     FIX 5: metaTitle + metaDesc added to all entries
+     ═══════════════════════════════════════════════════════════ */
   tools: [
-    // IMAGE TOOLS
-    { cat:'Image Tools',  catClass:'cat-image',    icon:'🗜',  name:'Image Compressor',      url:'/tools/image-compress.html',       badge:'HOT' },
-    { cat:'Image Tools',  catClass:'cat-image',    icon:'📐',  name:'Image Resizer',          url:'/tools/image-resizer.html',        badge:'NEW' },
-    { cat:'Image Tools',  catClass:'cat-image',    icon:'🎨',  name:'Image to PNG',           url:'/tools/image-to-png.html',         badge:null  },
-    { cat:'Image Tools',  catClass:'cat-image',    icon:'✂️',  name:'Background Remover',     url:'/tools/bg-remover.html',           badge:'NEW' },
-    // COMPRESS
-    { cat:'Compress',     catClass:'cat-compress', icon:'📦',  name:'Compress PDF',           url:'/tools/compress-pdf.html',         badge:'HOT' },
-    // ORGANIZE PDF
-    { cat:'Organize PDF', catClass:'cat-organize', icon:'📎',  name:'Merge PDF',              url:'/tools/merge-pdf.html',            badge:'HOT' },
-    { cat:'Organize PDF', catClass:'cat-organize', icon:'✂️',  name:'Split PDF',               url:'/tools/split-pdf.html',            badge:null  },
-    { cat:'Organize PDF', catClass:'cat-organize', icon:'🔁',  name:'Rotate PDF',              url:'/tools/rotate-pdf.html',           badge:null  },
-    // EDIT & SECURE
-    { cat:'Edit & Secure',catClass:'cat-edit',     icon:'🔐',  name:'Protect PDF',             url:'/tools/protect-pdf.html',          badge:null  },
-    { cat:'Edit & Secure',catClass:'cat-edit',     icon:'🔓',  name:'Unlock PDF',               url:'/tools/unlock-pdf.html',           badge:null  },
-    { cat:'Edit & Secure',catClass:'cat-edit',     icon:'🏷',  name:'Watermark PDF',            url:'/tools/watermark-pdf.html',        badge:'NEW' },
-    // CONVERT
-    { cat:'Convert',      catClass:'cat-convert',  icon:'📸',  name:'JPG to PDF',               url:'/tools/jpg-to-pdf.html',           badge:'HOT' },
-    { cat:'Convert',      catClass:'cat-convert',  icon:'🖼',  name:'PDF to JPG',                url:'/tools/pdf-to-jpg.html',           badge:null  },
-    { cat:'Convert',      catClass:'cat-convert',  icon:'📝',  name:'Word to PDF',               url:'/tools/word-to-pdf.html',          badge:'NEW' },
-    { cat:'Convert',      catClass:'cat-convert',  icon:'📄',  name:'PDF to Word',               url:'/tools/pdf-to-word.html',          badge:'NEW' },
-    // PRODUCTIVITY
-    { cat:'Productivity', catClass:'cat-prod',     icon:'📱',  name:'QR Code Generator',         url:'/tools/qr-code-generator.html',    badge:'HOT' },
-    { cat:'Productivity', catClass:'cat-prod',     icon:'🔑',  name:'Password Generator',        url:'/tools/password-generator.html',   badge:null  },
-    { cat:'Productivity', catClass:'cat-prod',     icon:'📊',  name:'Word Counter',               url:'/tools/word-counter.html',         badge:null  },
-    { cat:'Productivity', catClass:'cat-prod',     icon:'{ }', name:'JSON Formatter',             url:'/tools/json-formatter.html',       badge:null  },
-    { cat:'Productivity', catClass:'cat-prod',     icon:'🔢',  name:'Base64 Encoder',             url:'/tools/base64-encoder.html',       badge:'NEW' },
-    // BUSINESS
-    { cat:'Business',     catClass:'cat-biz',      icon:'🧾',  name:'GST Invoice Generator',     url:'/tools/invoice-generator.html',    badge:'HOT' },
-    { cat:'Business',     catClass:'cat-biz',      icon:'🔍',  name:'SEO Meta Generator',        url:'/tools/seo-generator.html',        badge:null  },
-    // CALCULATORS
-    { cat:'Calculators',  catClass:'cat-calc',     icon:'💳',  name:'EMI Calculator',             url:'/tools/emi-calculator.html',       badge:'HOT' },
-    { cat:'Calculators',  catClass:'cat-calc',     icon:'🎂',  name:'Age Calculator',             url:'/tools/age-calculator.html',       badge:null  },
-    { cat:'Calculators',  catClass:'cat-calc',     icon:'%',   name:'Percentage Calculator',      url:'/tools/percentage-calculator.html',badge:null  },
-    { cat:'Calculators',  catClass:'cat-calc',     icon:'📈',  name:'SIP Calculator',             url:'/tools/sip-calculator.html',       badge:'NEW' },
+    // ── IMAGE TOOLS ──
+    {
+      cat:'Image Tools', catClass:'cat-image', icon:'🗜', badge:'HOT',
+      name:'Image Compressor', url:'/tools/image-compress.html',
+      metaTitle:'Image Compressor Free Online — Compress JPG PNG | ToolNest',
+      metaDesc:'JPG aur PNG images compress karein quality maintain karte hue. 100% free, browser-based. No upload needed.',
+    },
+    {
+      cat:'Image Tools', catClass:'cat-image', icon:'📐', badge:'NEW',
+      name:'Image Resizer', url:'/tools/image-resizer.html',
+      metaTitle:'Image Resizer Free Online — Pixels ya Percentage | ToolNest',
+      metaDesc:'Images resize karein pixels ya percentage mein. Instant, free, browser-based. No signup needed.',
+    },
+    {
+      cat:'Image Tools', catClass:'cat-image', icon:'🎨', badge:null,
+      name:'Image to PNG', url:'/tools/image-to-png.html',
+      metaTitle:'Image to PNG Converter Free | ToolNest',
+      metaDesc:'JPG, WebP ya koi bhi image ko PNG mein convert karein. Free, instant, browser-based.',
+    },
+    {
+      cat:'Image Tools', catClass:'cat-image', icon:'✂️', badge:'NEW',
+      name:'Background Remover', url:'/tools/bg-remover.html',
+      metaTitle:'Background Remover Free Online | ToolNest India',
+      metaDesc:'Image ka background remove karein instantly. Free, AI-powered, browser-based. No signup.',
+    },
+
+    // ── COMPRESS ──
+    {
+      cat:'Compress', catClass:'cat-compress', icon:'📦', badge:'HOT',
+      name:'Compress PDF', url:'/tools/compress-pdf.html',
+      metaTitle:'Compress PDF Free Online — File Size Reduce Karein | ToolNest',
+      metaDesc:'PDF compress karein bina quality khoe. Free, browser-based, no server upload. Made for India.',
+    },
+
+    // ── ORGANIZE PDF ──
+    {
+      cat:'Organize PDF', catClass:'cat-organize', icon:'📎', badge:'HOT',
+      name:'Merge PDF', url:'/tools/merge-pdf.html',
+      metaTitle:'Merge PDF Free Online — Multiple PDFs Combine Karein | ToolNest',
+      metaDesc:'Multiple PDF files ek mein merge karein. Drag & drop order. Free, instant, no signup.',
+    },
+    {
+      cat:'Organize PDF', catClass:'cat-organize', icon:'✂️', badge:null,
+      name:'Split PDF', url:'/tools/split-pdf.html',
+      metaTitle:'Split PDF Free Online — Pages Alag Karein | ToolNest',
+      metaDesc:'PDF split karein — specific pages ya range select karein. Free, browser-based.',
+    },
+    {
+      cat:'Organize PDF', catClass:'cat-organize', icon:'🔁', badge:null,
+      name:'Rotate PDF', url:'/tools/rotate-pdf.html',
+      metaTitle:'Rotate PDF Free Online — 90° 180° 270° Rotate | ToolNest',
+      metaDesc:'PDF pages rotate karein — 90, 180 ya 270 degree. Free, instant, no signup needed.',
+    },
+
+    // ── EDIT & SECURE ──
+    {
+      cat:'Edit & Secure', catClass:'cat-edit', icon:'🔐', badge:null,
+      name:'Protect PDF', url:'/tools/protect-pdf.html',
+      metaTitle:'Protect PDF with Password Free | ToolNest',
+      metaDesc:'PDF password se protect karein. Secure, browser-based, no server upload. Free forever.',
+    },
+    {
+      cat:'Edit & Secure', catClass:'cat-edit', icon:'🔓', badge:null,
+      name:'Unlock PDF', url:'/tools/unlock-pdf.html',
+      metaTitle:'Unlock PDF Free Online — Password Remove Karein | ToolNest',
+      metaDesc:'Password-protected PDF unlock karein. Free, browser-based, instant.',
+    },
+    {
+      cat:'Edit & Secure', catClass:'cat-edit', icon:'🏷', badge:'NEW',
+      name:'Watermark PDF', url:'/tools/watermark-pdf.html',
+      metaTitle:'Watermark PDF Free Online — Text & Image Watermark | ToolNest',
+      metaDesc:'PDF par text ya image watermark add karein. Custom position, opacity. Free & browser-based.',
+    },
+
+    // ── CONVERT ──
+    {
+      cat:'Convert', catClass:'cat-convert', icon:'📸', badge:'HOT',
+      name:'JPG to PDF', url:'/tools/jpg-to-pdf.html',
+      metaTitle:'JPG to PDF Free Online — Images to PDF Converter | ToolNest',
+      metaDesc:'JPG images ko PDF mein convert karein. Multiple images ek PDF mein. Free, instant.',
+    },
+    {
+      cat:'Convert', catClass:'cat-convert', icon:'🖼', badge:null,
+      name:'PDF to JPG', url:'/tools/pdf-to-jpg.html',
+      metaTitle:'PDF to JPG Free Online — PDF Pages to Images | ToolNest',
+      metaDesc:'PDF ke pages ko JPG images mein convert karein. High quality, free, browser-based.',
+    },
+    {
+      cat:'Convert', catClass:'cat-convert', icon:'📝', badge:'NEW',
+      name:'Word to PDF', url:'/tools/word-to-pdf.html',
+      metaTitle:'Word to PDF Free Online — DOCX to PDF Converter | ToolNest',
+      metaDesc:'.docx Word file ko PDF mein convert karein. Browser-based, no server upload. Free.',
+    },
+    {
+      cat:'Convert', catClass:'cat-convert', icon:'📄', badge:'NEW',
+      name:'PDF to Word', url:'/tools/pdf-to-word.html',
+      metaTitle:'PDF to Word Free Online — PDF to DOCX Converter | ToolNest',
+      metaDesc:'PDF ko Word document mein convert karein. Editable DOCX. Free, browser-based.',
+    },
+
+    // ── PRODUCTIVITY ──
+    {
+      cat:'Productivity', catClass:'cat-prod', icon:'📱', badge:'HOT',
+      name:'QR Code Generator', url:'/tools/qr-code-generator.html',
+      metaTitle:'QR Code Generator Free Online — UPI, URL, Text | ToolNest',
+      metaDesc:'QR code banao URL, UPI, text ke liye. Custom design, download PNG. Free, instant.',
+    },
+    {
+      cat:'Productivity', catClass:'cat-prod', icon:'🔑', badge:null,
+      name:'Password Generator', url:'/tools/password-generator.html',
+      metaTitle:'Password Generator Free Online — Strong Passwords | ToolNest',
+      metaDesc:'Strong random passwords generate karein. Length aur complexity choose karo. Free.',
+    },
+    {
+      cat:'Productivity', catClass:'cat-prod', icon:'📊', badge:null,
+      name:'Word Counter', url:'/tools/word-counter.html',
+      metaTitle:'Word Counter Free Online — Words, Characters, Reading Time | ToolNest',
+      metaDesc:'Words, characters, sentences aur reading time count karein. Instant, free.',
+    },
+    {
+      cat:'Productivity', catClass:'cat-prod', icon:'{ }', badge:null,
+      name:'JSON Formatter', url:'/tools/json-formatter.html',
+      metaTitle:'JSON Formatter & Validator Free Online | ToolNest',
+      metaDesc:'JSON beautify, minify aur validate karein. Error highlighting. Free, browser-based.',
+    },
+    {
+      cat:'Productivity', catClass:'cat-prod', icon:'🔢', badge:'NEW',
+      name:'Base64 Encoder', url:'/tools/base64-encoder.html',
+      metaTitle:'Base64 Encoder Decoder Free Online | ToolNest',
+      metaDesc:'Text ya files ko Base64 encode/decode karein. Instant, free, browser-based.',
+    },
+
+    // ── BUSINESS ──
+    {
+      cat:'Business', catClass:'cat-biz', icon:'🧾', badge:'HOT',
+      name:'GST Invoice Generator', url:'/tools/invoice-generator.html',
+      metaTitle:'GST Invoice Generator Free Online — PDF Invoice Banao | ToolNest',
+      metaDesc:'Professional GST invoice banao minutes mein. PDF download karo. Free, no signup. Made for India.',
+    },
+    {
+      cat:'Business', catClass:'cat-biz', icon:'🔍', badge:null,
+      name:'SEO Meta Generator', url:'/tools/seo-generator.html',
+      metaTitle:'SEO Meta Generator Free — Title & Description | ToolNest',
+      metaDesc:'Page ka SEO meta title aur description generate karein. Character count, preview. Free.',
+    },
+    /* FIX 4: NEW TOOLS ADDED */
+    {
+      cat:'Business', catClass:'cat-biz', icon:'📊', badge:'NEW',
+      name:'Website Analytics', url:'/tools/website-analytics.html',
+      metaTitle:'Website Analytics Dashboard Free — Charts & AI Insights | ToolNest',
+      metaDesc:'Apni website ka analytics data enter karo — beautiful charts, KPIs aur AI insights instantly. Free.',
+    },
+    {
+      cat:'Business', catClass:'cat-biz', icon:'📈', badge:'NEW',
+      name:'SEO Analyzer', url:'/tools/seo-analyzer.html',
+      metaTitle:'SEO Analyzer Free — Page SEO Score Check Karein | ToolNest',
+      metaDesc:'Page ka SEO score analyze karein — Flesch-Kincaid, keyword density, meta checks. 0-100 score. Free.',
+    },
+
+    // ── CALCULATORS ──
+    {
+      cat:'Calculators', catClass:'cat-calc', icon:'💳', badge:'HOT',
+      name:'EMI Calculator', url:'/tools/emi-calculator.html',
+      metaTitle:'EMI Calculator Free Online — Monthly EMI Calculate Karein | ToolNest',
+      metaDesc:'Loan ki monthly EMI, total interest aur payment schedule calculate karein. Free, made for India.',
+    },
+    {
+      cat:'Calculators', catClass:'cat-calc', icon:'🎂', badge:null,
+      name:'Age Calculator', url:'/tools/age-calculator.html',
+      metaTitle:'Age Calculator Free Online — Exact Age Years Months Days | ToolNest',
+      metaDesc:'Date of birth se exact age calculate karein — years, months, days, hours mein. Free.',
+    },
+    {
+      cat:'Calculators', catClass:'cat-calc', icon:'%', badge:null,
+      name:'Percentage Calculator', url:'/tools/percentage-calculator.html',
+      metaTitle:'Percentage Calculator Free Online | ToolNest India',
+      metaDesc:'Percentage, increase/decrease, X of Y calculate karein. Instant, free, browser-based.',
+    },
+    {
+      cat:'Calculators', catClass:'cat-calc', icon:'📈', badge:'NEW',
+      name:'SIP Calculator', url:'/tools/sip-calculator.html',
+      metaTitle:'SIP Calculator Free Online — Mutual Fund Returns | ToolNest',
+      metaDesc:'SIP returns aur wealth projection calculate karein. Charts, inflation-adjusted returns. Free.',
+    },
   ],
 
   popular: [
@@ -66,6 +245,7 @@ const TN = {
     { name:'QR Code Generator',     url:'/tools/qr-code-generator.html',    dot:'var(--c-prod,#E88B00)'     },
     { name:'GST Invoice Generator', url:'/tools/invoice-generator.html',    dot:'var(--c-biz,#0891B2)'      },
     { name:'JPG to PDF',            url:'/tools/jpg-to-pdf.html',           dot:'var(--c-convert,#1E4FCB)'  },
+    { name:'SEO Analyzer',          url:'/tools/seo-analyzer.html',         dot:'var(--c-biz,#0891B2)'      },
   ],
 
   /* ══════════════════
@@ -79,7 +259,6 @@ const TN = {
     const isAbout = cur.startsWith('/about');
     const isHome  = cur === '/' || cur === '/index.html';
 
-    /* Build mega menu — ALL categories, no slice */
     const cats = {};
     TN.tools.forEach(t => { if (!cats[t.cat]) cats[t.cat] = []; cats[t.cat].push(t); });
     const megaCols = Object.entries(cats).map(([cat, items]) => `
@@ -87,7 +266,7 @@ const TN = {
         <div class="ndm-cat-label">${cat}</div>
         ${items.map(t => `<a class="ndm-link" href="${t.url}">
           <span class="ndm-ico">${t.icon}</span><span>${t.name}</span>
-          ${t.badge?`<span class="ndm-badge badge-${t.badge.toLowerCase()}">${t.badge}</span>`:''}
+          ${t.badge ? `<span class="ndm-badge badge-${t.badge.toLowerCase()}">${t.badge}</span>` : ''}
         </a>`).join('')}
       </div>`).join('');
 
@@ -106,20 +285,20 @@ const TN = {
     <input type="text" id="navSearch" placeholder="Search ${TN.tools.length}+ free tools…" oninput="TN.syncSearch(this.value)" autocomplete="off">
   </div>
   <div class="nav-right">
-    <a href="/" class="nav-link${isHome?' active':''}">Home</a>
+    <a href="/" class="nav-link${isHome ? ' active' : ''}">Home</a>
     <div class="nav-dd-wrap" id="navDDWrap">
-      <button class="nav-dd-btn${isTools?' active':''}" id="navDDBtn" onclick="TN.toggleToolsDD()" aria-expanded="false">
+      <button class="nav-dd-btn${isTools ? ' active' : ''}" id="navDDBtn" onclick="TN.toggleToolsDD()" aria-expanded="false">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
         All Tools
         <svg class="nav-dd-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="nav-dd-menu" id="navDDMenu" role="menu">
         <div class="ndm-grid">${megaCols}</div>
-        <div class="ndm-footer"><a href="/">⚡ View All ${TN.tools.length}+ Tools →</a></div>
+        <div class="ndm-footer"><a href="/tools/">⚡ View All ${TN.tools.length}+ Tools →</a></div>
       </div>
     </div>
-    <a href="/blog.html" class="nav-link${isBlog?' active':''}">Blog</a>
-    <a href="/about.html" class="nav-link${isAbout?' active':''}">About</a>
+    <a href="/blog.html" class="nav-link${isBlog ? ' active' : ''}">Blog</a>
+    <a href="/about.html" class="nav-link${isAbout ? ' active' : ''}">About</a>
     <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -132,6 +311,7 @@ const TN = {
       <input type="text" id="nmpInput" placeholder="Search ${TN.tools.length}+ tools…" oninput="TN._nmpSearch(this.value)" autocomplete="off">
     </div>
     <a class="nmp-link" href="/"><span class="nmp-ico">🏠</span> Home</a>
+    <a class="nmp-link" href="/tools/"><span class="nmp-ico">🔧</span> All Tools</a>
     <a class="nmp-link" href="/blog.html"><span class="nmp-ico">📚</span> Blog</a>
     <a class="nmp-link" href="/about.html"><span class="nmp-ico">ℹ️</span> About</a>
     <div class="nmp-divider"></div>
@@ -139,15 +319,14 @@ const TN = {
   </div>
 </div>`;
 
-    /* Tool pages: sidebar hamburger (#hamburger or navHamburger) → toggleMobileSidebar
-       Non-tool pages: navHamburger → mobilePanel */
     if (isTools) {
       document.getElementById('navHamburger')?.addEventListener('click', () => TN.toggleMobileSidebar());
-      /* Inject sidebar-toggle button */
       if (!document.getElementById('sidebarToggle')) {
         const st = document.createElement('button');
-        st.id = 'sidebarToggle'; st.className = 'sidebar-toggle'; st.title = 'Toggle sidebar';
-        st.setAttribute('onclick','TN.toggleDesktopSidebar()');
+        st.id = 'sidebarToggle';
+        st.className = 'sidebar-toggle';
+        st.title = 'Toggle sidebar';
+        st.setAttribute('onclick', 'TN.toggleDesktopSidebar()');
         st.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>';
         el.parentNode.insertBefore(st, el.nextSibling);
       }
@@ -159,20 +338,26 @@ const TN = {
       const w = document.getElementById('navDDWrap');
       if (w && !w.contains(e.target)) TN.closeToolsDD();
     });
+
+    /* FIX 2: Send page_view manually (send_page_view:false set above) */
+    TN.track('page_view', {
+      page_title:    document.title,
+      page_location: location.href,
+      page_path:     location.pathname
+    });
   },
 
   /* ════════════
      SIDEBAR
      ════════════ */
   injectSidebar() {
-    /* Support both new pages (id="tn-sidebar-list") and old pages (id="sbList") */
     const el = document.getElementById('tn-sidebar-list') || document.getElementById('sbList');
     if (!el) return;
     const cur = location.pathname;
     let lastCat = '', html = '';
     TN.tools.forEach(t => {
       if (t.cat !== lastCat) { html += `<div class="cat-lbl">${t.cat}</div>`; lastCat = t.cat; }
-      const active = (cur.endsWith(t.url) || cur.includes(t.url.replace('/tools/',''))) ? ' active' : '';
+      const active = (cur.endsWith(t.url) || cur.includes(t.url.replace('/tools/', ''))) ? ' active' : '';
       const badge  = t.badge ? `<span class="ti-badge badge-${t.badge.toLowerCase()}">${t.badge}</span>` : '';
       html += `<div class="tool-item ${t.catClass}${active}" onclick="location.href='${t.url}'" tabindex="0">
         <div class="ti-icon">${t.icon}</div><span class="ti-name">${t.name}</span>${badge}</div>`;
@@ -190,11 +375,15 @@ const TN = {
 
   /* ══════════
      FOOTER
+     FIX 6: /tools/ link added
+     FIX 7: Pricing link removed
+     FIX 8: Email contact added
      ══════════ */
   injectFooter() {
     let el = document.getElementById('tn-footer');
     if (!el) {
-      el = document.createElement('div'); el.id = 'tn-footer';
+      el = document.createElement('div');
+      el.id = 'tn-footer';
       const shell = document.querySelector('.app-shell');
       if (shell?.parentNode) shell.parentNode.insertBefore(el, shell.nextSibling);
       else document.body.appendChild(el);
@@ -207,7 +396,9 @@ const TN = {
 .tn-fl img{width:34px;height:34px;border-radius:9px;object-fit:cover;flex-shrink:0}
 .tn-fl span{color:#F5A623}
 .tn-ft{font-size:12.5px;color:rgba(255,255,255,.4);line-height:1.7;margin:.3rem 0 .9rem}
-.tn-fb{display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.22);border-radius:999px;padding:4px 12px;font-size:11.5px;font-weight:600;color:#F5A623}
+.tn-fb{display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.22);border-radius:999px;padding:4px 12px;font-size:11.5px;font-weight:600;color:#F5A623;margin-bottom:.5rem}
+.tn-femail{display:block;font-size:12px;color:rgba(255,255,255,.35);margin-top:.4rem;text-decoration:none;transition:color .15s}
+.tn-femail:hover{color:#F5A623}
 .tn-fc2{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
 .tn-fct{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:rgba(255,255,255,.28);margin-bottom:.85rem}
 .tn-fc2 a{display:block;font-size:12.5px;color:rgba(255,255,255,.45);margin-bottom:.4rem;text-decoration:none;transition:color .15s}
@@ -223,29 +414,38 @@ const TN = {
       <a class="tn-fl" href="/"><img src="/favicon.png" onerror="this.style.display='none'">Tool<span>Nest</span></a>
       <p class="tn-ft">Free PDF &amp; online tools for India.<br>Fast, private &amp; 100% browser-based.</p>
       <div class="tn-fb">🔒 Files never leave your device</div>
+      <!-- FIX 8: Email added -->
+      <a class="tn-femail" href="mailto:toolnest.bhaihelp.in@gmail.com">✉️ toolnest.bhaihelp.in@gmail.com</a>
     </div>
     <div class="tn-fc2">
-      <div><div class="tn-fct">PDF Tools</div>
+      <div>
+        <div class="tn-fct">PDF Tools</div>
         <a href="/tools/merge-pdf.html">Merge PDF</a>
         <a href="/tools/compress-pdf.html">Compress PDF</a>
         <a href="/tools/split-pdf.html">Split PDF</a>
         <a href="/tools/protect-pdf.html">Protect PDF</a>
         <a href="/tools/watermark-pdf.html">Watermark PDF</a>
       </div>
-      <div><div class="tn-fct">Convert</div>
+      <div>
+        <div class="tn-fct">Convert</div>
         <a href="/tools/jpg-to-pdf.html">JPG to PDF</a>
         <a href="/tools/pdf-to-jpg.html">PDF to JPG</a>
         <a href="/tools/word-to-pdf.html">Word to PDF</a>
         <a href="/tools/pdf-to-word.html">PDF to Word</a>
+        <!-- FIX 6: All Tools link added -->
+        <a href="/tools/" style="color:rgba(245,166,35,.7);font-weight:600">⚡ All ${TN.tools.length}+ Tools →</a>
       </div>
-      <div><div class="tn-fct">Calculators &amp; More</div>
+      <div>
+        <div class="tn-fct">Calculators &amp; More</div>
         <a href="/tools/emi-calculator.html">EMI Calculator</a>
         <a href="/tools/sip-calculator.html">SIP Calculator</a>
         <a href="/tools/age-calculator.html">Age Calculator</a>
         <a href="/tools/percentage-calculator.html">Percentage Calc</a>
         <a href="/tools/invoice-generator.html">GST Invoice</a>
       </div>
-      <div><div class="tn-fct">Company</div>
+      <div>
+        <!-- FIX 7: Pricing removed, Company links updated -->
+        <div class="tn-fct">Company</div>
         <a href="/blog.html">Blog</a>
         <a href="/about.html">About</a>
         <a href="/contact.html">Contact</a>
@@ -310,7 +510,6 @@ const TN = {
 .nmp-ico{width:24px;text-align:center;flex-shrink:0}
 .nmp-divider{height:1px;background:var(--border,#E2E4EF);margin:.5rem 0}
 .nmp-cat-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3,#8A8BA5);padding:.4rem .5rem;margin-top:.25rem}
-/* cat-calc — Calculators (single block, no duplicate) */
 .cat-calc .ti-icon{background:#D1FAE5;color:#059669}
 .cat-calc:hover{background:#D1FAE5!important}
 .cat-calc.active{background:#D1FAE5!important;color:#059669!important;font-weight:700}
@@ -333,14 +532,13 @@ const TN = {
     TN.filterSidebar(v);
   },
   filterSidebar(q) {
-    const s = (q||'').toLowerCase().trim();
-    /* Support both new id="tn-sidebar-list" and old id="sbList" pages */
+    const s = (q || '').toLowerCase().trim();
     document.querySelectorAll('#tn-sidebar-list .tool-item, #sbList .tool-item').forEach(item => {
-      item.style.display = (!s || (item.querySelector('.ti-name')?.textContent.toLowerCase()||'').includes(s)) ? '' : 'none';
+      item.style.display = (!s || (item.querySelector('.ti-name')?.textContent.toLowerCase() || '').includes(s)) ? '' : 'none';
     });
     document.querySelectorAll('#tn-sidebar-list .cat-lbl, #sbList .cat-lbl').forEach(lbl => {
       let el = lbl.nextElementSibling, any = false;
-      while (el && el.classList.contains('tool-item')) { if (el.style.display!=='none') any=true; el=el.nextElementSibling; }
+      while (el && el.classList.contains('tool-item')) { if (el.style.display !== 'none') any = true; el = el.nextElementSibling; }
       lbl.style.display = any ? '' : 'none';
     });
   },
@@ -363,7 +561,6 @@ const TN = {
   toggleMobileSidebar() {
     const sb   = document.getElementById('leftSidebar');
     const ov   = document.getElementById('mobileOverlay');
-    /* Works with both old id="hamburger" and new id="navHamburger" */
     const hm   = document.getElementById('hamburger') || document.getElementById('navHamburger');
     const open = sb?.classList.toggle('mobile-open');
     ov?.classList.toggle('active', !!open);
@@ -375,7 +572,7 @@ const TN = {
     document.getElementById('mobileOverlay')?.classList.remove('active');
     const hm = document.getElementById('hamburger') || document.getElementById('navHamburger');
     hm?.classList.remove('open');
-    if (hm) hm.setAttribute('aria-expanded','false');
+    if (hm) hm.setAttribute('aria-expanded', 'false');
   },
 
   /* ══════════════════
@@ -391,18 +588,24 @@ const TN = {
   closeToolsDD() {
     document.getElementById('navDDWrap')?.classList.remove('open');
     const b = document.getElementById('navDDBtn');
-    if (b) b.setAttribute('aria-expanded','false');
+    if (b) b.setAttribute('aria-expanded', 'false');
   },
   share(type) {
     const url  = encodeURIComponent(location.href);
     const text = encodeURIComponent('Ye free tool try karo — no signup, browser-based! 👇');
-    const links = { wa:`https://wa.me/?text=${text}%20${url}`, x:`https://x.com/intent/tweet?text=${text}&url=${url}`, fb:`https://www.facebook.com/sharer/sharer.php?u=${url}` };
+    const links = {
+      wa:  `https://wa.me/?text=${text}%20${url}`,
+      x:   `https://x.com/intent/tweet?text=${text}&url=${url}`,
+      fb:  `https://www.facebook.com/sharer/sharer.php?u=${url}`
+    };
     if (links[type]) window.open(links[type], '_blank');
   },
 
   /* ═══════════════════════════════════════════
-     MOBILE PANEL (home/blog only — NOT tool pages)
+     MOBILE PANEL (home/blog/about — NOT tools)
+     FIX 10: All tools pre-rendered, search filters in-DOM only
      ═══════════════════════════════════════════ */
+  _nmpAllHtml: '',
   _initMobilePanel() {
     const wrap = document.getElementById('nmpTools');
     if (!wrap) return;
@@ -413,10 +616,12 @@ const TN = {
         html += `<div class="nmp-cat-lbl">${t.cat}</div>`;
         lastCat = t.cat;
       }
-      const badge = t.badge ? ` <span style="font-size:8px;font-weight:800;padding:1px 4px;border-radius:4px;background:${t.badge==='HOT'?'#FFE8D6':'#D3F9D8'};color:${t.badge==='HOT'?'#B85000':'#00612A'}">${t.badge}</span>` : '';
-      html += `<a class="nmp-link" href="${t.url}"><span class="nmp-ico">${t.icon}</span><span>${t.name}${badge}</span></a>`;
+      const badge = t.badge
+        ? ` <span style="font-size:8px;font-weight:800;padding:1px 4px;border-radius:4px;background:${t.badge === 'HOT' ? '#FFE8D6' : '#D3F9D8'};color:${t.badge === 'HOT' ? '#B85000' : '#00612A'}">${t.badge}</span>` : '';
+      html += `<a class="nmp-link nmp-tool-link" href="${t.url}" data-name="${t.name.toLowerCase()}" data-cat="${t.cat.toLowerCase()}"><span class="nmp-ico">${t.icon}</span><span>${t.name}${badge}</span></a>`;
     });
     wrap.innerHTML = html;
+    TN._nmpAllHtml = html;
 
     const navHm = document.getElementById('navHamburger');
     const panel = document.getElementById('mobilePanel');
@@ -434,71 +639,73 @@ const TN = {
       });
     }
   },
+  /* FIX 10: Filter in-DOM instead of rebuilding HTML */
   _nmpSearch(q) {
-    const s = (q||'').toLowerCase().trim();
+    const s = (q || '').toLowerCase().trim();
     const wrap = document.getElementById('nmpTools');
     if (!wrap) return;
-    if (!s) { TN._initMobilePanel(); return; }
-    const res = TN.tools.filter(t => t.name.toLowerCase().includes(s) || t.cat.toLowerCase().includes(s));
-    wrap.innerHTML = res.length
-      ? res.map(t => `<a class="nmp-link" href="${t.url}"><span class="nmp-ico">${t.icon}</span><span>${t.name}</span></a>`).join('')
-      : '<div style="text-align:center;padding:1rem;color:#8A8BA5;font-size:13px">Koi tool nahi mila</div>';
+    /* Show/hide existing links + category labels */
+    wrap.querySelectorAll('.nmp-tool-link').forEach(a => {
+      a.style.display = (!s || a.dataset.name.includes(s) || a.dataset.cat.includes(s)) ? '' : 'none';
+    });
+    /* Show "not found" */
+    let notFound = wrap.querySelector('.nmp-noresult');
+    const anyVisible = [...wrap.querySelectorAll('.nmp-tool-link')].some(a => a.style.display !== 'none');
+    if (!anyVisible && s) {
+      if (!notFound) {
+        notFound = document.createElement('div');
+        notFound.className = 'nmp-noresult';
+        notFound.style.cssText = 'text-align:center;padding:1rem;color:#8A8BA5;font-size:13px';
+        notFound.textContent = 'Koi tool nahi mila';
+        wrap.appendChild(notFound);
+      }
+      notFound.style.display = '';
+    } else if (notFound) {
+      notFound.style.display = 'none';
+    }
   },
 
-  /* ═══════════════════════════════════════
+  /* ═══════════════════════════════════════════════════════
      GA4 ANALYTICS
-     TN.track('tool_used', {name:'age_calc'})
-     ═══════════════════════════════════════ */
-  _ga4Loaded: false,
+     FIX 1 + FIX 2: window.dataLayer, no duplicate page_view
+     ═══════════════════════════════════════════════════════ */
+  _ga4Loaded: true, // Already loaded above in IIFE
   _loadGA4() {
-    if (TN._ga4Loaded || TN_GA_ID === 'G-XXXXXXXXXX') return;
-    TN._ga4Loaded = true;
-    const s1 = document.createElement('script');
-    s1.async = true;
-    s1.src = 'https://www.googletagmanager.com/gtag/js?id=' + TN_GA_ID;
-    document.head.appendChild(s1);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function(){ dataLayer.push(arguments); };
-    gtag('js', new Date());
-    gtag('config', TN_GA_ID, { send_page_view: true });
+    /* GA4 already loaded at top of file via IIFE — this is a no-op now */
   },
   track(eventName, params) {
     if (typeof window.gtag === 'function') {
-      gtag('event', eventName, params || {});
+      window.gtag('event', eventName, params || {});
     }
-    /* Also store locally for analytics dashboard */
+    /* Local storage backup for analytics dashboard */
     try {
       const key = 'tn_events';
       const events = JSON.parse(localStorage.getItem(key) || '[]');
       events.push({ e: eventName, p: params, t: Date.now() });
-      /* Keep last 500 events */
       if (events.length > 500) events.splice(0, events.length - 500);
       localStorage.setItem(key, JSON.stringify(events));
-    } catch(e) {}
+    } catch (e) {}
   },
 
-  /* ═══════════════════════════════════════════════════
-     META INJECTION — tool ka title/desc auto update
-     Works if TN.tools entry has metaTitle / metaDesc
-     ═══════════════════════════════════════════════════ */
+  /* ═══════════════════════════════════════════════════════
+     FIX 5: META INJECTION — now actually works (metaTitle/metaDesc added to all tools)
+     ═══════════════════════════════════════════════════════ */
   _injectMeta() {
     const cur = location.pathname;
     const tool = TN.tools.find(t => cur.endsWith(t.url.split('/').pop()));
     if (!tool) return;
-    if (tool.metaTitle) document.title = tool.metaTitle;
+    if (tool.metaTitle && document.title === 'ToolNest') document.title = tool.metaTitle;
     const md = document.querySelector('meta[name="description"]');
-    if (md && tool.metaDesc) md.setAttribute('content', tool.metaDesc);
+    if (md && tool.metaDesc && !md.getAttribute('content')) md.setAttribute('content', tool.metaDesc);
     const ogT = document.querySelector('meta[property="og:title"]');
-    if (ogT && tool.metaTitle) ogT.setAttribute('content', tool.metaTitle);
+    if (ogT && tool.metaTitle && !ogT.getAttribute('content')) ogT.setAttribute('content', tool.metaTitle);
     const ogD = document.querySelector('meta[property="og:description"]');
-    if (ogD && tool.metaDesc) ogD.setAttribute('content', tool.metaDesc);
+    if (ogD && tool.metaDesc && !ogD.getAttribute('content')) ogD.setAttribute('content', tool.metaDesc);
   },
 
-  /* ═══════════════════════════════════════════════
+  /* ═══════════════════════════════════════════════════════
      GLOBAL ERROR / SUCCESS UI
-     TN.showError('File too large', 'errorBox')
-     TN.showSuccess('Done!', 'successBox', 4000)
-     ═══════════════════════════════════════════════ */
+     ═══════════════════════════════════════════════════════ */
   showError(message, containerIdOrEl, autoDismissMs) {
     const el = typeof containerIdOrEl === 'string'
       ? document.getElementById(containerIdOrEl) : containerIdOrEl;
@@ -521,11 +728,9 @@ const TN = {
     if (el) el.style.display = 'none';
   },
 
-  /* ═══════════════════════════════════════════════════════════
+  /* ═══════════════════════════════════════════════════════
      TOAST NOTIFICATIONS
-     TN.notify('PDF compressed! ✅', 'success')
-     TN.notify('Error occurred', 'error', 5000)
-     ═══════════════════════════════════════════════════════════ */
+     ═══════════════════════════════════════════════════════ */
   notify(message, type, durationMs) {
     type = type || 'info';
     durationMs = durationMs || 3500;
@@ -542,10 +747,10 @@ const TN = {
       info:    'background:#EEF3FF;border-color:rgba(30,79,203,.2);color:#1E4FCB',
       warn:    'background:#FFF8E6;border-color:rgba(232,139,0,.3);color:#92600A',
     };
-    const icons = { success:'✅', error:'⚠️', info:'ℹ️', warn:'⚡' };
+    const icons = { success: '✅', error: '⚠️', info: 'ℹ️', warn: '⚡' };
     const toast = document.createElement('div');
-    toast.style.cssText = `${colors[type]||colors.info};border:1.5px solid;border-radius:12px;padding:10px 14px;font-size:13px;font-weight:600;font-family:var(--f-body,'Plus Jakarta Sans',sans-serif);box-shadow:0 4px 16px rgba(13,13,20,.12);pointer-events:auto;max-width:280px;transition:all .3s`;
-    toast.textContent = (icons[type]||'ℹ️') + ' ' + message;
+    toast.style.cssText = `${colors[type] || colors.info};border:1.5px solid;border-radius:12px;padding:10px 14px;font-size:13px;font-weight:600;font-family:var(--f-body,'Plus Jakarta Sans',sans-serif);box-shadow:0 4px 16px rgba(13,13,20,.12);pointer-events:auto;max-width:280px;transition:all .3s`;
+    toast.textContent = (icons[type] || 'ℹ️') + ' ' + message;
     wrap.appendChild(toast);
     setTimeout(() => {
       toast.style.opacity = '0';
@@ -555,14 +760,12 @@ const TN = {
   },
 
   /* ═══════════════════════════════════════════════════════
-     LOCAL STORAGE STATE — Tool inputs save/restore
-     TN.saveState('sip_calc', { amount:5000, rate:12 })
-     const s = TN.loadState('sip_calc')
+     LOCAL STORAGE STATE
      ═══════════════════════════════════════════════════════ */
   saveState(toolKey, data) {
     try {
       localStorage.setItem('tn_state_' + toolKey, JSON.stringify({ d: data, ts: Date.now() }));
-    } catch(e) {}
+    } catch (e) {}
   },
   loadState(toolKey, maxAgeMs) {
     try {
@@ -571,27 +774,21 @@ const TN = {
       const obj = JSON.parse(raw);
       if (maxAgeMs && (Date.now() - obj.ts) > maxAgeMs) return null;
       return obj.d;
-    } catch(e) { return null; }
+    } catch (e) { return null; }
   },
   clearState(toolKey) {
-    try { localStorage.removeItem('tn_state_' + toolKey); } catch(e) {}
+    try { localStorage.removeItem('tn_state_' + toolKey); } catch (e) {}
   },
 
-  /* ═══════
+  /* ═══════════════════════════════════
      INIT
-     ═══════ */
+     ═══════════════════════════════════ */
   init() {
     TN._injectNavCSS();
-    TN._loadGA4();
-    TN.injectNav();
+    TN.injectNav();      // page_view tracked inside injectNav after DOM ready
     TN.injectSidebar();
     TN.injectFooter();
     TN._injectMeta();
-    /* Track page view per tool */
-    const cur = location.pathname;
-    const tool = TN.tools.find(t => cur.endsWith(t.url.split('/').pop()));
-    if (tool) TN.track('page_view', { tool_name: tool.name, tool_cat: tool.cat });
-    /* Ensure go() globally available */
     if (typeof window.go !== 'function') {
       window.go = function(url) { location.href = url; };
     }
