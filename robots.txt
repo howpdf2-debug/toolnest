@@ -23,7 +23,7 @@ Allow: /includes/*.css
 Allow: /favicon.png
 
 # Block verification files from indexing
-Disallow: /googledbfc89456a05e36c.html
+Disallow: /google115l3tNyRiX3r1IlsP732O7joUZQ2Ia4fWxtF-SW21o.html
 Disallow: /google*.html
 Disallow: /.well-known/
 
