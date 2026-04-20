@@ -20,7 +20,7 @@
 /* ═══════════════════════════════════════════════════════
    ★ GA4 CONFIG — Measurement ID (analytics.google.com)
    ═══════════════════════════════════════════════════════ */
-const TN_GA_ID = 'G-5JCSYN9XX4';
+const TN_GA_ID = 'G-Y6W96XKXDR';
 
 /* ══════════════════════════════════════════════════════════
    FIX 3: GA4 inject IMMEDIATELY (before DOMContentLoaded)
