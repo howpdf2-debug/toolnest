@@ -650,7 +650,7 @@ function updateSummary() {
 async function checkVerificationFile() {
     totalChecks++;
     try {
-        const response = await fetch('https://toolnest.bhaihelp.in/googledbfc89456a05e36c.html');
+        const response = await fetch('https://toolnest.bhaihelp.in/google115l3tNyRiX3r1IlsP732O7joUZQ2Ia4fWxtF-SW21o.html');
         setStatus('verif-file', response.ok);
     } catch {
         setStatus('verif-file', false);
@@ -663,7 +663,7 @@ async function checkMetaTag() {
     try {
         const response = await fetch('https://toolnest.bhaihelp.in/');
         const html = await response.text();
-        const hasTag = html.includes('google-site-verification') && html.includes('dbfc89456a05e36c');
+        const hasTag = html.includes('google-site-verification') && html.includes('115l3tNyRiX3r1IlsP732O7joUZQ2Ia4fWxtF-SW21o');
         setStatus('verif-meta', hasTag);
     } catch {
         setStatus('verif-meta', false);
