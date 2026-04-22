@@ -24,6 +24,7 @@ Allow: /favicon.png
 
 # Block verification files from indexing
 Disallow: /google115l3tNyRiX3r1IlsP732O7joUZQ2Ia4fWxtF-SW21o.html
+Disallow: /googled92c8375986ac686.html
 Disallow: /google*.html
 Disallow: /.well-known/
 
