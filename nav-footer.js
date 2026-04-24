@@ -1,45 +1,36 @@
-/* ═══════════════════════════════════════════════════════════════
-   TOOLNEST — nav-footer.js v7.2
+ ═══════════════════════════════════════════════════════════════
+   TOOLNEST — nav-footer.js v7.3
    Single source of truth. Ek baar edit karo, sab pages update.
 
    NAYA TOOL ADD KARNA: Sirf TN.tools array mein ek entry add karo.
 
    v7.1 FIXES:
-   ✅ FIX 1 — GA4: window.dataLayer scope bug fix (was breaking strict mode pages)
-   ✅ FIX 2 — GA4: Duplicate page_view events removed (send_page_view conflict)
-   ✅ FIX 3 — GA4: Earlier loading — script inject ASAP (not wait for DOMContentLoaded)
+   ✅ FIX 1 — GA4: window.dataLayer scope bug fix
+   ✅ FIX 2 — GA4: Duplicate page_view events removed
+   ✅ FIX 3 — GA4: Earlier loading — script inject ASAP
    ✅ FIX 4 — New tools added: Website Analytics, SEO Analyzer
-   ✅ FIX 5 — metaTitle/metaDesc added to all tool entries (_injectMeta now works)
+   ✅ FIX 5 — metaTitle/metaDesc added to all tool entries
    ✅ FIX 6 — Footer: /tools/ "All Tools" link added
-   ✅ FIX 7 — Footer: Pricing link removed (not live yet)
+   ✅ FIX 7 — Footer: Pricing link removed
    ✅ FIX 8 — Footer: Contact email added
    ✅ FIX 9 — GA4: Debug instructions added in comments
-   ✅ FIX 10 — _nmpSearch() flicker fixed (no full reinit on each keypress)
-   ✅ v7.2 — WhatsApp Channel + Twitter @ToolNestIn footer mein add
+   ✅ FIX 10 — _nmpSearch() flicker fixed
+   v7.2 — WhatsApp Channel + Twitter @ToolNestIn footer mein add
+   v7.3 — Blog post pages pe minimal nav (Logo + Home + Tools + Back to Blog)
+           forceNav() conflict removed from blog post pages
    ═══════════════════════════════════════════════════════════════ */
 
-/* ═══════════════════════════════════════════════════════
-   ★ GA4 CONFIG — Measurement ID (analytics.google.com)
-   ═══════════════════════════════════════════════════════ */
-const TN_GA_ID = 'G-Y6W96XKXDR'; // ✅ Verified correct ID
+const TN_GA_ID = 'G-Y6W96XKXDR';
 
-/* ══════════════════════════════════════════════════════════
-   FIX 3: GA4 inject IMMEDIATELY (before DOMContentLoaded)
-   Isse page view pehle capture hoga — earlier the better
-   ══════════════════════════════════════════════════════════ */
 (function _ga4EarlyLoad() {
   if (!TN_GA_ID || TN_GA_ID === 'G-XXXXXXXXXX') return;
-  /* FIX 1: window.dataLayer — strict mode safe */
   window.dataLayer = window.dataLayer || [];
-  /* FIX 1: window.dataLayer.push instead of dataLayer.push */
   window.gtag = function() { window.dataLayer.push(arguments); };
   gtag('js', new Date());
-  /* FIX 2: send_page_view:false — manual tracking se duplicate avoid */
   gtag('config', TN_GA_ID, { send_page_view: false });
   const s = document.createElement('script');
   s.async = true;
   s.src = 'https://www.googletagmanager.com/gtag/js?id=' + TN_GA_ID;
-  /* Insert as first script for fastest load */
   const firstScript = document.getElementsByTagName('script')[0];
   if (firstScript) firstScript.parentNode.insertBefore(s, firstScript);
   else document.head.appendChild(s);
@@ -47,11 +38,6 @@ const TN_GA_ID = 'G-Y6W96XKXDR'; // ✅ Verified correct ID
 
 const TN = {
 
-  /* ═══════════════════════════════════════════════════════════
-     TOOLS DATA
-     FIX 4: Website Analytics + SEO Analyzer added
-     FIX 5: metaTitle + metaDesc added to all entries
-     ═══════════════════════════════════════════════════════════ */
   tools: [
     // ── IMAGE TOOLS ──
     {
@@ -198,7 +184,6 @@ const TN = {
       metaTitle:'SEO Meta Generator Free — Title & Description | ToolNest',
       metaDesc:'Page ka SEO meta title aur description generate karein. Character count, preview. Free.',
     },
-    /* FIX 4: NEW TOOLS ADDED */
     {
       cat:'Business', catClass:'cat-biz', icon:'📊', badge:'NEW',
       name:'Website Analytics', url:'/tools/website-analytics.html',
@@ -249,17 +234,78 @@ const TN = {
     { name:'SEO Analyzer',          url:'/tools/seo-analyzer.html',         dot:'var(--c-biz,#0891B2)'      },
   ],
 
-  /* ══════════════════
-     NAV INJECT
-     ══════════════════ */
+  /* ══════════════════════════════════════════════════════════
+     NAV INJECT — v7.3
+     Blog post pages pe minimal nav, baaki pages pe full nav
+     ══════════════════════════════════════════════════════════ */
   injectNav() {
     const el  = document.getElementById('tn-nav');
     const cur = location.pathname;
-    const isTools = cur.startsWith('/tools');
-    const isBlog  = cur.startsWith('/blog');
-    const isAbout = cur.startsWith('/about');
-    const isHome  = cur === '/' || cur === '/index.html';
+    const isTools   = cur.startsWith('/tools');
+    const isBlog    = cur.startsWith('/blog');
+    const isAbout   = cur.startsWith('/about');
+    const isHome    = cur === '/' || cur === '/index.html';
 
+    /* v7.3: Blog POST detection
+       /blog.html        → listing page → full nav
+       /blog/anything    → post page   → minimal nav  */
+    const isBlogPost = isBlog
+      && cur !== '/blog.html'
+      && cur !== '/blog'
+      && cur !== '/blog/';
+
+    TN._injectNavCSS();
+    if (!el) return;
+
+    /* ── BLOG POST PAGE: Minimal nav ─────────────────────────
+       Sirf: Logo + Home + Tools + Back to Blog
+       No dropdown, no search bar, no hamburger menu
+    ────────────────────────────────────────────────────────── */
+    if (isBlogPost) {
+      el.innerHTML = `
+<nav class="nav" id="mainNav">
+  <a class="nav-logo" href="/" aria-label="ToolNest Home">
+    <img src="/favicon.png" alt="ToolNest" width="40" height="40"
+      style="border-radius:10px;object-fit:cover;box-shadow:0 2px 8px rgba(245,166,35,.4)"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div style="display:none;width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#F5A623,#FF9500);align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#0F1B3D;flex-shrink:0">TN</div>
+    <span class="nav-logo-text">Tool<span>Nest</span></span>
+  </a>
+  <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+    <a href="/" class="nav-link" style="display:flex;align-items:center;gap:5px;font-size:13.5px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      Home
+    </a>
+    <a href="/tools/" class="nav-link" style="display:flex;align-items:center;gap:5px;font-size:13.5px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Tools
+    </a>
+    <a href="/blog.html"
+      class="nav-back-btn"
+      style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;font-size:13.5px;font-weight:700;color:#44455A;background:#EDEEF7;border:1.5px solid #E2E4EF;text-decoration:none;transition:all .15s">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Blog
+    </a>
+  </div>
+</nav>`;
+
+      /* Hover effect via CSS injection (ek baar) */
+      if (!document.getElementById('tn-back-btn-css')) {
+        const s = document.createElement('style');
+        s.id = 'tn-back-btn-css';
+        s.textContent = '.nav-back-btn:hover{background:#E8ECF5!important;color:#0F1B3D!important;border-color:#0F1B3D!important}';
+        document.head.appendChild(s);
+      }
+
+      TN.track('page_view', {
+        page_title:    document.title,
+        page_location: location.href,
+        page_path:     cur
+      });
+      return; /* ← Blog post ke liye yahan se wapas — full nav skip */
+    }
+
+    /* ── FULL NAV: Homepage, Tools, Blog listing, About ──── */
     const cats = {};
     TN.tools.forEach(t => { if (!cats[t.cat]) cats[t.cat] = []; cats[t.cat].push(t); });
     const megaCols = Object.entries(cats).map(([cat, items]) => `
@@ -340,7 +386,6 @@ const TN = {
       if (w && !w.contains(e.target)) TN.closeToolsDD();
     });
 
-    /* FIX 2: Send page_view manually (send_page_view:false set above) */
     TN.track('page_view', {
       page_title:    document.title,
       page_location: location.href,
@@ -376,9 +421,6 @@ const TN = {
 
   /* ══════════
      FOOTER
-     FIX 6: /tools/ link added
-     FIX 7: Pricing link removed
-     FIX 8: Email contact added
      ══════════ */
   injectFooter() {
     let el = document.getElementById('tn-footer');
@@ -421,7 +463,6 @@ const TN = {
       <p class="tn-ft">Free PDF &amp; online tools for India.<br>Fast, private &amp; 100% browser-based.</p>
       <div class="tn-fb">🔒 Files never leave your device</div>
       <a class="tn-femail" href="mailto:toolnest.bhaihelp.in@gmail.com">✉️ toolnest.bhaihelp.in@gmail.com</a>
-      <!-- WhatsApp Channel + Social -->
       <div class="tn-social">
         <a class="tn-social-btn tn-social-wa" href="https://whatsapp.com/channel/0029Vb7nko7L7UVVfGjQWo0j" target="_blank" rel="noopener">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -448,7 +489,6 @@ const TN = {
         <a href="/tools/pdf-to-jpg.html">PDF to JPG</a>
         <a href="/tools/word-to-pdf.html">Word to PDF</a>
         <a href="/tools/pdf-to-word.html">PDF to Word</a>
-        <!-- FIX 6: All Tools link added -->
         <a href="/tools/" style="color:rgba(245,166,35,.7);font-weight:600">⚡ All ${TN.tools.length}+ Tools →</a>
       </div>
       <div>
@@ -460,7 +500,6 @@ const TN = {
         <a href="/tools/invoice-generator.html">GST Invoice</a>
       </div>
       <div>
-        <!-- FIX 7: Pricing removed, Company links updated -->
         <div class="tn-fct">Company</div>
         <a href="/blog.html">Blog</a>
         <a href="/about.html">About</a>
@@ -509,8 +548,6 @@ const TN = {
 .ndm-footer{border-top:1px solid var(--border,#E2E4EF);margin-top:.6rem;padding-top:.6rem;text-align:center}
 .ndm-footer a{font-size:13px;font-weight:600;color:var(--gold-d,#D4891A);text-decoration:none}
 .ndm-footer a:hover{color:var(--gold,#F5A623)}
-.btn-nav-back{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink2,#44455A);background:var(--surface,#EDEEF7);border:1.5px solid var(--border,#E2E4EF);cursor:pointer;transition:all .15s;white-space:nowrap;font-family:inherit}
-.btn-nav-back:hover{background:var(--navy-l,#E8ECF5);color:var(--navy,#0F1B3D);border-color:var(--navy,#0F1B3D)}
 .nav-hamburger{display:none;width:36px;height:36px;border-radius:8px;background:var(--surface,#EDEEF7);border:1.5px solid var(--border,#E2E4EF);flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;flex-shrink:0}
 .nav-hamburger span{display:block;width:17px;height:1.5px;background:var(--ink,#0D0D14);border-radius:2px;transition:all .25s}
 .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
@@ -617,10 +654,9 @@ const TN = {
     if (links[type]) window.open(links[type], '_blank');
   },
 
-  /* ═══════════════════════════════════════════
+  /* ═══════════════════════════════════════════════════════
      MOBILE PANEL (home/blog/about — NOT tools)
-     FIX 10: All tools pre-rendered, search filters in-DOM only
-     ═══════════════════════════════════════════ */
+     ═══════════════════════════════════════════════════════ */
   _nmpAllHtml: '',
   _initMobilePanel() {
     const wrap = document.getElementById('nmpTools');
@@ -655,16 +691,13 @@ const TN = {
       });
     }
   },
-  /* FIX 10: Filter in-DOM instead of rebuilding HTML */
   _nmpSearch(q) {
     const s = (q || '').toLowerCase().trim();
     const wrap = document.getElementById('nmpTools');
     if (!wrap) return;
-    /* Show/hide existing links + category labels */
     wrap.querySelectorAll('.nmp-tool-link').forEach(a => {
       a.style.display = (!s || a.dataset.name.includes(s) || a.dataset.cat.includes(s)) ? '' : 'none';
     });
-    /* Show "not found" */
     let notFound = wrap.querySelector('.nmp-noresult');
     const anyVisible = [...wrap.querySelectorAll('.nmp-tool-link')].some(a => a.style.display !== 'none');
     if (!anyVisible && s) {
@@ -683,17 +716,13 @@ const TN = {
 
   /* ═══════════════════════════════════════════════════════
      GA4 ANALYTICS
-     FIX 1 + FIX 2: window.dataLayer, no duplicate page_view
      ═══════════════════════════════════════════════════════ */
-  _ga4Loaded: true, // Already loaded above in IIFE
-  _loadGA4() {
-    /* GA4 already loaded at top of file via IIFE — this is a no-op now */
-  },
+  _ga4Loaded: true,
+  _loadGA4() { /* Already loaded at top via IIFE */ },
   track(eventName, params) {
     if (typeof window.gtag === 'function') {
       window.gtag('event', eventName, params || {});
     }
-    /* Local storage backup for analytics dashboard */
     try {
       const key = 'tn_events';
       const events = JSON.parse(localStorage.getItem(key) || '[]');
@@ -704,7 +733,7 @@ const TN = {
   },
 
   /* ═══════════════════════════════════════════════════════
-     FIX 5: META INJECTION — now actually works (metaTitle/metaDesc added to all tools)
+     META INJECTION
      ═══════════════════════════════════════════════════════ */
   _injectMeta() {
     const cur = location.pathname;
@@ -796,12 +825,12 @@ const TN = {
     try { localStorage.removeItem('tn_state_' + toolKey); } catch (e) {}
   },
 
-  /* ═══════════════════════════════════
+  /* ═══════════════════════════════════════════════════════
      INIT
-     ═══════════════════════════════════ */
+     ═══════════════════════════════════════════════════════ */
   init() {
     TN._injectNavCSS();
-    TN.injectNav();      // page_view tracked inside injectNav after DOM ready
+    TN.injectNav();
     TN.injectSidebar();
     TN.injectFooter();
     TN._injectMeta();
