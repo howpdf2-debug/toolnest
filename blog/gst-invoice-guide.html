@@ -28,6 +28,30 @@
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"GST invoice banane ke liye kya chahiye?","acceptedAnswer":{"@type":"Answer","text":"GSTIN number, business name aur address, customer details, item description, HSN/SAC code, quantity aur rate, aur GST rate. ToolNest ka invoice generator in sabhi fields ke saath automatic tax calculation karta hai — bilkul free."}},{"@type":"Question","name":"Kya free mein GST invoice bana sakte hain?","acceptedAnswer":{"@type":"Answer","text":"Haan! ToolNest ka GST Invoice Generator 100% free hai. Koi signup nahi, koi watermark nahi, unlimited invoices bana sakte hain."}},{"@type":"Question","name":"CGST aur SGST mein kya fark hai?","acceptedAnswer":{"@type":"Answer","text":"CGST Central Government ko jaata hai aur SGST State Government ko. Same state mein transaction = CGST + SGST. Alag states mein = sirf IGST."}},{"@type":"Question","name":"GST invoice mein HSN code zaroori hai?","acceptedAnswer":{"@type":"Answer","text":"Rs 40 lakh se zyada turnover wale businesses ke liye HSN code compulsory hai. Services ke liye SAC code use karte hain."}}]}</script>
 <style>
+/* ── Back to Blog button fix — clearly visible on dark mini-hero ── */
+.bback{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:13px;
+  font-weight:700;
+  color:#0F1B3D;
+  background:#F5A623;
+  border:2px solid #F5A623;
+  border-radius:999px;
+  padding:7px 18px;
+  margin-bottom:1.4rem;
+  transition:all .18s;
+  text-decoration:none;
+  letter-spacing:.1px;
+}
+.bback:hover{
+  background:#D4891A;
+  border-color:#D4891A;
+  color:#fff;
+  transform:translateX(-2px);
+}
+
 /* Blog post styles */
 .ba{max-width:820px;margin:0 auto;padding:2rem 1.5rem}
 .bmet{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:2rem;padding:.85rem 1.1rem;background:var(--surface);border-radius:var(--r);font-size:12.5px;color:var(--ink2)}
@@ -37,12 +61,12 @@
 .ba h3{font-size:1rem;font-weight:700;color:var(--ink);margin:1.35rem 0 .4rem}
 .ba p{font-size:14.5px;color:var(--ink2);line-height:1.8;margin-bottom:.9rem}
 .ba ul,.ba ol{padding-left:1.4rem;margin-bottom:.9rem}
-.ba li{font-size:14.5px;color:var(--ink2);line-height:1.8;margin-bottom:.3rem}
+.ba li{font-size:14.5px;color:var(--ink2);line-height:1.8;margin-bottom:.35rem}
 .ba strong{color:var(--ink);font-weight:700}
-.ba a.inline{color:var(--gold-d);font-weight:600}
+.ba a.inline{color:var(--gold-d);font-weight:600;text-decoration:underline}
 .ba a.inline:hover{color:var(--gold)}
-.ba table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:14px}
-.ba th{background:var(--navy);color:#fff;padding:.6rem .85rem;text-align:left;font-weight:700;font-size:13px}
+.ba table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:14px;overflow-x:auto;display:block}
+.ba th{background:var(--navy);color:#fff;padding:.6rem .85rem;text-align:left;font-weight:700;font-size:13px;white-space:nowrap}
 .ba td{padding:.6rem .85rem;border-bottom:1px solid var(--border);color:var(--ink2);font-size:13.5px}
 .ba tr:nth-child(even) td{background:var(--surface)}
 .bcta{background:var(--navy);border-radius:var(--r-xl);padding:1.9rem;text-align:center;margin:2rem 0;position:relative;overflow:hidden}
@@ -51,11 +75,13 @@
 .bcta p{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:1.1rem;position:relative}
 .bcta .btn-gold{position:relative;display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:var(--navy);padding:11px 24px;border-radius:var(--r-pill);font-size:14px;font-weight:700;text-decoration:none;transition:.15s}
 .bcta .btn-gold:hover{background:var(--gold-d)}
-.binfobox{background:var(--blue-l);border:1px solid rgba(30,79,203,.2);border-radius:var(--r);padding:.95rem 1.15rem;margin:1rem 0;font-size:13.5px;color:var(--ink2);line-height:1.7}
-.btipbox{background:var(--gold-l);border:1px solid rgba(245,166,35,.3);border-radius:var(--r);padding:.95rem 1.15rem;margin:1rem 0;font-size:13.5px;color:var(--gold-d);line-height:1.7;display:flex;gap:.75rem;align-items:flex-start}
-.bsuccessbox{background:var(--green-l);border:1px solid rgba(0,179,126,.2);border-radius:var(--r);padding:.95rem 1.15rem;margin:1rem 0;font-size:13.5px;color:#087F5B;line-height:1.7}
+.binfobox{background:var(--blue-l);border:1px solid rgba(30,79,203,.2);border-radius:var(--r);padding:.95rem 1.15rem;margin:1.2rem 0;font-size:13.5px;color:var(--ink2);line-height:1.7}
+.btipbox{background:var(--gold-l);border:1.5px solid rgba(245,166,35,.3);border-radius:var(--r);padding:.95rem 1.15rem;margin:1.2rem 0;font-size:13.5px;color:var(--gold-d);line-height:1.7;display:flex;gap:.75rem;align-items:flex-start}
+.bsuccessbox{background:var(--green-l);border:1.5px solid rgba(0,179,126,.2);border-radius:var(--r);padding:.95rem 1.15rem;margin:1.2rem 0;font-size:13.5px;color:#087F5B;line-height:1.7}
 .bcl li{list-style:none;padding-left:.1rem}
 .bcl li::before{content:'✅ ';margin-right:.2rem}
+.bxl li{list-style:none;padding-left:.1rem}
+.bxl li::before{content:'❌ ';margin-right:.2rem}
 .bshr{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:.9rem}
 .bshr a{padding:8px 18px;border-radius:var(--r-sm);font-size:13px;font-weight:600;color:#fff;transition:.15s;text-decoration:none}
 .bshr a:hover{transform:translateY(-1px);opacity:.9}
@@ -64,6 +90,11 @@
 .brlink{display:flex;align-items:center;gap:9px;padding:.65rem 0;border-bottom:1px solid var(--border);color:var(--ink);font-size:14px;font-weight:500;transition:.15s;text-decoration:none}
 .brlink:last-child{border-bottom:none;padding-bottom:0}
 .brlink:hover{color:var(--gold-d)}
+.bsteps{counter-reset:step;display:flex;flex-direction:column;gap:.85rem;margin:1rem 0}
+.bstep{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:1rem 1.15rem}
+.bstep-num{width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--navy);font-family:var(--f-display);font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(245,166,35,.3)}
+.bstep-body h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:.3rem}
+.bstep-body p{font-size:13.5px;color:var(--ink2);line-height:1.7;margin:0}
 .bfaq{margin-top:2rem}
 .bfaq-title{font-family:var(--f-display);font-size:1.1rem;font-weight:800;color:var(--ink);margin-bottom:1rem;padding-bottom:.4rem;border-bottom:2px solid var(--gold-l)}
 .bfaq-item{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);margin-bottom:8px;overflow:hidden;transition:border-color .15s}
@@ -74,7 +105,15 @@
 .bfaq-item.open .bfaq-icon{background:var(--gold);border-color:var(--gold);color:var(--navy);transform:rotate(45deg)}
 .bfaq-a{display:none;padding:.2rem 1.1rem 1rem;font-size:13.5px;color:var(--ink2);line-height:1.7;border-top:1px solid var(--gold-l)}
 .bfaq-item.open .bfaq-a{display:block}
-@media(max-width:600px){.ba{padding:1.1rem .9rem}.ba h2{font-size:1.1rem}.ba p,.ba li{font-size:14px}.bcta{padding:1.4rem .9rem}.bmet{gap:.5rem;font-size:12px}.ba table{font-size:12px}.ba th,.ba td{padding:.5rem .6rem}}
+@media(max-width:600px){
+  .ba{padding:1.1rem .9rem}
+  .ba h2{font-size:1.1rem}
+  .ba p,.ba li{font-size:14px}
+  .bcta{padding:1.4rem .9rem}
+  .bmet{gap:.5rem;font-size:12px}
+  .ba th,.ba td{padding:.5rem .55rem;font-size:12px}
+  .bstep{flex-direction:row;gap:.75rem}
+}
 </style>
 </head>
 <body>
@@ -85,7 +124,7 @@
   <div class="mini-hero-inner">
     <a href="/blog.html" class="bback">← Back to Blog</a>
     <h1>GST Invoice Kaise Banaye Free Mein — 2026 Complete Guide</h1>
-    <p>Step-by-step guide — free GST invoice generator se professional invoice 5 minutes mein banao. CGST, SGST, IGST, HSN codes sab cover kiya gaya hai.</p>
+    <p>Step-by-step guide — free GST invoice generator se professional invoice 5 minutes mein banao. CGST, SGST, IGST, HSN codes, freelancer tips sab ek jagah.</p>
   </div>
 </div>
 
@@ -93,173 +132,262 @@
 
   <div class="bmet">
     <span>📅 April 22, 2026</span>
-    <span>⏱ 8 min read</span>
+    <span>⏱ 10 min read</span>
     <span>🏷 Business</span>
     <span>✍ ToolNest</span>
   </div>
 
   <div class="ad-box">[ Advertisement ]</div>
 
-  <div class="bintro">Is guide mein: GST invoice kaise banate hain, kaunse fields compulsory hain, CGST vs SGST vs IGST ka fark, HSN codes, aur ek free tool se 5 minutes mein professional invoice PDF download karna.</div>
+  <div class="bintro">Is guide mein: GST invoice kya hoti hai, mandatory fields kaunse hain, CGST vs SGST vs IGST ka fark, HSN/SAC codes kaise dhundein, step-by-step free invoice banana, common mistakes jinse bachna chahiye, aur freelancers ke liye special tips.</div>
 
-  <div class="bsuccessbox">✅ <strong>Quick Answer:</strong> ToolNest ka <a href="/tools/invoice-generator.html" class="inline">free GST Invoice Generator</a> kholein → details fill karein → PDF download karein. No signup, no watermark, 100% free.</div>
+  <div class="bsuccessbox">✅ <strong>Quick Answer:</strong> ToolNest ka <a href="/tools/invoice-generator.html" class="inline">free GST Invoice Generator</a> kholein → business aur customer details fill karein → items add karein → PDF download karein. No signup, no watermark, 100% free.</div>
 
   <h2>GST Invoice Kya Hoti Hai?</h2>
-  <p>GST invoice ek <strong>legal document</strong> hoti hai jo ek registered GST business apne customer ko deta hai jab woh koi product bechta hai ya service provide karta hai. Yeh document prove karta hai ki transaction hua hai aur kitna GST charge kiya gaya hai.</p>
-  <p>India mein GST July 2017 mein launch hua. Tab se har registered business ke liye apni har sale par GST invoice issue karna <strong>legally compulsory</strong> hai. Invoice issue nahi kiya toh GST department se notice aur penalty dono aa sakti hain.</p>
+  <p>GST invoice ek <strong>legally binding document</strong> hai jo ek GST-registered business apne har customer ko deta hai jab bhi koi product bechta hai ya service provide karta hai. Yeh sirf ek receipt nahi hai — yeh ek tax document hai jo government ke khaate mein darj hota hai.</p>
+  <p>India mein Goods and Services Tax (GST) 1 July 2017 ko launch hua. Isse pehle VAT, Service Tax, Excise Duty jaise alag-alag taxes the. GST ne in sabko ek mein mila diya — isliye isse "One Nation One Tax" bhi kehte hain. Ab har registered business ke liye apni har sale par GST invoice issue karna <strong>legally compulsory</strong> hai.</p>
+  <p>Agar aap invoice issue nahi karte, toh GST department notice bhej sakti hai, audit kar sakti hai, aur penalty bhi laga sakti hai. Isiliye chahe aap ek freelancer ho, ek small business owner ho, ya ek bada manufacturer — GST invoice banana ek zaroori skill hai.</p>
 
   <h3>GST Invoice Kiske Liye Zaroori Hai?</h3>
+  <p>Sab ke liye nahi, lekin agar aap neeche di gayi categories mein aate ho toh yeh aapke liye compulsory hai:</p>
   <ul>
-    <li><strong>GST registered businesses:</strong> Annual turnover Rs 40 lakh (goods) ya Rs 20 lakh (services) se zyada</li>
-    <li><strong>E-commerce sellers:</strong> Amazon, Flipkart, Meesho par sell karne wale sabhi</li>
-    <li><strong>Freelancers:</strong> Annual income Rs 20 lakh se zyada ho toh</li>
-    <li><strong>Exporters:</strong> Export ke liye bhi GST invoice compulsory</li>
+    <li><strong>GST Registered Businesses (Goods):</strong> Annual turnover Rs 40 lakh se zyada hone par registration aur invoice dono compulsory</li>
+    <li><strong>GST Registered Businesses (Services):</strong> Annual turnover Rs 20 lakh se zyada (special category states ke liye Rs 10 lakh)</li>
+    <li><strong>E-commerce Sellers:</strong> Amazon, Flipkart, Meesho, Myntra, Snapdeal — kisi bhi platform par sell karne wale sabhi sellers ko GSTIN chahiye</li>
+    <li><strong>Freelancers &amp; Consultants:</strong> Agar annual income Rs 20 lakh se zyada hai toh registration compulsory, invoice bhi</li>
+    <li><strong>Exporters:</strong> India se bahar products ya services export karne wale sabhi businesses ke liye GST invoice mandatory hai</li>
+    <li><strong>B2B Service Providers:</strong> Agar aapka client ek registered business hai toh woh aapki invoice par ITC (Input Tax Credit) claim karna chahega — isliye proper GST invoice dena professional bhi hai aur zaroori bhi</li>
   </ul>
 
   <h2>GST Invoice Mein Kya Kya Hona Chahiye?</h2>
-  <p>Government ke rules ke according ek valid GST invoice mein yeh mandatory fields honi chahiye:</p>
+  <p>Government ke CGST Rules 2017 ke according ek valid "Tax Invoice" mein yeh fields hone zaroori hain. Koi bhi field missing ho toh invoice invalid maani ja sakti hai:</p>
   <table>
     <tr><th>Field</th><th>Description</th><th>Example</th></tr>
-    <tr><td>Invoice Number</td><td>Unique sequential number</td><td>INV-2026-001</td></tr>
-    <tr><td>Invoice Date</td><td>Date of supply</td><td>22/04/2026</td></tr>
-    <tr><td>Supplier GSTIN</td><td>Your 15-digit GST number</td><td>07AAAAA0000A1Z5</td></tr>
-    <tr><td>Customer Name</td><td>Buyer ka naam aur address</td><td>Rahul Sharma, Delhi</td></tr>
-    <tr><td>HSN/SAC Code</td><td>Product/service classification</td><td>8471 (Computers)</td></tr>
-    <tr><td>Quantity &amp; Rate</td><td>Product ki qty aur unit price</td><td>5 units @ Rs 1000</td></tr>
-    <tr><td>CGST/SGST/IGST</td><td>Tax breakup clearly dikhao</td><td>9% + 9% = 18%</td></tr>
-    <tr><td>Total Amount</td><td>GST including final amount</td><td>Rs 5,900</td></tr>
+    <tr><td><strong>Invoice Number</strong></td><td>Unique, sequential, ek financial year mein repeat nahi hona chahiye</td><td>INV-2026-001</td></tr>
+    <tr><td><strong>Invoice Date</strong></td><td>Date of supply ya service completion</td><td>22/04/2026</td></tr>
+    <tr><td><strong>Supplier GSTIN</strong></td><td>Aapka 15-digit GST Identification Number</td><td>07AAAAA0000A1Z5</td></tr>
+    <tr><td><strong>Supplier Address</strong></td><td>Registered business address</td><td>123, MG Road, Delhi - 110001</td></tr>
+    <tr><td><strong>Customer Name</strong></td><td>Buyer ka poora naam aur address</td><td>Rahul Sharma, Noida</td></tr>
+    <tr><td><strong>Customer GSTIN</strong></td><td>Agar buyer GST registered hai toh zaroori</td><td>09BBBBB1111B1Z1</td></tr>
+    <tr><td><strong>Place of Supply</strong></td><td>Transaction kahan hua (state)</td><td>Delhi (07)</td></tr>
+    <tr><td><strong>HSN/SAC Code</strong></td><td>Product ya service classification code</td><td>8471 ya 998313</td></tr>
+    <tr><td><strong>Item Description</strong></td><td>Product/service ka naam clearly</td><td>Web Development Service</td></tr>
+    <tr><td><strong>Quantity &amp; Unit</strong></td><td>Kitni quantity, kaunse unit mein</td><td>10 Hours</td></tr>
+    <tr><td><strong>Rate per Unit</strong></td><td>Har unit ki price</td><td>Rs 2,000 per hour</td></tr>
+    <tr><td><strong>Taxable Value</strong></td><td>GST se pehle ki total amount</td><td>Rs 20,000</td></tr>
+    <tr><td><strong>GST Rate &amp; Amount</strong></td><td>CGST+SGST ya IGST clearly breakup</td><td>CGST 9% = Rs 1800, SGST 9% = Rs 1800</td></tr>
+    <tr><td><strong>Total Amount</strong></td><td>Tax including final amount</td><td>Rs 23,600</td></tr>
+    <tr><td><strong>Signature</strong></td><td>Authorized signatory ka signature ya digital sign</td><td>—</td></tr>
   </table>
-
-  <div class="ad-box" style="margin:1.5rem 0">[ Advertisement ]</div>
-
-  <h2>CGST, SGST aur IGST — Simple Explanation</h2>
-  <p>Yeh sabse common confusion hai. Ek baar samajh lo, hamesha ke liye clear ho jayega:</p>
-
-  <h3>Same State Transaction (Intra-state)</h3>
-  <p>Jab seller aur buyer <strong>same state</strong> mein hain — CGST + SGST dono lagte hain:</p>
-  <ul>
-    <li>18% GST item → CGST 9% + SGST 9%</li>
-    <li>12% GST item → CGST 6% + SGST 6%</li>
-    <li>5% GST item → CGST 2.5% + SGST 2.5%</li>
-  </ul>
-
-  <h3>Different State Transaction (Inter-state)</h3>
-  <p>Jab seller aur buyer <strong>alag states</strong> mein hain — sirf IGST lagta hai. Mumbai seller → Delhi buyer = IGST only.</p>
 
   <div class="btipbox">
     <span style="font-size:1.3rem;flex-shrink:0">💡</span>
-    <div><strong>Easy Rule:</strong> Same state = CGST + SGST. Doosra state = IGST only. Export = 0% (IGST with zero rate).</div>
+    <div><strong>Pro Tip:</strong> "Place of Supply" field bahut important hai. Isi se decide hota hai ki CGST+SGST lagega ya IGST. Agar aap Delhi mein ho aur customer bhi Delhi mein hai — same state = CGST+SGST. Customer Mumbai mein hai — different state = IGST.</div>
   </div>
 
-  <h2>GST Rates — Kaunse Products Par Kitna Tax?</h2>
+  <div class="ad-box" style="margin:1.5rem 0">[ Advertisement ]</div>
+
+  <h2>CGST, SGST aur IGST — Once and For All Clear</h2>
+  <p>Yeh teen terms GST ka sabse confusing hissa lagti hain, lekin ek baar logic samajh lo toh hamesha ke liye clear ho jaata hai.</p>
+
+  <h3>CGST (Central GST)</h3>
+  <p>Yeh tax <strong>Central Government</strong> ko jaata hai. Same state ke andar transaction hone par CGST lagtaa hai. Yeh total GST ka aadha hissa hota hai.</p>
+
+  <h3>SGST (State GST)</h3>
+  <p>Yeh tax <strong>State Government</strong> ko jaata hai. CGST ke saath hi lagtaa hai — dono hamesha equal hote hain. Agar total GST 18% hai toh CGST 9% + SGST 9% hogi.</p>
+
+  <h3>IGST (Integrated GST)</h3>
+  <p>Jab transaction <strong>alag states ke beech</strong> hota hai ya kuch export hota hai toh IGST lagtaa hai. Yeh sirf ek tax hai — CGST aur SGST dono nahi lagte. IGST ki rate total GST rate ke barabar hoti hai.</p>
+
   <table>
-    <tr><th>GST Rate</th><th>Products / Services</th></tr>
-    <tr><td><strong>0%</strong></td><td>Basic food items, educational services, healthcare</td></tr>
-    <tr><td><strong>5%</strong></td><td>Packaged food, transport services, small restaurants</td></tr>
-    <tr><td><strong>12%</strong></td><td>Processed food, computers, mobile phones</td></tr>
-    <tr><td><strong>18%</strong></td><td>IT/consulting services, electronics, AC restaurants</td></tr>
-    <tr><td><strong>28%</strong></td><td>Luxury items, cars, tobacco products</td></tr>
+    <tr><th>Scenario</th><th>Tax Type</th><th>Example (18% GST)</th></tr>
+    <tr><td>Delhi seller → Delhi buyer</td><td>CGST + SGST</td><td>CGST 9% + SGST 9%</td></tr>
+    <tr><td>Delhi seller → Mumbai buyer</td><td>IGST only</td><td>IGST 18%</td></tr>
+    <tr><td>India seller → Export</td><td>IGST @ 0%</td><td>Zero rated supply</td></tr>
+    <tr><td>Delhi seller → Delhi consumer (B2C)</td><td>CGST + SGST</td><td>CGST 9% + SGST 9%</td></tr>
   </table>
 
-  <h2>Free Mein GST Invoice Kaise Banayein — Step by Step</h2>
+  <div class="btipbox">
+    <span style="font-size:1.3rem;flex-shrink:0">💡</span>
+    <div><strong>Simple Rule:</strong> Same state = CGST + SGST (total same rahega). Different state = IGST only. Export = Zero rated (0% tax).</div>
+  </div>
 
-  <h3>Step 1 — Tool Kholein</h3>
-  <p><a href="/tools/invoice-generator.html" class="inline">toolnest.bhaihelp.in/tools/invoice-generator.html</a> par jaayein. Koi login nahi, koi signup nahi chahiye.</p>
+  <h2>GST Tax Rates — Kaunse Product Par Kitna?</h2>
+  <p>India mein GST ki 5 slabs hain. Apne product ya service ki category pehchano aur sahi rate apply karo:</p>
+  <table>
+    <tr><th>GST Rate</th><th>Products / Services</th></tr>
+    <tr><td><strong>0%</strong></td><td>Fresh fruits, vegetables, milk, eggs, bread, educational services, healthcare, books</td></tr>
+    <tr><td><strong>5%</strong></td><td>Packed food items, coffee, tea, edible oil, transport services, hotels under Rs 1000/night</td></tr>
+    <tr><td><strong>12%</strong></td><td>Processed food, butter, cheese, computers, phones, business class air travel</td></tr>
+    <tr><td><strong>18%</strong></td><td>Most IT services, consulting, restaurants (AC), electronics, refrigerators, washing machines</td></tr>
+    <tr><td><strong>28%</strong></td><td>Luxury cars, motorcycles above 350cc, tobacco, aerated drinks, cement, 5-star hotels</td></tr>
+  </table>
+  <div class="binfobox">ℹ️ Apne product/service ka exact rate confirm karne ke liye <strong>gst.gov.in</strong> par HSN/SAC search karein ya apne CA se confirm karein. Galat rate apply karne par difference government ki demand ban jata hai.</div>
 
-  <h3>Step 2 — Business Details Fill Karein</h3>
-  <ul>
-    <li><strong>Business Name:</strong> Apni company ya firm ka naam</li>
-    <li><strong>GSTIN:</strong> Apna 15-digit GST Identification Number</li>
-    <li><strong>Address:</strong> Registered business address</li>
-  </ul>
+  <h2>Free Mein GST Invoice Kaise Banayein — 5 Simple Steps</h2>
+  <p>ToolNest ka GST Invoice Generator use karke professional GST invoice banana sirf 5 minutes ka kaam hai. Koi software download nahi, koi account create nahi, koi subscription nahi:</p>
 
-  <h3>Step 3 — Customer Details Add Karein</h3>
-  <p>Customer ka naam, address, aur GSTIN (agar registered hai) fill karein. Same state ya different — tool automatically CGST/SGST ya IGST decide karega.</p>
-
-  <h3>Step 4 — Items Add Karein</h3>
-  <p>Item description, HSN code, quantity, rate aur GST rate select karein. Tax amount automatic calculate hoga.</p>
-
-  <h3>Step 5 — Preview aur Download</h3>
-  <p>Invoice preview dekhein. Sab sahi laga toh <strong>PDF Download</strong> karein — professionally formatted, GST compliant invoice ready!</p>
+  <div class="bsteps">
+    <div class="bstep">
+      <div class="bstep-num">1</div>
+      <div class="bstep-body">
+        <h4>Invoice Generator Kholein</h4>
+        <p><a href="/tools/invoice-generator.html" class="inline">toolnest.bhaihelp.in/tools/invoice-generator.html</a> par jaayein. Page load hote hi tool ready hoga — koi login, koi email verification nahi chahiye.</p>
+      </div>
+    </div>
+    <div class="bstep">
+      <div class="bstep-num">2</div>
+      <div class="bstep-body">
+        <h4>Apni Business Details Fill Karein</h4>
+        <p>Business/firm ka naam, aapka GSTIN (15-digit), registered address, aur contact details. Yeh details invoice ke "From" section mein aayengi. Ek baar save ho jaati hain toh baar baar nahi likhna padta.</p>
+      </div>
+    </div>
+    <div class="bstep">
+      <div class="bstep-num">3</div>
+      <div class="bstep-body">
+        <h4>Customer / Buyer Details Add Karein</h4>
+        <p>Customer ka naam, address, state, aur GSTIN (agar registered hai). State select karne par tool automatically CGST+SGST ya IGST decide karega. B2C transactions mein customer GSTIN optional hai.</p>
+      </div>
+    </div>
+    <div class="bstep">
+      <div class="bstep-num">4</div>
+      <div class="bstep-body">
+        <h4>Items / Services Add Karein</h4>
+        <p>Item description, HSN/SAC code, quantity, unit, rate per unit, aur GST rate select karein. Tool automatically taxable value, GST amount, aur total calculate karega. Multiple items add kar sakte hain ek hi invoice mein.</p>
+      </div>
+    </div>
+    <div class="bstep">
+      <div class="bstep-num">5</div>
+      <div class="bstep-body">
+        <h4>Preview Karein aur PDF Download Karein</h4>
+        <p>Invoice preview mein check karein. Sab fields sahi hain toh <strong>Download PDF</strong> button click karein. Professional GST-compliant invoice turant download ho jaayegi — legally valid format mein.</p>
+      </div>
+    </div>
+  </div>
 
   <div class="bcta">
-    <h3>🧾 Free GST Invoice Generator</h3>
-    <p>No signup. No watermark. 100% Free. Made for India 🇮🇳</p>
+    <h3>🧾 Free GST Invoice Generator Try Karein</h3>
+    <p>No signup. No watermark. Unlimited invoices. Made for India 🇮🇳</p>
     <a href="/tools/invoice-generator.html" class="btn-gold">Free Invoice Banao →</a>
   </div>
 
-  <h2>HSN Code Kahan Se Milega?</h2>
+  <h2>HSN Code aur SAC Code — Kya Hai aur Kahan Se Milega?</h2>
+  <p><strong>HSN (Harmonized System of Nomenclature)</strong> product classification ke liye use hota hai. <strong>SAC (Services Accounting Code)</strong> services ke liye. Dono 6-8 digit ke codes hain jo batate hain ki aapka product/service exactly kaunsi category mein aata hai.</p>
+
+  <h3>HSN Code Kahan Se Dhundein?</h3>
   <ul class="bcl">
-    <li><strong>GST Portal:</strong> gst.gov.in → Services → Search HSN Code</li>
-    <li><strong>Google:</strong> "HSN code for [product name] India" search karein</li>
-    <li><strong>CA ya Tax Consultant:</strong> Agar naya business hai toh confirm karwa lein</li>
+    <li><strong>GST Portal:</strong> gst.gov.in → Services → User Services → Search HSN/SAC Code</li>
+    <li><strong>Google:</strong> "HSN code for [product name]" — zyada tar top results accurate hote hain</li>
+    <li><strong>ToolNest Invoice Generator:</strong> Common categories ke liye dropdown mein codes available hain</li>
+    <li><strong>CA ya Tax Consultant:</strong> Naya business ho toh ek baar professional se confirm karwa lein</li>
   </ul>
 
-  <h3>Kitne Digits Ka HSN Code Chahiye?</h3>
-  <ul>
-    <li>Annual turnover Rs 5 crore tak → 4-digit HSN sufficient</li>
-    <li>Rs 5 crore se Rs 50 crore → 6-digit compulsory</li>
-    <li>Rs 50 crore se zyada → 8-digit compulsory</li>
-  </ul>
+  <h3>Kitne Digits Ka Code Chahiye?</h3>
+  <table>
+    <tr><th>Annual Turnover</th><th>HSN Digits (Goods)</th><th>SAC</th></tr>
+    <tr><td>Rs 5 crore tak</td><td>4 digits sufficient</td><td>4 digits</td></tr>
+    <tr><td>Rs 5 crore se Rs 50 crore</td><td>6 digits compulsory</td><td>6 digits</td></tr>
+    <tr><td>Rs 50 crore se zyada</td><td>8 digits compulsory</td><td>6 digits</td></tr>
+  </table>
 
   <div class="ad-box" style="margin:1.5rem 0">[ Advertisement ]</div>
 
-  <h2>Common Mistakes — Inse Bachein</h2>
+  <h2>Freelancers ke Liye GST Invoice — Special Guide</h2>
+  <p>Agar aap IT developer, content writer, graphic designer, consultant, digital marketer, ya koi bhi service provide karte ho — toh yeh section specially aapke liye hai.</p>
+
+  <h3>Common Freelancing SAC Codes</h3>
+  <ul class="bcl">
+    <li>Software development / Web development: <strong>998313</strong></li>
+    <li>IT consulting &amp; IT support: <strong>998312</strong></li>
+    <li>Content writing / Copywriting: <strong>998361</strong></li>
+    <li>Graphic design / Visual design: <strong>998383</strong></li>
+    <li>Digital marketing / SEO services: <strong>998361</strong></li>
+    <li>Photography / Videography: <strong>999629</strong></li>
+    <li>Management consulting: <strong>998311</strong></li>
+    <li>Training &amp; education services: <strong>999293</strong></li>
+  </ul>
+  <p>Inme se zyada tar services par GST rate <strong>18%</strong> hai.</p>
+
+  <h3>Freelancer Ko GST Registration Kab Leni Chahiye?</h3>
   <ul>
-    <li>❌ <strong>Galat GSTIN:</strong> Customer ka GSTIN verify karein — galat number se unhe ITC nahi milega</li>
-    <li>❌ <strong>Invoice sequence todna:</strong> Numbers sequential hone chahiye — gaps nahi</li>
-    <li>❌ <strong>Galat GST rate:</strong> Apne product/service ka correct rate confirm karein</li>
-    <li>❌ <strong>HSN code missing:</strong> Turnover ke hisaab se compulsory hai</li>
-    <li>❌ <strong>Due date miss:</strong> GST returns time par file karein — late filing par penalty lagti hai</li>
+    <li><strong>Compulsory:</strong> Annual income Rs 20 lakh se zyada hone par (special states mein Rs 10 lakh)</li>
+    <li><strong>Voluntary (recommended):</strong> Income kam bhi ho toh agar B2B clients ke saath kaam karte ho — kyunki unhe aapki invoice par ITC milegi, jo unhe prefer karne ka reason banta hai</li>
+    <li><strong>E-commerce freelancers:</strong> Kisi bhi amount par registration compulsory hai agar online marketplace ke through kaam karte ho</li>
+  </ul>
+
+  <div class="binfobox">ℹ️ <strong>Tip for Freelancers:</strong> GST registration lene ke baad aap apne clients ko professionally invoice kar sakte ho, ITC claim kar sakte ho (business expenses par GST waapas milti hai), aur zyada credible business ban jaate ho. Bahut se large companies sirf registered vendors se hi kaam karte hain.</div>
+
+  <h2>Invoice Timing — Kab Tak Issue Karni Chahiye?</h2>
+  <p>GST law ke according invoice issue karne ki deadlines bhi hain:</p>
+  <ul>
+    <li><strong>Goods (Supply):</strong> Delivery ke saath ya delivery se pehle</li>
+    <li><strong>Services (General):</strong> Service provide karne ke baad 30 days ke andar</li>
+    <li><strong>Services (Banking/Insurance/Telecom):</strong> 45 days ke andar</li>
+    <li><strong>Continuous Services:</strong> Statement of account date se 30 days ke andar</li>
+  </ul>
+  <p>Invoice late issue karne par GST return filing mein problem aati hai aur customer ka ITC bhi delay hota hai — isliye samay par invoice issue karna professional practice hai.</p>
+
+  <h2>Common Mistakes — Jinse Zaroori Bachein</h2>
+  <ul class="bxl">
+    <li><strong>Galat Customer GSTIN:</strong> Hamesha customer ka GSTIN gst.gov.in par verify karein — galat number se unhe ITC nahi milega aur baad mein dispute create hoga</li>
+    <li><strong>Invoice Sequence Todna:</strong> Invoice numbers strictly sequential hone chahiye — randomly jump karna ya gaps chhorna GST audit mein red flag hai</li>
+    <li><strong>Galat GST Rate Apply Karna:</strong> Agar aapne 18% ke bajaye 12% charge kiya toh government 6% aap se personally collect kar sakti hai with interest</li>
+    <li><strong>HSN/SAC Code Missing:</strong> Turnover ke hisaab se compulsory hai — missing code se invoice invalid ho sakti hai</li>
+    <li><strong>CGST/SGST vs IGST Confusion:</strong> Same state mein IGST charge karna ya different state mein CGST+SGST charge karna — dono galat hain aur penalty lagti hai</li>
+    <li><strong>Place of Supply Galat:</strong> Isi se tax determine hota hai — yeh field carefully fill karein</li>
+    <li><strong>Records Na Rakhna:</strong> GST law ke according invoices minimum 6 years tak rakhni hain — digital copies organized rakho</li>
   </ul>
 
   <div class="btipbox">
     <span style="font-size:1.3rem;flex-shrink:0">💡</span>
-    <div><strong>Record Keeping:</strong> GST law ke according sabhi invoices minimum 6 years tak rakhna zaroori hai. Digital copies month-wise ya year-wise save karo.</div>
+    <div><strong>Best Practice:</strong> Har month end par apni sari invoices ek folder mein save karo — "April 2026 Invoices" jaisa naam do. PDF format mein save karein. Cloud backup (Google Drive ya OneDrive) bhi rakho. Audit ke waqt organized records hone se bahut tension bachti hai.</div>
   </div>
 
-  <h2>Freelancers Ke Liye Special Tips</h2>
-  <p>IT services, content writing, graphic design — zyada tar freelancing services ka SAC code:</p>
-  <ul class="bcl">
-    <li>Software development: <strong>998313</strong></li>
-    <li>Content writing / copywriting: <strong>998361</strong></li>
-    <li>Management consulting: <strong>998312</strong></li>
-    <li>Graphic design services: <strong>998383</strong></li>
-    <li>GST rate most services par: <strong>18%</strong></li>
+  <h2>ITC (Input Tax Credit) — Invoice ka Sabse Bada Benefit</h2>
+  <p>GST ka sabse powerful feature hai <strong>Input Tax Credit</strong>. Jab aap apne business ke liye kuch khareedte ho (laptop, software, office supplies) aur supplier ne GST charge ki — toh woh GST aapki output tax (jo aap customers se charge karte ho) mein se minus ho jaati hai. Aapko sirf difference pay karna hota hai.</p>
+  <p>Example: Aapne Rs 10,000 ki services sell ki aur Rs 1800 (18%) output GST charge ki. Us mahine aapne Rs 5000 ka software kharida jis par Rs 900 GST thi. Toh aapko government ko sirf Rs 1800 - Rs 900 = <strong>Rs 900 dena hoga</strong>.</p>
+  <p>ITC claim karne ke liye zaroori hai ki supplier ki invoice valid ho, GSTIN sahi ho, aur unhone apna GST return file kiya ho. Isiliye aap khud bhi sahi invoice issue karein — warna aapke clients ka ITC claim reject ho sakta hai.</p>
+
+  <h2>GST Invoice aur Proforma Invoice — Difference</h2>
+  <ul>
+    <li><strong>Proforma Invoice:</strong> Yeh sirf ek estimate ya quotation hoti hai. Iska GST return mein koi role nahi hota. Payment confirm hone se pehle bheji jaati hai.</li>
+    <li><strong>Tax Invoice (GST Invoice):</strong> Yeh actual legal document hai. Jab supply ho jaaye ya service complete ho toh yeh issue hoti hai. Isi par ITC claim hoti hai.</li>
+    <li><strong>Credit Note:</strong> Agar invoice issue hone ke baad koi return ya adjustment ho toh credit note issue karte hain.</li>
+    <li><strong>Debit Note:</strong> Agar additional charges add karni ho pehle se issue invoice mein toh debit note banate hain.</li>
   </ul>
 
-  <div class="binfobox">ℹ️ <strong>Note:</strong> Agar annual freelancing income Rs 20 lakh se kam hai toh GST registration compulsory nahi. Lekin voluntary registration se B2B clients ko ITC benefit milta hai — aur professional credibility bhi badhti hai.</div>
-
-  <h2>Related Tools — Ek Click Mein</h2>
-  <ul class="bcl">
-    <li><a href="/tools/invoice-generator.html" class="inline">GST Invoice Generator</a> — Professional invoice PDF free mein</li>
-    <li><a href="/tools/qr-code-generator.html" class="inline">UPI QR Code Generator</a> — Payment QR code banao</li>
-    <li><a href="/tools/percentage-calculator.html" class="inline">Percentage / GST Calculator</a> — Tax amount instantly calculate</li>
-    <li><a href="/tools/seo-generator.html" class="inline">SEO Meta Generator</a> — Business website ke liye meta tags</li>
-  </ul>
+  <div class="bcta">
+    <h3>🧾 Abhi Try Karein — 100% Free</h3>
+    <p>ToolNest GST Invoice Generator — No signup, no watermark, unlimited use. Made for India 🇮🇳</p>
+    <a href="/tools/invoice-generator.html" class="btn-gold">Free Invoice Generator →</a>
+  </div>
 
   <!-- FAQ -->
   <div class="bfaq">
     <div class="bfaq-title">❓ Aksar Pooche Jaane Wale Sawaal</div>
     <div class="bfaq-item" id="faq0">
       <div class="bfaq-q" onclick="tFaq(0)"><span>GST invoice banane ke liye kya chahiye?</span><span class="bfaq-icon">+</span></div>
-      <div class="bfaq-a">GSTIN number, business name aur address, customer details, item description, HSN/SAC code, quantity aur rate, aur GST rate. ToolNest ka invoice generator in sabhi fields ke saath automatic tax calculation karta hai — bilkul free.</div>
+      <div class="bfaq-a">GSTIN number, business name aur address, customer details, item description, HSN/SAC code, quantity aur rate, aur GST rate. ToolNest ka invoice generator in sabhi fields ke saath automatic tax calculation karta hai — bilkul free. Koi software download nahi karna, koi account banana nahi.</div>
     </div>
     <div class="bfaq-item" id="faq1">
       <div class="bfaq-q" onclick="tFaq(1)"><span>Kya free mein GST invoice bana sakte hain?</span><span class="bfaq-icon">+</span></div>
-      <div class="bfaq-a">Haan! ToolNest ka GST Invoice Generator 100% free hai. Koi signup nahi, koi watermark nahi, unlimited invoices bana sakte hain. Professional PDF format mein download hoti hai jo legally valid hai.</div>
+      <div class="bfaq-a">Haan! ToolNest ka GST Invoice Generator 100% free hai — hamesha ke liye. Koi signup nahi, koi watermark nahi, unlimited invoices bana sakte hain. Professional PDF format mein download hoti hai jo courts aur GST department mein legally valid hai.</div>
     </div>
     <div class="bfaq-item" id="faq2">
       <div class="bfaq-q" onclick="tFaq(2)"><span>CGST aur SGST mein kya fark hai?</span><span class="bfaq-icon">+</span></div>
-      <div class="bfaq-a">CGST Central Government ko jaata hai aur SGST State Government ko. Dono same amount ke hote hain. Same state mein transaction = CGST + SGST. Alag states mein transaction = sirf IGST.</div>
+      <div class="bfaq-a">CGST (Central GST) Central Government ko jaata hai aur SGST (State GST) State Government ko. Dono hamesha equal amount ke hote hain. Same state mein transaction = CGST + SGST. Alag states mein transaction = sirf IGST (jo Central Government collect karke baad mein states mein distribute karta hai).</div>
     </div>
     <div class="bfaq-item" id="faq3">
       <div class="bfaq-q" onclick="tFaq(3)"><span>GST invoice mein HSN code zaroori hai?</span><span class="bfaq-icon">+</span></div>
-      <div class="bfaq-a">Rs 40 lakh se zyada turnover wale businesses ke liye HSN code compulsory hai. Services ke liye HSN ki jagah SAC code use karte hain. gst.gov.in par apna product ka code search kar sakte ho.</div>
+      <div class="bfaq-a">Annual turnover ke basis par: Rs 5 crore tak 4-digit code sufficient hai. Rs 5-50 crore ke liye 6-digit compulsory hai. Rs 50 crore se zyada ke liye 8-digit. Services ke liye HSN ki jagah SAC code use karte hain. gst.gov.in par search kar sakte ho.</div>
     </div>
     <div class="bfaq-item" id="faq4">
-      <div class="bfaq-q" onclick="tFaq(4)"><span>Ek mahine mein kitni invoices bana sakte hain?</span><span class="bfaq-icon">+</span></div>
-      <div class="bfaq-a">ToolNest par koi limit nahi — unlimited invoices bana sakte hain. GST law mein bhi koi monthly invoice limit nahi — jitni bhi sales hoti hain uske liye invoice issue karo.</div>
+      <div class="bfaq-q" onclick="tFaq(4)"><span>Freelancer ko GST registration leni chahiye?</span><span class="bfaq-icon">+</span></div>
+      <div class="bfaq-a">Annual income Rs 20 lakh se zyada ho toh compulsory hai. Kam income par bhi voluntary registration le sakte ho — isse B2B clients ko ITC milti hai, aur aapki professional credibility badhti hai. Kai large companies sirf GST-registered vendors se kaam karte hain.</div>
+    </div>
+    <div class="bfaq-item" id="faq5">
+      <div class="bfaq-q" onclick="tFaq(5)"><span>Ek mahine mein kitni invoices bana sakte hain?</span><span class="bfaq-icon">+</span></div>
+      <div class="bfaq-a">ToolNest par koi limit nahi — unlimited invoices bana sakte hain. GST law mein bhi koi monthly limit nahi — jitni sales hoti hain utnی invoices issue karo. Sequential numbering zaroor maintain karein.</div>
     </div>
   </div>
 
@@ -267,7 +395,7 @@
   <div style="margin-top:2rem;padding-top:1.6rem;border-top:2px solid var(--border);text-align:center">
     <p style="font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:.7rem">Share this article</p>
     <div class="bshr">
-      <a style="background:#1DA1F2" href="https://twitter.com/intent/tweet?text=GST+Invoice+Kaise+Banaye+Free+Mein&url=https://toolnest.bhaihelp.in/blog/gst-invoice-guide.html" target="_blank" rel="noopener">Twitter</a>
+      <a style="background:#1DA1F2" href="https://twitter.com/intent/tweet?text=GST+Invoice+Kaise+Banaye+Free+Mein+—+2026+Complete+Guide&url=https://toolnest.bhaihelp.in/blog/gst-invoice-guide.html" target="_blank" rel="noopener">Twitter</a>
       <a style="background:#4267B2" href="https://www.facebook.com/sharer/sharer.php?u=https://toolnest.bhaihelp.in/blog/gst-invoice-guide.html" target="_blank" rel="noopener">Facebook</a>
       <a style="background:#0077B5" href="https://www.linkedin.com/sharing/share-offsite/?url=https://toolnest.bhaihelp.in/blog/gst-invoice-guide.html" target="_blank" rel="noopener">LinkedIn</a>
       <a style="background:#25D366" href="https://wa.me/?text=https://toolnest.bhaihelp.in/blog/gst-invoice-guide.html" target="_blank" rel="noopener">WhatsApp</a>
@@ -276,10 +404,11 @@
 
   <!-- Related -->
   <div class="brel">
-    <h3>📚 Related Articles</h3>
+    <h3>📚 Related Articles &amp; Tools</h3>
+    <a class="brlink" href="/tools/invoice-generator.html"><span style="font-size:1.3rem">🧾</span>GST Invoice Generator — Free Tool</a>
     <a class="brlink" href="/blog/digital-marketing-tools-startups-2026.html"><span style="font-size:1.3rem">📣</span>Digital Marketing Tools Every Startup Needs in 2026</a>
     <a class="brlink" href="/blog/free-online-tools-small-business-india.html"><span style="font-size:1.3rem">💼</span>Top 10 Free Online Tools for Small Business India</a>
-    <a class="brlink" href="/blog/emi-calculator-home-loan-guide.html"><span style="font-size:1.3rem">🏠</span>EMI Calculator Guide — Home Loan, Car Loan India 2026</a>
+    <a class="brlink" href="/blog/emi-calculator-home-loan-guide.html"><span style="font-size:1.3rem">🏠</span>EMI Calculator Guide — Home Loan, Car Loan 2026</a>
     <a class="brlink" href="/blog.html"><span style="font-size:1.3rem">📚</span>View All Blog Posts →</a>
   </div>
 
