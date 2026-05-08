@@ -997,10 +997,14 @@ article a.ilink:hover{color:var(--gold);border-bottom-color:var(--gold)}
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="fbrand">
-        <div class="flogo">
-          <div class="flogo-box">TN</div>
-          Tool<span>Nest</span>
-        </div>
+        <!-- ✅ FIXED — img + fallback box dono -->
+<div class="flogo">
+  <img src="/favicon.png" alt="ToolNest" width="34" height="34"
+    style="border-radius:9px;object-fit:cover;box-shadow:0 2px 8px rgba(245,166,35,.4);flex-shrink:0"
+    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <div class="flogo-box" style="display:none">TN</div>
+  Tool<span>Nest</span>
+</div>
         <p>Free · No Signup · 100% Browser-based · Made for India 🇮🇳<br>Aapki files kabhi bhi hamare server par nahi jaati.</p>
       </div>
       <div class="fcol"><h4>PDF Tools</h4><ul>
