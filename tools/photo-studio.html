@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Studio — Passport Size, HD 4K, Background Remove | ToolNest</title>
+<meta name="description" content="Free online photo studio — HD & 4K passport size photos (India, US, UK), background remove & change, crop, enhance, beautify. Any format. No signup, 100% browser-based.">
+<meta name="keywords" content="passport size photo online, hd photo editor free, 4k photo download, background remove online india, photo studio free toolnest">
+<link rel="canonical" href="https://toolnest.bhaihelp.in/tools/photo-studio.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta property="og:title" content="Photo Studio — HD 4K Quality | ToolNest">
+<meta property="og:description" content="Free photo editor — HD, 4K, passport size, background remove. 100% browser-based.">
+<meta property="og:url" content="https://toolnest.bhaihelp.in/tools/photo-studio.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#F5A623;--gold-d:#D4891A;--gold-l:#FEF3DC;--gold-b:rgba(245,166,35,.2);
+  --navy:#0F1B3D;--navy-mid:#1A2E5E;--blue:#1E4FCB;--blue-l:#EEF3FF;
+  --green:#00B37E;--green-l:#E6FAF4;--red:#E53E3E;--red-l:#FFF0F0;
+  --amber:#E88B00;--amber-l:#FFF8E6;--purple:#6C3FC4;--purple-l:#F2EDFF;
+  --orange:#F5620A;--orange-l:#FFF0EB;--teal:#0891B2;--teal-l:#E8F8FD;
+  --ink:#0D0D14;--ink2:#44455A;--ink3:#8A8BA5;
+  --paper:#F5F6FA;--white:#FFFFFF;--border:#E2E4EF;--border2:#C8CADF;--surface:#EDEEF7;
+  --f-display:'Outfit',sans-serif;--f-body:'Plus Jakarta Sans',sans-serif;
+  --r-sm:8px;--r:12px;--r-lg:18px;--r-xl:24px;--r-pill:999px;
+  --sh-xs:0 1px 3px rgba(13,13,20,.07);--sh-sm:0 2px 8px rgba(13,13,20,.09);
+  --sh:0 4px 16px rgba(13,13,20,.11);--sh-lg:0 8px 32px rgba(13,13,20,.13);
+  --sh-gold:0 4px 20px rgba(245,166,35,.28);--nav-h:64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+button{font-family:var(--f-body);cursor:pointer;border:none;outline:none}
+input,select,textarea{font-family:var(--f-body)}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+/* ═══ NAV ═══ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);background:rgba(255,255,255,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:var(--sh-xs)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:21px;color:var(--ink)}
+.nav-logo-box{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#FF9500);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:900;font-size:15px;color:var(--navy);box-shadow:var(--sh-gold);flex-shrink:0}
+.nav-logo span{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:6px}
+.nav-link{padding:7px 13px;border-radius:var(--r-sm);font-size:13.5px;font-weight:500;color:var(--ink2);transition:all .15s;white-space:nowrap}
+.nav-link:hover{background:var(--surface);color:var(--ink)}
+.btn-nav-gold{background:var(--gold);color:var(--navy);padding:8px 18px;border-radius:var(--r-pill);font-size:13px;font-weight:700;box-shadow:var(--sh-gold);transition:all .15s}
+.btn-nav-gold:hover{background:var(--gold-d);transform:translateY(-1px)}
+.hamburger{display:none;width:36px;height:36px;border-radius:var(--r-sm);background:var(--surface);border:1.5px solid var(--border);flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}
+.hamburger span{display:block;width:17px;height:1.5px;background:var(--ink);border-radius:2px;transition:all .25s}
+
+/* ═══ TOOL HERO ═══ */
+.tool-hero{margin-top:var(--nav-h);background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 60%,#1E3A8A 100%);padding:2rem 1.5rem 1.75rem;text-align:center;position:relative;overflow:hidden}
+.tool-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle 350px at 85% 40%,rgba(245,166,35,.12) 0%,transparent 60%),radial-gradient(circle 200px at 10% 70%,rgba(30,79,203,.15) 0%,transparent 60%);pointer-events:none}
+.th-inner{position:relative;z-index:1}
+.th-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-pill);padding:5px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:.75rem;backdrop-filter:blur(4px)}
+.th-badge .bdot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.th-icon{font-size:2.5rem;margin-bottom:.5rem;filter:drop-shadow(0 4px 12px rgba(245,166,35,.4))}
+.tool-hero h1{font-family:var(--f-display);font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:900;color:#fff;margin-bottom:.45rem;line-height:1.2}
+.tool-hero h1 .hl{color:var(--gold)}
+.tool-hero p{font-size:13px;color:rgba(255,255,255,.6);max-width:620px;margin:0 auto .9rem;line-height:1.7}
+.th-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.th-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-pill);padding:3px 10px;font-size:11px;color:rgba(255,255,255,.75);font-weight:600}
+
+/* ═══ PAGE WRAP ═══ */
+.page-wrap{max-width:1400px;margin:0 auto;padding:0 1rem}
+
+/* ═══ MAIN TOOL CONTAINER ═══ */
+.tool-studio{display:grid;grid-template-columns:250px 1fr 230px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);overflow:hidden;margin:1.25rem 0;box-shadow:var(--sh-lg);min-height:620px}
+
+/* ═══ LEFT PANEL ═══ */
+.lp{display:flex;flex-direction:column;border-right:1.5px solid var(--border);background:var(--white);overflow:hidden}
+.lp-tabs{display:flex;background:var(--paper);border-bottom:1.5px solid var(--border);flex-shrink:0}
+.lpt{flex:1;padding:10px 2px;font-size:10.5px;font-weight:800;color:var(--ink3);background:transparent;border:none;cursor:pointer;transition:all .15s;text-align:center;border-bottom:2.5px solid transparent;text-transform:uppercase;letter-spacing:.4px}
+.lpt:hover{color:var(--ink);background:rgba(245,166,35,.06)}
+.lpt.active{color:var(--gold-d);border-bottom-color:var(--gold);background:var(--white)}
+.lp-body{flex:1;padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:14px}
+
+/* ═══ SECTION LABELS ═══ */
+.slabel{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);display:flex;align-items:center;gap:6px}
+.slabel::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ═══ RANGE CONTROL ═══ */
+.ctrl{display:flex;flex-direction:column;gap:4px}
+.ctrl-hd{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:600;color:var(--ink2)}
+.ctrl-hd span{font-size:11px;font-weight:500;color:var(--ink3);background:var(--surface);padding:1px 7px;border-radius:var(--r-pill)}
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;border-radius:2px;background:var(--border);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--gold);cursor:pointer;box-shadow:0 1px 4px rgba(245,166,35,.4)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border:none;border-radius:50%;background:var(--gold);cursor:pointer}
+
+/* ═══ BUTTONS ═══ */
+.btn{width:100%;padding:9px 14px;border-radius:var(--r-sm);font-size:12.5px;font-weight:700;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px;border:none}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;filter:none!important}
+.btn-gold{background:linear-gradient(135deg,var(--gold) 0%,#E8920A 100%);color:var(--navy);box-shadow:0 2px 8px rgba(245,166,35,.35)}
+.btn-gold:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.05);box-shadow:var(--sh-gold)}
+.btn-outline{background:var(--surface);color:var(--ink2);border:1.5px solid var(--border)}
+.btn-outline:hover:not(:disabled){border-color:var(--gold-b);color:var(--gold-d);background:var(--gold-l)}
+.btn-green{background:var(--green-l);color:var(--green);border:1.5px solid #6ee7b7}
+.btn-green:hover:not(:disabled){background:var(--green);color:#fff}
+.btn-red{background:var(--red-l);color:var(--red);border:1.5px solid #fca5a5}
+.btn-sm{padding:5px 10px;font-size:11px;border-radius:var(--r-sm)}
+.btn-row{display:flex;gap:5px}
+.btn-row .btn{flex:1}
+
+/* ═══ COLOR SWATCHES ═══ */
+.swatches{display:flex;flex-wrap:wrap;gap:6px}
+.sw{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:all .2s;flex-shrink:0;position:relative}
+.sw:hover{transform:scale(1.2)}
+.sw.active{border-color:var(--gold-d);box-shadow:0 0 0 2px var(--gold-b);transform:scale(1.1)}
+.sw-trans{background:conic-gradient(#ccc 0deg 90deg,#fff 90deg 180deg,#ccc 180deg 270deg,#fff 270deg 360deg);background-size:8px 8px}
+input[type=color]{width:100%;height:34px;border-radius:var(--r-sm);border:1.5px solid var(--border);cursor:pointer;background:none;padding:2px}
+
+/* ═══ QUICK ACTION GRID ═══ */
+.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.qa{padding:7px 5px;border-radius:var(--r-sm);background:var(--surface);border:1.5px solid var(--border);font-size:11px;font-weight:700;color:var(--ink2);cursor:pointer;text-align:center;transition:all .15s;line-height:1.3}
+.qa:hover{border-color:var(--gold-b);color:var(--gold-d);background:var(--gold-l)}
+.qa.applied{border-color:var(--gold);background:var(--gold-l);color:var(--gold-d)}
+
+/* ═══ INFO BOX ═══ */
+.info{background:var(--blue-l);border:1.5px solid #bfdbfe;border-radius:var(--r-sm);padding:8px 10px;font-size:11px;color:#1d4ed8;line-height:1.55}
+.info.green{background:var(--green-l);border-color:#6ee7b7;color:#065f46}
+.info.amber{background:var(--amber-l);border-color:#fcd34d;color:#92400e}
+
+/* ═══ DIVIDER ═══ */
+.div{height:1px;background:var(--border);margin:2px 0}
+
+/* ═══ FLIP ROW ═══ */
+.flip-row{display:flex;gap:5px}
+.flip-btn{flex:1;padding:7px 4px;border-radius:var(--r-sm);background:var(--surface);border:1.5px solid var(--border);font-size:11px;font-weight:700;color:var(--ink2);cursor:pointer;text-align:center;transition:all .15s}
+.flip-btn:hover{border-color:var(--gold-b);color:var(--gold-d)}
+
+/* ═══ CENTER PANEL ═══ */
+.cp{background:#111827;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;min-height:500px}
+.cp-bg{position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(30,79,203,.06) 0%,transparent 60%),radial-gradient(circle at 70% 50%,rgba(245,166,35,.04) 0%,transparent 60%);pointer-events:none}
+
+/* ═══ UPLOAD ZONE ═══ */
+.upload-zone{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:2.5rem 2rem;text-align:center;cursor:pointer;position:relative;z-index:1;border:2px dashed rgba(255,255,255,.1);border-radius:var(--r-xl);margin:1rem;transition:all .2s}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--gold);background:rgba(245,166,35,.04)}
+.uz-icon{font-size:3.5rem;filter:drop-shadow(0 4px 16px rgba(245,166,35,.3))}
+.uz-title{font-size:16px;font-weight:700;color:rgba(255,255,255,.9);font-family:var(--f-display)}
+.uz-sub{font-size:12px;color:rgba(255,255,255,.4);line-height:1.7;max-width:280px}
+.uz-formats{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;margin-top:4px}
+.uz-fmt{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-pill);padding:2px 9px;font-size:10px;color:rgba(255,255,255,.5);font-weight:600}
+.uz-btn{background:var(--gold);color:var(--navy);padding:11px 28px;border-radius:var(--r-pill);font-size:13px;font-weight:800;border:none;cursor:pointer;box-shadow:var(--sh-gold);transition:all .15s}
+.uz-btn:hover{background:var(--gold-d);transform:translateY(-2px)}
+
+/* ═══ CANVAS WRAP ═══ */
+.canvas-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;z-index:1}
+#mainCanvas{display:block;border-radius:6px;box-shadow:0 8px 40px rgba(0,0,0,.6)}
+.canvas-checkerboard{background-image:conic-gradient(#2a2a2a 90deg,#1a1a1a 90deg 180deg,#2a2a2a 180deg 270deg,#1a1a1a 270deg);background-size:16px 16px}
+
+/* ═══ CROP OVERLAY ═══ */
+.crop-overlay{position:absolute;inset:0;cursor:crosshair;z-index:5}
+.crop-selection{position:absolute;border:2px solid var(--gold);pointer-events:none;box-shadow:0 0 0 9999px rgba(0,0,0,.5)}
+.crop-selection::before,.crop-selection::after{content:'';position:absolute;background:rgba(255,255,255,.25)}
+.crop-selection::before{left:33.33%;right:33.33%;top:0;bottom:0;border-left:1px solid rgba(255,255,255,.35);border-right:1px solid rgba(255,255,255,.35)}
+.crop-selection::after{top:33.33%;bottom:33.33%;left:0;right:0;border-top:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35)}
+.crop-handles{position:absolute;inset:-4px;pointer-events:none}
+.crop-handle{position:absolute;width:8px;height:8px;background:var(--gold);border-radius:1px}
+.crop-handle.tl{top:0;left:0}.crop-handle.tr{top:0;right:0}
+.crop-handle.bl{bottom:0;left:0}.crop-handle.br{bottom:0;right:0}
+
+/* ═══ STATUS BAR ═══ */
+.status-bar{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);backdrop-filter:blur(10px);padding:6px 14px;display:flex;align-items:center;justify-content:space-between;font-size:11px;z-index:10}
+.sb-left{color:rgba(255,255,255,.7)}
+.sb-right{color:rgba(255,255,255,.4);display:flex;gap:10px}
+.sb-badge{background:rgba(245,166,35,.2);border:1px solid rgba(245,166,35,.3);color:var(--gold);padding:1px 7px;border-radius:var(--r-pill);font-size:10px;font-weight:700}
+
+/* ═══ PROCESSING OVERLAY ═══ */
+.processing-overlay{position:absolute;inset:0;background:rgba(10,15,30,.8);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;z-index:20}
+.po-ring{width:44px;height:44px;border:3px solid rgba(245,166,35,.2);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.po-text{font-size:13px;font-weight:700;color:var(--gold);font-family:var(--f-display)}
+.po-sub{font-size:11px;color:rgba(255,255,255,.4)}
+.po-bar{width:180px;height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+.po-fill{height:100%;background:linear-gradient(90deg,var(--gold),#FF9500);border-radius:2px;animation:fill 2s ease-in-out infinite}
+@keyframes fill{0%{width:5%}50%{width:80%}100%{width:95%}}
+
+/* ═══ CROP TOOLBAR ═══ */
+.crop-toolbar{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-pill);padding:6px 12px;display:flex;align-items:center;gap:8px;z-index:15}
+.ct-label{font-size:11px;color:rgba(255,255,255,.6);font-weight:600}
+.ct-btn{padding:5px 12px;border-radius:var(--r-pill);font-size:11.5px;font-weight:700;border:none;cursor:pointer;transition:all .15s}
+.ct-apply{background:var(--gold);color:var(--navy)}
+.ct-apply:hover{background:var(--gold-d)}
+.ct-cancel{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15)}
+.ct-cancel:hover{background:rgba(255,0,0,.2);color:#ff8080}
+
+/* ═══ RIGHT PANEL ═══ */
+.rp{border-left:1.5px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;background:var(--white)}
+.rp-section{padding:12px 14px;border-bottom:1.5px solid var(--border)}
+.rp-section:last-child{border-bottom:none}
+
+/* ═══ PRESET LIST ═══ */
+.preset-list{display:flex;flex-direction:column;gap:3px;max-height:220px;overflow-y:auto}
+.preset-item{padding:7px 9px;border-radius:var(--r-sm);border:1.5px solid var(--border);font-size:11.5px;cursor:pointer;transition:all .15s;display:flex;justify-content:space-between;align-items:center;gap:4px}
+.preset-item:hover{border-color:var(--gold-b);background:var(--gold-l)}
+.preset-item.active{border-color:var(--gold);background:var(--gold-l)}
+.pi-name{font-weight:700;color:var(--ink);font-size:11px}
+.pi-size{font-size:9.5px;color:var(--ink3)}
+.pi-flag{font-size:13px;flex-shrink:0}
+
+/* ═══ RESOLUTION SELECTOR ═══ */
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.res-btn{padding:6px 5px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:transparent;font-size:10.5px;font-weight:700;color:var(--ink3);cursor:pointer;text-align:center;transition:all .15s;line-height:1.3}
+.res-btn:hover{border-color:var(--gold-b);color:var(--gold-d)}
+.res-btn.active{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+.res-btn.star{border-color:#6366f1;color:#6366f1}
+.res-btn.star.active{background:#6366f1;color:#fff;border-color:#6366f1}
+.res-preview{background:var(--surface);border-radius:var(--r-sm);padding:7px 9px;font-size:11px;color:var(--ink2);text-align:center;margin-top:6px;border:1.5px solid var(--border)}
+.res-preview strong{color:var(--ink);font-weight:800}
+
+/* ═══ CUSTOM SIZE ═══ */
+.custom-size{display:grid;grid-template-columns:1fr auto 1fr;gap:4px;align-items:center;margin-top:6px}
+.custom-size input{padding:6px 8px;border-radius:var(--r-sm);border:1.5px solid var(--border);font-size:12px;color:var(--ink);text-align:center;outline:none;width:100%}
+.custom-size input:focus{border-color:var(--gold)}
+.custom-size .x{font-size:12px;color:var(--ink3);font-weight:700;text-align:center}
+
+/* ═══ PIECES ═══ */
+.pieces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.pc-btn{padding:5px 4px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:transparent;font-size:11.5px;font-weight:800;color:var(--ink3);cursor:pointer;text-align:center;transition:all .15s}
+.pc-btn:hover{border-color:var(--gold-b);color:var(--gold-d)}
+.pc-btn.active{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+
+/* ═══ FORMAT SELECT ═══ */
+select{width:100%;padding:7px 10px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--white);font-size:12px;color:var(--ink);outline:none;cursor:pointer}
+select:focus{border-color:var(--gold)}
+
+/* ═══ DOWNLOAD BUTTONS ═══ */
+.dl-btn{width:100%;padding:10px 12px;border-radius:var(--r-sm);font-size:12.5px;font-weight:700;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px;border:none;line-height:1.3}
+.dl-btn:disabled{opacity:.4;cursor:not-allowed}
+.dl-primary{background:linear-gradient(135deg,var(--gold),#E8920A);color:var(--navy);box-shadow:0 2px 10px rgba(245,166,35,.3)}
+.dl-primary:hover:not(:disabled){transform:translateY(-1px);box-shadow:var(--sh-gold)}
+.dl-secondary{background:var(--surface);color:var(--ink2);border:1.5px solid var(--border)}
+.dl-secondary:hover:not(:disabled){border-color:var(--gold-b);color:var(--gold-d)}
+.dl-share{background:var(--green-l);color:var(--green);border:1.5px solid #6ee7b7}
+.dl-share:hover:not(:disabled){background:var(--green);color:#fff}
+
+/* ═══ QUALITY BADGE ═══ */
+.quality-badge{display:flex;align-items:center;justify-content:center;gap:6px;background:var(--navy);border-radius:var(--r-sm);padding:6px 10px;margin-bottom:8px}
+.qb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.qb-text{font-size:11px;font-weight:700;color:#fff}
+
+/* ═══ HOW TO USE ═══ */
+.howto{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:1.5rem;margin-bottom:1.25rem}
+.howto h2{font-family:var(--f-display);font-size:1.1rem;font-weight:800;margin-bottom:1rem;color:var(--ink)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.step{display:flex;gap:10px;align-items:flex-start}
+.step-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#E8920A);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:var(--navy);flex-shrink:0;box-shadow:0 2px 8px rgba(245,166,35,.3)}
+.step-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.step-desc{font-size:11.5px;color:var(--ink3);line-height:1.5}
+
+/* ═══ AD BOX ═══ */
+.ad-box{min-height:90px;background:var(--surface);border:1.5px dashed var(--border2);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink3);margin:1rem 0;position:relative;flex-direction:column;gap:3px}
+.ad-box::before{content:'AD';position:absolute;top:4px;right:8px;font-size:7.5px;font-weight:800;letter-spacing:.5px;opacity:.6}
+
+/* ═══ FOOTER ═══ */
+.foot{background:var(--navy);padding:1.5rem;text-align:center;margin-top:1rem}
+.foot p{font-size:11.5px;color:rgba(255,255,255,.35);line-height:1.8}
+.foot a{color:rgba(255,255,255,.45)}.foot a:hover{color:var(--gold)}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1000px){.tool-studio{grid-template-columns:220px 1fr 210px}}
+@media(max-width:800px){
+  .tool-studio{grid-template-columns:1fr;min-height:auto}
+  .lp{border-right:none;border-bottom:1.5px solid var(--border);max-height:260px}
+  .rp{border-left:none;border-top:1.5px solid var(--border)}
+  .cp{min-height:350px}
+  #mainCanvas{max-height:280px}
+  .nav-link,.btn-nav-gold{display:none}
+  .hamburger{display:flex}
+}
+@media(max-width:500px){
+  .tool-hero h1{font-size:1.3rem}
+  .th-tags{display:none}
+  .steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/favicon.png" width="38" height="38" style="border-radius:10px;box-shadow:var(--sh-gold)" alt="TN" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="nav-logo-box" style="display:none">TN</div>
+    Tool<span>Nest</span>
+  </a>
+  <div class="nav-right">
+    <a href="/" class="nav-link">← Home</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/tools/image-compress.html" class="nav-link">Image Tools</a>
+    <a href="#donate" class="btn-nav-gold">❤️ Donate</a>
+    <button class="hamburger" id="ham" onclick="document.getElementById('mobNav').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav id="mobNav" style="display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);z-index:900;padding:1rem;flex-direction:column;gap:4px">
+  <a href="/" style="padding:9px 12px;border-radius:8px;font-size:14px;color:var(--ink2)">🏠 Home</a>
+  <a href="/tools/" style="padding:9px 12px;border-radius:8px;font-size:14px;color:var(--ink2)">🛠 All Tools</a>
+</nav>
+<style>#mobNav.open{display:flex!important}</style>
+
+<!-- ═══ HERO ═══ -->
+<section class="tool-hero">
+  <div class="th-inner">
+    <div class="th-badge"><span class="bdot"></span>Photo Studio · HD & 4K Quality · Free · No Signup</div>
+    <div class="th-icon">📷</div>
+    <h1>Photo Studio — <span class="hl">HD &amp; 4K Quality</span></h1>
+    <p>Passport size photos, background remove &amp; change, crop, enhance — ab HD, Full HD aur 4K quality mein. JPG, PNG, WEBP, HEIC, BMP, GIF — koi bhi format. Files kabhi server par nahi jaati.</p>
+    <div class="th-tags">
+      <span class="th-tag">📐 13+ Size Presets</span>
+      <span class="th-tag">🔬 4K / 600 DPI</span>
+      <span class="th-tag">✂️ Background Remove</span>
+      <span class="th-tag">🎨 12 Filters</span>
+      <span class="th-tag">📋 Sheet Layout</span>
+      <span class="th-tag">📱 Mobile Ready</span>
+    </div>
+  </div>
+</section>
+
+<div class="page-wrap">
+<!-- ═══ AD SLOT 1 ═══ -->
+<div class="ad-box">
+  📢 AdSense — Leaderboard 728×90 · Hero ke baad · Highest viewability
+  <span style="font-size:9px">Replace with AdSense ins tag</span>
+</div>
+
+<!-- ═══ MAIN STUDIO ═══ -->
+<div class="tool-studio" id="studio">
+
+  <!-- ════ LEFT PANEL ════ -->
+  <div class="lp">
+    <div class="lp-tabs">
+      <button class="lpt active" onclick="switchTab('bg',this)">BG</button>
+      <button class="lpt" onclick="switchTab('crop',this)">Crop</button>
+      <button class="lpt" onclick="switchTab('adjust',this)">Tone</button>
+      <button class="lpt" onclick="switchTab('filters',this)">Filters</button>
+    </div>
+
+    <!-- ── BG TAB ── -->
+    <div class="lp-body" id="tab-bg">
+      <div>
+        <div class="slabel">Background Remove</div>
+        <div class="ctrl" style="margin-top:8px">
+          <div class="ctrl-hd">Tolerance <span id="tolVal">35</span></div>
+          <input type="range" min="5" max="90" value="35" id="tolSlider" oninput="document.getElementById('tolVal').textContent=this.value">
+        </div>
+        <button class="btn btn-gold" id="removeBgBtn" style="margin-top:8px" onclick="doRemoveBg()" disabled>✂️ Remove Background</button>
+        <div class="info" style="margin-top:7px">💡 Plain background photos par best result milta hai. Tolerance badhao agar background puri tarah nahi hata.</div>
+      </div>
+
+      <div>
+        <div class="slabel">Background Color</div>
+        <div class="swatches" id="swatches" style="margin-top:8px">
+          <div class="sw active" style="background:#fff;border-color:var(--border)" data-c="#ffffff" onclick="setBg('#ffffff',this)" title="White"></div>
+          <div class="sw" style="background:#f0ede8" data-c="#f0ede8" onclick="setBg('#f0ede8',this)" title="Cream"></div>
+          <div class="sw" style="background:#4a90d9" data-c="#4a90d9" onclick="setBg('#4a90d9',this)" title="Blue"></div>
+          <div class="sw" style="background:#d4e8ff" data-c="#d4e8ff" onclick="setBg('#d4e8ff',this)" title="Light Blue"></div>
+          <div class="sw" style="background:#e8d5f0" data-c="#e8d5f0" onclick="setBg('#e8d5f0',this)" title="Lavender"></div>
+          <div class="sw" style="background:#ffd700" data-c="#ffd700" onclick="setBg('#ffd700',this)" title="Yellow"></div>
+          <div class="sw" style="background:#2d8a4e" data-c="#2d8a4e" onclick="setBg('#2d8a4e',this)" title="Green"></div>
+          <div class="sw" style="background:#cc3333" data-c="#cc3333" onclick="setBg('#cc3333',this)" title="Red"></div>
+          <div class="sw" style="background:#f97316" data-c="#f97316" onclick="setBg('#f97316',this)" title="Orange"></div>
+          <div class="sw" style="background:#0f172a" data-c="#0f172a" onclick="setBg('#0f172a',this)" title="Dark"></div>
+          <div class="sw sw-trans" data-c="transparent" onclick="setBg('transparent',this)" title="Transparent (PNG)"></div>
+        </div>
+        <div style="margin-top:7px">
+          <input type="color" id="customColor" value="#4a90d9" oninput="setBg(this.value,null);document.querySelectorAll('.sw').forEach(s=>s.classList.remove('active'))">
+          <div style="font-size:10.5px;color:var(--ink3);margin-top:3px">Custom color ↑ ya hex code type karein</div>
+        </div>
+      </div>
+
+      <div class="div"></div>
+      <button class="btn btn-outline" onclick="doReset()">🔄 Original Par Wapas Jaayein</button>
+    </div>
+
+    <!-- ── CROP TAB ── -->
+    <div class="lp-body" id="tab-crop" style="display:none">
+      <div>
+        <div class="slabel">Crop Tool</div>
+        <div class="info" style="margin-top:8px">Image par mouse se drag karein crop area banane ke liye.</div>
+        <button class="btn btn-gold" id="startCropBtn" style="margin-top:8px" onclick="activateCrop()" disabled>✂️ Crop Mode Start</button>
+        <button class="btn btn-green" id="applyCropBtn" style="display:none;margin-top:6px" onclick="applyCrop()">✅ Apply Crop</button>
+        <button class="btn btn-red" id="cancelCropBtn" style="display:none;margin-top:6px" onclick="cancelCrop()">✕ Cancel</button>
+      </div>
+      <div>
+        <div class="slabel">Flip / Mirror</div>
+        <div class="flip-row" style="margin-top:8px">
+          <button class="flip-btn" onclick="flipH()">↔ Horizontal</button>
+          <button class="flip-btn" onclick="flipV()">↕ Vertical</button>
+        </div>
+      </div>
+      <div>
+        <div class="slabel">Rotate</div>
+        <div class="flip-row" style="margin-top:8px">
+          <button class="flip-btn" onclick="rotateCW()">↻ 90° CW</button>
+          <button class="flip-btn" onclick="rotateCCW()">↺ 90° CCW</button>
+        </div>
+      </div>
+      <div class="div"></div>
+      <button class="btn btn-outline" onclick="doReset()">🔄 Reset All</button>
+    </div>
+
+    <!-- ── TONE TAB ── -->
+    <div class="lp-body" id="tab-adjust" style="display:none">
+      <div>
+        <div class="slabel">Tone Adjustments</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
+          <div class="ctrl"><div class="ctrl-hd">Brightness <span id="bVal">0</span></div><input type="range" min="-80" max="80" value="0" id="bSlider" oninput="adjChange('b',this.value)"></div>
+          <div class="ctrl"><div class="ctrl-hd">Contrast <span id="cVal">0</span></div><input type="range" min="-60" max="60" value="0" id="cSlider" oninput="adjChange('c',this.value)"></div>
+          <div class="ctrl"><div class="ctrl-hd">Saturation <span id="sVal">0</span></div><input type="range" min="-100" max="100" value="0" id="sSlider" oninput="adjChange('s',this.value)"></div>
+          <div class="ctrl"><div class="ctrl-hd">Sharpness <span id="shVal">0</span></div><input type="range" min="0" max="100" value="0" id="shSlider" oninput="adjChange('sh',this.value)"></div>
+          <div class="ctrl"><div class="ctrl-hd">Warmth <span id="wVal">0</span></div><input type="range" min="-50" max="50" value="0" id="wSlider" oninput="adjChange('w',this.value)"></div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-outline btn-sm" onclick="resetAdj()">Reset Sliders</button>
+      </div>
+      <div class="div"></div>
+      <button class="btn btn-outline" onclick="doReset()">🔄 Reset All</button>
+    </div>
+
+    <!-- ── FILTERS TAB ── -->
+    <div class="lp-body" id="tab-filters" style="display:none">
+      <div>
+        <div class="slabel">Quick Filters</div>
+        <div class="qa-grid" style="margin-top:8px" id="qaGrid">
+          <button class="qa" data-f="enhance" onclick="applyFilter('enhance',this)">✨ Enhance</button>
+          <button class="qa" data-f="beautify" onclick="applyFilter('beautify',this)">💄 Beautify</button>
+          <button class="qa" data-f="vivid" onclick="applyFilter('vivid',this)">🌈 Vivid</button>
+          <button class="qa" data-f="warm" onclick="applyFilter('warm',this)">🌅 Warm</button>
+          <button class="qa" data-f="cool" onclick="applyFilter('cool',this)">❄️ Cool</button>
+          <button class="qa" data-f="bw" onclick="applyFilter('bw',this)">⬛ B&W</button>
+          <button class="qa" data-f="vintage" onclick="applyFilter('vintage',this)">📷 Vintage</button>
+          <button class="qa" data-f="sharp" onclick="applyFilter('sharp',this)">🔪 Sharp</button>
+          <button class="qa" data-f="passport" onclick="applyFilter('passport',this)">🪪 Passport</button>
+          <button class="qa" data-f="soft" onclick="applyFilter('soft',this)">🌸 Soft</button>
+          <button class="qa" data-f="drama" onclick="applyFilter('drama',this)">🎭 Drama</button>
+          <button class="qa" data-f="bright" onclick="applyFilter('bright',this)">☀️ Bright</button>
+        </div>
+      </div>
+      <div class="div"></div>
+      <button class="btn btn-outline" onclick="doReset()">🔄 Reset All</button>
+    </div>
+  </div>
+
+  <!-- ════ CENTER PANEL ════ -->
+  <div class="cp" id="cp"
+    ondragover="event.preventDefault();document.getElementById('upZone')?.classList.add('drag')"
+    ondragleave="document.getElementById('upZone')?.classList.remove('drag')"
+    ondrop="event.preventDefault();document.getElementById('upZone')?.classList.remove('drag');handleFileDrop(event.dataTransfer.files[0])">
+
+    <div class="cp-bg"></div>
+
+    <!-- Upload Zone -->
+    <div class="upload-zone" id="upZone" onclick="document.getElementById('fileInp').click()">
+      <div class="uz-icon">📁</div>
+      <div class="uz-title">Koi bhi photo yahan drop karein</div>
+      <div class="uz-sub">Automatically process hogi — koi upload nahi, sab aapke device par</div>
+      <div class="uz-formats">
+        <span class="uz-fmt">JPG</span><span class="uz-fmt">PNG</span><span class="uz-fmt">WEBP</span>
+        <span class="uz-fmt">HEIC</span><span class="uz-fmt">BMP</span><span class="uz-fmt">GIF</span><span class="uz-fmt">AVIF</span>
+      </div>
+      <button class="uz-btn" onclick="event.stopPropagation();document.getElementById('fileInp').click()">📷 Photo Select Karein</button>
+    </div>
+
+    <!-- Canvas Wrap (hidden until image loaded) -->
+    <div class="canvas-wrap" id="canvasWrap" style="display:none">
+      <canvas id="mainCanvas"></canvas>
+      <!-- Crop overlay -->
+      <div id="cropOverlay" style="display:none;position:absolute;inset:0;cursor:crosshair;z-index:5"
+        onmousedown="cropMD(event)" onmousemove="cropMM(event)" onmouseup="cropMU(event)"
+        ontouchstart="cropTD(event)" ontouchmove="cropTM(event)" ontouchend="cropMU(event)">
+        <div id="cropSel" style="display:none;position:absolute;border:2px solid var(--gold);box-shadow:0 0 0 9999px rgba(0,0,0,.5);pointer-events:none">
+          <div style="position:absolute;inset:-4px">
+            <div style="position:absolute;top:0;left:0;width:8px;height:8px;background:var(--gold);border-radius:1px"></div>
+            <div style="position:absolute;top:0;right:0;width:8px;height:8px;background:var(--gold);border-radius:1px"></div>
+            <div style="position:absolute;bottom:0;left:0;width:8px;height:8px;background:var(--gold);border-radius:1px"></div>
+            <div style="position:absolute;bottom:0;right:0;width:8px;height:8px;background:var(--gold);border-radius:1px"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Crop toolbar -->
+      <div id="cropToolbar" style="display:none;position:absolute;top:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 14px;display:flex;align-items:center;gap:10px;z-index:15">
+        <span style="font-size:11px;color:rgba(255,255,255,.6);font-weight:600">Select area to crop</span>
+        <button onclick="applyCrop()" style="padding:5px 14px;border-radius:999px;background:var(--gold);color:var(--navy);font-size:11.5px;font-weight:700;border:none;cursor:pointer">✅ Apply</button>
+        <button onclick="cancelCrop()" style="padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);font-size:11.5px;font-weight:700;border:1px solid rgba(255,255,255,.15);cursor:pointer">✕ Cancel</button>
+      </div>
+    </div>
+
+    <!-- Processing overlay -->
+    <div class="processing-overlay" id="procOv" style="display:none">
+      <div class="po-ring"></div>
+      <div class="po-text" id="procTxt">Processing...</div>
+      <div class="po-bar"><div class="po-fill"></div></div>
+      <div class="po-sub" id="procSub">Browser mein ho raha hai — files secure hain</div>
+    </div>
+
+    <!-- Status bar -->
+    <div class="status-bar" id="statusBar" style="display:none">
+      <span class="sb-left" id="sbMsg">Ready</span>
+      <div class="sb-right">
+        <span id="sbDims"></span>
+        <span class="sb-badge" id="sbRes">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ RIGHT PANEL ════ -->
+  <div class="rp">
+
+    <!-- Photo Size -->
+    <div class="rp-section">
+      <div class="slabel" style="margin-bottom:8px">📐 Photo Size</div>
+      <div class="preset-list" id="presetList"></div>
+      <div id="customSizeWrap" style="display:none;margin-top:8px">
+        <div class="slabel" style="margin-bottom:6px;font-size:9.5px">Custom (pixels)</div>
+        <div class="custom-size">
+          <input type="number" id="custW" value="413" placeholder="W" min="1">
+          <div class="x">×</div>
+          <input type="number" id="custH" value="531" placeholder="H" min="1">
+        </div>
+      </div>
+    </div>
+
+    <!-- Resolution / Quality -->
+    <div class="rp-section">
+      <div class="slabel" style="margin-bottom:8px">🔬 Output Resolution</div>
+      <div class="res-grid" id="resGrid">
+        <button class="res-btn" data-dpi="96" onclick="setRes(96,this)">Screen<br><span style="font-size:9px;opacity:.7">72-96 DPI</span></button>
+        <button class="res-btn" data-dpi="150" onclick="setRes(150,this)">HD<br><span style="font-size:9px;opacity:.7">150 DPI</span></button>
+        <button class="res-btn active" data-dpi="300" onclick="setRes(300,this)">4K Print ★<br><span style="font-size:9px;opacity:.7">300 DPI</span></button>
+        <button class="res-btn star" data-dpi="400" onclick="setRes(400,this)">Ultra 4K<br><span style="font-size:9px;opacity:.7">400 DPI</span></button>
+        <button class="res-btn" data-dpi="600" onclick="setRes(600,this)">Max<br><span style="font-size:9px;opacity:.7">600 DPI</span></button>
+        <button class="res-btn" data-dpi="0" onclick="setRes(0,this)">Custom<br><span style="font-size:9px;opacity:.7">DPI</span></button>
+      </div>
+      <div id="customDpiWrap" style="display:none;margin-top:6px">
+        <input type="number" id="customDpi" value="300" min="72" max="1200" placeholder="DPI (72–1200)" style="width:100%;padding:6px 8px;border-radius:8px;border:1.5px solid var(--border);font-size:12px;text-align:center">
+      </div>
+      <div class="res-preview" id="resPreview">— Photo select karein —</div>
+    </div>
+
+    <!-- JPEG Quality -->
+    <div class="rp-section" id="qualitySection">
+      <div class="slabel" style="margin-bottom:8px">🎚 Output Quality</div>
+      <div class="ctrl">
+        <div class="ctrl-hd">JPEG Quality <span id="jpegQualVal">95%</span></div>
+        <input type="range" min="50" max="100" value="95" id="jpegQual" oninput="document.getElementById('jpegQualVal').textContent=this.value+'%'">
+      </div>
+    </div>
+
+    <!-- Pieces per sheet -->
+    <div class="rp-section">
+      <div class="slabel" style="margin-bottom:8px">📋 Pieces / Sheet</div>
+      <div class="pieces-grid">
+        <button class="pc-btn" onclick="setPieces(1,this)">1</button>
+        <button class="pc-btn" onclick="setPieces(2,this)">2</button>
+        <button class="pc-btn active" onclick="setPieces(4,this)">4</button>
+        <button class="pc-btn" onclick="setPieces(6,this)">6</button>
+        <button class="pc-btn" onclick="setPieces(8,this)">8</button>
+        <button class="pc-btn" onclick="setPieces(12,this)">12</button>
+      </div>
+      <div style="font-size:10px;color:var(--ink3);margin-top:5px;text-align:center">Auto A4 sheet, cut marks ke saath</div>
+    </div>
+
+    <!-- Format -->
+    <div class="rp-section">
+      <div class="slabel" style="margin-bottom:8px">💾 Format</div>
+      <select id="fmtSel" onchange="updateQualitySection()">
+        <option value="jpeg">JPEG — Photos ke liye best</option>
+        <option value="png">PNG — Transparent bg support</option>
+        <option value="webp">WebP — Web optimized</option>
+      </select>
+    </div>
+
+    <!-- Download -->
+    <div class="rp-section">
+      <div class="slabel" style="margin-bottom:8px">⬇ Download</div>
+      <button class="dl-btn dl-primary" id="dlSheetBtn" onclick="downloadSheet()" disabled>
+        📋 Sheet Download<br><small style="font-weight:400;font-size:10px;opacity:.8">Print-ready with cut marks</small>
+      </button>
+      <button class="dl-btn dl-secondary" id="dlSingleBtn" style="margin-top:6px" onclick="downloadSingle()" disabled>📷 Single Photo</button>
+      <button class="dl-btn dl-share" id="shareBtn" style="margin-top:6px" onclick="sharePhoto()" disabled>↗ Share / WhatsApp</button>
+      <div id="qualityBadge" style="display:none;margin-top:8px">
+        <div class="quality-badge">
+          <div class="qb-dot" style="background:var(--gold)"></div>
+          <span class="qb-text" id="qbText">HD Quality Ready</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end .rp -->
+</div><!-- end .tool-studio -->
+
+<!-- ═══ AD SLOT 2 ═══ -->
+<div class="ad-box">
+  📢 AdSense — Rectangle 336×280 · Tool ke baad · Best RPM position<br>
+  <span style="font-size:9px">Replace with AdSense ins tag</span>
+</div>
+
+<!-- ═══ HOW TO USE ═══ -->
+<div class="howto">
+  <h2>📖 Photo Studio Kaise Use Karein — Step by Step</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div><div class="step-title">Photo Upload Karein</div><div class="step-desc">Koi bhi format — JPG, PNG, WEBP, HEIC, BMP, GIF. Drag-drop ya click karein. Files kabhi server par nahi jaati.</div></div></div>
+    <div class="step"><div class="step-num">2</div><div><div class="step-title">Background Remove/Change</div><div class="step-desc">BG tab → Remove Background click → phir apni pasand ka color choose karein. White, blue, custom — kuch bhi.</div></div></div>
+    <div class="step"><div class="step-num">3</div><div><div class="step-title">Resolution Select Karein</div><div class="step-desc">Screen ke liye 96 DPI, print ke liye 4K (300 DPI), ultra quality ke liye 400-600 DPI. Passport photos ke liye 300 DPI best hai.</div></div></div>
+    <div class="step"><div class="step-num">4</div><div><div class="step-title">Size Preset & Pieces</div><div class="step-desc">India Passport, PAN, Aadhaar ya custom size. 1 se 12 pieces choose karein — automatically A4 sheet mein arrange hoga.</div></div></div>
+    <div class="step"><div class="step-num">5</div><div><div class="step-title">Enhance & Download</div><div class="step-desc">Filters se enhance karein, ya sliders se tune karein. Phir Sheet Download (print ke liye) ya Single Photo download karein.</div></div></div>
+  </div>
+</div>
+
+</div><!-- end page-wrap -->
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="foot" id="donate">
+  <p>© 2026 <a href="/">ToolNest</a> · Photo Studio Tool · Free · No Signup · Files never leave your device · Made with ❤️ for India 🇮🇳</p>
+  <p style="margin-top:6px">UPI Donate: <a href="upi://pay?pa=toolnest@upi">toolnest@upi</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+</footer>
+
+<!-- Hidden file input -->
+<input type="file" id="fileInp" accept="image/*" style="display:none" onchange="handleFileDrop(this.files[0])">
+
+<!-- ═══════════════════════════════════════════════════════
+     PHOTO STUDIO ENGINE — Pure Canvas, No Backend
+═══════════════════════════════════════════════════════ -->
+<script>
+'use strict';
+
+/* ─── PRESETS DATA ─── */
+const PRESETS = [
+  {id:'india-passport', name:'India Passport',   w:35,  h:45,  flag:'🇮🇳'},
+  {id:'us-passport',    name:'US Passport',       w:51,  h:51,  flag:'🇺🇸'},
+  {id:'uk-passport',    name:'UK Passport',       w:35,  h:45,  flag:'🇬🇧'},
+  {id:'pan-card',       name:'PAN Card',          w:25,  h:35,  flag:'🪪'},
+  {id:'aadhaar',        name:'Aadhaar Card',      w:35,  h:45,  flag:'🇮🇳'},
+  {id:'driving',        name:'Driving License',   w:35,  h:45,  flag:'🚗'},
+  {id:'railway',        name:'Railway Pass',      w:30,  h:35,  flag:'🚂'},
+  {id:'schengen',       name:'Schengen Visa',     w:35,  h:45,  flag:'🇪🇺'},
+  {id:'stamp',          name:'Stamp Size',        w:22,  h:28,  flag:'📮'},
+  {id:'2x2inch',        name:'2×2 inch',          w:51,  h:51,  flag:'📐'},
+  {id:'4x6inch',        name:'4×6 inch (Print)',  w:102, h:152, flag:'🖨'},
+  {id:'5x7inch',        name:'5×7 inch (Frame)',  w:127, h:178, flag:'🖼'},
+  {id:'custom',         name:'Custom Size',       w:null,h:null, flag:'⚙️'},
+];
+
+/* ─── FILTER CONFIGS ─── */
+const FILTERS = {
+  enhance:  {b:12, c:20, s:15, sh:12, w:5},
+  beautify: {b:15, c:15, s:8,  sh:6,  w:8},
+  vivid:    {b:5,  c:25, s:45, sh:0,  w:0},
+  warm:     {b:8,  c:10, s:15, sh:0,  w:30},
+  cool:     {b:5,  c:10, s:5,  sh:0,  w:-25},
+  bw:       {b:5,  c:20, s:-100,sh:0, w:0},
+  vintage:  {b:-8, c:-12,s:-35,sh:0,  w:20},
+  sharp:    {b:0,  c:12, s:0,  sh:70, w:0},
+  passport: {b:8,  c:18, s:0,  sh:15, w:5},
+  soft:     {b:12, c:-12,s:-8, sh:0,  w:5},
+  drama:    {b:-10,c:40, s:20, sh:25, w:-5},
+  bright:   {b:35, c:5,  s:12, sh:0,  w:0},
+};
+
+/* ─── STATE ─── */
+let ST = {
+  original:     null,   // original ImageData (immutable after load)
+  working:      null,   // current displayed ImageData
+  bgRemoved:    null,   // ImageData with transparent BG (after removal)
+  adjBase:      null,   // base for real-time adjustments
+  bgColor:      '#ffffff',
+  preset:       PRESETS[0],
+  dpi:          300,
+  pieces:       4,
+  fmt:          'jpeg',
+  cropMode:     false,
+  cropDragging: false,
+  cropSX:0, cropSY:0, cropEX:0, cropEY:0,
+  adj:          {b:0, c:0, s:0, sh:0, w:0},
+  adjTimer:     null,
+};
+
+/* ─── UTILITY ─── */
+const mmToPx = (mm, dpi) => Math.round(mm * dpi / 25.4);
+const cloneId = d => new ImageData(new Uint8ClampedArray(d.data), d.width, d.height);
+const hexToRgb = hex => {
+  if (!hex || hex === 'transparent') return null;
+  return [parseInt(hex.slice(1,3),16), parseInt(hex.slice(3,5),16), parseInt(hex.slice(5,7),16)];
+};
+const clamp = (v,min,max) => Math.max(min, Math.min(max, v));
+
+/* ─── UI HELPERS ─── */
+function showProc(msg, sub) {
+  const ov = document.getElementById('procOv');
+  if (!msg) { ov.style.display = 'none'; return; }
+  ov.style.display = 'flex';
+  document.getElementById('procTxt').textContent = msg;
+  document.getElementById('procSub').textContent = sub || 'Processing in browser — files are secure';
+}
+
+function setStatus(msg, dims, resBadge) {
+  const sb = document.getElementById('statusBar');
+  sb.style.display = 'flex';
+  document.getElementById('sbMsg').textContent = msg;
+  if (dims) document.getElementById('sbDims').textContent = dims;
+  if (resBadge) document.getElementById('sbRes').textContent = resBadge;
+}
+
+function setButtons(enabled) {
+  ['removeBgBtn','startCropBtn','dlSheetBtn','dlSingleBtn','shareBtn'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.disabled = !enabled;
+  });
+}
+
+/* ─── CANVAS RENDER ─── */
+function renderCanvas(imgData) {
+  ST.working = imgData;
+  const canvas = document.getElementById('mainCanvas');
+  canvas.width = imgData.width;
+  canvas.height = imgData.height;
+  canvas.getContext('2d').putImageData(imgData, 0, 0);
+
+  // Responsive scale to fit center panel
+  const cp = document.getElementById('cp');
+  const maxW = cp.clientWidth - 32;
+  const maxH = cp.clientHeight - 32;
+  const scale = Math.min(1, maxW / imgData.width, maxH / imgData.height);
+  canvas.style.width  = Math.round(imgData.width  * scale) + 'px';
+  canvas.style.height = Math.round(imgData.height * scale) + 'px';
+
+  // Show/hide sections
+  document.getElementById('upZone').style.display    = 'none';
+  document.getElementById('canvasWrap').style.display = 'flex';
+
+  // Update status
+  const curDpi = ST.dpi || (document.getElementById('customDpi') ? parseInt(document.getElementById('customDpi').value) : 300);
+  const resLabel = curDpi >= 400 ? 'Ultra 4K' : curDpi >= 300 ? '4K Print' : curDpi >= 150 ? 'HD' : 'Screen';
+  setStatus('Ready', imgData.width + '×' + imgData.height + 'px', resLabel);
+  updateResPreview();
+}
+
+/* ─── FILE LOADING ─── */
+async function handleFileDrop(file) {
+  if (!file) return;
+  if (!file.type.startsWith('image/') && !file.name.match(/\.(heic|heif|avif|bmp|tiff?)$/i)) {
+    alert('Please select a valid image file.');
+    return;
+  }
+  showProc('Loading ' + file.name + '...', 'Any format supported — processing in browser');
+  try {
+    let bmp;
+    try {
+      bmp = await createImageBitmap(file);
+    } catch(e) {
+      // Fallback for unsupported formats
+      const url = URL.createObjectURL(file);
+      const img = await new Promise((res, rej) => {
+        const i = new Image();
+        i.onload = () => res(i);
+        i.onerror = rej;
+        i.src = url;
+      });
+      bmp = img;
+      URL.revokeObjectURL(url);
+    }
+    const c = document.createElement('canvas');
+    c.width = bmp.width || bmp.naturalWidth;
+    c.height = bmp.height || bmp.naturalHeight;
+    c.getContext('2d').drawImage(bmp, 0, 0);
+    if (bmp.close) bmp.close();
+
+    const d = c.getContext('2d').getImageData(0, 0, c.width, c.height);
+    ST.original = d;
+    ST.bgRemoved = null;
+    ST.adjBase = null;
+    ST.bgColor = '#ffffff';
+    resetAdj(false);
+    cancelCrop();
+    renderCanvas(cloneId(d));
+    setButtons(true);
+    document.getElementById('qualityBadge').style.display = 'block';
+    setQualityBadge();
+
+  } catch(e) {
+    alert('Image load error: ' + e.message + '\nTry JPG or PNG format.');
+  }
+  showProc('');
+}
+
+/* ─── BACKGROUND REMOVAL ─── */
+function doRemoveBg() {
+  if (!ST.working) return;
+  showProc('Removing background...', 'Edge-based flood fill algorithm running');
+  document.getElementById('removeBgBtn').disabled = true;
+
+  setTimeout(() => {
+    const tol = parseInt(document.getElementById('tolSlider').value);
+    const d = ST.working.data;
+    const W = ST.working.width, H = ST.working.height;
+
+    // Sample BG color from all 4 edges (many points)
+    const samples = [];
+    const N = 40;
+    for (let i = 0; i < N; i++) {
+      const x1 = Math.floor(i * W / N);
+      const p1 = x1 * 4, p2 = ((H-1)*W + x1)*4;
+      samples.push([d[p1],d[p1+1],d[p1+2]], [d[p2],d[p2+1],d[p2+2]]);
+    }
+    for (let i = 0; i < N; i++) {
+      const y1 = Math.floor(i * H / N);
+      const p1 = y1*W*4, p2 = (y1*W + W-1)*4;
+      samples.push([d[p1],d[p1+1],d[p1+2]], [d[p2],d[p2+1],d[p2+2]]);
+    }
+    const bgR = samples.reduce((s,c)=>s+c[0],0) / samples.length;
+    const bgG = samples.reduce((s,c)=>s+c[1],0) / samples.length;
+    const bgB = samples.reduce((s,c)=>s+c[2],0) / samples.length;
+
+    // BFS flood fill from all edge pixels
+    const vis = new Uint8Array(W * H);
+    const q = new Int32Array(W * H * 2 + 8);
+    let qs = 0, qe = 0;
+    const push = (x, y) => { q[qe++] = x; q[qe++] = y; };
+
+    for (let x = 0; x < W; x++) { push(x, 0); push(x, H-1); }
+    for (let y = 1; y < H-1; y++) { push(0, y); push(W-1, y); }
+
+    while (qs < qe) {
+      const px = q[qs++], py = q[qs++];
+      if (px < 0 || px >= W || py < 0 || py >= H) continue;
+      const idx = py * W + px;
+      if (vis[idx]) continue;
+      const pi = idx * 4;
+      const dr = d[pi]-bgR, dg = d[pi+1]-bgG, db = d[pi+2]-bgB;
+      if (Math.sqrt(dr*dr + dg*dg + db*db) > tol) continue;
+      vis[idx] = 1;
+      push(px+1,py); push(px-1,py); push(px,py+1); push(px,py-1);
+    }
+
+    // Build transparent ImageData
+    const nd = new Uint8ClampedArray(d.length);
+    for (let i = 0; i < d.length; i++) nd[i] = d[i];
+    for (let i = 0; i < W * H; i++) {
+      if (vis[i]) nd[i*4+3] = 0;
+    }
+
+    ST.bgRemoved = new ImageData(nd, W, H);
+    ST.adjBase = ST.bgRemoved;
+    applyBgColor(ST.bgRemoved, ST.bgColor);
+    setStatus('Background removed!', W+'×'+H+'px');
+    document.getElementById('removeBgBtn').disabled = false;
+    showProc('');
+  }, 50);
+}
+
+/* ─── APPLY BG COLOR ─── */
+function applyBgColor(remData, color) {
+  const rgb = hexToRgb(color);
+  const src = remData.data;
+  const nd = new Uint8ClampedArray(src.length);
+
+  if (!rgb) {
+    // Keep transparent — PNG download pe visible
+    for (let i = 0; i < src.length; i++) nd[i] = src[i];
+    const newId = new ImageData(nd, remData.width, remData.height);
+    renderCanvas(newId);
+    // Checkerboard for transparent BG
+    document.getElementById('mainCanvas').style.backgroundImage = 'conic-gradient(#2a2a2a 90deg,#1e1e1e 90deg 180deg,#2a2a2a 180deg 270deg,#1e1e1e 270deg)';
+    document.getElementById('mainCanvas').style.backgroundSize = '16px 16px';
+    return;
+  } else {
+    document.getElementById('mainCanvas').style.backgroundImage = '';
+    document.getElementById('mainCanvas').style.backgroundSize = '';
+  }
+
+  for (let i = 0; i < src.length; i += 4) {
+    const a = src[i+3] / 255;
+    nd[i]   = clamp(Math.round(src[i]*a   + rgb[0]*(1-a)), 0, 255);
+    nd[i+1] = clamp(Math.round(src[i+1]*a + rgb[1]*(1-a)), 0, 255);
+    nd[i+2] = clamp(Math.round(src[i+2]*a + rgb[2]*(1-a)), 0, 255);
+    nd[i+3] = 255;
+  }
+  renderCanvas(new ImageData(nd, remData.width, remData.height));
+}
+
+function setBg(color, el) {
+  ST.bgColor = color;
+  document.querySelectorAll('.sw').forEach(s => s.classList.remove('active'));
+  if (el) el.classList.add('active');
+  else document.getElementById('customColor').value = color;
+  if (ST.bgRemoved) applyBgColor(ST.bgRemoved, color);
+}
+
+/* ─── ADJUSTMENTS ENGINE ─── */
+function adjChange(key, val) {
+  ST.adj[key] = parseInt(val);
+  document.getElementById(key === 'sh' ? 'shVal' : key === 'w' ? 'wVal' : key+'Val').textContent = val;
+  clearTimeout(ST.adjTimer);
+  ST.adjTimer = setTimeout(applyAdj, 30);
+}
+
+function applyAdj() {
+  const base = ST.adjBase || ST.original;
+  if (!base) return;
+
+  const src = base.data;
+  const nd  = new Uint8ClampedArray(src.length);
+  const W   = base.width, H = base.height;
+  const bright = ST.adj.b * 0.65;
+  const cont   = (ST.adj.c + 100) / 100;
+  const sat    = (ST.adj.s + 100) / 100;
+  const warm   = ST.adj.w;
+
+  for (let i = 0; i < src.length; i += 4) {
+    let r = src[i] + bright + warm * 0.4;
+    let g = src[i+1] + bright;
+    let b = src[i+2] + bright - warm * 0.25;
+
+    // Contrast
+    r = (r - 128) * cont + 128;
+    g = (g - 128) * cont + 128;
+    b = (b - 128) * cont + 128;
+
+    // Saturation via luminance
+    const lum = 0.299*r + 0.587*g + 0.114*b;
+    r = lum + (r - lum) * sat;
+    g = lum + (g - lum) * sat;
+    b = lum + (b - lum) * sat;
+
+    nd[i]   = clamp(r, 0, 255);
+    nd[i+1] = clamp(g, 0, 255);
+    nd[i+2] = clamp(b, 0, 255);
+    nd[i+3] = src[i+3];
+  }
+
+  // Unsharp mask for sharpness
+  if (ST.adj.sh > 0) {
+    const strength = ST.adj.sh / 100 * 0.6;
+    const tmp = new Uint8ClampedArray(nd);
+    for (let y = 1; y < H-1; y++) {
+      for (let x = 1; x < W-1; x++) {
+        const idx = (y*W + x) * 4;
+        for (let ch = 0; ch < 3; ch++) {
+          const center = tmp[idx+ch];
+          const blur = (tmp[((y-1)*W+x)*4+ch] + tmp[((y+1)*W+x)*4+ch] +
+                        tmp[(y*W+x-1)*4+ch] + tmp[(y*W+x+1)*4+ch]) / 4;
+          nd[idx+ch] = clamp(Math.round(center + strength * (center - blur)), 0, 255);
+        }
+      }
+    }
+  }
+
+  const newData = new ImageData(nd, W, H);
+  if (ST.bgRemoved) {
+    ST.adjBase = newData;
+    applyBgColor(newData, ST.bgColor);
+  } else {
+    ST.adjBase = newData;
+    renderCanvas(newData);
+  }
+}
+
+function resetAdj(reRender = true) {
+  ST.adj = {b:0, c:0, s:0, sh:0, w:0};
+  ['b','c','s'].forEach(k => {
+    const sl = document.getElementById(k+'Slider');
+    const vl = document.getElementById(k+'Val');
+    if (sl) { sl.value = 0; vl.textContent = 0; }
+  });
+  ['shSlider','wSlider'].forEach((id,i) => {
+    const sl = document.getElementById(id);
+    const vl = document.getElementById(['shVal','wVal'][i]);
+    if (sl) { sl.value = 0; vl.textContent = 0; }
+  });
+  if (reRender) {
+    ST.adjBase = ST.bgRemoved || ST.original;
+    if (ST.adjBase) {
+      if (ST.bgRemoved) applyBgColor(ST.bgRemoved, ST.bgColor);
+      else renderCanvas(cloneId(ST.original));
+    }
+  }
+}
+
+/* ─── QUICK FILTERS ─── */
+function applyFilter(name, el) {
+  const cfg = FILTERS[name];
+  if (!cfg) return;
+  ST.adj = {...cfg};
+  document.getElementById('bSlider').value = cfg.b;
+  document.getElementById('cSlider').value = cfg.c;
+  document.getElementById('sSlider').value = cfg.s;
+  document.getElementById('shSlider').value = cfg.sh;
+  document.getElementById('wSlider').value  = cfg.w;
+  document.getElementById('bVal').textContent  = cfg.b;
+  document.getElementById('cVal').textContent  = cfg.c;
+  document.getElementById('sVal').textContent  = cfg.s;
+  document.getElementById('shVal').textContent = cfg.sh;
+  document.getElementById('wVal').textContent  = cfg.w;
+  document.querySelectorAll('.qa').forEach(q => q.classList.remove('applied'));
+  if (el) el.classList.add('applied');
+  applyAdj();
+}
+
+/* ─── CROP ENGINE ─── */
+function activateCrop() {
+  if (!ST.working) return;
+  ST.cropMode = true;
+  ST.cropSX = ST.cropSY = ST.cropEX = ST.cropEY = 0;
+  document.getElementById('cropOverlay').style.display = 'block';
+  document.getElementById('cropToolbar').style.display = 'flex';
+  document.getElementById('cropSel').style.display = 'none';
+  document.getElementById('startCropBtn').style.display = 'none';
+  document.getElementById('applyCropBtn').style.display = 'flex';
+  document.getElementById('cancelCropBtn').style.display = 'flex';
+  setStatus('Crop mode: draw on image to select area');
+}
+
+function cancelCrop() {
+  ST.cropMode = false;
+  ST.cropDragging = false;
+  const co = document.getElementById('cropOverlay');
+  const ct = document.getElementById('cropToolbar');
+  if (co) co.style.display = 'none';
+  if (ct) ct.style.display = 'none';
+  const sb = document.getElementById('startCropBtn');
+  const ab = document.getElementById('applyCropBtn');
+  const cb = document.getElementById('cancelCropBtn');
+  if (sb) { sb.style.display = 'flex'; sb.disabled = false; }
+  if (ab) ab.style.display = 'none';
+  if (cb) cb.style.display = 'none';
+  const cs = document.getElementById('cropSel');
+  if (cs) cs.style.display = 'none';
+}
+
+function getCanvasPos(e, overlay) {
+  const r = overlay.getBoundingClientRect();
+  return {
+    x: clamp(e.clientX - r.left, 0, r.width),
+    y: clamp(e.clientY - r.top,  0, r.height)
+  };
+}
+
+function cropMD(e) {
+  if (!ST.cropMode) return;
+  ST.cropDragging = true;
+  const pos = getCanvasPos(e, document.getElementById('cropOverlay'));
+  ST.cropSX = ST.cropEX = pos.x;
+  ST.cropSY = ST.cropEY = pos.y;
+  updateCropVis();
+}
+function cropMM(e) {
+  if (!ST.cropMode || !ST.cropDragging) return;
+  e.preventDefault();
+  const pos = getCanvasPos(e, document.getElementById('cropOverlay'));
+  ST.cropEX = pos.x; ST.cropEY = pos.y;
+  updateCropVis();
+}
+function cropMU() { ST.cropDragging = false; }
+function cropTD(e) { if(e.touches[0]) cropMD({clientX:e.touches[0].clientX,clientY:e.touches[0].clientY}); }
+function cropTM(e) { e.preventDefault(); if(e.touches[0]) cropMM({clientX:e.touches[0].clientX,clientY:e.touches[0].clientY,preventDefault:()=>{}}); }
+
+function updateCropVis() {
+  const cs = document.getElementById('cropSel');
+  const x = Math.min(ST.cropSX, ST.cropEX);
+  const y = Math.min(ST.cropSY, ST.cropEY);
+  const w = Math.abs(ST.cropEX - ST.cropSX);
+  const h = Math.abs(ST.cropEY - ST.cropSY);
+  if (w < 2 || h < 2) { cs.style.display = 'none'; return; }
+  cs.style.cssText = `display:block;position:absolute;left:${x}px;top:${y}px;width:${w}px;height:${h}px;border:2px solid var(--gold);box-shadow:0 0 0 9999px rgba(0,0,0,.45);pointer-events:none`;
+}
+
+function applyCrop() {
+  if (!ST.working) return;
+  const canvas = document.getElementById('mainCanvas');
+  const scX = ST.working.width  / canvas.clientWidth;
+  const scY = ST.working.height / canvas.clientHeight;
+  const x1 = Math.round(Math.min(ST.cropSX, ST.cropEX) * scX);
+  const y1 = Math.round(Math.min(ST.cropSY, ST.cropEY) * scY);
+  const cw = Math.round(Math.abs(ST.cropEX - ST.cropSX) * scX);
+  const ch = Math.round(Math.abs(ST.cropEY - ST.cropSY) * scY);
+  if (cw < 4 || ch < 4) { cancelCrop(); return; }
+
+  const nd = new Uint8ClampedArray(cw * ch * 4);
+  const wd = ST.working.data, sw = ST.working.width;
+  for (let row = 0; row < ch; row++) {
+    for (let col = 0; col < cw; col++) {
+      const si = ((y1+row)*sw + (x1+col)) * 4;
+      const di = (row*cw + col) * 4;
+      nd[di]=wd[si]; nd[di+1]=wd[si+1]; nd[di+2]=wd[si+2]; nd[di+3]=wd[si+3];
+    }
+  }
+  const cropped = new ImageData(nd, cw, ch);
+  ST.original  = cropped;
+  ST.bgRemoved = null;
+  ST.adjBase   = null;
+  renderCanvas(cropped);
+  cancelCrop();
+  setStatus('Cropped: ' + cw + '×' + ch + 'px');
+}
+
+/* ─── FLIP / ROTATE ─── */
+function pixelOp(fn) {
+  if (!ST.working) return;
+  const {data:d, width:W, height:H} = ST.working;
+  const [nW, nH, nd] = fn(d, W, H);
+  const result = new ImageData(nd, nW, nH);
+  ST.original = result; ST.bgRemoved = null; ST.adjBase = null;
+  renderCanvas(result);
+}
+function flipH() {
+  pixelOp((d,W,H) => {
+    const nd=new Uint8ClampedArray(d.length);
+    for(let y=0;y<H;y++) for(let x=0;x<W;x++){
+      const s=(y*W+(W-1-x))*4, t=(y*W+x)*4;
+      nd[t]=d[s];nd[t+1]=d[s+1];nd[t+2]=d[s+2];nd[t+3]=d[s+3];
+    }
+    return [W,H,nd];
+  });
+  setStatus('Flipped horizontally');
+}
+function flipV() {
+  pixelOp((d,W,H) => {
+    const nd=new Uint8ClampedArray(d.length);
+    for(let y=0;y<H;y++) for(let x=0;x<W;x++){
+      const s=((H-1-y)*W+x)*4, t=(y*W+x)*4;
+      nd[t]=d[s];nd[t+1]=d[s+1];nd[t+2]=d[s+2];nd[t+3]=d[s+3];
+    }
+    return [W,H,nd];
+  });
+  setStatus('Flipped vertically');
+}
+function rotateCW() {
+  pixelOp((d,W,H) => {
+    const nd=new Uint8ClampedArray(W*H*4);
+    for(let y=0;y<H;y++) for(let x=0;x<W;x++){
+      const s=(y*W+x)*4, t=(x*H+(H-1-y))*4;
+      nd[t]=d[s];nd[t+1]=d[s+1];nd[t+2]=d[s+2];nd[t+3]=d[s+3];
+    }
+    return [H,W,nd];
+  });
+  setStatus('Rotated 90° CW');
+}
+function rotateCCW() {
+  pixelOp((d,W,H) => {
+    const nd=new Uint8ClampedArray(W*H*4);
+    for(let y=0;y<H;y++) for(let x=0;x<W;x++){
+      const s=(y*W+x)*4, t=((W-1-x)*H+y)*4;
+      nd[t]=d[s];nd[t+1]=d[s+1];nd[t+2]=d[s+2];nd[t+3]=d[s+3];
+    }
+    return [H,W,nd];
+  });
+  setStatus('Rotated 90° CCW');
+}
+
+/* ─── RESET ─── */
+function doReset() {
+  if (!ST.original) return;
+  ST.bgRemoved = null; ST.adjBase = null; ST.bgColor = '#ffffff';
+  resetAdj(false);
+  document.querySelectorAll('.qa').forEach(q => q.classList.remove('applied'));
+  renderCanvas(cloneId(ST.original));
+  setStatus('Reset to original');
+}
+
+/* ─── PRESETS UI ─── */
+function renderPresets() {
+  const dpi = getCurrentDpi();
+  document.getElementById('presetList').innerHTML = PRESETS.map(p => `
+    <div class="preset-item ${p.id===ST.preset.id?'active':''}" onclick="selectPreset('${p.id}')">
+      <div>
+        <div class="pi-name">${p.name}</div>
+        <div class="pi-size">${p.w ? p.w+'×'+p.h+'mm · '+mmToPx(p.w,dpi)+'×'+mmToPx(p.h,dpi)+'px' : 'Enter custom pixels →'}</div>
+      </div>
+      <div class="pi-flag">${p.flag}</div>
+    </div>`).join('');
+}
+
+function selectPreset(id) {
+  ST.preset = PRESETS.find(p => p.id === id) || PRESETS[0];
+  document.getElementById('customSizeWrap').style.display = id === 'custom' ? 'block' : 'none';
+  renderPresets();
+  updateResPreview();
+}
+
+/* ─── RESOLUTION ─── */
+function getCurrentDpi() {
+  if (ST.dpi === 0) return parseInt(document.getElementById('customDpi').value) || 300;
+  return ST.dpi;
+}
+
+function setRes(dpi, el) {
+  ST.dpi = dpi;
+  document.querySelectorAll('.res-btn').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+  document.getElementById('customDpiWrap').style.display = dpi === 0 ? 'block' : 'none';
+  renderPresets();
+  updateResPreview();
+  setQualityBadge();
+}
+
+function updateResPreview() {
+  const dpi = getCurrentDpi();
+  const p = ST.preset;
+  let preview = '';
+  if (p.id === 'custom') {
+    const cw = parseInt(document.getElementById('custW').value) || 400;
+    const ch = parseInt(document.getElementById('custH').value) || 500;
+    preview = `Custom: <strong>${cw} × ${ch} px</strong>`;
+  } else if (p.w) {
+    const pw = mmToPx(p.w, dpi), ph = mmToPx(p.h, dpi);
+    const megapx = ((pw * ph) / 1e6).toFixed(2);
+    const approxMb = (pw * ph * 3 / 1e6 * 0.07).toFixed(2);
+    preview = `<strong>${pw} × ${ph} px</strong> · ${megapx}MP · ~${approxMb}MB`;
+  }
+  document.getElementById('resPreview').innerHTML = preview || '—';
+}
+
+function setQualityBadge() {
+  const dpi = getCurrentDpi();
+  const qb = document.getElementById('qualityBadge');
+  const qt = document.getElementById('qbText');
+  if (!ST.working) return;
+  qb.style.display = 'block';
+  let label, color;
+  if (dpi >= 600) { label = '🔬 Maximum Quality (600 DPI)'; color = '#a855f7'; }
+  else if (dpi >= 400) { label = '⭐ Ultra 4K (400 DPI)'; color = '#6366f1'; }
+  else if (dpi >= 300) { label = '✅ 4K Print Quality (300 DPI)'; color = '#00B37E'; }
+  else if (dpi >= 150) { label = '📺 HD Quality (150 DPI)'; color = '#1E4FCB'; }
+  else { label = '💻 Screen Quality (96 DPI)'; color = '#8A8BA5'; }
+  qt.textContent = label;
+  document.querySelector('.qb-dot').style.background = color;
+}
+
+/* ─── PIECES ─── */
+function setPieces(n, el) {
+  ST.pieces = n;
+  document.querySelectorAll('.pc-btn').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+}
+
+/* ─── TAB SWITCH ─── */
+function switchTab(name, el) {
+  ['bg','crop','adjust','filters'].forEach(t => {
+    document.getElementById('tab-'+t).style.display = t===name ? 'flex' : 'none';
+  });
+  document.querySelectorAll('.lpt').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+}
+// Fix initial: bg tab uses flex layout
+document.getElementById('tab-bg').style.display = 'flex';
+
+/* ─── FORMAT CHANGE ─── */
+function updateQualitySection() {
+  ST.fmt = document.getElementById('fmtSel').value;
+  document.getElementById('qualitySection').style.display = ST.fmt === 'jpeg' ? 'block' : 'none';
+}
+
+/* ─── CREATE SCALED OUTPUT CANVAS ─── */
+function buildOutputCanvas(targetW, targetH) {
+  if (!ST.working) return null;
+  const src = document.createElement('canvas');
+  src.width = ST.working.width; src.height = ST.working.height;
+  src.getContext('2d').putImageData(ST.working, 0, 0);
+  const out = document.createElement('canvas');
+  out.width = targetW; out.height = targetH;
+  const ctx = out.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(src, 0, 0, targetW, targetH);
+  return out;
+}
+
+function getTargetDims() {
+  const dpi = getCurrentDpi();
+  if (ST.preset.id === 'custom') {
+    return {
+      w: parseInt(document.getElementById('custW').value) || 413,
+      h: parseInt(document.getElementById('custH').value) || 531
+    };
+  }
+  return { w: mmToPx(ST.preset.w, dpi), h: mmToPx(ST.preset.h, dpi) };
+}
+
+/* ─── SHEET DOWNLOAD ─── */
+function downloadSheet() {
+  if (!ST.working) return;
+  showProc('Generating ' + ST.pieces + ' photos on A4 sheet...', 'High resolution processing');
+  setTimeout(() => {
+    const {w:pw, h:ph} = getTargetDims();
+    const dpi = getCurrentDpi();
+    const cols = ST.pieces <= 1 ? 1 : ST.pieces <= 2 ? 2 : ST.pieces <= 4 ? 2 : ST.pieces <= 6 ? 3 : 4;
+    const rows = Math.ceil(ST.pieces / cols);
+    const gap = Math.round(dpi * 0.05);   // 1.3mm gap in current dpi
+    const margin = Math.round(dpi * 0.15); // 3.8mm margin
+
+    const sheetW = cols * pw + (cols-1)*gap + 2*margin;
+    const sheetH = rows * ph + (rows-1)*gap + 2*margin;
+
+    const out = document.createElement('canvas');
+    out.width = sheetW; out.height = sheetH;
+    const ctx = out.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, sheetW, sheetH);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+
+    // Source
+    const src = document.createElement('canvas');
+    src.width = ST.working.width; src.height = ST.working.height;
+    src.getContext('2d').putImageData(ST.working, 0, 0);
+
+    let cnt = 0;
+    for (let r = 0; r < rows && cnt < ST.pieces; r++) {
+      for (let c = 0; c < cols && cnt < ST.pieces; c++) {
+        const x = margin + c*(pw+gap);
+        const y = margin + r*(ph+gap);
+        ctx.drawImage(src, x, y, pw, ph);
+        // Cut guide lines
+        ctx.save();
+        ctx.strokeStyle = '#bbbbbb';
+        ctx.lineWidth = 0.5;
+        ctx.setLineDash([Math.round(dpi*0.02), Math.round(dpi*0.02)]);
+        ctx.strokeRect(x+0.5, y+0.5, pw-1, ph-1);
+        ctx.restore();
+        cnt++;
+      }
+    }
+
+    const fmt = ST.fmt;
+    const qual = parseInt(document.getElementById('jpegQual').value) / 100;
+    const ext = fmt === 'jpeg' ? 'jpg' : fmt;
+    const name = `${ST.preset.name.replace(/\s+/g,'_')}_${ST.pieces}pcs_${dpi}dpi_ToolNest.${ext}`;
+    triggerDownload(out, name, fmt, qual);
+    const sizeKB = Math.round(sheetW * sheetH * 3 / 1024 * (fmt==='jpeg'?qual*0.07:0.25));
+    setStatus(`Downloaded: ${ST.pieces} photos at ${dpi} DPI · ${sheetW}×${sheetH}px`);
+    showProc('');
+  }, 60);
+}
+
+/* ─── SINGLE DOWNLOAD ─── */
+function downloadSingle() {
+  if (!ST.working) return;
+  const {w, h} = getTargetDims();
+  const dpi = getCurrentDpi();
+  const out = buildOutputCanvas(w, h);
+  const fmt = ST.fmt;
+  const qual = parseInt(document.getElementById('jpegQual').value) / 100;
+  const ext = fmt === 'jpeg' ? 'jpg' : fmt;
+  triggerDownload(out, `photo_${ST.preset.name.replace(/\s+/g,'_')}_${dpi}dpi.${ext}`, fmt, qual);
+  setStatus('Single photo downloaded: ' + w + '×' + h + 'px · ' + dpi + ' DPI');
+}
+
+function triggerDownload(canvas, filename, fmt, quality) {
+  const a = document.createElement('a');
+  a.download = filename;
+  a.href = canvas.toDataURL('image/' + fmt, quality);
+  a.click();
+}
+
+/* ─── SHARE ─── */
+async function sharePhoto() {
+  if (!ST.working) return;
+  const {w, h} = getTargetDims();
+  const out = buildOutputCanvas(w, h);
+  const qual = parseInt(document.getElementById('jpegQual').value) / 100;
+
+  out.toBlob(async blob => {
+    const file = new File([blob], 'photo_toolnest.jpg', {type:'image/jpeg'});
+    if (navigator.share && navigator.canShare && navigator.canShare({files:[file]})) {
+      try {
+        await navigator.share({
+          files: [file],
+          title: 'Photo — ToolNest Photo Studio',
+          text: 'Free photo editor — toolnest.bhaihelp.in'
+        });
+      } catch(e) {
+        if (e.name !== 'AbortError') fallbackShare(out);
+      }
+    } else {
+      fallbackShare(out);
+    }
+  }, 'image/jpeg', qual);
+}
+
+function fallbackShare(canvas) {
+  const w = window.open('', '_blank');
+  if (w) {
+    w.document.write(`
+      <style>body{margin:0;background:#111;display:flex;align-items:center;justify-content:center;min-height:100vh}</style>
+      <img src="${canvas.toDataURL('image/jpeg', 0.95)}" style="max-width:100vw;max-height:100vh;object-fit:contain">
+      <p style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:#888;font-family:sans-serif;font-size:12px">Long press / right-click to save · ToolNest Photo Studio</p>
+    `);
+  }
+}
+
+/* ─── INIT ─── */
+function init() {
+  renderPresets();
+  updateResPreview();
+  // Drag-drop on the entire center panel
+  const cp = document.getElementById('cp');
+  cp.addEventListener('dragover', e => { e.preventDefault(); });
+  cp.addEventListener('drop', e => { e.preventDefault(); handleFileDrop(e.dataTransfer.files[0]); });
+}
+
+init();
+</script>
+</body>
+</html>
